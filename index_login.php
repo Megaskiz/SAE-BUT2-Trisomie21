@@ -34,7 +34,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
     if ($count == 1) {
         session_start();
         $_SESSION['login_user'] = $Courriel;
-        header("location: index_page_admin.php");
+        header("location: index_admin.php");
     } else {
         $message_erreur = "identifiant ou mot de passe invalide";
     }
