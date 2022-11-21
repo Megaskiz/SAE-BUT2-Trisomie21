@@ -1,0 +1,91 @@
+header{
+    display: grid;
+    grid-template-columns:20% 50% 10% 10% 10%;
+    border: 1px solid #000;
+    height: 10%;
+}
+
+#logo_personne{
+    grid-column: 3;
+}
+
+.grid_item{
+    border: 1px solid #000;
+    margin: 0px;
+}
+
+img {
+    height: 100%;
+}
+
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+nav{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 100%;
+}
+
+main{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    height: 85%;
+}
+
+footer{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height:5%;   /* Hauteur du pied de page */
+}
+
+table,tr {
+    border-collapse:collapse;
+    border:solid black 1px;
+    padding: 1rem;
+}
+ 
+.grille_choix{
+    display: grid;
+    grid-template-columns:45% 45% auto;
+
+}
+
+.choix_sys{
+    border: 1px solid #000;
+    display :grid;
+    grid-template-rows: auto;
+}
+
+.choix_reward{
+    border: 1px solid #000;
+    display :grid;
+    grid-template-rows: auto;
+    
+}
+p{
+    color: blue;
+    border: 1px solid #000;
+
+}
+
+.conteneur{
+    position:relative;
+}
+
+.contenu{
+    position:absolute; bottom:0;
+}
+
+

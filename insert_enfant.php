@@ -1,4 +1,8 @@
- <html>
+
+
+
+
+<html>
     <head>
         <meta charset="utf-8">
         <!-- importer le fichier de style -->
@@ -9,7 +13,7 @@
         <div class="login-page">
             <div class="form">
                 <div class="grille">
-                    <img class="logo" src="img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                    <img class="logo" src="/sae/img/logo trisomie.png" alt="Logo de l'association Trisomie 21">
                     <form action="" method="post" class="login-form">
                     <?php // la partie de la connexion
 ///Connexion au serveur MySQL
@@ -74,12 +78,12 @@ try {
                     catch (Exception $e)
                     {die('Erreur : ' . $e->getMessage());}
                     
-                    header('Location: page_admin.php');
+                    header('Location: page_admin_v2.php');
                     exit();
                 }           
         }
             ?>
-                        <a href="index_page_admin.php">Retour à la page précédente</a>
+                        <a href="page_admin_v2.php">Retour à la page précédente</a>
                     </form>
                 </div>
             </div>

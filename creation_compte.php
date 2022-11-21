@@ -112,8 +112,8 @@
     <head>
         <meta charset="utf-8">
         <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="style_creation_compte.css" media="screen" type="text/css" />
-        <title>Créer votre compte</title>
+        <link rel="stylesheet" href="style_setup.css" media="screen" type="text/css" />
+        <title>bienvenue</title>
     </head>
     <body>
         <div class="login-page">
@@ -122,7 +122,7 @@
                     echo$message_erreur;
                 }  ?></p>
                 <div class="grille">
-                    <img class="logo" src="img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                    <img class="logo" src="/sae/img/logo trisomie.png" alt="Logo de l'association Trisomie 21">
                     <form action="" method="post" class="login-form">
                         <input required type="text" name="nom" placeholder="Nom" value=<?php echo $nom ?>>
                         <input required type="text" name="prenom" placeholder="Prénom"value=<?php echo $prenom ?>>
@@ -146,7 +146,7 @@
                             </div>
                         </div>
                         <input class="button" type="submit" value="Valider l'inscription">
-                        <p class="message">Déjà un compte ? <a href="index_login.php">S'identifer</a></p>
+                        <p class="message">Déjà un compte ? <a href="html_login.php">S'identifer</a></p>
                         
                     </form>
                 </div>

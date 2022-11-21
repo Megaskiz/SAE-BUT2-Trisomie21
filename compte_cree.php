@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <!-- importer le fichier de style -->
         <link rel="stylesheet" href="style_login.css" media="screen" type="text/css" />
-        <title>compte valide</title>
+        <title>bienvenue</title>
     </head>
     <body>
         <div class="login-page">
             <div class="form">
                 <div class="grille">
-                    <img class="logo" src="img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                    <img class="logo" src="/sae/img/logo trisomie.png" alt="Logo de l'association Trisomie 21">
                     <form action="" method="post" class="login-form">
                         <p>Votre compte à bien été crée, il faudra attendre la validation par l'adminstration avant de pouvoir vous connecter.</p>                        
                     </form>
