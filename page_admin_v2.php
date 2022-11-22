@@ -194,7 +194,6 @@
 
                     echo"infos sur ses tuteurs :";
 
-                    ///Sélection de tout le contenu de la table carnet_adresse
                 try {
                     $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
     
@@ -227,23 +226,24 @@
                     }
                     echo"</table>";
 
-                echo"Supprimer cet enfant de la base de donnée (attention cette action est irreversible !)";
+                //echo"Supprimer cet enfant de la base de donnée (attention cette action est irreversible !)";
             ?>
-                <div>                        
-            <button type="button" onclick="openDialog('dialog5', this)">Supprimer cet enfant</button>
+            <div>                        
+                <button type="button" onclick="openDialog('dialog5', this)">Supprimer cet enfant</button>
                 <div id="dialog_layer" class="dialogs">
                     <div role="dialog" id="dialog5" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                         <form action="" method="post" class="dialog_form">
                             <p>Supprimer cet enfant de la base de donnée ?  (attention cette action est irreversible !)</p>
                             <div class="dialog_form_actions">
-                            <?php echo '<a href="page_admin_v2.php?id_suppr='.$identifiant.'">Valider la supression</a>'; ?>
-                                  
+                                <?php echo '<a href="page_admin_v2.php?id_suppr='.$identifiant.'">Valider la supression</a>'; ?>
                                 <button type="button" onclick="closeDialog(this)">Annuler</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div><! -- /* fin de la fenêtre popin de l'ajout d'enfant" */ -- >  
+            </div><! -- /* fin de la fenêtre popin de l'ajout d'enfant" */ -- >
+            <a href="page_creatsystem.php">creer un nouveau systeme</a>
+
                 <?php
             }
             if (isset ($_GET['id_suppr']))  {
