@@ -168,6 +168,7 @@
                         die('Erreur : ' . $e->getMessage());
                     }
                     
+                    setcookie("SelectEnfant", $id);
                 
                     ///Affichage des entrées du résultat une à une
                     
