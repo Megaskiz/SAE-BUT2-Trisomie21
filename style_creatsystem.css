@@ -307,7 +307,6 @@ tr {
 .forme .plan input:checked+label,
 .forme .payment-plan input:checked+label,
 .forme .payment-type input:checked+label {
-    border: 1.5px solid #333;
     padding: 3%;
     color: #fff;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
@@ -321,7 +320,6 @@ tr {
     height: 40px;
     line-height: 40px;
     border-radius: 100%;
-    border: 1px solid #333;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     vertical-align: middle;
     z-index: 999;
@@ -339,7 +337,6 @@ tr {
     margin-bottom: 2%;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     color: #fff;
-    border: 1.5px solid #333;
     font-size: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -351,7 +348,6 @@ tr {
     margin-top: 2%;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     color: #fff;
-    border: 1.5px solid #333;
     font-size: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -369,7 +365,6 @@ tr {
 
 .info-enfant {
     display: grid;
-    border: 1.5px solid #333;
     width: 90%;
     height: 72.5%;
     padding: 3%;
@@ -383,7 +378,6 @@ tr {
 .photo-enfant {
     display: grid;
     text-align: center;
-    border: 1.5px solid #333;
     width: 60%;
     height: 60%;
     padding: 3%;
