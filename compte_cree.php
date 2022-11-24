@@ -10,8 +10,8 @@
         <div class="login-page">
             <div class="form">
                 <div class="grille">
-                    <img class="logo" src="/sae/img/logo trisomie.png" alt="Logo de l'association Trisomie 21">
-                    <form action="" method="post" class="login-form">
+                    <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                    <form>
                         <p>Votre compte à bien été crée, il faudra attendre la validation par l'adminstration avant de pouvoir vous connecter.</p>                        
                     </form>
                 </div>

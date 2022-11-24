@@ -33,7 +33,7 @@
                     if ($count == 1 ){
                         session_start();
                         $_SESSION['login_user'] = $Courriel;
-                        header("location: page_admin_v2.php");
+                        header("location: page_admin.php");
                     }else{
                         $message_erreur = "identifiant ou mot de passe invalide";
                     }

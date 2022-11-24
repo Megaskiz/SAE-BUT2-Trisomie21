@@ -5,7 +5,7 @@
 session_start();
 ///Connexion au serveur MySQL
 try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=sae", "root", "");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
 }
 ///Capture des erreurs éventuelles
 catch (Exception $e) {
@@ -57,7 +57,7 @@ catch (Exception $e) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><a href="index_login.php">Déconnexion</a></p>
+        <p class="h-deconnexion"><a href="html_login.php">Déconnexion</a></p>
 
     </header>
 
@@ -139,7 +139,7 @@ catch (Exception $e) {
                         }
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '">acceder</a>';
+                        echo '<a href="page_admin.php?id='.$identifiant.'">acceder</a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -151,6 +151,70 @@ catch (Exception $e) {
                     ?>
         </nav>
 
+        <?php // affichage central de la page, avec les informations sur les enfants
+
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+
+
+
+                ///Sélection de tout le contenu de la table carnet_adresse
+                try {
+                    $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
+                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                    die('Erreur : ' . $e->getMessage());
+                }
+
+                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+                $liste = array();
+
+ 
+                $id_enfant = $double_tab[0][0];
+                $nom_enfant = $double_tab[0][1];
+                $prenom_enfant = $double_tab[0][2];
+                $ddn_enfant = $double_tab[0][3];
+                $lien_jeton_enfant = $double_tab[0][4];
+                // echo$id_enfant;
+                // echo$nom_enfant;
+                // echo$prenom_enfant;
+                // echo$ddn_enfant;
+                // echo$lien_jeton_enfant;
+                
+
+
+                ///Sélection de tout le contenu de la table carnet_adresse
+                try {
+                    $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
+                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                    die('Erreur : ' . $e->getMessage());
+                }
+
+
+                ///Affichage des entrées du résultat une à une
+
+                $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+                $liste = array();
+
+                // print_r($double_tab_tuteur);
+                // exit();
+
+
+            }
+            if (isset($_GET['id_suppr'])) {
+                $id_suppression = $_GET['id_suppr'];
+                $req_suppr = "DELETE FROM suivre where id_enfant='$id_suppression';DELETE FROM enfant where id_enfant='$id_suppression'";
+                try {
+                    $res = $linkpdo->query($req_suppr);
+                    header('Location: page_admin.php');
+                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                    die('Erreur : ' . $e->getMessage());
+                }
+            }
+
+                ?>
+
 
 
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
@@ -161,9 +225,9 @@ catch (Exception $e) {
 
                 <img class="logo-enfant" src="img/logo-enfant.png" alt="Tête de l'enfant">
 
-                <div class="id-enfant"> <a class="id-nom">Nom : <?php echo $nom ?></a> </div>
-                <div class="id-enfant"> <a class="id-prenom">Prénom : <?php echo $prenom ?></a> </div>
-                <div class="id-enfant"> <a class="id-age">Date de Naissance : <?php echo $age ?> </a></div>
+                <div class="id-enfant"> <a class="id-nom">Nom : <?php echo $nom_enfant ?></a> </div>
+                <div class="id-enfant"> <a class="id-prenom">Prénom : <?php echo $prenom_enfant ?></a> </div>
+                <div class="id-enfant"> <a class="id-age">Date de Naissance : <?php echo $ddn_enfant ?> </a></div>
 
 
                 <div class="id-enfants"> <a class="id-adresse">Adresse enfant :</a></div>
@@ -172,12 +236,25 @@ catch (Exception $e) {
 
                 <div class="text-complementaire"><textarea style="resize: none">Rajouter des informations supplémentaires sur l'enfant </textarea> </div>
 
-                <div class="id-tuteur"> <a class="tuteur_1">Information tuteur 1:</a></div>
-                <div class="id-tuteur"> <a class="tuteur_2">Information tuteur 2:</a></div>
-                <div class="id-tuteur"> <a class="tuteur_3">Information tuteur 3:</a></div>
                 <div class="id-tuteur"> <a class="tuteur_4">Information tuteur 4:</a></div>
+                <div class="id-tuteur"><p></p></div>
                 <input class="button-modifie" type="submit" value="Bouton Modifier">
                 <input class="button-valide" type="submit" value="Bouton cliquer">
+                <div>
+                    <button type="button" onclick="openDialog('dialog5', this)">Supprimer cet enfant</button>
+                    <div id="dialog_layer" class="dialogs">
+                        <div role="dialog" id="dialog5" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+                            <form action="" method="post" class="dialog_form">
+                                <p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>
+                                <div class="dialog_form_actions">
+                                    <?php echo '<a href="page_admin.php?id_suppr=' . $identifiant . '">Valider la supression</a>'; ?>
+
+                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             </section>
 
@@ -216,103 +293,7 @@ catch (Exception $e) {
 
 
 
-            <?php // affichage central de la page, avec les informations sur les enfants
 
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-
-
-
-                ///Sélection de tout le contenu de la table carnet_adresse
-                try {
-                    $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-
-                setcookie("SelectEnfant",$id);
-                ///Affichage des entrées du résultat une à une
-
-                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-                $liste = array();
-
-                echo "<table>";
-
-                for ($i = 0; $i < $nombre_ligne; $i++) {
-                    echo "<tr>";
-                    for ($y = 0; $y < 5; $y++) {
-                        echo "<td>";
-                        print_r($double_tab[$i][$y]);
-                        $liste[$y] = $double_tab[$i][$y];
-                        echo "</td>";
-                    }
-                    echo "</tr>";
-                }
-                echo "</table>";
-
-                echo "infos sur ses tuteurs :";
-
-                ///Sélection de tout le contenu de la table carnet_adresse
-                try {
-                    $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-
-
-                ///Affichage des entrées du résultat une à une
-
-                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-                $liste = array();
-
-                echo "<table>";
-
-                for ($i = 0; $i < $nombre_ligne; $i++) {
-                    echo "<tr>";
-                    for ($y = 0; $y < 14; $y++) {
-                        echo "<td>";
-                        print_r($double_tab[$i][$y]);
-                        $liste[$y] = $double_tab[$i][$y];
-                        echo "</td>";
-                    }
-                    echo "</tr>";
-                }
-                echo "</table>";
-
-                echo "Supprimer cet enfant de la base de donnée (attention cette action est irreversible !)";
-            ?>
-                <div>
-                    <button type="button" onclick="openDialog('dialog5', this)">Supprimer cet enfant</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog5" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <form action="" method="post" class="dialog_form">
-                                <p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>
-                                <div class="dialog_form_actions">
-                                    <?php echo '<a href="page_admin.php?id_suppr=' . $identifiant . '">Valider la supression</a>'; ?>
-
-                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <! -- /* fin de la fenêtre popin de l'ajout d'enfant" */ -->
-                <?php
-            }
-            if (isset($_GET['id_suppr'])) {
-                $id_suppression = $_GET['id_suppr'];
-                $req_suppr = "DELETE FROM enfant where id_enfant='$id_suppression'";
-                try {
-                    $res = $linkpdo->query($req_suppr);
-                    header('Location: page_admin.php');
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-            }
-
-                ?>
         </nav>
     </main>
 

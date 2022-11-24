@@ -5,7 +5,7 @@
     session_start();
         ///Connexion au serveur MySQL
     try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=sae", "root", "");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=saebdd", "root", "");
     }
     ///Capture des erreurs éventuelles
     catch (Exception $e) {
