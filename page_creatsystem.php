@@ -55,11 +55,11 @@ catch (Exception $e) {
         echo "</table>";
         ?>
 
-        <p class="grid_item"><a href="page_login.php">Déconnexion</a></p>
+        <p class="grid_item"><a href="html_login.php">Déconnexion</a></p>
     </header>
     <main>
         <nav>
-            <form action="page_admin_v2.php">
+            <form action="page_admin.php">
                 <input type="submit" class="annuler" value="Annuler">
             </form></br>
             <div class="info-enfant">
