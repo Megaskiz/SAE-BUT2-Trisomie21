@@ -3,7 +3,7 @@
 
  ///Connexion au serveur MySQL
  try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=sae", "root", "");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
     }
     ///Capture des erreurs éventuelles
     catch (Exception $e) {
@@ -66,13 +66,14 @@
                     echo$message_erreur;
                 }  ?></p>
                 <div class="grille">
-                    <img class="logo" src="/sae/img/logo trisomie.png" alt="Logo de l'association Trisomie 21">
+                    <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                     <form action="" method="post" class="login-form">
                         <input type="text" name="courriel"placeholder="Adresse e-mail"/>
                         <input type="password" name="password" placeholder="Mot de passe"/>
                         <input class="button" type="submit" value="Acceder">
 
-                        <p class="message">Pas de compte ? <a href="creation_compte.php">Creer un compte</a></p>
+                        <p class="message">Pas de compte ? </p>
+                        <a href="creation_compte.php">Creer un compte</a>
                         
                     </form>
                 </div>
