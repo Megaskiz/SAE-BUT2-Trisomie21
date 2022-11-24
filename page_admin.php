@@ -219,52 +219,76 @@ catch (Exception $e) {
 
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <section>
-
-                <!---- menu droit information sur l'enfant ---->
-
-                <img class="logo-enfant" src="img/logo-enfant.png" alt="Tête de l'enfant">
-
-                <div class="id-enfant"> <a class="id-nom">Nom : <?php echo $nom_enfant ?></a> </div>
-                <div class="id-enfant"> <a class="id-prenom">Prénom : <?php echo $prenom_enfant ?></a> </div>
-                <div class="id-enfant"> <a class="id-age">Date de Naissance : <?php echo $ddn_enfant ?> </a></div>
+        <section>
+            <?php
+            if (isset($_GET['id'])) {
 
 
-                <div class="id-enfants"> <a class="id-adresse">Adresse enfant :</a></div>
-                <div class="id-enfants"> <a class="id-activite">Activité enfant :</a></div>
-                <div class="id-enfants"> <a class="id-handicap">Handicap enfant :</a></div>
+                //<!---- menu droit information sur l'enfant ---->
+                echo"<div class=\"case-enfant\">";
+                    echo"<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
+                echo"</div>";
 
-                <div class="text-complementaire"><textarea style="resize: none">Rajouter des informations supplémentaires sur l'enfant </textarea> </div>
+                echo"<div class=\"case-3-infos\">";
+                echo"<p>Nom : <?php echo $nom_enfant ?></p>";
+                echo"<p>Date de Naissance : <?php echo $ddn_enfant ?> </p>";
+                echo"<p>Activité enfant :</p>";
+                echo"</div>";
 
-                <div class="id-tuteur"> <a class="tuteur_4">Information tuteur 4:</a></div>
-                <div class="id-tuteur"><p></p></div>
-                <input class="button-modifie" type="submit" value="Bouton Modifier">
-                <input class="button-valide" type="submit" value="Bouton cliquer">
-                <div>
-                    <button type="button" onclick="openDialog('dialog5', this)">Supprimer cet enfant</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog5" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <form action="" method="post" class="dialog_form">
-                                <p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>
-                                <div class="dialog_form_actions">
-                                    <?php echo '<a href="page_admin.php?id_suppr=' . $identifiant . '">Valider la supression</a>'; ?>
+                echo"<div class=\"case-3-infos\">";
+                   echo"<p>Prénom : <?php echo $prenom_enfant ?></p>";
+                   echo"<p>Adresse enfant :</p>";
+                   echo"<p>Handicap enfant :</p>";
+                echo"</div>";
 
-                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                echo"<div class=\"case-enfant\">";
+                echo"<textarea style=\"resize: none\">Rajouter des informations supplémentaires sur l'enfant </textarea>";
+                echo"</div>";
 
-            </section>
+                echo"<div class=\"case\">";
+                echo"<a class=\"tuteur_4\">informations sur les tuteurs (a faire)</a>";
+                echo"</div>";
+
+                echo" <div class=\"case-enfant\">";
+                echo"<button type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                echo"<div id=\"dialog_layer\" class=\"dialogs\">";
+                echo"<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                echo"<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                echo"<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                echo"<div class=\"dialog_form_actions\">";
+                echo"<?php echo '<a href=\"page_admin.php?id_suppr=' . $identifiant . '\">Valider la supression</a>'; ?>";
+
+                echo"<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
+                echo"</div>";
+                echo"</form>";
+                echo"</div>";
+                echo"</div>";
+                echo"</div>";
+                echo"</section>";
+                echo"<section class=\"nb-systeme\">";
+                    echo"<a href=\"page_creatsystem.php\">creer un nouveau systeme</a>";
+                echo"</section>";
+                
+            }else{
+                echo"<p></p>";
+                echo"<p></p>";
+                echo"<p></p>";
+                echo"<p></p>";
+                echo"<p></p>";
+                echo"<p></p>";
+                echo"</section>";
+                echo"<section class=\"nb-systeme\">";
+                echo"</section>";
+            }
+                ?>
+            
+
+            
 
 
 
 
-            <section class="nb-systeme">
-
-
-            <a href="page_creatsystem.php">creer un nouveau systeme</a>
+            
 
                 <?php
             
@@ -288,7 +312,7 @@ catch (Exception $e) {
 
 
 
-            </section>
+           
 
 
 
