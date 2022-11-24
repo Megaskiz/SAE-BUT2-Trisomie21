@@ -26,27 +26,26 @@ header {
 
 
 /* Logo/image*/
-
 .logo-association {
     height: 75%;
     padding: 4%;
-}
-
-.img-user {
+  }
+  
+  .img-user {
     grid-column: 3;
     height: 60%;
     margin: 12%;
-}
-
-
-/* Boutton déconnexion*/
-
-.h-deconnexion {
+  
+  }
+  
+  
+  /* Boutton déconnexion*/
+  .h-deconnexion {
     text-decoration: none;
     color: black;
     list-style-type: none;
     padding: 30%;
-}
+  }
 
 
 /*------------------------ Body--------------------*/

@@ -22,8 +22,8 @@ catch (Exception $e) {
 
 <body>
     <header>
-        <img class="grid_item" src="/sae/img/logo trisomie.png" alt="logo de l'association">
-        <p class="grid_item" id="logo_personne">logo personne</p>
+        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
 
         <?php
         $mail =  $_SESSION['login_user'];
@@ -55,7 +55,7 @@ catch (Exception $e) {
         echo "</table>";
         ?>
 
-        <p class="grid_item"><a href="html_login.php">Déconnexion</a></p>
+<p class="h-deconnexion"><a href="html_login.php">Déconnexion</a></p>
     </header>
     <main>
         <nav>
