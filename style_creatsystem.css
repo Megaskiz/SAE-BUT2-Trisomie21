@@ -1,61 +1,75 @@
+/* CSS RESETTING */
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/*------------------------ Header/menu--------------------*/
+
+/* Header */
 header {
     display: grid;
     grid-template-columns: 20% 50% 10% 10% 10%;
-    border: 1px solid #000;
-    height: 10%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    height: 15%;
+    margin: 1%;
+    position: sticky;
+    top: 0;
+    opacity: 1.0;
+    background-color: white;
 }
 
-#logo_personne {
+
+/* Logo/image*/
+.logo-association {
+    height: 75%;
+    padding: 4%;
+}
+
+.img-user {
     grid-column: 3;
+    height: 60%;
+    margin: 12%;
+
 }
 
-.grid_item {
-    border: 1px solid #000;
-    margin: 0px;
+
+/* Boutton déconnexion*/
+.h-deconnexion {
+    text-decoration: none;
+    color: black;
+    list-style-type: none;
+    padding: 30%;
 }
 
-img {
-    height: 100%;
-}
+/*------------------------ Body--------------------*/
 
-html {
-    height: 100%;
-}
-
+html,
 body {
     height: 100%;
+    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+
 }
 
-nav {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    height: 100%;
-}
 
 main {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
     display: grid;
     grid-template-columns: 20% 1fr;
-    height: 85%;
+    height: 1fr;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: #fff;
 }
 
-footer {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    height: 5%;
-    /* Hauteur du pied de page */
-}
 
-table,
-tr {
-    border-collapse: collapse;
-    border: solid black 1px;
-    padding: 1rem;
-}
+
+
+
+
 
 .hidden {
     display: none;
@@ -71,13 +85,14 @@ tr {
 }
 
 @media screen and (min-width: 640px) {
+
     [role="alertdialog"],
     [role="dialog"] {
         position: absolute;
         top: 2rem;
         left: 50vw;
         /* move to the middle of the screen (assumes relative parent is the body/viewport) */
-        transform: translateX( -50%);
+        transform: translateX(-50%);
         /* move backwards 50% of this element's width */
         min-width: calc(640px - (15px * 2));
         /* == breakpoint - left+right margin */
@@ -243,6 +258,99 @@ tr {
 }
 
 
+
+/*-------------------------------------- Footer------------------------------------------*/
+
+footer {
+
+    /*margin: 1%;*/
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: white;
+
+
+}
+
+.f-contenu {
+
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 15px;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: auto;
+}
+
+.bloc {
+
+    margin: 0 50px;
+}
+
+.footer-contact h3,
+.footer-horraire h3,
+.footer-information h3,
+.footer-service h3 {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.liste-horaire,
+.liste-information,
+.liste-service {
+    list-style-type: none;
+}
+
+
+/*Contact*/
+.footer-contact p {
+    padding: 5px 0;
+}
+
+
+
+/*Information*/
+.footer-information a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-information li {
+    padding: 3px 0;
+}
+
+
+/*Horaire*/
+.footer-horaire a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-horaire li {
+    padding: 2px 0;
+}
+
+.liste-horaire {
+
+    top: 15px;
+}
+
+
+/*Service*/
+.footer-service a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-service a:hover {
+    color: rgb(3, 3, 3);
+}
+
+.footer-service li {
+    padding: 2px 0;
+}
+
+
 /*titre*/
 
 .titletype {
@@ -258,6 +366,8 @@ tr {
     max-width: 850px;
     width: 80%;
     margin: 0 auto;
+    background-color: white;
+
 }
 
 .four {
@@ -282,6 +392,7 @@ tr {
 .titre {
     content: " ";
     display: table;
+    margin: 2%;
 }
 
 
@@ -291,6 +402,7 @@ tr {
 .forme .payment-plan input,
 .forme .payment-type input {
     display: none;
+    margin: 1%;
 }
 
 .forme label {
