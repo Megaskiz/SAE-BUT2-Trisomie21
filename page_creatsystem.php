@@ -100,23 +100,17 @@ catch (Exception $e) {
                     $res2 = $_POST["radio2"];
 
                     if ($res1 == "choix1") {
-                        echo $res1 . " et " . $res2;
+                        header("Location: ");
+                        die();
+                    } else if ($res1 == "choix2") {
+                        header("Location:");
+                        exit();
+                    } else if ($res1 == "choix3") {
+                        header("Location: ");
+                        exit();
+                    }
+                }
                 ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            } else if ($res1 == "choix2") {
-                                                                                                echo $res1 . " et " . $res2;
-                                                                                                ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            } else if ($res1 == "choix3") {
-                                                                                                echo $res1 . " et " . $res2;
-                                                                                                ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            }
-                                                                                        }
-                                                                                                ?>
                 <form class="forme titre" method="POST">
                     <section class="plan titre">
                         <h2 class="titletype">Choisir le type de système :</h2>
