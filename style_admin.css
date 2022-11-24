@@ -19,13 +19,13 @@ header {
 
 /* Logo/image*/
 .logo-association {
-  height: 75%;
+  height: 60%;
   padding: 4%;
 }
 
 .img-user {
   grid-column: 3;
-  height: 60%;
+  height: 50%;
   margin: 12%;
 
 }
@@ -57,12 +57,9 @@ body {
 main {
   display: grid;
   grid-template-columns: 20% 1fr;
-  height: 1fr;
+  height: 100%;
   margin: 2%;
   border-radius: 10px;
-
-  /*background-color: whitesmoke;*/
-  
 
 }
 
@@ -394,95 +391,62 @@ textarea{
 /*-------------------------------------- Footer------------------------------------------*/
 
 footer {
-  
+  display: grid;
+  grid-template-columns:20% 60% 20%;
   margin: 1%;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   background-color: white;
   height: 30%;
+}
+
+.f-contenu{
+  padding: 0;
+  margin: 0 ;
+}
+
+
+.footer-logo-association{
+  height: 30%;
+  grid-column: 1;
+  padding: 25%;
+}
+
+
+footer p {
+  text-align: center;
+}
+
+
+
+
+
+.f-info{
+  grid-column: 2;
 
 }
 
-.f-contenu {
-  margin-top: 3%;
-  display: grid;
-  justify-content: center;
-  align-items: flex-start;
-  grid-template-columns: 25% 25% 25% ;
-  position: auto;
-}
 
-.bloc {
-  margin: 0 50px;
-}
+.f-contact{
+  grid-column: 2;
 
-.footer-contact h3,
-.footer-horraire h3,
-.footer-information h3
- {
-  font-size: 20px;
-  padding-bottom: 20px;
-  margin-top: 3%;
-}
-
-.liste-horaire p,
-.liste-contact p {
-  list-style-type: none;
-  margin: 3%;
-}
-
-.liste-information a{
-  list-style-type: none;
-  text-decoration: none;
-  margin: 3%;
   
-
 }
 
 
-.liste-horaire ,
-.liste-information ,
-.liste-contact  {
-  list-style-type: none;
-  margin: 3%;
+.f-propos{
+  grid-column: 2;
+
+ 
 }
 
+.f-association{
+  grid-column: 2;
 
-
-
-
-/*Contact*/
-.footer-contact p {
-  padding: 5px 0;
 }
 
+.f-copyright{
+  grid-column: 2;
 
-
-/*Information*/
-.footer-information p {
-  text-decoration: none;
-  color: black;
+  padding-top: 3%;
 }
-
-.footer-information li {
-  padding: 3px 0;
-}
-
-
-/*Horaire*/
-.footer-horaire p {
-  text-decoration: none;
-  color: black;
-  margin: 1%;
-  margin-top: 3%;
-}
-
-.footer-horaire li {
-  padding: 2px 0;
-}
-
-.liste-horaire {
-  top: 15px;
-}
-
-

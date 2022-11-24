@@ -139,7 +139,7 @@ catch (Exception $e) {
                         }
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id='.$identifiant.'">acceder</a>';
+                        echo '<a href="page_admin.php?id=' . $identifiant . '">acceder</a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -153,170 +153,151 @@ catch (Exception $e) {
 
         <?php // affichage central de la page, avec les informations sur les enfants
 
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
 
 
-                ///Sélection de tout le contenu de la table carnet_adresse
-                try {
-                    $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-
-                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
-                $liste = array();
-
- 
-                $id_enfant = $double_tab[0][0];
-                $nom_enfant = $double_tab[0][1];
-                $prenom_enfant = $double_tab[0][2];
-                $ddn_enfant = $double_tab[0][3];
-                $lien_jeton_enfant = $double_tab[0][4];
-                // echo$id_enfant;
-                // echo$nom_enfant;
-                // echo$prenom_enfant;
-                // echo$ddn_enfant;
-                // echo$lien_jeton_enfant;
-                
-
-
-                ///Sélection de tout le contenu de la table carnet_adresse
-                try {
-                    $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-
-
-                ///Affichage des entrées du résultat une à une
-
-                $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-                $liste = array();
-
-                // print_r($double_tab_tuteur);
-                // exit();
-
-
-            }
-            if (isset($_GET['id_suppr'])) {
-                $id_suppression = $_GET['id_suppr'];
-                $req_suppr = "DELETE FROM suivre where id_enfant='$id_suppression';DELETE FROM enfant where id_enfant='$id_suppression'";
-                try {
-                    $res = $linkpdo->query($req_suppr);
-                    header('Location: page_admin.php');
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
+            ///Sélection de tout le contenu de la table carnet_adresse
+            try {
+                $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
             }
 
-                ?>
+            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $liste = array();
+
+
+            $id_enfant = $double_tab[0][0];
+            $nom_enfant = $double_tab[0][1];
+            $prenom_enfant = $double_tab[0][2];
+            $ddn_enfant = $double_tab[0][3];
+            $lien_jeton_enfant = $double_tab[0][4];
+            // echo$id_enfant;
+            // echo$nom_enfant;
+            // echo$prenom_enfant;
+            // echo$ddn_enfant;
+            // echo$lien_jeton_enfant;
 
 
 
-        <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
-        <nav class="right-contenu">
-        <section>
-            <?php
-            if (isset($_GET['id'])) {
-
-
-                //<!---- menu droit information sur l'enfant ---->
-                echo"<div class=\"case-enfant\">";
-                    echo"<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
-                echo"</div>";
-
-                echo"<div class=\"case-3-infos\">";
-                echo"<p>Nom : <?php echo $nom_enfant ?></p>";
-                echo"<p>Date de Naissance : <?php echo $ddn_enfant ?> </p>";
-                echo"<p>Activité enfant :</p>";
-                echo"</div>";
-
-                echo"<div class=\"case-3-infos\">";
-                   echo"<p>Prénom : <?php echo $prenom_enfant ?></p>";
-                   echo"<p>Adresse enfant :</p>";
-                   echo"<p>Handicap enfant :</p>";
-                echo"</div>";
-
-                echo"<div class=\"case-enfant\">";
-                echo"<textarea style=\"resize: none\">Rajouter des informations supplémentaires sur l'enfant </textarea>";
-                echo"</div>";
-
-                echo"<div class=\"case\">";
-                echo"<a class=\"tuteur_4\">informations sur les tuteurs (a faire)</a>";
-                echo"</div>";
-
-                echo" <div class=\"case-enfant\">";
-                echo"<button type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
-                echo"<div id=\"dialog_layer\" class=\"dialogs\">";
-                echo"<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                echo"<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                echo"<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
-                echo"<div class=\"dialog_form_actions\">";
-                echo"<?php echo '<a href=\"page_admin.php?id_suppr=' . $identifiant . '\">Valider la supression</a>'; ?>";
-
-                echo"<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
-                echo"</div>";
-                echo"</form>";
-                echo"</div>";
-                echo"</div>";
-                echo"</div>";
-                echo"</section>";
-                echo"<section class=\"nb-systeme\">";
-                    echo"<a href=\"page_creatsystem.php\">creer un nouveau systeme</a>";
-                echo"</section>";
-                
-            }else{
-                echo"<p></p>";
-                echo"<p></p>";
-                echo"<p></p>";
-                echo"<p></p>";
-                echo"<p></p>";
-                echo"<p></p>";
-                echo"</section>";
-                echo"<section class=\"nb-systeme\">";
-                echo"</section>";
+            ///Sélection de tout le contenu de la table carnet_adresse
+            try {
+                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
             }
-                ?>
-            
-
-            
 
 
+            ///Affichage des entrées du résultat une à une
+
+            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $liste = array();
+
+            // print_r($double_tab_tuteur);
+            // exit();
 
 
-            
-
-                <?php
-            
-            if (isset ($_GET['id_suppr']))  {
-                $id_suppression = $_GET['id_suppr'];
-                $req_suppr = "DELETE FROM enfant where id_enfant='$id_suppression'";
-                try {
-                    $res = $linkpdo->query($req_suppr);
-                    header('Location: page_admin.php');
-    
-                }
-                catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                    die('Erreur : ' . $e->getMessage());
-                }
-            
-            
+        }
+        if (isset($_GET['id_suppr'])) {
+            $id_suppression = $_GET['id_suppr'];
+            $req_suppr = "DELETE FROM suivre where id_enfant='$id_suppression';DELETE FROM enfant where id_enfant='$id_suppression'";
+            try {
+                $res = $linkpdo->query($req_suppr);
+                header('Location: page_admin.php');
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
             }
+        }
 
         ?>
 
 
 
+        <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
+        <nav class="right-contenu">
+            <section>
+                <?php
+                if (isset($_GET['id'])) {
 
-           
+
+                    //<!---- menu droit information sur l'enfant ---->
+                    echo "<div class=\"case-enfant\">";
+                    echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
+                    echo "</div>";
+
+                    echo "<div class=\"case-3-infos\">";
+                    echo "<p>Nom : <?php echo $nom_enfant ?></p>";
+                    echo "<p>Date de Naissance : <?php echo $ddn_enfant ?> </p>";
+                    echo "<p>Activité enfant :</p>";
+                    echo "</div>";
+
+                    echo "<div class=\"case-3-infos\">";
+                    echo "<p>Prénom : <?php echo $prenom_enfant ?></p>";
+                    echo "<p>Adresse enfant :</p>";
+                    echo "<p>Handicap enfant :</p>";
+                    echo "</div>";
+
+                    echo "<div class=\"case-enfant\">";
+                    echo "<textarea style=\"resize: none\">Rajouter des informations supplémentaires sur l'enfant </textarea>";
+                    echo "</div>";
+
+                    echo "<div class=\"case\">";
+                    echo "<a class=\"tuteur_4\">informations sur les tuteurs (a faire)</a>";
+                    echo "</div>";
+
+                    echo " <div class=\"case-enfant\">";
+                    echo "<button type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                    echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                    echo "<div class=\"dialog_form_actions\">";
+                    echo "<?php echo '<a href=\"page_admin.php?id_suppr=' . $identifiant . '\">Valider la supression</a>'; ?>";
+
+                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "</div>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</section>";
+                    echo "<section class=\"nb-systeme\">";
+                    echo "<a href=\"page_creatsystem.php\">creer un nouveau systeme</a>";
+                    echo "</section>";
+                } else {
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "</section>";
+                    echo "<section class=\"nb-systeme\">";
+                    echo "</section>";
+                }
+                ?>
 
 
 
 
+                <?php
+
+                if (isset($_GET['id_suppr'])) {
+                    $id_suppression = $_GET['id_suppr'];
+                    $req_suppr = "DELETE FROM enfant where id_enfant='$id_suppression'";
+                    try {
+                        $res = $linkpdo->query($req_suppr);
+                        header('Location: page_admin.php');
+                    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                        die('Erreur : ' . $e->getMessage());
+                    }
+                }
+
+                ?>
 
         </nav>
     </main>
@@ -325,39 +306,22 @@ catch (Exception $e) {
     <!------------------------------------------------------- Footer -------------------------------------------------->
     <footer>
 
+        <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
+
         <div class="f-contenu">
-
-            <div class="bloc footer-contact">
-                <h3>Nous contacter</h3>
-                <p>123 rue du Chemin, Toulouse 31000 </p>
-                <p>01 02 03 04 05</p>
-            </div>
-
-            <div class="bloc footer-information">
-                <h3>A propos </h3>
-                <ul class="liste-information">
-                    <li><a  href="#">Entreprise</a></li>
-                    <li><a  href="http://trisomie21-haute-garonne.org/">Association</a></li>
-                    <li><a  href="#">Projet</a></li>
-                </ul>
-            </div>
-
-
-            <div class="bloc footer-horaire">
-                <h3>Les horaires</h3>
-                <ul class="liste-horaire">
-                    <li><p>✓ Lun 9h-19h</p></li>
-                    <li><p>✓ Mar 9h-19h</p></li>
-                    <li><p>✓ Mer 9h-19h</p></li>
-                    <li><p>✓ Jeu 9h-19h</p></li>
-                    <li><p>✓ Ven 9h-19h</p></li>
-                </ul>
-            </div>
-
-
-           
-
+        <p class="f-info">Qui somme nous ?</p>
+        <p class="f-contact">Contact</p>
+        <p class="f-propos">A propos</p>
+        <p class="f-association">Association</p>
+        <p class="f-copyright">© copyright 2022 </p>
         </div>
+
+        <a href=""></a>
+        
+        
+
+
+
     </footer>
 </body>
 
