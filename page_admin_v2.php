@@ -5,7 +5,7 @@
     session_start();
         ///Connexion au serveur MySQL
     try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=sae", "root", "");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
     }
     ///Capture des erreurs éventuelles
     catch (Exception $e) {
@@ -24,7 +24,7 @@
 
 <body>
     <header>
-        <img class="grid_item" src="/sae/img/logo trisomie.png" alt="logo de l'association">
+        <img class="grid_item" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
         <p class="grid_item" id="logo_personne">logo personne</p>
         
        <?php

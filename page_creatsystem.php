@@ -55,11 +55,11 @@ catch (Exception $e) {
         echo "</table>";
         ?>
 
-        <p class="grid_item"><a href="page_login.php">Déconnexion</a></p>
+        <p class="grid_item"><a href="html_login.php">Déconnexion</a></p>
     </header>
     <main>
         <nav>
-            <form action="page_admin_v2.php">
+            <form action="page_admin.php">
                 <input type="submit" class="annuler" value="Annuler">
             </form></br>
             <div class="info-enfant">
@@ -100,23 +100,17 @@ catch (Exception $e) {
                     $res2 = $_POST["radio2"];
 
                     if ($res1 == "choix1") {
-                        echo $res1 . " et " . $res2;
+                        header("Location: ");
+                        die();
+                    } else if ($res1 == "choix2") {
+                        header("Location:");
+                        exit();
+                    } else if ($res1 == "choix3") {
+                        header("Location: ");
+                        exit();
+                    }
+                }
                 ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            } else if ($res1 == "choix2") {
-                                                                                                echo $res1 . " et " . $res2;
-                                                                                                ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            } else if ($res1 == "choix3") {
-                                                                                                echo $res1 . " et " . $res2;
-                                                                                                ?>
-                        <meta http-equiv="refresh" content="0;url = https://www.qries.com" /><?php
-                                                                                                exit();
-                                                                                            }
-                                                                                        }
-                                                                                                ?>
                 <form class="forme titre" method="POST">
                     <section class="plan titre">
                         <h2 class="titletype">Choisir le type de système :</h2>
