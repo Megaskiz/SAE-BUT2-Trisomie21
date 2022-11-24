@@ -25,8 +25,8 @@ catch (Exception $e) {
 
 
     <header>
-        <img class="logo-association" src="img/logo_trisomie.png" alt="logo de l'association">
-        <img class="img-user" src="img/user-logo.png" alt="tete de l'utilisateur">
+        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
 
         <?php
         $mail =  $_SESSION['login_user'];
@@ -305,18 +305,16 @@ catch (Exception $e) {
 
             <div class="bloc footer-contact">
                 <h3>Nous contacter</h3>
-                <p>123 rue du Chemin, Toulouse
-                    31000 </p>
+                <p>123 rue du Chemin, Toulouse 31000 </p>
                 <p>01 02 03 04 05</p>
-                <p>Trisomi21@mail.fr</p>
             </div>
 
             <div class="bloc footer-information">
-                <h3>Á propo </h3>
+                <h3>A propos </h3>
                 <ul class="liste-information">
-                    <li><a href="#">Entreprise</a></li>
-                    <li><a href="#">Association</a></li>
-                    <li><a href="#">BlaBlaBla</a></li>
+                    <li><a  href="#">Entreprise</a></li>
+                    <li><a  href="http://trisomie21-haute-garonne.org/">Association</a></li>
+                    <li><a  href="#">Projet</a></li>
                 </ul>
             </div>
 
@@ -324,23 +322,16 @@ catch (Exception $e) {
             <div class="bloc footer-horaire">
                 <h3>Les horaires</h3>
                 <ul class="liste-horaire">
-                    <li><a href="#">✓ Lun 9h-19h</a></li>
-                    <li><a href="#">✓ Mar 9h-19h</a></li>
-                    <li><a href="#">✓ Mer 9h-19h</a></li>
-                    <li><a href="#">✓ Jeu 9h-19h</a></li>
-                    <li><a href="#">✓ Ven 9h-19h</a></li>
-
+                    <li><p>✓ Lun 9h-19h</p></li>
+                    <li><p>✓ Mar 9h-19h</p></li>
+                    <li><p>✓ Mer 9h-19h</p></li>
+                    <li><p>✓ Jeu 9h-19h</p></li>
+                    <li><p>✓ Ven 9h-19h</p></li>
                 </ul>
             </div>
 
-            <div class="bloc footer-service">
-                <h3>Nos services</h3>
-                <ul class="liste-service">
-                    <li><a href="#">A</a></li>
-                    <li><a href="#">B</a></li>
-                    <li><a href="#">C</a></li>
-                </ul>
-            </div>
+
+           
 
         </div>
     </footer>

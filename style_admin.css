@@ -485,44 +485,60 @@ section {
 
 footer {
   
-  /*margin: 1%;*/
+  margin: 1%;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   background-color: white;
-
-
+  height: 30%;
 
 }
 
 .f-contenu {
-
-  margin: 0 auto;
+  margin-top: 3%;
   display: grid;
   justify-content: center;
   align-items: flex-start;
-  font-size: 15px;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 25% 25% 25% ;
   position: auto;
 }
 
 .bloc {
-
   margin: 0 50px;
 }
 
 .footer-contact h3,
 .footer-horraire h3,
-.footer-information h3,
-.footer-service h3 {
+.footer-information h3
+ {
   font-size: 20px;
   padding-bottom: 20px;
+  margin-top: 3%;
 }
 
-.liste-horaire,
-.liste-information,
-.liste-service {
+.liste-horaire p,
+.liste-contact p {
   list-style-type: none;
+  margin: 3%;
 }
+
+.liste-information a{
+  list-style-type: none;
+  text-decoration: none;
+  margin: 3%;
+  
+
+}
+
+
+.liste-horaire ,
+.liste-information ,
+.liste-contact  {
+  list-style-type: none;
+  margin: 3%;
+}
+
+
+
 
 
 /*Contact*/
@@ -533,7 +549,7 @@ footer {
 
 
 /*Information*/
-.footer-information a {
+.footer-information p {
   text-decoration: none;
   color: black;
 }
@@ -544,9 +560,11 @@ footer {
 
 
 /*Horaire*/
-.footer-horaire a {
+.footer-horaire p {
   text-decoration: none;
   color: black;
+  margin: 1%;
+  margin-top: 3%;
 }
 
 .footer-horaire li {
@@ -554,21 +572,7 @@ footer {
 }
 
 .liste-horaire {
-
   top: 15px;
 }
 
 
-/*Service*/
-.footer-service a {
-  text-decoration: none;
-  color: black;
-}
-
-.footer-service a:hover {
-  color: rgb(3, 3, 3);
-}
-
-.footer-service li {
-  padding: 2px 0;
-}
