@@ -89,9 +89,6 @@ catch (Exception $e) {
                     );
                 }
                 ?>
-
-
-                <?php echo "Identifiant de l'enfant : " . $_COOKIE["SelectEnfant"]; ?>
             </div>
         </nav>
         <div>
