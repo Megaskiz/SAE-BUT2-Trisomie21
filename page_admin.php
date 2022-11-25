@@ -230,13 +230,13 @@ catch (Exception $e) {
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Nom : <?php echo $nom_enfant ?></p>";
-                    echo "<p>Date de Naissance : <?php echo $ddn_enfant ?> </p>";
+                    echo "<p>Nom : $nom_enfant</p>";
+                    echo "<p>Date de Naissance : $ddn_enfant </p>";
                     echo "<p>Activité enfant :</p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Prénom : <?php echo $prenom_enfant ?></p>";
+                    echo "<p>Prénom : $prenom_enfant</p>";
                     echo "<p>Adresse enfant :</p>";
                     echo "<p>Handicap enfant :</p>";
                     echo "</div>";
