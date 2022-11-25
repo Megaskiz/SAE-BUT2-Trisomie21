@@ -309,7 +309,7 @@ catch (Exception $e) {
         <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
 
         <div class="f-contenu">
-        <p class="f-info">Qui somme nous ?</p>
+        <p class="f-info">Qui sommes nous ?</p>
         <p class="f-contact">Contact</p>
         <p class="f-propos">A propos</p>
         <p class="f-association">Association</p>
