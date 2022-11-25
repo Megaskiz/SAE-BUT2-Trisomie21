@@ -256,7 +256,7 @@ catch (Exception $e) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo "<?php echo '<a href=\"page_admin.php?id_suppr=' . $identifiant . '\">Valider la supression</a>'; ?>";
+                    echo "<a href=\"page_admin.php?id_suppr='$identifiant'\">Valider la supression</a>";
 
                     echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
