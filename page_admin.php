@@ -172,7 +172,7 @@ catch (Exception $e) {
             $id_enfant = $double_tab[0][0];
             $nom_enfant = $double_tab[0][1];
             $prenom_enfant = $double_tab[0][2];
-            $ddn_enfant = $double_tab[0][3];
+            $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])),'d/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
             // echo$id_enfant;
             // echo$nom_enfant;
