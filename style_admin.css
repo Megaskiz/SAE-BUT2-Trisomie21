@@ -1,451 +1,433 @@
-
 /*------------------------ Header/menu--------------------*/
 
+
 /* Header */
+
 header {
-  display: grid;
-  grid-template-columns: 20% 50% 10% 10% 10%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  height: 15%;
-  margin: 1%;
-  position: sticky;
-  top: 0;
-  opacity: 1.0;
-  background-color: white;
+    display: grid;
+    grid-template-columns: 20% 50% 10% 10% 10%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    height: 15%;
+    margin: 1%;
+    position: sticky;
+    top: 0;
+    opacity: 1.0;
+    background-color: white;
 }
 
 
 /* Logo/image*/
+
 .logo-association {
-  height: 60%;
-  padding: 4%;
+    height: 60%;
+    padding: 4%;
 }
 
 .img-user {
-  grid-column: 3;
-  height: 50%;
-  margin: 12%;
-
+    grid-column: 3;
+    height: 50%;
+    margin: 12%;
 }
 
 
 /* Boutton déconnexion*/
+
 .h-deconnexion {
-  text-decoration: none;
-  color: black;
-  list-style-type: none;
-  padding: 30%;
+    text-decoration: none;
+    color: black;
+    list-style-type: none;
+    padding: 30%;
 }
-
-
-
-
 
 
 /*------------------------ Body--------------------*/
 
 html,
 body {
-  height: 100%;
-  background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    height: 100%;
+    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
 }
-
-
 
 main {
-  display: grid;
-  grid-template-columns: 20% 1fr;
-  height: 100%;
-  margin: 2%;
-  border-radius: 10px;
-
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    height: 100%;
+    margin: 2%;
+    border-radius: 10px;
 }
 
-
-
 .left-contenu {
-  padding: 3%;
-  overflow: auto;
-  height: 100%;
-  box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
-  border-radius: 10px;
-  background-color: #fff;
+    padding: 3%;
+    overflow: auto;
+    height: 100%;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .right-contenu {
-  background-color: transparent;
-  border-radius: 10px;
-
+    background-color: transparent;
+    border-radius: 10px;
 }
-
-
-
 
 
 /*------------------------ Menu liste des enfants (gauche)--------------------*/
 
-/* Boutton ajouter un enfant*/
-.ajouter-enfant {
-  width: 100%;
-  text-align: center;
 
+/* Boutton ajouter un enfant*/
+
+.ajouter-enfant {
+    width: 100%;
+    text-align: center;
+    margin: 0%;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.ajouter-enfant:hover {
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
 }
 
 .ajouter_utilisateur {
-  padding-left: 0%;
+    padding-left: 0%;
 }
-
 
 .acces-enfant {
-  margin-left: 40%;
-  border-radius: none;
+    margin-left: 40%;
+    border-radius: none;
 }
-
-
-.ajouter-enfant {
-  margin: 0%;
-  width: 100%;
-  height: 10%;
-  text-align: center;
-}
-
 
 
 /* Pop-up JS ajouter un enfant*/
+
 .hidden {
-  display: none;
+    display: none;
 }
 
 [role="alertdialog"],
 [role="dialog"] {
-  box-sizing: border-box;
-  padding: 15px;
-  border: 1px solid #000;
-  background-color: #fff;
-  min-height: 100vh;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #000;
+    background-color: #fff;
+    min-height: 100vh;
 }
 
 @media screen and (min-width: 640px) {
-
-  [role="alertdialog"],
-  [role="dialog"] {
-    position: absolute;
-    top: 2rem;
-    left: 50vw;
-    /* move to the middle of the screen (assumes relative parent is the body/viewport) */
-    transform: translateX(-50%);
-    /* move backwards 50% of this element's width */
-
-    min-width: calc(640px - (15px * 2));
-    /* == breakpoint - left+right margin */
-    min-height: auto;
-    box-shadow: 0 19px 38px rgb(0 0 0 / 12%), 0 15px 12px rgb(0 0 0 / 22%);
-    border-radius: 10px;
-  }
+    [role="alertdialog"],
+    [role="dialog"] {
+        position: absolute;
+        top: 2rem;
+        left: 50vw;
+        /* move to the middle of the screen (assumes relative parent is the body/viewport) */
+        transform: translateX(-50%);
+        /* move backwards 50% of this element's width */
+        min-width: calc(640px - (15px * 2));
+        /* == breakpoint - left+right margin */
+        min-height: auto;
+        box-shadow: 0 19px 38px rgb(0 0 0 / 12%), 0 15px 12px rgb(0 0 0 / 22%);
+        border-radius: 10px;
+    }
 }
 
 .dialog_label {
-  text-align: center;
+    text-align: center;
 }
 
 .dialog_form {
-  margin: 15px;
+    margin: 15px;
 }
 
 .dialog_form .label_text {
-  box-sizing: border-box;
-  padding-right: 0.5em;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  width: 30%;
-  text-align: right;
+    box-sizing: border-box;
+    padding-right: 0.5em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    width: 30%;
+    text-align: right;
 }
 
 .dialog_form .label_info {
-  box-sizing: border-box;
-  padding-right: 0.5em;
-  font-size: 12px;
-  width: 30%;
-  text-align: right;
-  display: inline-block;
+    box-sizing: border-box;
+    padding-right: 0.5em;
+    font-size: 12px;
+    width: 30%;
+    text-align: right;
+    display: inline-block;
 }
 
 .dialog_form_item {
-  margin: 10px 0;
-  font-size: 0;
+    margin: 10px 0;
+    font-size: 0;
 }
 
 .dialog_form_item .wide_input {
-  box-sizing: border-box;
-  max-width: 70%;
-  width: 27em;
+    box-sizing: border-box;
+    max-width: 70%;
+    width: 27em;
 }
 
 .dialog_form_item .city_input {
-  box-sizing: border-box;
-  max-width: 70%;
-  width: 17em;
+    box-sizing: border-box;
+    max-width: 70%;
+    width: 17em;
 }
 
 .dialog_form_item .state_input {
-  box-sizing: border-box;
-  max-width: 70%;
-  width: 15em;
+    box-sizing: border-box;
+    max-width: 70%;
+    width: 15em;
 }
 
 .dialog_form_item .zip_input {
-  box-sizing: border-box;
-  max-width: 70%;
-  width: 9em;
+    box-sizing: border-box;
+    max-width: 70%;
+    width: 9em;
 }
 
 .dialog_form_actions {
-  text-align: right;
-  padding: 0 20px 20px;
+    text-align: right;
+    padding: 0 20px 20px;
 }
 
 .dialog_close_button {
-  float: right;
-  position: absolute;
-  top: 10px;
-  left: 92%;
-  height: 25px;
+    float: right;
+    position: absolute;
+    top: 10px;
+    left: 92%;
+    height: 25px;
 }
 
 .dialog_close_button img {
-  border: 0;
+    border: 0;
 }
 
 .dialog_desc {
-  padding: 10px 20px;
+    padding: 10px 20px;
 }
+
 
 /* native <dialog> element uses the ::backdrop pseudo-element */
 
+
 /* dialog::backdrop, */
+
 .dialog-backdrop {
-  display: none;
-  position: fixed;
-  overflow-y: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
-
 .dialog-backdrop.active {
-  display: block;
+    display: block;
 }
 
 .no-scroll {
-  overflow-y: auto !important;
+    overflow-y: auto !important;
 }
+
 
 /* this is added to the body when a dialog is open */
+
 .has-dialog {
-  overflow: hidden;
+    overflow: hidden;
 }
 
+
 /* styling for alert-dialog example */
+
 .notes {
-  display: block;
-  font-size: 1rem;
-  line-height: 1.3;
-  min-width: 400px;
-  max-width: 100%;
-  width: 33%;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.3;
+    min-width: 400px;
+    max-width: 100%;
+    width: 33%;
 }
 
 .visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: auto;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
 }
 
 #notes_save {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 #notes_save svg {
-  display: block;
-  width: 0.75rem;
+    display: block;
+    width: 0.75rem;
 }
 
 #notes_save .icon {
-  display: none;
+    display: none;
 }
 
-
 #notes_save.loading .spinner {
-  display: block;
-  animation: rotate 2s linear infinite;
+    display: block;
+    animation: rotate 2s linear infinite;
 }
 
 #notes_save.saved .check {
-  display: block;
+    display: block;
 }
-
-
-
-
-
-
 
 
 /*------------------------ Menu information sur l'enfant (droite)--------------------*/
 
 section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 50% 50%;
-  height: 50%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  border-radius: 10px;
-  background-color: white;
-  margin-left: 3%;
-  margin-right: 3%;
- 
-
-  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    height: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 3%;
+    margin-right: 3%;
 }
-.case-enfant{
-  display:grid;
-  place-items: center;
- }
 
-.case-3-infos{
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+.case-enfant {
+    display: grid;
+    place-items: center;
+}
+
+.case-3-infos {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 
 /*nombre de système*/
+
 .nb-systeme {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 40% 60%;
-  height: 45%;
-  border-radius: 10px;
-  background-color: white;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 2%;
-  
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 40% 60%;
+    height: 45%;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
 }
 
-textarea{
-  height: 95%;
-  width: 95%;
+textarea {
+    height: 95%;
+    width: 95%;
 }
 
-
-
-.logo-enfant{
-  height: 90%;
+.logo-enfant {
+    height: 90%;
 }
 
 .text-complementaire {
-  height: 90%;
-  margin-left: 5%;
-  border-radius: 10px;
-
+    height: 90%;
+    margin-left: 5%;
+    border-radius: 10px;
 }
 
+.cns {
+    display: grid;
+    margin: auto;
+    margin-top: 2%;
+    color: black;
+    font-size: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 90%;
+    text-align: center;
+}
 
+.cns:hover {
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+}
 
+.spprmrenfant {
+    display: grid;
+    margin: auto;
+    margin-top: 2%;
+    color: black;
+    font-size: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 70%;
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.spprmrenfant:hover {
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+}
 
 
 /*-------------------------------------- Footer------------------------------------------*/
 
 footer {
-  display: grid;
-  grid-template-columns:20% 60% 20%;
-  margin: 1%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  background-color: white;
-  height: 30%;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: white;
+    height: 30%;
 }
 
-.f-contenu{
-  padding: 0;
-  margin: 0 ;
+.f-contenu {
+    padding: 0;
+    margin: 0;
 }
 
-
-.footer-logo-association{
-  height: 30%;
-  grid-column: 1;
-  padding: 25%;
+.footer-logo-association {
+    height: 30%;
+    grid-column: 1;
+    padding: 25%;
 }
-
 
 footer p {
-  text-align: center;
+    text-align: center;
 }
 
-
-
-
-
-.f-info{
-  grid-column: 2;
-
+.f-info {
+    grid-column: 2;
 }
 
-
-.f-contact{
-  grid-column: 2;
-
-  
+.f-contact {
+    grid-column: 2;
 }
 
-
-.f-propos{
-  grid-column: 2;
-
- 
+.f-propos {
+    grid-column: 2;
 }
 
-.f-association{
-  grid-column: 2;
-
+.f-association {
+    grid-column: 2;
 }
 
-.f-copyright{
-  grid-column: 2;
-
-  padding-top: 3%;
+.f-copyright {
+    grid-column: 2;
+    padding-top: 3%;
 }
