@@ -310,6 +310,7 @@ section {
 .case-enfant {
     display: grid;
     place-items: center;
+    margin: 3%;
 }
 
 .case-3-infos {
