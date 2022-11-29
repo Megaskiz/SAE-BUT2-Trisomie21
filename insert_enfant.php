@@ -18,7 +18,7 @@
                     <?php // la partie de la connexion
 ///Connexion au serveur MySQL
 try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=sae", "root", "");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
     }
     ///Capture des erreurs éventuelles
     catch (Exception $e) {
@@ -78,12 +78,12 @@ try {
                     catch (Exception $e)
                     {die('Erreur : ' . $e->getMessage());}
                     
-                    header('Location: page_admin_v2.php');
+                    header('Location: page_admin.php');
                     exit();
                 }           
         }
             ?>
-                        <a href="page_admin_v2.php">Retour à la page précédente</a>
+                        <a href="page_admin.php">Retour à la page précédente</a>
                     </form>
                 </div>
             </div>

@@ -204,7 +204,7 @@ catch (Exception $e) {
         }
         if (isset($_GET['id_suppr'])) {
             $id_suppression = $_GET['id_suppr'];
-            $req_suppr = "DELETE FROM suivre where id_enfant='$id_suppression';DELETE FROM enfant where id_enfant='$id_suppression'";
+            $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
             try {
                 $res = $linkpdo->query($req_suppr);
                 header('Location: page_admin.php');
@@ -256,7 +256,7 @@ catch (Exception $e) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo "<a href=\"page_admin.php?id_suppr='$identifiant'\">Valider la supression</a>";
+                    echo "<a href=\"page_admin.php?id_suppr=$identifiant\">Valider la supression</a>";
 
                     echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
@@ -280,25 +280,6 @@ catch (Exception $e) {
                     echo "</section>";
                 }
                 ?>
-
-
-
-
-                <?php
-
-                if (isset($_GET['id_suppr'])) {
-                    $id_suppression = $_GET['id_suppr'];
-                    $req_suppr = "DELETE FROM enfant where id_enfant='$id_suppression'";
-                    try {
-                        $res = $linkpdo->query($req_suppr);
-                        header('Location: page_admin.php');
-                    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
-                }
-
-                ?>
-
         </nav>
     </main>
 
