@@ -58,7 +58,6 @@ catch (Exception $e) {
         echo "</table>";
         ?>
         <p class="h-deconnexion"><a href="html_login.php">Déconnexion</a></p>
-
     </header>
 
 
@@ -173,7 +172,7 @@ catch (Exception $e) {
             $id_enfant = $double_tab[0][0];
             $nom_enfant = $double_tab[0][1];
             $prenom_enfant = $double_tab[0][2];
-            $ddn_enfant = $double_tab[0][3];
+            $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])),'d/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
             // echo$id_enfant;
             // echo$nom_enfant;
@@ -250,7 +249,7 @@ catch (Exception $e) {
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
-                    echo "<button type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -266,7 +265,11 @@ catch (Exception $e) {
                     echo "</div>";
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
-                    echo "<a href=\"page_creatsystem.php\">creer un nouveau systeme</a>";
+                ?>
+                    <form action="page_creatsystem.php">
+                        <input class="cns" type="submit" value="Creer un nouveau systeme">
+                    </form>
+                <?php
                     echo "</section>";
                 } else {
                     echo "<p></p>";
@@ -290,16 +293,16 @@ catch (Exception $e) {
         <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
 
         <div class="f-contenu">
-        <p class="f-info">Qui sommes nous ?</p>
-        <p class="f-contact">Contact</p>
-        <p class="f-propos">A propos</p>
-        <p class="f-association">Association</p>
-        <p class="f-copyright">© copyright 2022 </p>
+            <p class="f-info">Qui sommes nous ?</p>
+            <p class="f-contact">Contact</p>
+            <p class="f-propos">A propos</p>
+            <p class="f-association">Association</p>
+            <p class="f-copyright">© copyright 2022 </p>
         </div>
 
         <a href=""></a>
-        
-        
+
+
 
 
 
