@@ -19,6 +19,7 @@ catch (Exception $e) {
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_admin.css">
     <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -229,13 +230,13 @@ catch (Exception $e) {
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Nom : $nom_enfant</p>";
+                    echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
                     echo "<p>Date de Naissance : $ddn_enfant </p>";
                     echo "<p>Activité enfant :</p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Prénom : $prenom_enfant</p>";
+                    echo "<p>Prénom : <strong>$prenom_enfant  </strong></p>";
                     echo "<p>Adresse enfant :</p>";
                     echo "<p>Handicap enfant :</p>";
                     echo "</div>";
@@ -293,14 +294,30 @@ catch (Exception $e) {
         <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
 
         <div class="f-contenu">
-            <p class="f-info">Qui sommes nous ?</p>
-            <p class="f-contact">Contact</p>
-            <p class="f-propos">A propos</p>
-            <p class="f-association">Association</p>
-            <p class="f-copyright">© copyright 2022 </p>
+            <div class="f-menu">
+                <li><p class="f-info">Qui sommes nous ?</p></li>
+                <li><p class="f-propos">A propos</p></li>
+                <li><p class="f-association">Association</p></li>
+                
+            </div>
+            <p class="f-copyright">© Copyright 2022 </p>
         </div>
 
-        <a href=""></a>
+
+        <div class="f-icone">
+        <i class="fa fa-mobile">+33 </i>
+        <i class="fa fa-envelope">@gmail.com</i>
+       
+        </div>
+        
+        
+        
+
+
+
+       
+
+
 
 
 
