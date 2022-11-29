@@ -304,9 +304,7 @@ catch (Exception $e) {
         </div>
 
 
-        <div class="f-icone">
-        <i class="fa fa-mobile">+33 </i>
-        <i class="fa fa-envelope">@gmail.com</i>
+        
        
         </div>
         
