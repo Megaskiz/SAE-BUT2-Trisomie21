@@ -5,7 +5,7 @@
 
 header {
     display: grid;
-    grid-template-columns: 20% 47% 10% 12% 8%;
+    grid-template-columns: 20% 50% 10% 10% 10%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     height: 15%;
@@ -40,38 +40,6 @@ header {
     padding: 30%;
 }
 
-.deco {
-    display: grid;
-    margin-left: auto;
-    color: black;
-    font-size: 90%;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #fff;
-}
-
-.deco:hover {
-    color: #fff;
-    cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
-}
-
-.acceder {
-    display: grid;
-    margin-left: 43%;
-    color: black;
-    font-size: 90%;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #fff;
-}
-
-.acceder:hover {
-    color: #fff;
-    cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
-}
-
 
 /*------------------------ Body--------------------*/
 
@@ -84,7 +52,7 @@ body {
 main {
     display: grid;
     grid-template-columns: 20% 1fr;
-    height: 100%;
+    min-height: 100%;
     margin: 2%;
     border-radius: 10px;
 }
@@ -117,7 +85,7 @@ main {
     height: 10%;
     text-align: center;
     border-radius: 10px;
-    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .ajouter-enfant:hover {
@@ -152,6 +120,7 @@ main {
 }
 
 @media screen and (min-width: 640px) {
+
     [role="alertdialog"],
     [role="dialog"] {
         position: absolute;
@@ -387,9 +356,9 @@ textarea {
     color: black;
     font-size: 100%;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     width: 90%;
     text-align: center;
-    background-color: #fff;
 }
 
 .cns:hover {
@@ -405,9 +374,9 @@ textarea {
     color: black;
     font-size: 100%;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     width: 70%;
     text-align: center;
-    background-color: #fff;
 }
 
 .spprmrenfant:hover {
@@ -432,6 +401,7 @@ footer {
 .f-contenu {
     padding: 0;
     margin: 0;
+    padding: 5%;
 }
 
 .footer-logo-association {
@@ -440,27 +410,24 @@ footer {
     padding: 25%;
 }
 
+.f-menu {
+    display: grid;
+    list-style: none;
+    grid-template-columns: 33% 33% 33%;
+    width: 60%;
+    margin-left: 20%;
+}
+
+
 footer p {
     text-align: center;
+    padding: 5%;
 }
 
-.f-info {
-    grid-column: 2;
-}
-
-.f-contact {
-    grid-column: 2;
-}
-
-.f-propos {
-    grid-column: 2;
-}
-
-.f-association {
-    grid-column: 2;
-}
 
 .f-copyright {
-    grid-column: 2;
-    padding-top: 3%;
+    width: 15%;
+    margin-left: 40%;
+
 }
+
