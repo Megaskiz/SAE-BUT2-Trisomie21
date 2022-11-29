@@ -57,7 +57,7 @@ catch (Exception $e) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><a href="html_login.php">Déconnexion</a></p>
+        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
     </header>
 
 
@@ -138,7 +138,7 @@ catch (Exception $e) {
                         }
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '">acceder</a>';
+                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button class="acceder">acceder</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -172,7 +172,7 @@ catch (Exception $e) {
             $id_enfant = $double_tab[0][0];
             $nom_enfant = $double_tab[0][1];
             $prenom_enfant = $double_tab[0][2];
-            $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])),'d/m/Y');
+            $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
             // echo$id_enfant;
             // echo$nom_enfant;
@@ -255,9 +255,9 @@ catch (Exception $e) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo "<a href=\"page_admin.php?id_suppr=$identifiant\">Valider la supression</a>";
+                    echo "<button class=\"deco\" onclick=\"page_admin.php?id_suppr=$identifiant\">Valider la supression</button>";
 
-                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "</br><button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
