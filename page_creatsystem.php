@@ -83,7 +83,7 @@ catch (Exception $e) {
                     $datefinal = new DateTime($date);
                     echo (ucfirst("<div class='id-enfant'> <a class='id-nom'>Nom enfant :  <strong>$data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom enfant :  <strong>$data[2]  </strong></a> </div>
-                        <div class='id-enfant'> <a class='id-age'>Date de naissance enfant : " . date_format($datefinal, 'd/m/Y') . "</a></div>
+                        <div class='id-enfant'> <a class='id-age'>Date de naissance enfant :<strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
                         <div class='id-enfants'> <a class='id-adresse'>Adresse enfant : ???</a></div>
                         <div class='id-enfants'> <a class='id-activite'>Activité enfant : ???</a></div>")
                     );
