@@ -55,7 +55,7 @@ catch (Exception $e) {
         echo "</table>";
         ?>
 
-<p class="h-deconnexion"><a href="html_login.php">Déconnexion</a></p>
+        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
     </header>
     <main>
         <nav>
