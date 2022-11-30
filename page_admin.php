@@ -12,6 +12,17 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
+if (isset($_GET['id_suppr'])) {
+    $id_suppression = $_GET['id_suppr'];
+    $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
+    try {
+        $res = $linkpdo->query($req_suppr);
+        header('Location: page_admin.php');
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
 ?>
 
 <head>
@@ -139,7 +150,7 @@ catch (Exception $e) {
                         }
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button class="acceder">acceder</button></a>';
+                        echo '<a href="page_admin.php?id='.$identifiant.'"><button class="acceder">acceder</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -202,16 +213,7 @@ catch (Exception $e) {
 
 
         }
-        if (isset($_GET['id_suppr'])) {
-            $id_suppression = $_GET['id_suppr'];
-            $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
-            try {
-                $res = $linkpdo->query($req_suppr);
-                header('Location: page_admin.php');
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
-        }
+        
 
         ?>
 
@@ -256,9 +258,9 @@ catch (Exception $e) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo "<button class=\"deco\" onclick=\"page_admin.php?id_suppr=$identifiant\">Valider la supression</button>";
+                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">Valider la suppression</a>";
 
-                    echo "</br><button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
