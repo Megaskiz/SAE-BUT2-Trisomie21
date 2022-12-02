@@ -58,7 +58,7 @@ catch (Exception $e) {
         <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
     </header>
     <main>
-        <nav>
+        <nav class="nav-enfant">
             <form action="page_admin.php">
                 <input type="submit" class="annuler" value="Annuler">
             </form></br>
@@ -91,8 +91,8 @@ catch (Exception $e) {
                 ?>
             </div>
         </nav>
-        <div>
-            <div class="container">
+        <div class="container">
+            <div>
 
                 <?php
                 if (isset($_POST["radio1"]) & isset($_POST["radio2"])) {
