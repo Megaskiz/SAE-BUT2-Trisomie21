@@ -1,0 +1,10 @@
+à Ajouter dans la table objectif de la bd :
+
+un champs de nom :
+ALTER TABLE `objectif` ADD `nom` VARCHAR(500) NOT NULL AFTER `intitule`; 
+
+il faut mettre : 
+
+INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`) VALUES (NULL, 'obj', 'tache un _1111100:tache deux_0101010:tache trois_1111001:', '7', '1', 'lien', '4', '1', '1', '1'); 
+
+dans la table objectif de la bd

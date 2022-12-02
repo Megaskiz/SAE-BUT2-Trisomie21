@@ -194,7 +194,6 @@ if (isset($_GET['id_suppr'])) {
 
 
 
-            ///Sélection de tout le contenu de la table carnet_adresse
             try {
                 $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
@@ -221,14 +220,14 @@ if (isset($_GET['id_suppr'])) {
 
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <section>
+            <div class="section_enfant">
                 <?php
                 if (isset($_GET['id'])) {
 
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
+                        echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
@@ -265,14 +264,67 @@ if (isset($_GET['id_suppr'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+                    echo"<form action=\"page_creatsystem.php\">";
+                        echo'<input class="cns" type="submit" value="Creer un nouveau systeme">';
+                    echo"</form>"; 
                     echo "</div>";
+                    echo"</div>";
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
-                ?>
-                    <form action="page_creatsystem.php">
-                        <input class="cns" type="submit" value="Creer un nouveau systeme">
-                    </form>
-                <?php
+                
+                    
+                    
+                    // tous les systèmes de l'enfant :
+
+                    ///Sélection de tout le contenu de la table enfant
+                    try {
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant='.$id);
+                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                        die('Erreur : ' . $e->getMessage());
+                    }
+
+                    ///Affichage des entrées du résultat une à une
+                    
+                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $nombre_ligne = $res->rowCount();
+                    $liste = array();
+                    echo "<table>";
+
+                    for ($i = 0; $i < $nombre_ligne; $i++) {
+                        echo "<tr>";
+                            echo "<td>";
+                            echo"nom de l'objectif : ";
+                            print_r($double_tab[$i][0]);
+                            echo "</td>";
+                            echo "<td>";
+                            echo"nombre de jetons : ";
+                            print_r($double_tab[$i][1]);
+                            echo "</td>";
+                            echo "<td>";
+                            echo"durée de l'objectif (jour) : ";
+                            print_r($double_tab[$i][2]);
+                            echo "</td>";
+                            echo "<td>";
+                            echo"niveau de priorité  : ";
+                            print_r($double_tab[$i][3]);
+                            echo "</td>";
+                            echo "<td>";
+                            echo"travaille (?) : ";
+                            print_r($double_tab[$i][4]);
+                            echo "</td>";
+                            echo "<td>";
+                            echo '<a href="choix_sys.php?id='.$double_tab[$i][5].'">acceder</a>';
+                            echo "</td>";
+                        echo "</tr>";
+                    }
+
+                    echo "</table>";
+
+                    ///Fermeture du curseur d'analyse des résultats
+                    $res->closeCursor();
+                    
+
+
                     echo "</section>";
                 } else {
                     echo "<p></p>";

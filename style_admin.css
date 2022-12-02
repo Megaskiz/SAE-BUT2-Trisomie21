@@ -3,6 +3,13 @@
 
 /* Header */
 
+
+table,td {
+    border-collapse:collapse;
+    border:solid black 1px;
+    padding: 1rem;
+}
+
 header {
     display: grid;
     grid-template-columns: 20% 50% 10% 10% 10%;
@@ -296,7 +303,7 @@ main {
 
 /*------------------------ Menu information sur l'enfant (droite)--------------------*/
 
-section {
+.section_enfant {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 50% 50%;
@@ -323,9 +330,9 @@ section {
 /*nombre de système*/
 
 .nb-systeme {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 40% 60%;
+    /* display: grid; */
+    /* grid-template-columns: 33% 33% 33%; */
+    /* grid-template-rows: 40% 60%; */
     height: 45%;
     border-radius: 10px;
     background-color: white;
