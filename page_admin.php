@@ -257,7 +257,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">Valider la suppression</a>";
+                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">acceder</a>";
 
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
@@ -293,7 +293,7 @@ if (isset($_GET['id_suppr'])) {
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
                             echo "<td>";
-                            echo"nom de l'objectif : ";
+                            echo"Objectif : ";
                             print_r($double_tab[$i][0]);
                             echo "</td>";
                             echo "<td>";
@@ -301,19 +301,19 @@ if (isset($_GET['id_suppr'])) {
                             print_r($double_tab[$i][1]);
                             echo "</td>";
                             echo "<td>";
-                            echo"durée de l'objectif (jour) : ";
-                            print_r($double_tab[$i][2]);
+                            echo"durée de l'objectif (semaine(s)) : ";
+                            print_r($double_tab[$i][1]/7);
                             echo "</td>";
                             echo "<td>";
                             echo"niveau de priorité  : ";
                             print_r($double_tab[$i][3]);
                             echo "</td>";
                             echo "<td>";
-                            echo"travaille (?) : ";
+                            echo"statut : ";
                             print_r($double_tab[$i][4]);
                             echo "</td>";
                             echo "<td>";
-                            echo '<a href="choix_sys.php?id='.$double_tab[$i][5].'">acceder</a>';
+                            echo '<a href="choix_sys.php?id='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
                             echo "</td>";
                         echo "</tr>";
                     }
