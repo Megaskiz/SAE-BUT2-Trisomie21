@@ -1,91 +1,73 @@
-header{
-    display: grid;
-    grid-template-columns:20% 50% 10% 10% 10%;
-    border: 1px solid #000;
-    height: 10%;
+@font-face {
+    font-family: 'fs_mebold';
+    src: url('fonts/fs_me-bold-webfont.woff2') format('woff2'),
+         url('fonts/fs_me-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
-#logo_personne{
-    grid-column: 3;
+:root{
+    --couleur: rgb(200, 212, 212);
 }
-
-.grid_item{
-    border: 1px solid #000;
-    margin: 0px;
-}
-
-img {
-    height: 100%;
-}
-
-
-html{
-    height: 100%;
-}
-
 body{
-    height: 100%;
+    background-color: var(--couleur);
 }
 
-nav{
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    height: 100%;
-}
-
-main{
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    display: grid;
-    grid-template-columns: 20% 1fr;
-    height: 85%;
-}
-
-footer{
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    height:5%;   /* Hauteur du pied de page */
-}
-
-table,tr {
+table {
     border-collapse:collapse;
-    border:solid black 1px;
+    /* border:solid black 2px; */
     padding: 1rem;
-}
- 
-.grille_choix{
-    display: grid;
-    grid-template-columns:45% 45% auto;
-
+    /* border-radius: 20%; */
+    background-color: white;
 }
 
-.choix_sys{
-    border: 1px solid #000;
-    display :grid;
-    grid-template-rows: auto;
+.struct {
+    border-collapse:collapse;
+    border:solid var(--couleur) 2px;
+    padding: 1rem;
+    border-radius: 0%;
+    background-color: white;
+}
+td {
+    border-collapse:collapse;
+    border:solid var(--couleur) 2px;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
 }
 
-.choix_reward{
-    border: 1px solid #000;
-    display :grid;
-    grid-template-rows: auto;
-    
-}
-p{
-    color: blue;
-    border: 1px solid #000;
-
+.case_blanche {
+    /* border-collapse:collapse; */
+    /* border:solid black 2px; */
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    border-radius: 20%;
+    background-color: rgb(33, 146, 52);
 }
 
-.conteneur{
-    position:relative;
+
+
+
+.sys{
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
 }
 
-.contenu{
-    position:absolute; bottom:0;
+h1 {
+    font-family: 'fs_mebold';
+    font-size: 48px;
+    font-weight:normal;
+    font-style:normal;
+    text-align: center;
 }
 
+p {
+    font-family: 'fs_mebold';
+    font-size: 24px;
+    font-weight:normal;
+    font-style:normal;
+    text-align: center;
+}
 

@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'fs_mebold_italic';
+    src: url('fs_me-bold_italic-webfont.woff2') format('woff2'),
+         url('fs_me-bold_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_mebold';
+    src: url('fs_me-bold-webfont.woff2') format('woff2'),
+         url('fs_me-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_meheavy_italic';
+    src: url('fs_me-heavy_italic-webfont.woff2') format('woff2'),
+         url('fs_me-heavy_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_meheavy';
+    src: url('fs_me-heavy-webfont.woff2') format('woff2'),
+         url('fs_me-heavy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_meitalic';
+    src: url('fs_me-italic-webfont.woff2') format('woff2'),
+         url('fs_me-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_melight_italic';
+    src: url('fs_me-light_italic-webfont.woff2') format('woff2'),
+         url('fs_me-light_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_melight';
+    src: url('fs_me-light-webfont.woff2') format('woff2'),
+         url('fs_me-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'fs_meregular';
+    src: url('fs_me-regular-webfont.woff2') format('woff2'),
+         url('fs_me-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

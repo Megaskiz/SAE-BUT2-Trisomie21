@@ -313,11 +313,10 @@ if (isset($_GET['id_suppr'])) {
                             print_r($double_tab[$i][4]);
                             echo "</td>";
                             echo "<td>";
-                            echo '<a href="choix_sys.php?id='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
+                            echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'&id_enfant='.$_GET['id'].'"><button class="acceder">acceder</button></a>';
                             echo "</td>";
                         echo "</tr>";
                     }
-
                     echo "</table>";
 
                     ///Fermeture du curseur d'analyse des résultats

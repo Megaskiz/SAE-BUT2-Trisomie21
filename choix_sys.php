@@ -1,19 +1,22 @@
-<style>
-table,tr{
-    border-collapse:collapse;
-    border:solid black 1px;
-    padding: 1rem;
-}
+<!DOCTYPE HTML>
+<html>
 
-td{
-    border-collapse:collapse;
-    border:solid black 1px;
-    width:auto;
-    height:auto;
-}
-</style>
-
+    <head>
+        <meta charset="utf-8">
+        <!-- importer le fichier de style -->
+        <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8">
+        <title>bienvenue</title>
+    </head>
+<body>
 <?php
+
+    echo'<button>
+            <a href="page_admin.php?id='.$_GET['id_enfant'].'">retour au menu</a>
+        </button>';
+
+
+
 
 ///Connexion au serveur MySQL
 try {
@@ -32,8 +35,8 @@ catch (Exception $e) {
                     
     
 
-if (isset ($_GET['id']))  {
-    $id = $_GET['id'];  
+if (isset ($_GET['id_sys']))  {
+    $id = $_GET['id_sys'];  
 
     echo"<br>";echo"<br>";echo"<br>";
                     
@@ -51,43 +54,46 @@ if (isset ($_GET['id']))  {
         $nombre_ligne = $res -> rowCount();
         $liste = array();
         
+        $titre_systeme = $double_tab[0][1];
 
         ///Fermeture du curseur d'analyse des résultats
         $res->closeCursor();
-        
+
+
+        echo"<h1>$titre_systeme</h1>";
 
 
 ?>
 
 
 
-
+<div class="sys">
 
     <table>
 
         <tr>
-            <td>
+            <td class="struct">
                 <p></p>
             </td>
-            <td>
+            <td class="struct">
                 <p>lundi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>mardi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>mercredi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>jeudi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>vendredi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>samedi</p>
             </td>
-            <td>
+            <td class="struct">
                 <p>dimanche</p>
             </td>
         </tr>
@@ -139,8 +145,9 @@ if (isset ($_GET['id']))  {
         $jetons = $element[1];
         $tab_jeton = str_split($jetons);
         echo"<tr>";
-        echo"<td>";
-        echo$tache;
+        echo"<td class='struct'>";
+        
+        echo"<p>$tache</p>";
         echo"</td>";
     
         //ajout des cases de jetons
@@ -151,7 +158,7 @@ if (isset ($_GET['id']))  {
                 echo"</td>";
 
             }else{
-                echo"<td id=$compteur bgcolor=\"green\" style=\"width: 5rem;height: 5rem;\">";
+                echo"<td id=$compteur class=\"case_blanche\">";
                 echo"</td>";
             }
 
@@ -164,4 +171,6 @@ if (isset ($_GET['id']))  {
 }
 
 echo"</table>";
-?>
+?>      
+</div>
+</body>
