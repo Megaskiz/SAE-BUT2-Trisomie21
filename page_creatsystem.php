@@ -68,9 +68,8 @@ catch (Exception $e) {
                 </div>
 
                 <?php
-                $string = $_SERVER['HTTP_REFERER'];
-                $id = substr($string, -1);
-                ///Sélection de tout le contenu de la table carnet_adresse
+                $id = $_GET['id'];
+                    ///Sélection de tout le contenu de la table carnet_adresse
                 try {
                     $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
                 } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
@@ -93,25 +92,7 @@ catch (Exception $e) {
         </nav>
         <div class="container">
             <div>
-
-                <?php
-                if (isset($_POST["radio1"]) & isset($_POST["radio2"])) {
-                    $res1 = $_POST["radio1"];
-                    $res2 = $_POST["radio2"];
-
-                    if ($res1 == "choix1") {
-                        header("Location: ");
-                        die();
-                    } else if ($res1 == "choix2") {
-                        header("Location:");
-                        exit();
-                    } else if ($res1 == "choix3") {
-                        header("Location: ");
-                        exit();
-                    }
-                }
-                ?>
-                <form class="forme titre" method="POST">
+                <form action="test.php" class="forme titre" method="POST">
                     <section class="plan titre">
                         <h2 class="titletype">Choisir le type de système :</h2>
                         <input type="radio" name="radio1" id="choix11" value="choix1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps

@@ -200,7 +200,6 @@ main {
 .dialog_form_item .zip_input {
     box-sizing: border-box;
     max-width: 70%;
-    width: 9em;
 }
 
 .dialog_form_actions {

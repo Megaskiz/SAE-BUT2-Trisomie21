@@ -14,7 +14,7 @@
             <div class="form">
                 <div class="grille">
                     <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
-                    <form action="" method="post" class="login-form">
+                    <form enctype="multipart/form-data" action="" method="post" class="login-form">
                     <?php // la partie de la connexion
 ///Connexion au serveur MySQL
 try {
@@ -25,18 +25,23 @@ try {
     die('Erreur : ' . $e->getMessage());
     }
     
-
+    require('fonctions.php');
         
     // je récupere les informations de mon formulaire
-    if (!empty($_POST['nom']) 
-        && !empty($_POST['prenom']) 
-        && !empty($_POST['date_naissance']) 
-        && !empty($_POST['lien_jeton']))
-        {   
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // exit();
+  
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $date_naissance = $_POST['date_naissance'];
-            $lien_jeton = $_POST['lien_jeton'];
+            $lien_jeton=uploadImage($_FILES['lien_jeton']);
+
+            
+
+
+
+
 
             
             // requete avec le mail si, rowcount() > 0 faire fail
@@ -70,7 +75,7 @@ try {
                                             'lien_jeton' => $lien_jeton
                                     ));
                         if ($req == false){
-                            $req->debugDumpParams;
+                            $req->debugDumpParams();
                             die("erreur execute");
                         }
                     }
@@ -81,7 +86,7 @@ try {
                     header('Location: page_admin.php');
                     exit();
                 }           
-        }
+    
             ?>
                         <a href="page_admin.php">Retour à la page précédente</a>
                     </form>

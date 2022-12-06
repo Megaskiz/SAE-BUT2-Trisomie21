@@ -85,7 +85,7 @@ if (isset($_GET['id_suppr'])) {
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                             <h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>
-                            <form action="insert_enfant.php" method="post" class="dialog_form">
+                            <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
                                 <div class="dialog_form_item">
                                     <label>
                                         <span class="label_text">nom :</span>
@@ -106,8 +106,8 @@ if (isset($_GET['id_suppr'])) {
                                 </div>
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">jeton ( a faire ):</span>
-                                        <input name="lien_jeton" type="text" class="zip_input" required="required">
+                                        <span class="label_text">jeton:</span>
+                                        <input name="lien_jeton" type="file" class="zip_input" required="required">
                                     </label>
                                 </div>
 
@@ -136,16 +136,16 @@ if (isset($_GET['id_suppr'])) {
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
                     echo "<table>";
+                    
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
-                        echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
                             print_r($double_tab[$i][$y]);
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
-                            $age = $double_tab[1][$y];
+                            $age = $double_tab[0][$y];
                             echo "</td>";
                         }
                         $identifiant = $double_tab[$i][0];
@@ -154,6 +154,7 @@ if (isset($_GET['id_suppr'])) {
                         echo "</td>";
                         echo "</tr>";
                     }
+                
 
                     echo "</table>";
 
@@ -223,6 +224,7 @@ if (isset($_GET['id_suppr'])) {
             <div class="section_enfant">
                 <?php
                 if (isset($_GET['id'])) {
+                    $_SESSION['id_enfant'] = $_GET['id'];
 
 
                     //<!---- menu droit information sur l'enfant ---->
@@ -264,9 +266,8 @@ if (isset($_GET['id_suppr'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
-                    echo"<form action=\"page_creatsystem.php\">";
-                        echo'<input class="cns" type="submit" value="Creer un nouveau systeme">';
-                    echo"</form>"; 
+                    echo '<a href="page_creatsystem.php?id='.$_GET['id'].'"><button class="acceder">creer un nouveau systeme</button></a>';
+
                     echo "</div>";
                     echo"</div>";
                     echo "</section>";

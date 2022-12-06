@@ -1,5 +1,16 @@
 <!DOCTYPE HTML>
-<?php // la partie de la connexion
+
+
+
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./style_login.css" media="screen" type="text/css" />
+        <title>bienvenue</title>
+    </head>
+    <?php // la partie de la connexion
 
  ///Connexion au serveur MySQL
  try {
@@ -48,17 +59,6 @@
 
 
 ?>
-
-
-
-
-<html>
-    <head>
-        <meta charset="utf-8">
-        <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="style_login.css" media="screen" type="text/css" />
-        <title>bienvenue</title>
-    </head>
     <body>
         <div class="login-page"> 
             <div class="form">
