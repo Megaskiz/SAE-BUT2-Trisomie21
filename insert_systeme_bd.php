@@ -1,10 +1,22 @@
 <?php
+session_start();
+// 
+//  FICHIER QUI DOIT ETRE MODIFIE ! ANCIENE VERSION
+//
 
 // fichier qui insert le système dans une base de données
 
 
 $nom = $_POST["nom"];
 unset($_POST["nom"]); // je retire le nom du système pour qu'il ne soit pas dans $all_keys
+
+$duree = $_POST["duree"];
+unset($_POST["duree"]);
+
+$prio = $_POST["prio"];
+unset($_POST["prio"]);
+
+
 $all_keys = array_keys($_POST); // je récupères toutes les clés de mon $_POST dans lesqueles il y à toutes les taches
 
 
@@ -17,7 +29,7 @@ foreach ($all_keys as $cle){
 }
 $res.=" ";
 
-$total_jeton = 7* $i;
+$total_jeton = 7 * $i;
 
 //étapes :
 // debut : tache<numero_de_ligne>_<valeur_jetons> = <nom_de_tache>
@@ -25,7 +37,7 @@ $total_jeton = 7* $i;
 
 ///Connexion au serveur MySQL
 try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=routine","root","");
+    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae","root","");
     }
 ///Capture des erreurs éventuelles
 catch (Exception $e) {
@@ -33,20 +45,28 @@ catch (Exception $e) {
     }
     
 // je creé la requete d'insertion 
-$req = $linkpdo->prepare('INSERT INTO objectif(nom,intitule, nb_jeton)
-VALUES(:nom, :intitule, :nb_jeton)');
+$req = $linkpdo->prepare('INSERT INTO `objectif`(`nom`, `intitule`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`)
+VALUES (:nom, :intitule, :nb_jeton, :duree, :jeton, :prio, :etat, :id_membre, :id_enfant)');
 
 if ($req == false){
     die("erreur linkpdo");
 }   
 ///Exécution de la requête
 try{
-    $req->execute(array('nom' => $nom,
-                        'intitule' => $res,
+    $var="salit";
+    $req->execute(array('nom' => $res,
+                        'intitule' => $nom,
                         'nb_jeton' => $total_jeton,
-                ));
+                        'duree' => $duree,
+                        'jeton' => $var,
+                        'prio' => $prio,
+                        'etat' =>  0,
+                        'id_membre' => $_SESSION['logged_user'],
+                        'id_enfant' => $_SESSION['id_enfant']));
+                        // $req->debugDumpParams();
+                        // exit();
     if ($req == false){
-        $req->debugDumpParams;
+        $req->debugDumpParams();
         die("erreur execute");
     }
 }
@@ -54,5 +74,5 @@ try{
 catch (Exception $e)
 {die('Erreur : ' . $e->getMessage());}
 
-header('Location: choix_sys.php');
+header('Location: page_admin.php?id='.$_SESSION['id_enfant']);
 ?>

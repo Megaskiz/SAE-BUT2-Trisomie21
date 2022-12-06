@@ -54,12 +54,12 @@ if (isset ($_GET['case']))  {
         ///Exécution de la requête
     try{
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));
-        header("Location:choix_sys.php?id=$id");
+        header("Location:choix_sys.php?id_sys=$id");
         if ($req == false){
             $req->debugDumpParams;
             die("erreur execute");
         }else{
-            echo"<a href=\"choix_sys.php?id=$id\"> recharger la page</a>";         
+            echo"<a href=\"choix_sys.php?id_sys=$id\"> recharger la page</a>";         
            
         }
     }

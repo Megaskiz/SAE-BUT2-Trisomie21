@@ -30,7 +30,6 @@ if (isset($_GET['id_suppr'])) {
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_creation_systemes.css">
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -76,14 +75,6 @@ if (isset($_GET['id_suppr'])) {
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <main>
-    <?php
-if (isset ($_POST['rows']))  {
-    $rows = $_POST['rows'];
-}
-else{
-    $rows = 0;
-}
-?>
 <style>
     table, td {
     border-collapse:collapse;
@@ -99,65 +90,35 @@ else{
         background: rgb(212, 210, 210);
         padding:10px;
     }
-</style>
-        <form action="" method="post" class="form-nb-taches">
-            <div class="flex_simple">
-            <label>combien de taches voulez vous inserer ? : </label>
-            <input type="number" name="rows"  value=<?php echo $rows ?> >
-            <input id="bouton" type="submit" value="valider">
-            </div>
-            
+</style>           
         </form>
-        <form action="insert_systeme_bd.php" method="post">
+        <form action="insert_systeme__bd.php" method="post">
             <div class="flex_simple">
-            <label>Quel est le nom de ce système ?  : </label>
-            <input type="text" name="nom" placeholder="ecrivez le nom ici">
+                <label>combien de cases voulez vous inserer ? : </label>
+                <input type="number" name="rows"  >
             </div>
-            <table class="tableau">
-                <tr>
-                    <td>
-                        <p></p>
-                    </td>
-                    <td>
-                        <p>lundi</p>
-                    </td>
-                    <td>
-                        <p>mardi</p>
-                    </td>
-                    <td>
-                        <p>mercredi</p>
-                    </td>
-                    <td>
-                        <p>jeudi</p>
-                    </td>
-                    <td>
-                        <p>vendredi</p>
-                    </td>
-                    <td>
-                        <p>samedi</p>
-                    </td>
-                    <td>
-                        <p>dimanche</p>
-                    </td>
-                </tr>
+            <div class="flex_simple">
+                <label>Quelle sera la condition d'ajout d'un jeton : </label>
+                <input type="text" width=100% name="prio" placeholder="ecrivez ce que l'enfant doit faire">
+            </div>  
+            <div class="flex_simple">
+                <label>Quel est le nom de ce système ?  : </label>
+                <input type="text" name="nom" placeholder="ecrivez le nom ici">
+            </div>
+            <div class="flex_simple">
+                <label>Quel est la durée de ce système ?  : </label>
+                <input type="text" name="duree" placeholder="ecrivez la duree ici">
+            </div>
+            <div class="flex_simple">
+                <label>Quel est la priorité de ce système ?  : </label>
+                <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+            </div>
 
-                <?php                         
-                $i = 1;
-                while( $i <= $rows ) {
-                    echo"<tr>";
-                    echo"<td><input type='text' name='tache$i.0000000'placeholder='tâche à faire'/ required='required'></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"</tr>";
-                    $i++;
-                }
-                ?>
-                </table>
+            <div class="flex_simple">
+            <label>Quelle sera l'image pour le jeton : </label>
+            <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+            </div>
+
             <input class="button" type="submit" value="Valider le système">
         </form>
         <br>

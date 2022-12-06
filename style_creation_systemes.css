@@ -72,10 +72,11 @@ main {
 .flex_simple{
     margin: auto;
     width: 50%;
-    display: flex;  
+    /* display: flex;   */
     padding:2%;
 
 }
+
 
 .tableau{
   margin: auto;

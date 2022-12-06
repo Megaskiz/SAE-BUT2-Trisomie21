@@ -10,9 +10,10 @@
     </head>
 <body>
 <?php
+session_start();
 
     echo'<button>
-            <a href="page_admin.php?id='.$_GET['id_enfant'].'">retour au menu</a>
+            <a href="page_admin.php?id='.$_SESSION['id_enfant'].'">retour au menu</a>
         </button>';
         
 

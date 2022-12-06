@@ -80,7 +80,8 @@ catch (Exception $e) {
                 while ($data = $res->fetch()) {
                     $date = strval($data[3]);
                     $datefinal = new DateTime($date);
-                    echo (ucfirst("<div class='id-enfant'> <a class='id-nom'>Nom enfant :  <strong>$data[1] </strong></a> </div>
+                    echo (ucfirst("
+                        <div class='id-enfant'> <a class='id-nom'>Nom enfant :  <strong>$data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom enfant :  <strong>$data[2]  </strong></a> </div>
                         <div class='id-enfant'> <a class='id-age'>Date de naissance enfant :<strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
                         <div class='id-enfants'> <a class='id-adresse'>Adresse enfant : ???</a></div>
@@ -95,17 +96,17 @@ catch (Exception $e) {
                 <form action="test.php" class="forme titre" method="POST">
                     <section class="plan titre">
                         <h2 class="titletype">Choisir le type de système :</h2>
-                        <input type="radio" name="radio1" id="choix11" value="choix1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps
+                        <input type="radio" name="radio1" id="choix11" value="sys1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps
                             choisi</label>
-                        <input type="radio" name="radio1" id="choix12" value="choix2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
-                        <input type="radio" name="radio1" id="choix13" value="choix3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
+                        <input type="radio" name="radio1" id="choix12" value="sys2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
+                        <input type="radio" name="radio1" id="choix13" value="sys3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
                     </section>
                     <section class="payment-plan titre">
                         <h2 class="titletype">Choisissez le type de récompense :</h2>
-                        <input type="radio" name="radio2" id="choix21" value="choix1"><label class="choix21-label four col" for="choix21">l'ensemble du système est orienté vers un prix unique</label>
-                        <input type="radio" name="radio2" id="choix22" value="choix2"><label class="choix22-label four col" for="choix22">le système vous permet de gagner un certain nombre de points qui donnent accès à un
+                        <input type="radio" name="radio2" id="choix21" value="rec1"><label class="choix21-label four col" for="choix21">l'ensemble du système est orienté vers un prix unique</label>
+                        <input type="radio" name="radio2" id="choix22" value="rec2"><label class="choix22-label four col" for="choix22">le système vous permet de gagner un certain nombre de points qui donnent accès à un
                             magasin de récompenses</label>
-                        <input type="radio" name="radio2" id="choix23" value="choix3"><label class="choix23-label four col" for="choix23">Une fois
+                        <input type="radio" name="radio2" id="choix23" value="rec3"><label class="choix23-label four col" for="choix23">Une fois
                             terminé, le système propose une banque de coupons qui ont tous la même valeur, de sorte que l'enfant
                             n'en prend qu'un ou plusieurs</label>
                     </section>

@@ -30,7 +30,6 @@ if (isset($_GET['id_suppr'])) {
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_admin.css">
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -266,7 +265,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
-                    echo '<a href="page_creatsystem.php?id='.$_GET['id'].'"><button class="acceder">creer un nouveau systeme</button></a>';
+                    echo '<a href="style_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
 
                     echo "</div>";
                     echo"</div>";
@@ -294,7 +293,7 @@ if (isset($_GET['id_suppr'])) {
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
                             echo "<td>";
-                            echo"Objectif : ";
+                            
                             print_r($double_tab[$i][0]);
                             echo "</td>";
                             echo "<td>";
@@ -302,8 +301,8 @@ if (isset($_GET['id_suppr'])) {
                             print_r($double_tab[$i][1]);
                             echo "</td>";
                             echo "<td>";
-                            echo"durée de l'objectif (semaine(s)) : ";
-                            print_r($double_tab[$i][1]/7);
+                            echo"durée de l'objectif (en semaine(s)) : ";
+                            print_r(1);
                             echo "</td>";
                             echo "<td>";
                             echo"niveau de priorité  : ";
@@ -311,11 +310,26 @@ if (isset($_GET['id_suppr'])) {
                             echo "</td>";
                             echo "<td>";
                             echo"statut : ";
-                            print_r($double_tab[$i][4]);
+                            if ($double_tab[$i][4]==1) {print_r("En Utilisation");}
+                            else{print_r("Pas en utilisation");}
                             echo "</td>";
                             echo "<td>";
-                            echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'&id_enfant='.$_GET['id'].'"><button class="acceder">acceder</button></a>';
+                            echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
                             echo "</td>";
+                            switch ($double_tab[$i][4]) {
+                                case 1:
+                                    echo "<td>";
+                                        echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
+                                    echo "</td>";
+                                    break;
+                                
+                                case 0:
+                                    echo "<td>";
+                                    echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
+                                    echo "</td>";
+                                    break;
+                            }
+                            
                         echo "</tr>";
                     }
                     echo "</table>";

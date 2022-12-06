@@ -31,19 +31,25 @@
 
         // je creé la requete
         $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$Mdp'";
+        $query2 = "SELECT id_membre FROM membre WHERE courriel='$Courriel' and mdp='$Mdp'";
                 // Execution de la requete
                 try {
                     $res = $linkpdo->query($query);
+                    $res2 = $linkpdo->query($query2);
                     }
                     catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                         die('Erreur : ' . $e->getMessage());
                     }
 
                     $count = $res -> fetchColumn();
+                    $id = $res2 -> fetchColumn();
+
 
                     if ($count == 1 ){
                         session_start();
                         $_SESSION['login_user'] = $Courriel;
+                        $_SESSION['logged_user'] = $id;
+
                         header("location: page_admin.php");
                     }else{
                         $message_erreur = "identifiant ou mot de passe invalide";
