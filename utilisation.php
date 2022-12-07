@@ -22,7 +22,7 @@ if (isset($_GET["id_sys"]) and isset($_GET["valeur"]) ) {
         ///Exécution de la requête
     try{
         $req->execute(array('invers' => $val, 'id' => $sys));
-        header('Location: page_admin.php?id='.$_SESSION["logged_user"]);
+        header('Location: page_admin.php?id='.$_SESSION["id_enfant"]);
         if ($req == false){
             $req->debugDumpParams();
             die("erreur execute");

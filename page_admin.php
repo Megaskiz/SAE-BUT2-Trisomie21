@@ -166,6 +166,7 @@ if (isset($_GET['id_suppr'])) {
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
+            $_SESSION["id_enfant"]=$id;
 
 
 
