@@ -57,6 +57,12 @@ header {
 html{
     height: 100%;
 }
+
+h1{
+    text-align: center;
+    padding-top: 2%;
+}
+
 body {
     height: 100%;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
@@ -64,9 +70,9 @@ body {
 
 main {
     background-color: white;
-    min-height: 100%;
     margin: 2%;
     border-radius: 10px;
+    height: 100%;
 }
 
 .flex_simple{
@@ -77,6 +83,9 @@ main {
 
 }
 
+input{
+    width: 50%;
+}
 
 .tableau{
   margin: auto;

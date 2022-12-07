@@ -59,16 +59,14 @@ catch (Exception $e) {
     </header>
     <main>
         <nav class="nav-enfant">
-            <form action="page_admin.php">
-                <input type="submit" class="annuler" value="Annuler">
-            </form></br>
             <div class="info-enfant">
+                <button class="annuler"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler</a></button>
                 <div class="photo-enfant">
                     <h2>Photo</h2>
                 </div>
 
                 <?php
-                $id = $_GET['id'];
+                $id = $_SESSION['id_enfant'];
                     ///Sélection de tout le contenu de la table carnet_adresse
                 try {
                     $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
@@ -96,19 +94,15 @@ catch (Exception $e) {
                 <form action="test.php" class="forme titre" method="POST">
                     <section class="plan titre">
                         <h2 class="titletype">Choisir le type de système :</h2>
-                        <input type="radio" name="radio1" id="choix11" value="sys1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps
-                            choisi</label>
-                        <input type="radio" name="radio1" id="choix12" value="sys2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
-                        <input type="radio" name="radio1" id="choix13" value="sys3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
+                        <input type="radio" name="radio1" id="choix11" value="1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps choisi</label>
+                        <input type="radio" name="radio1" id="choix12" value="2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
+                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
                     </section>
                     <section class="payment-plan titre">
                         <h2 class="titletype">Choisissez le type de récompense :</h2>
-                        <input type="radio" name="radio2" id="choix21" value="rec1"><label class="choix21-label four col" for="choix21">l'ensemble du système est orienté vers un prix unique</label>
-                        <input type="radio" name="radio2" id="choix22" value="rec2"><label class="choix22-label four col" for="choix22">le système vous permet de gagner un certain nombre de points qui donnent accès à un
-                            magasin de récompenses</label>
-                        <input type="radio" name="radio2" id="choix23" value="rec3"><label class="choix23-label four col" for="choix23">Une fois
-                            terminé, le système propose une banque de coupons qui ont tous la même valeur, de sorte que l'enfant
-                            n'en prend qu'un ou plusieurs</label>
+                        <input type="radio" name="radio2" id="choix21" value="4"><label class="choix21-label four col" for="choix21">l'ensemble du système est orienté vers un prix unique</label>
+                        <input type="radio" name="radio2" id="choix22" value="5"><label class="choix22-label four col" for="choix22">le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses</label>
+                        <input type="radio" name="radio2" id="choix23" value="6"><label class="choix23-label four col" for="choix23">Une fois terminé, le système propose une banque de coupons qui ont tous la même valeur, de sorte que l'enfant n'en prend qu'un ou plusieurs</label>
                     </section>
                     </br>
                     </br>

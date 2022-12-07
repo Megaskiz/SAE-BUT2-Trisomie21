@@ -90,16 +90,19 @@ if (isset($_GET['id_suppr'])) {
         background: rgb(212, 210, 210);
         padding:10px;
     }
-</style>           
-        </form>
-        <form action="insert_systeme__bd.php" method="post">
+</style>  
+
+        
+
+        <form action="insert_systeme_bd.php" method="post">
+            <h1 class="flex-simple">Création d'un système de type : "chargement"</h1>
             <div class="flex_simple">
                 <label>combien de cases voulez vous inserer ? : </label>
                 <input type="number" name="rows"  >
             </div>
             <div class="flex_simple">
                 <label>Quelle sera la condition d'ajout d'un jeton : </label>
-                <input type="text" width=100% name="prio" placeholder="ecrivez ce que l'enfant doit faire">
+                <input type="text" width=100% name="intitule" placeholder="ecrivez ce que l'enfant doit faire">
             </div>  
             <div class="flex_simple">
                 <label>Quel est le nom de ce système ?  : </label>
@@ -116,15 +119,14 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="flex_simple">
             <label>Quelle sera l'image pour le jeton : </label>
-            <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+            <input type="text" name="image" placeholder="ecrivez le niveau de priorite ici">
             </div>
+
 
             <input class="button" type="submit" value="Valider le système">
         </form>
-        <br>
-        <br>
         <div style="float:right;">
-            <button class="annuler"><a href="page_admin.php">annuler la creation de système</a></button>
+        <button class="annuler"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler la création de système</a></button>
         </div>
     </main>
 
