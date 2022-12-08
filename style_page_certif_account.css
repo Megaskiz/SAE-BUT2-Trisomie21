@@ -3,7 +3,6 @@
 
 /* Header */
 
-
 table,
 td {
     border-collapse: collapse;
@@ -11,15 +10,20 @@ td {
     padding: 1rem;
 }
 
+.Profil {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: right;
+    width: 35%;
+}
+
 header {
     display: grid;
-    justify-content: center;
-    align-items: center;
     grid-template-columns: 20% 45% 10% 15% 10%;
     grid-template-rows: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    height: 15vh;
+    height: 15%;
     margin: 1%;
     position: sticky;
     top: 0;
@@ -31,10 +35,9 @@ header {
 /* Logo/image*/
 
 .logo-association {
-    width: 100%;
+    height: 100%;
     padding-left: 2%;
     padding-top: 2%;
-
 }
 
 .img-user {
@@ -56,20 +59,16 @@ header {
 
 /*------------------------ Body--------------------*/
 
-
+html,
 body {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+    height: 100%;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
 }
 
 main {
     display: grid;
-    grid-template-columns: 20% 1fr;
-    min-height: 85vh;
+    grid-template-columns: 40% auto;
+    min-height: 100%;
     margin: 2%;
     border-radius: 10px;
 }
@@ -77,7 +76,7 @@ main {
 .left-contenu {
     padding: 3%;
     overflow: auto;
-    height: 100%;
+    height: 98%;
     box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
     border-radius: 10px;
     background-color: #fff;
@@ -89,12 +88,12 @@ main {
 }
 
 
-/*------------------------ Menu liste des enfants (gauche)--------------------*/
+/*------------------------ Menu liste des membres (gauche)--------------------*/
 
 
-/* Boutton ajouter un enfant*/
+/* Boutton ajouter un membre*/
 
-.ajouter-enfant {
+.ajouter-membre {
     width: 100%;
     text-align: center;
     margin: 0%;
@@ -105,7 +104,7 @@ main {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.ajouter-enfant:hover {
+.ajouter-membre:hover {
     color: #fff;
     cursor: pointer;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
@@ -115,13 +114,25 @@ main {
     padding-left: 0%;
 }
 
-.acces-enfant {
+.acces-membre {
     margin-left: 40%;
     border-radius: none;
 }
 
+.section_membre {
+    display: grid;
+    grid-template-columns: 40% auto auto;
+    grid-template-rows: 50% 50%;
+    height: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 3%;
+    margin-right: 3%;
+}
 
-/* Pop-up JS ajouter un enfant*/
+
+/* Pop-up JS ajouter un membre*/
 
 .hidden {
     display: none;
@@ -137,11 +148,10 @@ main {
 }
 
 @media screen and (min-width: 640px) {
-
     [role="alertdialog"],
     [role="dialog"] {
         position: absolute;
-        top: 2rem;
+        top: 8rem;
         left: 50vw;
         /* move to the middle of the screen (assumes relative parent is the body/viewport) */
         transform: translateX(-50%);
@@ -310,13 +320,13 @@ main {
 }
 
 
-/*------------------------ Menu information sur l'enfant (droite)--------------------*/
+/*------------------------ Menu information sur le membre (droite)--------------------*/
 
-.section_enfant {
+.membre {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50% 50%;
-    height: 50%;
+    grid-template-rows: 60% 50%;
+    height: 40%;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 10px;
     background-color: white;
@@ -324,15 +334,26 @@ main {
     margin-right: 3%;
 }
 
-.case-enfant {
+.case-membre {
     display: grid;
     place-items: center;
-    margin: 3%;
+}
+
+.case-membre_1 {
+    display: grid;
+    margin: 20%;
+}
+
+.case-membre_2 {
+    display: grid;
+    place-items: center;
 }
 
 .case-3-infos {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+    margin: 2%;
+    font-size: 100%;
 }
 
 
@@ -348,8 +369,6 @@ main {
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 2%;
-    padding-top: 2%;
-    padding-left: 2%;
 }
 
 textarea {
@@ -357,8 +376,8 @@ textarea {
     width: 95%;
 }
 
-.logo-enfant {
-    width: 30%;
+.logo-membre {
+    height: 90%;
 }
 
 .text-complementaire {
@@ -368,13 +387,12 @@ textarea {
 }
 
 .cns {
-    display: grid;
     margin: auto;
     margin-top: 2%;
     color: black;
     font-size: 100%;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: #fff;
     width: 90%;
     text-align: center;
 }
@@ -385,18 +403,18 @@ textarea {
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
 }
 
-.spprmrenfant {
+.certifmembre {
     margin: auto;
     margin-top: 2%;
     color: black;
     font-size: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    width: 70%;
+    width: 40%;
     text-align: center;
 }
 
-.spprmrenfant:hover {
+.certifmembre:hover {
     color: #fff;
     cursor: pointer;
     background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
@@ -420,13 +438,11 @@ footer {
     margin: 0;
 }
 
-
 .footer-logo-association {
-    width: 100%;
+    height: 90%;
     grid-column: 1;
     padding: 2%;
 }
-
 
 .f-menu {
     display: grid;
@@ -436,16 +452,13 @@ footer {
     margin-left: 20%;
 }
 
-
 footer p {
     text-align: center;
 }
 
-
 .f-copyright {
     width: 15%;
     margin-left: 40%;
-
 }
 
 .lien_supp {
