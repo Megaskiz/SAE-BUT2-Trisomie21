@@ -349,6 +349,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<p></p>";
                     echo "<p></p>";
                     echo "</section>";
+                    echo"</div>";
                     echo "<section class=\"nb-systeme\">";
                     echo "</section>";
                 }

@@ -71,3 +71,7 @@ p {
     text-align: center;
 }
 
+
+.jeton{
+    max-width: fit-content;
+}

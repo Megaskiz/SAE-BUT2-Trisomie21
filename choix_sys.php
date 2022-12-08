@@ -71,13 +71,11 @@ if (isset ($_GET['id_sys']))  {
 
                 echo"<div class=\"sys\">";
                 echo"<table>";
-           
-           
-           
-           
+                      
                try {
                    $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
-                   }
+                   $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=".$_SESSION['id_enfant']."");
+                }
                catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                        die('Erreur : ' . $e->getMessage());
                    }
@@ -85,6 +83,9 @@ if (isset ($_GET['id_sys']))  {
                    ///Affichage des entrées du résultat une à une
                    
                    $double_tab = $res -> fetchAll();
+                   $talbeau_jeton = $res2 -> fetchAll();
+
+                   $lien_jeton = $talbeau_jeton[0][0];
            
                    // var_dump($double_tab);
                    // exit();
@@ -125,7 +126,9 @@ if (isset ($_GET['id_sys']))  {
                            echo"</td>";
            
                        }else{
-                           echo"<td id=$compteur class=\"case_blanche\">";
+                            
+                           echo"<td id=$compteur>";
+                           echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                            echo"</td>";
                        }
            
@@ -178,7 +181,9 @@ if (isset ($_GET['id_sys']))  {
            
                try {
                    $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
-                   }
+                   $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=".$_SESSION['id_enfant']."");
+   
+                }
                catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                        die('Erreur : ' . $e->getMessage());
                    }
@@ -186,6 +191,9 @@ if (isset ($_GET['id_sys']))  {
                    ///Affichage des entrées du résultat une à une
                    
                    $double_tab = $res -> fetchAll();
+                   $talbeau_jeton = $res2 -> fetchAll();
+
+                   $lien_jeton = $talbeau_jeton[0][0];
            
                    // var_dump($double_tab);
                    // exit();
@@ -226,7 +234,8 @@ if (isset ($_GET['id_sys']))  {
                            echo"</td>";
            
                        }else{
-                           echo"<td id=$compteur class=\"case_blanche\">";
+                           echo"<td id=$compteur>";
+                           echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                            echo"</td>";
                        }
            
