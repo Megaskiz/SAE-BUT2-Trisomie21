@@ -77,12 +77,20 @@ if (isset($_GET['id_valider'])) {
     <main>
 
         <nav class="left-contenu">
+            <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
+                <li class="nav-item">
+                    <a class="nav-link gl-tab-nav-item" data-placement="right" href="page_admin.php">Enfant</a>
+                </li>
+                <li class="nav-item">
+                    <a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Membre</a>
+                </li>
+            </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div>
-                    <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un memebre</button>
+                    <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un membre</button>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <h2 id="dialog1_label" class="dialog_label">Ajouter un memebre</h2>
+                            <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
 
                             <form action="insert_membre.php" method="post" class="dialog_form">
                                 <div class="dialog_form_item">
@@ -134,11 +142,11 @@ if (isset($_GET['id_valider'])) {
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
-                                <span class="label_text">Etes vous un professionel ? :</span>
+                                    <span class="label_text">Etes vous un professionel ? :</span>
                                     <div>
                                         <span class="label_text" for="oui">oui</span>
                                         <input type="radio" id="oui" name='pro' value="1">
-                                    
+
                                         <span class="label_text" for="oui">non</span>
                                         <input type="radio" id="oui" name='pro' value="0" checked>
 
@@ -175,7 +183,7 @@ if (isset($_GET['id_valider'])) {
                             echo "<td>";
                             print_r($double_tab[$i][$y]);
                             $liste[$y] = $double_tab[$i][$y];
-                            $nom = $double_tab[$i][1];  
+                            $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
                             echo "</td>";
                         }
