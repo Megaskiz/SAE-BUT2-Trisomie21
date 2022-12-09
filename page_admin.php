@@ -259,13 +259,15 @@ if (isset($_GET['id_suppr'])) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">acceder</a>";
+                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">Valider la suppression</a>";
 
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+
+
                     echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
 
                     echo "</div>";
@@ -330,6 +332,21 @@ if (isset($_GET['id_suppr'])) {
                                     echo "</td>";
                                     break;
                             }
+                            echo "<td>";
+                                echo " <div class=\"case-enfant\">";
+                                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
+                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                                echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                                    echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
+                                    echo "<div class=\"dialog_form_actions\">";
+                                        echo"<a href=\"suppr_sys.php?id_sys=".$double_tab[$i][5]."\"><button class=\"acceder\">Supprimer le système</button></a>";
+                                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                                    echo "</div>";
+                                echo "</form>";
+                                echo "</div>";
+                                echo "</div>";
+                            echo "</td>";
                             
                         echo "</tr>";
                     }
