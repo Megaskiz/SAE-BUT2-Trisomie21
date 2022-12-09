@@ -276,11 +276,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-<<<<<<< HEAD
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">Valider la suppression</a>";
-=======
-                    echo "<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">acceder</a>";
->>>>>>> 6e2c51aa49553e314ad34ddf89bacabc54784f33
+                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
 
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
@@ -316,7 +312,6 @@ if (isset($_GET['id_suppr'])) {
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
-<<<<<<< HEAD
                             echo "<td>";
                             
                             print_r($double_tab[$i][0]);
@@ -370,49 +365,6 @@ if (isset($_GET['id_suppr'])) {
                                 echo "</div>";
                             echo "</td>";
                             
-=======
-                        echo "<td>";
-
-                        print_r($double_tab[$i][0]);
-                        echo "</td>";
-                        echo "<td>";
-                        echo "nombre de jetons : ";
-                        print_r($double_tab[$i][1]);
-                        echo "</td>";
-                        echo "<td>";
-                        echo "durée de l'objectif (en semaine(s)) : ";
-                        print_r(1);
-                        echo "</td>";
-                        echo "<td>";
-                        echo "niveau de priorité  : ";
-                        print_r($double_tab[$i][3]);
-                        echo "</td>";
-                        echo "<td>";
-                        echo "statut : ";
-                        if ($double_tab[$i][4] == 1) {
-                            print_r("En Utilisation");
-                        } else {
-                            print_r("Pas en utilisation");
-                        }
-                        echo "</td>";
-                        echo "<td>";
-                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
-                        echo "</td>";
-                        switch ($double_tab[$i][4]) {
-                            case 1:
-                                echo "<td>";
-                                echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
-                                echo "</td>";
-                                break;
-
-                            case 0:
-                                echo "<td>";
-                                echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
-                                echo "</td>";
-                                break;
-                        }
-
->>>>>>> 6e2c51aa49553e314ad34ddf89bacabc54784f33
                         echo "</tr>";
                     }
                     echo "</table>";
