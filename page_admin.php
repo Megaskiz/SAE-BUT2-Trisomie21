@@ -78,6 +78,14 @@ if (isset($_GET['id_suppr'])) {
     <main>
 
         <nav class="left-contenu">
+            <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
+                <li class="nav-item">
+                    <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
+                </li>
+                <li class="nav-item">
+                    <a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>
+                </li>
+            </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant" */ -->
                 <div>
                     <button class="ajouter-enfant" type="button" onclick="openDialog('dialog1', this)">Ajouter un enfant</button>
@@ -135,7 +143,7 @@ if (isset($_GET['id_suppr'])) {
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
                     echo "<table>";
-                    
+
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         for ($y = 1; $y < 3; $y++) {
@@ -149,11 +157,11 @@ if (isset($_GET['id_suppr'])) {
                         }
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id='.$identifiant.'"><button class="acceder">acceder</button></a>';
+                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button class="acceder">acceder</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }
-                
+
 
                     echo "</table>";
 
@@ -166,7 +174,7 @@ if (isset($_GET['id_suppr'])) {
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $_SESSION["id_enfant"]=$id;
+            $_SESSION["id_enfant"] = $id;
 
 
 
@@ -213,7 +221,7 @@ if (isset($_GET['id_suppr'])) {
 
 
         }
-        
+
 
         ?>
 
@@ -229,7 +237,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                        echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
+                    echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
@@ -259,7 +267,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">acceder</a>";
+                    echo "<a class=\"s\" href=\"page_admin.php?id_suppr=$identifiant\">acceder</a>";
 
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
@@ -269,23 +277,23 @@ if (isset($_GET['id_suppr'])) {
                     echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
 
                     echo "</div>";
-                    echo"</div>";
+                    echo "</div>";
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
-                
-                    
-                    
+
+
+
                     // tous les systèmes de l'enfant :
 
                     ///Sélection de tout le contenu de la table enfant
                     try {
-                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant='.$id);
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id);
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
 
                     ///Affichage des entrées du résultat une à une
-                    
+
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
@@ -293,51 +301,54 @@ if (isset($_GET['id_suppr'])) {
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
-                            echo "<td>";
-                            
-                            print_r($double_tab[$i][0]);
-                            echo "</td>";
-                            echo "<td>";
-                            echo"nombre de jetons : ";
-                            print_r($double_tab[$i][1]);
-                            echo "</td>";
-                            echo "<td>";
-                            echo"durée de l'objectif (en semaine(s)) : ";
-                            print_r(1);
-                            echo "</td>";
-                            echo "<td>";
-                            echo"niveau de priorité  : ";
-                            print_r($double_tab[$i][3]);
-                            echo "</td>";
-                            echo "<td>";
-                            echo"statut : ";
-                            if ($double_tab[$i][4]==1) {print_r("En Utilisation");}
-                            else{print_r("Pas en utilisation");}
-                            echo "</td>";
-                            echo "<td>";
-                            echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
-                            echo "</td>";
-                            switch ($double_tab[$i][4]) {
-                                case 1:
-                                    echo "<td>";
-                                        echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
-                                    echo "</td>";
-                                    break;
-                                
-                                case 0:
-                                    echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
-                                    echo "</td>";
-                                    break;
-                            }
-                            
+                        echo "<td>";
+
+                        print_r($double_tab[$i][0]);
+                        echo "</td>";
+                        echo "<td>";
+                        echo "nombre de jetons : ";
+                        print_r($double_tab[$i][1]);
+                        echo "</td>";
+                        echo "<td>";
+                        echo "durée de l'objectif (en semaine(s)) : ";
+                        print_r(1);
+                        echo "</td>";
+                        echo "<td>";
+                        echo "niveau de priorité  : ";
+                        print_r($double_tab[$i][3]);
+                        echo "</td>";
+                        echo "<td>";
+                        echo "statut : ";
+                        if ($double_tab[$i][4] == 1) {
+                            print_r("En Utilisation");
+                        } else {
+                            print_r("Pas en utilisation");
+                        }
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
+                        echo "</td>";
+                        switch ($double_tab[$i][4]) {
+                            case 1:
+                                echo "<td>";
+                                echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
+                                echo "</td>";
+                                break;
+
+                            case 0:
+                                echo "<td>";
+                                echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
+                                echo "</td>";
+                                break;
+                        }
+
                         echo "</tr>";
                     }
                     echo "</table>";
 
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
-                    
+
 
 
                     echo "</section>";
@@ -349,7 +360,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<p></p>";
                     echo "<p></p>";
                     echo "</section>";
-                    echo"</div>";
+                    echo "</div>";
                     echo "<section class=\"nb-systeme\">";
                     echo "</section>";
                 }
@@ -365,14 +376,20 @@ if (isset($_GET['id_suppr'])) {
 
         <div class="f-contenu">
             <div class="f-menu">
-                <li><p class="f-info">Qui sommes nous ?</p></li>
-                <li><p class="f-propos">A propos</p></li>
-                <li><p class="f-association">Association</p></li>
+                <li>
+                    <p class="f-info">Qui sommes nous ?</p>
+                </li>
+                <li>
+                    <p class="f-propos">A propos</p>
+                </li>
+                <li>
+                    <p class="f-association">Association</p>
+                </li>
             </div>
             <p class="f-copyright">© Copyright 2022 </p>
         </div>
-       
-        
+
+
     </footer>
 </body>
 
