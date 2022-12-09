@@ -260,9 +260,9 @@ if (isset($_GET['id_suppr'])) {
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom FROM suivre, membre WHERE id_enfant=  '.$getid." AND suivre.id_membre = membre.id_membre");
+                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= '.$getid." AND suivre.id_membre = membre.id_membre;");
                     while($tuteur = $allTuteurs->fetch()) {
-                        echo $tuteur['nom']." ".$tuteur['prenom']. "<br>";
+                        echo $tuteur['nom']." ".$tuteur['prenom']." il est : ".$tuteur['role']. "<br>";
                     }
                     echo "</p>";
                   
