@@ -257,7 +257,16 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
                     echo "<div class=\"case\">";
-                    echo "<a class=\"tuteur_4\">informations sur les tuteurs (a faire)</a>";
+                    echo "<a class=\"tuteur_4\"></a>";
+                    $getid = $_GET['id'];
+                    echo "<p>";
+                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom FROM suivre, membre WHERE id_enfant=  '.$getid." AND suivre.id_membre = membre.id_membre");
+                    while($tuteur = $allTuteurs->fetch()) {
+                        echo $tuteur['nom']." ".$tuteur['prenom']. "<br>";
+                    }
+                    echo "</p>";
+                  
+
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
