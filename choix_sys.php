@@ -86,7 +86,7 @@ if (isset ($_GET['id_sys']))  {
                    $talbeau_jeton = $res2 -> fetchAll();
 
                    $lien_jeton = $talbeau_jeton[0][0];
-           
+                   
                    // var_dump($double_tab);
                    // exit();
                    $valeur = $double_tab[0];
@@ -128,6 +128,7 @@ if (isset ($_GET['id_sys']))  {
                        }else{
                             
                            echo"<td id=$compteur>";
+                           
                            echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                            echo"</td>";
                        }

@@ -54,6 +54,12 @@ header {
 /*------------------------ Body--------------------*/
 
 body {
+<<<<<<< HEAD
+
+      
+
+=======
+>>>>>>> 6e2c51aa49553e314ad34ddf89bacabc54784f33
     display: flex;
     flex-direction: column;
     justify-content: space-between;
