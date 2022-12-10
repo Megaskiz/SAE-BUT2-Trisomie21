@@ -1,5 +1,6 @@
 <?php
-session_start();
+require('fonctions.php');
+is_logged();
 
 ///Connexion au serveur MySQL
 try {

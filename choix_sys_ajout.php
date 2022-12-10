@@ -1,4 +1,8 @@
 <?php
+require('fonctions.php');
+is_logged();
+?>
+<?php
 
 // fichier qui ajoute chaque jeton dans le système
 

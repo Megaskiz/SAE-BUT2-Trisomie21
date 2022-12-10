@@ -1,8 +1,11 @@
+<?php
+require('fonctions.php');
+is_logged();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <?php
-session_start();
 ///Connexion au serveur MySQL
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");

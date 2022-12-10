@@ -54,12 +54,6 @@ header {
 /*------------------------ Body--------------------*/
 
 body {
-<<<<<<< HEAD
-
-      
-
-=======
->>>>>>> 6e2c51aa49553e314ad34ddf89bacabc54784f33
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -81,6 +75,7 @@ main {
     box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
     border-radius: 10px;
     background-color: #fff;
+    overflow: scroll;
 }
 
 .right-contenu {

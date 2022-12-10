@@ -2,7 +2,8 @@
 <html lang="fr">
 
 <?php
-session_start();
+require('fonctions.php');
+is_logged();
 ///Connexion au serveur MySQL
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
@@ -68,7 +69,7 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
+        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
     </header>
 
 

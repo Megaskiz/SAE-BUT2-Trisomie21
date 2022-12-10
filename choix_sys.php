@@ -1,3 +1,7 @@
+<?php
+require('fonctions.php');
+is_logged();
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -10,8 +14,6 @@
     </head>
 <body>
 <?php
-session_start();
-
     echo'<button>
             <a href="page_admin.php?id='.$_SESSION['id_enfant'].'">retour au menu</a>
         </button>';
