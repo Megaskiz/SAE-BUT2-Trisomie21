@@ -16,7 +16,7 @@ catch (Exception $e) {
 
 if (isset($_GET['id_valider'])) {
     $id_valider_membre = $_GET['id_valider'];
-    $req_add = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id_valider_membre ;";
+    $req_add = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id_valider_membre ;";
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
@@ -165,9 +165,52 @@ if (isset($_GET['id_valider'])) {
                 </div>
                 <! -- /* fin de la fenêtre popin de l'ajout d'membre" */ -->
                     <?php
+                    
                     ///Sélection de tout le contenu de la table 
                     try {
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1;");
+                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                        die('Erreur : ' . $e->getMessage());
+                    }
+
+                    ///Affichage des entrées du résultat une à une
+
+                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $nombre_ligne = $res->rowCount();
+                    $liste = array();
+                    echo "<table class='no-break'>";
+                    
+
+                    for ($i = 0; $i < $nombre_ligne; $i++) {
+                        echo "<tr>";
+                        for ($y = 1; $y < 3; $y++) {
+                            echo "<td>";
+                            print_r($double_tab[$i][$y]);
+                            $liste[$y] = $double_tab[$i][$y];
+                            $nom = $double_tab[$i][1];
+                            $prenom = $double_tab[$i][2];
+                            echo "</td>";
+                        }
+                        $identifiant = $double_tab[$i][0];
+
+                        echo '<td>';
+                            echo "</div>";
+                            echo '</td>';
+                            echo "<td class=\"Profil\" >";
+                                echo '<a href="page_certif_compte.php?idv=' . $identifiant . '"><button class="acceder">Profil</button></a>';
+                            echo "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    
+                    ///Fermeture du curseur d'analyse des résultats
+                    $res->closeCursor();
+                    ///--------------------------------------------------------------------membre non valide-------------------------------------------
+                    
+                    echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
+                    ///Sélection de tout le contenu de la table 
+                    try {
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0;");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -204,7 +247,7 @@ if (isset($_GET['id_valider'])) {
                         echo "</form>";
                         echo "</div>";
                         echo '</td>';
-                        echo "<td class=\"Profil\" >";
+                        echo "<td class=\"Profil2\" >";
                         echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button class="acceder">Profil</button></a>';
                         echo "</td>";
                         echo "</tr>";
@@ -220,6 +263,46 @@ if (isset($_GET['id_valider'])) {
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
+
+
+
+            ///Sélection de tout le contenu de la table carnet_adresse
+            try {
+                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $liste = array();
+
+
+            $id_membre = $double_tab[0][0];
+            $nom_membre = $double_tab[0][1];
+            $prenom_membre = $double_tab[0][2];
+            $adresse_membre = $double_tab[0][3];
+            $code_postal_membre = $double_tab[0][4];
+            $ville_membre = $double_tab[0][5];
+            $courriel_membre = $double_tab[0][6];
+            $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
+
+
+            try {
+                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+
+            ///Affichage des entrées du résultat une à une
+
+            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $liste = array();
+        }
+        if (isset($_GET['idv'])) {
+            $id = $_GET['idv'];
 
 
 
@@ -303,6 +386,26 @@ if (isset($_GET['id_valider'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+                }
+                if (isset($_GET['idv'])) {
+
+                    //<!---- menu droit information ---->
+                    echo "<div class=\"case-membre_1\">";
+                    echo "<img class=\"img-user\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
+                    echo "</div>";
+
+                    echo "<div class=\"case-3-infos\">";
+                    echo "<p>  Nom :<strong> $nom_membre</strong></p>";
+                    echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
+                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
+                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "</div>";
+
+                    echo "<div class=\"case-3-infos\">";
+                    echo "<p>Adresse : $adresse_membre  $ville_membre</p>";
+                    echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
+                    echo "</div>";
+
                 }
                 ?>
         </nav>
