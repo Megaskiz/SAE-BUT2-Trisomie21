@@ -3,17 +3,15 @@
 
 /* Header */
 
-table,
-td {
+table,td {
     border-collapse: collapse;
     padding: 1rem;
 }
 
-.Profil {
+.Profil{
     border-collapse: collapse;
     padding: 1rem;
-    text-align: right;
-    width: 35%;
+    text-align: right;   
 }
 
 header {
@@ -483,7 +481,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     background-color: white;
-    height: 12vh;
+    /* height: 12vh; */
 }
 
 .f-contenu {
