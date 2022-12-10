@@ -357,7 +357,7 @@ if (isset($_GET['id_suppr'])) {
                                 echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                                     echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
                                     echo "<div class=\"dialog_form_actions\">";
-                                        echo"<a href=\"suppr_sys.php?id_sys=".$double_tab[$i][5]."\"><button class=\"acceder\">Supprimer le système</button></a>";
+                                        echo"<button class=\"acceder\"><a href=\"suppr_sys.php?id_sys=".$double_tab[$i][5]."\">Supprimer le système</button></a>";
                                         echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                                     echo "</div>";
                                 echo "</form>";
