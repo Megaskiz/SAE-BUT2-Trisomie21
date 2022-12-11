@@ -189,12 +189,18 @@ if (isset($_GET['id_suppr'])) {
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
+            
+      
 
             $id_enfant = $double_tab[0][0];
-            $nom_enfant = $double_tab[0][1];
+            $nom_enfant = ($double_tab[0][1]);
             $prenom_enfant = $double_tab[0][2];
             $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
+            $adresse = $double_tab[0][5];
+            $activite = $double_tab[0][6];
+            $handicap =$double_tab[0][7];
+            $info_sup =$double_tab[0][8];
             // echo$id_enfant;
             // echo$nom_enfant;
             // echo$prenom_enfant;
@@ -272,22 +278,25 @@ if (isset($_GET['id_suppr'])) {
                     echo"</div>";
 
 
-                    echo"<form action=\"ajoute_modif_enfant_bd.php\">";
+                    echo "<form action=\"ajoute_modif_enfant_bd.php\" method=\"post\">";
+
                     echo"<div class=\"grille_4_cases\" >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
                     
 
                     // case 3 infos : nom, ddn, activité
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";        
-                            echo'<p> Nom :</p><input style=\"height:40%\"; type="text" value='.$nom_enfant.'>';
+                            echo'<p> Nom :</p><input name=nom_enfant type="text" value="'.$nom_enfant.'">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";        
-                            echo "<p>Date de Naissance :</p><input type=\"date\" value=".$double_tab[0][3].">";
+                            echo "<p>Date de Naissance :</p><input name=date_naissance type=\"date\" value=".$double_tab[0][3].">";
                         echo"</div>";
-
+                        
+                        
+                        
                         echo"<div style=\"display:inline-flex; align-items: center;\">"; 
-                            echo "<p>Activité enfant :</p><input type=\"text\" value=>";
+                            echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='$activite'>";
                         echo"</div>";
 
                     echo "</div>";
@@ -296,15 +305,15 @@ if (isset($_GET['id_suppr'])) {
                     echo "<div class=\"case-3-infos\">";
 
                     echo"<div style=\"display:inline-flex; align-items: center;\">";  
-                            echo "<p>Prénom :</p><input type=\"text\" value=".$prenom_enfant.">";
+                            echo "<p>Prénom :</p><input name=prenom_enfant type=\"text\" value='".$prenom_enfant."'>";
                     echo"</div>";
 
                     echo"<div style=\"display:inline-flex; align-items: center;\">";  
-                        echo "<p>Adresse enfant :</p><input type=\"text\" value=>";
+                        echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='$adresse'>";
                     echo"</div>";
 
                     echo"<div style=\"display:inline-flex; align-items: center;\">";  
-                        echo "<p>Handicap enfant :</p><input type=\"text\" value=>";
+                        echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='$handicap'>";
                     echo"</div>";
 
                     echo "</div>";
@@ -328,7 +337,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //case info supp
                     echo "<div class=\"case-enfant\">";
-                    echo "<textarea style=\"resize: none\">Rajouter des informations supplémentaires sur l'enfant </textarea>";
+                    echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
                     echo"<button>valider</button>";
                     echo "</div>";
 

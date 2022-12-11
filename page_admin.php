@@ -196,6 +196,10 @@ if (isset($_GET['id_suppr'])) {
             $prenom_enfant = $double_tab[0][2];
             $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
+            $adresse = $double_tab[0][5];
+            $activite = $double_tab[0][6];
+            $handicap =$double_tab[0][7];
+            $info_sup =$double_tab[0][8];
             // echo$id_enfant;
             // echo$nom_enfant;
             // echo$prenom_enfant;
@@ -244,13 +248,13 @@ if (isset($_GET['id_suppr'])) {
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
                     echo "<p>Date de Naissance :<strong> $ddn_enfant </strong></p>";
-                    echo "<p>Activité enfant :</p>";
+                    echo "<p>Activité enfant :<strong> $activite     </strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>Prénom : <strong>$prenom_enfant  </strong></p>";
-                    echo "<p>Adresse enfant : <strong>      </strong> </p>";
-                    echo "<p>Handicap enfant :</p>";
+                    echo "<p>Adresse enfant : <strong> $adresse     </strong> </p>";
+                    echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
@@ -287,7 +291,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
                     echo "<div class=\"case-enfant\">";
-                    echo "<textarea style=\"resize: none\">Rajouter des informations supplémentaires sur l'enfant </textarea>";
+                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur ".$prenom_enfant." : ".$info_sup." </textarea>";
                     echo "</div>";
 
                     echo "</div>";
