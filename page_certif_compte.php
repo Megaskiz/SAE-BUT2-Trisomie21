@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
 <?php
 require('fonctions.php');
 is_logged();
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+
 <?php
 ///Connexion au serveur MySQL
 try {
@@ -69,7 +70,7 @@ if (isset($_GET['id_valider'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
+        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
     </header>
 
 
