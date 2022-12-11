@@ -100,8 +100,6 @@ header {
 }
 
 
-/* Logo/image*/
-
 
 /* Logo/image*/
 
@@ -114,7 +112,7 @@ header {
 .img-user {
     grid-column: 3;
     height: 50%;
-    margin: 12%;
+    margin: auto;
 }
 
 
@@ -140,16 +138,15 @@ body {
 
 main {
     display: grid;
-    grid-template-columns: 40% auto;
-    min-height: 100%;
+    grid-template-columns: 25% 1fr;
+    min-height: 85vh;
     margin: 2%;
     border-radius: 10px;
 }
 
 .left-contenu {
-    padding: 3%;
     overflow: auto;
-    height: 98%;
+    height: 100%;
     box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
     border-radius: 10px;
     background-color: #fff;
@@ -230,7 +227,13 @@ main {
 .ajouter-membre:hover {
     color: #fff;
     cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    background: grey;
+}
+
+.test {
+    margin: auto;
+    width: 50%;
+    padding: 2vh;
 }
 
 .ajouter_utilisateur {
@@ -246,7 +249,7 @@ main {
     display: grid;
     grid-template-columns: 40% auto auto;
     grid-template-rows: 50% 50%;
-    height: 50%;
+    height: 100%;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 10px;
     background-color: white;
@@ -462,6 +465,10 @@ main {
     place-items: center;
 }
 
+.img-tuteur{
+    width: 80%;
+}
+
 .case-membre_1 {
     display: grid;
     margin: 20%;
@@ -480,19 +487,6 @@ main {
 }
 
 
-/*nombre de système*/
-
-.nb-systeme {
-    /* display: grid; */
-    /* grid-template-columns: 33% 33% 33%; */
-    /* grid-template-rows: 40% 60%; */
-    height: 45%;
-    border-radius: 10px;
-    background-color: white;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-top: 2%;
-}
 
 textarea {
     height: 95%;
