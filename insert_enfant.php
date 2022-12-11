@@ -1,6 +1,5 @@
 <?php
 require('fonctions.php');
-is_logged();
 ?>
 
 
@@ -27,9 +26,7 @@ try {
     catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
     }
-    
-    require('fonctions.php');
-        
+            
     // je récupere les informations de mon formulaire
     // var_dump($_POST);
     // var_dump($_FILES);
@@ -38,7 +35,7 @@ try {
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $date_naissance = $_POST['date_naissance'];
-            $lien_jeton=uploadImage($_FILES['lien_jeton']);
+            $lien_jeton= uploadImage($_FILES['lien_jeton']);
 
             
 
@@ -84,6 +81,7 @@ try {
                     }
                     
                     catch (Exception $e)
+                    
                     {die('Erreur : ' . $e->getMessage());}
                     
                     header('Location: page_admin.php');
