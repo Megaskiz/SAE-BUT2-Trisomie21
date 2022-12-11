@@ -29,7 +29,7 @@ if (isset($_GET['id_suppr'])) {
 <head>
     <meta charset="utf-8">
     <title> Administrateur </title>
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="style_admin_modif_enfant.css">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -173,9 +173,8 @@ if (isset($_GET['id_suppr'])) {
 
         <?php // affichage central de la page, avec les informations sur les enfants
 
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $_SESSION["id_enfant"] = $id;
+            $id= $_SESSION["id_enfant"];
+            
 
 
 
@@ -190,9 +189,11 @@ if (isset($_GET['id_suppr'])) {
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
+            
+      
 
             $id_enfant = $double_tab[0][0];
-            $nom_enfant = $double_tab[0][1];
+            $nom_enfant = ($double_tab[0][1]);
             $prenom_enfant = $double_tab[0][2];
             $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
@@ -225,7 +226,7 @@ if (isset($_GET['id_suppr'])) {
             // exit();
 
 
-        }
+        
 
 
         ?>
@@ -235,42 +236,38 @@ if (isset($_GET['id_suppr'])) {
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
+                
                 <?php
-                if (isset($_GET['id'])) {
-                    $_SESSION['id_enfant'] = $_GET['id'];
 
 
                     //<!---- menu droit information sur l'enfant ---->
+
+                    
+                    echo"<div class='grille2cases'>"; //morceau de gauche (logo enfant + boutons) :
+
+
+
+                    // case du logo de l'enfant
                     echo "<div class=\"case-enfant\">";
                     echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
-                    echo "<p>Date de Naissance :<strong> $ddn_enfant </strong></p>";
-                    echo "<p>Activité enfant :<strong> $activite     </strong></p>";
-                    echo "</div>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p>Prénom : <strong>$prenom_enfant  </strong></p>";
-                    echo "<p>Adresse enfant : <strong> $adresse     </strong> </p>";
-                    echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
-                    echo "</div>";
-
+                    // case 3 boutons : supprimer, modifier, creer systeme
                     echo " <div class=\"case-enfant\">";
-                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
+                        // dialog suppression
+                        echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                        echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                        echo "<div class=\"dialog_form_actions\">";
+                        echo"<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
 
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
+                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
 
                     echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
 
@@ -278,27 +275,78 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "</div>";
                     
+                    echo"</div>";
+
+
+                    echo "<form action=\"ajoute_modif_enfant_bd.php\" method=\"post\">";
+
+                    echo"<div class=\"grille_4_cases\" >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
                     
+
+                    // case 3 infos : nom, ddn, activité
+                    echo "<div class=\"case-3-infos\">";
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";        
+                            echo'<p> Nom :</p><input name=nom_enfant type="text" value="'.$nom_enfant.'">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";        
+                            echo "<p>Date de Naissance :</p><input name=date_naissance type=\"date\" value=".$double_tab[0][3].">";
+                        echo"</div>";
+                        
+                        
+                        
+                        echo"<div style=\"display:inline-flex; align-items: center;\">"; 
+                            echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='$activite'>";
+                        echo"</div>";
+
+                    echo "</div>";
+
+                    // case 3 infos : prenom, adresse, handicap
+                    echo "<div class=\"case-3-infos\">";
+
+                    echo"<div style=\"display:inline-flex; align-items: center;\">";  
+                            echo "<p>Prénom :</p><input name=prenom_enfant type=\"text\" value='".$prenom_enfant."'>";
+                    echo"</div>";
+
+                    echo"<div style=\"display:inline-flex; align-items: center;\">";  
+                        echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='$adresse'>";
+                    echo"</div>";
+
+                    echo"<div style=\"display:inline-flex; align-items: center;\">";  
+                        echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='$handicap'>";
+                    echo"</div>";
+
+                    echo "</div>";
+
+                    
+                    
+                    // case tuteurs
                     echo "<div class=\"case\">";
                     echo "<a class=\"tuteur_4\"></a>";
-                    $getid = $_GET['id'];
-                    echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= '.$getid." AND suivre.id_membre = membre.id_membre;");
-                    while($tuteur = $allTuteurs->fetch()) {
-                        echo $tuteur['nom']." ".$tuteur['prenom']." il est : ".$tuteur['role']. "<br>";
-                    }
-                    echo "</p>";
+                    //$getid = $_GET['id'];
+                    //echo "<p>";
+                    //$q = "SELECT membre.nom, prenom, role FROM suivre, membre WHERE suivre.id_enfant= ".$getid." AND suivre.id_membre = ".$_SESSION['logged_user'];
+                    //echo$q;
+                    //exit();
+                    // $allTuteurs = $linkpdo->query($q);
+                    // while($tuteur = $allTuteurs->fetch()) {
+                    //     echo $tuteur['nom']." ".$tuteur['prenom']." il est : ".$tuteur['role']. "<br>";
+                    // }
+                    // echo "</p>";
                     echo "</div>";
 
+                    //case info supp
                     echo "<div class=\"case-enfant\">";
-                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur ".$prenom_enfant." : ".$info_sup." </textarea>";
+                    echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
+                    echo"<button>valider</button>";
                     echo "</div>";
 
-                    echo "</div>";
+                    echo"</div>";
 
+                    echo"</form>";
 
-
-                    echo "</section>";
+                    echo "</div>"; // fin de la div "section-enfant"
+                    
                     echo "<section class=\"nb-systeme\">";
 
 
@@ -375,7 +423,8 @@ if (isset($_GET['id_suppr'])) {
                             echo "</td>";
                             
                         echo "</tr>";
-                    }
+                        }
+
                     echo "</table>";
 
                     ///Fermeture du curseur d'analyse des résultats
@@ -384,18 +433,6 @@ if (isset($_GET['id_suppr'])) {
 
 
                     echo "</section>";
-                } else {
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "</section>";
-                    echo "</div>";
-                    echo "<section class=\"nb-systeme\">";
-                    echo "</section>";
-                }
                 ?>
         </nav>
     </main>
