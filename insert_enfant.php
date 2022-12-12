@@ -36,6 +36,9 @@ try {
             $prenom = $_POST['prenom'];
             $date_naissance = $_POST['date_naissance'];
             $lien_jeton= uploadImage($_FILES['lien_jeton']);
+            $photo_enfant= uploadImage($_FILES['photo_enfant']);
+
+        
 
             
 
@@ -61,8 +64,8 @@ try {
                 }else{
                     // je creé la requete d'insertion 
 
-                    $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton)
-                    VALUES(:nom, :prenom, :date_naissance, :lien_jeton)');
+                    $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton,photo_enfant)
+                    VALUES(:nom, :prenom, :date_naissance, :lien_jeton, :photo_enfant)');
 
                     if ($req == false){
                         die("erreur linkpdo");
@@ -72,8 +75,12 @@ try {
                         $req->execute(array('nom' => $nom,
                                             'prenom' => $prenom,
                                             'date_naissance' => $date_naissance,
-                                            'lien_jeton' => $lien_jeton
+                                            'lien_jeton' => $lien_jeton,
+                                            'photo_enfant' => $photo_enfant
                                     ));
+                                    // $req->debugDumpParams();
+                                    // exit();
+                                
                         if ($req == false){
                             $req->debugDumpParams();
                             die("erreur execute");

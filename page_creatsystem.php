@@ -62,30 +62,34 @@ catch (Exception $e) {
     <main>
         <nav class="nav-enfant">
             <div class="info-enfant">
-                <button class="annuler"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler</a></button>
-                <div class="photo-enfant">
-                    <h2>Photo</h2>
-                </div>
-
+                <button class="annuler"><a href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">annuler</a></button>
                 <?php
                 $id = $_SESSION['id_enfant'];
-                    ///Sélection de tout le contenu de la table carnet_adresse
+                ///Sélection de tout le contenu de la table carnet_adresse
                 try {
                     $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
                 } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                     die('Erreur : ' . $e->getMessage());
                 }
 
+
+
                 ///Affichage des entrées du résultat une à une
                 while ($data = $res->fetch()) {
+                    echo '<div class="photo-enfant">';
+                    echo "<img class=\"logo-enfant\" src=\"$data[9]\" alt=\"Tête de l'enfant\">";
+                    echo '</div>';
                     $date = strval($data[3]);
                     $datefinal = new DateTime($date);
-                    echo (ucfirst("
+                    echo (ucfirst(
+                        "
                         <div class='id-enfant'> <a class='id-nom'>Nom enfant :  <strong>$data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom enfant :  <strong>$data[2]  </strong></a> </div>
                         <div class='id-enfant'> <a class='id-age'>Date de naissance enfant :<strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
-                        <div class='id-enfants'> <a class='id-adresse'>Adresse enfant : ???</a></div>
-                        <div class='id-enfants'> <a class='id-activite'>Activité enfant : ???</a></div>")
+                        <div class='id-enfants'> <a class='id-adresse'>Adresse enfant : $data[5] </a></div>
+                        <div class='id-enfants'> <a class='id-activite'>Activité enfant : $data[6] </a></div>
+                        <div class='id-enfants'> <a class='id-activite'>Handicap enfant : $data[7] </a></div>"
+                    )
                     );
                 }
                 ?>

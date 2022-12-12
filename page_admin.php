@@ -117,6 +117,10 @@ if (isset($_GET['id_suppr'])) {
                                         <span class="label_text">jeton:</span>
                                         <input name="lien_jeton" type="file" class="zip_input" required="required">
                                     </label>
+                                    <label>
+                                        <span class="label_text">photo:</span>
+                                        <input name="photo_enfant" type="file" class="zip_input" required="required">
+                                    </label>
                                 </div>
 
                                 <div class="dialog_form_actions">
@@ -200,6 +204,7 @@ if (isset($_GET['id_suppr'])) {
             $activite = $double_tab[0][6];
             $handicap =$double_tab[0][7];
             $info_sup =$double_tab[0][8];
+            $photo_enfant =$double_tab[0][9];
             // echo$id_enfant;
             // echo$nom_enfant;
             // echo$prenom_enfant;
@@ -242,7 +247,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    echo "<img class=\"logo-enfant\" src=\"img/logo-enfant.png\" alt=\"Tête de l'enfant\">";
+                    echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
