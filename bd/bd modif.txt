@@ -9,6 +9,6 @@ INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, 
 
 dans la table objectif de la bd
 
-modif photo enfant :
+modif photo enfant si dessous :
 
 ALTER TABLE enfant ADD photo_enfant VARCHAR(100);
