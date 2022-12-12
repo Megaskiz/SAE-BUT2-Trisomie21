@@ -236,9 +236,9 @@ if (isset($_GET['id_valider'])) {
                         $identifiant = $double_tab[$i][0];
 
                         echo '<td>';
-                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Valider ce compte membre</button>";
+                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                         echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
                         echo "<div class=\"dialog_form_actions\">";
@@ -302,6 +302,7 @@ if (isset($_GET['id_valider'])) {
             $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
             $liste = array();
         }
+
         if (isset($_GET['idv'])) {
             $id = $_GET['idv'];
 
@@ -345,9 +346,6 @@ if (isset($_GET['id_valider'])) {
 
 
         ?>
-
-
-
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_membre">
@@ -433,7 +431,5 @@ if (isset($_GET['id_valider'])) {
 
     </footer>
 </body>
-
-
 
 </html>

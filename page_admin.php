@@ -89,6 +89,7 @@ if (isset($_GET['id_suppr'])) {
             </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant" */ -->
                 <div class="bouton_enfant">
+
                     <button class="ajouter-enfant" type="button" onclick="openDialog('dialog1', this)">Ajouter un enfant</button>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
@@ -122,7 +123,12 @@ if (isset($_GET['id_suppr'])) {
                                         <input name="photo_enfant" type="file" class="zip_input" required="required">
                                     </label>
                                 </div>
-
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span class="label_text">jeton:</span>
+                                        <input name="lien_jeton" type="file" class="zip_input" required="required">
+                                    </label>
+                                </div>
                                 <div class="dialog_form_actions">
                                     <button type="submit">Valider l'ajout</button>
                                     <button type="button" onclick="closeDialog(this)">Annuler</button>
@@ -131,6 +137,7 @@ if (isset($_GET['id_suppr'])) {
                         </div>
                     </div>
                 </div>
+
                 <! -- /* fin de la fenêtre popin de l'ajout d'enfant" */ -->
 
 
@@ -235,8 +242,7 @@ if (isset($_GET['id_suppr'])) {
 
         ?>
 
-
-
+        
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
@@ -247,6 +253,20 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
+                    echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier une photo</button>";
+                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+
+                    echo"<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
+
+                    echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">modifier une photo</h2>";
+
+                    echo"<form enctype=\"multipart/form-data\" action=\"insert_photo.php\" method=\"post\" class=\"dialog_form\">";
+                    echo "<div class=\"dialog_form_item\">";
+                    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
+                    echo "</div><div class=\"dialog_form_actions\">";
+                    echo"<button type=\"submit\">Valider l'ajout</button>";
+                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
+
                     echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
