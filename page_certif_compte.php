@@ -198,7 +198,7 @@ if (isset($_GET['id_valider'])) {
                             echo "</div>";
                             echo '</td>';
                             echo "<td class=\"Profil\" >";
-                                echo '<a href="page_certif_compte.php?idv=' . $identifiant . '"><button class="acceder">Profil</button></a>';
+                                echo '<a href="page_certif_compte.php?idv='.$identifiant.'"><button class="acceder">Profil</button></a>';
                             echo "</td>";
                         echo "</tr>";
                     }
@@ -242,7 +242,7 @@ if (isset($_GET['id_valider'])) {
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                         echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
                         echo "<div class=\"dialog_form_actions\">";
-                        echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider=' . $identifiant . '">Valider</a>';
+                        echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
                         echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                         echo "</div>";
                         echo "</form>";
@@ -371,17 +371,14 @@ if (isset($_GET['id_valider'])) {
                     echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
                     echo "</div>";
 
-
-
-
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Valider ce compte membre</button>";
+                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_valider=' . $identifiant . '">Valider</a>';
+                    echo '<a href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";

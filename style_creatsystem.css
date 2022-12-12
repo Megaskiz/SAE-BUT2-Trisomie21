@@ -426,7 +426,6 @@ footer {
 .forme .plan input:checked+label:after,
 .forme .payment-plan input:checked+label:after,
 .forme .payment-type input:checked+label:after {
-    content: "\2713";
     width: 40px;
     height: 40px;
     line-height: 40px;
