@@ -105,7 +105,6 @@ main {
     background: grey;
 }
 
-
 .bouton_enfant {
     margin: auto;
     width: 50%;
@@ -374,7 +373,7 @@ textarea {
 .nav-links li.active:not(.md-header-toolbar) button,
 .nav-links li:not(.md-header-toolbar) a.active {
     color: #000;
-    box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
+    box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #6666c4);
 }
 
 .nav-links li:not(.md-header-toolbar) a,

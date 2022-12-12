@@ -3,23 +3,22 @@
 
 /* Header */
 
-table,td {
+table,
+td {
     border-collapse: collapse;
     padding: 1rem;
 }
 
-.Profil{
+.Profil {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
-    
 }
 
 .Profil2 {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
-  
 }
 
 
@@ -99,7 +98,6 @@ header {
     background-color: white;
 }
 
-
 .logo-association {
     width: 80%;
     padding-left: 2%;
@@ -162,7 +160,7 @@ main {
 .nav-links li:not(.md-header-toolbar) a.active {
     color: #000;
     background-color: #fff;
-    box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
+    box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #6666c4);
 }
 
 .nav-links li:not(.md-header-toolbar) a,
@@ -462,7 +460,7 @@ main {
     place-items: center;
 }
 
-.img-tuteur{
+.img-tuteur {
     width: 80%;
     margin: auto;
 }
@@ -483,8 +481,6 @@ main {
     margin: 2%;
     font-size: 100%;
 }
-
-
 
 textarea {
     height: 95%;
