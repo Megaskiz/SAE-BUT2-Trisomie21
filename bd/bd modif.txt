@@ -11,4 +11,4 @@ dans la table objectif de la bd
 
 modif photo enfant :
 
-ALTER TABLE enfant ADD photo_enfant VARCHAR(90);
+ALTER TABLE enfant ADD photo_enfant VARCHAR(100);
