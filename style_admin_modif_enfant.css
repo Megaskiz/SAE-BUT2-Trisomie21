@@ -100,12 +100,6 @@ main {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-input{
-
-    
-
-}
-
 .ajouter-enfant:hover {
     color: #fff;
     cursor: pointer;
