@@ -89,7 +89,7 @@ if (isset($_GET['id_valider'])) {
                 </li>
             </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
-                <div class="test">
+                <div class="bouton_tuteur">
                     <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un membre</button>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
@@ -362,12 +362,12 @@ if (isset($_GET['id_valider'])) {
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>  Nom :<strong> $nom_membre</strong></p>";
                     echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
                     echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Adresse : $adresse_membre  $ville_membre</p>";
+                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
+                    echo "<p>Adresse : <strong>$adresse_membre  $ville_membre </strong></p>";
                     echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
                     echo "</div>";
 
@@ -398,11 +398,11 @@ if (isset($_GET['id_valider'])) {
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>  Nom :<strong> $nom_membre</strong></p>";
                     echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
+                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
                     echo "<p>Adresse : <strong> $adresse_membre  $ville_membre </strong></p>";
                     echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
                     echo "</div>";

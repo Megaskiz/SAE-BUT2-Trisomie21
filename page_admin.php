@@ -88,7 +88,7 @@ if (isset($_GET['id_suppr'])) {
                 </li>
             </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant" */ -->
-                <div>
+                <div class="bouton_enfant">
                     <button class="ajouter-enfant" type="button" onclick="openDialog('dialog1', this)">Ajouter un enfant</button>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">

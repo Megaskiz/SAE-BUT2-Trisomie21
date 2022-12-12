@@ -5,7 +5,7 @@
     position: absolute;
     left: 10%;
     height: 100%;
-    overflow: auto;
+    
   }
 
   .grille{
@@ -232,12 +232,11 @@
     color: #EF3B3A;
   }
   body {
+    min-height: 100vh;
     background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(255,198,76,1) 0%, rgba(69,45,253,1) 100%); 
   }
-  html{
-    width: 100%;
-  }
+  
   
 }
 
