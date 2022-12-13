@@ -358,6 +358,15 @@ if (isset($_GET['id_suppr'])) {
                             echo"durée de l'objectif (en semaine(s)) : ";
                             print_r(1);
                             echo "</td>";
+                            
+
+                            
+                            echo "<td>";
+
+                            echo '<a href="envoie_membre_message.php?id_objectif='.$double_tab[$i][5].'"><button class="message">Message</button></a>';
+
+                            echo "</td>";
+
                             echo "<td>";
                             echo"niveau de priorité  : ";
                             print_r($double_tab[$i][3]);
