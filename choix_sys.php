@@ -123,13 +123,13 @@ if (isset ($_GET['id_sys']))  {
                    //ajout des cases de jetons
                    foreach($tab_jeton as $case_tab){
                        if($case_tab==0){
-                           echo"<td id=$compteur >";
+                           echo"<td class='case_jeton' id=$compteur >";
                            echo'<a href="choix_sys_ajout.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine.'" style="display: block;width: 5rem;height: 5rem;"></a>';
                            echo"</td>";
            
                        }else{
                             
-                           echo"<td id=$compteur>";
+                           echo"<td class='case_jeton' id=$compteur>";
                            
                            echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                            echo"</td>";

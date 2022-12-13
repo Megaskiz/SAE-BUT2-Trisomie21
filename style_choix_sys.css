@@ -7,6 +7,12 @@
 
 }
 
+img{
+    max-height: 80px;
+    max-width: 80px;
+}
+
+
 :root{
     --couleur: rgb(200, 212, 212);
 }
@@ -53,6 +59,11 @@ td {
     display: flex;
     justify-content: center;
     padding-top: 5%;
+    width: fit-content;
+}
+
+.case_jeton{
+    
 }
 
 h1 {

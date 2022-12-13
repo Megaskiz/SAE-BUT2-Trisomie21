@@ -133,7 +133,7 @@ body {
 
 main {
     display: grid;
-    grid-template-columns: 23% 1fr;
+    grid-template-columns: 40% 1fr;
     min-height: 85vh;
     margin: 2%;
     border-radius: 10px;

@@ -123,12 +123,6 @@ if (isset($_GET['id_suppr'])) {
                                         <input name="photo_enfant" type="file" class="zip_input" required="required">
                                     </label>
                                 </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">jeton:</span>
-                                        <input name="lien_jeton" type="file" class="zip_input" required="required">
-                                    </label>
-                                </div>
                                 <div class="dialog_form_actions">
                                     <button type="submit">Valider l'ajout</button>
                                     <button type="button" onclick="closeDialog(this)">Annuler</button>
