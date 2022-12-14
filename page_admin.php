@@ -247,20 +247,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier une photo</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-
-                    echo"<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
-
-                    echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">modifier une photo</h2>";
-
-                    echo"<form enctype=\"multipart/form-data\" action=\"insert_photo.php\" method=\"post\" class=\"dialog_form\">";
-                    echo "<div class=\"dialog_form_item\">";
-                    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
-                    echo "</div><div class=\"dialog_form_actions\">";
-                    echo"<button type=\"submit\">Valider l'ajout</button>";
-                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
-
+                    
                     echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 

@@ -317,15 +317,16 @@ main {
     margin-right: 3%;
 }
 
-.grille2cases{
+.grille2cases {
     display: grid;
     grid-template-rows: 1fr 1fr;
+    height: 90%;
 }
-.grille_4_cases{
+
+.grille_4_cases {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 50% 50%;
-    
 }
 
 .case-enfant {
@@ -362,7 +363,9 @@ textarea {
 }
 
 .logo-enfant {
-    width: 30%;
+    width: 28%;
+    margin: 2%;
+    border-radius: 10px;
 }
 
 .text-complementaire {
