@@ -244,7 +244,7 @@ if (isset($_GET['id_suppr'])) {
                     //<!---- menu droit information sur l'enfant ---->
 
                     
-                    echo"<div class='grille2cases'>"; //morceau de gauche (logo enfant + boutons) :
+                    echo "<div class='grille2cases'>"; //morceau de gauche (logo enfant + boutons) :
 
 
 
