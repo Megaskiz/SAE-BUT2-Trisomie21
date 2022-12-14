@@ -4,9 +4,9 @@
 /* Header */
 
 
-table,td {
-    border-collapse:collapse;
-    border:solid black 1px;
+table,
+td {
+    border-collapse: collapse;
     padding: 1rem;
 }
 
@@ -33,15 +33,13 @@ header {
     width: 80%;
     padding-left: 2%;
     padding-top: 2%;
-
 }
 
 .img-user {
     grid-column: 3;
-    height: 60%;
-    margin: 12%;
+    width: 40%;
+    margin: auto;
 }
-
 
 
 /* Boutton déconnexion*/
@@ -50,7 +48,7 @@ header {
     text-decoration: none;
     color: black;
     list-style-type: none;
-    padding: 30%;
+    margin: 4vh;
 }
 
 
@@ -63,7 +61,6 @@ h1{
 }
 
 body {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,7 +72,7 @@ main {
     background-color: white;
     margin: 2%;
     border-radius: 10px;
-    height: 100%;
+    min-height: 85vh;
 }
 
 .flex_simple{
@@ -110,7 +107,6 @@ footer {
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     background-color: white;
-    height: 12vh;
 }
 
 .f-contenu {
@@ -118,13 +114,11 @@ footer {
     margin: 0;
 }
 
-
 .footer-logo-association {
     width: 50%;
     grid-column: 1;
     margin: auto;
 }
-
 
 .f-menu {
     display: grid;
@@ -134,16 +128,13 @@ footer {
     margin-left: 20%;
 }
 
-
 footer p {
     text-align: center;
 }
 
-
 .f-copyright {
     width: 15%;
     margin-left: 40%;
-
 }
 
 .lien_supp {
