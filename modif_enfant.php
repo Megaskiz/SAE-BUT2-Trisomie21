@@ -249,7 +249,7 @@ if (isset($_GET['id_suppr'])) {
 
 
                     // case du logo de l'enfant
-                    echo"<div class=\"case-enfant\">";
+                    echo "<div class=\"case-enfant\">";
                     //--------
                     echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier la photo</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
