@@ -71,7 +71,7 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
+        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
     </header>
 
 

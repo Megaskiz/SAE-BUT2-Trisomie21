@@ -36,8 +36,8 @@ header {
 
 .img-user {
     grid-column: 3;
-    height: 50%;
-    margin: 12%;
+    width: 40%;
+    margin: auto;
 }
 
 
@@ -47,8 +47,9 @@ header {
     text-decoration: none;
     color: black;
     list-style-type: none;
-    padding: 30%;
+    margin: 4vh;
 }
+
 
 
 /*------------------------ Body--------------------*/
@@ -63,7 +64,7 @@ body {
 
 main {
     display: grid;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 23% 1fr;
     min-height: 85vh;
     margin: 2%;
     border-radius: 10px;
@@ -473,7 +474,6 @@ footer {
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     background-color: white;
-    /* height: 12vh; */
 }
 
 .f-contenu {
