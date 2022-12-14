@@ -290,7 +290,7 @@ if (isset($_GET['id_suppr'])) {
 
                     echo " <div class=\"case-enfant\">";
                     if($_SESSION["logged_user"]==1){
-                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -304,9 +304,10 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
                     echo "</div>";
 
-                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+                   
+                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
 
-                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                    
                 }
                     echo "</div>";
                     
@@ -333,6 +334,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</section>";
                     
                     echo "<section class=\"nb-systeme\">";
+                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
 
 
                     //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
