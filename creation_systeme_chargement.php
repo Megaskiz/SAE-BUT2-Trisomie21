@@ -129,7 +129,7 @@ if (isset($_GET['id_suppr'])) {
             <input class="button" type="submit" value="Valider le système">
         </form>
         <div style="float:right;">
-        <button class="annuler"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler la création de système</a></button>
+        <button class="button_annuler_sys"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler la création de système</a></button>
         </div>
     </main>
 

@@ -83,14 +83,22 @@ main {
 
 }
 
-input{
-    width: 50%;
-}
+
 
 .tableau{
   margin: auto;
   width: 50%;
   
+}
+
+.button_valider_sys{
+    margin: auto;
+}
+
+
+.button_annuler_sys{
+    margin: left;
+
 }
 
 
