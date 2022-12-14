@@ -334,7 +334,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</section>";
                     
                     echo "<section class=\"nb-systeme\">";
-                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                    echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
 
 
                     //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
