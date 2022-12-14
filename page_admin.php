@@ -83,56 +83,67 @@ if (isset($_GET['id_suppr'])) {
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
-                <li class="nav-item">
-                    <a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>
-                </li>
+                <?php
+                if($_SESSION["logged_user"]==1){
+
+                echo'<li class="nav-item">';
+                    echo'<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
+                echo'</li>';                
+                }
+
+                ?>
             </ul>
-            <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant" */ -->
-                <div class="bouton_enfant">
+            <?php
 
-                    <button class="ajouter-enfant" type="button" onclick="openDialog('dialog1', this)">Ajouter un enfant</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>
-                            <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">nom :</span>
-                                        <input name="nom" type="text" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">prenom:</span>
-                                        <input name="prenom" type="text" class="city_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">date de naissance:</span>
-                                        <input name="date_naissance" type="date" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">jeton:</span>
-                                        <input name="lien_jeton" type="file" class="zip_input" required="required">
-                                    </label>
-                                    <label>
-                                        <span class="label_text">photo:</span>
-                                        <input name="photo_enfant" type="file" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_actions">
-                                    <button type="submit">Valider l'ajout</button>
-                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            if($_SESSION["logged_user"]==1){
+                
+            //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+                echo'<div class="bouton_enfant">';
+                   echo'<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant</button>';
+                    echo'<div id="dialog_layer" class="dialogs">';
+                        echo'<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                            echo'<h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>';
+                            echo'<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
+                                echo'<div class="dialog_form_item">';
+                                    echo'<label>';
+                                        echo'<span class="label_text">nom :</span>';
+                                        echo'<input name="nom" type="text" required="required">';
+                                    echo'</label>';
+                                echo'</div>';
+                                echo'<div class="dialog_form_item">';
+                                    echo'<label>';
+                                        echo'<span class="label_text">prenom:</span>';
+                                        echo'<input name="prenom" type="text" class="city_input" required="required">';
+                                    echo'</label>';
+                                echo'</div>';
+                                echo'<div class="dialog_form_item">';
+                                    echo'<label>';
+                                        echo'<span class="label_text">date de naissance:</span>';
+                                        echo'<input name="date_naissance" type="date" class="state_input" required="required">';
+                                    echo'</label>';
+                                echo'</div>';
+                                echo'<div class="dialog_form_item">';
+                                    echo'<label>';
+                                        echo'<span class="label_text">jeton:</span>';
+                                        echo'<input name="lien_jeton" type="file" class="zip_input" required="required">';
+                                    echo'</label>';
+                                    echo'<label>';
+                                        echo'<span class="label_text">photo:</span>';
+                                        echo'<input name="photo_enfant" type="file" class="zip_input" required="required">';
+                                    echo'</label>';
+                                echo'</div>';
+                                echo'<div class="dialog_form_actions">';
+                                    echo'<button type="submit">Valider l\'ajout</button>';
+                                    echo'<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                                echo'</div>';
+                            echo'</form>';
+                        echo'</div>';
+                    echo'</div>';
+                echo'</div>';
 
-                <! -- /* fin de la fenêtre popin de l'ajout d'enfant" */ -->
+                /* fin de la fenêtre popin de l'ajout d'enfant" */
+                }
+                ?>
 
 
                     <?php
@@ -247,7 +258,21 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    
+                    if($_SESSION["logged_user"]==1){
+                    echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier une photo</button>";
+                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+
+                    echo"<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
+
+                    echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">modifier une photo</h2>";
+
+                    echo"<form enctype=\"multipart/form-data\" action=\"insert_photo.php\" method=\"post\" class=\"dialog_form\">";
+                    echo "<div class=\"dialog_form_item\">";
+                    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
+                    echo "</div><div class=\"dialog_form_actions\">";
+                    echo"<button type=\"submit\">Valider l'ajout</button>";
+                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
+                    }
                     echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
@@ -264,7 +289,8 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
-                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+                    if($_SESSION["logged_user"]==1){
+                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -278,11 +304,10 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
                     echo "</div>";
 
-                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
-                   
+                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
 
-                    
-
+                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                }
                     echo "</div>";
                     
                     
@@ -310,7 +335,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<section class=\"nb-systeme\">";
 
 
-                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                    //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
 
                     // tous les systèmes de l'enfant :
 
@@ -363,6 +388,7 @@ if (isset($_GET['id_suppr'])) {
                             echo "<td>";
                             echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
                             echo "</td>";
+                            if($_SESSION["logged_user"]==1){
                             switch ($double_tab[$i][4]) {
                                 case 1:
                                     echo "<td>";
@@ -375,9 +401,10 @@ if (isset($_GET['id_suppr'])) {
                                     echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
                                     echo "</td>";
                                     break;
-                            }
+                            }}
                             echo "<td>";
                                 echo " <div class=\"case-enfant\">";
+                                if($_SESSION["logged_user"]==1){
                                 echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
                                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                                 echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -388,6 +415,7 @@ if (isset($_GET['id_suppr'])) {
                                         echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                                     echo "</div>";
                                 echo "</form>";
+                                }
                                 echo "</div>";
                                 echo "</div>";
                             echo "</td>";
