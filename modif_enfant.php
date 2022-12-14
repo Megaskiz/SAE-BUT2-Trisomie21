@@ -302,7 +302,6 @@ if (isset($_GET['id_suppr'])) {
                     }
                 }
 
-
                 echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
 
                 echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
