@@ -3,7 +3,7 @@ require('fonctions.php');
 is_logged();
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
 ///Connexion au serveur MySQL

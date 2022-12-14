@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
 require('fonctions.php');

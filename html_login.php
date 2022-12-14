@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html>
+<html lang="fr" style="font-family: Arial,sans-serif;">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./style_login.css" media="screen" type="text/css" />

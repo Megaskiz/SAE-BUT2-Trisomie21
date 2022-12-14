@@ -42,7 +42,7 @@ if(isset($_GET['id_objectif']) AND !empty($_GET['id_objectif'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
