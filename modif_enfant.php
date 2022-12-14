@@ -67,10 +67,24 @@ if (isset($_GET['id_suppr'])) {
 
             echo "</tr>";
         }
-
         echo "</table>";
+
+        if (isset($_FILES['photo_enfant'])) {
+            $id = $_SESSION["id_enfant"];
+            $photo_enfant = uploadImage($_FILES['photo_enfant']);
+            $reqM = "UPDATE enfant SET photo_enfant = '$photo_enfant' WHERE enfant.id_enfant = $id;";
+            try {
+                $res = $linkpdo->query($reqM);
+                echo $reqM;
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+            header("Refresh:0");
+        }
         ?>
         <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+
+
     </header>
 
 
@@ -283,24 +297,13 @@ if (isset($_GET['id_suppr'])) {
                 echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                 echo "<div class=\"dialog_form_actions\">";
                 echo "<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
-                
+
 
                 echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                 echo "</div>";
                 echo "</form>";
                 echo "</div>";
                 echo "</div>";
-
-                if (isset($_FILES['photo_enfant'])){
-                
-                    $photo_enfant = uploadImage($_FILES['photo_enfant']);
-                    $reqM="UPDATE enfant SET photo_enfant = '$photo_enfant' WHERE enfant.id_enfant = $id;";
-                    try {
-                        $res = $linkpdo->query($reqM);
-                    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
-                }
 
                 echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
 
