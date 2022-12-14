@@ -66,7 +66,9 @@ main {
 
 .hidden {
     display: none;
+    margin: 1%;
 }
+
 
 [role="alertdialog"],
 [role="dialog"] {
@@ -78,6 +80,7 @@ main {
 }
 
 @media screen and (min-width: 640px) {
+
     [role="alertdialog"],
     [role="dialog"] {
         position: absolute;
@@ -411,7 +414,7 @@ footer {
 
 .forme label:hover {
     cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    background: green;
     color: #fff;
 }
 
@@ -420,7 +423,7 @@ footer {
 .forme .payment-type input:checked+label {
     padding: 3%;
     color: #fff;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    background: green;
 }
 
 .forme .plan input:checked+label:after,
@@ -439,41 +442,70 @@ footer {
     text-align: center;
 }
 
-.submit {
+
+.retour  {
+    color: black;
+    cursor: pointer;
+    font-size: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 24%);
+    height: 30%;
+    width: 40%;
+    margin: auto;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    list-style-type: none;
+}
+
+.retour:hover {
+    color: #fff;
+    cursor: pointer;
+    font-size: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+
+.valider {
     padding: 15px 60px;
-    display: grid;
-    margin-left: 80%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin: auto;
+    margin-left: 3%;
     color: rgb(0, 0, 0);
     font-size: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+
+.valider:hover {
+    background: green;
+    color: #fff;
+}
+
+
+
 .annuler {
-    display: grid;
+    padding: 15px 60px;
     margin: auto;
-    margin-top: 2%;
-    color: #000;
+    margin-left: 30%;
+    color: rgb(0, 0, 0);
     font-size: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    width: 90%;
-    text-align: center;
 }
 
 .annuler:hover {
     cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    background: red;
     color: #fff;
 }
 
-.submit:hover {
-    cursor: pointer;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
-    color: #fff;
-}
+
 
 .info-enfant {
     display: grid;

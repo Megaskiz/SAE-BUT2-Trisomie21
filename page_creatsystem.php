@@ -62,7 +62,7 @@ catch (Exception $e) {
     <main>
         <nav class="nav-enfant">
             <div class="info-enfant">
-                <button class="annuler"><a href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">annuler</a></button>
+            <button class="retour"><a href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">Retour</a></button>
                 <?php
                 $id = $_SESSION['id_enfant'];
                 ///Sélection de tout le contenu de la table carnet_adresse
@@ -83,12 +83,13 @@ catch (Exception $e) {
                     $datefinal = new DateTime($date);
                     echo (ucfirst(
                         "
-                        <div class='id-enfant'> <a class='id-nom'>Nom enfant :  <strong>$data[1] </strong></a> </div>
-                        <div class='id-enfan'> <a class='id-prenm'>Prénom enfant :  <strong>$data[2]  </strong></a> </div>
-                        <div class='id-enfant'> <a class='id-age'>Date de naissance enfant :<strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
-                        <div class='id-enfants'> <a class='id-adresse'>Adresse enfant : $data[5] </a></div>
-                        <div class='id-enfants'> <a class='id-activite'>Activité enfant : $data[6] </a></div>
-                        <div class='id-enfants'> <a class='id-activite'>Handicap enfant : $data[7] </a></div>"
+                        <div class='id-enfant'> <a class='id-nom'>Nom: <strong> $data[1] </strong></a> </div>
+                        <div class='id-enfan'> <a class='id-prenm'>Prénom: <strong> $data[2]  </strong></a> </div>
+                        <div class='id-enfant'> <a class='id-age'>Date de naissance: <strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
+                        <div class='id-enfants'> <a class='id-adresse'>Adresse: <strong> $data[5] </strong> </a></div>
+                        <div class='id-enfants'> <a class='id-activite'>Handicap : <strong> $data[7] </strong> </a></div>
+                        <div class='id-enfants'> <a class='id-activite'>Activité : <strong> $data[6] </strong> </a></div>"
+                        
                     )
                     );
                 }
@@ -97,22 +98,25 @@ catch (Exception $e) {
         </nav>
         <div class="container">
             <div>
-                <form action="test.php" class="forme titre" method="POST">
+                <form action="test.php" class="forme titre" method="POST" >
                     <section class="plan titre">
-                        <h2 class="titletype">Choisir le type de système :</h2>
+                        <h2 class="titletype">Choisissez le type de système :</h2>
                         <input type="radio" name="radio1" id="choix11" value="1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps choisi</label>
                         <input type="radio" name="radio1" id="choix12" value="2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
                         <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
                     </section>
                     <section class="payment-plan titre">
                         <h2 class="titletype">Choisissez le type de récompense :</h2>
-                        <input type="radio" name="radio2" id="choix21" value="4"><label class="choix21-label four col" for="choix21">l'ensemble du système est orienté vers un prix unique</label>
-                        <input type="radio" name="radio2" id="choix22" value="5"><label class="choix22-label four col" for="choix22">le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses</label>
+                        <input type="radio" name="radio2" id="choix21" value="4"><label class="choix21-label four col" for="choix21">L'ensemble du système est orienté vers un prix unique</label>
+                        <input type="radio" name="radio2" id="choix22" value="5"><label class="choix22-label four col" for="choix22">Le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses</label>
                         <input type="radio" name="radio2" id="choix23" value="6"><label class="choix23-label four col" for="choix23">Une fois terminé, le système propose une banque de coupons qui ont tous la même valeur, de sorte que l'enfant n'en prend qu'un ou plusieurs</label>
                     </section>
-                    </br>
-                    </br>
-                    <input class="submit" type="submit" value="Valider">
+                    
+                    <div>
+                    <button type="button" class="annuler" onclick="document.location.reload()"> Annuler</button>
+                    <input class="valider" type="submit" value="Valider">
+                    </div>
+                    
                 </form>
             </div>
         </div>
