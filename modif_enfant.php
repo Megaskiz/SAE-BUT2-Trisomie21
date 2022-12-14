@@ -67,7 +67,6 @@ if (isset($_GET['id_suppr'])) {
 
             echo "</tr>";
         }
-
         echo "</table>";
 
         if (isset($_FILES['photo_enfant'])) {
