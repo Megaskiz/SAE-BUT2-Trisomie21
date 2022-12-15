@@ -65,11 +65,11 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                 while ($message = $recupMessages->fetch()) {
                     if ($message['id_membre'] == $_SESSION['logged_user']) {
                 ?>
-                        <p> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . " (vous) : " . $message["corps"]; ?> </p>
+                        <p class="vous"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . " (vous) : " . $message["corps"]; ?> </p>
                     <?php
                     } else {
                     ?>
-                        <p> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : " . $message["corps"]; ?> </p>
+                        <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : " . $message["corps"]; ?> </p>
                     <?php
                     }
                     ?>

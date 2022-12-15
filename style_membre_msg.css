@@ -25,6 +25,14 @@ body {
     padding: 2%;
 }
 
+.vous {
+    text-align: left;
+}
+
+.autre {
+    text-align: right;
+}
+
 .envoi_msg {
     height: 40%;
     margin-top: 10%;
