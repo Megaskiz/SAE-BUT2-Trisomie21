@@ -53,7 +53,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
         <div class="list_msg">
             <section id="message">
                 <?php
-                $recupMessages = $linkpdo->prepare('SELECT corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
+                $recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
                 if (!$recupMessages) {
                     die("Erreur prepare");
                 }
@@ -65,11 +65,11 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                 while ($message = $recupMessages->fetch()) {
                     if ($message['id_membre'] == $_SESSION['logged_user']) {
                 ?>
-                        <p class="vous"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . " (vous) : " . $message["corps"]; ?> </p>
+                        <p class="vous"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . " (vous) : " ."Sujet :" .$message["sujet"] ."<br>". $message["corps"]; ?> </p>
                     <?php
                     } else {
                     ?>
-                        <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : " . $message["corps"]; ?> </p>
+                        <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : "  ."Sujet :" .$message["sujet"] ."<br>" . $message["corps"]; ?> </p>
                     <?php
                     }
                     ?>
