@@ -374,7 +374,7 @@ if (isset($_GET['id_suppr'])) {
                 //case info supp
                 echo "<div class=\"case-enfant\">";
                 echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
-                echo "<button>valider</button>";
+                echo "<button  >valider</button>";
                 echo "</div>";
 
                 echo "</div>";
