@@ -3,7 +3,7 @@ require('fonctions.php');
 is_logged();
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
 ///Connexion au serveur MySQL
@@ -86,7 +86,8 @@ else{
     $rows = 0;
 }
 ?>
-<style>
+
+<!---<style>
     table, td {
     border-collapse:collapse;
     border:solid black 1px;
@@ -101,7 +102,9 @@ else{
         background: rgb(212, 210, 210);
         padding:10px;
     }
-</style>
+</style>--->
+
+
         <form action="" method="post" class="form-nb-taches">
             <div class="flex_simple">
             <label>combien de taches voulez vous inserer ? : </label>

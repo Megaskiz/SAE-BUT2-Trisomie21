@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
 require('fonctions.php');
@@ -258,21 +258,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    if($_SESSION["logged_user"]==1){
-                    echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier une photo</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-
-                    echo"<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
-
-                    echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">modifier une photo</h2>";
-
-                    echo"<form enctype=\"multipart/form-data\" action=\"insert_photo.php\" method=\"post\" class=\"dialog_form\">";
-                    echo "<div class=\"dialog_form_item\">";
-                    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
-                    echo "</div><div class=\"dialog_form_actions\">";
-                    echo"<button type=\"submit\">Valider l'ajout</button>";
-                    echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
-                    }
+                    
                     echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
@@ -290,7 +276,7 @@ if (isset($_GET['id_suppr'])) {
 
                     echo " <div class=\"case-enfant\">";
                     if($_SESSION["logged_user"]==1){
-                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -304,9 +290,10 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
                     echo "</div>";
 
-                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+                   
+                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
 
-                    echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                    
                 }
                     echo "</div>";
                     
@@ -333,6 +320,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</section>";
                     
                     echo "<section class=\"nb-systeme\">";
+                    echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
 
 
                     //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';

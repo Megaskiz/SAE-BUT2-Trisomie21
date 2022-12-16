@@ -112,7 +112,7 @@
         }
 
 ?>
-<html>
+<html lang="fr" style="font-family: Arial,sans-serif;">
     <head>
         <meta charset="utf-8">
         <!-- importer le fichier de style -->

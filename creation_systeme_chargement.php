@@ -3,7 +3,7 @@ require('fonctions.php');
 is_logged();
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
 ///Connexion au serveur MySQL
@@ -78,22 +78,7 @@ if (isset($_GET['id_suppr'])) {
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <main>
-<style>
-    table, td {
-    border-collapse:collapse;
-    border:solid black 1px;
-    padding: 1rem;
-    }
-    form {
-        max-width:1000px;
-        margin:auto;
-    }
-    label {
-        display:block;
-        background: rgb(212, 210, 210);
-        padding:10px;
-    }
-</style>  
+
 
         
 
