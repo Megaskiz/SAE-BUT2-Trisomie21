@@ -53,6 +53,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
     echo '<button class="retour">
             <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '">retour au menu</a>
         </button>';
+
     ?>
     <div class="all">
         <div class="list_msg">
