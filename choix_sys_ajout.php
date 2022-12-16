@@ -20,7 +20,7 @@ if (isset ($_GET['case']))  {
             if ($compteur_de_0==$case_tableau){
                 $tab_string[$i]=1;
                 $compteur_de_0+=1;
-                echo"la modif est faite";echo"<br>";
+                //echo"la modif est faite";echo"<br>";
             }
             else{
                 $compteur_de_0+=1;
