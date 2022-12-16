@@ -290,8 +290,6 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
                     echo "</div>";
 
-                   
-                    echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
 
                     
                 }
