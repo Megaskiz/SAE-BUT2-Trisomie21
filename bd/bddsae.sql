@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 11 déc. 2022 à 14:15
+-- Généré le : ven. 16 déc. 2022 à 12:18
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -36,16 +36,18 @@ CREATE TABLE `enfant` (
   `adresse` varchar(100) DEFAULT NULL,
   `activite` varchar(100) DEFAULT NULL,
   `handicap` varchar(100) DEFAULT NULL,
-  `info_sup` varchar(1000) DEFAULT NULL
+  `info_sup` varchar(1000) DEFAULT NULL,
+  `photo_enfant` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `enfant`
 --
 
-INSERT INTO `enfant` (`id_enfant`, `nom`, `prenom`, `date_naissance`, `lien_jeton`, `adresse`, `activite`, `handicap`, `info_sup`) VALUES
-(27, 'thouverey', 'Guillaume', '2023-09-22', 'images/pngegg.png', 'adresse', 'escalade', 'trisomie', 'adore faire des sudoku'),
-(28, 'de trochel', 'paul jean', '2003-06-30', 'images/6390a3e21a4ce6.79858360.jpg', 'un deux', 'tir arc', 'un deux', 'doit aller aux toilettes très régulièrement');
+INSERT INTO `enfant` (`id_enfant`, `nom`, `prenom`, `date_naissance`, `lien_jeton`, `adresse`, `activite`, `handicap`, `info_sup`, `photo_enfant`) VALUES
+(27, 'thouverey', 'Guillaume', '2023-09-22', 'images/pngegg.png', 'adresse', 'escalade', 'autisme', 'adore faire des sudoku', NULL),
+(28, 'de trochel', 'paul jean', '2003-06-30', 'images/6390a3e21a4ce6.79858360.jpg', 'un deux', 'football', 'un deux', 'doit aller aux toilettes très régulièrement', NULL),
+(30, 'un', 'enfant', '2003-06-30', 'images/6395dba58592c7.62580849.webp', '', 'foot', '', 'est très timide\r\n', NULL);
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,7 @@ CREATE TABLE `membre` (
   `ville` varchar(50) DEFAULT NULL,
   `courriel` varchar(50) DEFAULT NULL,
   `date_naissance` date NOT NULL,
-  `mdp` varchar(50) DEFAULT NULL,
+  `mdp` varchar(500) DEFAULT NULL,
   `pro` tinyint(1) DEFAULT NULL,
   `compte_valide` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -83,9 +85,11 @@ CREATE TABLE `membre` (
 --
 
 INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `courriel`, `date_naissance`, `mdp`, `pro`, `compte_valide`) VALUES
-(1, 'compte', 'administrateur', '24 rue du taur ', '31000', 'toulouse', 'test@gmail.com', '1996-12-27', 'admin', 1, 1),
-(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie\r\n', '38600', 'fontaine', 'christine@mail.com', '1993-09-15', 'huppe', 0, 0),
-(3, 'Lazure', 'Thomas', '97, Boulevard de Normandie', '97200', 'fort-de-france', 'thomas@mail.com', '1993-09-15', 'thomas', 0, 1);
+(1, 'compte', 'administrateur', '24 rue du taur ', '31000', 'toulouse', 'test@gmail.com', '1996-12-27', 'e712226da3facf4c458d431a4068ce0cb47df2cf30f44636255db54adb76caa7', 1, 1),
+(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie\r\n', '38600', 'fontaine', 'christine@mail.com', '1993-09-15', '9425e1d10c0b47f77b61c759365f6c0089e1aea1d5f3fa9632afa48136e41287', 0, 1),
+(3, 'Lazure', 'Thomas', '97, Boulevard de Normandie', '97200', 'fort-de-france', 'thomas@mail.com', '1993-09-15', '1ebb92636717caa01d195ad0091f642d0a3d4f73a5cbe6ebb3502267d3c96d22', 0, 1),
+(9, 'trochel', 'paul', '77 chemin ponsan', '31000', 'toulouse', 'trochel.paul@gmail.com', '2003-06-30', 'a47fdb4f44865cd6e9d8f0c77733be25c29f6719e34a9cc67cabb405df8ff684', 0, 1),
+(17, 'paul', 'trochel', 'ljm', '5555', 'laùj', '1@mail.com', '3030-03-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,9 +131,10 @@ CREATE TABLE `objectif` (
 --
 
 INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`) VALUES
-(3, 'cours de français', 'reste concentré 5minutes_1111111100:', 10, 1, 'jeton', 2, 1, 1, 27, 1),
 (4, 'maison', 'tacheun_1111111:tachedeux_1111111:', 14, 1, 'jeton', 0, 1, 1, 27, 3),
-(7, 'ecole', 'etre bien sage_0000010000:', 10, 1, 'jeton', 1, 0, 1, 28, 1);
+(7, 'ecole', 'etre bien sage_111111111111:', 12, 1, 'jeton', 1, 0, 1, 28, 1),
+(8, 'devoirs', 'ne pas manger sa colle_11:', 2, 1, 'jeton', 1, 0, 1, 28, 1),
+(9, 'systeme maison', 'bien manger le matin_1100000:ne pas manger son caca_1100000:bien faire caca dans les toilettes_0100000:', 21, 1, 'jeton', 0, 0, 1, 27, 3);
 
 -- --------------------------------------------------------
 
@@ -236,25 +241,25 @@ ALTER TABLE `suivre`
 -- AUTO_INCREMENT pour la table `enfant`
 --
 ALTER TABLE `enfant`
-  MODIFY `id_enfant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_enfant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `membre`
 --
 ALTER TABLE `membre`
-  MODIFY `id_membre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_membre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `objectif`
 --
 ALTER TABLE `objectif`
-  MODIFY `id_objectif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_objectif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `recompense`
