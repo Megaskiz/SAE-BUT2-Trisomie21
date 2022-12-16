@@ -22,12 +22,15 @@
     // je récupere les informations de mon formulaire
     if (!empty($_POST['courriel']) && !empty($_POST['password'])){
         $Courriel = $_POST['courriel'];
-        $Mdp = $_POST['password'];
+        //echo("ce que je test : ZEN02anWobA4ve5zxzZz".$_POST['password']);
+        //echo"<br>";
+        $mdp_test = hash('sha256',"ZEN02anWobA4ve5zxzZz".$_POST['password']);
+        //echo$mdp_test;
 
 
         // je creé la requete
-        $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$Mdp'";
-        $query2 = "SELECT id_membre FROM membre WHERE courriel='$Courriel' and mdp='$Mdp'";
+        $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
+        $query2 = "SELECT id_membre FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
                 // Execution de la requete
                 try {
                     $res = $linkpdo->query($query);

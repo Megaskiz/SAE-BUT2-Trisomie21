@@ -34,6 +34,10 @@
             $Mdp_verif = $_POST['password_verif'];
             $pro = $_POST['pro'];
 
+            // fonction qui hash le mot de passe
+            $mot = "ZEN02anWobA4ve5zxzZz".$Mdp; // je rajoute une chaine que je vais ajouter au mot de passe
+            $insert_mdp = hash('sha256', $mot);
+
             if  ($Mdp == $Mdp_verif){
                 // requete avec le mail si, rowcount() > 0 faire fail
                 $requete_verif_mail = "SELECT count(*) FROM membre WHERE courriel='$courriel'";
@@ -69,7 +73,7 @@
                                             'ville' => $ville,
                                             'courriel' => $courriel,
                                             'date_naissance' => $ddn,
-                                            'mdp' => $Mdp,
+                                            'mdp' => $insert_mdp,
                                             'pro' => $pro, // à changer
                                             'compte_valide' => 0
                                         
