@@ -27,11 +27,11 @@ body {
 }
 
 .vous {
-    text-align: left;
+    text-align: right;
 }
 
 .autre {
-    text-align: right;
+    text-align: left;
 }
 
 .envoi_msg {
