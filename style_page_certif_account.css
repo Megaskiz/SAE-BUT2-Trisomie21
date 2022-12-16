@@ -6,7 +6,7 @@
 table,
 td {
     border-collapse: collapse;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .Profil {
@@ -128,12 +128,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
+    background: linear-gradient(0deg, rgba(255,198,76,1) 0%, rgba(69,45,253,1) 100%);
 }
 
 main {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 23% 1fr;
     min-height: 85vh;
     margin: 2%;
     border-radius: 10px;
