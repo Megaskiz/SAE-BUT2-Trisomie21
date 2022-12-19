@@ -330,7 +330,7 @@ if (isset($_GET['id_suppr'])) {
 
                     ///Sélection de tout le contenu de la table enfant
                     try {
-                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id);
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant='.$id.' ORDER BY priorite');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -344,17 +344,21 @@ if (isset($_GET['id_suppr'])) {
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
+                        echo "<td>";
+                        echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
+                        echo "</td>";   
                             echo "<td>";
                             
                             print_r($double_tab[$i][0]);
                             echo "</td>";
                             echo "<td>";
-                            echo"nombre de jetons : ";
                             print_r($double_tab[$i][1]);
+                            echo" jetons";
                             echo "</td>";
                             echo "<td>";
-                            echo"durée de l'objectif (en semaine(s)) : ";
+                            echo"durée : ";
                             print_r(1);
+                            echo" jours";
                             echo "</td>";
                             
 
@@ -364,19 +368,11 @@ if (isset($_GET['id_suppr'])) {
                             echo '<a href="envoie_membre_message.php?id_objectif='.$double_tab[$i][5].'"><button class="message">Message</button></a>';
 
                             echo "</td>";
-
                             echo "<td>";
-                            echo"niveau de priorité  : ";
-                            print_r($double_tab[$i][3]);
-                            echo "</td>";
-                            echo "<td>";
-                            echo"statut : ";
                             if ($double_tab[$i][4]==1) {print_r("En Utilisation");}
                             else{print_r("Pas en utilisation");}
                             echo "</td>";
-                            echo "<td>";
-                            echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
-                            echo "</td>";
+                           
                             if($_SESSION["logged_user"]==1){
                             switch ($double_tab[$i][4]) {
                                 case 1:
