@@ -103,7 +103,7 @@ if (isset($_GET['id_suppr'])) {
                 </li>
             </ul>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant" */ -->
-                <div>
+                <div class="bouton_enfant">
                     <button class="ajouter-enfant" type="button" onclick="openDialog('dialog1', this)">Ajouter un enfant</button>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
@@ -290,7 +290,7 @@ if (isset($_GET['id_suppr'])) {
                 // case 3 boutons : supprimer, modifier, creer systeme
                 echo " <div class=\"case-enfant\">";
                 // dialog suppression
-                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+               
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                 echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                 echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -305,9 +305,10 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
                 echo "</div>";
 
-                echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+               
+                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
 
-                echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
+                
 
                 echo "</div>";
 
@@ -384,6 +385,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>"; // fin de la div "section-enfant"
 
                 echo "<section class=\"nb-systeme\">";
+                echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
 
 
 
