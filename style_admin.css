@@ -815,14 +815,12 @@ footer p {
     /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     
     .section_enfant {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 50% 50%;
         height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
         background-color: white;
         margin: 1%;
+        padding: 3%;
         
 
         
@@ -849,7 +847,13 @@ footer p {
         background-color: white;
         margin: 1%;
         overflow: auto;
-    }x  
+    }
+
+    .liste-enfant{
+        margin: auto;
+        width: 50%;
+        padding: 2vh;   
+    }
     
     
     .button_acceder {

@@ -159,7 +159,7 @@ if (isset($_GET['id_suppr'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
-                    echo "<table>";
+                    echo "<table class='liste-enfant'>";
 
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
