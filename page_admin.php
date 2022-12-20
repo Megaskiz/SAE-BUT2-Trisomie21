@@ -106,10 +106,13 @@ if (isset($_GET['id_suppr'])) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
-                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant</button>';
-                echo '<svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
+                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant
+                 <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-              </svg>';
+              </svg> </button>';
+
+
+
 
 
                 echo '<div id="dialog_layer" class="dialogs">';
@@ -171,7 +174,11 @@ if (isset($_GET['id_suppr'])) {
             $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
             $nombre_ligne = $res->rowCount();
             $liste = array();
-            echo "<table class='liste-enfant'>";
+
+            echo "<div class='liste-enfant'>";
+            echo "<table >";
+
+
 
 
             for ($i = 0; $i < $nombre_ligne; $i++) {
@@ -182,19 +189,24 @@ if (isset($_GET['id_suppr'])) {
                     $nom = $double_tab[$i][1];
                     $prenom = $double_tab[$i][2];
                     $age = $double_tab[0][$y];
+
                     echo "</td>";
                 }
+
+
                 $identifiant = $double_tab[$i][0];
                 echo "<td>";
+
                 echo '<a href="page_admin.php?id=' . $identifiant . '">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_info">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
                 </svg>
                 </a>';
                 echo "</td>";
+                
                 echo "</tr>";
+                
             }
-
 
             echo "</table>";
 
@@ -233,11 +245,7 @@ if (isset($_GET['id_suppr'])) {
             $handicap = $double_tab[0][7];
             $info_sup = $double_tab[0][8];
             $photo_enfant = $double_tab[0][9];
-            // echo$id_enfant;
-            // echo$nom_enfant;
-            // echo$prenom_enfant;
-            // echo$ddn_enfant;
-            // echo$lien_jeton_enfant;
+
 
 
 
@@ -258,6 +266,7 @@ if (isset($_GET['id_suppr'])) {
             // exit();
 
 
+            echo "</div>";
         }
 
 
@@ -493,14 +502,21 @@ if (isset($_GET['id_suppr'])) {
                 <svg fill="currentColor" width="40" height="40" viewBox="0 0 7 16" class="icone_fb">
                     <path d="M4.563 4.964h2.295l-0.268 2.536h-2.027v7.357h-3.045v-7.357h-1.518v-2.536h1.518v-1.527q0-1.625 0.768-2.46t2.527-0.835h2.027v2.536h-1.268q-0.348 0-0.558 0.058t-0.304 0.21-0.121 0.308-0.027 0.442v1.268z"></path>
                 </svg>
+<<<<<<< HEAD
 
             </a>
 
             <div>
+=======
+            </a>
+
+            <div class="f_tel">
+>>>>>>> cb87ab7c49988df02b6f6d9837d4310683a37354
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_tel">
                     <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
                     <path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z" clip-rule="evenodd" />
                 </svg>
+<<<<<<< HEAD
                 Téléphone : 06 .. .. .. ..
             </div>
 
@@ -509,6 +525,16 @@ if (isset($_GET['id_suppr'])) {
                     <path fill-rule="evenodd" d="M2.106 6.447A2 2 0 001 8.237V16a2 2 0 002 2h14a2 2 0 002-2V8.236a2 2 0 00-1.106-1.789l-7-3.5a2 2 0 00-1.788 0l-7 3.5zm1.48 4.007a.75.75 0 00-.671 1.342l5.855 2.928a2.75 2.75 0 002.46 0l5.852-2.926a.75.75 0 10-.67-1.342l-5.853 2.926a1.25 1.25 0 01-1.118 0l-5.856-2.928z" clip-rule="evenodd" />
                 </svg>
                 Mail: Trisomi21@mail.com
+=======
+                06 .. .. .. ..
+            </div>
+
+            <div class="f_mail">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_mail">
+                    <path fill-rule="evenodd" d="M2.106 6.447A2 2 0 001 8.237V16a2 2 0 002 2h14a2 2 0 002-2V8.236a2 2 0 00-1.106-1.789l-7-3.5a2 2 0 00-1.788 0l-7 3.5zm1.48 4.007a.75.75 0 00-.671 1.342l5.855 2.928a2.75 2.75 0 002.46 0l5.852-2.926a.75.75 0 10-.67-1.342l-5.853 2.926a1.25 1.25 0 01-1.118 0l-5.856-2.928z" clip-rule="evenodd" />
+                </svg>
+                Trisomi21@mail.com
+>>>>>>> cb87ab7c49988df02b6f6d9837d4310683a37354
             </div>
 
         </div>
