@@ -105,6 +105,7 @@ main {
 /* Boutton ajouter un enfant*/
 
 .ajouter-enfant {
+    display: flex;
     width: 100%;
     text-align: center;
     height: 10%;
@@ -115,6 +116,9 @@ main {
     cursor: pointer;
     color: white;
     margin: 10px;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
 }
 
 .icone-ajouter-enfant{
@@ -130,7 +134,7 @@ main {
 
 .bouton_enfant {
     margin: auto;
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -138,7 +142,7 @@ main {
 
 .icone-ajouter-enfant{
     margin: 0;
-    height: 20px;
+    height: 25px;
     cursor: pointer;
 }
 
@@ -498,25 +502,37 @@ footer {
 }
 
 
+.f_tel{
+    display: flex;
+    align-items: center;
+}
+
+.f_mail{
+    display: flex;
+    align-items: center;
+}
+
+
 
 .f_icone{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 7px;
 }
 
 .icone_fb{
     color: #000;
     text-decoration: none;
-    height: 40px;
+    height: 35px;
 }
 
 .icone_tel{
-    height: 40px;
+    height: 35px;
 }
 
 .icone_mail{
-    height:40px;
+    height:35px;
 }
 
 .footer-logo-association {
@@ -674,6 +690,7 @@ footer p {
     /* Boutton ajouter un enfant*/
     
     .ajouter-enfant {
+        display: flex;
         width: 100%;
         text-align: center;
         height: 10%;
@@ -683,7 +700,10 @@ footer p {
         background-color: #005097;
         cursor: pointer;
         color: white;
-        margin: 10px;
+        margin: 10px;   
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: center;
     }
     
     .icone-ajouter-enfant{
@@ -700,9 +720,6 @@ footer p {
     .bouton_enfant {
         margin: auto;
         width: 50%;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
     }
     
     .icone-ajouter-enfant{
@@ -1089,30 +1106,44 @@ footer p {
         background-color: white;
     }
     
-    .f-contenu {
-        padding: 0;
-        margin: 0;
+    
+    .f_tel{
+        display: flex;
+        align-items: center;
     }
-    .svg.icone_fb{
+
+    .f_mail{
+        display: flex;
+        align-items: center;
+    }
+
+
+    .f_icone{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 7px;
+        justify-content: space-between;
+    }
+
+    .icone_fb{
         color: #000;
         text-decoration: none;
-        height: 25px;
+        height: 35px;
     }
-    
-    
+
     .icone_tel{
-        height: 50px;
+        height: 35px;
     }
-    
+
     .icone_mail{
-        height: 50px;
+        height:35px;
     }
 
     
-
     
     .footer-logo-association {
-        width: 50%;
+        width: 70%;
         grid-column: 1;
         margin: auto;
     }
