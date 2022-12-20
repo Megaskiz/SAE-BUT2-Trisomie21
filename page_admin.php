@@ -69,7 +69,14 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg>
+
+
+        </div>
     </header>
 
 
@@ -84,107 +91,116 @@ if (isset($_GET['id_suppr'])) {
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
                 <?php
-                if($_SESSION["logged_user"]==1){
+                if ($_SESSION["logged_user"] == 1) {
 
-                echo'<li class="nav-item">';
-                    echo'<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
-                echo'</li>';                
+                    echo '<li class="nav-item">';
+                    echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
+                    echo '</li>';
                 }
 
                 ?>
             </ul>
             <?php
 
-            if($_SESSION["logged_user"]==1){
-                
-            //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                echo'<div class="bouton_enfant">';
-                   echo'<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant</button>';
-                    echo'<div id="dialog_layer" class="dialogs">';
-                        echo'<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                            echo'<h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>';
-                            echo'<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
-                                echo'<div class="dialog_form_item">';
-                                    echo'<label>';
-                                        echo'<span class="label_text">nom :</span>';
-                                        echo'<input name="nom" type="text" required="required">';
-                                    echo'</label>';
-                                echo'</div>';
-                                echo'<div class="dialog_form_item">';
-                                    echo'<label>';
-                                        echo'<span class="label_text">prenom:</span>';
-                                        echo'<input name="prenom" type="text" class="city_input" required="required">';
-                                    echo'</label>';
-                                echo'</div>';
-                                echo'<div class="dialog_form_item">';
-                                    echo'<label>';
-                                        echo'<span class="label_text">date de naissance:</span>';
-                                        echo'<input name="date_naissance" type="date" class="state_input" required="required">';
-                                    echo'</label>';
-                                echo'</div>';
-                                echo'<div class="dialog_form_item">';
-                                    echo'<label>';
-                                        echo'<span class="label_text">jeton:</span>';
-                                        echo'<input name="lien_jeton" type="file" class="zip_input" required="required">';
-                                    echo'</label>';
-                                    echo'<label>';
-                                        echo'<span class="label_text">photo:</span>';
-                                        echo'<input name="photo_enfant" type="file" class="zip_input" required="required">';
-                                    echo'</label>';
-                                echo'</div>';
-                                echo'<div class="dialog_form_actions">';
-                                    echo'<button type="submit">Valider l\'ajout</button>';
-                                    echo'<button type="button" onclick="closeDialog(this)">Annuler</button>';
-                                echo'</div>';
-                            echo'</form>';
-                        echo'</div>';
-                    echo'</div>';
-                echo'</div>';
+            if ($_SESSION["logged_user"] == 1) {
+
+                //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+                echo '<div class="bouton_enfant">';
+                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant</button>';
+                echo '<svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+              </svg>';
+
+
+                echo '<div id="dialog_layer" class="dialogs">';
+                echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>';
+                echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
+                echo '<div class="dialog_form_item">';
+                echo '<label>';
+                echo '<span class="label_text">nom :</span>';
+                echo '<input name="nom" type="text" required="required">';
+                echo '</label>';
+                echo '</div>';
+                echo '<div class="dialog_form_item">';
+                echo '<label>';
+                echo '<span class="label_text">prenom:</span>';
+                echo '<input name="prenom" type="text" class="city_input" required="required">';
+                echo '</label>';
+                echo '</div>';
+                echo '<div class="dialog_form_item">';
+                echo '<label>';
+                echo '<span class="label_text">date de naissance:</span>';
+                echo '<input name="date_naissance" type="date" class="state_input" required="required">';
+                echo '</label>';
+                echo '</div>';
+                echo '<div class="dialog_form_item">';
+                echo '<label>';
+                echo '<span class="label_text">jeton:</span>';
+                echo '<input name="lien_jeton" type="file" class="zip_input" required="required">';
+                echo '</label>';
+                echo '<label>';
+                echo '<span class="label_text">photo:</span>';
+                echo '<input name="photo_enfant" type="file" class="zip_input" required="required">';
+                echo '</label>';
+                echo '</div>';
+                echo '<div class="dialog_form_actions">';
+                echo '<button type="submit">Valider l\'ajout</button>';
+                echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                echo '</div>';
+                echo '</form>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
 
                 /* fin de la fenêtre popin de l'ajout d'enfant" */
+            }
+            ?>
+
+
+            <?php
+            ///Sélection de tout le contenu de la table enfant
+            try {
+                $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
+            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+            ///Affichage des entrées du résultat une à une
+
+            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $nombre_ligne = $res->rowCount();
+            $liste = array();
+            echo "<table class='liste-enfant'>";
+
+
+            for ($i = 0; $i < $nombre_ligne; $i++) {
+                for ($y = 1; $y < 3; $y++) {
+                    echo "<td>";
+                    print_r($double_tab[$i][$y]);
+                    $liste[$y] = $double_tab[$i][$y];
+                    $nom = $double_tab[$i][1];
+                    $prenom = $double_tab[$i][2];
+                    $age = $double_tab[0][$y];
+                    echo "</td>";
                 }
-                ?>
+                $identifiant = $double_tab[$i][0];
+                echo "<td>";
+                echo '<a href="page_admin.php?id=' . $identifiant . '">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_info">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+                </a>';
+                echo "</td>";
+                echo "</tr>";
+            }
 
 
-                    <?php
-                    ///Sélection de tout le contenu de la table enfant
-                    try {
-                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
+            echo "</table>";
 
-                    ///Affichage des entrées du résultat une à une
-
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                    $nombre_ligne = $res->rowCount();
-                    $liste = array();
-                    echo "<table class='liste-enfant'>";
-
-
-                    for ($i = 0; $i < $nombre_ligne; $i++) {
-                        for ($y = 1; $y < 3; $y++) {
-                            echo "<td>";
-                            print_r($double_tab[$i][$y]);
-                            $liste[$y] = $double_tab[$i][$y];
-                            $nom = $double_tab[$i][1];
-                            $prenom = $double_tab[$i][2];
-                            $age = $double_tab[0][$y];
-                            echo "</td>";
-                        }
-                        $identifiant = $double_tab[$i][0];
-                        echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button class="acceder">acceder</button></a>';
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-
-
-                    echo "</table>";
-
-                    ///Fermeture du curseur d'analyse des résultats
-                    $res->closeCursor();
-                    ?>
+            ///Fermeture du curseur d'analyse des résultats
+            $res->closeCursor();
+            ?>
         </nav>
 
         <?php // affichage central de la page, avec les informations sur les enfants
@@ -214,9 +230,9 @@ if (isset($_GET['id_suppr'])) {
             $lien_jeton_enfant = $double_tab[0][4];
             $adresse = $double_tab[0][5];
             $activite = $double_tab[0][6];
-            $handicap =$double_tab[0][7];
-            $info_sup =$double_tab[0][8];
-            $photo_enfant =$double_tab[0][9];
+            $handicap = $double_tab[0][7];
+            $info_sup = $double_tab[0][8];
+            $photo_enfant = $double_tab[0][9];
             // echo$id_enfant;
             // echo$nom_enfant;
             // echo$prenom_enfant;
@@ -247,7 +263,7 @@ if (isset($_GET['id_suppr'])) {
 
         ?>
 
-        
+
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
@@ -258,7 +274,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"case-enfant\">";
-                    
+
                     echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
@@ -275,40 +291,37 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
-                    if($_SESSION["logged_user"]==1){
-                    echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo"<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
+                    if ($_SESSION["logged_user"] == 1) {
+                        echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                        echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                        echo "<div class=\"dialog_form_actions\">";
+                        echo "<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
 
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
+                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                     echo "</div>";
 
 
-                    
-                }
-                    echo "</div>";
-                    
-                    
                     echo "<div class=\"case\">";
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= '.$getid." AND suivre.id_membre = membre.id_membre;");
-                    while($tuteur = $allTuteurs->fetch()) {
-                        echo $tuteur['nom']." ".$tuteur['prenom']." il est : ".$tuteur['role']. "<br>";
+                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
+                    while ($tuteur = $allTuteurs->fetch()) {
+                        echo $tuteur['nom'] . " " . $tuteur['prenom'] . " il est : " . $tuteur['role'] . "<br>";
                     }
                     echo "</p>";
                     echo "</div>";
 
                     echo "<div class=\"case-enfant\">";
-                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur ".$prenom_enfant." : ".$info_sup." </textarea>";
+                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur " . $prenom_enfant . " : " . $info_sup . " </textarea>";
                     echo "</div>";
 
                     echo "</div>";
@@ -316,10 +329,10 @@ if (isset($_GET['id_suppr'])) {
 
 
                     echo "</section>";
-                    
+
                     echo "<section class=\"nb-systeme\">";
-                    if($_SESSION["logged_user"]==1){
-                    echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
+                    if ($_SESSION["logged_user"] == 1) {
+                        echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
                     }
 
                     //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';
@@ -328,7 +341,7 @@ if (isset($_GET['id_suppr'])) {
 
                     ///Sélection de tout le contenu de la table enfant
                     try {
-                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant='.$id.' ORDER BY priorite');
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id . ' ORDER BY priorite');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -343,66 +356,70 @@ if (isset($_GET['id_suppr'])) {
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
                         echo "<td>";
-                        echo '<a href="choix_sys.php?id_sys='.$double_tab[$i][5].'"><button class="acceder">acceder</button></a>';
-                        echo "</td>";   
-                            echo "<td>";
-                            
-                            print_r($double_tab[$i][0]);
-                            echo "</td>";
-                            echo "<td>";
-                            print_r($double_tab[$i][1]);
-                            echo" jetons";
-                            echo "</td>";
-                            echo "<td>";
-                            echo"durée : ";
-                            print_r(1);
-                            echo" jours";
-                            echo "</td>";
-                            
+                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
+                        echo "</td>";
+                        echo "<td>";
 
-                            
-                            echo "<td>";
+                        print_r($double_tab[$i][0]);
+                        echo "</td>";
+                        echo "<td>";
+                        print_r($double_tab[$i][1]);
+                        echo " jetons";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "durée : ";
+                        print_r(1);
+                        echo " jours";
+                        echo "</td>";
 
-                            echo '<a href="envoie_membre_message.php?id_objectif='.$double_tab[$i][5].'"><button class="message">Message</button></a>';
 
-                            echo "</td>";
-                            echo "<td>";
-                            if ($double_tab[$i][4]==1) {print_r("En Utilisation");}
-                            else{print_r("Pas en utilisation");}
-                            echo "</td>";
-                           
-                            if($_SESSION["logged_user"]==1){
+
+                        echo "<td>";
+
+                        echo '<a href="envoie_membre_message.php?id_objectif=' . $double_tab[$i][5] . '"><button class="message">Message</button></a>';
+
+                        echo "</td>";
+                        echo "<td>";
+                        if ($double_tab[$i][4] == 1) {
+                            print_r("En Utilisation");
+                        } else {
+                            print_r("Pas en utilisation");
+                        }
+                        echo "</td>";
+
+                        if ($_SESSION["logged_user"] == 1) {
                             switch ($double_tab[$i][4]) {
                                 case 1:
                                     echo "<td>";
-                                        echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
+                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
                                     echo "</td>";
                                     break;
-                                
+
                                 case 0:
                                     echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys='.$double_tab[$i][5].'&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
+                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
                                     echo "</td>";
                                     break;
-                            }}
-                            echo "<td>";
-                                echo " <div class=\"case-enfant\">";
-                                if($_SESSION["logged_user"]==1){
-                                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
-                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                                echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                                    echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
-                                    echo "<div class=\"dialog_form_actions\">";
-                                        echo"<button class=\"acceder\"><a href=\"suppr_sys.php?id_sys=".$double_tab[$i][5]."\">Supprimer le système</button></a>";
-                                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                                    echo "</div>";
-                                echo "</form>";
-                                }
-                                echo "</div>";
-                                echo "</div>";
-                            echo "</td>";
-                            
+                            }
+                        }
+                        echo "<td>";
+                        echo " <div class=\"case-enfant\">";
+                        if ($_SESSION["logged_user"] == 1) {
+                            echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
+                            echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                            echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                            echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                            echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
+                            echo "<div class=\"dialog_form_actions\">";
+                            echo "<button class=\"acceder\"><a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
+                            echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                            echo "</div>";
+                            echo "</form>";
+                        }
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</td>";
+
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -448,6 +465,32 @@ if (isset($_GET['id_suppr'])) {
                 </li>
             </div>
             <p class="f-copyright">© Copyright 2022 </p>
+        </div>
+
+        <div class="f_icone">
+
+            <a href="https://fr-fr.facebook.com/t21hg/">
+                <svg fill="currentColor" width="40" height="40" viewBox="0 0 7 16"  class="icone_fb">
+                    <path d="M4.563 4.964h2.295l-0.268 2.536h-2.027v7.357h-3.045v-7.357h-1.518v-2.536h1.518v-1.527q0-1.625 0.768-2.46t2.527-0.835h2.027v2.536h-1.268q-0.348 0-0.558 0.058t-0.304 0.21-0.121 0.308-0.027 0.442v1.268z"></path>
+                </svg>
+              
+            </a>
+
+            <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_tel">
+                <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
+                <path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z" clip-rule="evenodd" />
+            </svg>
+            Téléphone : 06 .. .. .. ..
+            </div>
+
+            <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_mail">
+                <path fill-rule="evenodd" d="M2.106 6.447A2 2 0 001 8.237V16a2 2 0 002 2h14a2 2 0 002-2V8.236a2 2 0 00-1.106-1.789l-7-3.5a2 2 0 00-1.788 0l-7 3.5zm1.48 4.007a.75.75 0 00-.671 1.342l5.855 2.928a2.75 2.75 0 002.46 0l5.852-2.926a.75.75 0 10-.67-1.342l-5.853 2.926a1.25 1.25 0 01-1.118 0l-5.856-2.928z" clip-rule="evenodd" />
+            </svg>
+            Mail: Trisomi21@mail.com 
+            </div>
+
         </div>
 
 
