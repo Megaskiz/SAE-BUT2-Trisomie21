@@ -310,14 +310,34 @@ if (isset($_GET['id_suppr'])) {
 
 
                     echo "<div class=\"case\">";
+
+                    //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+                    echo '<div class="bouton_enfant2">';
+                    echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
+
+                    echo '<div id="dialog_layer" class="dialogs">';
+                    echo '<div role="dialog" id="dialog8" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                    echo '<h2 id="dialog1_label" class="dialog_label">Equipe</h2>';
+                    
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
                     $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
                     while ($tuteur = $allTuteurs->fetch()) {
-                        echo $tuteur['nom'] . " " . $tuteur['prenom'] . " il est : " . $tuteur['role'] . "<br>";
+                        echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">    ";
+                        echo  $tuteur['nom'] . " " . $tuteur['prenom'] . " role : " . $tuteur['role'] . "<br>";
                     }
-                    echo "</p>";
+                    if( $allTuteurs = null){
+                        echo "Suivie par aucun tuteur";
+                    }
+                    echo "</p>"; 
+                    echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+
+                    /* fin de la fenêtre popin de l'ajout d'enfant" */
                     echo "</div>";
 
                     echo "<div class=\"case-enfant\">";
@@ -470,25 +490,25 @@ if (isset($_GET['id_suppr'])) {
         <div class="f_icone">
 
             <a href="https://fr-fr.facebook.com/t21hg/">
-                <svg fill="currentColor" width="40" height="40" viewBox="0 0 7 16"  class="icone_fb">
+                <svg fill="currentColor" width="40" height="40" viewBox="0 0 7 16" class="icone_fb">
                     <path d="M4.563 4.964h2.295l-0.268 2.536h-2.027v7.357h-3.045v-7.357h-1.518v-2.536h1.518v-1.527q0-1.625 0.768-2.46t2.527-0.835h2.027v2.536h-1.268q-0.348 0-0.558 0.058t-0.304 0.21-0.121 0.308-0.027 0.442v1.268z"></path>
                 </svg>
-              
+
             </a>
 
             <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_tel">
-                <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
-                <path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z" clip-rule="evenodd" />
-            </svg>
-            Téléphone : 06 .. .. .. ..
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_tel">
+                    <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
+                    <path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z" clip-rule="evenodd" />
+                </svg>
+                Téléphone : 06 .. .. .. ..
             </div>
 
             <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_mail">
-                <path fill-rule="evenodd" d="M2.106 6.447A2 2 0 001 8.237V16a2 2 0 002 2h14a2 2 0 002-2V8.236a2 2 0 00-1.106-1.789l-7-3.5a2 2 0 00-1.788 0l-7 3.5zm1.48 4.007a.75.75 0 00-.671 1.342l5.855 2.928a2.75 2.75 0 002.46 0l5.852-2.926a.75.75 0 10-.67-1.342l-5.853 2.926a1.25 1.25 0 01-1.118 0l-5.856-2.928z" clip-rule="evenodd" />
-            </svg>
-            Mail: Trisomi21@mail.com 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_mail">
+                    <path fill-rule="evenodd" d="M2.106 6.447A2 2 0 001 8.237V16a2 2 0 002 2h14a2 2 0 002-2V8.236a2 2 0 00-1.106-1.789l-7-3.5a2 2 0 00-1.788 0l-7 3.5zm1.48 4.007a.75.75 0 00-.671 1.342l5.855 2.928a2.75 2.75 0 002.46 0l5.852-2.926a.75.75 0 10-.67-1.342l-5.853 2.926a1.25 1.25 0 01-1.118 0l-5.856-2.928z" clip-rule="evenodd" />
+                </svg>
+                Mail: Trisomi21@mail.com
             </div>
 
         </div>
