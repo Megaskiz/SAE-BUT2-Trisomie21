@@ -73,10 +73,9 @@ if (isset($_GET['id_suppr'])) {
         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-            </svg>
-
-
+            </svg> Déconnexion
         </div>
+
     </header>
 
 
@@ -203,9 +202,8 @@ if (isset($_GET['id_suppr'])) {
                 </svg>
                 </a>';
                 echo "</td>";
-                
+
                 echo "</tr>";
-                
             }
 
             echo "</table>";
@@ -327,19 +325,19 @@ if (isset($_GET['id_suppr'])) {
                     echo '<div id="dialog_layer" class="dialogs">';
                     echo '<div role="dialog" id="dialog8" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                     echo '<h2 id="dialog1_label" class="dialog_label">Equipe</h2>';
-                    
+
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
                     $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
                     while ($tuteur = $allTuteurs->fetch()) {
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">    ";
-                        echo " <b>". $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "<br>";
+                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "<br>";
                     }
-                    if( $allTuteurs = null){
+                    if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
                     }
-                    echo "</p>"; 
+                    echo "</p>";
                     echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
 
                     echo '</div>';
@@ -484,32 +482,33 @@ if (isset($_GET['id_suppr'])) {
         <div class="f-contenu">
             <div class="f-menu">
                 <li>
-                    <p class="f-info">Qui sommes nous ?</p>
+                    <p class="f-association"> <a href="http://trisomie21-haute-garonne.org/">Qui sommes nous ?</a> </p>
                 </li>
                 <li>
-                    <p class="f-propos">A propos</p>
+                    <p class="f-propos"> <a href="#"> Association</a> </p>
                 </li>
                 <li>
-                    <p class="f-association">Association</p>
+                    <p class="f-info"> <a href="http://trisomie21-haute-garonne.org/lassociation/historique-de-lassociation/"> Association</a> </p>
                 </li>
             </div>
             <p class="f-copyright">© Copyright 2022 </p>
         </div>
 
         <div class="f_icone">
-
-            <a href="https://fr-fr.facebook.com/t21hg/">
-                <svg fill="currentColor" width="40" height="40" viewBox="0 0 7 16" class="icone_fb">
+            
+            <div class="f_facebook">
+                <svg fill="currentColor"  viewBox="0 0 7 16" class="icone_fb">
                     <path d="M4.563 4.964h2.295l-0.268 2.536h-2.027v7.357h-3.045v-7.357h-1.518v-2.536h1.518v-1.527q0-1.625 0.768-2.46t2.527-0.835h2.027v2.536h-1.268q-0.348 0-0.558 0.058t-0.304 0.21-0.121 0.308-0.027 0.442v1.268z"></path>
                 </svg>
-            </a>
+                 <a href="https://fr-fr.facebook.com/t21hg/">FaceBook</a>
+            </div>
 
             <div class="f_tel">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icone_tel">
                     <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
                     <path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z" clip-rule="evenodd" />
                 </svg>
-                06 .. .. .. ..
+                05 61 54 34 47
             </div>
 
             <div class="f_mail">
