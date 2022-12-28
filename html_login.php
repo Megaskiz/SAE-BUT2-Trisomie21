@@ -77,8 +77,10 @@
                         <input type="password" name="password" placeholder="Mot de passe"/>
                         <input class="button" type="submit" value="Acceder">
 
+                        <div class="texte_creer-compte">
                         <p class="message">Pas de compte ? </p>
                         <a href="creation_compte.php">Creer un compte</a>
+                        </div>
                         
                     </form>
                 </div>
