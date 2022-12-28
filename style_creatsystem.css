@@ -568,7 +568,7 @@ a{
 
 
     .retour  {
-        position: fixed;
+        position: absolute;
         color: black;
         cursor: pointer;
         font-size: 100%;
