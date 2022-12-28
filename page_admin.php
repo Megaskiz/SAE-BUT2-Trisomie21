@@ -485,7 +485,7 @@ if (isset($_GET['id_suppr'])) {
                     <p class="f-association"> <a href="http://trisomie21-haute-garonne.org/">Qui sommes nous ?</a> </p>
                 </li>
                 <li>
-                    <p class="f-propos"> <a href="#"> Association</a> </p>
+                    <p class="f-propos"> <a href="http://trisomie21-haute-garonne.org/les-services/sessad/"> Les services</a> </p>
                 </li>
                 <li>
                     <p class="f-info"> <a href="http://trisomie21-haute-garonne.org/lassociation/historique-de-lassociation/"> Association</a> </p>
@@ -497,7 +497,7 @@ if (isset($_GET['id_suppr'])) {
         <div class="f_icone">
             
             <div class="f_facebook">
-                <svg fill="currentColor"  viewBox="0 0 7 16" class="icone_fb">
+                <svg fill="currentColor" width="20" viewBox="0 0 7 16" class="icone_fb">
                     <path d="M4.563 4.964h2.295l-0.268 2.536h-2.027v7.357h-3.045v-7.357h-1.518v-2.536h1.518v-1.527q0-1.625 0.768-2.46t2.527-0.835h2.027v2.536h-1.268q-0.348 0-0.558 0.058t-0.304 0.21-0.121 0.308-0.027 0.442v1.268z"></path>
                 </svg>
                  <a href="https://fr-fr.facebook.com/t21hg/">FaceBook</a>

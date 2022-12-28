@@ -56,11 +56,15 @@ catch (Exception $e) {
 
         echo "</table>";
         ?>
+         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
 
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='html_login.php';">Déconnexion</button></p>
     </header>
     <main>
-        <nav class="nav-enfant">
+        <nav class="div-info-enfant">
             <div class="info-enfant">
             <button class="retour"><a href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">Retour</a></button>
                 <?php
@@ -76,27 +80,28 @@ catch (Exception $e) {
 
                 ///Affichage des entrées du résultat une à une
                 while ($data = $res->fetch()) {
-                    echo '<div class="photo-enfant">';
-                    echo "<img class=\"logo-enfant\" src=\"$data[9]\" alt=\"Tête de l'enfant\">";
+                    echo '<div class="div-photo-enfant">';
+                    echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"Tête de l'enfant\">";
                     echo '</div>';
                     $date = strval($data[3]);
                     $datefinal = new DateTime($date);
                     echo (ucfirst(
+                        
                         "
                         <div class='id-enfant'> <a class='id-nom'>Nom: <strong> $data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom: <strong> $data[2]  </strong></a> </div>
                         <div class='id-enfant'> <a class='id-age'>Date de naissance: <strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
                         <div class='id-enfants'> <a class='id-adresse'>Adresse: <strong> $data[5] </strong> </a></div>
                         <div class='id-enfants'> <a class='id-activite'>Handicap : <strong> $data[7] </strong> </a></div>
-                        <div class='id-enfants'> <a class='id-activite'>Activité : <strong> $data[6] </strong> </a></div>"
-                        
+                        <div class='id-enfants'> <a class='id-activite'>Activité : <strong> $data[6] </strong> </a></div>"     
                     )
                     );
                 }
                 ?>
+            
             </div>
         </nav>
-        <div class="container">
+        <div class="choix-systeme">
             <div>
                 <form action="test.php" class="forme titre" method="POST" >
                     <section class="plan titre">

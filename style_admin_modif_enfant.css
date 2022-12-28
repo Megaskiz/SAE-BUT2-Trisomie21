@@ -529,47 +529,6 @@
         background-color: white;
     }
 
-    .f_tel {
-        display: flex;
-        align-items: center;
-    }
-
-    .f_mail {
-        display: flex;
-        align-items: center;
-    }
-
-    .f_icone {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 7px;
-    }
-
-    .icone_fb {
-        color: #000;
-        text-decoration: none;
-        height: 35px;
-    }
-
-    .icone_tel {
-        height: 35px;
-    }
-
-    .icone_mail {
-        height: 35px;
-    }
-
-    .footer-logo-association {
-        width: 50%;
-        grid-column: 1;
-        margin: auto;
-    }
-
-    .icone_fb {
-        color: black;
-    }
-
     .f-menu {
         display: grid;
         list-style: none;
@@ -578,6 +537,72 @@
         margin-left: 20%;
     }
 
+
+    .footer-logo-association {
+        width: 50%;
+        grid-column: 1;
+        margin: auto;
+    }
+
+
+    /*Icone*/
+    .f_icone {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 7px;
+        justify-content: space-between;
+    }
+
+    /*Facebook*/
+    .f_facebook{
+        display: flex;
+        align-items: center;
+    }
+
+    .icone_fb {
+        color: #000;
+        text-decoration: none;
+        height: 25px;
+    }
+
+    .f_facebook {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    /*Téléphone*/
+    .f_tel {
+        display: flex;
+        align-items: center;
+    }
+
+    .icone_tel {
+        height: 25px;
+    }
+
+
+    /*Mail*/
+    .f_mail {
+        display: flex;
+        align-items: center;
+    }
+    
+    .icone_mail {
+        height: 25px;
+    }
+
+
+
+
+    .f-copyright {
+        width: 15%;
+        margin-left: 40%;
+    }
+
+
     footer p {
         text-align: center;
     }
@@ -585,21 +610,15 @@
     footer a {
         text-decoration: none;
         color: black;
-
+        text-align: center;
     }
+    
 
     footer a:hover {
         color: #6666c4;
     }
 
-    .f-copyright {
-        width: 15%;
-        margin-left: 40%;
-    }
-
-    .lien_supp {
-        margin: 2%;
-    }
+    
 }
 
 /*
