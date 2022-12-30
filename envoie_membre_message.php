@@ -57,9 +57,9 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
     ?>
     <div class="all">
         <div class="list_msg">
-            
+
             <section id="message">
-            <p>Messagerie du système à jeton</p>
+                <p>Messagerie du système à jeton</p>
                 <?php
                 $recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
                 if (!$recupMessages) {
@@ -72,12 +72,18 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 
                 while ($message = $recupMessages->fetch()) {
                     if ($message['id_membre'] == $_SESSION['logged_user']) {
-                ?>
-                        <p class="vous"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . " (vous) : " . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                    ?>
+                        <div class="msgR">
+                            <img class="img_equipe" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                            <p class="vous"> <?= $message["nom"] . " " . $message["prenom"] . " (vous) : " . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                        </div>
                     <?php
                     } else {
                     ?>
-                        <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : "  . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                        <div class="msgL">
+                            <img class="img_equipe" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                            <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : "  . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                        </div>
                     <?php
                     }
                     ?>
@@ -94,9 +100,8 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                 </div>
                 <div class="txt_msg">
                     <textarea class="messages" name="messages"></textarea></br>
-                </div>
-                <div class="envoi">
-                    <input type="submit" name="envoie2">
+
+                    <input type="submit" class="send" name="envoie2">
                 </div>
             </form>
         </div>
