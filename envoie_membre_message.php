@@ -50,16 +50,20 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 
 <body>
     <?php
-    echo '<button class="retour">
+    echo '<button class="chat_retour">
             <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '">retour au menu</a>
         </button>';
 
     ?>
-    <div class="all">
-        <div class="list_msg">
-
+    <div class="chat_all">
+        <div class="chat_title">
+            <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path>
+            </svg>
+            Messagerie du système à jeton
+        </div>
+        <div class="chat_list_msg">
             <section id="message">
-                <p>Messagerie du système à jeton</p>
                 <?php
                 $recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
                 if (!$recupMessages) {
@@ -72,17 +76,29 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 
                 while ($message = $recupMessages->fetch()) {
                     if ($message['id_membre'] == $_SESSION['logged_user']) {
-                    ?>
-                        <div class="msgR">
-                            <img class="img_equipe" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
-                            <p class="vous"> <?= $message["nom"] . " " . $message["prenom"] . " (vous) : " . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                ?>
+                        <div class="chat_msgR">
+                            <img class="chat_img_R" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                            <div class="chat_vous">
+                                <div class="chat_info">
+                                    <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
+                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                </div>
+                                <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                            </div>
                         </div>
                     <?php
                     } else {
                     ?>
-                        <div class="msgL">
-                            <img class="img_equipe" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
-                            <p class="autre"> <?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") . ", " . $message["nom"] . " " . $message["prenom"] . ", a écrit : "  . "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                        <div class="chat_msgL">
+                            <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                            <div class="chat_autre">
+                                <div class="chat_info">
+                                    <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
+                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                </div>
+                                <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                            </div>
                         </div>
                     <?php
                     }
@@ -92,16 +108,15 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                 ?>
             </section>
         </div>
-        <div class="envoi_msg">
+        <div class="chat_envoi_msg">
             <form method="POST" action="" class="">
-                <div class="sujet_msg">
-                    <label for="sujet">Sujet</label>
-                    <input type="text" id="sujet" class="sujet" name="sujet" required></br>
+                <div class="chat_sujet_msg">
+                    <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
                 </div>
-                <div class="txt_msg">
-                    <textarea class="messages" name="messages"></textarea></br>
+                <div class="chat_txt_msg">
+                    <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
 
-                    <input type="submit" class="send" name="envoie2">
+                    <input type="submit" class="chat_send" name="envoie2">
                 </div>
             </form>
         </div>
