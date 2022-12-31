@@ -30,7 +30,7 @@
 
         // je creé la requete
         $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
-        $query2 = "SELECT id_membre FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
+        $query2 = "SELECT id_membre, compte_valide FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
                 // Execution de la requete
                 try {
                     $res = $linkpdo->query($query);
@@ -41,20 +41,24 @@
                     }
 
                     $count = $res -> fetchColumn();
-                    $id = $res2 -> fetchColumn();
+                    $valide = $res2 -> fetchAll();
+
+                    $id=$valide[0][0];
+                    $compte_valide=$valide[0][1];
 
 
-                    if ($count == 1 ){
+                    if ($count == 1 && $compte_valide==1){
                         session_start();
                         $_SESSION['login_user'] = $Courriel;
                         $_SESSION['logged_user'] = $id;
 
                         header("location: page_admin.php");
+                    }elseif ($compte_valide==0) {
+                        $message_erreur="Votre compte n'est pas encore validé";
                     }else{
                         $message_erreur = "identifiant ou mot de passe invalide";
                     }
-                    
-                    
+                                        
                       
                    
 
