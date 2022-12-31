@@ -163,13 +163,17 @@ if (isset($_GET['id_suppr'])) {
             <?php
             ///Sélection de tout le contenu de la table enfant
             try {
-                $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
+                if ($_SESSION["logged_user"]==1) {
+                    $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
+                }else {
+                    $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre='.$_SESSION["logged_user"].')');
+                }
+
             } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                 die('Erreur : ' . $e->getMessage());
             }
 
             ///Affichage des entrées du résultat une à une
-
             $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
             $nombre_ligne = $res->rowCount();
             $liste = array();
@@ -368,19 +372,25 @@ if (isset($_GET['id_suppr'])) {
 
                     ///Sélection de tout le contenu de la table enfant
                     try {
-                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id . ' ORDER BY priorite');
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id . ' ORDER BY priorite ');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
+
 
                     ///Affichage des entrées du résultat une à une
 
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
+
+                    
+
+                    
                     echo "<table>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
+                        if($_SESSION["logged_user"]==1 || $double_tab[$i][4]==1){
                         echo "<tr>";
                         echo "<td>";
                         echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
@@ -449,6 +459,7 @@ if (isset($_GET['id_suppr'])) {
 
                         echo "</tr>";
                     }
+                    }
                     echo "</table>";
 
                     ///Fermeture du curseur d'analyse des résultats
@@ -469,6 +480,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<section class=\"nb-systeme\">";
                     echo "</section>";
                 }
+                
                 ?>
         </nav>
     </main>
