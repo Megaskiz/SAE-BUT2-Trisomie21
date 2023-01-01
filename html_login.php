@@ -43,23 +43,29 @@
                     $count = $res -> fetchColumn();
                     $valide = $res2 -> fetchAll();
 
-                    $id=$valide[0][0];
-                    $compte_valide=$valide[0][1];
-                    $role=$valide[0][2];
+                    if(count($valide)!=0){
+                        $id=$valide[0][0];
+                        $compte_valide=$valide[0][1];
+                        $role=$valide[0][2];
 
-
-                    if ($count == 1 && $compte_valide==1){
-                        session_start();
-                        $_SESSION['login_user'] = $Courriel;
-                        $_SESSION['logged_user'] = $id;
-                        $_SESSION['role_user'] = $role;
-
-                        header("location: page_admin.php");
-                    }elseif ($compte_valide==0) {
-                        $message_erreur="Votre compte n'est pas encore validé";
+                        if ($count == 1 && $compte_valide==1){
+                            session_start();
+                            $_SESSION['login_user'] = $Courriel;
+                            $_SESSION['logged_user'] = $id;
+                            $_SESSION['role_user'] = $role;
+    
+                            header("location: page_admin.php");
+                        }else{
+                            $message_erreur="Votre compte n'est pas encore validé";
+                        }
                     }else{
                         $message_erreur = "identifiant ou mot de passe invalide";
                     }
+
+                    
+
+
+                    
                                         
                       
                    
