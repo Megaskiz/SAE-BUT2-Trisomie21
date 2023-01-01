@@ -2,7 +2,9 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-session_start();
+require('fonctions.php');
+is_logged();
+is_validateur();
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
 }
@@ -11,7 +13,7 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 if (!$_SESSION['logged_user']) {
-    header('Location: connection.php');
+    header('Location: html_login.php');
 }
 
 if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
