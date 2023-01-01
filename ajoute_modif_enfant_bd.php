@@ -2,6 +2,7 @@
 
 require('fonctions.php');
 is_logged();
+is_validateur();
 
 // la partie de la connexion
 ///Connexion au serveur MySQL

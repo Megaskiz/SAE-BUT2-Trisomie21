@@ -4,6 +4,7 @@
 <?php
 require('fonctions.php');
 is_logged();
+is_validateur();
 ///Connexion au serveur MySQL
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
