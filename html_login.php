@@ -53,8 +53,13 @@
                             $_SESSION['login_user'] = $Courriel;
                             $_SESSION['logged_user'] = $id;
                             $_SESSION['role_user'] = $role;
+
+                            if($_SESSION['role_user']==2){
+                                header("location: page_certif_compte.php");
+                            }else{
+                                header("location: page_admin.php");
+                            }
     
-                            header("location: page_admin.php");
                         }else{
                             $message_erreur="Votre compte n'est pas encore validé";
                         }

@@ -90,7 +90,7 @@ if (isset($_GET['id_suppr'])) {
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
                 <?php
-                if ($_SESSION["role_user"] == 1) {
+                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"]== 2 ) {
 
                     echo '<li class="nav-item">';
                     echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
@@ -162,10 +162,13 @@ if (isset($_GET['id_suppr'])) {
 
             <?php
             ///Sélection de tout le contenu de la table enfant
+            if($_SESSION["role_user"]!=2){
+
+            
             try {
                 if ($_SESSION["role_user"]==1) {
                     $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
-                }else {
+                }else{
                     $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre='.$_SESSION["logged_user"].')');
                 }
 
@@ -214,6 +217,7 @@ if (isset($_GET['id_suppr'])) {
 
             ///Fermeture du curseur d'analyse des résultats
             $res->closeCursor();
+            }
             ?>
         </nav>
 

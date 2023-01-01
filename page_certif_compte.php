@@ -80,14 +80,19 @@ if (isset($_GET['id_valider'])) {
     <main>
 
         <nav class="left-contenu">
-            <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
-                <li class="nav-item">
-                    <a class="nav-link gl-tab-nav-item" data-placement="right" href="page_admin.php">Enfant</a>
-                </li>
-                <li class="nav-item">
-                    <a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Membre</a>
-                </li>
-            </ul>
+            <?php 
+            if($_SESSION["role_user"]!=2){
+                echo'<ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">';
+               echo'<li class="nav-item">';
+               echo'<a class="nav-link gl-tab-nav-item" data-placement="right" href="page_admin.php">Enfant</a>';
+               echo'</li>';
+                echo'<li class="nav-item">';
+                echo'<a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Membre</a>';
+                echo'</li>';
+                echo'</ul>';
+            }
+            
+            ?>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
                     <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un membre</button>
