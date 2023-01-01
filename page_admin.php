@@ -90,7 +90,7 @@ if (isset($_GET['id_suppr'])) {
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
                 <?php
-                if ($_SESSION["logged_user"] == 1) {
+                if ($_SESSION["role_user"] == 1) {
 
                     echo '<li class="nav-item">';
                     echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
@@ -101,7 +101,7 @@ if (isset($_GET['id_suppr'])) {
             </ul>
             <?php
 
-            if ($_SESSION["logged_user"] == 1) {
+            if ($_SESSION["role_user"] == 1) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
@@ -163,7 +163,7 @@ if (isset($_GET['id_suppr'])) {
             <?php
             ///Sélection de tout le contenu de la table enfant
             try {
-                if ($_SESSION["logged_user"]==1) {
+                if ($_SESSION["role_user"]==1) {
                     $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
                 }else {
                     $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre='.$_SESSION["logged_user"].')');
@@ -302,7 +302,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
                     echo " <div class=\"case-enfant\">";
-                    if ($_SESSION["logged_user"] == 1) {
+                    if ($_SESSION["role_user"] == 1) {
                         echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -362,7 +362,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</section>";
 
                     echo "<section class=\"nb-systeme\">";
-                    if ($_SESSION["logged_user"] == 1) {
+                    if ($_SESSION["role_user"] == 1) {
                         echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
                     }
 
@@ -390,7 +390,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<table>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
-                        if($_SESSION["logged_user"]==1 || $double_tab[$i][4]==1){
+                        if($_SESSION["role_user"]==1 || $double_tab[$i][4]==1){
                         echo "<tr>";
                         echo "<td>";
                         echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
@@ -424,7 +424,7 @@ if (isset($_GET['id_suppr'])) {
                         }
                         echo "</td>";
 
-                        if ($_SESSION["logged_user"] == 1) {
+                        if ($_SESSION["role_user"] == 1) {
                             switch ($double_tab[$i][4]) {
                                 case 1:
                                     echo "<td>";
@@ -441,7 +441,7 @@ if (isset($_GET['id_suppr'])) {
                         }
                         echo "<td>";
                         echo " <div class=\"case-enfant\">";
-                        if ($_SESSION["logged_user"] == 1) {
+                        if ($_SESSION["role_user"] == 1) {
                             echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
