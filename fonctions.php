@@ -76,4 +76,13 @@ function is_logged(){
     }
 }
 
+function is_validateur(){ 
+    if($_SESSION['role_user']==2 ){
+       echo"vous ne devriez pas etre la : ";
+       echo'<a href="page_certif_compte.php">aller vers la page de connexion</a>';
+       header("location: page_certif_compte.php");
+       exit();
+    }
+}
+
 ?>
