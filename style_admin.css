@@ -87,10 +87,10 @@
         width: 100%;
         text-align: center;
         height: 10%;
-        text-align: center;
         border-radius: 15px;
         border: solid;
         background-color: #005097;
+        border-color: rgb(227, 162, 63);
         cursor: pointer;
         color: white;
         margin: 10px;
@@ -288,11 +288,45 @@
         margin-left: 3%;
         margin-right: 3%;
     }
+
+
     .case-enfant {
         display: grid;
         place-items: center;
         margin: 3%;
     }
+
+    .bouton-modif-enfant{
+        display: flex;
+        width: 80%;
+        text-align: center;
+        border-radius: 15px;
+        border: solid;
+        background-color: #005097;
+        border-color: rgb(227, 162, 63);
+        cursor: pointer;
+        color: white;
+        margin: 10px;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+
+    .icone-modif-enfant {
+        height: 25px;
+    }
+
+    
+
+    .photo-enfant {
+        width: 30%;
+        padding-top: 10%;
+        margin-left: 30%;
+        border-radius: 10px;
+    }
+
+
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
@@ -311,6 +345,10 @@
     .button_acceder {
         margin: 10px;
         border-radius: 10px;
+        background-color: #005097;
+        border-color: rgb(227, 162, 63);
+        cursor: pointer;
+        color: white;
     }
     .button_acceder:hover {
         margin: 10px;
@@ -321,10 +359,7 @@
         height: 95%;
         width: 95%;
     }
-    .logo-enfant {
-        width: 30%;
-        border-radius: 10px;
-    }
+    
     .text-complementaire {
         height: 90%;
         margin-left: 5%;

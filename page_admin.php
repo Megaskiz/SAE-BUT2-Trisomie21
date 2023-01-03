@@ -189,6 +189,15 @@ if (isset($_GET['id_suppr'])) {
 
 
             for ($i = 0; $i < $nombre_ligne; $i++) {
+                $identifiant = $double_tab[$i][0];
+                echo "<td>";
+
+                echo '<a href="page_admin.php?id=' . $identifiant . '">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_info">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                </svg>
+                </a>';
+                echo "</td>";
                 for ($y = 1; $y < 3; $y++) {
                     echo "<td>";
                     print_r($double_tab[$i][$y]);
@@ -201,15 +210,7 @@ if (isset($_GET['id_suppr'])) {
                 }
 
 
-                $identifiant = $double_tab[$i][0];
-                echo "<td>";
-
-                echo '<a href="page_admin.php?id=' . $identifiant . '">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_info">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                </svg>
-                </a>';
-                echo "</td>";
+                
 
                 echo "</tr>";
             }
@@ -289,9 +290,9 @@ if (isset($_GET['id_suppr'])) {
 
 
                     //<!---- menu droit information sur l'enfant ---->
-                    echo "<div class=\"case-enfant\">";
+                    echo "<div class=\"div-photo-enfant\">";
 
-                    echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
+                    echo "<img class=\"photo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
@@ -306,9 +307,14 @@ if (isset($_GET['id_suppr'])) {
                     echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
                     echo "</div>";
 
-                    echo " <div class=\"case-enfant\">";
+                    echo " <div class=\"div-modif-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
-                        echo '<a href="modif_enfant.php"><button class="acceder">Modifier les informations de l\'enfant </button></a>';
+                        echo '<a href="modif_enfant.php"> 
+                        <button class="bouton-modif-enfant">    Modifer les informations de l\'enfant 
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone-modif-enfant">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                            </svg>
+                        </button> </a>';
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -368,7 +374,7 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "<section class=\"nb-systeme\">";
                     if ($_SESSION["role_user"] == 1) {
-                        echo '<a href="page_creatsystem.php"><button class="button_acceder">creer un nouveau systeme</button></a>';
+                        echo '<a href="page_creatsystem.php"><button class="button_acceder">Ajouter un nouvel objectif</button></a>';
                     }
 
                     //echo '<a href="page_creatsystem.php"><button class="acceder">creer un nouveau systeme</button></a>';

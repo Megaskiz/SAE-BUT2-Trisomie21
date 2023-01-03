@@ -30,7 +30,7 @@
 
         // je creé la requete
         $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
-        $query2 = "SELECT id_membre, compte_valide, role_user FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
+        $query2 = "SELECT id_membre, compte_valide, pro FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
                 // Execution de la requete
                 try {
                     $res = $linkpdo->query($query);
