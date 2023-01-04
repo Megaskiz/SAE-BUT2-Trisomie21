@@ -6,79 +6,64 @@
         <link rel="stylesheet" href="./style_login.css" media="screen" type="text/css" />
         <title>bienvenue</title>
     </head>
-    <?php // la partie de la connexion
+    
+<?php
 
- ///Connexion au serveur MySQL
- try {
+// Connexion au serveur MySQL
+try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-    }
-    ///Capture des erreurs éventuelles
-    catch (Exception $e) {
+}
+// Capture des erreurs éventuelles
+catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
+}
+
+// Je récupère les informations de mon formulaire
+if (!empty($_POST['courriel']) && !empty($_POST['password'])){
+    $courriel = $_POST['courriel'];
+    $mdp_test = hash('sha256', "ZEN02anWobA4ve5zxzZz" . $_POST['password']);
+
+    // Je créé la requête préparée avec des paramètres nommés
+    $query = "SELECT count(*) FROM membre WHERE courriel=:courriel AND mdp=:mdp";
+    $stmt = $linkpdo->prepare($query);
+    $stmt->bindParam(':courriel', $courriel, PDO::PARAM_STR);
+    $stmt->bindParam(':mdp', $mdp_test, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Je récupère le nombre de résultats
+    $count = $stmt->fetchColumn();
+
+    // Je récupère les informations sur le compte de l'utilisateur
+    $query2 = "SELECT id_membre, compte_valide, pro FROM membre WHERE courriel=:courriel AND mdp=:mdp";
+    $stmt2 = $linkpdo->prepare($query2);
+    $stmt2->bindParam(':courriel', $courriel, PDO::PARAM_STR);
+    $stmt2->bindParam(':mdp', $mdp_test, PDO::PARAM_STR);
+    $stmt2->execute();
+    $valide = $stmt2->fetchAll();
+
+    if(count($valide) != 0){
+        $id = $valide[0][0];
+        $compte_valide = $valide[0][1];
+        $role = $valide[0][2];
+
+        if ($count == 1 && $compte_valide == 1){
+            session_start();
+            $_SESSION['login_user'] = $courriel;
+            $_SESSION['logged_user'] = $id;
+            $_SESSION['role_user'] = $role;
+
+            if($_SESSION['role_user'] == 2){
+                header("location: page_certif_compte.php");
+            }else{
+                header("location: page_admin.php");
+            }
+        }else{
+            $message_erreur = "Votre compte n'est pas encore validé";
+        }
+    }else{
+        $message_erreur = "Identifiant ou mot de passe invalide";
     }
-    
-
-    
-    // je récupere les informations de mon formulaire
-    if (!empty($_POST['courriel']) && !empty($_POST['password'])){
-        $Courriel = $_POST['courriel'];
-        //echo("ce que je test : ZEN02anWobA4ve5zxzZz".$_POST['password']);
-        //echo"<br>";
-        $mdp_test = hash('sha256',"ZEN02anWobA4ve5zxzZz".$_POST['password']);
-        //echo$mdp_test;
-
-
-        // je creé la requete
-        $query = "SELECT count(*) FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
-        $query2 = "SELECT id_membre, compte_valide, pro FROM membre WHERE courriel='$Courriel' and mdp='$mdp_test'";
-                // Execution de la requete
-                try {
-                    $res = $linkpdo->query($query);
-                    $res2 = $linkpdo->query($query2);
-                    }
-                    catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
-
-                    $count = $res -> fetchColumn();
-                    $valide = $res2 -> fetchAll();
-
-                    if(count($valide)!=0){
-                        $id=$valide[0][0];
-                        $compte_valide=$valide[0][1];
-                        $role=$valide[0][2];
-
-                        if ($count == 1 && $compte_valide==1){
-                            session_start();
-                            $_SESSION['login_user'] = $Courriel;
-                            $_SESSION['logged_user'] = $id;
-                            $_SESSION['role_user'] = $role;
-
-                            if($_SESSION['role_user']==2){
-                                header("location: page_certif_compte.php");
-                            }else{
-                                header("location: page_admin.php");
-                            }
-    
-                        }else{
-                            $message_erreur="Votre compte n'est pas encore validé";
-                        }
-                    }else{
-                        $message_erreur = "identifiant ou mot de passe invalide";
-                    }
-
-                    
-
-
-                    
-                                        
-                      
-                   
-
-
-    }
-
-
+}
 
 ?>
     <body>
