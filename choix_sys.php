@@ -14,10 +14,16 @@ is_validateur();
         <title>bienvenue</title>
     </head>
 <body>
+
+
 <?php
     echo'<button>
             <a href="page_admin.php?id='.$_SESSION['id_enfant'].'">retour au menu</a>
         </button>';
+
+        echo'<button class="droite">
+                <a href="page_recompense.php">voir la/les récompenses</a>
+            </button>';
         
 
 
@@ -41,11 +47,9 @@ catch (Exception $e) {
     
 
 if (isset ($_GET['id_sys']))  {
-    $id = $_GET['id_sys'];  
-
-    echo"<br>";echo"<br>";echo"<br>";
+    $id = $_GET['id_sys'];
+    $_SESSION['id_sys']=$_GET['id_sys'];
                     
-    ///Sélection de tout le contenu de la table enfant
     try {
         $res = $linkpdo->query("SELECT * FROM objectif where id_objectif=$id");
         }

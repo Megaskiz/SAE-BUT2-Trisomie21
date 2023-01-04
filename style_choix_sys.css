@@ -7,6 +7,11 @@
 
 }
 
+a{
+    display: block;
+    text-align: center;
+}
+
 img{
     max-height: 80px;
     max-width: 80px;
@@ -58,7 +63,6 @@ td {
 .sys{
     display: flex;
     justify-content: center;
-    padding-top: 5%;
     width: fit-content;
 }
 
