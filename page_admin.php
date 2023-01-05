@@ -109,7 +109,7 @@ if (isset($_GET['id_suppr'])) {
                 echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant
                  <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-              </svg> </button>';
+                </svg> </button>';
 
 
 
@@ -291,10 +291,11 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"div-photo-enfant\">";
-
                     echo "<img class=\"photo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
                     echo "</div>";
 
+
+                    
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
                     echo "<p>Date de Naissance :<strong> $ddn_enfant </strong></p>";
@@ -306,6 +307,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<p>Adresse enfant : <strong> $adresse     </strong> </p>";
                     echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
                     echo "</div>";
+               
 
                     echo " <div class=\"div-modif-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
@@ -327,10 +329,10 @@ if (isset($_GET['id_suppr'])) {
                     echo "</div>";
 
 
-                    echo "<div class=\"case-enfant\">";
+                    echo "<div class='div-liste-equipe'>";
 
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                    echo '<div class="bouton_enfant2">';
+
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
                     echo '<div id="dialog_layer" class="dialogs">';
@@ -356,9 +358,9 @@ if (isset($_GET['id_suppr'])) {
                     echo '</div>';
 
                     /* fin de la fenêtre popin de l'ajout d'enfant" */
-                    echo "</div>";
+                 
 
-                    echo "<div class=\"case-enfant\">";
+                    echo "<div class='div-zone-texte'>";
                     echo "<textarea style=\"resize: none\">Informations supplémentaires sur " . $prenom_enfant . " : " . $info_sup . " </textarea>";
                     echo "</div>";
 
@@ -396,84 +398,95 @@ if (isset($_GET['id_suppr'])) {
                     
                     echo "<table class='affichage-objectif'>";
 
-                    echo "<tr class='test'>
-                        <th>Nom</th>
+                    echo "<tr class='titre-objectif'>
+                        <th class='test'>Nom</th>
                         <th>Nombre Jeton</th>
                         <th>Durée</th>
                         <th>Message</th>
                         <th>Statu</th>
                         <th>Bouton</th>
-                        <th>Supprimer</th>
+                        <th>Accéder</th>
                         </tr>";
     
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         if($_SESSION["role_user"]==1 || $double_tab[$i][4]==1){
                         echo "<tr >";
-                        echo "<td>";
 
+                        #affiche nom
+                        echo "<td>";
                         print_r($double_tab[$i][0]);
                         echo "</td>";
+
+                        #affiche nombre de jeton
                         echo "<td>";
                         print_r($double_tab[$i][1]);
-                        echo " jetons";
                         echo "</td>";
+
+                        #affiche nombre de jour
                         echo "<td>";
-                        echo "durée : ";
                         print_r(1);
                         echo " jours";
                         echo "</td>";
 
 
-
+                        #affiche message
                         echo "<td>";
-
-                        echo '<a href="envoie_membre_message.php?id_objectif=' . $double_tab[$i][5] . '"><button class="message">Message</button></a>';
-
+                        echo '<a href="envoie_membre_message.php?id_objectif=' . $double_tab[$i][5] . '"><button class="message-objectif"> <span class=" icon-mail">&#x2709;</span></button></a>';
                         echo "</td>";
-                            echo "<td>";
-                            if ($double_tab[$i][4] == 1) {
-                                print_r("En Utilisation");
-                            } else {
-                                print_r("Pas en utilisation");
-                            }
-                            echo "</td>";
 
+                        #affiche statu
+                        echo "<td>";
+                        if ($double_tab[$i][4] == 1) {
+                             print_r("En Utilisation");
+                        } else {
+                             print_r("Pas en utilisation");
+                        }
+                        echo "</td>";
+
+                        #affiche bouton
                         if ($_SESSION["role_user"] == 1) {
                             switch ($double_tab[$i][4]) {
                                 case 1:
+
                                     echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="acceder">Ne plus utiliser</button></a>';
+                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
                                     echo "</td>";
                                     break;
 
                                 case 0:
                                     echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="acceder">Commencer l\'utilisation</button></a>';
+                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
                                     echo "</td>";
                                     break;
                             }
                         }
 
 
+                        echo "<td>";
+                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="objectif-acceder"> Acceder </button></a>';
+                        echo "</td>";
                         
                         echo "<td>";
                         echo " <div class=\"case-enfant\">";
-                        if ($_SESSION["role_user"] == 1) {
-                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Supprimer ce système</button>";
+                        if ($_SESSION["role_user"] == 1) {  
+                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog7', this)\"><span class='icon-poubelle'>&#x1F5D1;</span></button>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+
                             echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                             echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
                             echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
                             echo "<div class=\"dialog_form_actions\">";
-                            echo "<button class=\"acceder\"><a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
+
+                            echo "<button class='sup-objectif'>  <a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
                             echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                             echo "</div>";
                             echo "</form>";
                         }
 
-                        echo "<td>";
-                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="acceder">acceder</button></a>';
-                        echo "</td>";
+                       
+
+
                         echo "</div>";
                         echo "</div>";
                         echo "</td>";
