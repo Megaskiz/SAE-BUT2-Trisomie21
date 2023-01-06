@@ -354,7 +354,7 @@ if (isset($_GET['id_suppr'])) {
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-
+                    echo '<a href="groupe.php?id=' . $getid .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
                     /* fin de la fenêtre popin de l'ajout d'enfant" */
                     echo "</div>";
 
