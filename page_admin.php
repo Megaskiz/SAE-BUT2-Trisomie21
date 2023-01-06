@@ -332,6 +332,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<div class='div-liste-equipe'>";
 
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+                    echo '<a href="groupe.php?id=' . $_GET['id'] .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
@@ -352,11 +353,10 @@ if (isset($_GET['id_suppr'])) {
                     }
                     echo "</p>";
                     echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
-
+                    
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-                    echo '<a href="groupe.php?id=' . $getid .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
                     /* fin de la fenêtre popin de l'ajout d'enfant" */
                  
 
