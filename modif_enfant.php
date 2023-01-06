@@ -118,6 +118,7 @@ if (isset($_GET['id_suppr'])) {
                                     <label>
                                         <span class="label_text">nom :</span>
                                         <input name="nom" type="text" required="required">
+                                        
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
