@@ -104,5 +104,24 @@ try{
 catch (Exception $e)
 {die('Erreur : ' . $e->getMessage());}
 
-header('Location: page_admin.php?id='.$_SESSION['id_enfant']);
+switch ($_SESSION["type_rec"]) {
+    case '4':
+        header('Location: creation_recompense_unique.php');
+        break;
+    
+    case '5':
+        echo"page pas encore creée";
+        break;
+
+    case '6':
+        echo"page pas encore creée";
+        break;
+    
+    default:
+        echo$_SESSION["type_rec"];
+        echo"erreur de choix de récompense";
+        //header('Location: page_admin.php');
+        exit();
+        break;
+}
 ?>

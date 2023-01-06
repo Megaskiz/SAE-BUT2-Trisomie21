@@ -52,14 +52,19 @@ if (isset ($_GET['case']))  {
     // modif dans le nom
 
     $req = $linkpdo->prepare('UPDATE objectif SET nom = :intit where id_objectif = :id ');
+    $req2 = $linkpdo->prepare('insert into placer_jeton values ( :id_objectif, :time, :id_membre)  ');
 
     if ($req == false){
         die("erreur linkpdo");
     }   
         ///Exécution de la requête
     try{
+        
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));
+        $req2->execute(array('id_objectif' => $id, 'time' => date("Y/m/d H:i:s"), 'id_membre' => $_SESSION['logged_user']));
         header("Location:choix_sys.php?id_sys=$id");
+
+
         if ($req == false){
             $req->debugDumpParams;
             die("erreur execute");
