@@ -106,11 +106,6 @@ if (isset($_GET['id_suppr'])) {
                 <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
             </div>
 
-            <div class="flex_simple">
-            <label>Quelle sera l'image pour le jeton : </label>
-            <input type="text" name="image" placeholder="ecrivez le niveau de priorite ici">
-            </div>
-
 
             <input class="button" type="submit" value="Valider le système">
         </form>

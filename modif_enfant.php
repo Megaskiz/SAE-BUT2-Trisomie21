@@ -40,7 +40,7 @@ if (isset($_GET['id_suppr'])) {
 
     <header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="photo du visage de l'utilisateur">
 
         <?php
         $mail =  $_SESSION['login_user'];
@@ -296,7 +296,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
 
                 //--------
-                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
+                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de $prenom_enfant\">";
                 echo "</div>";
 
                 // case 3 boutons : supprimer, modifier, creer systeme
