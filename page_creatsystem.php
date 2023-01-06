@@ -119,10 +119,9 @@ catch (Exception $e) {
                     </section>
                     
                     <div>
-                    <button type="button" class="annuler" onclick="document.location.reload()"> Annuler</button>
+                    <button type="button" class="annuler" onclick="window.location.href='page_admin.php?id=<?php echo$id ?>'"> Annuler</button>
                     <input class="valider" type="submit" value="Valider">
                     </div>
-                    
                 </form>
             </div>
         </div>
