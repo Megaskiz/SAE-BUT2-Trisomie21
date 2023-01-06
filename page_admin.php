@@ -117,7 +117,7 @@ if (isset($_GET['id_suppr'])) {
 
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>';
+                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
                 echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
                 echo '<div class="dialog_form_item">';
                 echo '<label>';
