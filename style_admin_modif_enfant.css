@@ -1,26 +1,23 @@
-@media screen and (min-width: 1200px) {
+
 
     /*------------------------ Header/menu--------------------*/
 
-
+    @media screen and (min-width: 1250px) {
     /* Header */
 
-    table,
-    td {
+    table,td {
         border-collapse: collapse;
         padding: 0.7rem;
     }
-
     header {
         display: grid;
-        justify-content: center;
         align-items: center;
         grid-template-columns: 20% 45% 10% 15% 10%;
         grid-template-rows: 100%;
-        border-radius: 15px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         height: 12vh;
         position: sticky;
+        border-radius: 15px;
         top: 0;
         opacity: 1.0;
         background-color: white;
@@ -34,11 +31,13 @@
         padding-top: 2%;
     }
 
+
     .img-user {
         grid-column: 3;
         width: 40%;
         margin: auto;
     }
+
 
     /* Boutton déconnexion*/
     .h-deconnexion {
@@ -48,9 +47,7 @@
         flex-wrap: wrap;
         align-items: center;
         flex-direction: column;
-
     }
-
     .icone_deconnexion {
         margin-right: 0;
         height: 30px;
@@ -58,8 +55,6 @@
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
     }
-
-
     /*------------------------ Body--------------------*/
 
     body {
@@ -93,6 +88,9 @@
         background-color: transparent;
         border-radius: 10px;
         color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     /*------------------------ Menu liste des enfants (gauche)--------------------*/
@@ -102,24 +100,22 @@
 
     .ajouter-enfant {
         display: flex;
-        width: 100%;
-        text-align: center;
-        height: 10%;
-        text-align: center;
-        border-radius: 15px;
-        border: solid;
-        background-color: #005097;
-        cursor: pointer;
-        color: white;
-        margin: 10px;
-        align-items: center;
         flex-direction: row-reverse;
-        justify-content: center;
+        align-items: center;
+		padding: 7px 15px;
+        border-radius: 10px;
+		font-size: 12px;
+		border: none;
+		color: white;
+		background-color: #007bff;
+		cursor: pointer;
+		transition: all 0.3s;
     }
 
-    .icone-ajouter-enfant {
-        height: 50px;
+    .ajouter-enfant:hover {
+        background-color: #fec107;
     }
+
 
     .icone_info {
         height: 30px;
@@ -129,11 +125,9 @@
 
     .bouton_enfant {
         margin: auto;
-        width: 60%;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
+        width: 50%;
     }
+
 
     .icone-ajouter-enfant {
         margin: 0;
@@ -141,9 +135,11 @@
         cursor: pointer;
     }
 
+
     .ajouter_utilisateur {
         padding-left: 0%;
     }
+
 
     .acces-enfant {
         margin-left: 40%;
@@ -349,7 +345,6 @@
         border-radius: 20px;
         background-color: white;
         margin-left: 3%;
-        margin-right: 3%;
     }
 
     .grille2cases {
@@ -381,31 +376,37 @@
 
 
     .nb-systeme {
-        /* display: grid; */
-        /* grid-template-columns: 33% 33% 33%; */
-        /* grid-template-rows: 40% 60%; */
         height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 20px;
         background-color: white;
         margin-left: 3%;
-        margin-right: 3%;
-        margin-top: 3%;
         overflow: auto;
     }
 
-    .button_acceder {
-        margin: 10px;
-        border-radius: 10px;
-    }
 
-    .button_acceder:hover {
-        margin: 10px;
-        border-radius: 10px;
-        cursor: pointer;
-    }
+    .affichage-objectif { 
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .affichage-objectif th, td {
+        padding: 8px;
+      }
 
 
+      .affichage-objectif th {
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px 5px 0 0;
+      }
+      
+      .affichage-objectif td {
+        border-radius: 0 0 5px 5px;
+      }
+
+
+    
     textarea {
         grid-area: 2/3;
         height: 95%;
@@ -416,6 +417,46 @@
         width: 28%;
         margin: 2%;
         border-radius: 10px;
+    }
+
+
+
+    button.message-objectif {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+    }
+
+    button.message-objectif:hover {
+        background-color: #fec107;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .icon-mail {
+        font-size: 170%;
+    }
+
+    .titre-objectif {
+        background: #007bff;
+    }
+
+    .icon-poubelle {
+        font-size: 200%;
+        color: black;
+    }
+
+    .supprimer-objectif {
+        width: 100%;
+        border: black 1px solid;
+        cursor: pointer;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    .supprimer-objectif:hover {
+        background-color: red;
+        cursor: pointer;
     }
 
     .text-complementaire {
@@ -497,126 +538,26 @@
     }
 
     .spprmrenfant:hover {
-        color: #fff;
-        cursor: pointer;
-        font-size: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-        text-align: center;
-        background: red;
+        background-color: #fec107;
     }
 
 
     .spprmrenfant {
-        color: black;
-        cursor: pointer;
-        font-size: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-        text-align: center;
+            display: inline-block;
+            position: initial;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: gray;
+            cursor: pointer;
+            transition: all 0.3s;
 
-    }
-
-
-    /*-------------------------------------- Footer------------------------------------------*/
-
-    footer {
-        display: grid;
-        grid-template-columns: 20% 60% 20%;
-        margin: auto;
-        border-radius: 15px;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        background-color: white;
-    }
-
-    .f-menu {
-        display: grid;
-        list-style: none;
-        grid-template-columns: 33% 33% 33%;
-        width: 60%;
-        margin-left: 20%;
-    }
-
-
-    .footer-logo-association {
-        width: 50%;
-        grid-column: 1;
-        margin: auto;
-    }
-
-
-    /*Icone*/
-    .f_icone {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 7px;
-        justify-content: space-between;
-    }
-
-    /*Facebook*/
-    .f_facebook{
-        display: flex;
-        align-items: center;
-    }
-
-    .icone_fb {
-        color: #000;
-        text-decoration: none;
-        height: 25px;
-    }
-
-    .f_facebook {
-        display: flex;
-        align-items: center;
-    }
-
-
-
-    /*Téléphone*/
-    .f_tel {
-        display: flex;
-        align-items: center;
-    }
-
-    .icone_tel {
-        height: 25px;
-    }
-
-
-    /*Mail*/
-    .f_mail {
-        display: flex;
-        align-items: center;
-    }
+        }
     
-    .icone_mail {
-        height: 25px;
-    }
-
-
-
-
-    .f-copyright {
-        width: 15%;
-        margin-left: 40%;
-    }
-
-
-    footer p {
-        text-align: center;
-    }
-
-    footer a {
-        text-decoration: none;
-        color: black;
-        text-align: center;
-    }
     
-
-    footer a:hover {
-        color: #6666c4;
-    }
+    
 
     
 }
