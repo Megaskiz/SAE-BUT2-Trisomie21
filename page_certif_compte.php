@@ -255,7 +255,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
+                        echo "<p>Vous voulez valider ce compte membre dans l'application ?</p>";
                         echo "<div class=\"dialog_form_actions\">";
                         echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
                         echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
@@ -418,11 +418,11 @@ if (isset($_GET['id_invalider'])) {
                     echo "</div>";
 
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Invalider ce compte membre</button>";
+                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog4', this)\">Invalider ce compte membre</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<div role=\"dialog\" id=\"dialog4\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p>Vous voulez invalider ce compte membre dans l'application !</p>";
+                    echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
                     echo '<a href="page_certif_compte.php?id_invalider='.$identifiant.'">Invalider</a>';
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
