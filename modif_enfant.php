@@ -60,7 +60,7 @@ if (isset($_GET['id_suppr'])) {
         for ($i = 0; $i < $nombre_ligne; $i++) {
             echo "<tr>";
             for ($y = 0; $y < 2; $y++) {
-                echo "<td>";
+                echo "<td class='nom-utilisateur'>";
                 print_r($double_tab[$i][$y]);
                 $liste[$y] = $double_tab[$i][$y];
                 echo "</td>";
@@ -118,7 +118,6 @@ if (isset($_GET['id_suppr'])) {
                                     <label>
                                         <span class="label_text">nom :</span>
                                         <input name="nom" type="text" required="required">
-                                        
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
@@ -278,9 +277,9 @@ if (isset($_GET['id_suppr'])) {
 
 
                 // case du logo de l'enfant
-                echo "<div class=\"case-enfant\">";
+                echo "<div class='div-modif-photo'>";
                 //--------
-                echo "<button class=\"ajouter-photo\" type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier la photo</button>";
+                echo "<button class='modifier-photo' type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier la photo</button>";
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                 echo "<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -301,7 +300,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
 
                 // case 3 boutons : supprimer, modifier, creer systeme
-                echo " <div class=\"case-enfant\">";
+                echo " <div class='div-supprimer-enfant'>";
                 // dialog suppression
                
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";

@@ -55,6 +55,12 @@
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
     }
+
+    .nom-utilisateur{
+        font-size: 0.8rem;
+        color: #271a38;
+        margin: 0;
+    }
     /*------------------------ Body--------------------*/
 
     body {
@@ -350,7 +356,6 @@
     .grille2cases {
         display: grid;
         grid-template-rows: 1fr 1fr;
-        height: 90%;
     }
 
     .grille_4_cases {
@@ -362,8 +367,16 @@
     .case-enfant {
         display: grid;
         place-items: center;
-        margin: 3%;
+        
     }
+
+    .div-modif-photo {
+        display: grid;
+        place-items: center;
+        
+    }
+
+
 
     .case-3-infos {
         display: grid;
@@ -414,7 +427,7 @@
     }
 
     .logo-enfant {
-        width: 28%;
+        width: 35%;
         margin: 2%;
         border-radius: 10px;
     }
@@ -537,25 +550,49 @@
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
 
-    .spprmrenfant:hover {
-        background-color: red;
+
+    .modifier-photo {
+        display: inline-block;
+        padding: 5px 5px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .modifier-photo:hover {
+        background-color: #fec107;
+    }
+    
+
+
+    .div-supprimer-enfant{
+        display: flex;
+
     }
 
 
-    
     .spprmrenfant {
-            display: inline-block;
-            position: initial;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            background-color: gray;
-            cursor: pointer;
-            transition: all 0.3s;
+        display: inline-block;
+        position: initial;
+        padding: 10px 20px;
+        height: 30%;
+        margin: auto;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: gray;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
 
-        }
+    .spprmrenfant:hover {
+        background-color: red;
+    }
     
     
     
@@ -588,10 +625,17 @@
         _____________________________________________________________
 
     */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
 
 
     /*------------------------ Header/menu--------------------*/
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
 
     /* Header */
@@ -604,17 +648,9 @@
 
     header {
         display: grid;
-        justify-content: center;
         align-items: center;
-        grid-template-columns: 35% 45% 20%;
-        grid-template-rows: 100%;
-        border-radius: 15px;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        height: 12vh;
-        margin: 1%;
-        position: sticky;
-        top: 0;
-        opacity: 1.0;
+        grid-template-columns: 1fr 50% 1fr;
+        height: 10vh;
         background-color: rgb(255, 255, 255);
     }
 
@@ -647,11 +683,17 @@
     }
 
     .icone_deconnexion {
-        margin-right: 0;
-        height: 50px;
+        height: 5vh;
         border: 1px solid #271a38;
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
+    }
+
+
+    .nom-utilisateur{
+        font-size: 2.5rem;
+        color: #271a38;
+        margin: 0;
     }
 
     /*------------------------ Body--------------------*/
@@ -666,20 +708,12 @@
     }
 
     main {
-        /* display: grid;
-    grid-template-columns: 23% 1fr; */
-        min-height: 85vh;
+        min-height: 100vh;
         margin: 2%;
-        border-radius: 10px;
     }
 
     .left-contenu {
         display: none;
-        /* height: 100%;
-    box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
-    border-radius: 10px;
-    background-color: #fff;
-    overflow: auto; */
     }
 
     .right-contenu {
@@ -688,43 +722,9 @@
     }
 
 
-    /*------------------------ Menu liste des enfants (gauche)--------------------*/
+    /*------------------------ Affichage pop-up--------------------*/
 
-
-    /* Boutton ajouter un enfant*/
-
-    .ajouter-enfant {
-        width: 100%;
-        text-align: center;
-        height: 10%;
-        text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    }
-
-    .ajouter-enfant:hover {
-        color: #fff;
-        cursor: pointer;
-        background: grey;
-    }
-
-    .bouton_enfant {
-        margin: auto;
-        width: 50%;
-        padding: 2vh;
-    }
-
-    .ajouter_utilisateur {
-        padding-left: 0%;
-    }
-
-    .acces-enfant {
-        margin-left: 40%;
-        border-radius: none;
-    }
-
-
-    /* Pop-up JS ajouter un enfant*/
+    /* Pop-up JS modifier et supprimer*/
 
     .hidden {
         display: none;
@@ -918,12 +918,9 @@
     .section_enfant {
         display: grid;
         grid-template-columns: 33% 1fr;
-        height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
         background-color: white;
-        margin-left: 3%;
-        margin-right: 3%;
     }
 
     .grille2cases {
@@ -932,11 +929,24 @@
         height: 90%;
     }
 
-    /* .grille_4_cases {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50% 50%;
-} */
+
+    .modifier-photo {
+        display: inline-block;
+        padding: 5px 5px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .modifier-photo:hover {
+        background-color: #fec107;
+    }
+
+
 
     .case-enfant {
         display: grid;
@@ -1070,107 +1080,25 @@
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
 
-    .spprmrenfant:hover {
-        color: #fff;
-        cursor: pointer;
-        font-size: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-        text-align: center;
-        background: red;
-    }
-
+   
 
     .spprmrenfant {
-        color: black;
+        display: inline-block;
+        position: initial;
+        padding: 10px 20px;
+        height: 30%;
+        margin: auto;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: gray;
         cursor: pointer;
-        font-size: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-        text-align: center;
-
+        transition: all 0.3s;
     }
 
-
-    /*-------------------------------------- Footer------------------------------------------*/
-
-    footer {
-        display: grid;
-        grid-template-columns: 20% 60% 20%;
-        margin: auto;
-        border-radius: 15px;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        background-color: white;
+    .spprmrenfant:hover {
+        background: red;
     }
-
-    .f_tel {
-        display: flex;
-        align-items: center;
-    }
-
-    .f_mail {
-        display: flex;
-        align-items: center;
-    }
-
-    .f_icone {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 7px;
-    }
-
-    .icone_fb {
-        color: #000;
-        text-decoration: none;
-        height: 35px;
-    }
-
-    .icone_tel {
-        height: 35px;
-    }
-
-    .icone_mail {
-        height: 35px;
-    }
-
-    .footer-logo-association {
-        width: 50%;
-        grid-column: 1;
-        margin: auto;
-    }
-
-    .icone_fb {
-        color: black;
-    }
-
-    .f-menu {
-        display: grid;
-        list-style: none;
-        grid-template-columns: 33% 33% 33%;
-        width: 60%;
-        margin-left: 20%;
-    }
-
-    footer p {
-        text-align: center;
-    }
-
-    footer a {
-        text-decoration: none;
-        color: black;
-
-    }
-
-    footer a:hover {
-        color: #6666c4;
-    }
-
-    .f-copyright {
-        width: 15%;
-        margin-left: 40%;
-    }
-
-
 
 }
