@@ -39,7 +39,7 @@ if (isset($_GET['id_suppr'])) {
 
     <header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="photo du visage de l'utilisateur">
 
         <?php
         $mail =  $_SESSION['login_user'];
@@ -291,7 +291,7 @@ if (isset($_GET['id_suppr'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"div-photo-enfant\">";
-                    echo "<img class=\"photo-enfant\" src=\"$photo_enfant\" alt=\"Tête de l'enfant\">";
+                    echo "<img class=\"photo-enfant\" src=\"$photo_enfant\" alt=\"photo du visage de $prenom_enfant\">";
                     echo "</div>";
 
 
@@ -332,6 +332,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<div class='div-liste-equipe'>";
 
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+                    echo '<a href="groupe.php?id=' . $_GET['id'] .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
@@ -344,7 +345,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<p>";
                     $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
                     while ($tuteur = $allTuteurs->fetch()) {
-                        echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">    ";
+                        echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
                         echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "<br>";
                     }
                     if ($allTuteurs = null) {
@@ -352,11 +353,10 @@ if (isset($_GET['id_suppr'])) {
                     }
                     echo "</p>";
                     echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
-
+                    
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-                    echo '<a href="groupe.php?id=' . $getid .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
                     /* fin de la fenêtre popin de l'ajout d'enfant" */
                  
 
@@ -400,12 +400,13 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "<tr class='titre-objectif'>
                         <th class='test'>Nom</th>
-                        <th>Nombre Jeton</th>
+                        <th>Jetons</th>
                         <th>Durée</th>
                         <th>Message</th>
-                        <th>Statu</th>
+                        <th>Statut</th>
                         <th>Bouton</th>
                         <th>Accéder</th>
+                        <th>Supprimer</th>
                         </tr>";
     
                     for ($i = 0; $i < $nombre_ligne; $i++) {
