@@ -400,12 +400,13 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "<tr class='titre-objectif'>
                         <th class='test'>Nom</th>
-                        <th>Nombre Jeton</th>
+                        <th>Jetons</th>
                         <th>Durée</th>
                         <th>Message</th>
-                        <th>Statu</th>
+                        <th>Statut</th>
                         <th>Bouton</th>
                         <th>Accéder</th>
+                        <th>Supprimer</th>
                         </tr>";
     
                     for ($i = 0; $i < $nombre_ligne; $i++) {
