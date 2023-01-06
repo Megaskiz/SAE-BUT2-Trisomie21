@@ -122,6 +122,27 @@
         background-color: #fec107;
     }
 
+    a{   
+        text-decoration: none;
+        color: black;
+    }
+
+    .acceder-information-enfant {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .acceder-information-enfant:hover {
+        background-color: #fec107;
+    }
+
 
     .icone_info {
         height: 30px;
@@ -356,12 +377,14 @@
     .grille2cases {
         display: grid;
         grid-template-rows: 1fr 1fr;
+        height: 40vh;
     }
 
     .grille_4_cases {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 50% 50%;
+        grid-template-rows: 1fr 1fr;
+        height: 40vh;
     }
 
     .case-enfant {
@@ -375,7 +398,6 @@
         place-items: center;
         
     }
-
 
 
     .case-3-infos {
@@ -419,12 +441,20 @@
       }
 
 
-    
-    textarea {
-        grid-area: 2/3;
-        height: 95%;
-        width: 95%;
+      .zone-texte {
+        height: 70%;
+        width: 80%;
+        margin: auto;
     }
+    
+      textarea {
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        border-radius: 15px;
+        font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    }
+
 
     .logo-enfant {
         width: 35%;
@@ -432,24 +462,7 @@
         border-radius: 10px;
     }
 
-
-
-    button.message-objectif {
-        width: 100%;
-        background-color: transparent;
-        border: none;
-    }
-
-    button.message-objectif:hover {
-        background-color: #fec107;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    .icon-mail {
-        font-size: 170%;
-    }
-
+ 
     .titre-objectif {
         background: #007bff;
     }
@@ -593,10 +606,26 @@
     .spprmrenfant:hover {
         background-color: red;
     }
-    
-    
-    
 
+    .bouton-valider{
+        margin: auto;
+    }
+
+    .button-valider-modification{
+        padding: 10px 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .button-valider-modification:hover {
+        background-color: #fec107;
+    }    
+    
     
 }
 

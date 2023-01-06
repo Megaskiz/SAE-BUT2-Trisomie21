@@ -124,6 +124,28 @@
         width: 50%;
     }
 
+    a{   
+        text-decoration: none;
+        color: black;
+    }
+
+    .acceder-information-enfant {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .acceder-information-enfant:hover {
+        background-color: #fec107;
+    }
+
+
 
     .icone-ajouter-enfant {
         margin: 0;
@@ -982,10 +1004,14 @@
         border-radius: 10px;
         cursor: pointer;
     }
+
+
     textarea {
         height: 95%;
         width: 95%;
     }
+
+
     .logo-enfant {
         width: 30%;
         border-radius: 10px;

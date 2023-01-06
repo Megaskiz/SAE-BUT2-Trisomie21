@@ -165,12 +165,13 @@ if (isset($_GET['id_suppr'])) {
                     $liste = array();
                     echo "<table>";
 
-
+                    
                     for ($i = 0; $i < $nombre_ligne; $i++) {
+                      
                         echo "<td>";
                         echo "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='icone_info'>
-                        <path stroke-linecap='round' stroke-linejoin='round' d='M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z' />
-                        </svg> ";
+                            <path stroke-linecap='round' stroke-linejoin='round' d='M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z' />
+                            </svg> ";
                         echo "</td>";
                         
                         for ($y = 1; $y < 3; $y++) {
@@ -184,11 +185,12 @@ if (isset($_GET['id_suppr'])) {
                         }
                         
                         $identifiant = $double_tab[$i][0];
-                        echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"> Acceder </a>';
+                        echo "<td class='acceder-information-enfant'>";
+                        echo '<a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a>';
                         echo "</td>";
                         echo "</tr>";
                     }
+                    
 
 
                     echo "</table>";
@@ -318,7 +320,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
 
                
-                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Supprimer cet enfant</button>";
+                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Retirer l'enfant</button>";
 
                 
 
@@ -370,25 +372,15 @@ if (isset($_GET['id_suppr'])) {
 
 
                 // case tuteurs
-                echo "<div class=\"case\">";
-                echo "<a class=\"tuteur_4\"></a>";
-                //$getid = $_GET['id'];
-                //echo "<p>";
-                //$q = "SELECT membre.nom, prenom, role FROM suivre, membre WHERE suivre.id_enfant= ".$getid." AND suivre.id_membre = ".$_SESSION['logged_user'];
-                //echo$q;
-                //exit();
-                // $allTuteurs = $linkpdo->query($q);
-                // while($tuteur = $allTuteurs->fetch()) {
-                //     echo $tuteur['nom']." ".$tuteur['prenom']." il est : ".$tuteur['role']. "<br>";
-                // }
-                // echo "</p>";
+                echo "<div class='bouton-valider'>";
+                echo "<button class='button-valider-modification' >valider le modifications</button>";
                 echo "</div>";
 
                 //case info supp
-                echo "<div class=\"case-enfant\">";
+                echo "<div class='zone-texte'>";
                 echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
-                echo "<button  >valider</button>";
                 echo "</div>";
+
 
                 echo "</div>";
 
@@ -422,7 +414,7 @@ if (isset($_GET['id_suppr'])) {
                 <th>Jetons</th>
                 <th>Durée</th>
                 <th>Priorité</th>
-                <th>Statut</th>
+                <th>Status</th>
                 <th>Supprimer</th>
                 </tr>";
 
