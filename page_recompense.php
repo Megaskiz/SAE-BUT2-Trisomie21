@@ -42,9 +42,8 @@ try {
 <table>
     <tr>
     <td><p>Nom de la récompense</p></td>
-    <td><p>Description de la récompense</p></td>
-    <td><p>image de la récompense</p></td>
-    
+    <td><p>Description de la récompense</p> </td>
+    <td><p>image de la récompense</p></td>    
 </tr>
 <?php
 for($i=0; $i<$lignes;$i++){ //affichage des récompenses ATTENTION il faut faire l'affichage de l'image de la récompense
@@ -52,7 +51,11 @@ for($i=0; $i<$lignes;$i++){ //affichage des récompenses ATTENTION il faut faire
     <tr>
     <td><p>".$double_tab[$i][1]."</p></td>
     <td><p>".$double_tab[$i][2]."</p></td>
-    <td><p>".$double_tab[$i][3]."</p></td> 
+    <td>
+        <center>
+            <img src=".$double_tab[$i][3]." alt=\"image de la récompense\" >
+        </center>
+    </td>
     <td><a href='choix_recompense.php?id_rec=".$double_tab[$i][0]."'>choisir cette récompense</a></td>
     </tr>";
 }

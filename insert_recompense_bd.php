@@ -12,11 +12,12 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
     }
 
-// 
-//  FICHIER QUI DOIT ETRE MODIFIE ! ANCIENE VERSION
-//
+// fichier qui insert la récompense dans une base de données
 
-// fichier qui insert le système dans une base de données
+// je récupere les informations de mon formulaire
+                    // var_dump($_POST);
+                    // var_dump($_FILES);
+                    // exit();
 
 
 $intitule = $_POST["intitule"];
@@ -25,9 +26,7 @@ unset($_POST["intitule"]); // je retire le nom du système pour qu'il ne soit pa
 $descriptif = $_POST["descriptif"];
 unset($_POST["intitule"]);
 
-$lien_image = $_POST["lien_image"];
-unset($_POST["intitule"]);
-
+$photo_recompense = uploadImage($_FILES['photo_recompense']);
 
 
 switch ($_SESSION['type_rec']) {
@@ -43,10 +42,8 @@ switch ($_SESSION['type_rec']) {
             
             $req->execute(array('intitule' => $intitule, // la chaine que je reconstruit pour avoir ce que je veux
                                 'descriptif' => $descriptif,
-                                'lien_image' => $lien_image,
+                                'lien_image' => $photo_recompense,
                                 ));
-                                // $req->debugDumpParams();
-                                // exit();
             if ($req == false){
                 $req->debugDumpParams();
                 die("erreur execute");
@@ -62,18 +59,7 @@ switch ($_SESSION['type_rec']) {
         exit();
         break;
 
-    case '3':// type = routine  / contrat
-        $all_keys = array_keys($_POST); // je récupères toutes les clés de mon $_POST dans lesqueles il y à toutes les taches
-        $res="";
-        $i = 0;
-        foreach ($all_keys as $cle){
-            //echo$_POST[$cle]; // affiche chaque tâches
-            $res.=$_POST[$cle]."_".substr($cle, -7).":"; // je construit ma chaine
-            $i+=1;
-        }
-        $res.=" ";
-
-        $total_jeton = 7 * $i;
+    case '3':
         break;
     
     default:

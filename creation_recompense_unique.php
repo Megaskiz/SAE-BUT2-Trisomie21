@@ -83,7 +83,7 @@ if (isset($_GET['id_suppr'])) {
 
         
 
-        <form action="insert_recompense_bd.php" method="post">
+        <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
             <h1 class="flex-simple">Création d'une récompense de type : "unique"</h1>
             <div class="flex_simple">
                 <label>Quel sera le nom de la récompense : </label>
@@ -96,9 +96,8 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="flex_simple">
             <label>Quelle sera l'image associée à cette récompense : </label>
-            <input type="text" name="lien_image" placeholder="ecrivez le niveau de priorite ici">
+            <input name="photo_recompense" type="file" class="zip_input" required="required">
             </div>
-
 
             <input style="float:right;"class="button" type="submit" value="Valider la récompense et enregistrer le système">
         </form>

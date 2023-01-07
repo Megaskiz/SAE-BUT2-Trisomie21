@@ -143,8 +143,9 @@ if (isset ($_GET['id_sys']))  {
                        }else{
                             
                            echo"<td class='case_jeton' id=$compteur>";
-                           
+                           echo"<center>";
                            echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
+                           echo"</center>";
                            echo"</td>";
                        }
            
@@ -256,7 +257,10 @@ if (isset ($_GET['id_sys']))  {
            
                        }else{
                            echo"<td id=$compteur>";
+                           echo"<center>";
                            echo"<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
+                           echo"</center>";
+
                            echo"</td>";
                        }
            
