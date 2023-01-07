@@ -328,7 +328,7 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<form action=\"ajoute_modif_enfant_bd.php\" method=\"post\">";
 
-                echo "<div class=\"grille_4_cases\" >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
+                echo "<div class='information-enfant' >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
 
 
                 // case 3 infos : nom, ddn, activité
@@ -369,6 +369,10 @@ if (isset($_GET['id_suppr'])) {
 
 
                 // case tuteurs
+                
+                //encadre la class bouton-valider et zone-texte dans une meme div qui s'appelle "zone-tuteurs"
+
+
                 echo "<div class='bouton-valider'>";
                 echo "<button class='button-valider-modification' >valider les modifications</button>";
                 echo "</div>";
@@ -377,9 +381,12 @@ if (isset($_GET['id_suppr'])) {
                 echo "<div class='zone-texte'>";
                 echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
                 echo "</div>";
+                echo "</div>";
+
 
 
                 echo "</div>";
+              
 
                 echo "</form>";
 

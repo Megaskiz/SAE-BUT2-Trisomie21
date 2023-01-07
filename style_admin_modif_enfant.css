@@ -10,7 +10,7 @@
             padding: 0.7rem;
         }
 
-        
+
         header {
             display: grid;
             align-items: center;
@@ -105,9 +105,7 @@
         }
     
         /*------------------------ Menu liste des enfants (gauche)--------------------*/
-    
-    
-    
+
         a{   
             text-decoration: none;
             color: white;
@@ -348,7 +346,7 @@
         .section_enfant {
             display: grid;
             grid-template-columns: 33% 1fr;
-            height: 47%;
+            height: 40vh;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 20px;
             background-color: white;
@@ -357,11 +355,10 @@
     
         .grille2cases {
             display: grid;
-            /* grid-template-rows: 1fr 1fr; */
             height: 40vh;
         }
     
-        .grille_4_cases {
+        .information-enfant {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
@@ -392,7 +389,7 @@
     
     
         .nb-systeme {
-            height: 47%;
+            height: 40vh;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 20px;
             background-color: white;
@@ -715,6 +712,7 @@
             justify-content: space-between;
             min-height: 100vh;
             background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
+            font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             ;
         }
     
@@ -730,6 +728,7 @@
         .right-contenu {
             background-color: transparent;
             border-radius: 10px;
+            height: 100vh;
         }
     
     
@@ -927,17 +926,23 @@
         /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     
         .section_enfant {
-            display: grid;
-            grid-template-columns: 33% 1fr;
+            display: flex;
+            flex-direction: column;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 10px;
             background-color: white;
+            height: 95vh;
         }
     
         .grille2cases {
+            height: 35vh;
             display: grid;
-            /* grid-template-rows: 1fr 1fr; */
-            height: 90%;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .information-enfant{
+            display: grid;
+            height: 60vh;
         }
     
     
@@ -967,27 +972,66 @@
         }
     
         .case-3-infos {
-            display: grid;
-            grid-template-rows: 1fr 1fr 1fr;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            width: 100%;
         }
     
-    
-        /*nombre de système*/
-    
-        .nb-systeme {
-            display: none;
-            /* display: grid; 
-            grid-template-columns: 33% 33% 33%; 
-            grid-template-rows: 40% 60%; 
-            height: 47%;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            border-radius: 10px;
-            background-color: white;
-            margin-left: 3%;
-            margin-right: 3%;
-            margin-top: 3%;
-            overflow: auto; */
+
+        .bouton-valider{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+             
         }
+
+
+        .div-modif-photo{
+            /*met les élement en colonne et espace un peu*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        
+        .div-supprimer-enfant{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+
+        .button-valider-modification{
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #007bff;
+            cursor: pointer;
+            transition: all 0.3s;   
+            height: 50%;
+            width: 50%;
+
+                   
+        }
+    
+        .button-valider-modification:hover {
+            background-color: #fec107;
+        }    
+    
+        
     
         .button_acceder {
             margin: 10px;
@@ -1000,17 +1044,25 @@
             cursor: pointer;
         }
     
-    
-        textarea {
-            grid-area: 2/3;
-            height: 95%;
-            width: 95%;
-            border-radius: 15px;
+
+        .zone-texte{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
             font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         }
     
+        textarea {
+            height: 95%;
+            width: 95%;
+            border-radius: 15px;
+           
+        }
+    
         .logo-enfant {
-            width: 28%;
+            width: 40%;
             margin: 2%;
             border-radius: 10px;
         }
@@ -1112,6 +1164,23 @@
     
         .spprmrenfant:hover {
             background: red;
+        }
+
+        /*nombre de système*/
+    
+        .nb-systeme {
+            display: none;
+            /* display: grid; 
+            grid-template-columns: 33% 33% 33%; 
+            grid-template-rows: 40% 60%; 
+            height: 47%;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 10px;
+            background-color: white;
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-top: 3%;
+            overflow: auto; */
         }
     
     }
