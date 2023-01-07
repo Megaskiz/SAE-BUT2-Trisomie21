@@ -76,8 +76,7 @@ if (isset ($_GET['id_sys']))  {
         switch ($double_tab[0][10]) {
             case '1':{
 
-                echo"<div class=\"sys\">";
-                echo"<table>";
+                
                       
                try {
                    $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
@@ -101,6 +100,15 @@ if (isset ($_GET['id_sys']))  {
                //echo$_POST['chaine'];
            
                $chaine=$valeur[0];
+
+               // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
+               if ( strpos($chaine, 0)==false){
+                    echo"<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                    
+               }
+
+               echo"<div class=\"sys\">";
+                echo"<table>";
            
                /* 
                    il faut maintenant 'déconstruire' la chaine pour pouvoir faire un tableau
@@ -153,8 +161,40 @@ if (isset ($_GET['id_sys']))  {
                 echo"sys de type 2";
                 break;
 
-            case '3':{
-                echo"<div class=\"sys\">";
+            case '3':{   
+           
+           
+               try {
+                   $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
+                   $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=".$_SESSION['id_enfant']."");
+   
+                }
+               catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                       die('Erreur : ' . $e->getMessage());
+                   }
+           
+                   ///Affichage des entrées du résultat une à une
+                   
+                   $double_tab = $res -> fetchAll();
+                   $talbeau_jeton = $res2 -> fetchAll();
+
+                   $lien_jeton = $talbeau_jeton[0][0];
+           
+                   // var_dump($double_tab);
+                   // exit();
+                   $valeur = $double_tab[0];
+                   //var_dump( $valeur);
+               //echo$_POST['chaine'];
+           
+               $chaine=$valeur[0];
+
+               // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
+               if ( strpos($chaine, 0)==false){
+                echo"<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                
+           }
+
+           echo"<div class=\"sys\">";
                 echo"<table>";
            
                     echo"<tr>";
@@ -183,33 +223,6 @@ if (isset ($_GET['id_sys']))  {
                             echo"<p>Dimanche</p>";
                        echo"</td>";
                    echo"</tr>";
-           
-           
-           
-           
-               try {
-                   $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
-                   $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=".$_SESSION['id_enfant']."");
-   
-                }
-               catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                       die('Erreur : ' . $e->getMessage());
-                   }
-           
-                   ///Affichage des entrées du résultat une à une
-                   
-                   $double_tab = $res -> fetchAll();
-                   $talbeau_jeton = $res2 -> fetchAll();
-
-                   $lien_jeton = $talbeau_jeton[0][0];
-           
-                   // var_dump($double_tab);
-                   // exit();
-                   $valeur = $double_tab[0];
-                   //var_dump( $valeur);
-               //echo$_POST['chaine'];
-           
-               $chaine=$valeur[0];
            
                /* 
                    il faut maintenant 'déconstruire' la chaine pour pouvoir faire un tableau
