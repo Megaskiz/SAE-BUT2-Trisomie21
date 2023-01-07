@@ -99,7 +99,12 @@ if (isset($_GET['id_suppr'])) {
             </div>
             <div class="flex_simple">
                 <label>Quel est la durée de ce système ?  : </label>
-                <input type="text" name="duree" placeholder="ecrivez la duree ici">
+                <input type="number" name="duree" placeholder="ecrivez la duree ici">
+                <select name="echelle">
+                    <option value="h">heure(s)</option>
+                    <option value="h">jour(s)</option>
+                    <option value="s">semaine(s)</option>
+                </select>
             </div>
             <div class="flex_simple">
                 <label>Quel est la priorité de ce système ?  : </label>
