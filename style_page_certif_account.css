@@ -242,8 +242,7 @@
     
     .section_membre {
         display: grid;
-        grid-template-columns: 40% auto auto;
-        grid-template-rows: 50% 50%;
+        grid-template-columns: 35% auto;
         height: 100%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
@@ -466,8 +465,7 @@
     }
     
     .case-membre_1 {
-        display: grid;
-        margin: 20%;
+            margin: 20%;
     }
     
     .case-membre_2 {
@@ -574,6 +572,19 @@
     .lien_supp {
         margin: 2%;
     }
+
+    .grille_4_cases{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 80% auto;
+
+    }
+
+    .grille_2_cases{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }   
     }
     
     
