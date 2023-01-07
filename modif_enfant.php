@@ -373,7 +373,7 @@ if (isset($_GET['id_suppr'])) {
 
                 // case tuteurs
                 echo "<div class='bouton-valider'>";
-                echo "<button class='button-valider-modification' >valider le modifications</button>";
+                echo "<button class='button-valider-modification' >valider les modifications</button>";
                 echo "</div>";
 
                 //case info supp
