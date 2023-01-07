@@ -424,8 +424,41 @@ if (isset($_GET['id_suppr'])) {
 
                         #affiche nombre de jour
                         echo "<td>";
-                        print_r(1);
-                        echo " jours";
+                        $value = $double_tab[$i][2];
+                        switch ($double_tab[$i][2]) {
+                            case ($value < 24?$value:!$value):
+                                print_r($double_tab[$i][2]);
+                                echo" Heure(s)";
+                                break;
+                            
+                            case ($value < 24*7?$value:!$value):
+                                $reste=$value%24;
+                                $jours= intdiv($value,24);
+                                echo$jours." jour(s), ".$reste." heure(s)";
+                                break;
+                            
+                            default:
+                                $semaines= intdiv($value,(7*24));
+                                $reste1=$value%(7*24); // pour savoir s'il reste quoi que ce soit 
+                                echo$semaines." semaine(s) ";
+                                
+                                if($reste1>23){ // il reste + d'un jour
+                                    $restej=$value-(7*24); // le nombre d'heure au dela d'une semaine
+                                    if($reste1>23){ // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
+                                        $restejours=intdiv($reste1,24);
+                                        echo$restejours."jour(s)";
+                                    }
+
+                                }elseif($reste1>0){// s'il reste entre 1 et 23heures
+                                    echo$reste1."heure(s)";
+                                }
+                                break;
+                                }
+                                
+                                
+                                
+                        
+                        
                         echo "</td>";
 
 
