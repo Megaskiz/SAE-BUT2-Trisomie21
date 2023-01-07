@@ -935,7 +935,7 @@
         }
     
         .grille2cases {
-            height: 35vh;
+            height: 20vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -949,7 +949,7 @@
         .modifier-photo {
             display: inline-block;
             margin-top: 2%;
-            padding: 4%;
+            padding: 1vh;
             font-size: 16px;
             border: none;
             border-radius: 5px;
@@ -997,8 +997,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100%;
-            width: 100%;
+          
 
         }
 
@@ -1007,8 +1006,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            width: 100%;
         }
 
 
@@ -1062,7 +1059,7 @@
         }
     
         .logo-enfant {
-            width: 40%;
+            width: 12vh;
             margin: 2%;
             border-radius: 10px;
         }
