@@ -140,6 +140,12 @@
         color: black;
     }
 
+    .icone-ajouter-enfant {
+        margin: 0;
+        height: 25px;
+        cursor: pointer;
+    }
+
     a{   
         text-decoration: none;
         color: white;
@@ -163,11 +169,7 @@
 
 
 
-    .icone-ajouter-enfant {
-        margin: 0;
-        height: 25px;
-        cursor: pointer;
-    }
+    
 
 
     .ajouter_utilisateur {
