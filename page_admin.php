@@ -505,10 +505,10 @@ if (isset($_GET['id_suppr'])) {
                         echo "<td>";
                         echo " <div class=\"case-enfant\">";
                         if ($_SESSION["role_user"] == 1) {  
-                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog7', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog".$double_tab[$i][5]."', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
-                            echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                            echo "<div role=\"dialog\" id=\"dialog".$double_tab[$i][5]."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                             echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
                             echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
