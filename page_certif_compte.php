@@ -385,7 +385,6 @@ if (isset($_GET['id_invalider'])) {
             <div class="section_membre">
                 <?php
                 if (isset($_GET['id'])) {
-
                     //<!---- menu droit information ---->
                     echo "<div class=\"case-membre_1\">";
                     echo "<img class=\"img-user\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
@@ -410,13 +409,13 @@ if (isset($_GET['id_invalider'])) {
 
 
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
+                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$_GET['id']."', this)\">Valider ce compte membre</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<div role=\"dialog\" id=\"dialog".$_GET['id']."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                     echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
+                    echo '<a href="page_certif_compte.php?id_valider='.$_GET['id'].'">Valider</a>';
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";
@@ -424,7 +423,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "</div>";
                 }
                 if (isset($_GET['idv'])) {
-
+                    $idiv=$_GET['idv'];
                     //<!---- menu droit information ---->
                     echo "<div class=\"case-membre_1\">";
                     echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
@@ -450,13 +449,15 @@ if (isset($_GET['id_invalider'])) {
                     echo"</div>";
 
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog4', this)\">Invalider ce compte membre</button>";
+                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$idiv."', this)\">Invalider ce compte membre</button>";
+
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog4\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<div role=\"dialog\" id=\"dialog".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
                     echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_invalider='.$identifiant.'">Invalider</a>';
+                    echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
                     echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                     echo "</div>";
                     echo "</form>";
