@@ -40,6 +40,8 @@ require('fonctions.php');
                     $lien_jeton = uploadImage($_FILES['lien_jeton']);
                     $photo_enfant = uploadImage($_FILES['photo_enfant']);
 
+                    
+
                     // requete avec le mail si, rowcount() > 0 faire fail
                     $requete_verif_enfant = "SELECT count(*) FROM enfant WHERE nom='$nom' and prenom='$prenom' and date_naissance='$date_naissance';";
                     // Execution de la requete

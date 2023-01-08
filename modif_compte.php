@@ -101,86 +101,6 @@ if (isset($_GET['id_invalider'])) {
                 echo'</li>';
                 echo'</ul>';
             }
-            
-            ?>
-            <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
-                <div class="bouton_tuteur">
-                    <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un membre</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
-
-                            <form action="insert_membre.php" method="post" class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">nom :</span>
-                                        <input name='nom' type="text" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">prenom:</span>
-                                        <input name='prenom' type="text" class="city_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">adresse :</span>
-                                        <input name='adresse' type="text" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">code postal:</span>
-                                        <input name='code_postal' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">ville:</span>
-                                        <input name='ville' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">courriel:</span>
-                                        <input name='courriel' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">date de naissance:</span>
-                                        <input name='ddn' type="date" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">mots de passe :</span>
-                                        <input name='password' type="text" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <span class="label_text">Etes vous un professionel ? :</span>
-                                    <div>
-                                        <span class="label_text" for="oui">oui</span>
-                                        <input type="radio" id="oui" name='pro' value="1">
-
-                                        <span class="label_text" for="oui">non</span>
-                                        <input type="radio" id="oui" name='pro' value="0" checked>
-
-                                    </div>
-                                </div>
-
-                                <div class="dialog_form_actions">
-                                    <button type="submit">Valider l'ajout</button>
-                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <! -- /* fin de la fenêtre popin de l'ajout d'membre" */ -->
-                    <?php
                     
                     ///Sélection de tout le contenu de la table 
                     try {
@@ -317,49 +237,6 @@ if (isset($_GET['id_invalider'])) {
             $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
             $liste = array();
         }
-
-        if (isset($_GET['idv'])) {
-            $id = $_GET['idv'];
-
-
-
-            ///Sélection de tout le contenu de la table carnet_adresse
-            try {
-                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
-
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
-            $liste = array();
-
-
-            $id_membre = $double_tab[0][0];
-            $nom_membre = $double_tab[0][1];
-            $prenom_membre = $double_tab[0][2];
-            $adresse_membre = $double_tab[0][3];
-            $code_postal_membre = $double_tab[0][4];
-            $ville_membre = $double_tab[0][5];
-            $courriel_membre = $double_tab[0][6];
-            $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
-
-
-            try {
-                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
-
-
-            ///Affichage des entrées du résultat une à une
-
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-            $liste = array();
-        }
-
-
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
@@ -369,91 +246,52 @@ if (isset($_GET['id_invalider'])) {
 
                     //<!---- menu droit information ---->
                     echo "<div class=\"case-membre_1\">";
-                    echo "<img class=\"img-user\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
+                    echo"   <button><a href='page_certif_compte.php?idv=".$_GET['id']."'>Annuler les modifications</a></button>";
                     echo "</div>";
 
-                    echo "<div class='grille_2_cases'>";
+                    echo"<form action=\"ajoute_modif_compte.php\" method=\"post\"";
 
+                    echo"<div class='grille_4_cases'>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Nom :</p><input name=nom_membre type="text" value="' . $nom_membre . '">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Prenom :</p><input name=nom_membre type="text" value="' . $prenom_membre . '">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Date de naissance :</p><input name=nom_membre type="text" value="' . $date_naissance_membre . '">';
+                        echo"</div>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p>Adresse : <strong>$adresse_membre  $ville_membre </strong></p>";
-                    echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> E-mail :</p><input name=nom_membre type="text" value="' . $courriel_membre . '">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Adresse :</p><input name=nom_membre type="text" value="' . $adresse_membre . '">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Code Postal :</p><input name=nom_membre type="text" value="' . $code_postal_membre . '">';
+                        echo"</div>";
                     echo "</div>";
 
-                    echo"</div>";
+                    echo'<input class="button" type="submit" value="Valider les modifications">';
 
+
+
+                    echo"</form>";
 
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "<p></p>";
                     echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-                if (isset($_GET['idv'])) {
-
-                    //<!---- menu droit information ---->
-                    echo "<div class=\"case-membre_1\">";
-                    echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
-                    echo "</div>";
-
-                    echo "<div class='grille_2_cases'>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
-                    echo "</div>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p>Adresse : <strong> $adresse_membre  $ville_membre </strong></p>";
-                    echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
-                    echo "</div>";
-
-                    echo"</div>";
-
-                    echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog4', this)\">Invalider ce compte membre</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog4\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_invalider='.$identifiant.'">Invalider</a>';
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-
                 }
                 ?>
-        </div>
-        <div class="case-membre_2">
-            <?php
-            if(isset($_GET["idv"])){
-                echo'<button class="certifmembre" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
-            }
-            
-            ?>
-            <?php
-            
-            ?>
         </div>
 
         </nav>

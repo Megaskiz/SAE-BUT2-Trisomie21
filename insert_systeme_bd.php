@@ -22,8 +22,31 @@ catch (Exception $e) {
 $nom = $_POST["nom"];
 unset($_POST["nom"]); // je retire le nom du système pour qu'il ne soit pas dans $all_keys
 
-$duree = $_POST["duree"];
+$duree_raw = $_POST["duree"];
 unset($_POST["duree"]);
+
+$echelle = $_POST["echelle"];
+unset($_POST["echelle"]);
+
+
+
+switch ($echelle) {  
+    case 'j':
+        $duree=$duree_raw*24;
+        echo$duree;
+        break;
+
+    case 's':
+        $duree=$duree_raw*24*7;
+        echo$duree;
+        break;
+
+    default:
+        $duree = $duree_raw;
+        echo$duree;
+        break;
+}
+
 
 $jeton = "jeton";
 
