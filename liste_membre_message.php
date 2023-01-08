@@ -31,6 +31,7 @@
             $recupUser = $linkpdo->query("SELECT * FROM membre where id_membre<>".$_SESSION['logged_user']);
             while($user = $recupUser->fetch()){
                 ?>
+                
                 <a href ="envoie_membre_message.php?id_membre=<?php echo $user['id_membre']; ?>">
 
                     <p><?php echo $user['prenom']; ?></p></a>

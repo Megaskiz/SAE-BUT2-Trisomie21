@@ -158,6 +158,10 @@
         padding-left: 0%;
     }
 
+    .liste-enfant {
+        margin-top: 5%;
+    }
+
 
     .acces-enfant {
         margin-left: 40%;
@@ -502,17 +506,20 @@
     }
 
     .supprimer-objectif {
-        width: 100%;
-        border: black 1px solid;
+        border: none;
         cursor: pointer;
         background-color: transparent;
-        border-radius: 10px;
+ 
     }
 
-    .supprimer-objectif:hover {
-        background-color: red;
+  
+
+    .delet-icon {
+        width: 25px;
+        padding: 8px 0;
         cursor: pointer;
     }
+    
 
 
 
