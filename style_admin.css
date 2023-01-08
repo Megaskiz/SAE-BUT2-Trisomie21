@@ -126,7 +126,7 @@
 
     a{   
         text-decoration: none;
-        color: black;
+        color: white;
     }
 
     .acceder-information-enfant {
@@ -323,7 +323,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        height: 47%;
+        height: 40vh;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 20px;
         background-color: white;
@@ -367,7 +367,6 @@
 
     .list_equipier {
         display: inline-block;
-        position: initial;
         padding: 10px 20px;
         font-size: 16px;
         border: none;
@@ -376,14 +375,38 @@
         background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
-        margin-left: 23%;
-        margin-top: 20%;
-        
+     
      
     }
-    
 
     .list_equipier:hover {
+        background-color: #fec107;
+    }
+
+    .div-liste-equipe {
+        display: flex;
+        height: 100%;
+        width: 60%;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+    }
+
+
+    .bouton-equipe {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+     
+    }
+
+    .bouton-equipe:hover {
         background-color: #fec107;
     }
 
@@ -409,8 +432,7 @@
     }
     /*nombre de système*/
     .nb-systeme {
-        height: 47%; 
-        position: relative;
+        height: 40vh; 
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 20px;
         background-color: white;
@@ -422,8 +444,7 @@
     .affichage-objectif { 
         border-collapse: collapse;
         width: 100%;
-        position: relative;
-        top: 50px;
+        margin-top: 2vh;
       }
 
       .affichage-objectif th, td {
@@ -444,9 +465,6 @@
 
 
     .button_ajouter-objectif {
-        position: relative; 
-		top: 10px; 
-		left: 20px; 
 		padding: 10px 20px;
         border-radius: 5px;
 		font-size: 12px;
@@ -455,6 +473,8 @@
 		background-color: #007bff;
 		cursor: pointer;
 		transition: all 0.3s;
+        margin-top: 1vh;
+        margin-left: 1vh;
     }
 
 
@@ -462,6 +482,14 @@
         background-color: #fec107;
         cursor: pointer;
     }
+
+    img.img_equipe {
+        width: 5%;
+    }
+
+
+  
+
 
     
     textarea {

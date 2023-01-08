@@ -327,14 +327,12 @@ if (isset($_GET['id_suppr'])) {
                     echo "<div class='div-liste-equipe'>";
                     
                     echo "<div class='button-equipe'>";
+                    echo '<button class="bouton-equipe" type="button" onclick="openDialog(\'dialog2\', this)">Ajout Equipier</button>';
                     
 
                         echo "</div>";
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                    echo '<button type="button" onclick="openDialog(\'dialog2\', this)">Ajout Equipier
-                        <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog2\', this)">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-                        </svg> </button>';
+            
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
@@ -373,7 +371,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
                     if ($_SESSION["role_user"] == 1) {
-                        echo '<a href="page_creatsystem.php">   <button class="button_ajouter-objectif"> Ajouter un nouvel objectif </button></a>';
+                        echo '   <button class="button_ajouter-objectif"> <a href="page_creatsystem.php">  Ajouter un nouvel objectif</a></button>';
                     }
 
                     
