@@ -106,7 +106,7 @@ if (isset($_GET['id_suppr'])) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
-                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un enfant
+                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil
                  <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
                 </svg> </button>';
@@ -117,7 +117,7 @@ if (isset($_GET['id_suppr'])) {
 
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un enfant</h2>';
+                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
                 echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
                 echo '<div class="dialog_form_item">';
                 echo '<label>';
@@ -188,16 +188,15 @@ if (isset($_GET['id_suppr'])) {
 
 
 
+             
             for ($i = 0; $i < $nombre_ligne; $i++) {
-                $identifiant = $double_tab[$i][0];
+                      
                 echo "<td>";
-
-                echo '<a href="page_admin.php?id=' . $identifiant . '">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_info">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                </svg>
-                </a>';
+                echo "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='icone_info'>
+                    <path stroke-linecap='round' stroke-linejoin='round' d='M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z' />
+                    </svg> ";
                 echo "</td>";
+                
                 for ($y = 1; $y < 3; $y++) {
                     echo "<td>";
                     print_r($double_tab[$i][$y]);
@@ -205,16 +204,16 @@ if (isset($_GET['id_suppr'])) {
                     $nom = $double_tab[$i][1];
                     $prenom = $double_tab[$i][2];
                     $age = $double_tab[0][$y];
-
                     echo "</td>";
                 }
-
-
                 
-
+                $identifiant = $double_tab[$i][0];
+                echo "<td class='acceder-information-enfant'>";
+                echo '<a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a>';
+                echo "</td>";
                 echo "</tr>";
             }
-
+            
             echo "</table>";
 
             ///Fermeture du curseur d'analyse des résultats
@@ -330,9 +329,16 @@ if (isset($_GET['id_suppr'])) {
 
 
                     echo "<div class='div-liste-equipe'>";
+                    
+                    echo "<div class='button-equipe'>";
+                    
 
+                        echo "</div>";
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                    echo '<a href="groupe.php?id=' . $_GET['id'] .   '"><button class="bouton_enfant2">Ajouter Equipier</button></a>';
+                    echo '<button type="button" onclick="openDialog(\'dialog2\', this)">Ajout Equipier
+                        <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog2\', this)">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                        </svg> </button>';
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
@@ -425,8 +431,41 @@ if (isset($_GET['id_suppr'])) {
 
                         #affiche nombre de jour
                         echo "<td>";
-                        print_r(1);
-                        echo " jours";
+                        $value = $double_tab[$i][2];
+                        switch ($double_tab[$i][2]) {
+                            case ($value < 24?$value:!$value):
+                                print_r($double_tab[$i][2]);
+                                echo" Heure(s)";
+                                break;
+                            
+                            case ($value < 24*7?$value:!$value):
+                                $reste=$value%24;
+                                $jours= intdiv($value,24);
+                                echo$jours." jour(s), ".$reste." heure(s)";
+                                break;
+                            
+                            default:
+                                $semaines= intdiv($value,(7*24));
+                                $reste1=$value%(7*24); // pour savoir s'il reste quoi que ce soit 
+                                echo$semaines." semaine(s) ";
+                                
+                                if($reste1>23){ // il reste + d'un jour
+                                    $restej=$value-(7*24); // le nombre d'heure au dela d'une semaine
+                                    if($reste1>23){ // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
+                                        $restejours=intdiv($reste1,24);
+                                        echo$restejours."jour(s)";
+                                    }
+
+                                }elseif($reste1>0){// s'il reste entre 1 et 23heures
+                                    echo$reste1."heure(s)";
+                                }
+                                break;
+                                }
+                                
+                                
+                                
+                        
+                        
                         echo "</td>";
 
 
@@ -515,6 +554,58 @@ if (isset($_GET['id_suppr'])) {
                     echo "<section class=\"nb-systeme\">";
                     echo "</section>";
                 }
+
+                // Popup equipier 
+                    
+
+                echo '<div role="dialog" id="dialog2" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                //echo '<form enctype="multipart/form-data" action="groupe_validation.php" method="post" class="dialog_form">';
+                
+                
+                try {
+                    $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1;");
+                } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    die('Erreur : ' . $e->getMessage());
+                }
+                
+                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                                    $nombre_ligne = $res->rowCount();
+                                    $liste = array();
+                                    echo "<table class='no-break'>";
+                
+                                    for ($i = 0; $i < $nombre_ligne; $i++) {
+                                        echo "<tr>";
+                                        for ($y = 1; $y < 3; $y++) {
+                                            echo "<td>";
+                                            print_r($double_tab[$i][$y]);
+                                            $liste[$y] = $double_tab[$i][$y];
+                                            $nom = $double_tab[$i][1];
+                                            $prenom = $double_tab[$i][2];
+                                            
+                                            echo "</td>";
+                                        }
+                                        $identifiant = $double_tab[$i][0];
+                
+                                        echo '<td>';
+                                            //echo "</div>";
+                                            echo '</td>';
+                                            echo "<td class=\"Profil\" >";
+                                            ?>
+                                            <form action="groupe_validation.php?id_enfant=<?=$_GET['id']?>&id_membre=<?php echo $double_tab[$i][0]; ?>" method="post">
+                                                <button type="submit" >Ajouter</button>
+                                            </form>
+                                            <?php
+                            
+                                            echo "</td>";
+                                        echo "</tr>";
+                                    }
+                                    echo "</table>";
+                                    
+                                    echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                                   
+                //echo "</form";
+            echo "</div";
+                ?>
                 
                 ?>
         </nav>
