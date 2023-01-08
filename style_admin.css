@@ -54,12 +54,6 @@
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
     }
-
-    .nom-utilisateur{
-        font-size: 0.8rem;
-        color: #271a38;
-        margin: 0;
-    }
     /*------------------------ Body--------------------*/
     body {
         display: flex;
@@ -82,7 +76,7 @@
 
 
     .left-contenu {
-        height: 100vh;
+        height: 100%;
         box-shadow: 0 10px 20px rgb(0 0 0 / 15%), 0 1px 5px rgb(0 0 0 / 22%);
         border-radius: 20px;
         overflow: auto;
@@ -93,27 +87,17 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
         background-color: transparent;
         color: #000;
 
     }
-
-    .nom-utilisateur{
-        font-size: 0.8rem;
-        color: #271a38;
-        margin: 0;
-    }
-
-  
-
     /*------------------------ Menu liste des enfants (gauche)--------------------*/
     /* Boutton ajouter un enfant*/
     .ajouter-enfant {
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
-        margin: auto;
 		padding: 7px 15px;
         border-radius: 10px;
 		font-size: 12px;
@@ -129,26 +113,20 @@
     }
 
 
-    .liste-enfant {
-        margin-top: 5vh;
-    }
-    
-
     .icone_info {
         height: 30px;
         text-decoration: none;
         color: black;
     }
 
-    .icone-ajouter-enfant {
-        margin: 0;
-        height: 25px;
-        cursor: pointer;
+    .bouton_enfant {
+        margin: auto;
+        width: 50%;
     }
 
     a{   
         text-decoration: none;
-        color: white;
+        color: black;
     }
 
     .acceder-information-enfant {
@@ -169,7 +147,11 @@
 
 
 
-    
+    .icone-ajouter-enfant {
+        margin: 0;
+        height: 25px;
+        cursor: pointer;
+    }
 
 
     .ajouter_utilisateur {
@@ -337,7 +319,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        height: 45vh;
+        height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 20px;
         background-color: white;
@@ -396,23 +378,6 @@
      
     }
 
-    .bouton-equipe {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        background-color: #007bff;
-        cursor: pointer;
-        transition: all 0.3s;
-     
-    }
-
-    .bouton-equipe:hover {
-        background-color: #fec107;
-    }
-
     .list_equipier:hover {
         background-color: #fec107;
     }
@@ -428,25 +393,13 @@
     }
 
 
-    .div-photo-enfant,
-    .div-modif-enfant,
-    .div-liste-equipe,
-    .div-liste-equipe,
-    .div-zone-texte{
-        height: 22vh;
-    }
-
-  
-
-
-
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
     /*nombre de système*/
     .nb-systeme {
-        height: 45vh; 
+        height: 47%; 
         position: relative;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 20px;
@@ -503,8 +456,8 @@
     
     textarea {
         height: 80%;
-        width: 90%;
-        margin: auto;
+        width: 80%;
+        padding-top: 3%;
         border-radius: 15px;
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
@@ -639,35 +592,33 @@
 /* SUR TELEPHONE  */
 
 @media screen and (max-width: 1250px) {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-
-    /* Header */
-
     table,
     td {
         border-collapse: collapse;
-        padding: 1rem;
+        padding: 0.5rem;
     }
-
     header {
         display: grid;
+        justify-content: center;
         align-items: center;
-        grid-template-columns: 1fr 50% 1fr;
-        height: 10vh;
+        grid-template-columns: 35% 45% 20%;
+        grid-template-rows: 100%;
+        border-radius: 15px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        height: 12vh;
+        margin: 1%;
+        position: sticky;
+        top: 0;
+        opacity: 1.0;
         background-color: rgb(255, 255, 255);
     }
-
     /* Logo/image*/
     .logo-association {
-        width: 80%;
+        width: 50%;
         padding-left: 2%;
         padding-top: 2%;
     }
+
 
     .img-user {
         display: none;
@@ -676,10 +627,8 @@
         margin: auto;
     }
 
-    .img_equipe {
-        width: 3%;
-        margin: auto;
-    }
+    
+
 
     /* Boutton déconnexion*/
     .h-deconnexion {
@@ -690,20 +639,14 @@
         align-items: center;
     }
 
+
     .icone_deconnexion {
+        margin-right: 0;
         height: 5vh;
         border: 1px solid #271a38;
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
     }
-
-
-    .nom-utilisateur{
-        font-size: 2.5rem;
-        color: #271a38;
-        margin: 0;
-    }
-
     /*------------------------ Body--------------------*/
     body {
         display: flex;
@@ -729,7 +672,7 @@
         margin: 1%;
     }
 
-    
+
     .right-contenu {
         background-color: transparent;
         border-radius: 10px;
@@ -739,8 +682,7 @@
     /* Boutton ajouter un enfant*/
     .ajouter-enfant {
         display: flex;
-        flex-direction: row-reverse; 
-        margin: auto;
+        flex-direction: row-reverse;
         align-items: center;
 		padding: 7px 15px;
         border-radius: 10px;
@@ -757,31 +699,15 @@
     }
 
 
-    .acceder-information-enfant {
-        display: block;
-        padding: 5px 10px;
-        border-radius: 10px;
-        font-size: 12px;
-        border: none;
-        color: white;
-        background-color: #007bff;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .acceder-information-enfant:hover {
-        background-color: #fec107;
-    }
-
     .icone-ajouter-enfant {
-        margin: 0;
-        height: 25px;
-        cursor: pointer;
+        height: 50px;
     }
 
-    a {
+
+    .icone_info {
+        height: 30px;
         text-decoration: none;
-        color: white;
+        color: black;
     }
 
 
@@ -1014,7 +940,7 @@
     }
     /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     .section_enfant {
-        height: 40vh;
+        height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
         background-color: white;
@@ -1026,25 +952,6 @@
         place-items: center;
         margin: 3%;
     }
-
-
-    .bouton-equipe {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        background-color: #007bff;
-        cursor: pointer;
-        transition: all 0.3s;
-     
-    }
-
-    .bouton-equipe:hover {
-        background-color: #fec107;
-    }
-
 
 
     .photo-enfant {
@@ -1071,7 +978,7 @@
 
     /*nombre de système*/
     .nb-systeme {
-        height: 40vh;
+        height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
         background-color: white;
