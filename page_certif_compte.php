@@ -342,6 +342,25 @@ if (isset($_GET['id_invalider'])) {
             $code_postal_membre = $double_tab[0][4];
             $ville_membre = $double_tab[0][5];
             $courriel_membre = $double_tab[0][6];
+
+            switch ($double_tab[0][11]) {
+                case '0':
+                    $role = 'Utilisateur';
+                    break;
+                
+                case '1':
+                    $role = "Administrateur";
+                    break;
+
+                case '2':
+                    $role = "Validateur (administration)";
+                    break;
+
+                default:
+                    $role = "jsp";
+                    break;
+            }
+            
             $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
 
 
@@ -417,6 +436,9 @@ if (isset($_GET['id_invalider'])) {
                     echo "<p>  Nom :<strong> $nom_membre</strong></p>";
                     echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
                     echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p>Role de l'utilisateur : <strong>$role</strong></p>";
+
+
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";

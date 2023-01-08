@@ -199,6 +199,7 @@ if (isset($_GET['id_invalider'])) {
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
+            $_SESSION["id_compte_modif"]=$id;
 
 
 
@@ -222,6 +223,34 @@ if (isset($_GET['id_invalider'])) {
             $ville_membre = $double_tab[0][5];
             $courriel_membre = $double_tab[0][6];
             $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
+
+            // partie sur les roles, pour s'assure que le bon sois préselectionné et ne pas faire d'erreur
+            $zero="";
+            $un = "";
+            $deux = "";
+            $trois="";
+
+            switch ($double_tab[0][11]) {
+                case '0':
+                    $role = 'Utilisateur';
+                    $zero="selected";
+                    break;
+                
+                case '1':
+                    $role = "Administrateur";
+                    $un="selected";
+                    break;
+
+                case '2':
+                    $role = "Validateur (administration)";
+                    $deux="selected";
+                    break;
+
+                default:
+                    $role = "jsp";
+                    $trois="selected";
+                    break;
+            }
 
 
             try {
@@ -259,25 +288,39 @@ if (isset($_GET['id_invalider'])) {
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Prenom :</p><input name=nom_membre type="text" value="' . $prenom_membre . '">';
+                        echo '<p> Prenom :</p><input name=prenom_membre type="text" value="' . $prenom_membre . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Date de naissance :</p><input name=nom_membre type="text" value="' . $date_naissance_membre . '">';
+                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . $date_naissance_membre . '">';
                         echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Role de l\'utilisateur :</p> <select name="role">
+                        <option value="0"'.$zero.'>utilisateur(s)</option>
+                        <option value="1"'.$un.'>Administrateur</option>
+                        <option value="2"'.$deux.'>Validateur (administration)</option>
+                        <option value="3"'.$trois.'>jsp, a modifier</option>
+                        </select>';
+                        echo"</div>";
+
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> E-mail :</p><input name=nom_membre type="text" value="' . $courriel_membre . '">';
+                        echo '<p> E-mail :</p><input name=mail_membre type="text" value="' . $courriel_membre . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Adresse :</p><input name=nom_membre type="text" value="' . $adresse_membre . '">';
+                        echo '<p> Adresse :</p><input name=ad_membre type="text" value="' . $adresse_membre . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Code Postal :</p><input name=nom_membre type="text" value="' . $code_postal_membre . '">';
+                        echo '<p> Code postal :</p><input name=cpostal_membre type="text" value="' . $code_postal_membre . '">';
+                        echo"</div>";
+
+                        echo"<div style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Ville :</p><input name=ville type="text" value="' . $ville_membre . '">';
                         echo"</div>";
                     echo "</div>";
 
