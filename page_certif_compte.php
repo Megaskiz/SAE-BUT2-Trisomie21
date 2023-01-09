@@ -471,6 +471,8 @@ if (isset($_GET['id_invalider'])) {
             <?php
             if(isset($_GET["idv"])){
                 echo'<button class="certifmembre" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
+                echo'<button class="certifmembre" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
+
             }
             
             ?>
