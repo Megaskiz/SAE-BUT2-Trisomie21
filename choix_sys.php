@@ -281,17 +281,6 @@ if (isset ($_GET['id_sys']))  {
                 break;
                 
             }
-        
-            
-        }
-
-        #affiche message
-        echo '<a href="envoie_membre_message.php?id_objectif=' .$_GET['id_sys']. '"><button class="message-objectif"> <span class=" icon-mail">&#x2709;</span></button></a>';
-    
-
-
-
-
 ?>      
 </div>
 </body>
