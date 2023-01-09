@@ -26,8 +26,8 @@ if (isset($_GET['id_suppr'])) {
 }
 if(isset($_GET['eject'])){
     $id_eject = $_GET['eject'];
-    $getid = $_GET['id'];
-    $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $getid AND `suivre`.`id_membre` = $id_eject";
+    $Sid = $_GET['id'];
+    $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
     try {
         $res = $linkpdo->query($req_eject);
         header('Location: page_admin.php');
@@ -35,6 +35,7 @@ if(isset($_GET['eject'])){
         die('Erreur : ' . $e->getMessage());
     }
 }
+
 ?>
 
 <head>
