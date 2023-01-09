@@ -33,7 +33,7 @@ table {
 .struct {
     border-collapse: collapse;
     border: solid var(--couleur) 2px;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 0%;
     background-color: white;
 }
