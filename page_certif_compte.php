@@ -185,7 +185,7 @@ if (isset($_GET['id_invalider'])) {
                     
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1 ORDER BY nom;");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
