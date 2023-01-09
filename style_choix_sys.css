@@ -1,32 +1,29 @@
 @font-face {
     font-family: 'fs_mebold';
-    src: url('fonts/fs_me-bold-webfont.woff2') format('woff2'),
-         url('fonts/fs_me-bold-webfont.woff') format('woff');
+    src: url('fonts/fs_me-bold-webfont.woff2') format('woff2'), url('fonts/fs_me-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
-a{
-    display: block;
+a {
     text-align: center;
 }
 
-img{
+img {
     max-height: 80px;
     max-width: 80px;
 }
 
-
-:root{
+:root {
     --couleur: rgb(200, 212, 212);
 }
-body{
+
+body {
     background-color: var(--couleur);
 }
 
 table {
-    border-collapse:collapse;
+    border-collapse: collapse;
     /* border:solid black 2px; */
     padding: 1rem;
     /* border-radius: 20%; */
@@ -34,15 +31,16 @@ table {
 }
 
 .struct {
-    border-collapse:collapse;
-    border:solid var(--couleur) 2px;
+    border-collapse: collapse;
+    border: solid var(--couleur) 2px;
     padding: 1rem;
     border-radius: 0%;
     background-color: white;
 }
+
 td {
-    border-collapse:collapse;
-    border:solid var(--couleur) 2px;
+    border-collapse: collapse;
+    border: solid var(--couleur) 2px;
     padding: 1rem;
     background-color: rgb(255, 255, 255);
 }
@@ -57,36 +55,30 @@ td {
     background-color: rgb(33, 146, 52);
 }
 
-
-
-
-.sys{
+.sys {
     display: flex;
     justify-content: center;
     width: fit-content;
 }
 
-.case_jeton{
-    
-}
+.case_jeton {}
 
 h1 {
     font-family: 'fs_mebold';
     font-size: 48px;
-    font-weight:normal;
-    font-style:normal;
+    font-weight: normal;
+    font-style: normal;
     text-align: center;
 }
 
 p {
     font-family: 'fs_mebold';
     font-size: 24px;
-    font-weight:normal;
-    font-style:normal;
+    font-weight: normal;
+    font-style: normal;
     text-align: center;
 }
 
-
-.jeton{
+.jeton {
     max-width: fit-content;
 }
