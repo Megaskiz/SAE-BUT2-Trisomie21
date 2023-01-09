@@ -205,69 +205,7 @@ if (isset($_GET['id_invalider'])) {
 
 
 
-            try {
-                $res = $linkpdo->query("SELECT count(*) FROM `membre` WHERE role_user= 1;");
-            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
-                die('Erreur : ' . $e->getMessage());
-            }
-        
-            ///Affichage des entrées du résultat une à une
-        
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-        
-            $nb_admin = $double_tab[0][0];
-
-            ///Sélection de tout le contenu de la table carnet_adresse
-            try {
-                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
-                
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
-
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
-            $liste = array();
-
-
-
-
-            $id_membre = $double_tab[0][0];
-            $nom_membre = $double_tab[0][1];
-            $prenom_membre = $double_tab[0][2];
-            $adresse_membre = $double_tab[0][3];
-            $code_postal_membre = $double_tab[0][4];
-            $ville_membre = $double_tab[0][5];
-            $courriel_membre = $double_tab[0][6];
-            $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'Y/m/d');
-
-            // partie sur les roles, pour s'assure que le bon sois préselectionné et ne pas faire d'erreur
-            $zero="";
-            $un = "";
-            $deux = "";
-            $trois="";
-
-            switch ($double_tab[0][11]) {
-                case '0':
-                    $role = 'Utilisateur';
-                    $zero="selected";
-                    break;
-                
-                case '1':
-                    $role = "Administrateur";
-                    $un="selected";
-                    break;
-
-                case '2':
-                    $role = "Validateur (administration)";
-                    $deux="selected";
-                    break;
-
-                default:
-                    $role = "jsp";
-                    $trois="selected";
-                    break;
-            }
+            
 
 
             
@@ -298,57 +236,22 @@ if (isset($_GET['id_invalider'])) {
                     echo"   <button><a href='page_certif_compte.php?idv=".$_GET['id']."'>Annuler les modifications</a></button>";
                     echo "</div>";
 
-                    echo"<form action=\"ajoute_modif_compte.php\" method=\"post\"";
+                    echo"<form action=\"ajoute_modif_mdp.php\" method=\"post\"";
 
                     echo"<div class='grille_4_cases'>";
 
                     echo "<div class=\"case-3-infos\">";
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Nom :</p><input name=nom_membre type="text" value="' . $nom_membre . '">';
+                        echo"<div>"; 
                         echo"</div>";
-
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Prenom :</p><input name=prenom_membre type="text" value="' . $prenom_membre . '">';
+
+                        echo '<p> Nouveau mot de passe  :</p><input name=mdp_membre type="text" value="">';
                         echo"</div>";
-
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . $double_tab[0][7] . '">';
-                        echo"</div>";
-
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-
-                        if ($un=="selected" && $nb_admin==1){
-                            echo '<p> Role de l\'utilisateur : Administrateur</p>';
-                            echo"</div>";
-                        }else{
-                            echo '<p> Role de l\'utilisateur :</p> <select name="role">
-                            <option value="0"'.$zero.'>utilisateur(s)</option>
-                            <option value="1"'.$un.'>Administrateur</option>
-                            <option value="2"'.$deux.'>Validateur (administration)</option>
-                            <option value="3"'.$trois.'>jsp, a modifier</option>
-                            </select>';
-                            echo"</div>";
-                        }
-                        
 
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> E-mail : '.$courriel_membre.'<p>';
-                        echo"</div>";
-
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Adresse :</p><input name=ad_membre type="text" value="' . $adresse_membre . '">';
-                        echo"</div>";
-
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Code postal :</p><input name=cpostal_membre type="text" value="' . $code_postal_membre . '">';
-                        echo"</div>";
-
-                        echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Ville :</p><input name=ville type="text" value="' . $ville_membre . '">';
-                        echo"</div>";
+                        
                     echo "</div>";
 
                     echo'<input class="button" type="submit" value="Valider les modifications">';
