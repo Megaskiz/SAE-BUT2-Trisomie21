@@ -1,6 +1,7 @@
 <?php
 require('fonctions.php');
 is_logged();
+is_not_admin();
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">

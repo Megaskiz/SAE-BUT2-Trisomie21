@@ -3,6 +3,7 @@
 require('fonctions.php');
 is_logged();
 is_validateur();
+is_not_admin();
 
 
 // la partie de la connexion
