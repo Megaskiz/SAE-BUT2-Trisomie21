@@ -16,35 +16,26 @@ try {
     die('Erreur : ' . $e->getMessage());
     }
 
-   
-
-
-    
         
     //je récupere les informations de mon formulaire
   
-            $nom = $_POST['nom_membre'];
-            $prenom = $_POST['prenom_membre'];
-            $date_naissance = $_POST['ddn_membre']; 
-            $ville = $_POST['ville'];
-            $adresse = $_POST['ad_membre'];
-            $Cpostal = $_POST['cpostal_membre'];
-            $role=$_POST['role'];
+            $mdp=$_POST['mdp_membre'];
 
-            if ($role==NULL){
-                $role = '1';
-            }
+            // fonction qui hash le mot de passe
+            $mot = "ZEN02anWobA4ve5zxzZz".$mdp; // je rajoute une chaine que je vais ajouter au mot de passe
+            $nouveau_mdp = hash('sha256', $mot);
+            
 
-
-
-                    $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
+                    $req = $linkpdo->prepare("UPDATE membre  SET mdp=? WHERE id_membre= ?");
 
                     if ($req == false){
                         die("erreur linkpdo");
                     }   
                         ///Exécution de la requête
                     try{
-                        $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $_SESSION['id_compte_modif']]);
+                        $req->execute([$nouveau_mdp, $_SESSION['id_compte_modif']]);
+                        //$req->debugDumpParams();
+                        //exit();
 
                         if ($req == false){
                             die("erreur execute");

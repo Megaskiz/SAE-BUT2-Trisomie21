@@ -85,4 +85,13 @@ function is_validateur(){
     }
 }
 
+function is_not_admin(){ 
+    if($_SESSION['role_user']!=1 ){
+       echo"vous ne devriez pas etre la : ";
+       echo'<a href="page_admin.php">aller vers la page de connexion</a>';
+       header("location: page_admin.php");
+       exit();
+    }
+}
+
 ?>
