@@ -24,6 +24,17 @@ if (isset($_GET['id_suppr'])) {
         die('Erreur : ' . $e->getMessage());
     }
 }
+if(isset($_GET['eject'])){
+    $id_eject = $_GET['eject'];
+    $Sid = $_GET['id'];
+    $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
+    try {
+        $res = $linkpdo->query($req_eject);
+        header('Location: page_admin.php');
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+}
 
 ?>
 
@@ -343,11 +354,13 @@ if (isset($_GET['id_suppr'])) {
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
+                    $allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
                     while ($tuteur = $allTuteurs->fetch()) {
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
-                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "<br>";
-                    }
+                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "    ";
+                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_certif_compte.php?idv='.$tuteur['id_membre'] . '">information</a></button><br>';
+                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_admin.php?id='.$getid.'&eject='.$tuteur['id_membre'] . '">Retirer de l\'équipe</a></button><br>';
+                        }
                     if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
                     }
