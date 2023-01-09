@@ -222,7 +222,7 @@ if (isset($_GET['id_invalider'])) {
             $code_postal_membre = $double_tab[0][4];
             $ville_membre = $double_tab[0][5];
             $courriel_membre = $double_tab[0][6];
-            $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
+            $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'Y/m/d');
 
             // partie sur les roles, pour s'assure que le bon sois préselectionné et ne pas faire d'erreur
             $zero="";
@@ -292,7 +292,7 @@ if (isset($_GET['id_invalider'])) {
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . $date_naissance_membre . '">';
+                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . $double_tab[0][7] . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
