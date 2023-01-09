@@ -34,7 +34,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])){
     $count = $stmt->fetchColumn();
 
     // Je récupère les informations sur le compte de l'utilisateur
-    $query2 = "SELECT id_membre, compte_valide, pro FROM membre WHERE courriel=:courriel AND mdp=:mdp";
+    $query2 = "SELECT id_membre, compte_valide, pro, role_user FROM membre WHERE courriel=:courriel AND mdp=:mdp";
     $stmt2 = $linkpdo->prepare($query2);
     $stmt2->bindParam(':courriel', $courriel, PDO::PARAM_STR);
     $stmt2->bindParam(':mdp', $mdp_test, PDO::PARAM_STR);
@@ -44,7 +44,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])){
     if(count($valide) != 0){
         $id = $valide[0][0];
         $compte_valide = $valide[0][1];
-        $role = $valide[0][2];
+        $role = $valide[0][3];
 
         if ($count == 1 && $compte_valide == 1){
             session_start();
