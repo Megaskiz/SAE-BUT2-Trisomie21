@@ -14,6 +14,11 @@ try {
     catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
     }
+
+   
+
+
+    
         
     //je récupere les informations de mon formulaire
   
@@ -21,21 +26,20 @@ try {
             $prenom = $_POST['prenom_membre'];
             $date_naissance = $_POST['ddn_membre']; 
             $ville = $_POST['ville'];
-            $mail = $_POST['mail_membre'];
             $adresse = $_POST['ad_membre'];
             $Cpostal = $_POST['cpostal_membre'];
             $role=$_POST['role'];
 
 
 
-                    $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?,courriel= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
+                    $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
 
                     if ($req == false){
                         die("erreur linkpdo");
                     }   
                         ///Exécution de la requête
                     try{
-                        $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $mail, $date_naissance,$role, $_SESSION['id_compte_modif']]);
+                        $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $_SESSION['id_compte_modif']]);
 
                         if ($req == false){
                             $req->debugDumpParams();

@@ -62,7 +62,7 @@ if (isset($_GET['id_invalider'])) {
         ///Affichage des entrées du résultat une à une
 
         $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-        $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+        $nombre_ligne = $res->rowCount(); 
         $liste = array();
         echo "<table>";
 
@@ -203,9 +203,23 @@ if (isset($_GET['id_invalider'])) {
 
 
 
+
+            try {
+                $res = $linkpdo->query("SELECT count(*) FROM `membre` WHERE role_user= 1;");
+            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                die('Erreur : ' . $e->getMessage());
+            }
+        
+            ///Affichage des entrées du résultat une à une
+        
+            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+        
+            $nb_admin = $double_tab[0][0];
+
             ///Sélection de tout le contenu de la table carnet_adresse
             try {
                 $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
+                
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -213,6 +227,8 @@ if (isset($_GET['id_invalider'])) {
             $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
+
+
 
 
             $id_membre = $double_tab[0][0];
@@ -253,18 +269,21 @@ if (isset($_GET['id_invalider'])) {
             }
 
 
-            try {
-                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
+            
+
+// ne sert a rien je crois : 
+            // try {
+            //     $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
+            // } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            //     die('Erreur : ' . $e->getMessage());
+            // }
 
 
-            ///Affichage des entrées du résultat une à une
+            // ///Affichage des entrées du résultat une à une
 
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-            $liste = array();
+            // $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            // $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            // $liste = array();
         }
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
@@ -296,19 +315,26 @@ if (isset($_GET['id_invalider'])) {
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Role de l\'utilisateur :</p> <select name="role">
-                        <option value="0"'.$zero.'>utilisateur(s)</option>
-                        <option value="1"'.$un.'>Administrateur</option>
-                        <option value="2"'.$deux.'>Validateur (administration)</option>
-                        <option value="3"'.$trois.'>jsp, a modifier</option>
-                        </select>';
-                        echo"</div>";
+
+                        if ($un=="selected" && $nb_admin==1){
+                            echo '<p> Role de l\'utilisateur : Administrateur</p>';
+                            echo"</div>";
+                        }else{
+                            echo '<p> Role de l\'utilisateur :</p> <select name="role">
+                            <option value="0"'.$zero.'>utilisateur(s)</option>
+                            <option value="1"'.$un.'>Administrateur</option>
+                            <option value="2"'.$deux.'>Validateur (administration)</option>
+                            <option value="3"'.$trois.'>jsp, a modifier</option>
+                            </select>';
+                            echo"</div>";
+                        }
+                        
 
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> E-mail :</p><input name=mail_membre type="text" value="' . $courriel_membre . '">';
+                        echo '<p> E-mail : '.$courriel_membre.'<p>';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
