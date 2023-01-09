@@ -30,6 +30,10 @@ try {
             $Cpostal = $_POST['cpostal_membre'];
             $role=$_POST['role'];
 
+            if ($role==NULL){
+                $role = '1';
+            }
+
 
 
                     $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
@@ -42,7 +46,6 @@ try {
                         $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $_SESSION['id_compte_modif']]);
 
                         if ($req == false){
-                            $req->debugDumpParams();
                             die("erreur execute");
                         }
                     }
