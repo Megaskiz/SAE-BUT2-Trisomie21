@@ -151,8 +151,6 @@ if (isset ($_GET['id_sys']))  {
                            echo"</center>";
                            echo"</td>";
                        }
-           
-                       
                        $compteur+=1;
                    }
            
