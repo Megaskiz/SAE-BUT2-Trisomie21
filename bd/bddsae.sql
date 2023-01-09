@@ -145,7 +145,7 @@ CREATE TABLE `objectif` (
 INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`) VALUES
 (9, 'systeme maison', 'bien manger le matin_1111111:ne pas manger en dehors des repas_1111111:bien faire ses devoirs_1111111:', 21, 216, 'jeton', 0, 0, 1, 27, 3),
 (10, 'nom', 'rester concentré 5minutes_111:', 3, 55, 'jeton', 1, 0, 1, 27, 1),
-(11, 'maison', 's\'habiller seul_0011000:faire du sport_0000000:', 14, 0, 'jeton', 0, 0, 1, 27, 3),
+(11, 'maison', "s\'habiller seul_0011000:faire du sport_0000000:", 14, 0, 'jeton', 0, 0, 1, 27, 3),
 (15, 'ecole français', 'rester concentrer 5minutes_1100:', 4, 3, 'jeton', 1, 0, 1, 28, 1),
 (16, 'nom_sys', 'ne pas crier pendant dix min_000:', 3, 4, 'jeton', 4, 0, 1, 28, 1),
 (17, 'manger', 'finir son assiete_000:', 3, 1, 'jeton', 1, 0, 1, 28, 1),
