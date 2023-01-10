@@ -107,16 +107,16 @@ catch (Exception $e) {
 
                 <h2 class="titletype">Choisissez le type d'objectif :</h2>
                     <section class="choix-objectif">
-                        <input type="radio" name="radio1" id="choix11" value="1"> <label class="choix11-label four col" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png"> <button class="content"> Détail</button> </div></label>
-                        <input type="radio" name="radio1" id="choix13" value="2"> <label class="choix13-label four col" for="choix13">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img2.png"> <button class="content"> Détail</button> </label>
+                        <input type="radio" name="radio1" id="choix11" value="1"> <label class="choix11-label four col" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png">  </div></label>
+                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> </label>
                     </section>
 
 
                     <h2 class="titletype">Choisissez le type de récompense :</h2>
                     <section class="choix-recompense">
                         
-                        <input type="radio" name="radio2" id="choix21" value="4"> <label class="choix21-label four col product" for="choix21">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img3.png"> <button class="content"> Détail</button> </div></label>
-                        <input type="radio" name="radio2" id="choix22" value="5"> <label class="choix22-label four col" for="choix22"> <div class="image_product"> <img class="img-systeme" src="img/project_images/img4.png"> <button class="content"> Détail</button> </div></label>
+                        <input type="radio" name="radio2" id="choix21" value="4"> <label class="choix21-label four col product" for="choix21">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img3.png">  </div></label>
+                        <input type="radio" name="radio2" id="choix22" value="5"> <label class="choix22-label four col" for="choix22"> <div class="image_product"> <img class="img-systeme" src="img/project_images/img4.png"> </div></label>
                     </section>
                     
                     <div class="bouton-objectif">
