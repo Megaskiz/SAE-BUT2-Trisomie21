@@ -898,6 +898,17 @@
         text-align: center;
     }
 
+    .id-enfant,
+    .id-enfants,
+    .id-enfan  {
+        /*place le texte au mileu*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-size: 1.5rem;
+    }
 
 
 
