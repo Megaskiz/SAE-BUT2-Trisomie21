@@ -27,20 +27,20 @@
        }
 
         //afficher la liste des produits
-         $req = $linkpdo->query("SELECT * FROM products");
+         $req = $linkpdo->query("SELECT * FROM objectif");
          while($row = $req->fetch()){
         ?>
 
         
         <form action="" class="product">
             <div class="image_product">
-            <img src="img/project_images/<?=$row['img']?>">
+            <img src="img/project_images/<?=$row['lien_image']?>">
             </div>
             
             <div class="content">
-                <h4 class="name">   <?=$row['name']?></h4>
-                <h2 class="detail"> <?=$row['detail']?>detail</h2>
-                <a href="ajouter_panier.php?id=<?=$row['id']?>" class="id_product">Selectionner ce systeme</a>
+                <h4 class="name">   <?=$row['nom']?></h4>
+                <h2 class="detail"> <?=$row['intitule']?>detail</h2>
+                <a href="ajouter_panier.php?id=<?=$row['id_objectif']?>" class="id_product">Selectionner ce systeme</a>
             </div>
         </form>
 
