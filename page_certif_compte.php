@@ -250,13 +250,15 @@ if (isset($_GET['id_invalider'])) {
                             echo "</td>";
                         }
                         $identifiant = $double_tab[$i][0];
+                        $name=ucfirst($nom." ".$prenom);
+
 
                         echo '<td>';
-                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
+                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog $identifiant', this)\">Valider ce compte membre</button>";
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<div role=\"dialog\" id=\"dialog $identifiant\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p>Vous voulez valider ce compte membre dans l'application ?</p>";
+                        echo "<p>Vous voulez valider le compte de $name dans l'application ?</p>";
                         echo "<div class=\"dialog_form_actions\">";
                         echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
                         echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
