@@ -81,7 +81,11 @@ if (isset($_GET['id_invalider'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
     </header>
 
 
@@ -106,7 +110,7 @@ if (isset($_GET['id_invalider'])) {
             ?>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
-                    <button class="ajouter-membre" type="button" onclick="openDialog('dialogNEW1', this)">Ajouter un membre</button>
+                    <button class="ajouter-membre" type="button" onclick="openDialog('dialogNEW1', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>   
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialogNEW1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                             <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
@@ -210,12 +214,10 @@ if (isset($_GET['id_invalider'])) {
                         }
                         $identifiant = $double_tab[$i][0];
 
-                        echo '<td>';
-                            echo "</div>";
-                            echo '</td>';
-                            echo "<td class=\"Profil\" >";
-                                echo '<a href="page_certif_compte.php?idv='.$identifiant.'"><button class="acceder">Profil</button></a>';
-                            echo "</td>";
+                            echo "<td>";
+                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Acceder &#x1F59D; </button></a>';
+                            
+                        echo "</td>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -254,7 +256,7 @@ if (isset($_GET['id_invalider'])) {
 
 
                         echo '<td>';
-                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog $identifiant', this)\">Valider ce compte membre</button>";
+                        echo " <button  class='valider-compte-membre' type=\"button\" onclick=\"openDialog('dialog $identifiant', this)\"> Valider ce compte &#9989; </button>";
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog $identifiant\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -267,7 +269,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "</div>";
                         echo '</td>';
                         echo "<td class=\"Profil2\" >";
-                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button class="acceder">Profil</button></a>';
+                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button  class="acceder-information-membre"> Acceder</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }
