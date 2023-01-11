@@ -450,20 +450,24 @@ if (isset($_GET['id_invalider'])) {
                     echo"</div>";
 
                     echo " <div class=\"case-membre_2\">";
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$idiv."', this)\">Invalider ce compte membre</button>";
 
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                    if ( $idiv!=$_SESSION['logged_user']){
 
-                    echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
+                        echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$idiv."', this)\">Invalider ce compte membre</button>";
+    
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialog".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+    
+                        echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
+                        echo "<div class=\"dialog_form_actions\">";
+                        echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
+                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
 
                 }
                 ?>
