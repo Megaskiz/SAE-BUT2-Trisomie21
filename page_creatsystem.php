@@ -68,7 +68,7 @@ catch (Exception $e) {
     <main>
         <nav class="div-info-enfant">
             <div class="info-enfant">
-            <button class="retour"><a href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">Retour</a></button>
+            <a class="retour" href="page_admin.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour" >Retour</button>  </a>
                 <?php
                 $id = $_SESSION['id_enfant'];
                 ///Sélection de tout le contenu de la table carnet_adresse
@@ -107,16 +107,16 @@ catch (Exception $e) {
 
                 <h2 class="titletype">Choisissez le type d'objectif :</h2>
                     <section class="choix-objectif">
-                        <input type="radio" name="radio1" id="choix11" value="1"> <label class="choix11-label four col" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png">  </div></label>
-                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> </label>
+                        <input   type="radio" name="radio1" id="choix11" value="1"> <label class="choix11-label four col detail1" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png"> <p><strong>Objectif Chargement</strong></p> </div></label>
+                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col detail2" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> <p><strong>Objectif contrat</strong></p>   </div> </label>
                     </section>
 
 
                     <h2 class="titletype">Choisissez le type de récompense :</h2>
                     <section class="choix-recompense">
                         
-                        <input type="radio" name="radio2" id="choix21" value="4"> <label class="choix21-label four col product" for="choix21">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img3.png">  </div></label>
-                        <input type="radio" name="radio2" id="choix22" value="5"> <label class="choix22-label four col" for="choix22"> <div class="image_product"> <img class="img-systeme" src="img/project_images/img4.png"> </div></label>
+                        <input type="radio" name="radio2" id="choix21" value="4"> <label class="choix21-label four col product detail3" for="choix21">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img3.png">  <p><strong>Récompense Unique</strong></p> </div></label>
+                        <input type="radio" name="radio2" id="choix22" value="5"> <label class="choix22-label four col detail4" for="choix22"> <div class="image_product"> <img class="img-systeme" src="img/project_images/img4.png">  <p><strong>Récompense Boutique</strong></p> </div></label>
                     </section>
                     
                     <div class="bouton-objectif">
