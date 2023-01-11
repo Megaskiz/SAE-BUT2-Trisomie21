@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr">
 <?php
 require('fonctions.php');
 is_logged();
@@ -20,6 +20,7 @@ catch (Exception $e) {
 <head>
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_creatsystem.css">
+    <script type="text/javascript" src="script.js"></script>
     <link rel="icon" href="logo/icon-admin.png">
 </head>
 
@@ -87,7 +88,6 @@ catch (Exception $e) {
                     $date = strval($data[3]);
                     $datefinal = new DateTime($date);
                     echo (ucfirst(
-                        
                         "
                         <div class='id-enfant'> <a class='id-nom'>Nom: <strong> $data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom: <strong> $data[2]  </strong></a> </div>
@@ -103,27 +103,27 @@ catch (Exception $e) {
             </div>
         </nav>
         <div class="choix-systeme">
-            <div>
                 <form action="test.php" class="forme titre" method="POST" >
-                    <section class="plan titre">
-                        <h2 class="titletype">Choisissez le type de système :</h2>
-                        <input type="radio" name="radio1" id="choix11" value="1"><label class="choix11-label four col" for="choix11">Premier type de système, qui s'apparente à un chargement tout au long du temps choisi</label>
-                        <input type="radio" name="radio1" id="choix12" value="2"><label class="choix12-label four col" for="choix12">Deuxième type avec plusieurs tâches à accomplir qui rapportent des points</label>
-                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13">Troisième type un contrat, avec des tâches répétitives</label>
+
+                <h2 class="titletype">Choisissez le type d'objectif :</h2>
+                    <section class="choix-objectif">
+                        <input type="radio" name="radio1" id="choix11" value="1"> <label class="choix11-label four col" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png">  </div></label>
+                        <input type="radio" name="radio1" id="choix13" value="3"><label class="choix13-label four col" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> </label>
                     </section>
-                    <section class="payment-plan titre">
-                        <h2 class="titletype">Choisissez le type de récompense :</h2>
-                        <input type="radio" name="radio2" id="choix21" value="4"><label class="choix21-label four col" for="choix21">L'ensemble du système est orienté vers un prix unique</label>
-                        <input type="radio" name="radio2" id="choix22" value="5"><label class="choix22-label four col" for="choix22">Le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses</label>
-                        <input type="radio" name="radio2" id="choix23" value="6"><label class="choix23-label four col" for="choix23">Une fois terminé, le système propose une banque de coupons qui ont tous la même valeur, de sorte que l'enfant n'en prend qu'un ou plusieurs</label>
+
+
+                    <h2 class="titletype">Choisissez le type de récompense :</h2>
+                    <section class="choix-recompense">
+                        
+                        <input type="radio" name="radio2" id="choix21" value="4"> <label class="choix21-label four col product" for="choix21">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img3.png">  </div></label>
+                        <input type="radio" name="radio2" id="choix22" value="5"> <label class="choix22-label four col" for="choix22"> <div class="image_product"> <img class="img-systeme" src="img/project_images/img4.png"> </div></label>
                     </section>
                     
-                    <div>
-                    <button type="button" class="annuler" onclick="window.location.href='page_admin.php?id=<?php echo$id ?>'"> Annuler</button>
+                    <div class="bouton-objectif">
+                    <button type="button" class="annuler" onclick="window.location.href='page_creatsystem.php?id=<?php echo$id ?>'"> Annuler</button>
                     <input class="valider" type="submit" value="Valider">
                     </div>
                 </form>
-            </div>
         </div>
 
     </main>

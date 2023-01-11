@@ -55,7 +55,7 @@ if (isset($_GET['id_invalider'])) {
         <?php
         $mail =  $_SESSION['login_user'];
         try {
-            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
+            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail' ORDER BY nom;");
         } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
             die('Erreur : ' . $e->getMessage());
         }
@@ -106,9 +106,9 @@ if (isset($_GET['id_invalider'])) {
             ?>
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
-                    <button class="ajouter-membre" type="button" onclick="openDialog('dialog1', this)">Ajouter un membre</button>
+                    <button class="ajouter-membre" type="button" onclick="openDialog('dialogNEW1', this)">Ajouter un membre</button>
                     <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+                        <div role="dialog" id="dialogNEW1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                             <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
 
                             <form action="insert_membre.php" method="post" class="dialog_form">
@@ -185,7 +185,7 @@ if (isset($_GET['id_invalider'])) {
                     
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1;");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -227,7 +227,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0;");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0 ORDER BY nom;");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -285,7 +285,7 @@ if (isset($_GET['id_invalider'])) {
 
             ///Sélection de tout le contenu de la table carnet_adresse
             try {
-                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
+                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id' ORDER BY nom;");
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -306,7 +306,7 @@ if (isset($_GET['id_invalider'])) {
 
 
             try {
-                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
+                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id' ORDER BY nom;");
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -326,7 +326,7 @@ if (isset($_GET['id_invalider'])) {
 
             ///Sélection de tout le contenu de la table carnet_adresse
             try {
-                $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id'");
+                $res = $linkpdo->query("SELECT * FROM membre,suivre where membre.id_membre='$id' ORDER BY nom;");
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -366,7 +366,7 @@ if (isset($_GET['id_invalider'])) {
 
 
             try {
-                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
+                $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id' ORDER BY nom;");
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -450,24 +450,20 @@ if (isset($_GET['id_invalider'])) {
                     echo"</div>";
 
                     echo " <div class=\"case-membre_2\">";
+                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
 
-                    if ( $idiv!=$_SESSION['logged_user']){
+                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                    echo "<div role=\"dialog\" id=\"dialogI".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
-                        echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$idiv."', this)\">Invalider ce compte membre</button>";
-    
-                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-    
-                        echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo "</div>";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</div>";
-                    }
+                    echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
+                    echo "<div class=\"dialog_form_actions\">";
+                    echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
+                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "</div>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
 
                 }
                 ?>
