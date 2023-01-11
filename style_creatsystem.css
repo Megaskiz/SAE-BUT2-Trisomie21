@@ -365,7 +365,7 @@
     .forme .choix-objectif input:checked+label,
     .forme .choix-recompense input:checked+label,
     .forme .payment-type input:checked+label {
-        color: #fff;
+        color: black;
         background: #007bff;
     }
 
