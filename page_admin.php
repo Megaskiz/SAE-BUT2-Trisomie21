@@ -215,7 +215,7 @@ if (isset($_GET['eject'])) {
 
                     $identifiant = $double_tab[$i][0];
                     echo "<td>";
-                    echo '<button  class="acceder-information-enfant"> <a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a> </button>';
+                    echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">  Acceder &#x1F59D; </button> </a>';
                     echo "</td>";
                     echo "</tr>";
                 }
