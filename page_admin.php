@@ -357,8 +357,8 @@ if (isset($_GET['eject'])) {
                     while ($tuteur = $allTuteurs->fetch()) {
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
                         echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "    ";
-                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '">information</a></button><br>';
-                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '">Retirer de l\'équipe</a></button><br>';
+                        echo '<a class="equipier" href="page_certif_compte.php?idv='.$tuteur['id_membre'].'"><button class="acceder-information-enfant">Information</button></a><br>';
+                        echo '<a class="equipier" href="page_admin.php?id='. $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Retirer de l\'équipe</button><br></a>';
                     }
                     if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
@@ -383,7 +383,7 @@ if (isset($_GET['eject'])) {
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
                     if ($_SESSION["role_user"] == 1) {
-                        echo '   <button class="button_ajouter-objectif"> <a href="page_creatsystem.php">  Ajouter un nouvel objectif</a></button>';
+                        echo '   <a href="page_creatsystem.php"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
                     }
 
 
@@ -632,7 +632,7 @@ if (isset($_GET['eject'])) {
                                 echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
                                 echo "<div class=\"dialog_form_actions\">";
 
-                                echo "<button class='sup-objectif'>  <a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
+                                echo "<a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"><button class='sup-objectif'>Supprimer le système</button></a>";
                                 echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                                 echo "</div>";
                                 echo "</form>";
