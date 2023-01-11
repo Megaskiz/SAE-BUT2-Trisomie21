@@ -480,7 +480,9 @@ if (isset($_GET['eject'])) {
                             echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> &#x2709; </span></button>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-
+                            echo "<div class=\"dialog_form_actions3\">";
+                            echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Retour</button>";
+                            echo "</div>";
                             if (isset($double_tab[$i][5]) and !empty($double_tab[$i][5])) {
 
                                 /*$getid = $_GET['id_objectif'];
@@ -540,7 +542,7 @@ if (isset($_GET['eject'])) {
                                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
                                                             <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
                                                         </div>
-                                                        <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                                        <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                                     </div>
                                                 </div>
                                             <?php
@@ -553,7 +555,7 @@ if (isset($_GET['eject'])) {
                                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
                                                             <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
                                                         </div>
-                                                        <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                                        <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                                     </div>
                                                 </div>
                                             <?php
@@ -571,16 +573,15 @@ if (isset($_GET['eject'])) {
                                         </div>
                                         <div class="chat_txt_msg">
                                             <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
-                                            <button type="submit" class="chat_send" name="envoie2" value="Envoyer"></button>
+                                            <button type="submit" class="chat_send" name="envoie2">Envoyer</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+                            
                     <?php
 
-                            echo "<div class=\"dialog_form_actions\">";
-                            echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Retour</button>";
-                            echo "</div>";
+                            
                             echo "</form>";
                             echo "</td>";
 
@@ -718,8 +719,6 @@ if (isset($_GET['eject'])) {
 
                 //echo "</form";
                 echo "</div";
-                ?>
-
                 ?>
         </nav>
     </main>
