@@ -134,7 +134,7 @@ switch ($_SESSION["type_rec"]) {
         break;
     
     case '5':
-        echo"page pas encore creée";
+        header('Location: creation_recompense_multiples.php');
         break;
 
     case '6':
