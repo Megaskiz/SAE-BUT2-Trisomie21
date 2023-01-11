@@ -24,7 +24,7 @@ if (isset($_GET['id_suppr'])) {
         die('Erreur : ' . $e->getMessage());
     }
 }
-if(isset($_GET['eject'])){
+if (isset($_GET['eject'])) {
     $id_eject = $_GET['eject'];
     $Sid = $_GET['id'];
     $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
@@ -55,7 +55,7 @@ if(isset($_GET['eject'])){
         <?php
         $mail =  $_SESSION['login_user'];
         try {
-            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
+            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail' ORDER BY nom;");
         } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
             die('Erreur : ' . $e->getMessage());
         }
@@ -102,7 +102,7 @@ if(isset($_GET['eject'])){
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
                 <?php
-                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"]== 2 ) {
+                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
 
                     echo '<li class="nav-item">';
                     echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
@@ -174,57 +174,56 @@ if(isset($_GET['eject'])){
 
             <?php
             ///Sélection de tout le contenu de la table enfant
-            if($_SESSION["role_user"]!=2){
+            if ($_SESSION["role_user"] != 2) {
 
-            
-            try {
-                if ($_SESSION["role_user"]==1) {
-                    $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
-                }else{
-                    $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre='.$_SESSION["logged_user"].')');
+
+                try {
+                    if ($_SESSION["role_user"] == 1) {
+                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant ORDER BY nom');
+                    } else {
+                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre=' . $_SESSION["logged_user"] . ')');
+                    }
+                } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    die('Erreur : ' . $e->getMessage());
                 }
 
-            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
-                die('Erreur : ' . $e->getMessage());
-            }
+                ///Affichage des entrées du résultat une à une
+                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                $nombre_ligne = $res->rowCount();
+                $liste = array();
 
-            ///Affichage des entrées du résultat une à une
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount();
-            $liste = array();
-
-            echo "<div class='liste-enfant'>";
-            echo "<table >";
+                echo "<div class='liste-enfant'>";
+                echo "<table >";
 
 
 
 
-             
-            for ($i = 0; $i < $nombre_ligne; $i++) {
-                      
-                
-                
-                for ($y = 1; $y < 3; $y++) {
+
+                for ($i = 0; $i < $nombre_ligne; $i++) {
+
+
+
+                    for ($y = 1; $y < 3; $y++) {
+                        echo "<td>";
+                        print_r($double_tab[$i][$y]);
+                        $liste[$y] = $double_tab[$i][$y];
+                        $nom = $double_tab[$i][1];
+                        $prenom = $double_tab[$i][2];
+                        $age = $double_tab[0][$y];
+                        echo "</td>";
+                    }
+
+                    $identifiant = $double_tab[$i][0];
                     echo "<td>";
-                    print_r($double_tab[$i][$y]);
-                    $liste[$y] = $double_tab[$i][$y];
-                    $nom = $double_tab[$i][1];
-                    $prenom = $double_tab[$i][2];
-                    $age = $double_tab[0][$y];
+                    echo '<button  class="acceder-information-enfant"> <a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a> </button>';
                     echo "</td>";
+                    echo "</tr>";
                 }
-                
-                $identifiant = $double_tab[$i][0];
-                echo "<td>";
-                echo '<button  class="acceder-information-enfant"> <a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a> </button>';
-                echo "</td>";
-                echo "</tr>";
-            }
-            
-            echo "</table>";
 
-            ///Fermeture du curseur d'analyse des résultats
-            $res->closeCursor();
+                echo "</table>";
+
+                ///Fermeture du curseur d'analyse des résultats
+                $res->closeCursor();
             }
             ?>
         </nav>
@@ -301,7 +300,7 @@ if(isset($_GET['eject'])){
                     echo "</div>";
 
 
-                    
+
                     echo "<div class=\"case-3-infos\">";
                     echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
                     echo "<p>Date de Naissance :<strong> $ddn_enfant </strong></p>";
@@ -313,7 +312,7 @@ if(isset($_GET['eject'])){
                     echo "<p>Adresse enfant : <strong> $adresse     </strong> </p>";
                     echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
                     echo "</div>";
-               
+
 
                     echo " <div class=\"div-modif-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
@@ -336,14 +335,14 @@ if(isset($_GET['eject'])){
 
 
                     echo "<div class='div-liste-equipe'>";
-                    
+
                     echo "<div class='button-equipe'>";
                     echo '<button class="bouton-equipe" type="button" onclick="openDialog(\'dialog2\', this)">Ajout Equipier</button>';
-                    
 
-                        echo "</div>";
+
+                    echo "</div>";
                     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-            
+
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';
 
@@ -354,24 +353,24 @@ if(isset($_GET['eject'])){
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre;");
+                    $allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre ORDER BY nom;");
                     while ($tuteur = $allTuteurs->fetch()) {
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
                         echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "    ";
-                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_certif_compte.php?idv='.$tuteur['id_membre'] . '">information</a></button><br>';
-                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_admin.php?id='.$getid.'&eject='.$tuteur['id_membre'] . '">Retirer de l\'équipe</a></button><br>';
-                        }
+                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '">information</a></button><br>';
+                        echo '<button class="acceder-information-enfant"><a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '">Retirer de l\'équipe</a></button><br>';
+                    }
                     if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
                     }
                     echo "</p>";
                     echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
-                    
+
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     /* fin de la fenêtre popin de l'ajout d'enfant" */
-                 
+
 
                     echo "<div class='div-zone-texte'>";
                     echo "<textarea style=\"resize: none\">Informations supplémentaires sur " . $prenom_enfant . " : " . $info_sup . " </textarea>";
@@ -387,7 +386,7 @@ if(isset($_GET['eject'])){
                         echo '   <button class="button_ajouter-objectif"> <a href="page_creatsystem.php">  Ajouter un nouvel objectif</a></button>';
                     }
 
-                    
+
 
 
                     // tous les systèmes de l'enfant :
@@ -406,9 +405,9 @@ if(isset($_GET['eject'])){
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
 
-                    
 
-                    
+
+
                     echo "<table class='affichage-objectif'>";
 
                     echo "<tr class='titre-objectif'>
@@ -421,125 +420,233 @@ if(isset($_GET['eject'])){
                         <th>Accéder</th>
                         <th>Supprimer</th>
                         </tr>";
-    
+
                     for ($i = 0; $i < $nombre_ligne; $i++) {
-                        if($_SESSION["role_user"]==1 || $double_tab[$i][4]==1){
-                        echo "<tr >";
+                        if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1) {
+                            echo "<tr >";
 
-                        #affiche nom
-                        echo "<td>";
-                        print_r($double_tab[$i][0]);
-                        echo "</td>";
+                            #affiche nom
+                            echo "<td>";
+                            print_r($double_tab[$i][0]);
+                            echo "</td>";
 
-                        #affiche nombre de jeton
-                        echo "<td>";
-                        print_r($double_tab[$i][1]);
-                        echo "</td>";
+                            #affiche nombre de jeton
+                            echo "<td>";
+                            print_r($double_tab[$i][1]);
+                            echo "</td>";
 
-                        #affiche nombre de jour
-                        echo "<td>";
-                        $value = $double_tab[$i][2];
-                        switch ($double_tab[$i][2]) {
-                            case ($value < 24?$value:!$value):
-                                print_r($double_tab[$i][2]);
-                                echo" Heure(s)";
-                                break;
-                            
-                            case ($value < 24*7?$value:!$value):
-                                $reste=$value%24;
-                                $jours= intdiv($value,24);
-                                echo$jours." jour(s), ".$reste." heure(s)";
-                                break;
-                            
-                            default:
-                                $semaines= intdiv($value,(7*24));
-                                $reste1=$value%(7*24); // pour savoir s'il reste quoi que ce soit 
-                                echo$semaines." semaine(s) ";
-                                
-                                if($reste1>23){ // il reste + d'un jour
-                                    $restej=$value-(7*24); // le nombre d'heure au dela d'une semaine
-                                    if($reste1>23){ // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
-                                        $restejours=intdiv($reste1,24);
-                                        echo$restejours."jour(s)";
-                                    }
-
-                                }elseif($reste1>0){// s'il reste entre 1 et 23heures
-                                    echo$reste1."heure(s)";
-                                }
-                                break;
-                                }
-                                
-                                
-                                
-                        
-                        
-                        echo "</td>";
-
-
-                        #affiche message
-                        echo "<td>";
-                        echo '<a href="envoie_membre_message.php?id_objectif=' . $double_tab[$i][5] . '"><button class="message-objectif"> <span class=" icon-mail">&#x2709;</span></button></a>';
-                        echo "</td>";
-
-                        #affiche statu
-                        echo "<td>";
-                        if ($double_tab[$i][4] == 1) {
-                             print_r("En Utilisation");
-                        } else {
-                             print_r("Pas en utilisation");
-                        }
-                        echo "</td>";
-
-                        #affiche bouton
-                        if ($_SESSION["role_user"] == 1) {
-                            switch ($double_tab[$i][4]) {
-                                case 1:
-
-                                    echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
-                                    echo "</td>";
+                            #affiche nombre de jour
+                            echo "<td>";
+                            $value = $double_tab[$i][2];
+                            switch ($double_tab[$i][2]) {
+                                case ($value < 24 ? $value : !$value):
+                                    print_r($double_tab[$i][2]);
+                                    echo " Heure(s)";
                                     break;
 
-                                case 0:
-                                    echo "<td>";
-                                    echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
-                                    echo "</td>";
+                                case ($value < 24 * 7 ? $value : !$value):
+                                    $reste = $value % 24;
+                                    $jours = intdiv($value, 24);
+                                    echo $jours . " jour(s), " . $reste . " heure(s)";
+                                    break;
+
+                                default:
+                                    $semaines = intdiv($value, (7 * 24));
+                                    $reste1 = $value % (7 * 24); // pour savoir s'il reste quoi que ce soit 
+                                    echo $semaines . " semaine(s) ";
+
+                                    if ($reste1 > 23) { // il reste + d'un jour
+                                        $restej = $value - (7 * 24); // le nombre d'heure au dela d'une semaine
+                                        if ($reste1 > 23) { // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
+                                            $restejours = intdiv($reste1, 24);
+                                            echo $restejours . "jour(s)";
+                                        }
+                                    } elseif ($reste1 > 0) { // s'il reste entre 1 et 23heures
+                                        echo $reste1 . "heure(s)";
+                                    }
                                     break;
                             }
-                        }
 
 
-                        echo "<td>";
-                        echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="objectif-acceder"> Acceder </button></a>';
-                        echo "</td>";
-                        
-                        echo "<td>";
-                        echo " <div class=\"case-enfant\">";
-                        if ($_SESSION["role_user"] == 1) {  
-                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog".$double_tab[$i][5]."', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+
+
+
+                            echo "</td>";
+
+
+                            #affiche message
+                            echo "<td>";
+                           
+                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> &#x2709; </span></button>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-
-                            echo "<div role=\"dialog\" id=\"dialog".$double_tab[$i][5]."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                            echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-
-                            echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
-                            echo "<div class=\"dialog_form_actions\">";
-
-                            echo "<button class='sup-objectif'>  <a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
-                            echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                            echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                            echo "<div class=\"dialog_form_actions3\">";
+                            echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Retour</button>";
                             echo "</div>";
+                            if (isset($double_tab[$i][5]) and !empty($double_tab[$i][5])) {
+
+                                /*$getid = $_GET['id_objectif'];
+                                    /*$recupUser = $linkpdo->prepare('SELECT * FROM membre where id_membre = ?');
+                                    $recupUser->execute(array($getid));
+                                    if($recupUser->rowCount() > 0){*/
+                                if (isset($_POST["envoie2"])) {
+                                    $message = htmlspecialchars($_POST['messages']);
+                                    $sujet = htmlspecialchars($_POST['sujet']);
+                                    $insererMessage = $linkpdo->prepare('INSERT into message(corps,sujet,id_membre,date_heure,id_objectif) VALUES(?, ?, ?, NOW(), ?)');
+                                    if (!$insererMessage) {
+                                        die("Erreur prepare");
+                                    }
+                                    $insererMessage->execute(array($message, $sujet, $_SESSION['logged_user'], $double_tab[$i][5]));
+                                    if (!$insererMessage) {
+                                        die("Erreur execute");
+                                    }
+                                }
+                                /*}else{
+                                        echo ("aucun utilisateur trouvé");
+                                    }*/
+                            } else {
+                                echo ("aucun id trouvé");
+                            }
+                            echo "<title>Envoie de mesage</title>";
+
+
+                            
+
+                ?>
+                            <div class="chat_all">
+                                <div class="chat_title">
+                                    <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path>
+                                    </svg>
+                                    Messagerie du système à jeton
+                                </div>
+                                <div class="chat_list_msg">
+                                    <section id="message">
+                                        <?php
+                                        $recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
+                                        if (!$recupMessages) {
+                                            die("Erreur prepare");
+                                        }
+                                        $recupMessages->execute(array($double_tab[$i][5]));
+                                        if (!$recupMessages) {
+                                            die("Erreur prepare");
+                                        }
+
+                                        while ($message = $recupMessages->fetch()) {
+                                            if ($message['id_membre'] == $_SESSION['logged_user']) {
+                                        ?>
+                                                <div class="chat_msgR">
+                                                    <img class="chat_img_R" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                                                    <div class="chat_vous">
+                                                        <div class="chat_info">
+                                                            <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
+                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                                        </div>
+                                                        <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <div class="chat_msgL">
+                                                    <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tête de l'utilisateur">
+                                                    <div class="chat_autre">
+                                                        <div class="chat_info">
+                                                            <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
+                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                                        </div>
+                                                        <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        <?php
+                                        }
+                                        ?>
+                                    </section>
+                                </div>
+                                <div class="chat_envoi_msg">
+                                    <form method="POST" action="" class="">
+                                        <div class="chat_sujet_msg">
+                                            <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
+                                        </div>
+                                        <div class="chat_txt_msg">
+                                            <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
+                                            <button type="submit" class="chat_send" name="envoie2">Envoyer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                    <?php
+
+                            
                             echo "</form>";
+                            echo "</td>";
+
+
+
+
+                            #affiche statu
+                            echo "<td>";
+                            if ($double_tab[$i][4] == 1) {
+                                print_r("En Utilisation");
+                            } else {
+                                print_r("Pas en utilisation");
+                            }
+                            echo "</td>";
+
+                            #affiche bouton
+                            if ($_SESSION["role_user"] == 1) {
+                                switch ($double_tab[$i][4]) {
+                                    case 1:
+
+                                        echo "<td>";
+                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
+                                        echo "</td>";
+                                        break;
+
+                                    case 0:
+                                        echo "<td>";
+                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
+                                        echo "</td>";
+                                        break;
+                                }
+                            }
+
+
+                            echo "<td>";
+                            echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="objectif-acceder"> Acceder </button></a>';
+                            echo "</td>";
+
+                            echo "<td>";
+                            echo " <div class=\"case-enfant\">";
+                            if ($_SESSION["role_user"] == 1) {
+                                echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+
+                                echo "<div role=\"dialog\" id=\"dialog" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
+                                echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
+                                echo "<div class=\"dialog_form_actions\">";
+
+                                echo "<button class='sup-objectif'>  <a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Supprimer le système</button></a>";
+                                echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                                echo "</div>";
+                                echo "</form>";
+                            }
+
+
+
+
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</td>";
+
+                            echo "</tr>";
                         }
-
-                       
-
-
-                        echo "</div>";
-                        echo "</div>";
-                        echo "</td>";
-
-                        echo "</tr>";
-                    }
                     }
                     echo "</table>";
 
@@ -563,57 +670,55 @@ if(isset($_GET['eject'])){
                 }
 
                 // Popup equipier 
-                    
+
 
                 echo '<div role="dialog" id="dialog2" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 //echo '<form enctype="multipart/form-data" action="groupe_validation.php" method="post" class="dialog_form">';
-                
-                
+
+
                 try {
-                    $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1;");
+                    $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1 ORDER BY nom;");
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
                 }
-                
+
                 $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                                    $nombre_ligne = $res->rowCount();
-                                    $liste = array();
-                                    echo "<table class='no-break'>";
-                
-                                    for ($i = 0; $i < $nombre_ligne; $i++) {
-                                        echo "<tr>";
-                                        for ($y = 1; $y < 3; $y++) {
-                                            echo "<td>";
-                                            print_r($double_tab[$i][$y]);
-                                            $liste[$y] = $double_tab[$i][$y];
-                                            $nom = $double_tab[$i][1];
-                                            $prenom = $double_tab[$i][2];
-                                            
-                                            echo "</td>";
-                                        }
-                                        $identifiant = $double_tab[$i][0];
-                
-                                        echo '<td>';
-                                            //echo "</div>";
-                                            echo '</td>';
-                                            echo "<td class=\"Profil\" >";
-                                            ?>
-                                            <form action="groupe_validation.php?id_enfant=<?=$_GET['id']?>&id_membre=<?php echo $double_tab[$i][0]; ?>" method="post">
-                                                <button type="submit" >Ajouter</button>
-                                            </form>
-                                            <?php
-                            
-                                            echo "</td>";
-                                        echo "</tr>";
-                                    }
-                                    echo "</table>";
-                                    
-                                    echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
-                                   
+                $nombre_ligne = $res->rowCount();
+                $liste = array();
+                echo "<table class='no-break'>";
+
+                for ($i = 0; $i < $nombre_ligne; $i++) {
+                    echo "<tr>";
+                    for ($y = 1; $y < 3; $y++) {
+                        echo "<td>";
+                        print_r($double_tab[$i][$y]);
+                        $liste[$y] = $double_tab[$i][$y];
+                        $nom = $double_tab[$i][1];
+                        $prenom = $double_tab[$i][2];
+
+                        echo "</td>";
+                    }
+                    $identifiant = $double_tab[$i][0];
+
+                    echo '<td>';
+                    //echo "</div>";
+                    echo '</td>';
+                    echo "<td class=\"Profil\" >";
+                    ?>
+                    <form action="groupe_validation.php?id_enfant=<?= $_GET['id'] ?>&id_membre=<?php echo $double_tab[$i][0]; ?>" method="post">
+                        <button type="submit">Ajouter</button>
+                    </form>
+                <?php
+
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+
+                echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+
                 //echo "</form";
-            echo "</div";
-                ?>
-                
+                echo "</div";
                 ?>
         </nav>
     </main>
