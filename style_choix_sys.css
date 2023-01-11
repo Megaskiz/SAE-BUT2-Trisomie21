@@ -82,3 +82,26 @@ p {
 .jeton {
     max-width: fit-content;
 }
+
+#color-picker-container {
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  
+  #color-bar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10%;
+    align-items: center;
+  }
+  
+  #color-picker {
+   
+    height: 100%;
+    opacity: 25%;
+    border: none;
+  }
