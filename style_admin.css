@@ -615,7 +615,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 9px;
         font-size: 12px;
     }
     .chat_zone_txt {

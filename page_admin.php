@@ -549,7 +549,7 @@ if (isset($_GET['eject'])) {
                                             } else {
                                             ?>
                                                 <div class="chat_msgL">
-                                                    <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                                                    <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tête de l'utilisateur">
                                                     <div class="chat_autre">
                                                         <div class="chat_info">
                                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
