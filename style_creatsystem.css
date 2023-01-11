@@ -443,12 +443,12 @@
     .detail2:hover:before,
     .detail3:hover:before,
     .detail4:hover:before{
-        width: 50vh;
+        width: 52vh;
         height: 25vh;
         border-radius: 10px;
         left: 0px;
-        top: 0;
-        position: absolute;
+        top:0px;
+        position:absolute;
         background-color: whitesmoke;
               
     }
