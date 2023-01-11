@@ -450,6 +450,7 @@ if (isset($_GET['id_invalider'])) {
                     echo"</div>";
 
                     echo " <div class=\"case-membre_2\">";
+                    if ( $idiv!=$_SESSION['logged_user']){
                     echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
 
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
@@ -464,6 +465,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+                    }
 
                 }
                 ?>
