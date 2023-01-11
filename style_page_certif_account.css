@@ -1,29 +1,23 @@
 /*------------------------ Header/menu--------------------*/
-@media screen and (min-width: 1200px){
 
+@media screen and (min-width: 1200px) {
     /* Header */
-    
     table,
     td {
         border-collapse: collapse;
         padding: 0.5rem;
     }
-    
     .Profil {
         border-collapse: collapse;
         padding: 1rem;
         text-align: left;
     }
-    
     .Profil2 {
         border-collapse: collapse;
         padding: 1rem;
         text-align: left;
     }
-    
-    
     /*--------SEPARATION----------*/
-    
     .divider {
         /* minor cosmetics */
         display: table;
@@ -34,12 +28,10 @@
         margin: 20px auto;
         /* spacing above/below */
     }
-    
     .divider span {
         display: table-cell;
         position: relative;
     }
-    
     .divider span:first-child,
     .divider span:last-child {
         width: 50%;
@@ -52,7 +44,6 @@
         background-position: 0 0, 0 100%;
         background-repeat: no-repeat;
     }
-    
     .divider span:first-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#6666c4));
@@ -61,7 +52,6 @@
         background-image: -o-linear-gradient(180deg, transparent, #6666c4);
         background-image: linear-gradient(90deg, transparent, #6666c4);
     }
-    
     .divider span:nth-child(2) {
         font-weight: 600;
         color: #000;
@@ -69,7 +59,6 @@
         width: auto;
         white-space: nowrap;
     }
-    
     .divider span:last-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6666c4), to(transparent));
@@ -78,10 +67,7 @@
         background-image: -o-linear-gradient(180deg, #6666c4, transparent);
         background-image: linear-gradient(90deg, #6666c4, transparent);
     }
-    
-    
     /*------------------*/
-    
     header {
         display: grid;
         justify-content: center;
@@ -97,40 +83,31 @@
         opacity: 1.0;
         background-color: white;
     }
-    
     .logo-association {
         width: 80%;
         padding-left: 2%;
         padding-top: 2%;
     }
-    
     .img-user {
         grid-column: 3;
         width: 40%;
         margin: auto;
     }
-    
-    
     /* Boutton déconnexion*/
-    
     .h-deconnexion {
         text-decoration: none;
         color: black;
         list-style-type: none;
         margin: 4vh;
     }
-    
-    
     /*------------------------ Body--------------------*/
-    
     body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
-        background: linear-gradient(0deg, rgba(255,198,76,1) 0%, rgba(69,45,253,1) 100%);
+        background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
     }
-    
     main {
         display: grid;
         grid-template-columns: 23% 1fr;
@@ -138,7 +115,6 @@
         margin: 2%;
         border-radius: 10px;
     }
-    
     .left-contenu {
         overflow: auto;
         height: 100%;
@@ -146,15 +122,11 @@
         border-radius: 10px;
         background-color: #fff;
     }
-    
     .right-contenu {
         background-color: transparent;
         border-radius: 10px;
     }
-    
-    
     /*------------------------ Menu liste des membres (gauche)--------------------*/
-    
     .nav-links li.active:not(.md-header-toolbar) a,
     .nav-links li.active:not(.md-header-toolbar) button,
     .nav-links li:not(.md-header-toolbar) a.active {
@@ -162,7 +134,6 @@
         background-color: #fff;
         box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #6666c4);
     }
-    
     .nav-links li:not(.md-header-toolbar) a,
     .nav-links li:not(.md-header-toolbar) button {
         padding: 1rem 0.75rem;
@@ -172,30 +143,25 @@
         border: 0;
         white-space: nowrap;
     }
-    
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
         background-color: #fff;
         box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
     }
-    
     .nav-item {
         width: 50%;
     }
-    
     .gl-tab-nav-item {
         display: flex;
         justify-content: center;
         overflow: hidden;
         transition: box-shadow 100ms linear;
     }
-    
     .nav-link {
         text-decoration: none;
         background-color: transparent;
     }
-    
     .nav-links {
         display: flex;
         padding: 0;
@@ -204,10 +170,7 @@
         height: auto;
         width: 100%;
     }
-    
-    
     /* Boutton ajouter un membre*/
-    
     .ajouter-membre {
         width: 100%;
         text-align: center;
@@ -218,28 +181,23 @@
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
-    
     .ajouter-membre:hover {
         color: #fff;
         cursor: pointer;
         background: grey;
     }
-    
     .bouton_tuteur {
         margin: auto;
         width: 50%;
         padding: 2vh;
     }
-    
     .ajouter_utilisateur {
         padding-left: 0%;
     }
-    
     .acces-membre {
         margin-left: 40%;
         border-radius: none;
     }
-    
     .section_membre {
         display: grid;
         grid-template-columns: 35% auto;
@@ -250,14 +208,10 @@
         margin-left: 3%;
         margin-right: 3%;
     }
-    
-    
     /* Pop-up JS ajouter un membre*/
-    
     .hidden {
         display: none;
     }
-    
     [role="alertdialog"],
     [role="dialog"] {
         box-sizing: border-box;
@@ -266,7 +220,6 @@
         background-color: #fff;
         min-height: 100vh;
     }
-    
     @media screen and (min-width: 640px) {
         [role="alertdialog"],
         [role="dialog"] {
@@ -283,15 +236,12 @@
             border-radius: 10px;
         }
     }
-    
     .dialog_label {
         text-align: center;
     }
-    
     .dialog_form {
         margin: 15px;
     }
-    
     .dialog_form .label_text {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -301,7 +251,6 @@
         width: 30%;
         text-align: right;
     }
-    
     .dialog_form .label_info {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -310,40 +259,33 @@
         text-align: right;
         display: inline-block;
     }
-    
     .dialog_form_item {
         margin: 10px 0;
         font-size: 0;
     }
-    
     .dialog_form_item .wide_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 27em;
     }
-    
     .dialog_form_item .city_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 17em;
     }
-    
     .dialog_form_item .state_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 15em;
     }
-    
     .dialog_form_item .zip_input {
         box-sizing: border-box;
         max-width: 70%;
     }
-    
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
     }
-    
     .dialog_close_button {
         float: right;
         position: absolute;
@@ -351,21 +293,14 @@
         left: 92%;
         height: 25px;
     }
-    
     .dialog_close_button img {
         border: 0;
     }
-    
     .dialog_desc {
         padding: 10px 20px;
     }
-    
-    
     /* native <dialog> element uses the ::backdrop pseudo-element */
-    
-    
     /* dialog::backdrop, */
-    
     .dialog-backdrop {
         display: none;
         position: fixed;
@@ -375,25 +310,19 @@
         bottom: 0;
         left: 0;
     }
-    
     .dialog-backdrop.active {
         display: block;
+        backdrop-filter: blur(15px);
+        background-color: rgba(45, 45, 49, 0.5);
     }
-    
     .no-scroll {
         overflow-y: auto !important;
     }
-    
-    
     /* this is added to the body when a dialog is open */
-    
     .has-dialog {
         overflow: hidden;
     }
-    
-    
     /* styling for alert-dialog example */
-    
     .notes {
         display: block;
         font-size: 1rem;
@@ -402,7 +331,6 @@
         max-width: 100%;
         width: 33%;
     }
-    
     .visually-hidden {
         border: 0;
         clip: rect(0 0 0 0);
@@ -414,34 +342,26 @@
         width: 1px;
         white-space: nowrap;
     }
-    
     #notes_save {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
-    
     #notes_save svg {
         display: block;
         width: 0.75rem;
     }
-    
     #notes_save .icon {
         display: none;
     }
-    
     #notes_save.loading .spinner {
         display: block;
         animation: rotate 2s linear infinite;
     }
-    
     #notes_save.saved .check {
         display: block;
     }
-    
-    
     /*------------------------ Menu information sur le membre (droite)--------------------*/
-    
     .membre {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -453,48 +373,39 @@
         margin-left: 3%;
         margin-right: 3%;
     }
-    
     .case-membre {
         display: grid;
         place-items: center;
     }
-    
     .img-tuteur {
         width: 80%;
         margin: auto;
     }
-    
     .case-membre_1 {
-            margin: 20%;
+        margin: 20%;
     }
-    
     .case-membre_2 {
         display: grid;
         place-items: center;
     }
-    
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         margin: 2%;
         font-size: 100%;
     }
-    
     textarea {
         height: 95%;
         width: 95%;
     }
-    
     .logo-membre {
         height: 90%;
     }
-    
     .text-complementaire {
         height: 90%;
         margin-left: 5%;
         border-radius: 10px;
     }
-    
     .cns {
         margin: auto;
         margin-top: 2%;
@@ -505,13 +416,11 @@
         width: 90%;
         text-align: center;
     }
-    
     .cns:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-    
     .certifmembre {
         margin: auto;
         margin-top: 2%;
@@ -522,16 +431,12 @@
         width: 40%;
         text-align: center;
     }
-    
     .certifmembre:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-    
-    
     /*-------------------------------------- Footer------------------------------------------*/
-    
     footer {
         display: grid;
         grid-template-columns: 20% 60% 20%;
@@ -540,18 +445,15 @@
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         background-color: white;
     }
-    
     .f-contenu {
         padding: 0;
         margin: 0;
     }
-    
     .footer-logo-association {
         width: 50%;
         grid-column: 1;
         margin: auto;
     }
-    
     .f-menu {
         display: grid;
         list-style: none;
@@ -559,36 +461,29 @@
         width: 60%;
         margin-left: 20%;
     }
-    
     footer p {
         text-align: center;
     }
-    
     .f-copyright {
         width: 15%;
         margin-left: 40%;
     }
-    
     .lien_supp {
         margin: 2%;
     }
-
-    .grille_4_cases{
+    .grille_4_cases {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 80% auto;
-
     }
-
-    .grille_2_cases{
+    .grille_2_cases {
         display: grid;
         grid-template-columns: 1fr 1fr;
-
-    }   
     }
-    
-    
-    /*
+}
+
+
+/*
     _____________________________________________________________
     _____________________________________________________________
     _____________________________________________________________
@@ -613,33 +508,28 @@
         _____________________________________________________________
 
         */
-        
-        /* affichage téléphone */
-    @media screen and (max-width: 1200px){
-        /* Header */
-    
+
+
+/* affichage téléphone */
+
+@media screen and (max-width: 1200px) {
+    /* Header */
     table,
     td {
         border-collapse: collapse;
         padding: 0.5rem;
-        
     }
-    
     .Profil {
         border-collapse: collapse;
         padding: 1rem;
         text-align: left;
     }
-    
     .Profil2 {
         border-collapse: collapse;
         padding: 1rem;
         text-align: left;
     }
-    
-    
     /*--------SEPARATION----------*/
-    
     .divider {
         /* minor cosmetics */
         display: table;
@@ -650,12 +540,10 @@
         margin: 20px auto;
         /* spacing above/below */
     }
-    
     .divider span {
         display: table-cell;
         position: relative;
     }
-    
     .divider span:first-child,
     .divider span:last-child {
         width: 50%;
@@ -668,7 +556,6 @@
         background-position: 0 0, 0 100%;
         background-repeat: no-repeat;
     }
-    
     .divider span:first-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#6666c4));
@@ -677,7 +564,6 @@
         background-image: -o-linear-gradient(180deg, transparent, #6666c4);
         background-image: linear-gradient(90deg, transparent, #6666c4);
     }
-    
     .divider span:nth-child(2) {
         font-weight: 600;
         color: #000;
@@ -685,7 +571,6 @@
         width: auto;
         white-space: nowrap;
     }
-    
     .divider span:last-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6666c4), to(transparent));
@@ -694,10 +579,7 @@
         background-image: -o-linear-gradient(180deg, #6666c4, transparent);
         background-image: linear-gradient(90deg, #6666c4, transparent);
     }
-    
-    
     /*------------------*/
-    
     header {
         display: grid;
         justify-content: center;
@@ -713,46 +595,36 @@
         opacity: 1.0;
         background-color: rgb(255, 255, 255);
     }
-    
     .logo-association {
         width: 80%;
         padding-left: 2%;
         padding-top: 2%;
     }
-    
     .img-user {
         display: none;
-        height:90%;
+        height: 90%;
         margin: auto;
     }
-    
-    
     /* Boutton déconnexion*/
-    
     .h-deconnexion {
         text-decoration: none;
         color: black;
         list-style-type: none;
         /* margin: 4vh; */
     }
-    
-    
     /*------------------------ Body--------------------*/
-    
     body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
-        background: linear-gradient(0deg, rgba(255,198,76,1) 0%, rgba(69,45,253,1) 100%);
+        background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
     }
-    
     main {
         min-height: 85vh;
         margin: 2%;
         border-radius: 10px;
     }
-    
     .left-contenu {
         overflow: auto;
         height: 100%;
@@ -760,15 +632,11 @@
         border-radius: 10px;
         background-color: #fff;
     }
-    
     .right-contenu {
         background-color: transparent;
         border-radius: 10px;
     }
-    
-    
     /*------------------------ Menu liste des membres (gauche)--------------------*/
-    
     .nav-links li.active:not(.md-header-toolbar) a,
     .nav-links li.active:not(.md-header-toolbar) button,
     .nav-links li:not(.md-header-toolbar) a.active {
@@ -776,7 +644,6 @@
         background-color: #fff;
         box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #6666c4);
     }
-    
     .nav-links li:not(.md-header-toolbar) a,
     .nav-links li:not(.md-header-toolbar) button {
         padding: 1rem 0.75rem;
@@ -786,30 +653,25 @@
         border: 0;
         white-space: nowrap;
     }
-    
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
         background-color: #fff;
         box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
     }
-    
     .nav-item {
         width: 50%;
     }
-    
     .gl-tab-nav-item {
         display: flex;
         justify-content: center;
         overflow: hidden;
         transition: box-shadow 100ms linear;
     }
-    
     .nav-link {
         text-decoration: none;
         background-color: transparent;
     }
-    
     .nav-links {
         display: flex;
         padding: 0;
@@ -818,10 +680,7 @@
         height: auto;
         width: 100%;
     }
-    
-    
     /* Boutton ajouter un membre*/
-    
     .ajouter-membre {
         width: 100%;
         text-align: center;
@@ -832,28 +691,23 @@
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
-    
     .ajouter-membre:hover {
         color: #fff;
         cursor: pointer;
         background: grey;
     }
-    
     .bouton_tuteur {
         margin: auto;
         width: 50%;
         padding: 2vh;
     }
-    
     .ajouter_utilisateur {
         padding-left: 0%;
     }
-    
     .acces-membre {
         margin-left: 40%;
         border-radius: none;
     }
-    
     .section_membre {
         height: 100%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -861,14 +715,10 @@
         background-color: white;
         margin-top: 3%;
     }
-    
-    
     /* Pop-up JS ajouter un membre*/
-    
     .hidden {
         display: none;
     }
-    
     [role="alertdialog"],
     [role="dialog"] {
         box-sizing: border-box;
@@ -877,7 +727,6 @@
         background-color: #fff;
         min-height: 100vh;
     }
-    
     @media screen and (min-width: 640px) {
         [role="alertdialog"],
         [role="dialog"] {
@@ -894,15 +743,12 @@
             border-radius: 10px;
         }
     }
-    
     .dialog_label {
         text-align: center;
     }
-    
     .dialog_form {
         margin: 15px;
     }
-    
     .dialog_form .label_text {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -912,7 +758,6 @@
         width: 30%;
         text-align: right;
     }
-    
     .dialog_form .label_info {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -921,40 +766,33 @@
         text-align: right;
         display: inline-block;
     }
-    
     .dialog_form_item {
         margin: 10px 0;
         font-size: 0;
     }
-    
     .dialog_form_item .wide_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 27em;
     }
-    
     .dialog_form_item .city_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 17em;
     }
-    
     .dialog_form_item .state_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 15em;
     }
-    
     .dialog_form_item .zip_input {
         box-sizing: border-box;
         max-width: 70%;
     }
-    
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
     }
-    
     .dialog_close_button {
         float: right;
         position: absolute;
@@ -962,21 +800,14 @@
         left: 92%;
         height: 25px;
     }
-    
     .dialog_close_button img {
         border: 0;
     }
-    
     .dialog_desc {
         padding: 10px 20px;
     }
-    
-    
     /* native <dialog> element uses the ::backdrop pseudo-element */
-    
-    
     /* dialog::backdrop, */
-    
     .dialog-backdrop {
         display: none;
         position: fixed;
@@ -986,25 +817,17 @@
         bottom: 0;
         left: 0;
     }
-    
     .dialog-backdrop.active {
         display: block;
     }
-    
     .no-scroll {
         overflow-y: auto !important;
     }
-    
-    
     /* this is added to the body when a dialog is open */
-    
     .has-dialog {
         overflow: hidden;
     }
-    
-    
     /* styling for alert-dialog example */
-    
     .notes {
         display: block;
         font-size: 1rem;
@@ -1013,7 +836,6 @@
         max-width: 100%;
         width: 33%;
     }
-    
     .visually-hidden {
         border: 0;
         clip: rect(0 0 0 0);
@@ -1025,34 +847,26 @@
         width: 1px;
         white-space: nowrap;
     }
-    
     #notes_save {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
-    
     #notes_save svg {
         display: block;
         width: 0.75rem;
     }
-    
     #notes_save .icon {
         display: none;
     }
-    
     #notes_save.loading .spinner {
         display: block;
         animation: rotate 2s linear infinite;
     }
-    
     #notes_save.saved .check {
         display: block;
     }
-    
-    
     /*------------------------ Menu information sur le membre (droite)--------------------*/
-    
     .membre {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -1064,45 +878,37 @@
         margin-left: 3%;
         margin-right: 3%;
     }
-    
     .case-membre {
         display: grid;
         place-items: center;
     }
-    
     .img-tuteur {
         display: none;
         width: 80%;
         margin: auto;
     }
-    
     .case-membre_2 {
         display: grid;
         place-items: center;
     }
-    
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
         margin: 2%;
         font-size: 100%;
     }
-    
     textarea {
         height: 95%;
         width: 95%;
     }
-    
     .logo-membre {
         height: 90%;
     }
-    
     .text-complementaire {
         height: 90%;
         margin-left: 5%;
         border-radius: 10px;
     }
-    
     .cns {
         margin: auto;
         margin-top: 2%;
@@ -1113,13 +919,11 @@
         width: 90%;
         text-align: center;
     }
-    
     .cns:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-    
     .certifmembre {
         margin: auto;
         margin-bottom: 5px;
@@ -1129,16 +933,12 @@
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         text-align: center;
     }
-    
     .certifmembre:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-    
-    
     /*-------------------------------------- Footer------------------------------------------*/
-    
     footer {
         display: grid;
         grid-template-columns: 20% 60% 20%;
@@ -1147,18 +947,15 @@
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         background-color: white;
     }
-    
     .f-contenu {
         padding: 0;
         margin: 0;
     }
-    
     .footer-logo-association {
         width: 50%;
         grid-column: 1;
         margin: auto;
     }
-    
     .f-menu {
         display: grid;
         list-style: none;
@@ -1166,20 +963,14 @@
         width: 60%;
         margin-left: 20%;
     }
-    
     footer p {
         text-align: center;
     }
-    
     .f-copyright {
         width: 15%;
         margin-left: 40%;
     }
-    
     .lien_supp {
         margin: 2%;
     }
-    
-    
-    
-    }
+}

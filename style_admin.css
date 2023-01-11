@@ -225,6 +225,9 @@
         text-align: right;
         padding: 0 20px 20px;
     }
+    .dialog_form_actions1 {
+        padding: 0 20px 20px;
+    }
     .dialog_close_button {
         float: right;
         position: absolute;
@@ -249,15 +252,10 @@
         bottom: 0;
         left: 0;
     }
-    .dialog-backdrop.active::before {
-        filter: blur(5px);
-    }
     .dialog-backdrop.active {
         display: block;
-        -webkit-backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: saturate(10px);
         backdrop-filter: blur(15px);
-        background-color: rgba(182, 182, 182, 0.2);
+        background-color: rgba(45, 45, 49, 0.5);
     }
     .no-scroll {
         overflow-y: auto !important;
@@ -547,7 +545,7 @@
     }
     .chat_all {
         width: 500px;
-        padding: 5%;
+        padding: 2%;
         background-color: white;
         margin: auto;
         height: 600px;
@@ -617,7 +615,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 9px;
+        font-size: 12px;
+    }
+    .chat_zone_txt {
+        font-size: 15px;
     }
     .chat_nomm {
         margin-right: 40px;
@@ -896,6 +898,9 @@
     }
     .dialog_form_actions {
         text-align: right;
+        padding: 0 20px 20px;
+    }
+    .dialog_form_actions1 {
         padding: 0 20px 20px;
     }
     .dialog_close_button {
