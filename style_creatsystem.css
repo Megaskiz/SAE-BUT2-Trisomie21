@@ -365,7 +365,7 @@
     .forme .choix-objectif input:checked+label,
     .forme .choix-recompense input:checked+label,
     .forme .payment-type input:checked+label {
-        color: #fff;
+        color: black;
         background: #007bff;
     }
 
@@ -416,8 +416,79 @@
     }
 
 
+    .button-retour{
+        background-color: transparent;
+        border: none;
+    }
+
+
+    .detail1,
+    .detail2,
+    .detail3,
+    .detail4{    
+        border: none;
+        cursor: pointer;
+        color: black;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        transition: 0.5s;
+        display: none;
+     
+    }
+
+    .detail1:hover:before,
+    .detail2:hover:before,
+    .detail3:hover:before,
+    .detail4:hover:before{
+        width: 50vh;
+        height: 25vh;
+        border-radius: 10px;
+        left: 0px;
+        top: 0;
+        position: absolute;
+        background-color: whitesmoke;
+              
+    }
+
+    .detail1:hover::before{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "Voici l'objectif' qui...";
+    }
+
+    .detail2:hover::before{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "Voici deux l'objectif' qui...";
+    }
+
+    .detail3:hover::before{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "L'ensemble du système est orienté vers un prix unique";
+    }
+
+    .detail4:hover::before{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "Le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses";
+    }
+
+
     a {
         text-decoration: none;
+        color: black;
+    }
+
+    p {
+        font-size: 15px;
         color: black;
     }
 
@@ -621,11 +692,21 @@
         border-radius: 20px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         background-color: white;
-        height: 50vh;
     }
 
 
 
+    
+    .retour:hover {
+        background-color: #fec107;
+    }
+
+
+    .button-retour{
+        background-color: transparent;
+        border: none;
+    }
+    
 
 
 
@@ -658,6 +739,8 @@
     .div-photo-enfant {
         height: 20vh;
     }
+    
+
 
 
 
@@ -665,6 +748,8 @@
         display: flex;
         justify-content: center;
         flex-direction: row;
+        margin-top: 5%;
+        
     }
 
     .valider {
@@ -691,24 +776,15 @@
     .annuler {
         background-color: #e74c3c;
         border: none;
-        /* Pas de bordure */
         color: white;
-        /* Couleur du texte */
         border-radius: 10px;
         padding: 15px 32px;
-        /* Marge intérieure */
         text-align: center;
-        /* Alignement du texte */
         text-decoration: none;
-        /* Pas de décoration de texte */
         display: inline-block;
-        /* Affichage en ligne */
         font-size: 16px;
-        /* Taille de police */
         margin: 4px 2px;
-        /* Marge extérieure */
         cursor: pointer;
-        /* Curseur en forme de main */
     }
 
 
@@ -724,18 +800,19 @@
 
     .titletype {
         text-align: center;
-        background-color: white;
-        letter-spacing: 1px;
+        background-color: whitesmoke;
+        border: solid 1px;
         color: black;
-        padding: 5px 10%;
+        padding: 10px 5%;
         border-radius: 10px;
-        margin: auto;
+     margin: auto;
+        width: 55%;
     }
 
 
 
     .div-photo-enfant {
-        height: 5vh;
+        height: 0vh;
     }
 
 
@@ -743,13 +820,18 @@
         display: grid;
         text-align: center;
         border-radius: 15px;
-        width: 10%;
+        width: 10vh;
+        height: 7vh;
         margin: auto;
 
     }
 
     .info-enfant {
         height: 25vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        
     }
 
     .forme .choix-objectif input,
@@ -766,6 +848,7 @@
         box-sizing: border-box;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        width: 20vh;
     }
 
     .forme label:hover {
@@ -788,6 +871,7 @@
 
     .col:first-of-type {
         height: 15vh;
+        width: 20vh;
     }
 
     .choix-objectif,
@@ -814,6 +898,17 @@
         text-align: center;
     }
 
+    .id-enfant,
+    .id-enfants,
+    .id-enfan  {
+        /*place le texte au mileu*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-size: 1.5rem;
+    }
 
 
 
