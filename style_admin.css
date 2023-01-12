@@ -326,8 +326,8 @@
         font-size: 16px;
         border: none;
         border-radius: 5px;
-        color: white;
-        background-color: #007bff;
+        color: black;
+        background-color: rgb(202, 196, 196);
         cursor: pointer;
         transition: all 0.3s;
     }
@@ -380,7 +380,7 @@
         display: flex;
     }
     .photo-enfant {
-        width: 30%;
+        width: 15vh;
         border-radius: 10px;
         position: initial;
     }
@@ -390,6 +390,7 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        padding: 5%;
     }
 
     .div-modif-enfant {
@@ -430,7 +431,6 @@
         padding: 8px;
     }
     .affichage-objectif th {
-        background-color: gray;
         color: white;
         border-radius: 5px 5px 0 0;
     }
@@ -452,6 +452,28 @@
     .button_ajouter-objectif:hover {
         background-color: #fec107;
         cursor: pointer;
+    }
+
+    .status-objectif {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 12px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    button.objectif-acceder {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 12px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
     }
     .img_equipe {
         width: 5%;
