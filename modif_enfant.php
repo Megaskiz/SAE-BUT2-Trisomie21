@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr">
 
 <?php
 require('fonctions.php');
@@ -164,16 +164,13 @@ if (isset($_GET['id_suppr'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
+                    echo "<div class='liste-enfant'>";
                     echo "<table>";
 
                     
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                       
-                        echo "<td>";
-                        echo "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='icone_info'>
-                            <path stroke-linecap='round' stroke-linejoin='round' d='M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z' />
-                            </svg> ";
-                        echo "</td>";
+                       
                         
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
@@ -186,8 +183,8 @@ if (isset($_GET['id_suppr'])) {
                         }
                         
                         $identifiant = $double_tab[$i][0];
-                        echo "<td class='acceder-information-enfant'>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"> Acceder &#x1F59D; </a>';
+                        echo "<td>";
+                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">  Acceder &#x1F59D; </button> </a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -256,7 +253,7 @@ if (isset($_GET['id_suppr'])) {
         // print_r($double_tab_tuteur);
         // exit();
 
-
+        echo "</div>";
 
 
 
@@ -459,7 +456,8 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "<td>";
                     echo " <div class=\"case-enfant\">";
-                    echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog7', this)\"><span class='icon-poubelle'>&#x1F5D1;</span></button>";
+                    if ($_SESSION["role_user"] == 1) {
+                    echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
@@ -471,6 +469,7 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "</div>";
                     echo "</form>";
+                }
                     echo "</div>";
                     echo "</div>";
                     echo "</td>";
