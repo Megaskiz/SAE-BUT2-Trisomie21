@@ -104,28 +104,6 @@
 
     /* Boutton ajouter un enfant*/
 
-    .ajouter-enfant {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-		padding: 7px 15px;
-        border-radius: 10px;
-		font-size: 12px;
-		border: none;
-		color: white;
-		background-color: #007bff;
-		cursor: pointer;
-		transition: all 0.3s;
-    }
-
-    .ajouter-enfant:hover {
-        background-color: #fec107;
-    }
-
-    a{   
-        text-decoration: none;
-        color: black;
-    }
 
     .acceder-information-enfant {
         display: block;
@@ -137,10 +115,15 @@
         background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
+        margin: 0.5px;
     }
-
     .acceder-information-enfant:hover {
         background-color: #fec107;
+    }
+
+    a{   
+        text-decoration: none;
+        color: black;
     }
 
 
@@ -162,17 +145,13 @@
         cursor: pointer;
     }
 
-
-    .ajouter_utilisateur {
-        padding-left: 0%;
+    .delet-icon {
+        width: 25px;
+        padding: 8px 0;
+        cursor: pointer;
     }
 
-
-    .acces-enfant {
-        margin-left: 40%;
-        border-radius: none;
-    }
-
+ 
     /* Pop-up JS ajouter un enfant*/
 
     .hidden {
@@ -407,9 +386,6 @@
 
 
     /*nombre de système*/
-
-
-
     .nb-systeme {
         height: 47%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -457,7 +433,7 @@
 
 
     .logo-enfant {
-        width: 35%;
+        width: 25%;
         margin: 2%;
         border-radius: 10px;
     }
@@ -467,22 +443,11 @@
         background: #007bff;
     }
 
-    .icon-poubelle {
-        font-size: 200%;
-        color: black;
-    }
 
     .supprimer-objectif {
-        width: 100%;
-        border: black 1px solid;
+        border: none;
         cursor: pointer;
         background-color: transparent;
-        border-radius: 10px;
-    }
-
-    .supprimer-objectif:hover {
-        background-color: red;
-        cursor: pointer;
     }
 
     .text-complementaire {
@@ -594,15 +559,12 @@
         display: inline-block;
         position: initial;
         padding: 10px 20px;
-        /* height: 30%; */
-        margin-left: auto;
-        margin-right: auto;
-
         font-size: 16px;
+        margin: auto;
         border: none;
         border-radius: 5px;
         color: white;
-        background-color: gray;
+        background-color: rgb(188, 185, 185);
         cursor: pointer;
         transition: all 0.3s;
     }
@@ -617,7 +579,7 @@
 
     .button-valider-modification{
         padding: 10px 20px;
-        font-size: 20px;
+        font-size: 15px;
         border: none;
         border-radius: 5px;
         color: white;
@@ -756,6 +718,10 @@
 
     /*------------------------ Affichage pop-up--------------------*/
 
+
+
+
+   
     /* Pop-up JS modifier et supprimer*/
 
     .hidden {
@@ -1119,13 +1085,12 @@
         display: inline-block;
         position: initial;
         padding: 10px 20px;
-        /*height: 30%;*/
         margin: auto;
         font-size: 16px;
         border: none;
         border-radius: 5px;
         color: white;
-        background-color: gray;
+        background-color: rgb(199, 198, 198);
         cursor: pointer;
         transition: all 0.3s;
     }
