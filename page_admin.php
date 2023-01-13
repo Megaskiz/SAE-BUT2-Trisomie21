@@ -432,7 +432,9 @@ if (isset($_GET['eject'])) {
 
                             #affiche nombre de jeton
                             echo "<td>";
+                            echo"<center>";
                             print_r($double_tab[$i][1]);
+                            echo"</center>";
                             echo "</td>";
 
                             #affiche nombre de jour
@@ -440,29 +442,39 @@ if (isset($_GET['eject'])) {
                             $value = $double_tab[$i][2];
                             switch ($double_tab[$i][2]) {
                                 case ($value < 24 ? $value : !$value):
+                                    echo"<center>";
                                     print_r($double_tab[$i][2]);
                                     echo " Heure(s)";
+                                    echo"</center>";
                                     break;
 
                                 case ($value < 24 * 7 ? $value : !$value):
                                     $reste = $value % 24;
                                     $jours = intdiv($value, 24);
+                                    echo"<center>";
                                     echo $jours . " jour(s), " . $reste . " heure(s)";
+                                    echo"</center>";
                                     break;
 
                                 default:
                                     $semaines = intdiv($value, (7 * 24));
                                     $reste1 = $value % (7 * 24); // pour savoir s'il reste quoi que ce soit 
+                                    echo"<center>";
                                     echo $semaines . " semaine(s) ";
+                                    echo"</center>";
 
                                     if ($reste1 > 23) { // il reste + d'un jour
                                         $restej = $value - (7 * 24); // le nombre d'heure au dela d'une semaine
                                         if ($reste1 > 23) { // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
                                             $restejours = intdiv($reste1, 24);
+                                            echo"<center>";
                                             echo $restejours . "jour(s)";
+                                            echo"</center>";
                                         }
                                     } elseif ($reste1 > 0) { // s'il reste entre 1 et 23heures
+                                        echo"<center>";
                                         echo $reste1 . "heure(s)";
+                                        echo"</center>";
                                     }
                                     break;
                             }
@@ -476,8 +488,9 @@ if (isset($_GET['eject'])) {
 
                             #affiche message
                             echo "<td>";
-                           
+                            echo"<center>";
                             echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> &#x2709; </span></button>";
+                            echo"</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                             echo "<div class=\"dialog_form_actions3\">";
@@ -515,7 +528,7 @@ if (isset($_GET['eject'])) {
                 ?>
                             <div class="chat_all">
                                 <div class="chat_title">
-                                    <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                         <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path>
                                     </svg>
                                     Messagerie du système à jeton
@@ -591,9 +604,13 @@ if (isset($_GET['eject'])) {
                             #affiche statu
                             echo "<td>";
                             if ($double_tab[$i][4] == 1) {
+                                echo"<center>";
                                 print_r("En Utilisation");
+                                echo"</center>";
                             } else {
+                                echo"<center>";
                                 print_r("Pas en utilisation");
+                                echo"</center>";
                             }
                             echo "</td>";
 
@@ -603,13 +620,17 @@ if (isset($_GET['eject'])) {
                                     case 1:
 
                                         echo "<td>";
+                                        echo"<center>";
                                         echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
+                                        echo"</center>";
                                         echo "</td>";
                                         break;
 
                                     case 0:
                                         echo "<td>";
+                                        echo"<center>";
                                         echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
+                                        echo"</center>";
                                         echo "</td>";
                                         break;
                                 }
@@ -617,13 +638,17 @@ if (isset($_GET['eject'])) {
 
 
                             echo "<td>";
+                            echo"<center>";
                             echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="objectif-acceder"> Acceder </button></a>';
+                            echo"</center>";
                             echo "</td>";
 
                             echo "<td>";
                             echo " <div class=\"case-enfant\">";
                             if ($_SESSION["role_user"] == 1) {
+                                echo"<center>";
                                 echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+                                echo"</center>"; 
                                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                                 echo "<div role=\"dialog\" id=\"dialog" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
