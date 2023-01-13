@@ -30,6 +30,8 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
             die("Erreur prepare");
         }
         $insererMessage->execute(array($message, $sujet, $_SESSION['logged_user'], $_GET['id_objectif']));
+        header('Location: page_admin.php');
+        exit;  
         if (!$insererMessage) {
             die("Erreur execute");
         }
