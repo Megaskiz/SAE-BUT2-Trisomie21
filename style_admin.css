@@ -254,7 +254,7 @@
     }
     .dialog-backdrop.active {
         display: block;
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(5px);
         background-color: rgba(45, 45, 49, 0.5);
     }
     .no-scroll {
@@ -380,11 +380,10 @@
         display: flex;
     }
     .photo-enfant {
-        width: 15vh;
-        border-radius: 10px;
+        width: 40%;
+        border-radius: 100%;
         position: initial;
     }
-
     .div-photo-enfant {
         display: flex;
         justify-content: center;
@@ -392,22 +391,18 @@
         height: 100%;
         padding: 5%;
     }
-
     .div-modif-enfant {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
     .div-zone-texte {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
-    
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
@@ -453,7 +448,6 @@
         background-color: #fec107;
         cursor: pointer;
     }
-
     .status-objectif {
         padding: 10px 20px;
         border-radius: 5px;
@@ -464,7 +458,6 @@
         cursor: pointer;
         transition: all 0.3s;
     }
-
     button.objectif-acceder {
         padding: 10px 20px;
         border-radius: 5px;
@@ -695,6 +688,7 @@
     }
 }
 
+
 /*
         _____________________________________________________________
         _____________________________________________________________
@@ -720,9 +714,6 @@
         _____________________________________________________________
 
     */
-
-
-
 
 
 /* SUR TELEPHONE  */
@@ -999,7 +990,7 @@
     }
     .dialog-backdrop.active {
         display: block;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
     }
     .no-scroll {
         overflow-y: auto !important;
@@ -1062,8 +1053,8 @@
         margin: 3%;
     }
     .photo-enfant {
-        width: 30%;
-        border-radius: 20%;
+        width: 20%;
+        border-radius: 100%;
     }
     .div-info-enfant {
         display: flex;
