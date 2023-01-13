@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 09 jan. 2023 à 09:27
+-- Généré le : ven. 13 jan. 2023 à 14:15
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -67,7 +67,8 @@ INSERT INTO `lier` (`id_objectif`, `id_recompense`) VALUES
 (17, 15),
 (18, 16),
 (20, 17),
-(22, 21);
+(22, 21),
+(24, 22);
 
 -- --------------------------------------------------------
 
@@ -118,6 +119,30 @@ CREATE TABLE `message` (
   `id_membre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `message`
+--
+
+INSERT INTO `message` (`id_message`, `sujet`, `corps`, `date_heure`, `id_objectif`, `id_membre`) VALUES
+(25, '2', '17:24 ?', '2023-01-11 17:25:30', 15, 1),
+(26, '2', '17:24 ?', '2023-01-11 17:25:54', 15, 1),
+(27, '2', '17:24 ?', '2023-01-11 17:25:56', 15, 1),
+(28, '2', '17:24 ?', '2023-01-11 17:25:59', 15, 1),
+(29, '2', '17:24 ?', '2023-01-11 17:28:29', 15, 1),
+(30, '2', '17:24 ?', '2023-01-11 17:28:32', 15, 1),
+(31, 'sujet', 'message', '2023-01-11 17:28:41', 15, 1),
+(32, 'sujet', 'message', '2023-01-11 17:31:20', 15, 1),
+(33, 'sujett', 'messaggggge', '2023-01-11 17:31:35', 15, 1),
+(34, 'sujett', 'messaggggge', '2023-01-11 17:31:39', 15, 1),
+(35, 'sujett', 'messaggggge', '2023-01-11 17:31:42', 15, 1),
+(36, 'sujett', 'messaggggge', '2023-01-11 17:31:54', 15, 1),
+(37, 'sujett', 'messaggggge', '2023-01-11 17:31:58', 15, 1),
+(38, 'sujett', 'messaggggge', '2023-01-11 17:32:03', 15, 1),
+(39, 'sujett', 'messaggggge', '2023-01-11 17:34:50', 15, 1),
+(40, 'sujet', 'message', '2023-01-11 17:34:54', 15, 1),
+(41, 'sujet', 'message', '2023-01-11 17:38:41', 15, 1),
+(42, '2', '17:24 ?', '2023-01-11 17:38:48', 15, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -144,15 +169,17 @@ CREATE TABLE `objectif` (
 
 INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`) VALUES
 (9, 'systeme maison', 'bien manger le matin_1111111:ne pas manger en dehors des repas_1111111:bien faire ses devoirs_1111111:', 21, 216, 'jeton', 0, 0, 1, 27, 3),
-(10, 'nom', 'rester concentré 5minutes_111:', 3, 55, 'jeton', 1, 0, 1, 27, 1),
-(11, 'maison', "s\'habiller seul_0011000:faire du sport_0000000:", 14, 0, 'jeton', 0, 0, 1, 27, 3),
-(15, 'ecole français', 'rester concentrer 5minutes_1100:', 4, 3, 'jeton', 1, 0, 1, 28, 1),
+(10, 'nom', 'rester concentré 5minutes_100:', 3, 0.007, 'jeton', 1, 0, 1, 27, 1),
+(11, 'maison', 's"habiller seul_1111100:faire du sport_0000000:', 14, 0, 'jeton', 0, 0, 1, 27, 3),
+(15, 'ecole français', 'rester concentrer 5minutes_1000:', 4, 3, 'jeton', 1, 0, 1, 28, 1),
 (16, 'nom_sys', 'ne pas crier pendant dix min_000:', 3, 4, 'jeton', 4, 0, 1, 28, 1),
 (17, 'manger', 'finir son assiete_000:', 3, 1, 'jeton', 1, 0, 1, 28, 1),
 (18, 'ecoel', 'rester concentrer 5minutes_0:', 1, 1, 'jeton', 1, 0, 1, 28, 1),
 (20, 'douche maison', 'il faut se doucher sans pleurer_00000:', 5, 5, 'jeton', 2, 0, 1, 27, 1),
 (21, 'douche tous les jours', 'se laver tous les jours de la semaine_1111000:', 7, 192, 'jeton', 3, 0, 1, 27, 1),
-(22, 'maison', 'ne pas faire de caprices_0100000:', 7, 1, 'jeton', 2, 0, 1, 27, 1);
+(22, 'maison', 'ne pas faire de caprices_0100000:', 7, 1, 'jeton', 2, 0, 1, 27, 1),
+(23, 'mlkj', 'mlkj_0000:', 4, 4, 'jeton', 1, 0, 1, 27, 1),
+(24, '', '_:', 0, 168, 'jeton', 0, 0, 1, 28, 1);
 
 -- --------------------------------------------------------
 
@@ -163,39 +190,43 @@ INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, 
 CREATE TABLE `placer_jeton` (
   `id_objectif` int(11) NOT NULL,
   `date_heure` datetime NOT NULL,
-  `id_membre` int(11) NOT NULL
+  `id_membre` int(11) NOT NULL,
+  `id_session` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `placer_jeton`
 --
 
-INSERT INTO `placer_jeton` (`id_objectif`, `date_heure`, `id_membre`) VALUES
-(9, '2023-01-06 16:06:24', 1),
-(9, '2023-01-06 16:06:26', 1),
-(9, '2023-01-06 16:22:38', 1),
-(9, '2023-01-06 16:22:39', 1),
-(9, '2023-01-06 16:22:44', 1),
-(9, '2023-01-06 16:22:45', 1),
-(9, '2023-01-06 16:22:46', 1),
-(9, '2023-01-06 16:22:47', 1),
-(9, '2023-01-06 16:22:49', 1),
-(9, '2023-01-06 16:22:50', 1),
-(9, '2023-01-06 16:22:51', 1),
-(9, '2023-01-06 16:22:52', 1),
-(9, '2023-01-06 16:22:59', 1),
-(9, '2023-01-06 16:24:18', 1),
-(10, '2023-01-06 16:20:21', 1),
-(10, '2023-01-06 16:20:22', 1),
-(11, '2023-01-07 13:05:15', 1),
-(11, '2023-01-07 13:16:05', 1),
-(15, '2023-01-04 17:03:27', 1),
-(15, '2023-01-04 17:05:20', 1),
-(21, '2023-01-06 16:55:22', 1),
-(21, '2023-01-06 16:55:23', 1),
-(21, '2023-01-06 16:55:24', 1),
-(21, '2023-01-06 16:55:25', 1),
-(22, '2023-01-07 13:14:40', 1);
+INSERT INTO `placer_jeton` (`id_objectif`, `date_heure`, `id_membre`, `id_session`) VALUES
+(10, '2023-01-12 09:36:02', 1, 1),
+(10, '2023-01-12 09:36:05', 1, 1),
+(10, '2023-01-12 09:36:06', 1, 1),
+(10, '2023-01-12 09:36:13', 1, 1),
+(10, '2023-01-12 09:36:17', 1, 1),
+(10, '2023-01-12 09:36:20', 1, 1),
+(10, '2023-01-12 09:40:17', 1, 2),
+(10, '2023-01-12 09:40:34', 1, 2),
+(10, '2023-01-12 09:40:42', 1, 3),
+(10, '2023-01-12 09:40:52', 1, 3),
+(10, '2023-01-12 09:41:10', 1, 4),
+(10, '2023-01-12 09:41:53', 1, 5),
+(10, '2023-01-12 09:41:56', 1, 5),
+(10, '2023-01-12 09:42:16', 1, 6),
+(10, '2023-01-12 09:42:18', 1, 6),
+(10, '2023-01-12 09:47:29', 1, 8),
+(10, '2023-01-12 09:47:32', 1, 8),
+(10, '2023-01-12 09:47:54', 1, 9),
+(10, '2023-01-12 09:47:56', 1, 9),
+(10, '2023-01-12 09:47:57', 1, 9),
+(10, '2023-01-12 09:48:13', 1, 10),
+(10, '2023-01-12 09:49:25', 1, 12),
+(10, '2023-01-12 09:49:27', 1, 12),
+(11, '2023-01-11 17:43:14', 1, 1),
+(11, '2023-01-11 17:48:30', 1, 1),
+(11, '2023-01-11 17:48:31', 1, 1),
+(11, '2023-01-11 17:48:32', 1, 1),
+(11, '2023-01-11 18:01:02', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +264,8 @@ INSERT INTO `recompense` (`id_recompense`, `intitule`, `descriptif`, `lien_image
 (18, 'kjh', 'kjh', NULL),
 (19, 'une rc', 'la rec', 'images/63b95d9bdc2992.44240692.jpg'),
 (20, 'une rc', 'la rec', 'images/63b95d9bdc2992.44240692.jpg'),
-(21, 'une rc', 'la rec', 'images/63b95dc6610fd0.45669887.jpg');
+(21, 'une rc', 'la rec', 'images/63b95dc6610fd0.45669887.jpg'),
+(22, '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -335,19 +367,19 @@ ALTER TABLE `membre`
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `objectif`
 --
 ALTER TABLE `objectif`
-  MODIFY `id_objectif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_objectif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `recompense`
 --
 ALTER TABLE `recompense`
-  MODIFY `id_recompense` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_recompense` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Contraintes pour les tables déchargées
