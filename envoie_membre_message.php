@@ -86,7 +86,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                             <div class="chat_vous">
                                 <div class="chat_info">
                                     <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
-                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                 </div>
                                 <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                             </div>
@@ -99,7 +99,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                             <div class="chat_autre">
                                 <div class="chat_info">
                                     <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
-                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                    <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                 </div>
                                 <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                             </div>
