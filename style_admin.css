@@ -254,7 +254,7 @@
     }
     .dialog-backdrop.active {
         display: block;
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(5px);
         background-color: rgba(45, 45, 49, 0.5);
     }
     .no-scroll {
@@ -383,7 +383,6 @@
         width: 40%;
         border-radius: 100%;
         position: initial;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
     .div-photo-enfant {
         display: flex;
@@ -991,7 +990,7 @@
     }
     .dialog-backdrop.active {
         display: block;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
     }
     .no-scroll {
         overflow-y: auto !important;
