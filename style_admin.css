@@ -367,11 +367,12 @@
         padding: 10px 20px;
         font-size: 16px;
         border: none;
-        border-radius: 5px;
+        border-radius: 20px;
         color: white;
-        background-color: #007bff;
+        background-color: #71b4fd;
         cursor: pointer;
         transition: all 0.3s;
+        margin-bottom: 5px;
     }
     .bouton-equipe:hover {
         background-color: #fec107;
