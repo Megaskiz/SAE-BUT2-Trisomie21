@@ -457,20 +457,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        content: "Voici l'objectif' qui...";
+        font-size: 1.5rem;
+
+        content: "Système de type 'chargement', organisé comme une barre de progression qui avance, au fur et à mesure que les jetons sont placés";
     }
 
     .detail2:hover::before{
         display: flex;
         justify-content: center;
         align-items: center;
-        content: "Voici deux l'objectif' qui...";
+        font-size: 1.5rem;
+
+        content: "Système qui se compose de tâche qui sont répétées sur 1 semaines, a la manière d'un contrat";
     }
 
     .detail3:hover::before{
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 1.5rem;
+
         content: "L'ensemble du système est orienté vers un prix unique";
     }
 
@@ -478,7 +484,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        content: "Le système vous permet de gagner un certain nombre de points qui donnent accès à un magasin de récompenses";
+        font-size: 1.5rem;
+        content: "L'ensemble du système est orienté vers un magasin de récompense dans lequel il est possible de choisir une récompense";
     }
 
 
