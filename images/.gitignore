@@ -1,0 +1,13 @@
+# Ignorer tous les fichiers sous le répertoire "/image/"
+
+*.jpeg 
+*.png
+*.webp
+*.jpg
+*.gif
+*.svg
+*.bmp
+
+
+!.gitignore
+
