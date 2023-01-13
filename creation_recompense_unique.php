@@ -72,7 +72,11 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
     </header>
 
 
@@ -81,29 +85,31 @@ if (isset($_GET['id_suppr'])) {
     <main>
 
 
-        
+
 
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
             <h1 class="flex-simple">Création d'une récompense de type : "unique"</h1>
             <div class="flex_simple">
                 <label>Quel sera le nom de la récompense : </label>
-                <input type="text" width=100% name="intitule" placeholder="ecrivez ce que l'enfant doit faire">
-            </div>  
+                <input type="text" width=100% name="intitule" placeholder="Nom">
+            </div>
             <div class="flex_simple">
-                <label>Quelle sera la déscription de la récompense  : </label>
-                <input type="text" name="descriptif" placeholder="ecrivez le nom ici">
+                <label>Quelle sera la déscription de la récompense : </label>
+                <input type="text" name="descriptif" placeholder="Détail">
             </div>
 
             <div class="flex_simple">
-            <label>Quelle sera l'image associée à cette récompense : </label>
-            <input name="photo_recompense" type="file" class="zip_input" required="required">
+                <label>Quelle sera l'image associée à cette récompense : </label>
+                <input name="photo_recompense" type="file" class="zip_input" required="required">
             </div>
 
-            <input style="float:right;"class="button" type="submit" value="Valider la récompense et enregistrer le système">
+            
+            <div class="bouton-systeme">
+              <a  class="annuler" href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
+              <input  class="valider" style="float:right;"  type="submit" value="Valider la récompense ">
+            </div>
         </form>
-        <div>
-        <button class="button_annuler_sys"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler la création de cette récompense</a></button>
-        </div>
+
     </main>
 </body>
 

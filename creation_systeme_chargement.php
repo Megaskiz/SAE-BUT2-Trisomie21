@@ -4,7 +4,7 @@ is_logged();
 is_validateur();
 ?>
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr">
 
 <?php
 ///Connexion au serveur MySQL
@@ -72,7 +72,11 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
     </header>
 
 
@@ -81,62 +85,54 @@ if (isset($_GET['id_suppr'])) {
     <main>
 
 
-        
+
 
         <form action="insert_systeme_bd.php" method="post">
             <h1 class="flex-simple">Création d'un système de type : "chargement"</h1>
+
             <div class="flex_simple">
-                <label>combien de cases voulez vous inserer ? : </label>
-                <input type="number" name="rows"  >
+                <label>Quel est le nom de ce système ? : </label>
+                <input type="text" name="nom" placeholder="ecrivez le nom ">
             </div>
+
+
+            <div class="flex_simple">
+                <label>Combien de cases voulez-vous inserer ? : </label>
+                <input type="number" name="rows">
+            </div>
+
             <div class="flex_simple">
                 <label>Quelle sera la condition d'ajout d'un jeton : </label>
-                <input type="text" width=100% name="intitule" placeholder="ecrivez ce que l'enfant doit faire">
-            </div>  
-            <div class="flex_simple">
-                <label>Quel est le nom de ce système ?  : </label>
-                <input type="text" name="nom" placeholder="ecrivez le nom ici">
-            </div>
-            <div class="flex_simple">
-                <label>Quel est la durée de ce système ?  : </label>
-                <input type="number" name="duree" placeholder="ecrivez la duree ici">
-                <select name="echelle">
-                    <option value="h">heure(s)</option>
-                    <option value="h">jour(s)</option>
-                    <option value="s">semaine(s)</option>
-                </select>
-            </div>
-            <div class="flex_simple">
-                <label>Quel est la priorité de ce système ?  : </label>
-                <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+                <input type="text" width=100% name="intitule" placeholder="Ce que l'enfant doit faire">
             </div>
 
 
-            <input class="button" type="submit" value="Valider le système">
+
+            <div class="flex_simple">
+                <label>Quel est la durée de ce système ? : </label>
+                <div class="heure">
+                    <input type="number" name="duree" placeholder="Indiquez une durée">
+                    <select name="echelle">
+                        <option value="h">heure(s)</option>
+                        <option value="h">jour(s)</option>
+                        <option value="s">semaine(s)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex_simple">
+                <label>Quel est la priorité de ce système ? : </label>
+                <input type="text" name="prio" placeholder="Quelle est la prioritée">
+            </div>
+
+            <div class="bouton-systeme">
+                <a class="annuler" href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler </a>
+                <input class="valider" type="submit" value="Valider ">
+            </div>
         </form>
-        <div style="float:right;">
-        <button class="button_annuler_sys"><a href="page_admin.php?id=<?php echo$_SESSION['id_enfant']?>">annuler la création de système</a></button>
-        </div>
+
     </main>
 
-    <!------------------------------------------------------- Footer -------------------------------------------------->
-    <footer>
-
-        <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
-
-        <div class="f-contenu">
-            <div class="f-menu">
-                <li><p class="f-info">Qui sommes nous ?</p></li>
-                <li><p class="f-propos">A propos</p></li>
-                <li><p class="f-association">Association</p></li>
-            </div>
-            <p class="f-copyright">© Copyright 2022 </p>
-        </div>
-       
-        
-    </footer>
 </body>
-
-
 
 </html>

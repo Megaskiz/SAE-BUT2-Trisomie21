@@ -1,160 +1,209 @@
-/*------------------------ Header/menu--------------------*/
+@media screen and (min-width: 1250px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /*------------------------ Header/menu--------------------*/
+
+    table,
+    td {
+        border-collapse: collapse;
+        padding: 0.7rem;
+    }
+
+    header {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 20% 45% 10% 15% 10%;
+        grid-template-rows: 100%;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        height: 12vh;
+        position: sticky;
+        top: 0;
+        opacity: 1.0;
+        background-color: white;
+    }
+
+    /* Logo/image*/
+    .logo-association {
+        width: 70%;
+        padding-left: 2%;
+        padding-top: 2%;
+    }
+
+    .img-user {
+        grid-column: 3;
+        width: 40%;
+        margin: auto;
+    }
+
+    /* Boutton déconnexion*/
+    .h-deconnexion {
+        cursor: pointer;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .icone_deconnexion {
+        margin-right: 0;
+        height: 5vh;
+        border: 1px solid #271a38;
+        padding: 0.5rem 0.625rem;
+        border-radius: 50%;
+    }
 
 
-/* Header */
+    /*------------------------ Body--------------------*/
 
 
-table,
-td {
-    border-collapse: collapse;
-    padding: 1rem;
+    h1 {
+        text-align: center;
+       margin: 3%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+        background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
+        font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    }
+
+    main {
+        background-color: white;
+        margin: auto;
+        margin-top: 5%;
+        border-radius: 10px;
+        width: 85%;
+    }
+
+
+    .flex_simple {
+        margin: auto;
+        width: 50%;
+        display: flex;
+        padding: 2%;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        flex-direction: column;
+
+    }
+
+    .flex_heure {
+        margin: auto;
+        width: 50%;
+        display: flex;
+        padding: 2%;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+
+
+    .tableau {
+        margin: auto;
+        width: 50%;
+
+    }
+
+    .button_valider_sys {
+        margin: auto;
+    }
+
+
+    .button_annuler_sys {
+        margin: left;
+
+    }
+
+    form {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    label {
+        text-align: center;
+        background-color: whitesmoke;
+        border: solid 1px;
+        color: black;
+        padding: 7px 5%;
+        border-radius: 10px;
+
+    }
+
+
+
+    input {
+        border: solid 1px;
+        border-radius: 5px;
+        padding: 10px 2%;
+
+    }
+
+
+
+    select {
+        border: solid 1px;
+        border-radius: 5px;
+        padding: 10px 5%;
+        width: 30%;
+
+    }
+
+    .valider {
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .valider:hover {
+        background-color: #45a049;
+    }
+
+
+
+
+    .annuler {
+        background-color: #e74c3c;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+
+    .annuler:hover {
+        background-color: #d14a3c;
+    }
+
+
+    .bouton-systeme {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-top: 5%;
+    }
+
+
 }
-
-header {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 20% 45% 10% 15% 10%;
-    grid-template-rows: 100%;
-    border-radius: 15px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    height: 12vh;
-    margin: 1%;
-    position: sticky;
-    top: 0;
-    opacity: 1.0;
-    background-color: white;
-}
-
-
-/* Logo/image*/
-
-.logo-association {
-    width: 80%;
-    padding-left: 2%;
-    padding-top: 2%;
-}
-
-.img-user {
-    grid-column: 3;
-    width: 40%;
-    margin: auto;
-}
-
-
-/* Boutton déconnexion*/
-
-.h-deconnexion {
-    text-decoration: none;
-    color: black;
-    list-style-type: none;
-    margin: 4vh;
-}
-
-
-/*------------------------ Body--------------------*/
-
-
-h1{
-    text-align: center;
-    padding-top: 2%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
-}
-
-main {
-    background-color: white;
-    margin: 2%;
-    border-radius: 10px;
-    min-height: 85vh;
-}
-
-.flex_simple{
-    margin: auto;
-    width: 50%;
-    /* display: flex;   */
-    padding:2%;
-
-}
-
-
-
-.tableau{
-  margin: auto;
-  width: 50%;
-  
-}
-
-.button_valider_sys{
-    margin: auto;
-}
-
-
-.button_annuler_sys{
-    margin: left;
-
-}
-
-form {
-    max-width:1000px;
-    margin:auto;
-}
-label {
-    display:block;
-    background: rgb(212, 210, 210);
-    padding:10px;
-}
-
-
-
-
-
-/*-------------------------------------- Footer------------------------------------------*/
-
-footer {
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    background-color: white;
-}
-
-.f-contenu {
-    padding: 0;
-    margin: 0;
-}
-
-.footer-logo-association {
-    width: 50%;
-    grid-column: 1;
-    margin: auto;
-}
-
-.f-menu {
-    display: grid;
-    list-style: none;
-    grid-template-columns: 33% 33% 33%;
-    width: 60%;
-    margin-left: 20%;
-}
-
-footer p {
-    text-align: center;
-}
-
-.f-copyright {
-    width: 15%;
-    margin-left: 40%;
-}
-
-.lien_supp {
-    margin: 2%;
-}
-
