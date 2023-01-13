@@ -215,7 +215,7 @@ if (isset($_GET['id_invalider'])) {
                         $identifiant = $double_tab[$i][0];
 
                             echo "<td>";
-                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Acceder &#x1F59D; </button></a>';
+                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Acceder </button></a>';
                             
                         echo "</td>";
                         echo "</tr>";
@@ -255,19 +255,6 @@ if (isset($_GET['id_invalider'])) {
                         $name=ucfirst($nom." ".$prenom);
 
 
-                        echo '<td>';
-                        echo " <button  class='valider-compte-membre' type=\"button\" onclick=\"openDialog('dialog $identifiant', this)\"> Valider ce compte &#9989; </button>";
-                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog $identifiant\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p>Vous voulez valider le compte de $name dans l'application ?</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo "</div>";
-                        echo "</form>";
-                        echo "</div>";
-                        echo '</td>';
                         echo "<td class=\"Profil2\" >";
                         echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button  class="acceder-information-membre"> Acceder</button></a>';
                         echo "</td>";
@@ -392,7 +379,7 @@ if (isset($_GET['id_invalider'])) {
                 if (isset($_GET['id'])) {
                     //<!---- menu droit information ---->
                     echo "<div class=\"case-membre_1\">";
-                    echo "<img class=\"img-user\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
+                    echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
                     echo "</div>";
 
                     echo "<div class='grille_2_cases'>";
@@ -455,7 +442,7 @@ if (isset($_GET['id_invalider'])) {
 
                     echo " <div class=\"case-membre_2\">";
                     if ( $idiv!=$_SESSION['logged_user']){
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
+                    echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
 
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialogI".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -477,8 +464,8 @@ if (isset($_GET['id_invalider'])) {
         <div class="case-membre_2">
             <?php
             if(isset($_GET["idv"])){
-                echo'<button class="certifmembre" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
-                echo'<button class="certifmembre" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
+                echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
+                echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
 
             }
             
