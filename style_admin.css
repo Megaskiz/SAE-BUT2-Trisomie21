@@ -380,11 +380,11 @@
         display: flex;
     }
     .photo-enfant {
-        width: 15vh;
-        border-radius: 10px;
+        width: 40%;
+        border-radius: 100%;
         position: initial;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
-
     .div-photo-enfant {
         display: flex;
         justify-content: center;
@@ -392,22 +392,18 @@
         height: 100%;
         padding: 5%;
     }
-
     .div-modif-enfant {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
     .div-zone-texte {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
-    
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
@@ -453,7 +449,6 @@
         background-color: #fec107;
         cursor: pointer;
     }
-
     .status-objectif {
         padding: 10px 20px;
         border-radius: 5px;
@@ -464,7 +459,6 @@
         cursor: pointer;
         transition: all 0.3s;
     }
-
     button.objectif-acceder {
         padding: 10px 20px;
         border-radius: 5px;
@@ -695,6 +689,7 @@
     }
 }
 
+
 /*
         _____________________________________________________________
         _____________________________________________________________
@@ -720,9 +715,6 @@
         _____________________________________________________________
 
     */
-
-
-
 
 
 /* SUR TELEPHONE  */
@@ -1062,8 +1054,8 @@
         margin: 3%;
     }
     .photo-enfant {
-        width: 30%;
-        border-radius: 20%;
+        width: 20%;
+        border-radius: 100%;
     }
     .div-info-enfant {
         display: flex;

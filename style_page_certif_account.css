@@ -1,19 +1,13 @@
 /*------------------------ Header/menu--------------------*/
 
-@media screen and (min-width: 1250px){
-
+@media screen and (min-width: 1250px) {
     /* Header */
-    
     table,
     td {
         border-collapse: collapse;
         padding: 0.7rem;
     }
-    
-    
-    
     /*--------SEPARATION----------*/
-    
     .divider {
         /* minor cosmetics */
         display: table;
@@ -24,12 +18,10 @@
         margin: 20px auto;
         /* spacing above/below */
     }
-    
     .divider span {
         display: table-cell;
         position: relative;
     }
-    
     .divider span:first-child,
     .divider span:last-child {
         width: 50%;
@@ -42,7 +34,6 @@
         background-position: 0 0, 0 100%;
         background-repeat: no-repeat;
     }
-    
     .divider span:first-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#6666c4));
@@ -51,7 +42,6 @@
         background-image: -o-linear-gradient(180deg, transparent, #6666c4);
         background-image: linear-gradient(90deg, transparent, #6666c4);
     }
-    
     .divider span:nth-child(2) {
         font-weight: 600;
         color: #000;
@@ -59,7 +49,6 @@
         width: auto;
         white-space: nowrap;
     }
-    
     .divider span:last-child {
         /* color changes in here */
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6666c4), to(transparent));
@@ -68,10 +57,7 @@
         background-image: -o-linear-gradient(180deg, #6666c4, transparent);
         background-image: linear-gradient(90deg, #6666c4, transparent);
     }
-    
-    
     /*------------------*/
-    
     header {
         display: grid;
         align-items: center;
@@ -112,7 +98,6 @@
         padding: 0.5rem 0.625rem;
         border-radius: 50%;
     }
-    
     /*------------------------ Body--------------------*/
     body {
         display: flex;
@@ -188,7 +173,6 @@
         height: auto;
         width: 100%;
     }
-
     /* Boutton ajouter un membre*/
     .ajouter-membre {
         display: flex;
@@ -203,18 +187,13 @@
         cursor: pointer;
         transition: all 0.3s;
     }
-
-    
     .ajouter-membre:hover {
         background-color: #fec107;
     }
-    
-
     a {
         text-decoration: none;
         color: black;
     }
-
     .acceder-information-membre {
         display: block;
         padding: 5px 5px;
@@ -226,12 +205,10 @@
         cursor: pointer;
         transition: all 0.3s;
     }
-    .acceder-information-membre:hover{
+    .acceder-information-membre:hover {
         background-color: #fec107;
     }
-
-
-    .invalider{
+    .invalider {
         background-color: #e74c3c;
         border: none;
         color: white;
@@ -244,8 +221,7 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
-    .modif-certif{
+    .modif-certif {
         display: inline-block;
         position: initial;
         padding: 10px 20px;
@@ -257,9 +233,6 @@
         cursor: pointer;
         transition: all 0.3s;
     }
-
-
-
     .icone-ajouter-membre {
         margin: 0;
         height: 25px;
@@ -269,7 +242,6 @@
         margin: auto;
         width: 50%;
     }
-
     table.no-break {
         margin-top: 5%;
     }
@@ -280,8 +252,6 @@
         margin-left: 40%;
         border-radius: none;
     }
-
-
     .section_membre {
         display: grid;
         grid-template-columns: 50vh auto;
@@ -293,8 +263,6 @@
         background-color: white;
         margin-left: 5%;
     }
-
-
     /* Pop-up JS ajouter un membre*/
     .hidden {
         display: none;
@@ -465,7 +433,10 @@
         place-items: center;
     }
     .img-tuteur {
-        width: 50%;
+        width: 40%;
+        border-radius: 100%;
+        position: initial;
+        border: solid 1px;
     }
     .case-membre_1 {
         display: grid;
@@ -508,7 +479,6 @@
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-
     .certifmembre {
         background-color: #4CAF50;
         border: none;
@@ -522,10 +492,6 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
-    
-
-    
     .grille_4_cases {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -939,8 +905,11 @@
     }
     .img-tuteur {
         display: none;
-        width: 80%;
         margin: auto;
+        width: 70%;
+        border-radius: 100%;
+        position: initial;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
     }
     .case-membre_2 {
         display: grid;
