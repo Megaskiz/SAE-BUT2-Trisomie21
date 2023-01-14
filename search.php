@@ -194,7 +194,7 @@ catch (Exception $e) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p class=\"titre_recherche\">Aucun contact trouvé.<p>";
+                    echo "<p class=\"titre_recherche\">Aucun enfants trouvé.<p>";
                 }
             }
 
