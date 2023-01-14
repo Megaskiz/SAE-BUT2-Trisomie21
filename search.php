@@ -163,7 +163,8 @@ catch (Exception $e) {
 
             if (isset($_POST['keywords'])) {
                 // Préparation de la requête
-                $keywords = explode(" ", $_POST['keywords']);
+                $search = implode(array_filter(str_split($_POST['keywords']),"filter_spaces"));
+                $keywords = explode(" ",$search );
                 $query = "SELECT * FROM enfant WHERE ";
 
                 for ($i = 0; $i < count($keywords); $i++) {
@@ -193,7 +194,7 @@ catch (Exception $e) {
                     }
                     echo "</table>";
                 } else {
-                    echo "<p class=\"titre_recherche\">Aucun contact trouvé.<p>";
+                    echo "<p class=\"titre_recherche\">Aucun enfants trouvé.<p>";
                 }
             }
 
