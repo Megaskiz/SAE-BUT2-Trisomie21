@@ -505,13 +505,15 @@ if (isset($_GET['eject'])) {
                                     /*$recupUser = $linkpdo->prepare('SELECT * FROM membre where id_membre = ?');
                                     $recupUser->execute(array($getid));
                                     if($recupUser->rowCount() > 0){*/
-                                if (isset($_POST["envoie2"])) {
+                                if (isset($_POST["envoie".$double_tab[$i][5]])) {
                                     $message = htmlspecialchars($_POST['messages']);
                                     $sujet = htmlspecialchars($_POST['sujet']);
                                     $insererMessage = $linkpdo->prepare('INSERT into message(corps,sujet,id_membre,date_heure,id_objectif) VALUES(?, ?, ?, NOW(), ?)');
                                     if (!$insererMessage) {
                                         die("Erreur prepare");
                                     }
+
+                                    
                                     $insererMessage->execute(array($message, $sujet, $_SESSION['logged_user'], $double_tab[$i][5]));
                                     if (!$insererMessage) {
                                         die("Erreur execute");
@@ -556,7 +558,7 @@ if (isset($_GET['eject'])) {
                                                     <div class="chat_vous">
                                                         <div class="chat_info">
                                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
-                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                                         </div>
                                                         <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                                     </div>
@@ -569,7 +571,7 @@ if (isset($_GET['eject'])) {
                                                     <div class="chat_autre">
                                                         <div class="chat_info">
                                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
-                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hm") ?></div>
+                                                            <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                                         </div>
                                                         <p class="chat_zone_txt"> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                                     </div>
@@ -589,7 +591,7 @@ if (isset($_GET['eject'])) {
                                         </div>
                                         <div class="chat_txt_msg">
                                             <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
-                                            <button type="submit" class="chat_send" name="envoie2">Envoyer</button>
+                                            <button type="submit" class="chat_send" name=<?="envoie".$double_tab[$i][5]?>>Envoyer</button>
                                         </div>
                                     </form>
                                 </div>
