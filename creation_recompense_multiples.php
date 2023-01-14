@@ -72,7 +72,11 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
     </header>
 
 
@@ -81,57 +85,55 @@ if (isset($_GET['id_suppr'])) {
     <main>
 
         <?php
-            if (isset ($_POST['rows']))  {
-                $rows = $_POST['rows'];
-            }
-            else{
-                $rows = 1;
-            }
+
+        if (isset($_POST['rows'])) {
+            $rows = $_POST['rows'];
+        } else {
+            $rows = 1;
+        }
         ?>
+
 
 
         <form action="" method="post" class="form-nb-taches">
             <div class="flex_simple">
-            <label>combien de taches voulez vous inserer ? : </label>
-            <input type="number" name="rows"  value=<?php echo $rows ?> >
-            <input id="bouton" type="submit" value="valider">
-            </div>
+                <label>combien de taches voulez vous inserer ? : </label>
+                <input type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Appuyez sur ''Entrer'' pour valider">
         </form>
 
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
-        
-        
+            <?php
+            echo '<input style="display:none"type="text" name="nb_rec" value="' . $rows . '">';
+            $i = 1;
+            while ($i <= $rows) {
+                echo '
 
-        <?php           
-                echo'<input style="display:none"type="text" name="nb_rec" value="'.$rows.'">';              
-                $i = 1;
-                while( $i <= $rows ) {
-                    echo'
+                    <h1 class="flex-simple">Récompense n°' . $i . '</h1>
 
-                    <h1 class="flex-simple">Récompense n°'.$i.'</h1>
-
-                    <div class="flex_simple">
+                    <div class="flex_simple1">
                     <label>Quel sera le nom de la récompense : </label>
-                    <input type="text" width=100% name="intitule'.$i.'" placeholder="ecrivez ce que l\'enfant doit faire">
+                    <input type="text" width=100% name="intitule' . $i . '" placeholder="Ecrivez le nom"  required="required">
                     </div>  
-                    <div class="flex_simple">
+
+                    <div class="flex_simple1">
                         <label>Quelle sera la déscription de la récompense  : </label>
-                        <input type="text" name="descriptif'.$i.'" placeholder="ecrivez le nom ici">
+                        <input type="text" name="descriptif' . $i . '" placeholder="Détail">
                     </div>
 
-                    <div class="flex_simple">
+                    <div class="flex_simple1">
                     <label>Quelle sera l\'image associée à cette récompense : </label>
-                    <input name="photo_recompense'.$i.'" type="file" class="zip_input" required="required">
-                    </div>
-                    ';
-                    $i++;
-                }
-                ?>
-            
+                    <input name="photo_recompense' . $i . '" type="file" class="zip_input" required="required">
+                    </div>';
 
-        <input style="float:right;"class="button" type="submit" value="Valider les récompenses et enregistrer le système">
+                $i++;
+            }
+            ?>
+            <div class="bouton-systeme">
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
+                <input class="valider" type="submit" value="Valider ">
+            </div>
         </form>
-       
+
     </main>
 </body>
 

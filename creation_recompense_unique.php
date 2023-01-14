@@ -89,10 +89,12 @@ if (isset($_GET['id_suppr'])) {
 
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
             <h1 class="flex-simple">Création d'une récompense de type : "unique"</h1>
+            
             <div class="flex_simple">
                 <label>Quel sera le nom de la récompense : </label>
-                <input type="text" width=100% name="intitule" placeholder="Nom">
+                <input type="text" width=100% name="intitule" placeholder="Nom" required="required">
             </div>
+
             <div class="flex_simple">
                 <label>Quelle sera la déscription de la récompense : </label>
                 <input type="text" name="descriptif" placeholder="Détail">
@@ -105,8 +107,8 @@ if (isset($_GET['id_suppr'])) {
 
             
             <div class="bouton-systeme">
-              <a  class="annuler" href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
-              <input  class="valider" style="float:right;"  type="submit" value="Valider la récompense ">
+              <a  class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
+              <input  class="valider" style="float:right;"  type="submit" value="Valider">
             </div>
         </form>
 

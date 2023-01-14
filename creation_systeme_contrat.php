@@ -72,66 +72,58 @@ if (isset($_GET['id_suppr'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg> Déconnexion
+        </div>
     </header>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <main>
-    <?php
-if (isset ($_POST['rows']))  {
-    $rows = $_POST['rows'];
-}
-else{
-    $rows = 0;
-}
-?>
-
-<!---<style>
-    table, td {
-    border-collapse:collapse;
-    border:solid black 1px;
-    padding: 1rem;
-    }
-    form {
-        max-width:1000px;
-        margin:auto;
-    }
-    label {
-        display:block;
-        background: rgb(212, 210, 210);
-        padding:10px;
-    }
-</style>--->
+        <?php
+        if (isset($_POST['rows'])) {
+            $rows = $_POST['rows'];
+        } else {
+            $rows = 0;
+        }
+        ?>
 
 
         <form action="" method="post" class="form-nb-taches">
+            <h1 class="flex-simple">Création d'un système de type : "Contrat"</h1>
             <div class="flex_simple">
-            <label>combien de taches voulez vous inserer ? : </label>
-            <input type="number" name="rows"  value=<?php echo $rows ?> >
-            <input id="bouton" type="submit" value="valider">
+                <label>combien de taches voulez vous inserer ? : </label>
+                <input type="number" min="0" name="rows" required="required"   placeholder="Appuyez sur ''Entrer'' pour valider">
             </div>
-            
         </form>
+
         <form action="insert_systeme_bd.php" method="post">
             <div class="flex_simple">
-            <label>Quel est le nom de ce système ?  : </label>
-            <input type="text" name="nom" placeholder="ecrivez le nom ici">
+                <label>Quel est le nom de ce système ? : </label>
+                <input type="text" name="nom" placeholder="Ecrivez le nom" required="required">
             </div>
+
+
             <div class="flex_simple">
-            <label>Quel est la durée de ce système ?  : </label>
-            <input type="text" name="duree" placeholder="ecrivez la duree ici">
-            </div>
-            <div class="flex_simple">
-            <label>Quel est la priorité de ce système ?  : </label>
-            <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+                <label>Quel est la durée de ce système ? : </label>
+                <div class="heure">
+                    <input type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
+                    <select name="echelle">
+                        <option value="h">heure(s)</option>
+                        <option value="h">jour(s)</option>
+                        <option value="s">semaine(s)</option>
+                    </select>
+                </div>
             </div>
 
             <div class="flex_simple">
-            <label>Quelle sera l'image pour le jeton : </label>
-            <input type="text" name="prio" placeholder="ecrivez le niveau de priorite ici">
+                <label>Quel est la priorité de ce système ? : </label>
+                <input type="text" name="prio" placeholder="Quelle est la prioritée ?">
             </div>
+
 
             <table class="tableau">
                 <tr>
@@ -139,70 +131,54 @@ else{
                         <p></p>
                     </td>
                     <td>
-                        <p>lundi</p>
+                        <p>Lundi</p>
                     </td>
                     <td>
-                        <p>mardi</p>
+                        <p>Mardi</p>
                     </td>
                     <td>
-                        <p>mercredi</p>
+                        <p>Mercredi</p>
                     </td>
                     <td>
-                        <p>jeudi</p>
+                        <p>Jeudi</p>
                     </td>
                     <td>
-                        <p>vendredi</p>
+                        <p>Vendredi</p>
                     </td>
                     <td>
-                        <p>samedi</p>
+                        <p>Samedi</p>
                     </td>
                     <td>
-                        <p>dimanche</p>
+                        <p>Dimanche</p>
                     </td>
                 </tr>
 
-                <?php                         
+                <?php
                 $i = 1;
-                while( $i <= $rows ) {
-                    echo"<tr>";
-                    echo"<td><input type='text' name='tache$i.0000000'placeholder='tâche à faire'/ required='required'></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"<td></td>";
-                    echo"</tr>";
+                while ($i <= $rows) {
+                    echo "<tr>";
+                    echo "<td><input type='text' name='tache$i.0000000'placeholder='tâche à faire'/ required='required'></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "</tr>";
                     $i++;
                 }
                 ?>
-                </table>
-            <input class="button" type="submit" value="Valider le système">
+            </table>
+
+            <div class="bouton-systeme">
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler </a>
+                <input class="valider" type="submit" value="Valider ">
+            </div>
         </form>
-        <br>
-        <br>
-        <div style="float:right;">
-            <button class="annuler"><a href="page_admin.php">annuler la creation de système</a></button>
-        </div>
+
     </main>
 
-    <!------------------------------------------------------- Footer -------------------------------------------------->
-    <footer>
-
-        <img class="footer-logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
-
-        <div class="f-contenu">
-            <div class="f-menu">
-                <li><p class="f-info">Qui sommes nous ?</p></li>
-                <li><p class="f-propos">A propos</p></li>
-                <li><p class="f-association">Association</p></li>
-            </div>
-            <p class="f-copyright">© Copyright 2022 </p>
-        </div>
-       
-        
-    </footer>
 </body>
 
 

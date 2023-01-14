@@ -96,6 +96,15 @@
 
     }
 
+    .flex_simple1{
+        margin: auto;
+        display: flex;
+        padding: 2%;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
     .flex_heure {
         margin: auto;
         width: 50%;

@@ -457,7 +457,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.0rem;
 
         content: "Système de type 'chargement', organisé comme une barre de progression qui avance, au fur et à mesure que les jetons sont placés";
     }
@@ -466,7 +466,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.0rem;
 
         content: "Système qui se compose de tâche qui sont répétées sur 1 semaines, a la manière d'un contrat";
     }
@@ -475,7 +475,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.0rem;
 
         content: "L'ensemble du système est orienté vers un prix unique";
     }
@@ -484,7 +484,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.0rem;
         content: "L'ensemble du système est orienté vers un magasin de récompense dans lequel il est possible de choisir une récompense";
     }
 
@@ -914,7 +914,7 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        font-size: 1.5rem;
+        font-size: 1.rem;
     }
 
 

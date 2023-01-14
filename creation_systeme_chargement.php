@@ -92,18 +92,18 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="flex_simple">
                 <label>Quel est le nom de ce système ? : </label>
-                <input type="text" name="nom" placeholder="ecrivez le nom ">
+                <input type="text" name="nom" placeholder="Ecrivez le nom" required="required">
             </div>
 
 
             <div class="flex_simple">
                 <label>Combien de cases voulez-vous inserer ? : </label>
-                <input type="number" name="rows">
+                <input type="number" min="0" name="rows" required="required"   placeholder="Appuyez sur ''Entrer'' pour valider">
             </div>
 
             <div class="flex_simple">
                 <label>Quelle sera la condition d'ajout d'un jeton : </label>
-                <input type="text" width=100% name="intitule" placeholder="Ce que l'enfant doit faire">
+                <input type="text" width=100% name="intitule" placeholder="Ce que l'enfant doit faire" required="required">
             </div>
 
 
@@ -111,7 +111,7 @@ if (isset($_GET['id_suppr'])) {
             <div class="flex_simple">
                 <label>Quel est la durée de ce système ? : </label>
                 <div class="heure">
-                    <input type="number" name="duree" placeholder="Indiquez une durée">
+                    <input type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
                         <option value="h">heure(s)</option>
                         <option value="h">jour(s)</option>
@@ -122,11 +122,11 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="flex_simple">
                 <label>Quel est la priorité de ce système ? : </label>
-                <input type="text" name="prio" placeholder="Quelle est la prioritée">
+                <input type="text" name="prio" placeholder="Quelle est la prioritée ?">
             </div>
 
             <div class="bouton-systeme">
-                <a class="annuler" href="page_admin.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler </a>
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler </a>
                 <input class="valider" type="submit" value="Valider ">
             </div>
         </form>
