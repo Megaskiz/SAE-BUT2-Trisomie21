@@ -1,5 +1,7 @@
 <?php
-
+function filter_spaces($var){
+    return $var != ' ';
+}
 function uploadVisage($photo)
 {
 

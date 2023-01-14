@@ -163,7 +163,8 @@ catch (Exception $e) {
 
             if (isset($_POST['keywords'])) {
                 // Préparation de la requête
-                $keywords = explode(" ", $_POST['keywords']);
+                $search = implode(array_filter(str_split($_POST['keywords']),"filter_spaces"));
+                $keywords = explode(" ",$search );
                 $query = "SELECT * FROM enfant WHERE ";
 
                 for ($i = 0; $i < count($keywords); $i++) {
