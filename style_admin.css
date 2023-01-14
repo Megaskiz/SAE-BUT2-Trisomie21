@@ -317,6 +317,7 @@
     }
     .recherche {
         margin: 2.5%;
+        text-align: center;
     }
     .titre_recherche {
         font-weight: bold;
@@ -325,6 +326,8 @@
     }
     .input_recherche {
         border-radius: 100px;
+        padding: 5px 5px;
+        margin: bottom 1px;
     }
     .bouton_recherche {
         flex-direction: row-reverse;
@@ -334,9 +337,10 @@
         font-size: 12px;
         border: none;
         color: white;
-        background-color: #007bff;
+        background-color: #3f9bfc;
         cursor: pointer;
         transition: all 0.3s;
+        margin-top: 2px;
     }
     .bouton_recherche:hover {
         background-color: #fec107;

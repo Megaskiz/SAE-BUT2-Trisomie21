@@ -194,8 +194,9 @@ if (isset($_GET['eject'])) {
 
                 echo "<div class='liste-enfant'>";
                 echo "<div class=\"recherche\"><form method=\"post\" action=\"search.php\">
-                <label for=\"keywords\">Mots-clés : </label>
-                <input class=\"input_recherche\" type=\"text\"  id=\"keywords\" name=\"keywords\" required> 
+                <div class=\"\">
+                <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
+                </div>
                 <input class=\"bouton_recherche\" type=\"submit\" value=\"Rechercher\">
                 </form>
                 </div>";
