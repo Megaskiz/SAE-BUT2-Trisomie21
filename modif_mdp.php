@@ -43,6 +43,7 @@ if (isset($_GET['id_invalider'])) {
     <meta charset="utf-8">
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_page_certif_account.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -81,7 +82,9 @@ if (isset($_GET['id_invalider'])) {
 
         echo "</table>";
         ?>
-        <p class="h-deconnexion"><button class="deco" onclick="window.location.href ='logout.php';">Déconnexion</button></p>
+         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
+            <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
+        </div>
     </header>
 
 
