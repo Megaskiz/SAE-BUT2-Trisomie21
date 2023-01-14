@@ -7,7 +7,7 @@ colorPicker.addEventListener("change", function() {
   
 });
 
-document.querySelector("body").style.backgroundColor = localStorage.getItem("bg-color") || "lightskyblue";
+document.querySelector("body").style.backgroundColor = localStorage.getItem("bg-color") || "#afeeee";
 
 
 
