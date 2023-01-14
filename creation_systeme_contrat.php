@@ -33,6 +33,7 @@ if (isset($_GET['id_suppr'])) {
     <meta charset="utf-8">
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_creation_systemes.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -73,10 +74,9 @@ if (isset($_GET['id_suppr'])) {
         echo "</table>";
         ?>
         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-            </svg> Déconnexion
+           <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
         </div>
+
     </header>
 
 
@@ -101,6 +101,7 @@ if (isset($_GET['id_suppr'])) {
         </form>
 
         <form action="insert_systeme_bd.php" method="post">
+
             <div class="flex_simple">
                 <label>Quel est le nom de ce système ? : </label>
                 <input type="text" name="nom" placeholder="Ecrivez le nom" required="required">
