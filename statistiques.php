@@ -5,7 +5,10 @@ is_not_admin();
 is_validateur();
 ?>
 
+<!DOCTYPE html>
+
 <?php
+
 
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
@@ -37,6 +40,7 @@ pour chaque sys faire :
 
 */
 
+// je récupere tous le systèmes d'un enfant
 try {
     $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where id_enfant=$id_enfant");
 } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
@@ -44,7 +48,6 @@ try {
 }
 
 ///Affichage des entrées du résultat une à une
-
 $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
 $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
 
@@ -52,35 +55,63 @@ $liste_sys = array();
 $liste_nb_jetons = array();
 
 for ($i = 0; $i < $nombre_ligne; $i++) {  
-    array_push($liste_sys, $double_tab[$i][0]);  
-    array_push($liste_nb_jetons, $double_tab[$i][1]);  
+    array_push($liste_sys, $double_tab[$i][0]);  // liste de tous les systèmes
+    array_push($liste_nb_jetons, $double_tab[$i][1]);  // listes des nombres de jetons par systèmes
 }
+
 
 // print_r($liste_sys);
 // print_r($liste_nb_jetons);
 
-$data = "[ ";
-$sessions = "[ ";
+// faire une div html pour l'affichage 
 
-// pour chaque système on recup le nombre de session :
+
+
 
 $iteration=-1;
-// foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nombre de sessions
-//     $iteration++;
+// je fais une boucle ppour tous les systèmes
+
+foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nombre de sessions
+  $iteration++;
+  
+  echo"<div id=sys_num".$iteration.">";
+
+$data = "[ "; // la liste du nombre de jetons
+$sessions = "[ "; // la liste des dessions 
+$color = "[ "; // la liste des couleurs, (vert ou rouge)
+$win = 0; // compteur de sessions réussies
+$lose =0; // compteur de sessions non réussies
+
+
+// pour chaque système on recup le nombre de session :
+//echo($liste_sys[$iteration]);
+
+
     try {
-        $res = $linkpdo->query("SELECT MAX(id_session) from placer_jeton where id_objectif=10;");
+        $res = $linkpdo->query("SELECT MAX(id_session) from placer_jeton where id_objectif= $liste_sys[$iteration] ;");
+        //$res->debugDumpParams();
+        
     } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
         die('Erreur : ' . $e->getMessage());
     }
 
     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
     $nb_session = $double_tab[0][0];
+
     //echo"pour le systeme: ".$id_sys." , nombre de session : ".$nb_session."<br>";
+
+    if ($nb_session!=null){
+      //echo"je rentre dans la boucle car il a ".$nb_session."  sessions dans le système ".$liste_sys[$iteration]."<br>";
+
+
+
+    
 
     for ($i = 1; $i <= $nb_session; $i++) {  // pour chaque session, je recupere le nombre de jetons placés
         
             try {
-                $res = $linkpdo->query("SELECT date_heure from placer_jeton where id_objectif=10 and id_session=$i");
+                $res = $linkpdo->query("SELECT date_heure from placer_jeton where id_objectif=$liste_sys[$iteration] and id_session=$i");
+                //$res->debugDumpParams();
 
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
@@ -88,7 +119,9 @@ $iteration=-1;
             
             // pour chaque session je récup le nombre de jetohns placés 
             $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_jetons = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $nombre_jetons = $res->rowCount();
+
+            //echo"Voici le nombre de jetons pour la session n°".$i." : ".$nombre_jetons;echo"<br>";
 
             if ($i==$nb_session){
                 $nombre_jetons-=1;
@@ -96,47 +129,153 @@ $iteration=-1;
             $data=$data."'".$nombre_jetons."' , ";
             $sessions=$sessions."'session".$i."' , ";
 
-            // si reussi : $nombre_jetons == $liste_nb_jetons[$iteration]
-            echo" ___pour la session : ".$i.", le nombre de jetons placés : ".$nombre_jetons."sachant que le système a 3 jetons <br>"; //$liste_nb_jetons[$iteration]
+            if($nombre_jetons == $liste_nb_jetons[$iteration]){//$nombre_jetons == $liste_nb_jetons[$iteration]
+              $color=$color."'rgba(0,200,0,0.6)', "; // vert
+              $win+=1;
+            }else{
+              $color=$color."'rgba(200,0,0,0.6)', "; // rouge
+              $lose+=1;
+            }
+            //echo" ___pour la session : ".$i.", le nombre de jetons placés : ".$nombre_jetons." sachant que le système a ".$liste_nb_jetons[$iteration]." jetons <br>"; //$liste_nb_jetons[$iteration]
 
     }
-    $data = substr($data,0,-2);
-    $data=$data."]";
+    $data = substr($data,0,-2); // je retire la derniere ',' 
+    $data=$data."]";            // j'ajoute le ']' fermant
 
     $sessions = substr($sessions,0,-2);
     $sessions=$sessions."]";
-    echo$sessions;
-//}
 
-$var = "['Blue', 'Yellow', 'Green', 'Purple', 'Orange']";
-?>
+    $color = substr($color,0,-2); 
+    $color=$color."]";
 
-<div>
-  <canvas id="myChart" style=" height:30% "></canvas>
+    $total_win = ($win/($win+$lose)*100);
+
+    if (strlen($data)!=1){
+
+    /* ajouter :
+
+      le nombre total de sessions,
+      le nombre moyens de jetons placés sur une session
+      si oui ou non c'est une réussite
+
+
+    
+    */
+
+    try {
+      $res = $linkpdo->query("SELECT intitule from objectif where id_objectif=$liste_sys[$iteration]");
+      //$res->debugDumpParams();
+
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+    
+    // pour chaque session je récup le nombre de jetohns placés 
+    $double_tab = $res->fetchAll();
+    $nom = $double_tab[0][0];
+echo'
+
+<center>
+<h1>Système : '.$nom.'</h1>
+
+</center>
+<div style="display:flex">
+  <div style="width:45%">
+    <canvas id="myChart'.$iteration.'"></canvas>
+  </div>
+  <div style="width:10%">
+  </div>
+  <div style="width:45%">
+    <canvas id="myChart2'.$iteration.'"></canvas>
+  </div>
 </div>
+';
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+echo'<script src="https://cdn.jsdelivr.net/npm/chart.js">import Chart from \'chart.js/auto\';</script>';
+
+echo"
+
+
 
 <script>
-  const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+  const ctx".$iteration." = document.getElementById('myChart".$iteration."');
+
+  new Chart(ctx".$iteration.", {
     type: 'bar',
     data: {
-      labels: <?php  echo$sessions ?> ,
+      labels:".$sessions.",
       datasets: [{
-        label: '# of Votes',
-        data: <?php echo$data ?>,
-        borderWidth: 1
-      }]
+        label: 'nombres de jetons',
+        data:".$data.",
+        backgroundColor:".$color.",
+        borderWidth:1,
+        borderColor:'#777',
+        hoverBorderWidth:3,
+        hoverBorderColor:'#000'
+      }],
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      scales:{
+        y:{
+          max:$liste_nb_jetons[$iteration],
+          stepSize: 1,
+          ticks:{
+            stepSize: 1
+          }
+        }
+
+          
+      },
+      plugins:{
+        title:{
+          display:true,
+          text:'Le nombre de jetons placés'
         }
       }
     }
   });
+
+
+
 </script>
 
+<script>
+    const ctx2".$iteration." = document.getElementById('myChart2".$iteration."');
+
+  
+  new Chart(ctx2".$iteration.", {
+      type: 'pie',
+      data:{
+        labels: [
+          'Réussite : ".(round($total_win))." %',
+          'Echec :".(100-round($total_win))." %'
+        ],
+        datasets: [{
+          label: 'Quantité',
+          
+          data: [".$win.",".$lose."],
+          backgroundColor: [
+            'rgba(0,200,0,0.6)',
+            'rgba(200,0,0,0.6)'
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options:{
+        offset:60
+      },
+    });
+</script>
+
+
+
+";
+  }
+}
+echo"</div>";
+}
+
+?>
