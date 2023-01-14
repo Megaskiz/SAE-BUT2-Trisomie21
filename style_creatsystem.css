@@ -1,16 +1,18 @@
 @media screen and (min-width: 1250px) {
 
     /*------------------------ Header/menu--------------------*/
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
     /* Header */
 
     header {
         display: grid;
-        justify-content: center;
         align-items: center;
         grid-template-columns: 20% 45% 10% 15% 10%;
-        grid-template-rows: 100%;
-        border-radius: 15px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         height: 12vh;
         position: sticky;
@@ -47,7 +49,7 @@
 
     .icone_deconnexion {
         margin-right: 0;
-        height: 30px;
+        height: 5vh;
         border: 1px solid #271a38;
         padding: 0.5rem 0.625rem;
         border-radius: 50%;

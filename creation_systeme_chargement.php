@@ -87,7 +87,7 @@ if (isset($_GET['id_suppr'])) {
 
 
 
-        <form action="insert_systeme_bd.php" method="post">
+        <form  action="insert_systeme_bd.php" method="post">
             <h1 class="flex-simple">Création d'un système de type : "chargement"</h1>
 
             <div class="flex_simple">
@@ -126,7 +126,7 @@ if (isset($_GET['id_suppr'])) {
             </div>
 
             <div class="bouton-systeme">
-                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler </a>
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler &#x1F5D9; </a>
                 <input class="valider" type="submit" value="Valider ">
             </div>
         </form>
