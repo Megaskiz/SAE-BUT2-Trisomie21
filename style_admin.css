@@ -729,6 +729,21 @@
         width: 1%px;
         height: 1%
     }
+    button {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 9px;
+        border: none;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 0.5px;
+        color: #fff;
+    }
+    button:hover {
+        background-color: #fec107;
+    }
 }
 
 
