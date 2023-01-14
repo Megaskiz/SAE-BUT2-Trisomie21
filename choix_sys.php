@@ -23,6 +23,7 @@ is_validateur();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="choix_sys.js"></script>
+    <center>
     <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : 'white'; ?>">
 
 
@@ -194,26 +195,26 @@ is_validateur();
 
                             $session_actuelle=$session_max+1;
 
-                            echo"date du premier jeton de la derniere session  : ".$jeton_premier;
-                            echo"<br>";
+                            // echo"date du premier jeton de la derniere session  : ".$jeton_premier;
+                            // echo"<br>";
 
-                            echo($secondes_premier_jeton+$duree_sys_en_seconde);
+                            // echo($secondes_premier_jeton+$duree_sys_en_seconde);
 
-                            echo"<br>";
+                            // echo"<br>";
 
-                            echo(time());                            echo"<br>";
-
-
-                            echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
-
-                            echo"<br>";
-
-                            echo"la duree du sys est : ".$duree_sys." heure(s)";
-
-                            echo"<br>";
+                            // echo(time());                            echo"<br>";
 
 
-                            echo"depassement";
+                            // echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
+
+                            // echo"<br>";
+
+                            // echo"la duree du sys est : ".$duree_sys." heure(s)";
+
+                            // echo"<br>";
+
+
+                            // echo"depassement";
 
                             //session sait quand on la dépasse, mais on ne crée pas un nouvelle session 
 
@@ -257,9 +258,9 @@ is_validateur();
                         
                         }
                         else{
-                            echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
+                            // echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
 
-                            echo"<br>";
+                            // echo"<br>";
                         }
 
 
@@ -366,6 +367,161 @@ is_validateur();
             case '3': {
                 // systeme tous les jours
 
+//**************** */
+try {
+    // je recup la derniere session pour ce sys
+    $session_max_query =$linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=".$id);
+    //$session_max_query->debugDumpParams();
+    
+    }
+    catch (Exception $e) { // toujours faire un test de retour en cas de crash
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    ///Affichage des entrées du résultat une à une
+    
+    $double_tab = $session_max_query -> fetchAll(); // je met le result de ma query dans un double tableau
+    $session_max = $double_tab[0][0];
+
+    if($session_max==NULL){
+        $session_max=0;     
+    }
+
+try {
+    //je recupere la date du premier jeton placé pour cette session dans ce sys
+    $jeton_premier_query =$linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=".$session_max." and id_objectif=".$id);
+    // je recupere la duree totale du sys prevu
+    $duree_sys_query =$linkpdo->query("SELECT duree from OBJECTIF where id_objectif=".$id);
+
+    }
+    catch (Exception $e) { // toujours faire un test de retour en cas de crash
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    ///Affichage des entrées du résultat une à une
+    
+    $double_tab = $jeton_premier_query -> fetchAll();
+    $double_tab2 = $duree_sys_query -> fetchAll();
+
+    $jeton_premier =  $double_tab[0][0];
+    $duree_sys =  $double_tab2[0][0];
+
+    $duree_sys_en_seconde=$duree_sys*3600;
+
+    if($jeton_premier==NULL){
+        $jeton_premier=0;
+    }
+
+    // echo$session_max;
+    // echo$jeton_max;
+
+    if($session_max ==0){
+        // c'est le premier jetons qu'on place ever
+        $session_actuelle=1;
+        //inserer un jeton 'factice' dans la bd pour avoir la date de début de session
+        $req = $linkpdo->prepare('insert into placer_jeton values ( :id_objectif, :time, :id_membre, :session)  ');
+
+
+        if ($req == false){
+            die("erreur linkpdo");
+        }   
+        try{
+            $req->execute(array('id_objectif' => $id, 'time' => date("Y/m/d H:i:s"), 'id_membre' => $_SESSION['logged_user'], 'session' => $session_actuelle));
+    
+            if ($req == false){
+                $req->debugDumpParams;
+                die("erreur execute");
+            }
+        }
+        catch (Exception $e){die('Erreur : ' . $e->getMessage());}
+
+
+    }else{
+        $secondes_premier_jeton=strtotime($jeton_premier);
+        
+        if($secondes_premier_jeton+$duree_sys_en_seconde<time()){
+
+            $session_actuelle=$session_max+1;
+
+            // echo"date du premier jeton de la derniere session  : ".$jeton_premier;
+            // echo"<br>";
+
+            // echo($secondes_premier_jeton+$duree_sys_en_seconde);
+
+            // echo"<br>";
+
+            // echo(time());                            echo"<br>";
+
+
+            // echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
+
+            // echo"<br>";
+
+            // echo"la duree du sys est : ".$duree_sys." heure(s)";
+
+            // echo"<br>";
+
+
+            // echo"depassement";
+
+            //session sait quand on la dépasse, mais on ne crée pas un nouvelle session 
+
+            //    A FAIRE 
+
+            // update la date du jeton factice avec la date actuelle
+            try {
+                $req5 = $linkpdo->prepare('UPDATE placer_jeton SET date_heure = :nouvelle_heure, id_session= :id_session where date_heure = :ancienne_date ');
+                // le nom est la chaine que j'utilise pour construire le système
+                $req5->execute(array('nouvelle_heure' => date("Y/m/d H:i:s"),'id_session'=>$session_actuelle, 'ancienne_date' => $jeton_premier,));
+
+                //$req5 -> debugDumpParams();
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+
+            try {
+                $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+            ///Affichage des entrées du résultat une à une
+
+            $double_tab = $res->fetchAll();
+
+            $chaine = $double_tab[0][0]; // je recup ma chaine 'nom' du sys
+
+            $MaVariable = str_replace("1", "0", $chaine); // je la reset
+
+            try {
+                $req5 = $linkpdo->prepare('UPDATE objectif SET nom = :intit where id_objectif = :id ');
+                // le nom est la chaine que j'utilise pour construire le système
+                $req5->execute(array('intit' => $MaVariable, 'id' => $id,));
+
+                //$req5 -> debugDumpParams();
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+        
+        }
+        else{
+            // echo($secondes_premier_jeton+$duree_sys_en_seconde-time());
+
+            // echo"<br>";
+        }
+
+
+//**************** */
+
+
+
+
+    
+    
+}
+                
+
 
                     try {
                         $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
@@ -393,7 +549,7 @@ is_validateur();
                     if (strpos($chaine, 0) == false) {
                         echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
                     }
-
+                    
                     echo "<div class=\"sys\">";
                     echo "<table>";
 
@@ -486,3 +642,4 @@ is_validateur();
     ?>
     </div>
 </body>
+</center>
