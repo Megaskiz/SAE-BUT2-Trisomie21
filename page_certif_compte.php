@@ -369,12 +369,12 @@ if (isset($_GET['id_invalider'])) {
             $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
             $liste = array();
         }
-
+ 
 
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <div class="section_membre">
+            <div  class="section_membre">
                 <?php
                 if (isset($_GET['id'])) {
                     //<!---- menu droit information ---->
@@ -386,15 +386,15 @@ if (isset($_GET['id_invalider'])) {
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p class=\"info\"> Nom :<strong> $nom_membre</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>$prenom_membre</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>$date_naissance_membre</strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p>Adresse : <strong>$adresse_membre  $ville_membre </strong></p>";
-                    echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>$courriel_membre</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong>$adresse_membre  $ville_membre </strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> $code_postal_membre </strong> </p>";
                     echo "</div>";
 
                     echo"</div>";
@@ -424,18 +424,18 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div class='grille_2_cases'>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p>Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p>Date de naissance : <strong>$date_naissance_membre</strong></p>";
-                    echo "<p>Role de l'utilisateur : <strong>$role</strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong> $nom_membre</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>$prenom_membre</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p class=\"info\">Role de l'utilisateur : <strong>$role</strong></p>";
 
 
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p>Adresse : <strong> $adresse_membre  $ville_membre </strong></p>";
-                    echo "<p>Code postal : <strong> $code_postal_membre </strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>$courriel_membre</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong> $adresse_membre  $ville_membre </strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> $code_postal_membre </strong> </p>";
                     echo "</div>";
 
                     echo"</div>";

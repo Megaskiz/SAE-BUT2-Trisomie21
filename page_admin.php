@@ -302,15 +302,15 @@ if (isset($_GET['eject'])) {
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>  Nom :<strong> $nom_enfant </strong></p>";
-                    echo "<p>Date de Naissance :<strong> $ddn_enfant </strong></p>";
-                    echo "<p>Activité enfant :<strong> $activite     </strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong> $nom_enfant </strong></p>";
+                    echo "<p class=\"info\">Date de Naissance :<strong> $ddn_enfant </strong></p>";
+                    echo "<p class=\"info\">Activité enfant :<strong> $activite     </strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p>Prénom : <strong>$prenom_enfant  </strong></p>";
-                    echo "<p>Adresse enfant : <strong> $adresse     </strong> </p>";
-                    echo "<p>Handicap enfant :<strong> $handicap     </strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>$prenom_enfant  </strong></p>";
+                    echo "<p class=\"info\">Adresse enfant : <strong> $adresse     </strong> </p>";
+                    echo "<p class=\"info\">Handicap enfant :<strong> $handicap     </strong></p>";
                     echo "</div>";
 
 
