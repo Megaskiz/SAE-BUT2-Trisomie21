@@ -19,11 +19,11 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
     }
 ?>
-<button>
+
 <?php
-echo"<a href=\"choix_sys.php?id_sys=".$_SESSION['id_sys']."\">retour</a>";
+echo"<a href=\"choix_sys.php?id_sys=".$_SESSION['id_sys']."\"><button>retour</button></a>";
 ?>
-</button>
+
 <h1>Les récompenses</h1>
 <?php
 
