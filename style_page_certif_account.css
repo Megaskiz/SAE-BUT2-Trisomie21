@@ -7,6 +7,18 @@
         border-collapse: collapse;
         padding: 0.7rem;
     }
+    p {
+        font: small-caps bold 13px/1 cursive;
+        box-shadow: 0 0 0px rgb(8, 8, 8), 4px 6px rgb(165, 209, 255);
+        border-radius: 101px;
+        padding-left: 7%;
+        width: 60%;
+        transition: all 0.3s;
+    }
+    p:hover {
+        font: small-caps bold 14px/1 cursive;
+        box-shadow: 0 0 0px rgb(8, 8, 8), 8px 9px rgb(165, 209, 255);
+    }
     /*--------SEPARATION----------*/
     .divider {
         /* minor cosmetics */
