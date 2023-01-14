@@ -682,12 +682,7 @@ if (isset($_GET['eject'])) {
 
                     echo "</section>";
                 } else {
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
+                    
                     echo "</section>";
                     echo "</div>";
                     echo "<section class=\"nb-systeme\">";
