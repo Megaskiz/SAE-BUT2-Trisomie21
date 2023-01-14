@@ -20,11 +20,19 @@
     }
     p.info {
         border: solid 1px #000;
+<<<<<<< HEAD
+        border-radius: 101px;
+        padding-left: 7%;
+        max-width: 80%;
+        transition: all 0.3s;
+        font-size: 80%;
+=======
         border-radius: 100px;
         margin: auto;
         width: 90%;
         transition: all 0.3s;
         padding: 5px 4%;
+>>>>>>> 6f1b1b30d105d5d4b8dcef3b3443ec333ab836d6
     }
     /*--------SEPARATION----------*/
     .divider {
@@ -584,6 +592,11 @@
     td {
         border-collapse: collapse;
         padding: 0.5rem;
+        margin: auto;
+        font-size: 20px;
+    }
+    p {
+        font-size: 20px;
     }
     a {
         text-decoration: none;
@@ -736,6 +749,11 @@
         background-color: #fff;
         box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
     }
+    .icone-ajouter-membre {
+        margin: 0;
+        height: 20px;
+        cursor: pointer;
+    }
     .nav-item {
         width: 50%;
     }
@@ -883,6 +901,13 @@
     .dialog_desc {
         padding: 10px 20px;
     }
+    .icone_deconnexion {
+        margin-right: 0;
+        height: 30px;
+        border: 1px solid #271a38;
+        padding: 0.5rem 0.625rem;
+        border-radius: 50%;
+    }
     /* native <dialog> element uses the ::backdrop pseudo-element */
     /* dialog::backdrop, */
     .dialog-backdrop {
@@ -990,6 +1015,9 @@
         margin-left: 5%;
         border-radius: 10px;
     }
+    .grille_2_cases {
+        text-align: center;
+    }
     .cns {
         margin: auto;
         margin-top: 2%;
@@ -1023,17 +1051,31 @@
         display: block;
         padding: 5px 10px;
         border-radius: 10px;
-        font-size: 9px;
+        font-size: 20px;
         border: none;
         background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
         margin: 0.5px;
         color: #fff;
+        margin: 3px;
     }
     button:hover {
         background-color: #fec107;
     }
+<<<<<<< HEAD
+    .case-membre_1 {
+        display: grid;
+        place-items: center;
+    }
+    .img-tuteur {
+        width: 40%;
+        border-radius: 100%;
+        position: initial;
+        border: solid 1px;
+    }
+}
+=======
 
     img.icone-ajouter-membre {
         width: 10%;
@@ -1089,3 +1131,4 @@
    
     
     }
+>>>>>>> 6f1b1b30d105d5d4b8dcef3b3443ec333ab836d6

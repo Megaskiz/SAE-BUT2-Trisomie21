@@ -397,8 +397,6 @@ if (isset($_GET['id_invalider'])) {
                     echo "</div>";
 
                     echo"</div>";
-
-
                     echo " <div class=\"case-membre_2\">";
                     echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$_GET['id']."', this)\">Valider ce compte membre</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
