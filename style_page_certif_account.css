@@ -475,7 +475,6 @@
     .case-membre_2 {
         display: grid;
         place-items: center;
-        grid-template-columns: 1fr 1fr ;
     }
     .case-3-infos {
         display: grid;
