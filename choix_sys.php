@@ -24,7 +24,7 @@ is_validateur();
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="choix_sys.js"></script>
     <center>
-    <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : 'white'; ?>">
+    <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
 
 
 
@@ -54,13 +54,13 @@ is_validateur();
 
     <?php
 
-    echo '<button>
-            <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '">retour au menu</a>
-        </button>';
+    echo '
+            <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>
+        ';
 
-    echo '<button class="droite">
-                <a href="page_recompense.php">voir la/les récompenses</a>
-            </button>';
+    echo '
+            <a href="page_recompense.php"><button class="droite">voir la/les récompenses</button></a>
+            ';
 
     #affiche message
     echo '<a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif">messagerie<span class=" icon-mail">&#x2709;</span></button></a>';

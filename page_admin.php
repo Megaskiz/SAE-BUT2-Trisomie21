@@ -492,7 +492,7 @@ if (isset($_GET['eject'])) {
                             #affiche message
                             echo "<td>";
                             echo"<center>";
-                            echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> &#x2709; </span></button>";
+                            echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#x2709; </span></button>";
                             echo"</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
