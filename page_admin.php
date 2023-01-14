@@ -193,11 +193,13 @@ if (isset($_GET['eject'])) {
                 $liste = array();
 
                 echo "<div class='liste-enfant'>";
+                echo "<div class=\"recherche\"><form method=\"post\" action=\"search.php\">
+                <label for=\"keywords\">Mots-clés : </label>
+                <input class=\"input_recherche\" type=\"text\"  id=\"keywords\" name=\"keywords\" required> 
+                <input class=\"bouton_recherche\" type=\"submit\" value=\"Rechercher\">
+                </form>
+                </div>";
                 echo "<table >";
-
-
-
-
 
                 for ($i = 0; $i < $nombre_ligne; $i++) {
 
