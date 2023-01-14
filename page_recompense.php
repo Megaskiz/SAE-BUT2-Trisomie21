@@ -4,6 +4,41 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
         <title>récompenses</title>
+        <div id="color-picker-container">
+       
+
+        <div id="color-bar">  </div>
+    
+        <input type="color" id="color-picker">
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="choix_sys.js"></script>
+    <center>
+    <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
+
+
+
+    <script>
+    // Récupérer la valeur stockée dans sessionStorage
+    var bgColor = sessionStorage.getItem("bg-color");
+    // Vérifier si la valeur existe
+    if (bgColor) {
+        // définir la couleur de fond de la page en utilisant la valeur stockée
+        document.querySelector("body").style.backgroundColor = bgColor;
+    }
+</script>
+    <script>
+        var colorPicker = document.getElementById("color-picker");
+    colorPicker.addEventListener("change", function() {
+        localStorage.setItem("bg-color", colorPicker.value);
+    });
+        </script>
+
+
+
+    </div>
     </head>
 <?php
 require('fonctions.php');
