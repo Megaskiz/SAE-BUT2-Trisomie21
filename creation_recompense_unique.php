@@ -106,8 +106,8 @@ if (isset($_GET['id_suppr'])) {
 
             
             <div class="bouton-systeme">
-              <a  class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
-              <input  class="valider" style="float:right;"  type="submit" value="Valider">
+              <a  class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler &#x1F5D9;</a>
+              <input  class="valider" style="float:right;"  type="submit" value="Valider  &#x2714;">
             </div>
         </form>
 

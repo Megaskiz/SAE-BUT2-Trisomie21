@@ -97,7 +97,10 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="flex_simple">
                 <label>Combien de cases voulez-vous inserer ? : </label>
-                <input type="number" min="0" name="rows" required="required"   placeholder="Appuyez sur ''Entrer'' pour valider">
+                <div class="heure">
+                <input type="number" min="0"  name="rows" required="required"   placeholder="Nombre de cases ?">
+                <input id="bouton" type="submit" value="valider">
+                </div>
             </div>
 
             <div class="flex_simple">
@@ -126,7 +129,7 @@ if (isset($_GET['id_suppr'])) {
 
             <div class="bouton-systeme">
                 <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>"> Annuler &#x1F5D9; </a>
-                <input class="valider" type="submit" value="Valider ">
+                <input class="valider" type="submit" value="Valider &#x2714;">
             </div>
         </form>
 

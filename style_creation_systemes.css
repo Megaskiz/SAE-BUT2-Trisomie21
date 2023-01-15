@@ -132,9 +132,17 @@ td {
         padding: 10px 5%;
     }
 
+    form tbody {
+        border: solid;
+    }
+
+    form td {
+        border: solid 1px;
+    }
+
+
 
     body {
-        min-height: 100vh;
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
@@ -143,7 +151,7 @@ td {
         background-color: white;
         margin: auto;
         margin-top: 5%;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 85%;
     }
 
@@ -216,7 +224,10 @@ td {
         border: solid 1px;
         border-radius: 5px;
         padding: 10px 2%;
+    }
 
+    input.insere_nb {
+        width: 60%;
     }
 
 
@@ -321,8 +332,15 @@ td {
     }
 
 
+    form tbody {
+        border: solid;
+    }
+
+    form td {
+        border: solid 1px;
+    }
+
     body {
-        min-height: 100vh;
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
@@ -349,12 +367,13 @@ td {
     }
 
     .flex_simple1 {
-        margin: auto;
         display: flex;
         padding: 2%;
         flex-wrap: nowrap;
         align-items: stretch;
         flex-direction: column;
+        margin: 5%;
+
     }
 
     .flex_heure {
@@ -389,7 +408,7 @@ td {
         background-color: whitesmoke;
         border: solid 1px;
         color: black;
-        padding: 7px 5%;
+        padding: 5px 0%;
         border-radius: 10px;
 
     }
@@ -401,6 +420,10 @@ td {
         border-radius: 5px;
         padding: 10px 2%;
 
+    }
+
+    input.insere_nb {
+        width: 60%;
     }
 
 
@@ -449,9 +472,21 @@ td {
 
     html {
         font-size: 10px;
-        height: 100%;
     }
 
+    main {
+        height: fit-content;
+    }
+
+    body{
+        min-height: 100vh;
+    }
+
+    header{
+        height: 8vh;
+    }
+
+    
 
     h1 {
         text-align: center;
@@ -465,6 +500,8 @@ td {
         font-size: 10px;
     }
 
+   
+
     h1.flex-recompense{
         text-align: center;
         background-color: whitesmoke;
@@ -476,8 +513,8 @@ td {
 
 
     .flex_simple {
-        margin: auto;
-        width: 75%;
+        margin: 5%;
+        width: 85%;
         display: flex;
         padding: 2%;
         flex-wrap: nowrap;
@@ -498,22 +535,8 @@ td {
         width: 75%;
     }
 
-
-   
-
-    .valider {
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 10px;
-        margin: 0;
-        cursor: pointer;
-        height: fit-content;
-        padding: 10px 20px;
-    }
-
-    .valider:hover {
-        background-color: #45a049;
+    form td{
+        display: noner
     }
 
 
@@ -546,15 +569,30 @@ td {
 
 
 
+    .valider {
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 8px;
+        margin: 0;
+        cursor: pointer;
+        height: fit-content;
+        padding: 5px 15px;
+    }
+
+    .valider:hover {
+        background-color: #45a049;
+    }
+
     .annuler {
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 10px;
+        font-size: 8px;
         margin: 0;
         cursor: pointer;
         height: fit-content;
-        padding: 10px 20px;
+        padding: 5px 15px;
     }
 
 
@@ -571,4 +609,8 @@ td {
         justify-content: space-evenly;
     }
 
+
+    tr.jour {
+        display: none;
+    }
 }
