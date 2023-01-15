@@ -535,6 +535,9 @@
     button:hover {
         background-color: #fec107;
     }
+    .titre_list {
+        visibility: hidden;
+    }
 }
 
 
@@ -1012,6 +1015,8 @@
     }
     .titre_list {
         color: #007bff;
+        content: " ▼";
+        margin: auto;
     }
     .sous {
         display: none;
