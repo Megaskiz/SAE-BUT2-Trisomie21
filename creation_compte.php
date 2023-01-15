@@ -66,15 +66,15 @@
                     }   
                         ///Exécution de la requête
                     try{
-                        $req->execute(array('nom' => $nom,
-                                            'prenom' => $prenom,
-                                            'adresse' => $adresse,
-                                            'code_postal' => $code,
-                                            'ville' => $ville,
-                                            'courriel' => $courriel,
-                                            'date_naissance' => $ddn,
-                                            'mdp' => $insert_mdp,
-                                            'pro' => $pro, // à changer
+                        $req->execute(array('nom' => htmlspecialchars($nom),
+                                            'prenom' => htmlspecialchars($prenom),
+                                            'adresse' => htmlspecialchars($adresse),
+                                            'code_postal' => htmlspecialchars($code),
+                                            'ville' => htmlspecialchars($ville),
+                                            'courriel' => htmlspecialchars($courriel),
+                                            'date_naissance' => htmlspecialchars($ddn),
+                                            'mdp' => htmlspecialchars($insert_mdp),
+                                            'pro' => htmlspecialchars($pro), // à changer
                                             'compte_valide' => 0
                                         
                                         
@@ -128,15 +128,15 @@
                 <div class="grille">
                     <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                     <form action="" method="post" class="login-form">
-                        <input required type="text" name="nom" placeholder="Nom" value=<?php echo $nom ?>>
-                        <input required type="text" name="prenom" placeholder="Prénom"value=<?php echo $prenom ?>>
-                        <input required type="text" name="adresse" placeholder="Adresse"value=<?php echo $adresse ?>>
-                        <input required type="number" name="code_postal" placeholder="Code postal"value=<?php echo $code ?>>
-                        <input required type="text" name="ville" placeholder="Ville"value=<?php echo $ville ?>>
-                        <input required type="email" name="courriel" placeholder="Adresse e-mail"value=<?php echo $courriel ?>>
-                        <input required type="date" name="ddn" placeholder="date de naissance"value=<?php echo $ddn ?>>
-                        <input required type="text" name="password" placeholder="Mot de passe"value=<?php echo $Mdp ?>>
-                        <input required type="text" name="password_verif" placeholder="Confirmer le Mot de passe"value=<?php echo $Mdp_verif ?>>
+                        <input required type="text" name="nom" placeholder="Nom" value=<?php echo htmlspecialchars($nom) ?>>
+                        <input required type="text" name="prenom" placeholder="Prénom"value=<?php echo htmlspecialchars($prenom) ?>>
+                        <input required type="text" name="adresse" placeholder="Adresse"value=<?php echo htmlspecialchars($adresse) ?>>
+                        <input required type="number" name="code_postal" placeholder="Code postal"value=<?php echo htmlspecialchars($code) ?>>
+                        <input required type="text" name="ville" placeholder="Ville"value=<?php echo htmlspecialchars($ville) ?>>
+                        <input required type="email" name="courriel" placeholder="Adresse e-mail"value=<?php echo htmlspecialchars($courriel) ?>>
+                        <input required type="date" name="ddn" placeholder="date de naissance"value=<?php echo htmlspecialchars($ddn) ?>>
+                        <input required type="text" name="password" placeholder="Mot de passe"value=<?php echo htmlspecialchars($Mdp) ?>>
+                        <input required type="text" name="password_verif" placeholder="Confirmer le Mot de passe"value=<?php echo htmlspecialchars($Mdp_verif) ?>>
                         <p>Etes vous un professionel ?</p>
                         <div class="sous-grille">
                             <div>
