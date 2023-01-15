@@ -117,11 +117,6 @@ if (isset($_GET['eject'])) {
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
                 echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
-
-
-
-
-
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
@@ -201,14 +196,12 @@ if (isset($_GET['eject'])) {
 
                 for ($i = 0; $i < $nombre_ligne; $i++) {
 
-
-
                     for ($y = 1; $y < 3; $y++) {
                         echo "<td>";
-                        print_r($double_tab[$i][$y]);
-                        $liste[$y] = $double_tab[$i][$y];
-                        $nom = $double_tab[$i][1];
-                        $prenom = $double_tab[$i][2];
+                        print_r(ucfirst($double_tab[$i][$y]));
+                        $liste[$y] = ucfirst($double_tab[$i][$y]);
+                        $nom = ucfirst($double_tab[$i][1]);
+                        $prenom = ucfirst($double_tab[$i][2]);
                         $age = $double_tab[0][$y];
                         echo "</td>";
                     }
@@ -249,8 +242,8 @@ if (isset($_GET['eject'])) {
 
 
             $id_enfant = $double_tab[0][0];
-            $nom_enfant = $double_tab[0][1];
-            $prenom_enfant = $double_tab[0][2];
+            $nom_enfant = ucfirst($double_tab[0][1]);
+            $prenom_enfant = ucfirst($double_tab[0][2]);
             $ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
             $lien_jeton_enfant = $double_tab[0][4];
             $adresse = $double_tab[0][5];
