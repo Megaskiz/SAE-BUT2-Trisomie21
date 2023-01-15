@@ -211,7 +211,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r(ucfirst($double_tab[$i][$y]));
+                            print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -252,7 +252,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r(ucfirst($double_tab[$i][$y]));
+                            print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -400,15 +400,15 @@ if (isset($_GET['id_invalider'])) {
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\"> Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p class=\"info\"> Nom :<strong> ".htmlspecialchars($nom_membre)."</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>".htmlspecialchars($prenom_membre)."</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>".htmlspecialchars($date_naissance_membre)."</strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong>$adresse_membre  $ville_membre </strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> $code_postal_membre </strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>".htmlspecialchars($courriel_membre)."</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong>".htmlspecialchars($adresse_membre)."".htmlspecialchars($ville_membre)."</strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> ".htmlspecialchars($code_postal_membre)." </strong> </p>";
                     echo "</div>";
 
                     echo"</div>";
@@ -436,18 +436,18 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div class='grille_2_cases'>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong> $nom_membre</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>$prenom_membre</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>$date_naissance_membre</strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong>".htmlspecialchars( $nom_membre)."</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>".htmlspecialchars($prenom_membre)."</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>".htmlspecialchars($date_naissance_membre)."</strong></p>";
                     echo "<p class=\"info\">Role de l'utilisateur : <strong>$role</strong></p>";
 
 
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>$courriel_membre</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong> $adresse_membre  $ville_membre </strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> $code_postal_membre </strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>".htmlspecialchars($courriel_membre)."</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong> ".htmlspecialchars($adresse_membre)."".htmlspecialchars($ville_membre)." </strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> ".htmlspecialchars($code_postal_membre)."</strong> </p>";
                     echo "</div>";
 
                     echo"</div>";

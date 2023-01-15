@@ -63,7 +63,7 @@ if (isset($_GET['id_suppr'])) {
             echo "<tr>";
             for ($y = 0; $y < 2; $y++) {
                 echo "<td class='nom-utilisateur'>";
-                print_r($double_tab[$i][$y]);
+                print_r(htmlspecialchars($double_tab[$i][$y]));
                 $liste[$y] = $double_tab[$i][$y];
                 echo "</td>";
             }
@@ -173,7 +173,7 @@ if (isset($_GET['id_suppr'])) {
 
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r($double_tab[$i][$y]);
+                            print_r(htmlspecialchars($double_tab[$i][$y]));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -295,7 +295,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
 
                 //--------
-                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de $prenom_enfant\">";
+                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
                 echo "</div>";
 
                 // case 3 boutons : supprimer, modifier, creer systeme
@@ -334,17 +334,17 @@ if (isset($_GET['id_suppr'])) {
                 // case 3 infos : nom, ddn, activité
                 echo "<div class=\"case-3-infos\">";
                 echo "<div class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo '<p> Nom :</p><input name=nom_enfant type="text" value="' . $nom_enfant . '">';
+                echo '<p> Nom :</p><input name=nom_enfant type="text" value="' . htmlspecialchars($nom_enfant) . '">';
                 echo "</div>";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Date de Naissance :</p><input name=date_naissance type=\"date\" value=" . $double_tab[0][3] . ">";
+                echo "<p>Date de Naissance :</p><input name=date_naissance type=\"date\" value=" . htmlspecialchars($double_tab[0][3]) . ">";
                 echo "</div>";
 
 
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='$activite'>";
+                echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='".htmlspecialchars($activite)."'>";
                 echo "</div>";
 
                 echo "</div>";
@@ -353,15 +353,15 @@ if (isset($_GET['id_suppr'])) {
                 echo "<div class=\"case-3-infos\">";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Prénom :</p><input name=prenom_enfant type=\"text\" value='" . $prenom_enfant . "'>";
+                echo "<p>Prénom :</p><input name=prenom_enfant type=\"text\" value='" . htmlspecialchars($prenom_enfant) . "'>";
                 echo "</div>";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='$adresse'>";
+                echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='".htmlspecialchars($adresse)."'>";
                 echo "</div>";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='$handicap'>";
+                echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='".htmlspecialchars($handicap)."'>";
                 echo "</div>";
 
                 echo "</div>";
@@ -375,7 +375,7 @@ if (isset($_GET['id_suppr'])) {
 
                 //case info supp
                 echo "<div  class='zone-texte'>";
-                echo "<textarea name=info_sup style=\"resize: none\">$info_sup</textarea>";
+                echo "<textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>";
                 echo "</div>";
 
 
@@ -419,11 +419,11 @@ if (isset($_GET['id_suppr'])) {
                     echo "<tr>";
 
                     echo "<td>";
-                    print_r($double_tab[$i][0]);
+                    print_r(htmlspecialchars($double_tab[$i][0]));
                     echo "</td>";
 
                     echo "<td>";
-                    print_r($double_tab[$i][1]);
+                    print_r(htmlspecialchars($double_tab[$i][1]));
                     echo " Jetons";
                     echo "</td>";
 
@@ -434,7 +434,7 @@ if (isset($_GET['id_suppr'])) {
 
                     echo "<td>";
                     echo "niveau de priorité  : ";
-                    print_r($double_tab[$i][3]);
+                    print_r(htmlspecialchars($double_tab[$i][3]));
                     echo "</td>";
 
                     echo "<td>";

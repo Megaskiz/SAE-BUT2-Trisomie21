@@ -111,7 +111,7 @@ is_validateur();
         $res->closeCursor();
 
 
-        echo "<h1>$titre_systeme</h1>";
+        echo "<h1>".htmlspecialchars($titre_systeme)."</h1>";
 
 
 
@@ -191,7 +191,7 @@ is_validateur();
                             echo "<tr>";
                             echo "<td class='struct'>";
     
-                            echo "<p>$tache</p>";
+                            echo "<p>".htmlspecialchars($tache)."</p>";
                             echo "</td>";
     
                             //ajout des cases de jetons
@@ -310,7 +310,7 @@ is_validateur();
                                 echo "<tr>";
                                 echo "<td class='struct'>";
         
-                                echo "<p>$tache</p>";
+                                echo "<p>".htmlspecialchars($tache)."</p>";
                                 echo "</td>";
         
                                 //ajout des cases de jetons
@@ -409,7 +409,7 @@ is_validateur();
                         echo "<tr>";
                         echo "<td class='struct'>";
 
-                        echo "<p>$tache</p>";
+                        echo "<p>".htmlspecialchars($tache)."</p>";
                         echo "</td>";
 
                         //ajout des cases de jetons
@@ -545,7 +545,7 @@ try {
             echo "<tr>";
             echo "<td class='struct'>";
 
-            echo "<p>$tache</p>";
+            echo "<p>".htmlspecialchars($tache)."</p>";
             echo "</td>";
 
             //ajout des cases de jetons
@@ -684,7 +684,7 @@ try {
                 echo "<tr>";
                 echo "<td class='struct'>";
     
-                echo "<p>$tache</p>";
+                echo "<p>".htmlspecialchars($tache)."</p>";
                 echo "</td>";
     
                 //ajout des cases de jetons
@@ -802,7 +802,7 @@ try {
                         echo "<tr>";
                         echo "<td class='struct'>";
 
-                        echo "<p>$tache</p>";
+                        echo "<p>".htmlspecialchars($tache)."</p>";
                         echo "</td>";
 
                         //ajout des cases de jetons

@@ -72,7 +72,7 @@ if (isset($_GET['eject'])) {
             echo "<tr>";
             for ($y = 0; $y < 2; $y++) {
                 echo "<td>";
-                print_r($double_tab[$i][$y]);
+                print_r(htmlspecialchars($double_tab[$i][$y]));
                 $liste[$y] = $double_tab[$i][$y];
                 echo "</td>";
             }
@@ -95,11 +95,7 @@ if (isset($_GET['eject'])) {
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
 
-        <nav id="menu" class="left-contenu">
-            <div id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav  class="left-contenu">
                 <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
@@ -202,7 +198,7 @@ if (isset($_GET['eject'])) {
 
                     for ($y = 1; $y < 3; $y++) {
                         echo "<td>";
-                        print_r(ucfirst($double_tab[$i][$y]));
+                        print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
                         $liste[$y] = ucfirst($double_tab[$i][$y]);
                         $nom = ucfirst($double_tab[$i][1]);
                         $prenom = ucfirst($double_tab[$i][2]);
@@ -296,21 +292,21 @@ if (isset($_GET['eject'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"div-photo-enfant\">";
-                    echo "<img class=\"photo-enfant\" src=\"$photo_enfant\" alt=\"photo du visage de $prenom_enfant\">";
+                    echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($photo_enfant)."\" alt=\"photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
                     echo "</div>";
 
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong> $nom_enfant </strong></p>";
-                    echo "<p class=\"info\">Date de Naissance :<strong> $ddn_enfant </strong></p>";
-                    echo "<p class=\"info\">Activité enfant :<strong> $activite     </strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong> ".htmlspecialchars($nom_enfant)."</strong></p>";
+                    echo "<p class=\"info\">Date de Naissance :<strong>  ".htmlspecialchars($ddn_enfant)." </strong></p>";
+                    echo "<p class=\"info\">Activité enfant :<strong>  ".htmlspecialchars($activite )."    </strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Prénom : <strong>$prenom_enfant  </strong></p>";
-                    echo "<p class=\"info\">Adresse enfant : <strong> $adresse     </strong> </p>";
-                    echo "<p class=\"info\">Handicap enfant :<strong> $handicap     </strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong> ".htmlspecialchars($prenom_enfant)."  </strong></p>";
+                    echo "<p class=\"info\">Adresse enfant : <strong>  ".htmlspecialchars($adresse )."    </strong> </p>";
+                    echo "<p class=\"info\">Handicap enfant :<strong>  ".htmlspecialchars($handicap)."     </strong></p>";
                     echo "</div>";
 
 
@@ -373,7 +369,7 @@ if (isset($_GET['eject'])) {
 
 
                     echo "<div class='div-zone-texte'>";
-                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur " . $prenom_enfant . " : " . $info_sup . " </textarea>";
+                    echo "<textarea style=\"resize: none\">Informations supplémentaires sur " .htmlspecialchars($prenom_enfant) . " : " . htmlspecialchars($info_sup) . " </textarea>";
                     echo "</div>";
 
                     echo "</div>";
@@ -411,14 +407,14 @@ if (isset($_GET['eject'])) {
                     echo "<table class='affichage-objectif'>";
 
                     echo "<tr class='titre-objectif'>
-                        <th class='test'>Nom</th>
+                        <th>Nom</th>
                         <th>Jetons</th>
                         <th>Durée</th>
                         <th>Message</th>
                         <th>Statut</th>
                         <th>Bouton</th>
                         <th>Accéder</th>
-                        <th>Supprimer</th>
+                        <th class='sup'>Supprimer</th>
                         </tr>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
@@ -427,13 +423,13 @@ if (isset($_GET['eject'])) {
 
                             #affiche nom
                             echo "<td>";
-                            print_r($double_tab[$i][0]);
+                            print_r(htmlspecialchars($double_tab[$i][0]));
                             echo "</td>";
 
                             #affiche nombre de jeton
                             echo "<td>";
                             echo "<center>";
-                            print_r($double_tab[$i][1]);
+                            print_r(htmlspecialchars($double_tab[$i][1]));
                             echo "</center>";
                             echo "</td>";
 
@@ -713,7 +709,7 @@ if (isset($_GET['eject'])) {
                     echo "<tr>";
                     for ($y = 1; $y < 3; $y++) {
                         echo "<td>";
-                        print_r($double_tab[$i][$y]);
+                        print_r(htmlspecialchars($double_tab[$i][$y]));
                         $liste[$y] = $double_tab[$i][$y];
                         $nom = $double_tab[$i][1];
                         $prenom = $double_tab[$i][2];
