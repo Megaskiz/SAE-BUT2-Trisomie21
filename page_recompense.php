@@ -91,8 +91,7 @@ for($i=0; $i<$lignes;$i++){ //affichage des récompenses ATTENTION il faut faire
             <img src=".$double_tab[$i][3]." alt=\"image de la récompense\" >
         </center>
     </td>
-    <td><a href='choix_recompense.php?id_rec=".$double_tab[$i][0]."'>choisir cette récompense</a></td>
-    </tr>";
+</tr>";
 }
 ?>
 </table>
