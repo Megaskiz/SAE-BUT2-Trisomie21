@@ -95,8 +95,12 @@ if (isset($_GET['eject'])) {
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
 
-        <nav class="left-contenu">
-            <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
+        <nav id="menu" class="left-contenu">
+            <div id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
                 </li>
@@ -219,6 +223,7 @@ if (isset($_GET['eject'])) {
                 $res->closeCursor();
             }
             ?>
+            </div>
         </nav>
 
         <?php // affichage central de la page, avec les informations sur les enfants
@@ -277,6 +282,8 @@ if (isset($_GET['eject'])) {
 
 
         ?>
+
+
 
 
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->

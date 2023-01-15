@@ -19,6 +19,7 @@ catch (Exception $e) {
     <meta charset="UTF-8">
     <title>Administrateur²</title>
     <link rel="stylesheet" href="style_admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -58,11 +59,8 @@ catch (Exception $e) {
 
         echo "</table>";
         ?>
-
         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-            </svg> Déconnexion
+            <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
         </div>
 
     </header>
@@ -88,15 +86,7 @@ catch (Exception $e) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
-                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil
-                 <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-                </svg> </button>';
-
-
-
-
-
+                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)"> Ajouter un profil <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
@@ -147,66 +137,64 @@ catch (Exception $e) {
             ///Sélection de tout le contenu de la table enfant
             if ($_SESSION["role_user"] != 2) {
                 echo "<table >";
-                
-                ?>
-                <div class="resultat">
-            <?php
-            echo "<div class='liste-enfant'>";
-            echo "<div class=\"recherche\"><form method=\"post\" action=\"search.php\">
-            <div class=\"\">
-            <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
-            </div>
-            <input class=\"bouton_recherche\" type=\"submit\" value=\"Rechercher\">
-            </form>
-            </div>";
-            echo "<table >";
-
-            if (isset($_POST['keywords'])) {
-                // Préparation de la requête
-                $search = implode(array_filter(str_split($_POST['keywords']),"filter_spaces"));
-                $keywords = explode(" ",$search );
-                $query = "SELECT * FROM enfant WHERE ";
-
-                for ($i = 0; $i < count($keywords); $i++) {
-                    $query .= "nom LIKE '%$keywords[$i]%' OR prenom LIKE '%$keywords[$i]%'; ";
-                }
-                // Exécution de la requête
-                $stmt = $linkpdo->query($query);
-
-
-                $contacts = $stmt->fetchAll();
-
-                // Affichage des résultats
-                if (count($contacts) > 0) {
-                    echo "<p class=\"titre_recherche\">" . count($contacts) . " résultat(s) trouvé(s) :</p>";
-                    echo "<table>";
-                    echo "<tr>
-                        </tr>";
-                    foreach ($contacts as $contact) {
-                        echo "<tr>";
-                        echo "<td>" . $contact['nom'] . "</td>";
-                        echo "<td>" . $contact['prenom'] . "</td>";
-    
-                        echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $contact['id_enfant']. '"><button  class="acceder-information-enfant">  Acceder &#x1F59D; </button> </a>';
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "<p class=\"titre_recherche\">Aucun enfants trouvé.<p>";
-                }
-            }
 
             ?>
-        </div>
-                <?php
+                <div class="resultat">
+                    <?php
+                    echo "<div class='liste-enfant'>";
+                    echo "<div class=\"recherche\">
+                    <form class='recherche' method=\"post\" action=\"search.php\">
+                    <div>
+                    <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
+                    </div>
+                    <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
+                    </form>
+                    </div>";
+                    echo "<table >";
 
 
+                    if (isset($_POST['keywords'])) {
+                        // Préparation de la requête
+                        $search = implode(array_filter(str_split($_POST['keywords']), "filter_spaces"));
+                        $keywords = explode(" ", $search);
+                        $query = "SELECT * FROM enfant WHERE ";
+
+                        for ($i = 0; $i < count($keywords); $i++) {
+                            $query .= "nom LIKE '%$keywords[$i]%' OR prenom LIKE '%$keywords[$i]%'; ";
+                        }
+                        // Exécution de la requête
+                        $stmt = $linkpdo->query($query);
 
 
+                        $contacts = $stmt->fetchAll();
 
-                
+                        // Affichage des résultats
+                        if (count($contacts) > 0) {
+                            echo "<p class=\"titre_recherche\">" . count($contacts) . " résultat(s) trouvé(s) :</p>";
+                            echo "<table>";
+                            echo "<tr>
+                        </tr>";
+                            foreach ($contacts as $contact) {
+                                echo "<tr>";
+                                echo "<td>" . $contact['nom'] . "</td>";
+                                echo "<td>" . $contact['prenom'] . "</td>";
+
+                                echo "<td>";
+                                echo '<a href="page_admin.php?id=' . $contact['id_enfant'] . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "<p class=\"titre_recherche\">Aucun enfants trouvé.<p>";
+                        }
+                    }
+
+                    ?>
+                </div>
+            <?php
+
+
 
                 echo "</table>";
 
@@ -221,7 +209,7 @@ catch (Exception $e) {
             <section class="nb-systeme">
             </section>
         </nav>
-        
+
     </main>
 </body>
 
