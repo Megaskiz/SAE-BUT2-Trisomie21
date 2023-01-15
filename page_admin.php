@@ -42,6 +42,7 @@ if (isset($_GET['eject'])) {
     <meta charset="utf-8">
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -83,9 +84,7 @@ if (isset($_GET['eject'])) {
         ?>
 
         <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icone_deconnexion">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-            </svg> Déconnexion
+            <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
         </div>
 
     </header>
@@ -117,10 +116,7 @@ if (isset($_GET['eject'])) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
-                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil
-                 <svg  class="icone-ajouter-enfant" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" onclick="openDialog(\'dialog1\', this)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-                </svg> </button>';
+                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
 
 
 
@@ -193,11 +189,12 @@ if (isset($_GET['eject'])) {
                 $liste = array();
 
                 echo "<div class='liste-enfant'>";
-                echo "<div class=\"recherche\"><form method=\"post\" action=\"search.php\">
-                <div class=\"\">
+                echo "<div class=\"recherche\">
+                <form class='recherche' method=\"post\" action=\"search.php\">
+                <div>
                 <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
                 </div>
-                <input class=\"bouton_recherche\" type=\"submit\" value=\"Rechercher\">
+                <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
                 </form>
                 </div>";
                 echo "<table >";
@@ -218,7 +215,7 @@ if (isset($_GET['eject'])) {
 
                     $identifiant = $double_tab[$i][0];
                     echo "<td>";
-                    echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">  Acceder &#x1F59D; </button> </a>';
+                    echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -360,8 +357,8 @@ if (isset($_GET['eject'])) {
                     while ($tuteur = $allTuteurs->fetch()) {
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
                         echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "    ";
-                        echo '<a class="equipier" href="page_certif_compte.php?idv='.$tuteur['id_membre'].'"><button class="acceder-information-enfant">Information</button></a><br>';
-                        echo '<a class="equipier" href="page_admin.php?id='. $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Retirer de l\'équipe</button><br></a>';
+                        echo '<a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Information</button></a><br>';
+                        echo '<a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Retirer de l\'équipe</button><br></a>';
                     }
                     if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
@@ -435,9 +432,9 @@ if (isset($_GET['eject'])) {
 
                             #affiche nombre de jeton
                             echo "<td>";
-                            echo"<center>";
+                            echo "<center>";
                             print_r($double_tab[$i][1]);
-                            echo"</center>";
+                            echo "</center>";
                             echo "</td>";
 
                             #affiche nombre de jour
@@ -445,39 +442,39 @@ if (isset($_GET['eject'])) {
                             $value = $double_tab[$i][2];
                             switch ($double_tab[$i][2]) {
                                 case ($value < 24 ? $value : !$value):
-                                    echo"<center>";
+                                    echo "<center>";
                                     print_r($double_tab[$i][2]);
                                     echo " Heure(s)";
-                                    echo"</center>";
+                                    echo "</center>";
                                     break;
 
                                 case ($value < 24 * 7 ? $value : !$value):
                                     $reste = $value % 24;
                                     $jours = intdiv($value, 24);
-                                    echo"<center>";
+                                    echo "<center>";
                                     echo $jours . " jour(s), " . $reste . " heure(s)";
-                                    echo"</center>";
+                                    echo "</center>";
                                     break;
 
                                 default:
                                     $semaines = intdiv($value, (7 * 24));
                                     $reste1 = $value % (7 * 24); // pour savoir s'il reste quoi que ce soit 
-                                    echo"<center>";
+                                    echo "<center>";
                                     echo $semaines . " semaine(s) ";
-                                    echo"</center>";
+                                    echo "</center>";
 
                                     if ($reste1 > 23) { // il reste + d'un jour
                                         $restej = $value - (7 * 24); // le nombre d'heure au dela d'une semaine
                                         if ($reste1 > 23) { // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
                                             $restejours = intdiv($reste1, 24);
-                                            echo"<center>";
+                                            echo "<center>";
                                             echo $restejours . "jour(s)";
-                                            echo"</center>";
+                                            echo "</center>";
                                         }
                                     } elseif ($reste1 > 0) { // s'il reste entre 1 et 23heures
-                                        echo"<center>";
+                                        echo "<center>";
                                         echo $reste1 . "heure(s)";
-                                        echo"</center>";
+                                        echo "</center>";
                                     }
                                     break;
                             }
@@ -491,9 +488,9 @@ if (isset($_GET['eject'])) {
 
                             #affiche message
                             echo "<td>";
-                            echo"<center>";
+                            echo "<center>";
                             echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#x2709; </span></button>";
-                            echo"</center>";
+                            echo "</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                             echo "<div class=\"dialog_form_actions3\">";
@@ -505,7 +502,7 @@ if (isset($_GET['eject'])) {
                                     /*$recupUser = $linkpdo->prepare('SELECT * FROM membre where id_membre = ?');
                                     $recupUser->execute(array($getid));
                                     if($recupUser->rowCount() > 0){*/
-                                if (isset($_POST["envoie".$double_tab[$i][5]])) {
+                                if (isset($_POST["envoie" . $double_tab[$i][5]])) {
                                     $message = htmlspecialchars($_POST['messages']);
                                     $sujet = htmlspecialchars($_POST['sujet']);
                                     $insererMessage = $linkpdo->prepare('INSERT into message(corps,sujet,id_membre,date_heure,id_objectif) VALUES(?, ?, ?, NOW(), ?)');
@@ -513,7 +510,7 @@ if (isset($_GET['eject'])) {
                                         die("Erreur prepare");
                                     }
 
-                                    
+
                                     $insererMessage->execute(array($message, $sujet, $_SESSION['logged_user'], $double_tab[$i][5]));
                                     if (!$insererMessage) {
                                         die("Erreur execute");
@@ -528,12 +525,12 @@ if (isset($_GET['eject'])) {
                             echo "<title>Envoie de mesage</title>";
 
 
-                            
+
 
                 ?>
                             <div class="chat_all">
                                 <div class="chat_title">
-                                        <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                    <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                         <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path>
                                     </svg>
                                     Messagerie du système à jeton
@@ -591,15 +588,15 @@ if (isset($_GET['eject'])) {
                                         </div>
                                         <div class="chat_txt_msg">
                                             <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
-                                            <button type="submit" class="chat_send" name=<?="envoie".$double_tab[$i][5]?>>Envoyer</button>
+                                            <button type="submit" class="chat_send" name=<?= "envoie" . $double_tab[$i][5] ?>>Envoyer</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            
+
                     <?php
 
-                            
+
                             echo "</form>";
                             echo "</td>";
 
@@ -609,13 +606,13 @@ if (isset($_GET['eject'])) {
                             #affiche statu
                             echo "<td>";
                             if ($double_tab[$i][4] == 1) {
-                                echo"<center>";
+                                echo "<center>";
                                 print_r("En Utilisation");
-                                echo"</center>";
+                                echo "</center>";
                             } else {
-                                echo"<center>";
+                                echo "<center>";
                                 print_r("Pas en utilisation");
-                                echo"</center>";
+                                echo "</center>";
                             }
                             echo "</td>";
 
@@ -625,17 +622,17 @@ if (isset($_GET['eject'])) {
                                     case 1:
 
                                         echo "<td>";
-                                        echo"<center>";
+                                        echo "<center>";
                                         echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
-                                        echo"</center>";
+                                        echo "</center>";
                                         echo "</td>";
                                         break;
 
                                     case 0:
                                         echo "<td>";
-                                        echo"<center>";
+                                        echo "<center>";
                                         echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
-                                        echo"</center>";
+                                        echo "</center>";
                                         echo "</td>";
                                         break;
                                 }
@@ -643,17 +640,17 @@ if (isset($_GET['eject'])) {
 
 
                             echo "<td>";
-                            echo"<center>";
+                            echo "<center>";
                             echo '<a href="choix_sys.php?id_sys=' . $double_tab[$i][5] . '"><button class="objectif-acceder"> Acceder </button></a>';
-                            echo"</center>";
+                            echo "</center>";
                             echo "</td>";
 
                             echo "<td>";
                             echo " <div class=\"case-enfant\">";
                             if ($_SESSION["role_user"] == 1) {
-                                echo"<center>";
+                                echo "<center>";
                                 echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
-                                echo"</center>"; 
+                                echo "</center>";
                                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                                 echo "<div role=\"dialog\" id=\"dialog" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -687,7 +684,7 @@ if (isset($_GET['eject'])) {
 
                     echo "</section>";
                 } else {
-                    
+
                     echo "</section>";
                     echo "</div>";
                     echo "<section class=\"nb-systeme\">";
