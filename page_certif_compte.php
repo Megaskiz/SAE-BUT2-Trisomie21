@@ -205,7 +205,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r($double_tab[$i][$y]);
+                            print_r(ucfirst($double_tab[$i][$y]));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -244,7 +244,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r($double_tab[$i][$y]);
+                            print_r(ucfirst($double_tab[$i][$y]));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -327,8 +327,8 @@ if (isset($_GET['id_invalider'])) {
 
 
             $id_membre = $double_tab[0][0];
-            $nom_membre = $double_tab[0][1];
-            $prenom_membre = $double_tab[0][2];
+            $nom_membre = ucfirst($double_tab[0][1]);
+            $prenom_membre = ucfirst($double_tab[0][2]);
             $adresse_membre = $double_tab[0][3];
             $code_postal_membre = $double_tab[0][4];
             $ville_membre = $double_tab[0][5];
