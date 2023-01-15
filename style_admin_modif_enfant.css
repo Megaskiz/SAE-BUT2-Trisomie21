@@ -681,7 +681,6 @@ td {
     }
 
     main {
-        min-height: 100vh;
         margin: 2%;
     }
 
@@ -1147,17 +1146,17 @@ td {
 
     html {
         font-size: 10px;
-        height: 100%;
+    }
+
+
+    body{
+        height: 100vh;
     }
 
     header {
         height: 7vh;
     }
 
-    main {
-        height: 85vh;
-        margin: 2%;
-    }
 
     input[type="text"] {
         width: 60%;
@@ -1187,8 +1186,9 @@ td {
     }
 
     .logo-enfant {
-        width: 15vw;
-        border-radius: 10px;
+        width: 27vw;
+        height: 12vh;
+        border-radius: 100px;
     }
 
     .div-supprimer-enfant {
