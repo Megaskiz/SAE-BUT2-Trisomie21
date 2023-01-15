@@ -977,7 +977,7 @@ td {
     }
 
     .left-contenu {
-        height: 100%;
+        height: fit-content;
         box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
         border-radius: 10px;
         background-color: #fff;
@@ -988,6 +988,7 @@ td {
     .right-contenu {
         background-color: transparent;
         border-radius: 10px;
+        height: fit-content;
     }
 
     /*------------------------ Menu liste des enfants (gauche)--------------------*/
@@ -1054,8 +1055,7 @@ td {
 
     .bouton-modif-enfant {
         display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 5px 15px;
         border: none;
         border-radius: 5px;
         color: white;
@@ -1077,8 +1077,7 @@ td {
 
     .list_equipier {
         display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 5px 15px;
         border: none;
         border-radius: 5px;
         color: white;
@@ -1088,6 +1087,21 @@ td {
     }
 
     .list_equipier:hover {
+        background-color: #fec107;
+    }
+
+    button.bouton-equipe {
+        display: inline-block;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    button.bouttn-equipe:hover {
         background-color: #fec107;
     }
 
@@ -1108,6 +1122,39 @@ td {
     .acces-enfant {
         margin-left: 40%;
         border-radius: none;
+    }
+
+    
+    button.status-objectif{
+        padding: 5px 12px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    th.sup {
+        display: none;
+    }
+
+    button.supprimer-objectif{
+        display: none;
+
+    }
+
+    button {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 9px;
+        border: none;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 0.5px;
+        color: #fff;
     }
 
     /* Pop-up JS ajouter un enfant*/
@@ -1131,6 +1178,31 @@ td {
         overflow: visible;
         padding-right: 1%;
     }
+
+    .recherche {
+        margin: 1.5%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .div-modif-enfant,
+    .div-liste-equipe,
+    .div-photo-enfant {
+        margin: auto;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .div-zone-texte{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+
+    }
+   
 
     @media screen and (min-width: 640px) {
 
@@ -1308,8 +1380,10 @@ td {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
         background-color: white;
-        margin: 1%;
-        padding: 3%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        
     }
 
     .case-enfant {
@@ -1319,24 +1393,17 @@ td {
     }
 
     .photo-enfant {
-        width: 20%;
-        border-radius: 100%;
+        width: 10vw;
+        border-radius: 100px;
     }
 
-    .div-info-enfant {
-        display: flex;
-        justify-content: space-between;
-    }
 
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
 
-    .div-photo-enfant {
-        display: flex;
-        justify-content: space-between;
-    }
+   
 
     /*nombre de système*/
     .nb-systeme {
@@ -1348,6 +1415,70 @@ td {
         overflow: auto;
     }
 
+
+    .button_ajouter-objectif {
+        display: flex;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 0 auto;
+        margin-top: 10px;
+
+    }
+
+    .button_ajouter-objectif:hover {
+        background-color: #fec107;
+        cursor: pointer;
+    }
+
+
+
+    table.affichage-objectif {
+        margin: 3%;
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgb(0 0 0 / 15%);
+        background-color: #007bff ;
+    }
+
+
+    button.objectif-acceder{
+            display: block;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            border: none;
+            color: white;
+            background-color: #007bff;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0.5px;
+    }
+
+   
+
+
+    table.affichage-objectif {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        background-color: white;
+
+    }
+    
     .liste-enfant {
         padding: 2vh;
     }
@@ -1596,25 +1727,6 @@ td {
         width: 10%;
     }
 
-
-    #menu {
-        position: absolute;
-        width: 300px;
-        margin: -100px 0 0 -50px;
-        padding: 50px;
-        padding-top: 125px;
-
-        background: #ededed;
-        list-style-type: none;
-        -webkit-font-smoothing: antialiased;
-        /* to stop flickering of text in safari */
-
-        transform-origin: 0% 0%;
-        transform: translate(-100%, 0);
-
-        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-    }
-
 }
 
 
@@ -1651,7 +1763,6 @@ td {
 
     html {
         font-size: 10px;
-        height: 100%;
     }
 
     header {
@@ -1659,8 +1770,37 @@ td {
     }
 
     main {
-        height: 85vh;
+        height: 100%;
         margin: 2%;
+    }
+
+    .dialog_form_actions {
+        text-align: right;
+        padding: 0 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+    }
+
+    p.titre_recherche{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #000;
+
+
+
+    }
+
+    .section_enfant {
+        height: 25vh;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+        border-radius: 10px;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
 

@@ -95,11 +95,7 @@ if (isset($_GET['eject'])) {
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
 
-        <nav id="menu" class="left-contenu">
-            <div id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav  class="left-contenu">
                 <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
@@ -411,14 +407,14 @@ if (isset($_GET['eject'])) {
                     echo "<table class='affichage-objectif'>";
 
                     echo "<tr class='titre-objectif'>
-                        <th class='test'>Nom</th>
+                        <th>Nom</th>
                         <th>Jetons</th>
                         <th>Durée</th>
                         <th>Message</th>
                         <th>Statut</th>
                         <th>Bouton</th>
                         <th>Accéder</th>
-                        <th>Supprimer</th>
+                        <th class='sup'>Supprimer</th>
                         </tr>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
