@@ -34,11 +34,11 @@ require('fonctions.php');
                     // var_dump($_FILES);
                     // exit();
 
-                    $nom = $_POST['nom'];
-                    $prenom = $_POST['prenom'];
-                    $date_naissance = $_POST['date_naissance'];
-                    $lien_jeton = uploadImage($_FILES['lien_jeton']);
-                    $photo_enfant = uploadImage($_FILES['photo_enfant']);
+                    $nom = htmlspecialchars($_POST['nom']);
+                    $prenom =htmlspecialchars($_POST['prenom']);
+                    $date_naissance = htmlspecialchars($_POST['date_naissance']);
+                    $lien_jeton = uploadImage($_FILES['lien_jeton']); // encore a secu
+                    $photo_enfant = uploadImage($_FILES['photo_enfant']); // encore à secu
 
                     
 
@@ -72,11 +72,11 @@ require('fonctions.php');
                         ///Exécution de la requête
                         try {
                             $req->execute(array(
-                                'nom' => $nom,
-                                'prenom' => $prenom,
-                                'date_naissance' => $date_naissance,
-                                'lien_jeton' => $lien_jeton,
-                                'photo_enfant' => $photo_enfant
+                                'nom' => htmlspecialchars($nom),
+                                'prenom' => htmlspecialchars($prenom),
+                                'date_naissance' => htmlspecialchars($date_naissance),
+                                'lien_jeton' => htmlspecialchars($lien_jeton),
+                                'photo_enfant' => htmlspecialchars($photo_enfant)
                             ));
                             // $req->debugDumpParams();
                             // exit();

@@ -25,10 +25,10 @@ switch ($_SESSION['type_rec']) {
     case '4': // type = unique
         // je creé la requete d'insertion 
 
-        $intitule = $_POST["intitule"];
+        $intitule = htmlspecialchars($_POST["intitule"]);
         unset($_POST["intitule"]); // je retire le nom du système pour qu'il ne soit pas dans $all_keys
 
-        $descriptif = $_POST["descriptif"];
+        $descriptif = htmlspecialchars($_POST["descriptif"]);
         unset($_POST["intitule"]);
 
         $photo_recompense = uploadImage($_FILES['photo_recompense']);
@@ -41,9 +41,9 @@ switch ($_SESSION['type_rec']) {
         ///Exécution de la requête
         try{
             
-            $req->execute(array('intitule' => $intitule, // la chaine que je reconstruit pour avoir ce que je veux
-                                'descriptif' => $descriptif,
-                                'lien_image' => $photo_recompense,
+            $req->execute(array('intitule' => htmlspecialchars($intitule), // la chaine que je reconstruit pour avoir ce que je veux
+                                'descriptif' => htmlspecialchars($descriptif),
+                                'lien_image' => htmlspecialchars($photo_recompense),
                                 ));
             if ($req == false){
                 $req->debugDumpParams();
@@ -107,9 +107,9 @@ switch ($_SESSION['type_rec']) {
         $y = 1;
 
         while($y <= $nb_recompenses){
-            $intitule = $_POST["intitule$y"];
+            $intitule = htmlspecialchars($_POST["intitule$y"]);
             
-            $descriptif = $_POST["descriptif$y"];
+            $descriptif = htmlspecialchars($_POST["descriptif$y"]);
             
             $photo_recompense = uploadImage($_FILES['photo_recompense'.$y]);
 
@@ -121,8 +121,8 @@ switch ($_SESSION['type_rec']) {
             ///Exécution de la requête
             try{
                 
-                $req->execute(array('intitule' => $intitule,
-                                    'descriptif' => $descriptif,
+                $req->execute(array('intitule' => htmlspecialchars($intitule),
+                                    'descriptif' => htmlspecialchars($descriptif),
                                     'lien_image' => $photo_recompense,
                                     ));
                                 // $req->debugDumpParams();

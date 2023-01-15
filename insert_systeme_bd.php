@@ -20,13 +20,13 @@ catch (Exception $e) {
 // fichier qui insert le système dans une base de données
 
 
-$nom = $_POST["nom"];
+$nom = htmlspecialchars($_POST["nom"]);
 unset($_POST["nom"]); // je retire le nom du système pour qu'il ne soit pas dans $all_keys
 
-$duree_raw = $_POST["duree"];
+$duree_raw = htmlspecialchars($_POST["duree"]);
 unset($_POST["duree"]);
 
-$echelle = $_POST["echelle"];
+$echelle = htmlspecialchars($_POST["echelle"]);
 unset($_POST["echelle"]);
 
 
@@ -51,15 +51,15 @@ switch ($echelle) {
 
 $jeton = "jeton";
 
-$prio = $_POST["prio"];
+$prio = htmlspecialchars($_POST["prio"]);
 unset($_POST["prio"]);
 
 
 
 switch ($_SESSION['type_sys']) {
     case '1': // type = chargement
-        $total_jeton=$_POST['rows'];
-        $res=$_POST['intitule'];
+        $total_jeton=htmlspecialchars($_POST['rows']);
+        $res=htmlspecialchars($_POST['intitule']);
         $res.='_';
         for ($i=0; $i < $total_jeton; $i++) { 
             $res.='0';

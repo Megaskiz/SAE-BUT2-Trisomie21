@@ -19,7 +19,7 @@ try {
         
     //je récupere les informations de mon formulaire
   
-            $mdp=$_POST['mdp_membre'];
+            $mdp=htmlspecialchars($_POST['mdp_membre']);
 
             // fonction qui hash le mot de passe
             $mot = "ZEN02anWobA4ve5zxzZz".$mdp; // je rajoute une chaine que je vais ajouter au mot de passe

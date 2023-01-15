@@ -23,13 +23,13 @@ try {
         
     //je récupere les informations de mon formulaire
   
-            $nom = $_POST['nom_membre'];
-            $prenom = $_POST['prenom_membre'];
-            $date_naissance = $_POST['ddn_membre']; 
-            $ville = $_POST['ville'];
-            $adresse = $_POST['ad_membre'];
-            $Cpostal = $_POST['cpostal_membre'];
-            $role=$_POST['role'];
+            $nom = htmlspecialchars($_POST['nom_membre']);
+            $prenom = htmlspecialchars($_POST['prenom_membre']);
+            $date_naissance = htmlspecialchars($_POST['ddn_membre']); 
+            $ville = htmlspecialchars($_POST['ville']);
+            $adresse = htmlspecialchars($_POST['ad_membre']);
+            $Cpostal = htmlspecialchars($_POST['cpostal_membre']);
+            $role=htmlspecialchars($_POST['role']);
 
             if ($role==NULL){
                 $role = '1';
