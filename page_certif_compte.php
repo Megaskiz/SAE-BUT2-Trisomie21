@@ -184,7 +184,12 @@ if (isset($_GET['id_invalider'])) {
                     </div>
                 </div>
                 <! -- /* fin de la fenêtre popin de l'ajout d'membre" */ -->
+                <nav>
+            <ul>
+                <li class="deroulant"><a class="titre_list">Liste compte membre &ensp;</a>
+                <ul class="sous">
                     <?php
+                    
                     
                     ///Sélection de tout le contenu de la table 
                     try {
@@ -198,6 +203,7 @@ if (isset($_GET['id_invalider'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
+                    echo"<li>";
                     echo "<table class='no-break'>";
                     
 
@@ -220,6 +226,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "</tr>";
                     }
                     echo "</table>";
+
                     
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
@@ -238,6 +245,7 @@ if (isset($_GET['id_invalider'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
+
                     echo "<table>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
@@ -260,10 +268,17 @@ if (isset($_GET['id_invalider'])) {
                         echo "</tr>";
                     }
                     echo "</table>";
+                    echo"</li>";
 
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
                     ?>
+
+                </ul>
+                </li>
+                </ul>
+                </nav>
+
         </nav>
 
         <?php // affichage central de la page, avec les informations 

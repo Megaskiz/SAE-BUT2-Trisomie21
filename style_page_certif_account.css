@@ -1003,6 +1003,30 @@
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
+    .deroulant>a::after {
+        content: " ▼";
+        font-size: 12px;
+    }
+    nav ul {
+        list-style-type: none;
+    }
+    .titre_list {
+        color: #007bff;
+    }
+    .sous {
+        display: none;
+        background-color: white;
+        width: 80%;
+        margin: auto;
+        position: relative;
+    }
+    nav>ul li:hover .sous {
+        display: block;
+    }
+    nav ul li ul li {
+        display: block;
+        width: 100%;
+    }
     button {
         display: block;
         padding: 5px 10px;
@@ -1061,5 +1085,26 @@
     main {
         height: 85vh;
         margin: 2%;
+    }
+    .deroulant>a::after {
+        content: " ▼";
+        font-size: 12px;
+    }
+    nav ul {
+        list-style-type: none;
+    }
+    .sous {
+        display: none;
+        background-color: white;
+        width: 80%;
+        margin: auto;
+        position: relative;
+    }
+    nav>ul li:hover .sous {
+        display: block;
+    }
+    nav ul li ul li {
+        display: block;
+        width: 100%;
     }
 }
