@@ -95,8 +95,11 @@ if (isset($_GET['id_suppr'])) {
         <form action="" method="post" class="form-nb-taches">
             <h1 class="flex-simple">Création d'un système de type : "Contrat"</h1>
             <div class="flex_simple">
-                <label>combien de taches voulez vous inserer ? : </label>
-                <input type="number" min="0" name="rows" required="required"   placeholder="Appuyez sur ''Entrer'' pour valider">
+                <label>combien de tâches voulez vous inserer ? : </label>
+                <div class="heure">
+                <input class='insere_nb' type="number" min="0" max="15" name="rows" required="required"  placeholder="Nombre de tâche ?">
+                <input id="bouton" type="submit" value="valider">
+                </div>
             </div>
         </form>
 
@@ -111,7 +114,7 @@ if (isset($_GET['id_suppr'])) {
             <div class="flex_simple">
                 <label>Quel est la durée de ce système ? : </label>
                 <div class="heure">
-                    <input type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
+                    <input  class='insere_nb' type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
                         <option value="h">heure(s)</option>
                         <option value="h">jour(s)</option>
@@ -127,7 +130,7 @@ if (isset($_GET['id_suppr'])) {
 
 
             <table class="tableau">
-                <tr>
+                <tr class="jour">
                     <td>
                         <p></p>
                     </td>
@@ -173,8 +176,8 @@ if (isset($_GET['id_suppr'])) {
             </table>
 
             <div class="bouton-systeme">
-                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler </a>
-                <input class="valider" type="submit" value="Valider ">
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler &#x1F5D9;</a>
+                <input class="valider" type="submit" value="Valider  &#x2714;">
             </div>
         </form>
 

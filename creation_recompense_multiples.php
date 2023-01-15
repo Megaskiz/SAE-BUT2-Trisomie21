@@ -97,7 +97,10 @@ if (isset($_GET['id_suppr'])) {
         <form action="" method="post" class="form-nb-taches">
             <div class="flex_simple">
                 <label>combien de taches voulez vous inserer ? : </label>
-                <input type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Appuyez sur ''Entrer'' pour valider">
+                <div class="heure">
+                <input  class='insere_nb' #x1F5D9min="0"  max="15" type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Nombre de récompense ?">
+                <input id="bouton" type="submit" value="valider">
+                </div>
         </form>
 
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
@@ -128,8 +131,8 @@ if (isset($_GET['id_suppr'])) {
             }
             ?>
             <div class="bouton-systeme">
-                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler</a>
-                <input class="valider" type="submit" value="Valider ">
+                <a class="annuler" href="page_creatsystem.php?id=<?php echo $_SESSION['id_enfant'] ?>">Annuler &#x1F5D9;</a>
+                <input class="valider" type="submit" value="Valider  &#x2714;">
             </div>
         </form>
 
