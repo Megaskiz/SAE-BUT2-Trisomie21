@@ -72,7 +72,7 @@ if (isset($_GET['id_invalider'])) {
             echo "<tr>";
             for ($y = 0; $y < 2; $y++) {
                 echo "<td>";
-                print_r($double_tab[$i][$y]);
+                print_r(htmlspecialchars($double_tab[$i][$y]));
                 $liste[$y] = $double_tab[$i][$y];
                 echo "</td>";
             }
@@ -125,7 +125,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r($double_tab[$i][$y]);
+                            print_r(htmlspecialchars($double_tab[$i][$y]));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -166,7 +166,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "<tr>";
                         for ($y = 1; $y < 3; $y++) {
                             echo "<td>";
-                            print_r($double_tab[$i][$y]);
+                            print_r(htmlspecialchars($double_tab[$i][$y]));
                             $liste[$y] = $double_tab[$i][$y];
                             $nom = $double_tab[$i][1];
                             $prenom = $double_tab[$i][2];
@@ -307,15 +307,15 @@ if (isset($_GET['id_invalider'])) {
 
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Nom :</p><input name=nom_membre type="text" value="' . $nom_membre . '">';
+                        echo '<p> Nom :</p><input name=nom_membre type="text" value="' . htmlspecialchars($nom_membre) . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Prenom :</p><input name=prenom_membre type="text" value="' . $prenom_membre . '">';
+                        echo '<p> Prenom :</p><input name=prenom_membre type="text" value="' . htmlspecialchars($prenom_membre) . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . $double_tab[0][7] . '">';
+                        echo '<p> Date de naissance :</p><input name=ddn_membre type="date" value="' . htmlspecialchars($double_tab[0][7]) . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
@@ -338,19 +338,19 @@ if (isset($_GET['id_invalider'])) {
 
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> E-mail : '.$courriel_membre.'<p>';
+                        echo '<p> E-mail : '.htmlspecialchars($courriel_membre).'<p>';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Adresse :</p><input name=ad_membre type="text" value="' . $adresse_membre . '">';
+                        echo '<p> Adresse :</p><input name=ad_membre type="text" value="' . htmlspecialchars($adresse_membre) . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Code postal :</p><input name=cpostal_membre type="text" value="' . $code_postal_membre . '">';
+                        echo '<p> Code postal :</p><input name=cpostal_membre type="text" value="' . htmlspecialchars($code_postal_membre) . '">';
                         echo"</div>";
 
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
-                        echo '<p> Ville :</p><input name=ville type="text" value="' . $ville_membre . '">';
+                        echo '<p> Ville :</p><input name=ville type="text" value="' . htmlspecialchars($ville_membre) . '">';
                         echo"</div>";
                     echo "</div>";
 
