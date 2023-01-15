@@ -23,16 +23,16 @@
         && !empty($_POST['password'])
         && !empty($_POST['password_verif']) )
         {   
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $adresse = $_POST['adresse'];
-            $code = $_POST['code_postal'];
-            $ville = $_POST['ville'];
-            $courriel = $_POST['courriel'];
-            $ddn = $_POST['ddn'];
-            $Mdp = $_POST['password'];
-            $Mdp_verif = $_POST['password_verif'];
-            $pro = $_POST['pro'];
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom =  htmlspecialchars($_POST['prenom']);
+            $adresse =  htmlspecialchars($_POST['adresse']);
+            $code =  htmlspecialchars($_POST['code_postal']);
+            $ville =  htmlspecialchars($_POST['ville']);
+            $courriel =  htmlspecialchars($_POST['courriel']);
+            $ddn =  htmlspecialchars($_POST['ddn']);
+            $Mdp =  htmlspecialchars($_POST['password']);
+            $Mdp_verif =  htmlspecialchars($_POST['password_verif']);
+            $pro =  htmlspecialchars($_POST['pro']);
 
             // fonction qui hash le mot de passe
             $mot = "ZEN02anWobA4ve5zxzZz".$Mdp; // je rajoute une chaine que je vais ajouter au mot de passe
