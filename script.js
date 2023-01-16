@@ -360,3 +360,13 @@ aria.Utils.addClass = function(element, className) {
         element.className += ' ' + className;
     }
 };
+
+
+$(document).ready(function(){
+    document.getElementById("openPopupButton").addEventListener("click", function() {
+        var objDivs = document.getElementsByClassName("chat_list_msg");
+        for (var i = 0; i < objDivs.length; i++) {
+            objDivs[i].scrollTop = objDivs[i].scrollHeight;
+        }
+    });
+});

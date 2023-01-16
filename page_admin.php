@@ -98,13 +98,13 @@ if (isset($_GET['eject'])) {
         <nav  class="left-contenu">
                 <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
-                    <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
+                    <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
                 </li>
                 <?php
                 if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
 
                     echo '<li class="nav-item">';
-                    echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Membre</a>';
+                    echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>';
                     echo '</li>';
                 }
 
