@@ -1,4 +1,4 @@
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 1200px) {
     .login-page {
         width: 80%;
         padding-top: 25vh;
@@ -33,7 +33,7 @@
         margin: 0 0 15px;
         padding: 15px;
         box-sizing: border-box;
-        font-size: 35px;
+        font-size: 14px;
     }
     .form .button {
         font-family: "Roboto", sans-serif;
@@ -121,12 +121,14 @@
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .login-page {
+        width: 50%;
         padding: 8% 0 0;
         margin: auto;
     }
     .grille {
+        display: grid;
         grid-template-columns: repeat(2, 50%);
     }
     .logo {
@@ -154,18 +156,19 @@
         margin: 0 0 15px;
         padding: 15px;
         box-sizing: border-box;
-        font-size: 20px;
+        font-size: 14px;
     }
     .form .button {
         font-family: "Roboto", sans-serif;
         text-transform: uppercase;
         outline: 0;
         background: linear-gradient(101deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
+        ;
         width: 100%;
         border: 0;
         padding: 15px;
         color: #FFFFFF;
-        font-size: 20px;
+        font-size: 14px;
         -webkit-transition: all 0.3 ease;
         transition: all 0.3 ease;
         cursor: pointer;
@@ -175,7 +178,7 @@
         outline: 0;
         width: 100%;
         border: 0;
-        font-size: 15px;
+        font-size: 14px;
         -webkit-transition: all 0.3 ease;
         transition: all 0.3 ease;
         cursor: pointer;
@@ -188,7 +191,7 @@
     .form .message {
         margin: 15px 0 0;
         color: #b3b3b3;
-        font-size: 15px;
+        font-size: 12px;
     }
     .form .message a {
         color: #000;
@@ -215,7 +218,7 @@
     .container .info h1 {
         margin: 0 0 15px;
         padding: 0;
-        font-size: 25px;
+        font-size: 36px;
         font-weight: 300;
         color: #1a1a1a;
     }
