@@ -184,10 +184,9 @@ if (isset($_GET['id_invalider'])) {
                     </div>
                 </div>
                 <! -- /* fin de la fenêtre popin de l'ajout d'membre" */ -->
-                <nav>
-            <ul>
-                <li class="deroulant"><a class="titre_list">Liste compte membre &ensp;</a>
-                <ul class="sous">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
+                    <div id="myDropdown" class="dropdown-content">
                     <?php
                     
                     
@@ -203,7 +202,7 @@ if (isset($_GET['id_invalider'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
-                    echo"<li>";
+                    echo"<div>";
                     echo "<table class='no-break'>";
                     
 
@@ -268,16 +267,14 @@ if (isset($_GET['id_invalider'])) {
                         echo "</tr>";
                     }
                     echo "</table>";
-                    echo"</li>";
+                    echo"</div>";
 
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
                     ?>
-
-                </ul>
-                </li>
-                </ul>
-                </nav>
+                  </div>
+            </div>
+                
 
         </nav>
 
