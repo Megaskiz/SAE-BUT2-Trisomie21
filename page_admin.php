@@ -379,8 +379,11 @@ if (isset($_GET['eject'])) {
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
                     if ($_SESSION["role_user"] == 1) {
+                        echo' <div style="display:flex">';
                         echo '   <a href="page_creatsystem.php"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
-                    }
+                        echo '   <a href="statistiques.php"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
+                        echo '   <a href="statistiques_quatre_semaines.php"><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
+                        echo' </div>';                    }
 
 
 
