@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<script>
+    window.onload = function() {
+        var objDiv = document.querySelector(".chat_list_msg");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+</script>
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
@@ -110,7 +116,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                 <?php
                 }
                 ?>
-            </section>
+            
         </div>
         <div class="chat_envoi_msg">
             <form method="POST" action="" class="">
@@ -125,6 +131,9 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
             </form>
         </div>
     </div>
+    </section>
 </body>
+
+
 
 </html>
