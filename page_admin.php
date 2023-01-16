@@ -410,9 +410,9 @@ if (isset($_GET['eject'])) {
                         <th>Nom</th>
                         <th>Jetons</th>
                         <th>Durée</th>
-                        <th>Message</th>
+                        <th class='sms'>Message</th>
+                        <th class='sms'>Statut</th>
                         <th>Statut</th>
-                        <th>Bouton</th>
                         <th>Accéder</th>
                         <th class='sup'>Supprimer</th>
                         </tr>";
@@ -483,7 +483,7 @@ if (isset($_GET['eject'])) {
 
 
                             #affiche message
-                            echo "<td>";
+                            echo "<td class='sms'>";
                             echo "<center>";
                             echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#x2709; </span></button>";
                             echo "</center>";
@@ -600,7 +600,7 @@ if (isset($_GET['eject'])) {
 
 
                             #affiche statu
-                            echo "<td>";
+                            echo "<td class='sms'>";
                             if ($double_tab[$i][4] == 1) {
                                 echo "<center>";
                                 print_r("En Utilisation");

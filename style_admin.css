@@ -657,7 +657,7 @@ td {
     .nav-links li.active:not(.md-header-toolbar) button,
     .nav-links li:not(.md-header-toolbar) a.active {
         color: #000;
-        box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #005097);
+        box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #007bff);
     }
 
     .nav-links li:not(.md-header-toolbar) a,
@@ -673,7 +673,7 @@ td {
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
-        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
+        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #007bff);
     }
 
     .nav-item {
@@ -1135,6 +1135,14 @@ td {
         transition: all 0.3s;
     }
 
+    th.sms {
+        display: none;
+    }
+
+    td.sms {
+        display: none;
+    }
+
     th.sup {
         display: none;
     }
@@ -1515,7 +1523,7 @@ td {
     .nav-links li.active:not(.md-header-toolbar) button,
     .nav-links li:not(.md-header-toolbar) a.active {
         color: #000;
-        box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #6666c4);
+        box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #007bff);
     }
 
     .nav-links li:not(.md-header-toolbar) a,
@@ -1531,7 +1539,7 @@ td {
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
-        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #6666c4);
+        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent,  #007bff);
     }
 
     .nav-item {
