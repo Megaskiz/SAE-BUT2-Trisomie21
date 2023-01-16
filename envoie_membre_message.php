@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<script>
+    window.onload = function() {
+        var objDiv = document.querySelector(".chat_list_msg");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+</script>
 <html lang="fr">
 
 <?php
@@ -106,22 +112,27 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                     <?php
                     }
                     ?>
-                </section>
-            </div>
-            <div class="chat_envoi_msg">
-                <form method="POST" action="" class="">
-                    <div class="chat_sujet_msg">
-                        <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
-                    </div>
-                    <div class="chat_txt_msg">
-                        <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
+                <?php
+                ?>
+            
+        </div>
+        <div class="chat_envoi_msg">
+            <form method="POST" action="" class="">
+                <div class="chat_sujet_msg">
+                    <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
+                </div>
+                <div class="chat_txt_msg">
+                    <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
 
                         <input type="submit" class="chat_send" name="envoie2">
                     </div>
                 </form>
             </div>
         </div>
-    </main>
+    </div>
+    </section>
 </body>
+
+
 
 </html>
