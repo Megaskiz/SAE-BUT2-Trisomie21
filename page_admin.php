@@ -35,6 +35,18 @@ if (isset($_GET['eject'])) {
         die('Erreur : ' . $e->getMessage());
     }
 }
+if (isset($_FILES['photo_enfant'])) {
+    $id = $_SESSION["id_enfant"];
+    $photo_enfant = uploadImage($_FILES['photo_enfant']);
+    $reqM = "UPDATE enfant SET lien_jeton = '$photo_enfant' WHERE enfant.id_enfant = $id;";
+    try {
+        $res = $linkpdo->query($reqM);
+        echo $reqM;
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+    header("Refresh:0");
+}
 
 ?>
 
@@ -325,11 +337,11 @@ if (isset($_GET['eject'])) {
                         
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                    
 
                         echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
 
-                        echo "<form enctype=\"multipart/form-data\" action=\"ajout_modif_jeton\" method=\"POST\" class=\"dialog_form\">";
+                        echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" class=\"dialog_form\">";
                         echo "<div class=\"dialog_form_item\">";
 
                         echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
