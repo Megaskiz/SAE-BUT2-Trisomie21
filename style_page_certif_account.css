@@ -211,7 +211,7 @@
     }
     .acceder-information-membre {
         display: block;
-        padding: 5px 5px;
+        padding: 5px 15px;
         border-radius: 10px;
         font-size: 10px;
         border: none;
@@ -357,8 +357,8 @@
         max-width: 70%;
     }
     .dialog_form_actions {
-        text-align: right;
-        padding: 0 20px 20px;
+        display: flex;
+        justify-content: space-evenly;
     }
     .dialog_close_button {
         float: right;
@@ -435,6 +435,19 @@
     #notes_save.saved .check {
         display: block;
     }
+
+    .popup-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(206, 205, 205);
+        border-radius: 5px;
+        border:none;
+        padding: 10px 15px;
+        color: #000;
+        cursor: pointer;
+        transition: 0.3s;
+    }
     /*------------------------ Menu information sur le membre (droite)--------------------*/
     .membre {
         display: grid;
@@ -498,6 +511,7 @@
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
+
     .certifmembre {
         background-color: #4CAF50;
         border: none;
@@ -540,6 +554,49 @@
     }
     .dropbtn {
         display: none;
+    }
+
+   
+
+
+    input.valider {
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 17px 2px;
+        cursor: pointer;
+    }
+
+
+    .valider:hover {
+        background-color: #45a049;
+    }
+
+
+
+    .annuler {
+        background-color: #e74c3c;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 17px 2px;
+        cursor: pointer;
+    }
+
+
+    .annuler:hover {
+        background-color: #d14a3c;
     }
 }
 

@@ -181,8 +181,8 @@ if (isset($_GET['id_invalider'])) {
                                 </div>
 
                                 <div class="dialog_form_actions">
-                                    <button type="submit">Valider l'ajout</button>
-                                    <button type="button" onclick="closeDialog(this)">Annuler</button>
+                                    <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
+                                    <button class="popup-btn" type="submit">Valider l'ajout</button>
                                 </div>
                             </form>
                         </div>
@@ -224,7 +224,7 @@ if (isset($_GET['id_invalider'])) {
                         $identifiant = $double_tab[$i][0];
 
                             echo "<td>";
-                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Acceder </button></a>';
+                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Profil </button></a>';
                             
                         echo "</td>";
                         echo "</tr>";
@@ -267,7 +267,7 @@ if (isset($_GET['id_invalider'])) {
 
 
                         echo "<td class=\"Profil2\" >";
-                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button  class="acceder-information-membre"> Acceder</button></a>';
+                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button  class="acceder-information-membre"> Profil</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }

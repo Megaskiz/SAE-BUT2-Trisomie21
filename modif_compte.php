@@ -175,19 +175,6 @@ if (isset($_GET['id_invalider'])) {
                         }
                         $identifiant = $double_tab[$i][0];
 
-                        echo '<td>';
-                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
-                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p>Vous voulez valider ce compte membre dans l'application ?</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo "</div>";
-                        echo "</form>";
-                        echo "</div>";
-                        echo '</td>';
                         echo "<td class=\"Profil2\" >";
                         echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button class="acceder">Profil</button></a>';
                         echo "</td>";
@@ -293,18 +280,18 @@ if (isset($_GET['id_invalider'])) {
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <div class="section_membre">
+            <div class="section_membre"  style=" display : flex ;   justify-content: space-between; "> 
                 <?php
                 if (isset($_GET['id'])) {
 
                     //<!---- menu droit information ---->
-                    echo "<div class=\"case-membre_1\">";
-                    echo"   <button><a href='page_certif_compte.php?idv=".$_GET['id']."'>Annuler les modifications</a></button>";
+                    echo "<div class=\"case-membre_1\"    style='display : flex; align-items: flex-end' >";
+                    echo"   <a href='page_certif_compte.php?idv=".$_GET['id']."'>  <button class='annuler'> Annuler &#x1F5D9;</button></a> ";
                     echo "</div>";
 
                     echo"<form action=\"ajoute_modif_compte.php\" method=\"post\"";
 
-                    echo"<div class='grille_4_cases'>";
+                    echo"<div class='grille_4_cases' style='display=grid; align-content: space-between'>";
 
                     echo "<div class=\"case-3-infos\">";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
@@ -355,7 +342,8 @@ if (isset($_GET['id_invalider'])) {
                         echo"</div>";
                     echo "</div>";
 
-                    echo'<input class="button" type="submit" value="Valider les modifications">';
+                    echo'<input class="valider" type="submit" value="Valider les modifications &#x2714;">';
+                    
 
 
 
