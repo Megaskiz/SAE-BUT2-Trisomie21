@@ -40,7 +40,7 @@ if (isset($_GET['eject'])) {
 
 <head>
     <meta charset="utf-8">
-    <title> Administrateur </title>
+    <title> Menu principal </title>
     <link rel="stylesheet" href="style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
@@ -101,7 +101,8 @@ if (isset($_GET['eject'])) {
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
                 </li>
                 <?php
-                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
+                //acces à la page de membre
+                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2 or $_SESSION["role_user"] == 3) {
 
                     echo '<li class="nav-item">';
                     echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>';
@@ -111,8 +112,8 @@ if (isset($_GET['eject'])) {
                 ?>
             </ul>
             <?php
-
-            if ($_SESSION["role_user"] == 1) {
+            //acces à l'ajout de profil d'enfant
+            if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
@@ -169,7 +170,8 @@ if (isset($_GET['eject'])) {
 
 
                 try {
-                    if ($_SESSION["role_user"] == 1) {
+                    //acces tous les enfants
+                    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                         $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant ORDER BY nom');
                     } else {
                         $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre=' . $_SESSION["logged_user"] . ')');
@@ -311,6 +313,7 @@ if (isset($_GET['eject'])) {
 
 
                     echo " <div class=\"div-modif-enfant\">";
+                    // acces modif enfant
                     if ($_SESSION["role_user"] == 1) {
                         echo '<a href="modif_enfant.php"> 
                         <button class="bouton-modif-enfant"> <span class="icon">&#x270E</span>   Modifer </button> </a>';
@@ -378,7 +381,8 @@ if (isset($_GET['eject'])) {
 
                     echo "</section>";
                     echo "<section class=\"nb-systeme\">";
-                    if ($_SESSION["role_user"] == 1) {
+                    //acces aux boutons -> ajouter sys, stat, stat4semaines
+                    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                         echo' <div style="display:flex">';
                         echo '   <a href="page_creatsystem.php"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
                         echo '   <a href="statistiques.php"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
@@ -421,7 +425,8 @@ if (isset($_GET['eject'])) {
                         </tr>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
-                        if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1) {
+                        //acces au systèmes
+                        if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1or $_SESSION["role_user"] == 3) {
                             echo "<tr >";
 
                             #affiche nom
@@ -615,8 +620,8 @@ if (isset($_GET['eject'])) {
                             }
                             echo "</td>";
 
-                            #affiche bouton
-                            if ($_SESSION["role_user"] == 1) {
+                            //affiche bouton pour la mise en route des sys
+                            if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                                 switch ($double_tab[$i][4]) {
                                     case 1:
 
@@ -646,6 +651,7 @@ if (isset($_GET['eject'])) {
 
                             echo "<td>";
                             echo " <div class=\"case-enfant\">";
+                            //bouton supprimer un sys -> "archiver"
                             if ($_SESSION["role_user"] == 1) {
                                 echo "<center>";
                                 echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
