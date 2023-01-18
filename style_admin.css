@@ -11,14 +11,12 @@ td {
 }
 
 
-
-
 /*------------------------ Header/menu--------------------*/
+
 
 /* Header */
 
 @media screen and (min-width: 1250px) {
-
     p.info {
         border: solid 1px #000;
         border-radius: 100px;
@@ -27,7 +25,6 @@ td {
         transition: all 0.3s;
         padding: 5px 4%;
     }
-
     header {
         display: grid;
         align-items: center;
@@ -40,23 +37,17 @@ td {
         opacity: 1.0;
         background-color: white;
     }
-
-
     /* Logo/image*/
     .logo-association {
         width: 70%;
         padding-left: 2%;
         padding-top: 2%;
     }
-
-
     .img-user {
         grid-column: 3;
         width: 40%;
         margin: auto;
     }
-
-
     /* Boutton déconnexion*/
     .h-deconnexion {
         cursor: pointer;
@@ -66,12 +57,10 @@ td {
         align-items: center;
         flex-direction: column;
     }
-
     .img-deco {
         width: 40%;
         margin: auto;
     }
-
     /*------------------------ Body--------------------*/
     body {
         display: flex;
@@ -81,7 +70,6 @@ td {
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
-
     main {
         display: grid;
         grid-template-columns: 23% 1fr;
@@ -90,7 +78,6 @@ td {
         border-radius: 10px;
         color: #005097;
     }
-
     .left-contenu {
         height: 100%;
         box-shadow: 0 10px 20px rgb(0 0 0 / 15%), 0 1px 5px rgb(0 0 0 / 22%);
@@ -99,7 +86,6 @@ td {
         background-color: #fff;
         color: black;
     }
-
     .right-contenu {
         display: flex;
         justify-content: space-between;
@@ -108,7 +94,6 @@ td {
         background-color: transparent;
         color: #000;
     }
-
     /*------------------------ Menu liste des enfants (gauche)--------------------*/
     /* Boutton ajouter un enfant*/
     .ajouter-enfant {
@@ -124,32 +109,26 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .ajouter-enfant:hover {
         background-color: #fec107;
     }
-
     .icone_info {
         height: 30px;
         text-decoration: none;
         color: black;
     }
-
     .bouton_enfant {
         margin: auto;
         width: 50%;
     }
-
     a {
         text-decoration: none;
         color: white;
     }
-
     a.equipier {
         text-decoration: none;
         color: black;
     }
-
     .acceder-information-enfant {
         display: block;
         padding: 5px 10px;
@@ -162,36 +141,29 @@ td {
         transition: all 0.3s;
         margin: 0.5px;
     }
-
     .acceder-information-enfant:hover {
         background-color: #fec107;
         background-color: paleturquoise
     }
-
     .icone-ajouter-enfant {
         margin: 0;
         height: 25px;
         cursor: pointer;
     }
-
     .ajouter_utilisateur {
         padding-left: 0%;
     }
-
     .liste-enfant {
         margin-top: 5%;
     }
-
     .acces-enfant {
         margin-left: 40%;
         border-radius: none;
     }
-
     /* Pop-up JS ajouter un enfant*/
     .hidden {
         display: none;
     }
-
     [role="alertdialog"],
     [role="dialog"] {
         box-sizing: border-box;
@@ -200,9 +172,7 @@ td {
         background-color: #fff;
         min-height: 100vh;
     }
-
     @media screen and (min-width: 640px) {
-
         [role="alertdialog"],
         [role="dialog"] {
             position: absolute;
@@ -218,15 +188,12 @@ td {
             border-radius: 10px;
         }
     }
-
     .dialog_label {
         text-align: center;
     }
-
     .dialog_form {
         margin: 15px;
     }
-
     .dialog_form .label_text {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -236,7 +203,6 @@ td {
         width: 30%;
         text-align: right;
     }
-
     .dialog_form .label_info {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -245,44 +211,36 @@ td {
         text-align: right;
         display: inline-block;
     }
-
     .dialog_form_item {
         margin: 10px 0;
         font-size: 0;
     }
-
     .dialog_form_item .wide_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 27em;
     }
-
     .dialog_form_item .city_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 17em;
     }
-
     .dialog_form_item .state_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 15em;
     }
-
     .dialog_form_item .zip_input {
         box-sizing: border-box;
         max-width: 70%;
     }
-
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
     }
-
     .dialog_form_actions1 {
         padding: 0 20px 20px;
     }
-
     .dialog_close_button {
         float: right;
         position: absolute;
@@ -290,15 +248,12 @@ td {
         left: 92%;
         height: 25px;
     }
-
     .dialog_close_button img {
         border: 0;
     }
-
     .dialog_desc {
         padding: 10px 20px;
     }
-
     /* native <dialog> element uses the ::backdrop pseudo-element */
     /* dialog::backdrop, */
     .dialog-backdrop {
@@ -310,22 +265,18 @@ td {
         bottom: 0;
         left: 0;
     }
-
     .dialog-backdrop.active {
         display: block;
         backdrop-filter: blur(5px);
         background-color: rgba(45, 45, 49, 0.5);
     }
-
     .no-scroll {
         overflow-y: auto !important;
     }
-
     /* this is added to the body when a dialog is open */
     .has-dialog {
         overflow: hidden;
     }
-
     /* styling for alert-dialog example */
     .notes {
         display: block;
@@ -335,7 +286,6 @@ td {
         max-width: 100%;
         width: 33%;
     }
-
     .visually-hidden {
         border: 0;
         clip: rect(0 0 0 0);
@@ -347,31 +297,25 @@ td {
         width: 1px;
         white-space: nowrap;
     }
-
     #notes_save {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
-
     #notes_save svg {
         display: block;
         width: 0.75rem;
     }
-
     #notes_save .icon {
         display: none;
     }
-
     #notes_save.loading .spinner {
         display: block;
         animation: rotate 2s linear infinite;
     }
-
     #notes_save.saved .check {
         display: block;
     }
-
     .recherche {
         margin: 2.5%;
         text-align: center;
@@ -379,19 +323,16 @@ td {
         align-items: center;
         justify-content: center;
     }
-
     .titre_recherche {
         font-weight: bold;
         margin-top: 0%;
         margin: 2.5%;
     }
-
     .input_recherche {
         border-radius: 100px;
         padding: 5px 5px;
         margin: bottom 1px;
     }
-
     .bouton_recherche {
         padding: 1px 0px;
         border-radius: 10px;
@@ -401,11 +342,9 @@ td {
         transition: all 0.3s;
         margin-top: 2px;
     }
-
     .bouton_recherche:hover {
         background-color: rgb(221, 221, 221);
     }
-
     /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     .section_enfant {
         display: grid;
@@ -417,13 +356,11 @@ td {
         background-color: white;
         margin-left: 3%;
     }
-
     .case-enfant {
         display: grid;
         place-items: center;
         margin: 3%;
     }
-
     .bouton-modif-enfant {
         display: inline-block;
         position: initial;
@@ -436,18 +373,15 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .bouton-modif-enfant:hover {
         background-color: #fec107;
     }
-
     .icone-modif-enfant {
         display: inline-block;
         vertical-align: middle;
         margin-right: 10px;
         font-size: 20px;
     }
-
     .list_equipier {
         display: inline-block;
         padding: 10px 20px;
@@ -459,11 +393,9 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .list_equipier:hover {
         background-color: #fec107;
     }
-
     .div-liste-equipe {
         display: flex;
         height: 100%;
@@ -472,7 +404,6 @@ td {
         flex-direction: column-reverse;
         justify-content: space-between;
     }
-
     .bouton-equipe {
         display: inline-block;
         padding: 10px 20px;
@@ -485,21 +416,18 @@ td {
         transition: all 0.3s;
         margin-bottom: 5px;
     }
-
     .bouton-equipe:hover {
         background-color: #fec107;
     }
-
     .button-equipe {
         display: flex;
     }
-
     .photo-enfant {
         width: 40%;
-        border-radius: 100%;
+        border-radius: 20%;
         position: initial;
+        margin-top: 20%;
     }
-
     .div-photo-enfant {
         display: flex;
         justify-content: center;
@@ -507,26 +435,22 @@ td {
         height: 100%;
         padding: 5%;
     }
-
     .div-modif-enfant {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
     .div-zone-texte {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
     }
-
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
-
     /*nombre de système*/
     .nb-systeme {
         height: 40vh;
@@ -536,27 +460,22 @@ td {
         margin-left: 3%;
         overflow: auto;
     }
-
     .affichage-objectif {
         border-collapse: collapse;
         width: 100%;
         margin-top: 2vh;
     }
-
     .affichage-objectif th,
     td {
         padding: 8px;
     }
-
     .affichage-objectif th {
         color: white;
         border-radius: 5px 5px 0 0;
     }
-
     .affichage-objectif td {
         border-radius: 0 0 5px 5px;
     }
-
     .button_ajouter-objectif {
         padding: 10px 20px;
         border-radius: 5px;
@@ -569,12 +488,10 @@ td {
         margin-top: 1vh;
         margin-left: 1vh;
     }
-
     .button_ajouter-objectif:hover {
         background-color: #fec107;
         cursor: pointer;
     }
-
     .status-objectif {
         padding: 10px 20px;
         border-radius: 5px;
@@ -585,7 +502,6 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     button.objectif-acceder {
         padding: 10px 20px;
         border-radius: 5px;
@@ -596,11 +512,9 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .img_equipe {
         width: 5%;
     }
-
     textarea {
         height: 80%;
         width: 80%;
@@ -608,50 +522,41 @@ td {
         border-radius: 15px;
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
-
     .text-complementaire {
         height: 90%;
         margin-left: 5%;
         border-radius: 10px;
     }
-
     button.message-objectif {
         width: 100%;
         background-color: transparent;
         border: none;
     }
-
     button.message-objectif:hover {
         background-color: #fec107;
         cursor: pointer;
         border-radius: 10px;
     }
-
     .icon-mail {
         font-size: 170%;
     }
-
     .titre-objectif {
         background: #007bff;
     }
-
     .icon-poubelle {
         font-size: 200%;
         color: black;
     }
-
     .supprimer-objectif {
         border: none;
         cursor: pointer;
         background-color: transparent;
     }
-
     .delet-icon {
         width: 25px;
         padding: 8px 0;
         cursor: pointer;
     }
-
     /*-----------------*/
     .nav-links li.active:not(.md-header-toolbar) a,
     .nav-links li.active:not(.md-header-toolbar) button,
@@ -659,7 +564,6 @@ td {
         color: #000;
         box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #007bff);
     }
-
     .nav-links li:not(.md-header-toolbar) a,
     .nav-links li:not(.md-header-toolbar) button {
         padding: 1rem 0.75rem;
@@ -669,29 +573,24 @@ td {
         border: 0;
         white-space: nowrap;
     }
-
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
         box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #007bff);
     }
-
     .nav-item {
         width: 50%;
     }
-
     .gl-tab-nav-item {
         display: flex;
         justify-content: center;
         overflow: hidden;
         transition: box-shadow 100ms linear;
     }
-
     .nav-link {
         text-decoration: none;
         background-color: transparent;
     }
-
     .nav-links {
         display: flex;
         padding: 0;
@@ -700,7 +599,6 @@ td {
         height: auto;
         width: 100%;
     }
-
     /*-----------------------*/
     .cns {
         display: grid;
@@ -713,19 +611,16 @@ td {
         width: 90%;
         text-align: center;
     }
-
     .cns:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-
     body {
         display: flex;
         min-height: 100vh;
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
     }
-
     .chat_all {
         width: 500px;
         padding: 2%;
@@ -733,12 +628,10 @@ td {
         margin: auto;
         height: 600px;
     }
-
     .chat_title {
         display: flex;
         padding: 1%;
     }
-
     .chat_svg {
         display: inline-block;
         font-size: inherit;
@@ -746,7 +639,6 @@ td {
         overflow: visible;
         padding-right: 1%;
     }
-
     .chat_list_msg {
         border: solid 1px;
         border-radius: 10px;
@@ -755,28 +647,23 @@ td {
         padding: 2%;
         overflow-y: scroll;
     }
-
     .chat_img_L {
         width: 5%;
         margin-right: 7px;
     }
-
     .chat_img_R {
         width: 5%;
         margin-left: 7px;
     }
-
     .chat_envoi_msg {
         height: 40%;
         margin-top: 10%;
     }
-
     .chat_msgL {
         display: flex;
         align-items: flex-end;
         margin-bottom: 10px;
     }
-
     .chat_autre {
         text-align: left;
         min-width: 60px;
@@ -786,14 +673,12 @@ td {
         background-color: #e6e5e5;
         border-radius: 16px 16px 16px 0;
     }
-
     .chat_msgR {
         display: flex;
         align-items: flex-end;
         flex-direction: row-reverse;
         margin-bottom: 10px;
     }
-
     .chat_vous {
         text-align: left;
         margin-left: 10%;
@@ -804,7 +689,6 @@ td {
         color: #fff;
         border-radius: 16px 16px 0 16px;
     }
-
     .chat_info {
         display: flex;
         justify-content: space-between;
@@ -812,20 +696,16 @@ td {
         margin-bottom: 9px;
         font-size: 12px;
     }
-
     .chat_zone_txt {
         font-size: 15px;
     }
-
     .chat_nomm {
         margin-right: 40px;
         font-weight: bold;
     }
-
     .chat_datem {
         font-size: 0.85em;
     }
-
     .chat_send {
         margin-left: 10px;
         background: rgb(0, 196, 65);
@@ -833,28 +713,23 @@ td {
         cursor: pointer;
         border-radius: 7px;
     }
-
     .chat_messages {
         width: 100%;
         border-radius: 10px;
         height: 30px;
     }
-
     .chat_sujet {
         width: 100%;
         border-radius: 10px;
         margin-bottom: 7px;
     }
-
     .chat_txt_msg {
         display: flex;
     }
-
     .chat_retour {
         width: 1%px;
         height: 1%
     }
-
     button {
         display: block;
         padding: 5px 10px;
@@ -867,17 +742,13 @@ td {
         margin: 0.5px;
         color: #fff;
     }
-
     button:hover {
         background-color: #fec107;
     }
-
     img.icone-ajouter-membre {
         width: 20%;
         margin-right: 5px;
     }
-
-
     form.recherche {
         display: flex;
         align-items: center;
@@ -913,12 +784,9 @@ td {
     */
 
 
-
-
 /* SUR TELEPHONE  */
 
 @media screen and (max-width: 1250px) {
-
     /* Header */
     header {
         display: grid;
@@ -927,25 +795,21 @@ td {
         height: 10vh;
         background-color: rgb(255, 255, 255);
     }
-
     /* Logo/image*/
     .logo-association {
         width: 65%;
         margin: auto;
     }
-
     .img-user {
         display: none;
         grid-column: 3;
         width: 40%;
         margin: auto;
     }
-
     .img_equipe {
         width: 3%;
         margin: auto;
     }
-
     /* Boutton déconnexion*/
     .h-deconnexion {
         cursor: pointer;
@@ -954,12 +818,10 @@ td {
         flex-direction: column;
         align-items: center;
     }
-
     .img-deco {
         width: 40%;
         margin: auto;
     }
-
     /*------------------------ Body--------------------*/
     body {
         display: flex;
@@ -969,13 +831,11 @@ td {
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
-
     main {
         min-height: 85vh;
         margin: 2%;
         border-radius: 10px;
     }
-
     .left-contenu {
         height: fit-content;
         box-shadow: 0 10px 20px rgb(0 0 0 / 12%), 0 1px 5px rgb(0 0 0 / 22%);
@@ -984,13 +844,11 @@ td {
         overflow: auto;
         margin: 1%;
     }
-
     .right-contenu {
         background-color: transparent;
         border-radius: 10px;
         height: fit-content;
     }
-
     /*------------------------ Menu liste des enfants (gauche)--------------------*/
     /* Boutton ajouter un enfant*/
     .ajouter-enfant {
@@ -1007,11 +865,9 @@ td {
         transition: all 0.3s;
         justify-content: center;
     }
-
     .ajouter-enfant:hover {
         background-color: #fec107;
     }
-
     .acceder-information-enfant {
         display: block;
         padding: 5px 10px;
@@ -1024,35 +880,28 @@ td {
         transition: all 0.3s;
         margin: 0.5px;
     }
-
     .acceder-information-enfant:hover {
         background-color: #fec107;
     }
-
-
     a {
         text-decoration: none;
         color: black;
     }
-
     img.icone-ajouter-membre {
         width: 10%;
         margin-right: 5px;
     }
-
     .icone_info {
         height: 30px;
         text-decoration: none;
         color: black;
     }
-
     .bouton_enfant {
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
         align-items: center;
     }
-
     .bouton-modif-enfant {
         display: inline-block;
         padding: 5px 15px;
@@ -1063,18 +912,15 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .bouton-modif-enfant:hover {
         background-color: #fec107;
     }
-
     .icone-modif-enfant {
         display: inline-block;
         vertical-align: middle;
         margin-right: 10px;
         font-size: 20px;
     }
-
     .list_equipier {
         display: inline-block;
         padding: 5px 15px;
@@ -1085,11 +931,9 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     .list_equipier:hover {
         background-color: #fec107;
     }
-
     button.bouton-equipe {
         display: inline-block;
         padding: 5px 15px;
@@ -1100,32 +944,25 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     button.bouttn-equipe:hover {
         background-color: #fec107;
     }
-
     .bouton_enfant2 {
         width: 70%;
     }
-
     .icone-ajouter-enfant {
         margin: 0;
         height: 20px;
         cursor: pointer;
     }
-
     .ajouter_utilisateur {
         padding-left: 0%;
     }
-
     .acces-enfant {
         margin-left: 40%;
         border-radius: none;
     }
-
-    
-    button.status-objectif{
+    button.status-objectif {
         padding: 5px 12px;
         border-radius: 5px;
         border: none;
@@ -1134,24 +971,18 @@ td {
         cursor: pointer;
         transition: all 0.3s;
     }
-
     th.sms {
         display: none;
     }
-
     td.sms {
         display: none;
     }
-
     th.sup {
         display: none;
     }
-
-    button.supprimer-objectif{
+    button.supprimer-objectif {
         display: none;
-
     }
-
     button {
         display: block;
         padding: 5px 10px;
@@ -1164,12 +995,10 @@ td {
         margin: 0.5px;
         color: #fff;
     }
-
     /* Pop-up JS ajouter un enfant*/
     .hidden {
         display: none;
     }
-
     [role="alertdialog"],
     [role="dialog"] {
         box-sizing: border-box;
@@ -1178,7 +1007,6 @@ td {
         background-color: #fff;
         min-height: 100vh;
     }
-
     .chat_svg {
         display: inline-block;
         font-size: inherit;
@@ -1186,7 +1014,6 @@ td {
         overflow: visible;
         padding-right: 1%;
     }
-
     .recherche {
         margin: 1.5%;
         text-align: center;
@@ -1194,7 +1021,6 @@ td {
         align-items: center;
         justify-content: center;
     }
-
     .div-modif-enfant,
     .div-liste-equipe,
     .div-photo-enfant {
@@ -1203,17 +1029,12 @@ td {
         flex-direction: column-reverse;
         align-items: center;
     }
-
-    .div-zone-texte{
+    .div-zone-texte {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-
     }
-   
-
     @media screen and (min-width: 640px) {
-
         [role="alertdialog"],
         [role="dialog"] {
             position: absolute;
@@ -1229,15 +1050,12 @@ td {
             border-radius: 10px;
         }
     }
-
     .dialog_label {
         text-align: center;
     }
-
     .dialog_form {
         margin: 15px;
     }
-
     .dialog_form .label_text {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -1247,7 +1065,6 @@ td {
         width: 30%;
         text-align: right;
     }
-
     .dialog_form .label_info {
         box-sizing: border-box;
         padding-right: 0.5em;
@@ -1256,44 +1073,36 @@ td {
         text-align: right;
         display: inline-block;
     }
-
     .dialog_form_item {
         margin: 10px 0;
         font-size: 0;
     }
-
     .dialog_form_item .wide_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 27em;
     }
-
     .dialog_form_item .city_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 17em;
     }
-
     .dialog_form_item .state_input {
         box-sizing: border-box;
         max-width: 70%;
         width: 15em;
     }
-
     .dialog_form_item .zip_input {
         box-sizing: border-box;
         max-width: 70%;
     }
-
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
     }
-
     .dialog_form_actions1 {
         padding: 0 20px 20px;
     }
-
     .dialog_close_button {
         float: right;
         position: absolute;
@@ -1301,15 +1110,12 @@ td {
         left: 92%;
         height: 25px;
     }
-
     .dialog_close_button img {
         border: 0;
     }
-
     .dialog_desc {
         padding: 10px 20px;
     }
-
     /* native <dialog> element uses the ::backdrop pseudo-element */
     /* dialog::backdrop, */
     .dialog-backdrop {
@@ -1321,21 +1127,17 @@ td {
         bottom: 0;
         left: 0;
     }
-
     .dialog-backdrop.active {
         display: block;
         backdrop-filter: blur(5px);
     }
-
     .no-scroll {
         overflow-y: auto !important;
     }
-
     /* this is added to the body when a dialog is open */
     .has-dialog {
         overflow: hidden;
     }
-
     /* styling for alert-dialog example */
     .notes {
         display: block;
@@ -1345,7 +1147,6 @@ td {
         max-width: 100%;
         width: 33%;
     }
-
     .visually-hidden {
         border: 0;
         clip: rect(0 0 0 0);
@@ -1357,31 +1158,25 @@ td {
         width: 1px;
         white-space: nowrap;
     }
-
     #notes_save {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
-
     #notes_save svg {
         display: block;
         width: 0.75rem;
     }
-
     #notes_save .icon {
         display: none;
     }
-
     #notes_save.loading .spinner {
         display: block;
         animation: rotate 2s linear infinite;
     }
-
     #notes_save.saved .check {
         display: block;
     }
-
     /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     .section_enfant {
         height: 47%;
@@ -1391,28 +1186,21 @@ td {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        
     }
-
     .case-enfant {
         display: grid;
         place-items: center;
         margin: 3%;
     }
-
     .photo-enfant {
         width: 10vw;
-        border-radius: 100px;
+        border-radius: 20%;
+        margin-top: 20%;
     }
-
-
     .case-3-infos {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
-
-   
-
     /*nombre de système*/
     .nb-systeme {
         height: 47%;
@@ -1422,8 +1210,6 @@ td {
         margin: 1%;
         overflow: auto;
     }
-
-
     .button_ajouter-objectif {
         display: flex;
         padding: 5px 15px;
@@ -1435,16 +1221,11 @@ td {
         transition: all 0.3s;
         margin: 0 auto;
         margin-top: 10px;
-
     }
-
     .button_ajouter-objectif:hover {
         background-color: #fec107;
         cursor: pointer;
     }
-
-
-
     table.affichage-objectif {
         margin: 3%;
         width: 100%;
@@ -1454,26 +1235,20 @@ td {
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 0 20px rgb(0 0 0 / 15%);
-        background-color: #007bff ;
+        background-color: #007bff;
     }
-
-
-    button.objectif-acceder{
-            display: block;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            border: none;
-            color: white;
-            background-color: #007bff;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 0.5px;
+    button.objectif-acceder {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 0.5px;
     }
-
-   
-
-
     table.affichage-objectif {
         margin: 0;
         width: 100%;
@@ -1484,40 +1259,32 @@ td {
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         background-color: white;
-
     }
-    
     .liste-enfant {
         padding: 2vh;
     }
-
     .button_acceder {
         margin: 10px;
         border-radius: 10px;
     }
-
     .button_acceder:hover {
         margin: 10px;
         border-radius: 10px;
         cursor: pointer;
     }
-
     textarea {
         height: 95%;
         width: 95%;
     }
-
     .logo-enfant {
         width: 30%;
         border-radius: 10px;
     }
-
     .text-complementaire {
         height: 90%;
         margin-left: 5%;
         border-radius: 10px;
     }
-
     /*-----------------*/
     .nav-links li.active:not(.md-header-toolbar) a,
     .nav-links li.active:not(.md-header-toolbar) button,
@@ -1525,7 +1292,6 @@ td {
         color: #000;
         box-shadow: inset 0 5px 0 0 var(--gl-theme-accent, #007bff);
     }
-
     .nav-links li:not(.md-header-toolbar) a,
     .nav-links li:not(.md-header-toolbar) button {
         padding: 1rem 0.75rem;
@@ -1535,29 +1301,24 @@ td {
         border: 0;
         white-space: nowrap;
     }
-
     .gl-tab-nav-item-active {
         font-weight: 600;
         color: #333238;
-        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent,  #007bff);
+        box-shadow: inset 0 2px 0 0 var(--gl-theme-accent, #007bff);
     }
-
     .nav-item {
         width: 50%;
     }
-
     .gl-tab-nav-item {
         display: flex;
         justify-content: center;
         overflow: hidden;
         transition: box-shadow 100ms linear;
     }
-
     .nav-link {
         text-decoration: none;
         background-color: transparent;
     }
-
     .nav-links {
         display: flex;
         padding: 0;
@@ -1566,7 +1327,6 @@ td {
         height: auto;
         width: 100%;
     }
-
     /*-----------------------*/
     .cns {
         display: grid;
@@ -1579,13 +1339,11 @@ td {
         width: 90%;
         text-align: center;
     }
-
     .cns:hover {
         color: #fff;
         cursor: pointer;
         background: linear-gradient(101deg, rgb(255, 198, 76) 0%, rgb(69, 45, 253) 100%);
     }
-
     .spprmrenfant:hover {
         color: #fff;
         cursor: pointer;
@@ -1595,7 +1353,6 @@ td {
         text-align: center;
         background: red;
     }
-
     .spprmrenfant {
         color: black;
         cursor: pointer;
@@ -1604,7 +1361,6 @@ td {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
         text-align: center;
     }
-
     .chat_all {
         box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         width: 500px;
@@ -1614,12 +1370,10 @@ td {
         margin: auto;
         border-radius: 10px;
     }
-
     .chat_title {
         display: flex;
         padding: 1%;
     }
-
     .chat_svg {
         display: inline-block;
         font-size: inherit;
@@ -1627,7 +1381,6 @@ td {
         overflow: visible;
         padding-right: 1%;
     }
-
     .chat_list_msg {
         border: solid 1px;
         border-radius: 10px;
@@ -1636,28 +1389,23 @@ td {
         padding: 2%;
         overflow-y: scroll;
     }
-
     .chat_img_L {
         width: 5%;
         margin-right: 7px;
     }
-
     .chat_img_R {
         width: 5%;
         margin-left: 7px;
     }
-
     .chat_envoi_msg {
         height: 40%;
         margin-top: 10%;
     }
-
     .chat_msgL {
         display: flex;
         align-items: flex-end;
         margin-bottom: 10px;
     }
-
     .chat_autre {
         text-align: left;
         min-width: 60px;
@@ -1667,14 +1415,12 @@ td {
         background-color: #e6e5e5;
         border-radius: 16px 16px 16px 0;
     }
-
     .chat_msgR {
         display: flex;
         align-items: flex-end;
         flex-direction: row-reverse;
         margin-bottom: 10px;
     }
-
     .chat_vous {
         text-align: left;
         margin-left: 10%;
@@ -1685,23 +1431,19 @@ td {
         color: #fff;
         border-radius: 16px 16px 0 16px;
     }
-
     .chat_info {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
     }
-
     .chat_nomm {
         margin-right: 40px;
         font-weight: bold;
     }
-
     .chat_datem {
         font-size: 0.85em;
     }
-
     .chat_send {
         margin-left: 10px;
         background: rgb(0, 196, 65);
@@ -1709,36 +1451,27 @@ td {
         cursor: pointer;
         border-radius: 7px;
     }
-
     .chat_messages {
         width: 100%;
         border-radius: 10px;
         height: 30px;
     }
-
     .chat_sujet {
         width: 100%;
         border-radius: 10px;
         margin-bottom: 7px;
     }
-
     .chat_txt_msg {
         display: flex;
     }
-
     .chat_retour {
         width: 1%px;
         height: 1%
     }
-
     .delet-icon {
         width: 10%;
     }
-
 }
-
-
-
 
 
 /*
@@ -1768,20 +1501,16 @@ td {
     */
 
 @media screen and (max-width: 730px) {
-
     html {
         font-size: 10px;
     }
-
     header {
         height: 7vh;
     }
-
     main {
         height: 100%;
         margin: 2%;
     }
-
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
@@ -1790,17 +1519,12 @@ td {
         justify-content: space-around;
         flex-direction: row-reverse;
     }
-
-    p.titre_recherche{
+    p.titre_recherche {
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;
         color: #000;
-
-
-
     }
-
     .section_enfant {
         height: 25vh;
         box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
@@ -1810,8 +1534,4 @@ td {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
     }
-
-
-
-
 }
