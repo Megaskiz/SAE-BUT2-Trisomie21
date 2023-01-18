@@ -5,16 +5,7 @@ is_validateur();
 ?>
 <?php
 
-///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae","root","");
-    }
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-    }
-
-// fichier qui ajoute chaque jeton dans le système
+// fichier qui retire un jeton dans le système
 
 
 if (isset ($_GET['case']))  {
@@ -22,37 +13,39 @@ if (isset ($_GET['case']))  {
     $chaine = $_GET['chaine'];
     $id = $_GET['id'];
 
-    
-
     $tab_string = str_split($chaine);
-    $compteur_de_0 = 0;
-
-    // var_dump($tab_string);
-    // exit();
+    $compteur_de_cases = 0;
 
     for($i = 0; $i < count($tab_string);++$i){
-        if($tab_string[$i]=='0'){
-            if ($compteur_de_0==$case_tableau){
-                $tab_string[$i]=1;
-                $compteur_de_0+=1;
-                //echo"la modif est faite";echo"<br>";
+        if($tab_string[$i]=='1'){
+            if ($compteur_de_cases==$case_tableau){
+                $tab_string[$i]=0;
+                $compteur_de_cases+=1;
+                echo"la modif est faite";echo"<br>";
             }
             else{
-                $compteur_de_0+=1;
+                $compteur_de_cases+=1;
             }
-        }else if($tab_string[$i]=='1'){
-            $compteur_de_0+=1;
+        }else if($tab_string[$i]=='0'){
+            $compteur_de_cases+=1;
         }
     }
 
-
+        ///Connexion au serveur MySQL
+    try {
+        $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae","root","");
+        }
+    ///Capture des erreurs éventuelles
+    catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+        }
 
     $tableau_final = join("",$tab_string);
-    /*echo"letabstring: ";echo"<br>";
-    print_r($tab_string);
-    echo"<br>";
-    echo"onvaenvoyerça: $tableau_final";
-    exit();*/
+    // echo"letabstring: ";echo"<br>";
+    // print_r($tab_string);
+    // echo"<br>";
+    // echo"onvaenvoyerça: $tableau_final";
+    // exit();
 
 
     // FAIRE EN SORTE DE RECUP LA DERNIERE SESSION QUI A ETE UTILISE POUR SE SYSTEME
@@ -60,8 +53,8 @@ if (isset ($_GET['case']))  {
 
     try {
         $session_max_query =$linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=".$id);
-        //$session_max_query->debugDumpParams();
-        
+        // $session_max_query->debugDumpParams();
+        // exit();
         }
         catch (Exception $e) { // toujours faire un test de retour en cas de crash
             die('Erreur : ' . $e->getMessage());
@@ -77,37 +70,33 @@ if (isset ($_GET['case']))  {
         }
 
     try {
-        $jeton_max_query =$linkpdo->query("SELECT max(date_heure) from placer_jeton where id_session=".$session_max." and id_objectif=".$id);
+
+        // $data=[
+        //     'session_max '=>$session_max,
+        //     'id'=>$id,
+        //     ];
+            // $sql="DELETE FROM placer_jeton WHERE id_objectif= :id and  id_session= :session_max ORDER BY date_heure DESC LIMIT 1";
+            // $jeton_max_query=$linkpdo->prepare($sql);
+            // $jeton_max_query->bindParam(':session_max', $session_max);
+            // $jeton_max_query->bindParam(':id', $id);
+            // $jeton_max_query->execute();
+            // $jeton_max_query ->debugDumpParams();
+            // exit();
+
+
+        $jeton_max_query =$linkpdo->prepare("DELETE FROM `placer_jeton` WHERE id_session=".$session_max." and id_objectif=".$id." ORDER BY date_heure DESC LIMIT 1");
+        $jeton_max_query->execute();
+        //$jeton_max_query -> debugDumpParams();
+        //exit();
    
         }
         catch (Exception $e) { // toujours faire un test de retour en cas de crash
             die('Erreur : ' . $e->getMessage());
         }
 
-        ///Affichage des entrées du résultat une à une
-        
-        $double_tab = $jeton_max_query -> fetchAll();
 
-        $jeton_max =  $double_tab[0][0];
-
-        if($jeton_max==NULL){
-            $jeton_max=0;
-        }
-
-        echo$session_max;
-        echo$jeton_max;
-
-        if($session_max ==0){
-            $session_actuelle=1;
-        }else{
-            echo$jeton_max;
-            $secondes_dernier_jeton=strtotime($jeton_max);
-            echo$secondes_dernier_jeton;
-            // exit();
-            // $jeton_max
-            $session_actuelle=$session_max; // je garde la même session 
             
-        }
+        
 
         
     
@@ -116,7 +105,6 @@ if (isset ($_GET['case']))  {
     // modif dans le nom
 
     $req = $linkpdo->prepare('UPDATE objectif SET nom = :intit where id_objectif = :id ');
-    $req2 = $linkpdo->prepare('insert into placer_jeton values ( :id_objectif, :time, :id_membre, :session)  ');
 
     if ($req == false){
         die("erreur linkpdo");
@@ -125,8 +113,8 @@ if (isset ($_GET['case']))  {
     try{
         
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));
-        $req2->execute(array('id_objectif' => $id, 'time' => date("Y/m/d H:i:s"), 'id_membre' => $_SESSION['logged_user'], 'session' => $session_actuelle));
         header("Location:choix_sys.php?id_sys=$id");
+       
 
 
         if ($req == false){

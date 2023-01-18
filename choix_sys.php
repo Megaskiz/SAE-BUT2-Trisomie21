@@ -430,7 +430,7 @@ is_validateur();
 
                                 echo "<td class='case_jeton' id=$compteur>";
                                 echo "<center>";
-                                echo "<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
+                                echo '<a href="choix_sys_remove.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine .'" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src='.$lien_jeton.' alt='.$lien_jeton.'></a>';
                                 echo "</center>";
                                 echo "</td>";
                             }
