@@ -320,19 +320,30 @@ if (isset($_GET['eject'])) {
                     if ($_SESSION["role_user"] == 1) {
                         echo '<a href="modif_enfant.php"> 
                         <button class="bouton-modif-enfant"> <span class="icon">&#x270E</span>   Modifer </button> </a>';
+
+                        echo '<button class="bouton-equipe" type="button" onclick="openDialog(\'dialog5\', this)">Modifer le jeton</button>';
+                        
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo "<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\">Valider la suppression</a>";
 
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
+
+                        echo "<form enctype=\"multipart/form-data\" action=\"ajout_modif_jeton\" method=\"POST\" class=\"dialog_form\">";
+                        echo "<div class=\"dialog_form_item\">";
+
+                        echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
+                        echo "</div><div class=\"dialog_form_actions\">";
+                        echo "<button type=\"submit\">Valider </button>";
+        
+
+                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Retour</button>";
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";
                         echo "</div>";
                     }
+                    
                     echo "</div>";
 
 
