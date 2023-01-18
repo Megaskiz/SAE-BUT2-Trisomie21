@@ -421,6 +421,9 @@ if (isset($_GET['eject'])) {
                         <th class='sms'>Statut</th>
                         <th>Statut</th>
                         <th>Accéder</th>
+                        ";
+                        if($_SESSION["role_user"]==1)
+                        echo"
                         <th class='sup'>Supprimer</th>
                         </tr>";
 

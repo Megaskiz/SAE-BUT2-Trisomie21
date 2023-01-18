@@ -1,7 +1,7 @@
 <?php
 require('fonctions.php');
 is_logged();
-is_not_admin();
+is_user();
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -107,9 +107,14 @@ if (isset($_GET['id_invalider'])) {
             }
             
             ?>
+            
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
-                    <button class="ajouter-membre" type="button" onclick="openDialog('dialogNEW1', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>   
+                    <?php
+                    if($_SESSION["role_user"]!=3){
+                    echo'<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';   
+                    }
+                    ?>
                     <div id="dialog_layer" class="dialogs">
                         <div role="dialog" id="dialogNEW1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                             <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
@@ -410,6 +415,7 @@ if (isset($_GET['id_invalider'])) {
 
                     echo"</div>";
                     echo " <div class=\"case-membre_2\">";
+                    if($_SESSION["role_user"]!=3){
                     echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$_GET['id']."', this)\">Valider ce compte membre</button>";
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog".$_GET['id']."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -422,6 +428,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+                    }
                 }
                 if (isset($_GET['idv'])) {
                     $idiv=$_GET['idv'];
@@ -450,6 +457,7 @@ if (isset($_GET['id_invalider'])) {
                     echo"</div>";
 
                     echo " <div class=\"case-membre_2\">";
+                    if($_SESSION["role_user"]!=3){
                     if ( $idiv!=$_SESSION['logged_user']){
                     echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
 
@@ -466,6 +474,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "</div>";
                     echo "</div>";
                     }
+                }
 
                 }
                 ?>
@@ -473,9 +482,10 @@ if (isset($_GET['id_invalider'])) {
         <div class="case-membre_2">
             <?php
             if(isset($_GET["idv"])){
+                if($_SESSION["role_user"]!=3){
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
-
+                }
             }
             
             ?>

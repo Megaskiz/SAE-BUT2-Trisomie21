@@ -78,6 +78,15 @@ function is_logged(){
     }
 }
 
+function is_user(){ 
+    if($_SESSION['role_user']==0 ){
+       echo"vous ne devriez pas etre la : ";
+       echo'<a href="page_admin.php">aller vers la page de connexion</a>';
+       header("location: page_admin.php");
+       exit();
+    }
+}
+
 function is_validateur(){ 
     if($_SESSION['role_user']==2 ){
        echo"vous ne devriez pas etre la : ";
@@ -86,6 +95,16 @@ function is_validateur(){
        exit();
     }
 }
+
+function is_coordinateur(){ 
+    if($_SESSION['role_user']==3 ){
+       echo"vous ne devriez pas etre la : ";
+       echo'<a href="page_admin.php">aller vers la page de connexion</a>';
+       header("location: page_admin.php");
+       exit();
+    }
+}
+
 
 function is_not_admin(){ 
     if($_SESSION['role_user']!=1 ){
