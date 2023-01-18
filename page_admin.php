@@ -102,10 +102,13 @@ if (isset($_GET['eject'])) {
                 </li>
                 <?php
                 //acces à la page de membre
-                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2 or $_SESSION["role_user"] == 3) {
-
+                if ($_SESSION["role_user"] !=0) {
                     echo '<li class="nav-item">';
                     echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>';
+                    echo '</li>';
+                }else{
+                    echo '<li class="nav-item">';
+                    echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="mon_compte.php">Mon profil</a>';
                     echo '</li>';
                 }
 
@@ -352,10 +355,26 @@ if (isset($_GET['eject'])) {
                     echo "<a class=\"tuteur_4\"></a>";
                     $getid = $_GET['id'];
                     echo "<p>";
-                    $allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre ORDER BY nom;");
+                    $allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role_user FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre ORDER BY nom;");
                     while ($tuteur = $allTuteurs->fetch()) {
+                        switch ($tuteur['role_user']) {
+                            case '0':
+                                $role = 'Utilisateur';
+                                break;
+
+                            case '1':
+                                $role = "Administrateur";
+                                break;
+                            case '2':
+                                $role = "Validateur (administration)";
+                                break;
+            
+                            default:
+                                $role = "Coordinateur";
+                                break;
+                        }
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
-                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> role : " . $tuteur['role'] . "    ";
+                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> rôle : " .  $role . "    ";
                         echo '<a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Information</button></a><br>';
                         echo '<a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Retirer de l\'équipe</button><br></a>';
                     }

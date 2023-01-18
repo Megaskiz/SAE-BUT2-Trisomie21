@@ -1,7 +1,7 @@
 <?php
 require('fonctions.php');
 is_logged();
-is_not_admin();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -175,15 +175,7 @@ if (isset($_GET['id_invalider'])) {
                         $identifiant = $double_tab[$i][0];
 
                         echo '<td>';
-                        echo "<button class=\"acceder\" type=\"button\" onclick=\"openDialog('dialog3', this)\">Valider ce compte membre</button>";
-                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog3\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p>Vous voulez valider ce compte membre dans l'application ?</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo '<a type="button" class="acceder" href="page_certif_compte.php?id_valider='.$identifiant.'">Valider</a>';
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo "</div>";
+                        
                         echo "</form>";
                         echo "</div>";
                         echo '</td>';

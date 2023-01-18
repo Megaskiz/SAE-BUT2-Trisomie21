@@ -268,7 +268,7 @@ if (isset($_GET['id_invalider'])) {
                     break;
 
                 default:
-                    $role = "jsp";
+                    $role = "Coordinateur";
                     $trois="selected";
                     break;
             }

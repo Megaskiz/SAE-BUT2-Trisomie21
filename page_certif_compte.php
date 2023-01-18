@@ -459,6 +459,9 @@ if (isset($_GET['id_invalider'])) {
                     echo " <div class=\"case-membre_2\">";
                     if($_SESSION["role_user"]!=3){
                     if ( $idiv!=$_SESSION['logged_user']){
+                        if($_GET["idv"]!=1){
+                        
+                        
                     echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
 
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
@@ -473,6 +476,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+                }
                     }
                 }
 
@@ -482,13 +486,13 @@ if (isset($_GET['id_invalider'])) {
         <div class="case-membre_2">
             <?php
             if(isset($_GET["idv"])){
-                if($_SESSION["role_user"]!=3){
+                if($_SESSION["role_user"]==1){
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
-                }else{
+                }elseif ($_SESSION["role_user"]==2){ // validateur
+                    echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                     if($id_membre==$_SESSION['logged_user']){
                         echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
-
                     }
 
                 }
