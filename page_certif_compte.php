@@ -485,6 +485,12 @@ if (isset($_GET['id_invalider'])) {
                 if($_SESSION["role_user"]!=3){
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
+                }else{
+                    if($id_membre==$_SESSION['logged_user']){
+                        echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
+
+                    }
+
                 }
             }
             
