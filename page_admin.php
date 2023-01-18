@@ -421,9 +421,6 @@ if (isset($_GET['eject'])) {
                         <th class='sms'>Statut</th>
                         <th>Statut</th>
                         <th>Accéder</th>
-                        ";
-                        if($_SESSION["role_user"]==1)
-                        echo"
                         <th class='sup'>Supprimer</th>
                         </tr>";
 
@@ -699,7 +696,7 @@ if (isset($_GET['eject'])) {
                     echo "</section>";
                 }
 
-                // Popup equipier 
+                // Popup Ajouter equipier 
 
 
                 echo '<div role="dialog" id="dialog2" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
@@ -707,42 +704,25 @@ if (isset($_GET['eject'])) {
 
 
                 try {
-                    $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1 ORDER BY nom;");
+                    $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$getid' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
                 }
 
-                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                $nombre_ligne = $res->rowCount();
-                $liste = array();
-                echo "<table class='no-break'>";
-
-                for ($i = 0; $i < $nombre_ligne; $i++) {
+                while ($tuteur = $res->fetch()) {
                     echo "<tr>";
-                    for ($y = 1; $y < 3; $y++) {
-                        echo "<td>";
-                        print_r(htmlspecialchars($double_tab[$i][$y]));
-                        $liste[$y] = $double_tab[$i][$y];
-                        $nom = $double_tab[$i][1];
-                        $prenom = $double_tab[$i][2];
-
-                        echo "</td>";
-                    }
-                    $identifiant = $double_tab[$i][0];
-
-                    echo '<td>';
-                    //echo "</div>";
-                    echo '</td>';
-                    echo "<td class=\"Profil\" >";
-                    ?>
-                    <form action="groupe_validation.php?id_enfant=<?= $_GET['id'] ?>&id_membre=<?php echo $double_tab[$i][0]; ?>" method="post">
-                        <button type="submit">Ajouter</button>
-                    </form>
-                <?php
-
+                    echo "<td>" . htmlspecialchars($tuteur['nom']) . "&nbsp" . "</td>";
+                    echo "<td>" . htmlspecialchars($tuteur['prenom']) . "</td>";
+                    echo "<td class='Profil'>";
+                    echo "<form action='groupe_validation.php?id_enfant=$getid&id_membre=$tuteur[id_membre]' method='post'>";
+                    
+                    echo "<button type='submit'>Ajouter</button>";
+                    echo "</form>";
+                    echo "<br>";
                     echo "</td>";
                     echo "</tr>";
                 }
+                
                 echo "</table>";
 
                 echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
