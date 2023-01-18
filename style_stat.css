@@ -1,0 +1,48 @@
+.st_sys {
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 3%;
+}
+
+center {
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.titre_stat {
+    color: white;
+    background-color: #007bff;
+    border: transparent;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.case_stat {
+    border: 1px solid #000000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 2%;
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.left_stat {
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.right_stat {
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.vsc-initialized {
+    background-color: #acd4ff;
+}
