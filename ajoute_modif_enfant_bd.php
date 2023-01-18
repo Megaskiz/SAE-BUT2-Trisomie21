@@ -29,15 +29,6 @@ try {
             $date_naissance = $_POST['date_naissance'];
             
     
- 
-
-
-
-            
-            
-
-                    
-
                     $req = $linkpdo->prepare("UPDATE enfant  SET nom=? ,prenom= ?,date_naissance= ?,adresse= ?,activite= ?,handicap= ?, info_sup= ? WHERE id_enfant= ?");
 
                     if ($req == false){

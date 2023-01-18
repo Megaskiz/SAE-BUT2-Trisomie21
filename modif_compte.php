@@ -1,7 +1,8 @@
 <?php
 require('fonctions.php');
-is_logged();
-is_not_admin();
+is_logged(); //redirige si on est pas logged
+is_user();   //redirige si on est "utilisateur"
+is_coordinateur(); // redirige si on est "coordinateur"
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -267,7 +268,7 @@ if (isset($_GET['id_invalider'])) {
                     break;
 
                 default:
-                    $role = "jsp";
+                    $role = "Coordinateur";
                     $trois="selected";
                     break;
             }
