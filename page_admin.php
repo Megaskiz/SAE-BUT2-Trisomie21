@@ -30,7 +30,7 @@ if (isset($_GET['eject'])) {
     $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
     try {
         $res = $linkpdo->query($req_eject);
-        header('Location: page_admin.php');
+        header('Location: page_admin.php?id='.$_SESSION['id_enfant']);
     } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
         die('Erreur : ' . $e->getMessage());
     }
