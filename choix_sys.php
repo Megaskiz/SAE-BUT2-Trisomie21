@@ -89,10 +89,18 @@ is_validateur();
     if (isset($_GET['id_sys'])) {
         $id = $_GET['id_sys'];
         $_SESSION['id_sys'] = $_GET['id_sys'];
-
-        echo'<a href="new_session.php?id='.$_SESSION["id_sys"].'"><button class="droite">Démarrer une nouvelle session</button></a>';
-
-
+?>
+        <script>
+  function confirmation() {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+      window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
+    } else {
+      window.close();
+    }
+  }
+</script>
+<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+<?php
         try {
             $res = $linkpdo->query("SELECT * FROM objectif where id_objectif=$id");
         } catch (Exception $e) { // toujours faire un test de retour en cas de crash
