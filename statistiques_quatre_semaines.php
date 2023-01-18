@@ -6,9 +6,16 @@ is_validateur();
 ?>
 
 <!DOCTYPE html>
+<html lang="fr" style="font-family: Arial,sans-serif;">
+<head>
+  <meta charset="utf-8">
+  <title> Statistiques</title>
+  <link rel="stylesheet" href="style_stat.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <?php
-
+echo '<a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
 
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
@@ -188,17 +195,17 @@ $lose =0; // compteur de sessions non réussies
     $nom = $double_tab[0][0];
 echo'
 
-<center>
-<h1>Système : '.$nom.'</h1>
+<center class="titre_stat">
+<h1>Objectif : '.$nom.'</h1>
 
 </center>
-<div style="display:flex">
-  <div style="width:45%">
+<div class="case_stat" style="display:flex">
+  <div class="left_stat" style="width:45%">
     <canvas id="myChart'.$iteration.'"></canvas>
   </div>
   <div style="width:10%">
   </div>
-  <div style="width:45%">
+  <div class="right_stat" style="width:45%">
     <canvas id="myChart2'.$iteration.'"></canvas>
   </div>
 </div>

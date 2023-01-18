@@ -15,7 +15,7 @@ is_validateur();
 </head>
 
 <?php
-
+echo '<a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
 
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");

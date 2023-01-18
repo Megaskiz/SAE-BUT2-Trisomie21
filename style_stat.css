@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .st_sys {
     border: none;
     border-radius: 10px;
@@ -46,4 +50,16 @@ center {
 
 .vsc-initialized {
     background-color: #acd4ff;
+}
+
+button {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0.5px;
+    color: #fff;
 }
