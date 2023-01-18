@@ -325,10 +325,10 @@ if (isset($_GET['id_invalider'])) {
                             echo"</div>";
                         }else{
                             echo '<p> Role de l\'utilisateur :</p> <select name="role">
-                            <option value="0"'.$zero.'>utilisateur(s)</option>
+                            <option value="0"'.$zero.'>utilisateur</option>
                             <option value="1"'.$un.'>Administrateur</option>
                             <option value="2"'.$deux.'>Validateur (administration)</option>
-                            <option value="3"'.$trois.'>jsp, a modifier</option>
+                            <option value="3"'.$trois.'>Coordinateur</option>
                             </select>';
                             echo"</div>";
                         }
