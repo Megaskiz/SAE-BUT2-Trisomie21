@@ -302,7 +302,7 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                 echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                echo "<p  class='popup-txt'> Attention vous enlevez definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                echo "<p  class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>";
                 echo "<div class=\"dialog_form_actions\">";
                 echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
                 echo "<a class='popup-btn' href=\"page_admin.php?id_suppr='$identifiant'\">Valider</a>";

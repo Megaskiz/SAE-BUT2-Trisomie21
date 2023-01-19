@@ -99,6 +99,7 @@ is_validateur();
     }
   }
 </script>
+
 <a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
 <?php
         try {
@@ -154,9 +155,22 @@ is_validateur();
                         //mettre le bouton qui propose de créer une nouvelle session
     
 
-                        echo"<p>Aucune session n'existe pour ce système, voullez vous entamer votre première session</p> <br>";
-                        echo'<a href="new_session.php?id='.$_SESSION["id_sys"].'"><button class="droite">Démarrer une nouvelle session</button></a>';
+        
+                        ?>
+<p>Aucune session n'existe pour ce système, voullez vous entamer votre première session</p> <br>
+<script>
+    
+  function confirmation() {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+      window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
+    } else {
+      window.close();
+    }
+  }
+</script>
 
+<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+<?php
                          
                         // afficher le sys, en l'état mais sans bouton cliquable
 
@@ -269,8 +283,22 @@ is_validateur();
                             //mettre le bouton qui propose de créer une nouvelle session
         
 
-                            echo"<p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>";
-                            echo'<a href="new_session.php?id='.$_SESSION["id_sys"].'"><button class="droite">Démarrer une nouvelle session</button></a>';
+                            ?>
+<p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>
+<script>
+    
+  function confirmation() {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+      window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
+    } else {
+      window.close();
+    }
+  }
+</script>
+
+<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+<?php
+                            
 
                              
                             // afficher le sys, en l'état mais sans bouton cliquable
@@ -470,9 +498,24 @@ try {
     $session_max = $double_tab[0][0];
 
     if($session_max==NULL){
+        
+       
+        
+        ?>
+<br> <p>Aucune session n'existe pour ce système, voulez vous entamer votre première session</p> <br>
+<script>
+    
+  function confirmation() {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+      window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
+    } else {
+      window.close();
+    }
+  }
+</script>
 
-        echo"<p>Aucune session n'existe pour ce système, voullez vous entamer votre première session</p> <br>";
-        echo'<a href="new_session.php?id='.$_SESSION["id_sys"].'"><button class="droite">Démarrer une nouvelle session</button></a>';
+<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+<?php
 
         // afficher le sys, en l'état mais sans bouton cliquable
 
@@ -606,11 +649,26 @@ try {
         $secondes_premier_jeton=strtotime($jeton_premier);
         
         if($secondes_premier_jeton+$duree_sys_en_seconde<time()){
+?>
+<p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>
+<script>
+    
+  function confirmation() {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+      window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
+    } else {
+      window.close();
+    }
+  }
+</script>
 
+<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+<?php
             
 
-            echo"<p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>";
-            echo'<a href="new_session.php?id='.$_SESSION["id_sys"].'"><button class="droite">Démarrer une nouvelle session</button></a>';
+           
+            
+            
 
 
             //***************************** */
