@@ -274,11 +274,11 @@ if (isset($_GET['id_putback'])) {
                     echo"<center>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver ce profil</button>';
                     echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo "<p> Restaurer le compte de cet enfant ? </p>";
+                    echo "<p class='popup-txt' > Voulez-vous réstaurer le compte de cet enfant ? </p>";
                     
-                    echo ' <div style="display:flex;">';
-                    echo '   <a href="archive_profil_enfant.php?id_putback='.$_GET["id"].'"><button style="margin-top: 10%;" class="button_ajouter-objectif">Valider</button></a>';
-                    echo '   <a href="archive_profil_enfant.php?id='.$_GET["id"].'"><button style="margin-top: 10%;" class="button_ajouter-objectif">Annuler</button></a>';
+                    echo ' <div style="display:flex; justify-content: space-evenly;">';
+                    echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                    echo '   <a  class="popup-btn"  href="archive_profil_enfant.php?id_putback='.$_GET["id"].'">Valider</a>';
                     echo"</div>";
                     
                     echo"</div>";
