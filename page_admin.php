@@ -156,7 +156,10 @@ if (isset($_FILES['photo_enfant'])) {
 
                 //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
                 echo '<div class="bouton_enfant">';
+
                 echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
+
+                echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Archives profils enfants</button></a>';
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
@@ -190,8 +193,8 @@ if (isset($_FILES['photo_enfant'])) {
                 echo '</label>';
                 echo '</div>';
                 echo '<div class="dialog_form_actions">';
-                echo '<button type="submit">Valider l\'ajout</button>';
-                echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                echo '<button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                echo '<button class="popup-btn" type="submit">Valider l\'ajout</button>';
                 echo '</div>';
                 echo '</form>';
                 echo '</div>';
@@ -363,17 +366,15 @@ if (isset($_FILES['photo_enfant'])) {
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     
 
-                        echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
+                        echo "<img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
 
                         echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" class=\"dialog_form\">";
                         echo "<div class=\"dialog_form_item\">";
 
                         echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
                         echo "</div><div class=\"dialog_form_actions\">";
-                        echo "<button type=\"submit\">Valider </button>";
-        
-
-                        echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Retour</button>";
+                        echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
+                        echo "<button class='popup-btn' type=\"submit\">Valider </button>";
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";
@@ -420,16 +421,18 @@ if (isset($_FILES['photo_enfant'])) {
                                 $role = "Coordinateur";
                                 break;
                         }
+                        echo "<div class='popup_info'>";
                         echo "<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">    ";
-                        echo " <b>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</b> rôle : " .  $role . "    ";
-                        echo '<a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Information</button></a><br>';
-                        echo '<a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Retirer de l\'équipe</button><br></a>';
+                        echo " <p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " .  $role . "    ";
+                        echo '<a class="equipier" href="page_certif_compte.php?idv=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant">Information</button></a>';
+                        echo '<a class="equipier" href="page_admin.php?id=' . $getid . '&eject=' . $tuteur['id_membre'] . '"><button class="acceder-information-enfant" style= " background-color: rgb(206, 205, 205); color:black;">Retirer de l\'équipe</button> </a> </div>'; 
                     }
+
                     if ($allTuteurs = null) {
                         echo "Suivie par aucun tuteur";
                     }
                     echo "</p>";
-                    echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                    echo '<button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
 
                     echo '</div>';
                     echo '</div>';
@@ -451,6 +454,7 @@ if (isset($_FILES['photo_enfant'])) {
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                         echo' <div style="display:flex">';
                         echo '   <a href="page_creatsystem.php"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
+                        echo '   <a href="  archive_sys.php"><button class="button_ajouter-objectif">Objectifs archivées</button></a>';
                         echo '   <a href="statistiques.php"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
                         echo '   <a href="statistiques_quatre_semaines.php"><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
                         echo' </div>';                    }
@@ -600,10 +604,7 @@ if (isset($_FILES['photo_enfant'])) {
                 ?>
                             <div class="chat_all">
                                 <div class="chat_title">
-                                    <svg class="chat_svg" aria-hidden="true" data-prefix="fas" data-icon="comment-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                                        <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path>
-                                    </svg>
-                                    Messagerie du système à jeton
+                                💬Messagerie du système à jeton
                                 </div>
                                 <div class="chat_list_msg">
                                     <section id="message">
@@ -720,17 +721,17 @@ if (isset($_FILES['photo_enfant'])) {
                             //bouton supprimer un sys -> "archiver"
                             if ($_SESSION["role_user"] == 1) {
                                 echo "<center>";
-                                echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+                                echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/archive.png'></a></button>";
                                 echo "</center>";
                                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                                 echo "<div role=\"dialog\" id=\"dialog" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
 
-                                echo "<p> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive</p>";
+                                echo "<p class='popup-txt'> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive.</p>";
                                 echo "<div class=\"dialog_form_actions\">";
-
-                                echo "<a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"><button class='sup-objectif'>Supprimer le système</button></a>";
-                                echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                                
+                                echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                                echo "<a class='popup-btn' 'popup-btn' href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Archiver cet objectif </a>";
                                 echo "</div>";
                                 
                             }
@@ -767,22 +768,25 @@ if (isset($_FILES['photo_enfant'])) {
                 echo '<div role="dialog" id="dialog2" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 //echo '<form enctype="multipart/form-data" action="groupe_validation.php" method="post" class="dialog_form">';
 
-
+             
                 try {
                     $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$getid' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
                 }
 
+             
                 while ($tuteur = $res->fetch()) {
+                    echo "<div class='btn_ajouter'>";
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($tuteur['nom']) . "&nbsp" . "</td>";
                     echo "<td>" . htmlspecialchars($tuteur['prenom']) . "</td>";
                     echo "<td class='Profil'>";
+                   
                     echo "<form action='groupe_validation.php?id_enfant=$getid&id_membre=$tuteur[id_membre]' method='post'>";
-                    
-                    echo "<button type='submit'>Ajouter</button>";
+                    echo "<button id='ajt' type='submit'>Ajouter &#x2b;</button>";
                     echo "</form>";
+                    echo "</div>";
                     echo "<br>";
                     echo "</td>";
                     echo "</tr>";
@@ -790,7 +794,7 @@ if (isset($_FILES['photo_enfant'])) {
                 
                 echo "</table>";
 
-                echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
+                echo '<button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
 
                 //echo "</form";
                 echo "</div";

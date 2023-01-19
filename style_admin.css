@@ -101,7 +101,7 @@ td {
         flex-direction: row-reverse;
         align-items: center;
         padding: 7px 15px;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 12px;
         border: none;
         color: white;
@@ -119,12 +119,36 @@ td {
     }
     .bouton_enfant {
         margin: auto;
-        width: 50%;
+        display: flex;
+        justify-content: space-around;
     }
     a {
         text-decoration: none;
         color: white;
     }
+
+    img.photo-jeton {
+        width: 20%;
+        margin: auto;
+        display: block;
+        margin-bottom: 5%;
+    }
+
+
+    #ajt{
+        margin: 15px;
+    }
+
+    p.popup-txt {
+        text-align: center;
+        margin: 3%;
+    }
+
+    .btn_ajouter {
+        display: flex;
+        align-items: center;
+    }
+
     a.equipier {
         text-decoration: none;
         color: black;
@@ -235,8 +259,8 @@ td {
         max-width: 70%;
     }
     .dialog_form_actions {
-        text-align: right;
-        padding: 0 20px 20px;
+        display: flex;
+        justify-content: space-evenly;
     }
     .dialog_form_actions1 {
         padding: 0 20px 20px;
@@ -344,6 +368,37 @@ td {
     }
     .bouton_recherche:hover {
         background-color: rgb(221, 221, 221);
+    }
+
+    .popup_info {
+        display: flex;
+        margin: 3%;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid 1px;
+        border-top: solid 1px;
+        padding: 6px;
+    }
+
+
+    .popup-btn{
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        align-items: center;
+        background-color: rgb(206, 205, 205);
+        border-radius: 5px;
+        border:none;
+        padding: 10px 15px;
+        color: #000;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+
+    .popup-btn:hover{
+        background-color: #fec107;
+        color: #fff;
     }
     /*------------------------ Menu information sur l'enfant (droite)--------------------*/
     .section_enfant {
@@ -477,7 +532,7 @@ td {
         border-radius: 0 0 5px 5px;
     }
     .button_ajouter-objectif {
-        padding: 10px 20px;
+        padding: 12px 20px;
         border-radius: 5px;
         font-size: 12px;
         border: none;
@@ -485,8 +540,6 @@ td {
         background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
-        margin-top: 1vh;
-        margin-left: 1vh;
     }
     .button_ajouter-objectif:hover {
         background-color: #fec107;
@@ -551,6 +604,12 @@ td {
         border: none;
         cursor: pointer;
         background-color: transparent;
+    }
+
+    .supprimer-objectif:hover {
+        background-color:red;
+        cursor: pointer;
+        border-radius: 50px;
     }
     .delet-icon {
         width: 25px;
@@ -746,8 +805,9 @@ td {
         background-color: #fec107;
     }
     img.icone-ajouter-membre {
-        width: 20%;
-        margin-right: 5px;
+        margin: 0;
+        height: 25px;
+        cursor: pointer;
     }
     form.recherche {
         display: flex;
