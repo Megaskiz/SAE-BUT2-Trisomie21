@@ -209,6 +209,11 @@
         text-decoration: none;
         color: black;
     }
+
+    p.popup-txt {
+        text-align: center;
+        margin: 3%;
+    }
     .acceder-information-membre {
         display: block;
         padding: 5px 15px;
@@ -448,6 +453,11 @@
         color: #000;
         cursor: pointer;
         transition: 0.3s;
+    }
+
+    .popup-btn:hover{
+        background-color:#fec107;
+        color: #fff;
     }
     /*------------------------ Menu information sur le membre (droite)--------------------*/
     .membre {

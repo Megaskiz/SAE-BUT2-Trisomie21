@@ -420,10 +420,10 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialog".$_GET['id']."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p>Vous voulez valider ce compte membre dans l'application !</p>";
+                    echo "<p class='popup-txt'>Vous voulez valider ce compte membre dans l'application !</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_valider='.$_GET['id'].'">Valider</a>';
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo '<a class="popup-btn" href="page_certif_compte.php?id_valider='.$_GET['id'].'">Valider</a>';
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
@@ -468,10 +468,10 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div role=\"dialog\" id=\"dialogI".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
-                    echo "<p>Vous voulez invalider ce compte membre dans l'application ?</p>";
+                    echo "<p class='popup-txt'>Voulez-vous invalider ce compte membre dans l'application ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
-                    echo '<a href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
-                    echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo '<a class="popup-btn" href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
