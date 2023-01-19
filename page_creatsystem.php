@@ -82,7 +82,7 @@ catch (Exception $e) {
                 ///Affichage des entrées du résultat une à une
                 while ($data = $res->fetch()) {
                     echo '<div class="div-photo-enfant">';
-                    echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"Tête de l'enfant\">";
+                    echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"visage de : " . $data['prenom'] . "\">";
                     echo '</div>';
                     $date = strval($data[3]);
                     $datefinal = new DateTime($date);
