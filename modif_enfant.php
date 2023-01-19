@@ -278,21 +278,19 @@ if (isset($_GET['id_suppr'])) {
                 // case du logo de l'enfant
                 echo "<div class='div-modif-photo'>";
                 //--------
-                echo "<button class='modifier-photo' type=\"button\" onclick=\"openDialog('dialog11', this)\">modifier la photo</button>";
+                echo "<button class='modifier-photo' type=\"button\" onclick=\"openDialog('dialog11', this)\">Modifier la photo</button>";
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                 echo "<div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">";
 
-                echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">modifier la photo</h2>";
+                echo "<h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>";
 
                 echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" class=\"dialog_form\">";
                 echo "<div class=\"dialog_form_item\">";
                 echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
                 echo "</div><div class=\"dialog_form_actions\">";
-                echo "<button type=\"submit\">Valider </button>";
-
-
-                echo "<button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button></div></form></div></div>";
+                echo "  <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
+                echo "<button class='popup-btn' type=\"submit\">Valider </button></div></form></div></div>";
 
                 //--------
                 echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
@@ -304,12 +302,10 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                 echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
+                echo "<p  class='popup-txt'> Attention vous enlevez definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                 echo "<div class=\"dialog_form_actions\">";
-                echo "<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\"><button class=\"s\">Valider</button></a>";
-
-
-                echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
+                echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                echo "<a class='popup-btn' href=\"page_admin.php?id_suppr='$identifiant'\">Valider</a>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
