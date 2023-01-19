@@ -460,9 +460,9 @@ if (isset($_FILES['photo_enfant'])) {
 
                     // tous les systèmes de l'enfant :
 
-                    ///Sélection de tout le contenu de la table enfant
+                   
                     try {
-                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where id_enfant=' . $id . ' ORDER BY priorite ');
+                        $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=0 and id_enfant=' . $id . ' ORDER BY priorite ');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -487,7 +487,7 @@ if (isset($_FILES['photo_enfant'])) {
                         <th class='sms'>Statut</th>
                         <th>Statut</th>
                         <th>Accéder</th>
-                        <th class='sup'>Supprimer</th>
+                        <th class='sup'>Archiver</th>
                         </tr>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
@@ -725,15 +725,14 @@ if (isset($_FILES['photo_enfant'])) {
                                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
 
                                 echo "<div role=\"dialog\" id=\"dialog" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
-                                echo "<p> Attention, supprimer ce système est définitif, et supprimera aussi tous les messages associés, plus personne n'y aura accces. ?</p>";
+                                echo "<p> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive</p>";
                                 echo "<div class=\"dialog_form_actions\">";
 
                                 echo "<a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"><button class='sup-objectif'>Supprimer le système</button></a>";
                                 echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                                 echo "</div>";
-                                echo "</form>";
+                                
                             }
 
 

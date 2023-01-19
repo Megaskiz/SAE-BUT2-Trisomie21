@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 19 jan. 2023 à 18:16
--- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.1.12
+-- Généré le : jeu. 19 jan. 2023 à 19:03
+-- Version du serveur : 10.4.24-MariaDB
+-- Version de PHP : 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `enfant` (
   `info_sup` varchar(1000) DEFAULT NULL,
   `photo_enfant` varchar(100) DEFAULT NULL,
   `visibilite` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `enfant`
@@ -59,7 +59,7 @@ INSERT INTO `enfant` (`id_enfant`, `nom`, `prenom`, `date_naissance`, `lien_jeto
 CREATE TABLE `lier` (
   `id_objectif` int(11) NOT NULL,
   `id_recompense` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `lier`
@@ -91,22 +91,23 @@ CREATE TABLE `membre` (
   `mdp` varchar(500) DEFAULT NULL,
   `pro` tinyint(1) DEFAULT NULL,
   `compte_valide` tinyint(1) DEFAULT NULL,
-  `role_user` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `role_user` int(1) NOT NULL,
+  `visibilite` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `membre`
 --
 
-INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `courriel`, `date_naissance`, `mdp`, `pro`, `compte_valide`, `role_user`) VALUES
-(1, 'compte', 'administrateur', '77 chemin de la salade ponsan', '31000', 'toulouse', 'test@gmail.com', '0000-00-00', 'e712226da3facf4c458d431a4068ce0cb47df2cf30f44636255db54adb76caa7', 1, 1, 1),
-(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie', '38600', 'nantes', 'christine@mail.com', '0000-00-00', '2983cae49631ea124afecf8183d827d54098175dedd78ff261d9c02b9d60186b', 0, 1, 0),
-(3, 'Lazure', 'Thomas', '97, Boulevard de Normandie', '97200', 'fort-de-france', 'thomas@mail.com', '1993-09-15', '1ebb92636717caa01d195ad0091f642d0a3d4f73a5cbe6ebb3502267d3c96d22', 0, 1, 0),
-(9, 'trochel', 'paul', '77 chemin ponsan', '31000', 'toulouse', 'trochel.paul@gmail.com', '2003-06-30', 'a47fdb4f44865cd6e9d8f0c77733be25c29f6719e34a9cc67cabb405df8ff684', 0, 1, 0),
-(17, 'paul', 'trochel', 'ljm', '5555', 'laùj', '1@mail.com', '3030-03-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 1, 2),
-(18, 'non valide', 'utilisateur', 'lksj', '33333', 'ville', 'mail@mail.mail', '2003-06-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0),
-(19, 'trochell', 'paul ', '77 chemin', '31000', 'toulousee', 'trochel@gmail.com', '2003-06-30', '64d0e6d2312c3d8fadb60fcce0c6151fec5962583d6fc08dbaa47c6b9245fb42', 0, 0, 0),
-(20, 'test', 'nouveau', 'compte', '11111', 'testville', 'mkjqsmlkj@makjfemlkj', '1002-02-10', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0);
+INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `courriel`, `date_naissance`, `mdp`, `pro`, `compte_valide`, `role_user`, `visibilite`) VALUES
+(1, 'compte', 'administrateur', '77 chemin de la salade ponsan', '31000', 'toulouse', 'test@gmail.com', '0000-00-00', 'e712226da3facf4c458d431a4068ce0cb47df2cf30f44636255db54adb76caa7', 1, 1, 1, 0),
+(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie', '38600', 'nantes', 'christine@mail.com', '0000-00-00', '2983cae49631ea124afecf8183d827d54098175dedd78ff261d9c02b9d60186b', 0, 1, 0, 0),
+(3, 'Lazure', 'Thomas', '97, Boulevard de Normandie', '97200', 'fort-de-france', 'thomas@mail.com', '1993-09-15', '1ebb92636717caa01d195ad0091f642d0a3d4f73a5cbe6ebb3502267d3c96d22', 0, 1, 0, 0),
+(9, 'trochel', 'paul', '77 chemin ponsan', '31000', 'toulouse', 'trochel.paul@gmail.com', '2003-06-30', 'a47fdb4f44865cd6e9d8f0c77733be25c29f6719e34a9cc67cabb405df8ff684', 0, 1, 0, 0),
+(17, 'paul', 'trochel', 'ljm', '5555', 'laùj', '1@mail.com', '3030-03-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 1, 2, 0),
+(18, 'non valide', 'utilisateur', 'lksj', '33333', 'ville', 'mail@mail.mail', '2003-06-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0, 0),
+(19, 'trochell', 'paul ', '77 chemin', '31000', 'toulousee', 'trochel@gmail.com', '2003-06-30', '64d0e6d2312c3d8fadb60fcce0c6151fec5962583d6fc08dbaa47c6b9245fb42', 0, 0, 0, 0),
+(20, 'test', 'nouveau', 'compte', '11111', 'testville', 'mkjqsmlkj@makjfemlkj', '1002-02-10', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ CREATE TABLE `message` (
   `date_heure` datetime DEFAULT NULL,
   `id_objectif` int(11) NOT NULL,
   `id_membre` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `message`
@@ -150,23 +151,24 @@ CREATE TABLE `objectif` (
   `travaille` tinyint(1) DEFAULT NULL,
   `id_membre` int(11) NOT NULL,
   `id_enfant` int(11) NOT NULL,
-  `type` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `type` int(1) NOT NULL,
+  `visibilite` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `objectif`
 --
 
-INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`) VALUES
-(9, 'systeme maison', 'bien manger le matin_0000000:ne pas manger en dehors des repas_0000000:bien faire ses devoirs_0000000:', 21, 216, 'jeton', 0, 1, 1, 27, 3),
-(10, 'nom', 'rester concentré 5minutes_111:', 3, 0.014, 'jeton', 1, 0, 1, 27, 1),
-(11, 'maison', 'habiller seul_1111111:faire du sport_1111111:', 14, 168, 'jeton', 0, 0, 1, 27, 3),
-(17, 'manger', 'finir son assiete_111:', 3, 1, 'jeton', 1, 0, 1, 28, 1),
-(18, 'école', 'rester concentrer 5minutes_000000000:', 8, 1, 'jeton', 1, 0, 1, 28, 1),
-(20, 'douche maison', 'il faut se doucher sans pleurer_11111:', 5, 5, 'jeton', 2, 0, 1, 27, 1),
-(21, 'douche tous les jours', 'se laver tous les jours de la semaine_1111000:', 7, 192, 'jeton', 3, 0, 1, 27, 1),
-(22, 'maison', 'ne pas faire de caprices_0110000:', 7, 1, 'jeton', 2, 0, 1, 27, 1),
-(26, 'test', 'Ne pas pleurer_1100000:Faire ses devoirs_0000000:', 14, 168, 'jeton', 3, 0, 1, 27, 3);
+INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`, `visibilite`) VALUES
+(9, 'systeme maison', 'bien manger le matin_0000000:ne pas manger en dehors des repas_0000000:bien faire ses devoirs_0000000:', 21, 216, 'jeton', 0, 1, 1, 27, 3, 0),
+(10, 'nom', 'rester concentré 5minutes_111:', 3, 0.014, 'jeton', 1, 0, 1, 27, 1, 0),
+(11, 'maison', 'habiller seul_1111111:faire du sport_1111111:', 14, 168, 'jeton', 0, 0, 1, 27, 3, 0),
+(17, 'manger', 'finir son assiete_111:', 3, 1, 'jeton', 1, 0, 1, 28, 1, 0),
+(18, 'école', 'rester concentrer 5minutes_000000000:', 8, 1, 'jeton', 1, 0, 1, 28, 1, 0),
+(20, 'douche maison', 'il faut se doucher sans pleurer_11111:', 5, 5, 'jeton', 2, 0, 1, 27, 1, 0),
+(21, 'douche tous les jours', 'se laver tous les jours de la semaine_1111000:', 7, 192, 'jeton', 3, 0, 1, 27, 1, 0),
+(22, 'maison', 'ne pas faire de caprices_0110000:', 7, 1, 'jeton', 2, 0, 1, 27, 1, 0),
+(26, 'test', 'Ne pas pleurer_1100000:Faire ses devoirs_0000000:', 14, 168, 'jeton', 3, 0, 1, 27, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,7 @@ CREATE TABLE `placer_jeton` (
   `date_heure` datetime NOT NULL,
   `id_membre` int(11) NOT NULL,
   `id_session` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `placer_jeton`
@@ -278,7 +280,7 @@ CREATE TABLE `recompense` (
   `intitule` varchar(50) DEFAULT NULL,
   `descriptif` text DEFAULT NULL,
   `lien_image` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `recompense`
@@ -320,7 +322,7 @@ CREATE TABLE `suivre` (
   `id_membre` int(11) NOT NULL,
   `date_demande_equipe` date DEFAULT NULL,
   `role` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `suivre`
