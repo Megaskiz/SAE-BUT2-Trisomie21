@@ -4,6 +4,8 @@ session_start();
 
 $id_sys = $_GET['id_sys'];
 
+
+
 ///Sélection de tout le contenu de la table enfant
 
 try {
@@ -13,19 +15,36 @@ try {
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+
+   
+/*
+- la table système
+*/
+$req = $linkpdo->prepare('UPDATE objectif SET visibilite = "1" where id_objectif = '.$id_sys);
+
+if ($req == false){
+    die("erreur linkpdo");
+}   
+    ///Exécution de la requête
+try{
+    
+    $req->execute(array());
+    // $req->debugDumpParams();
+    // exit();
+    header("Location:page_admin.php");
     
 
 
-$req_suppr = "DELETE FROM message where id_objectif=$id_sys;DELETE FROM lier where id_objectif=$id_sys;DELETE FROM objectif where id_objectif=$id_sys";
-
-try {
-    $res = $linkpdo->query($req_suppr);
-    // ne fonctionne plus parce qu'il y a le id sys dans la table "placer_jeton", il faut rajouter un champ " visible" dans la table objectif, pour qu'on l'affiche ou non
-    header('Location: page_admin.php?id='.$_SESSION["id_enfant"]);
-} catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-    die('Erreur : ' . $e->getMessage());
+    if ($req == false){
+        $req->debugDumpParams;
+        die("erreur execute");
+    }else{
+        echo"<a href=\"page_admin.php\"> recharger la page</a>";         
+        
+    }
 }
-
-
+catch (Exception $e)
+{die('Erreur : ' . $e->getMessage());}
+    
 
 ?>

@@ -49,7 +49,7 @@ pour chaque sys faire :
 
 // je récupere tous le systèmes d'un enfant
 try {
-    $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where id_enfant=$id_enfant");
+    $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where visibilite=0 and id_enfant=$id_enfant");
 } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
     die('Erreur : ' . $e->getMessage());
 }
