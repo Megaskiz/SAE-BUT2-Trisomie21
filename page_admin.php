@@ -16,13 +16,37 @@ catch (Exception $e) {
 
 if (isset($_GET['id_suppr'])) {
     $id_suppression = $_GET['id_suppr'];
-    $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
-    try {
-        $res = $linkpdo->query($req_suppr);
-        header('Location: page_admin.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
+    // faire un update dans la bd sur un champs en plus
+    // il faut le faire sur :
+    
+    /*
+    - la table enfant
+    */
+    $req = $linkpdo->prepare('UPDATE enfant SET visibilite = "1" where id_enfant = '.$_SESSION["id_enfant"]);
+
+    if ($req == false){
+        die("erreur linkpdo");
+    }   
+        ///Exécution de la requête
+    try{
+        
+        $req->execute(array());
+        // $req->debugDumpParams();
+        // exit();
+        header("Location:page_admin.php");
+       
+
+
+        if ($req == false){
+            $req->debugDumpParams;
+            die("erreur execute");
+        }else{
+            echo"<a href=\"page_admin.php\"> recharger la page</a>";         
+           
+        }
     }
+    catch (Exception $e)
+    {die('Erreur : ' . $e->getMessage());}
 }
 if (isset($_GET['eject'])) {
     $id_eject = $_GET['eject'];
@@ -187,9 +211,9 @@ if (isset($_FILES['photo_enfant'])) {
                 try {
                     //acces tous les enfants
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant ORDER BY nom');
+                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 0 ORDER BY nom');
                     } else {
-                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where id_membre=' . $_SESSION["logged_user"] . ')');
+                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where visibilite = 0  and id_membre=' . $_SESSION["logged_user"] . ')');
                     }
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
