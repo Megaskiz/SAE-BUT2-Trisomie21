@@ -446,11 +446,11 @@ if (isset($_GET['id_putback'])) {
                     echo"<center>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver cet objectif</button>';
                     echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo "<p> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive</p>";
+                    echo "<p class='popup-txt'> Vous allez réstaurer ce système </p>";
                     
-                    echo ' <div style="display:flex;">';
-                    echo '   <a href="archive_sys.php?id_putback='.$double_tab[$i][5].'"><button style="margin-top: 10%;" class="button_ajouter-objectif">Valider</button></a>';
-                    echo '   <a href="archive_sys.php?id='.$double_tab[$i][5].'"><button style="margin-top: 10%;" class="button_ajouter-objectif">Annuler</button></a>';
+                    echo ' <div style="display:flex; justify-content: space-evenly;" >';
+                    echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                    echo '   <a class="popup-btn" href="archive_sys.php?id_putback='.$double_tab[$i][5].'">Valider</a>';
                     echo"</div>";
                     
                     echo"</div>";
