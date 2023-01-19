@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 16 jan. 2023 à 14:05
+-- Généré le : jeu. 19 jan. 2023 à 18:16
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -37,17 +37,18 @@ CREATE TABLE `enfant` (
   `activite` varchar(100) DEFAULT NULL,
   `handicap` varchar(100) DEFAULT NULL,
   `info_sup` varchar(1000) DEFAULT NULL,
-  `photo_enfant` varchar(100) DEFAULT NULL
+  `photo_enfant` varchar(100) DEFAULT NULL,
+  `visibilite` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `enfant`
 --
 
-INSERT INTO `enfant` (`id_enfant`, `nom`, `prenom`, `date_naissance`, `lien_jeton`, `adresse`, `activite`, `handicap`, `info_sup`, `photo_enfant`) VALUES
-(27, 'daniel', 'antoine', '2023-01-10', 'images/pngegg.png', '', '', '', '', 'images/63b8293dd7abe3.51430517.jpg'),
-(28, 'de trochel', 'paul jean', '2003-06-30', 'images/6390a3e21a4ce6.79858360.jpg', 'un deux', 'football', 'un deux', 'doit aller aux toilettes très régulièrement', NULL),
-(32, 'test', ' <script>alert(\'test\');</script>', '2023-01-04', 'images/63c443fbf31144.18829108.png', '', '', '', '', 'images/63c549fa1d1132.29287807.png');
+INSERT INTO `enfant` (`id_enfant`, `nom`, `prenom`, `date_naissance`, `lien_jeton`, `adresse`, `activite`, `handicap`, `info_sup`, `photo_enfant`, `visibilite`) VALUES
+(27, 'daniel', 'antoine', '2023-01-10', 'images/63c8178bb90a55.40397647.png', '', '', '', '', 'images/63b8293dd7abe3.51430517.jpg', 0),
+(28, 'de trochel', 'paul jean', '2003-06-30', 'images/6390a3e21a4ce6.79858360.jpg', 'un deux', 'football', 'un deux', 'doit aller aux toilettes très régulièrement', NULL, 0),
+(32, 'test', ' <script>alert(\'test\');</script>', '2023-01-04', 'images/63c443fbf31144.18829108.png', '', '', '', '', 'images/63c549fa1d1132.29287807.png', 1);
 
 -- --------------------------------------------------------
 
@@ -99,14 +100,13 @@ CREATE TABLE `membre` (
 
 INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `courriel`, `date_naissance`, `mdp`, `pro`, `compte_valide`, `role_user`) VALUES
 (1, 'compte', 'administrateur', '77 chemin de la salade ponsan', '31000', 'toulouse', 'test@gmail.com', '0000-00-00', 'e712226da3facf4c458d431a4068ce0cb47df2cf30f44636255db54adb76caa7', 1, 1, 1),
-(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie', '38600', 'nantes', 'christine@mail.com', '0000-00-00', '9425e1d10c0b47f77b61c759365f6c0089e1aea1d5f3fa9632afa48136e41287', 0, 1, 0),
+(2, 'Huppé', 'Christine ', '64, Boulevard de Normandie', '38600', 'nantes', 'christine@mail.com', '0000-00-00', '2983cae49631ea124afecf8183d827d54098175dedd78ff261d9c02b9d60186b', 0, 1, 0),
 (3, 'Lazure', 'Thomas', '97, Boulevard de Normandie', '97200', 'fort-de-france', 'thomas@mail.com', '1993-09-15', '1ebb92636717caa01d195ad0091f642d0a3d4f73a5cbe6ebb3502267d3c96d22', 0, 1, 0),
 (9, 'trochel', 'paul', '77 chemin ponsan', '31000', 'toulouse', 'trochel.paul@gmail.com', '2003-06-30', 'a47fdb4f44865cd6e9d8f0c77733be25c29f6719e34a9cc67cabb405df8ff684', 0, 1, 0),
 (17, 'paul', 'trochel', 'ljm', '5555', 'laùj', '1@mail.com', '3030-03-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 1, 2),
-(18, 'non valide', 'utilisateur', 'lksj', '33333', 'ville', 'mail@mail.mail', '2003-06-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 1, 0),
+(18, 'non valide', 'utilisateur', 'lksj', '33333', 'ville', 'mail@mail.mail', '2003-06-30', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0),
 (19, 'trochell', 'paul ', '77 chemin', '31000', 'toulousee', 'trochel@gmail.com', '2003-06-30', '64d0e6d2312c3d8fadb60fcce0c6151fec5962583d6fc08dbaa47c6b9245fb42', 0, 0, 0),
-(20, 'test', 'nouveau', 'compte', '11111', 'testville', 'mkjqsmlkj@makjfemlkj', '1002-02-10', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0),
-(23, ' &amp;lt;script&amp;gt;alert(&amp;#039;test&amp;#0', ' &lt;script&gt;alert(&#039;&#039;);&lt;/script&gt', 'mlkjmlkjmlkj', '12121', 'mkjmlkjmlkj', 'mlkjmlkjmlkj@mlkjmmlkj', '1010-10-10', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 1, 0);
+(20, 'test', 'nouveau', 'compte', '11111', 'testville', 'mkjqsmlkj@makjfemlkj', '1002-02-10', '6ca835f7f9e9689011cbda9ef8d56ab4f3b22cd3d6ca07810a8891e9957fe751', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -158,12 +158,12 @@ CREATE TABLE `objectif` (
 --
 
 INSERT INTO `objectif` (`id_objectif`, `intitule`, `nom`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`) VALUES
-(9, 'systeme maison', 'bien manger le matin_1111111:ne pas manger en dehors des repas_1111111:bien faire ses devoirs_1111111:', 21, 216, 'jeton', 0, 0, 1, 27, 3),
-(10, 'nom', 'rester concentré 5minutes_110:', 3, 0.014, 'jeton', 1, 0, 1, 27, 1),
-(11, 'maison', 's\"habiller seul_1111111:faire du sport_1111111:', 14, 168, 'jeton', 0, 0, 1, 27, 3),
+(9, 'systeme maison', 'bien manger le matin_0000000:ne pas manger en dehors des repas_0000000:bien faire ses devoirs_0000000:', 21, 216, 'jeton', 0, 1, 1, 27, 3),
+(10, 'nom', 'rester concentré 5minutes_111:', 3, 0.014, 'jeton', 1, 0, 1, 27, 1),
+(11, 'maison', 'habiller seul_1111111:faire du sport_1111111:', 14, 168, 'jeton', 0, 0, 1, 27, 3),
 (17, 'manger', 'finir son assiete_111:', 3, 1, 'jeton', 1, 0, 1, 28, 1),
 (18, 'école', 'rester concentrer 5minutes_000000000:', 8, 1, 'jeton', 1, 0, 1, 28, 1),
-(20, 'douche maison', 'il faut se doucher sans pleurer_00000:', 5, 5, 'jeton', 2, 0, 1, 27, 1),
+(20, 'douche maison', 'il faut se doucher sans pleurer_11111:', 5, 5, 'jeton', 2, 0, 1, 27, 1),
 (21, 'douche tous les jours', 'se laver tous les jours de la semaine_1111000:', 7, 192, 'jeton', 3, 0, 1, 27, 1),
 (22, 'maison', 'ne pas faire de caprices_0110000:', 7, 1, 'jeton', 2, 0, 1, 27, 1),
 (26, 'test', 'Ne pas pleurer_1100000:Faire ses devoirs_0000000:', 14, 168, 'jeton', 3, 0, 1, 27, 3);
@@ -186,7 +186,6 @@ CREATE TABLE `placer_jeton` (
 --
 
 INSERT INTO `placer_jeton` (`id_objectif`, `date_heure`, `id_membre`, `id_session`) VALUES
-(9, '2023-01-14 20:05:01', 1, 1),
 (10, '2022-12-22 23:14:23', 1, 1),
 (10, '2023-01-12 09:36:20', 1, 1),
 (10, '2023-01-12 09:40:17', 1, 2),
@@ -211,10 +210,15 @@ INSERT INTO `placer_jeton` (`id_objectif`, `date_heure`, `id_membre`, `id_sessio
 (10, '2023-01-14 17:41:58', 1, 14),
 (10, '2023-01-14 17:41:59', 1, 14),
 (10, '2023-01-15 13:50:11', 1, 15),
-(10, '2023-01-15 13:53:22', 1, 16),
 (10, '2023-01-15 13:53:23', 1, 16),
 (10, '2023-01-15 13:53:25', 1, 16),
-(11, '2023-01-14 16:58:17', 1, 1),
+(10, '2023-01-16 15:24:48', 1, 17),
+(10, '2023-01-16 15:24:49', 1, 17),
+(10, '2023-01-16 15:24:50', 1, 17),
+(10, '2023-01-16 15:38:34', 1, 18),
+(10, '2023-01-16 15:38:37', 1, 18),
+(10, '2023-01-16 15:38:38', 1, 18),
+(10, '2023-01-16 15:38:39', 1, 18),
 (11, '2023-01-14 16:58:30', 1, 1),
 (11, '2023-01-14 16:58:32', 1, 1),
 (11, '2023-01-14 16:58:34', 1, 1),
@@ -229,9 +233,33 @@ INSERT INTO `placer_jeton` (`id_objectif`, `date_heure`, `id_membre`, `id_sessio
 (11, '2023-01-14 16:58:46', 1, 1),
 (11, '2023-01-14 16:58:48', 1, 1),
 (11, '2023-01-14 16:58:50', 1, 1),
-(17, '2023-01-14 17:40:04', 1, 1),
+(11, '2023-01-16 15:37:34', 1, 2),
+(11, '2023-01-16 15:37:36', 1, 2),
+(11, '2023-01-16 15:37:37', 1, 2),
+(11, '2023-01-16 15:37:47', 1, 2),
+(11, '2023-01-16 15:37:48', 1, 2),
+(11, '2023-01-16 15:37:49', 1, 2),
+(11, '2023-01-16 15:37:50', 1, 2),
+(11, '2023-01-16 15:37:51', 1, 2),
+(11, '2023-01-16 15:37:54', 1, 2),
+(11, '2023-01-16 15:38:01', 1, 2),
+(11, '2023-01-16 15:38:04', 1, 2),
+(11, '2023-01-16 15:38:05', 1, 2),
+(11, '2023-01-16 15:38:06', 1, 2),
+(11, '2023-01-16 15:38:07', 1, 2),
 (17, '2023-01-14 17:40:06', 1, 1),
 (17, '2023-01-14 17:40:07', 1, 1),
+(17, '2023-01-19 09:41:09', 1, 2),
+(17, '2023-01-19 09:41:23', 1, 3),
+(17, '2023-01-19 09:41:30', 1, 3),
+(17, '2023-01-19 09:41:32', 1, 3),
+(17, '2023-01-19 09:41:33', 1, 3),
+(20, '2023-01-19 08:06:39', 1, 1),
+(20, '2023-01-19 08:08:25', 1, 1),
+(20, '2023-01-19 08:08:26', 1, 1),
+(20, '2023-01-19 08:08:28', 1, 1),
+(20, '2023-01-19 08:08:30', 1, 1),
+(20, '2023-01-19 08:08:32', 1, 1),
 (22, '2023-01-15 14:30:59', 1, 1),
 (22, '2023-01-15 14:31:05', 1, 1),
 (26, '2023-01-15 16:45:05', 1, 1),
@@ -299,7 +327,7 @@ CREATE TABLE `suivre` (
 --
 
 INSERT INTO `suivre` (`id_enfant`, `id_membre`, `date_demande_equipe`, `role`) VALUES
-(27, 1, '2023-01-06', 'membre');
+(27, 2, '2023-01-18', 'membre');
 
 --
 -- Index pour les tables déchargées
