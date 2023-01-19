@@ -18,7 +18,7 @@ catch (Exception $e) {
 
 if (isset($_GET['id_valider'])) {
     $id_valider_membre = $_GET['id_valider'];
-    $req_add = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id_valider_membre ;";
+    $req_add = "UPDATE `membre` SET `visibilite` = '0' WHERE `membre`.`id_membre` =$id_valider_membre ;";
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
@@ -28,7 +28,7 @@ if (isset($_GET['id_valider'])) {
 }
 if (isset($_GET['id_invalider'])) {
     $id_invalider_membre = $_GET['id_invalider'];
-    $req_add = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
+    $req_add = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
@@ -94,102 +94,14 @@ if (isset($_GET['id_invalider'])) {
     <main>
 
         <nav class="left-contenu">
-            <?php 
-            if($_SESSION["role_user"]!=2){
-                echo'<ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">';
-               echo'<li class="nav-item">';
-               echo'<a class="nav-link gl-tab-nav-item" data-placement="right" href="page_admin.php">Affichage Enfant</a>';
-               echo'</li>';
-                echo'<li class="nav-item">';
-                echo'<a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Affichage Membre</a>';
-                echo'</li>';
-                echo'</ul>';
-            }
+        <div style="margin:auto; width:50%  ">
+                <center>
+                    <button class="ajouter-membre" style="margin-top: 5%;"><a href="page_certif_compte.php">retour</a></button>
+                </center>
+            </div>
             
-            ?>
             
-            <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
-                <div class="bouton_tuteur">
-                <a href="archive_membre.php "><button class="btn_archive">Membres archivées</button></a>
-                    <?php
-                    if($_SESSION["role_user"]!=3){
-                    echo'<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';   
-                    }
-                    ?>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialogNEW1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
-
-                            <form action="insert_membre.php" method="post" class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">nom :</span>
-                                        <input name='nom' type="text" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">prenom:</span>
-                                        <input name='prenom' type="text" class="city_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">adresse :</span>
-                                        <input name='adresse' type="text" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">code postal:</span>
-                                        <input name='code_postal' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">ville:</span>
-                                        <input name='ville' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">courriel:</span>
-                                        <input name='courriel' type="text" class="zip_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">date de naissance:</span>
-                                        <input name='ddn' type="date" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">mots de passe :</span>
-                                        <input name='password' type="text" class="state_input" required="required">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_item">
-                                    <span class="label_text">Etes vous un professionel ? :</span>
-                                    <div>
-                                        <span class="label_text" for="oui">oui</span>
-                                        <input type="radio" id="oui" name='pro' value="1">
-
-                                        <span class="label_text" for="oui">non</span>
-                                        <input type="radio" id="oui" name='pro' value="0" checked>
-
-                                    </div>
-                                </div>
-
-                                <div class="dialog_form_actions">
-                                    <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
-                                    <button class="popup-btn" type="submit">Valider l'ajout</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <! -- /* fin de la fenêtre popin de l'ajout d'membre" */ -->
+           
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
                     <div id="myDropdown" class="dropdown-content">
@@ -198,7 +110,7 @@ if (isset($_GET['id_invalider'])) {
                     
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1 and compte_valide= 1");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -225,7 +137,7 @@ if (isset($_GET['id_invalider'])) {
                         $identifiant = $double_tab[$i][0];
 
                             echo "<td>";
-                            echo ' <a href="page_certif_compte.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Profil </button></a>';
+                            echo ' <a href="archive_membre.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Profil </button></a>';
                             
                         echo "</td>";
                         echo "</tr>";
@@ -233,48 +145,6 @@ if (isset($_GET['id_invalider'])) {
                     echo "</table>";
 
                     
-                    ///Fermeture du curseur d'analyse des résultats
-                    $res->closeCursor();
-                    ///--------------------------------------------------------------------membre non valide-------------------------------------------
-                    
-                    echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
-                    ///Sélection de tout le contenu de la table 
-                    try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0 ORDER BY nom;");
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
-
-                    ///Affichage des entrées du résultat une à une
-
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                    $nombre_ligne = $res->rowCount();
-                    $liste = array();
-
-                    echo "<table>";
-
-                    for ($i = 0; $i < $nombre_ligne; $i++) {
-                        echo "<tr>";
-                        for ($y = 1; $y < 3; $y++) {
-                            echo "<td>";
-                            print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
-                            $liste[$y] = $double_tab[$i][$y];
-                            $nom = $double_tab[$i][1];
-                            $prenom = $double_tab[$i][2];
-                            echo "</td>";
-                        }
-                        $identifiant = $double_tab[$i][0];
-                        $name=ucfirst($nom." ".$prenom);
-
-
-                        echo "<td class=\"Profil2\" >";
-                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button  class="acceder-information-membre"> Profil</button></a>';
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                    echo"</div>";
-
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
                     ?>
@@ -463,16 +333,16 @@ if (isset($_GET['id_invalider'])) {
                         if($_GET["idv"]!=1){
                         
                         
-                    echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Invalider ce compte membre</button>";
+                    echo "<button  class=\"valider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Restaurer ce compte membre</button>";
 
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialogI".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                     echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
-                    echo "<p class='popup-txt'>Voulez-vous invalider ce compte membre dans l'application ?</p>";
+                    echo "<p class='popup-txt'>Voulez-vous restaurer ce compte membre dans l'application ?</p>";
                     echo "<div class=\"dialog_form_actions\">";
                     echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo '<a class="popup-btn" href="page_certif_compte.php?id_invalider='.$idiv.'">Invalider</a>';
+                    echo '<a class="popup-btn" href="archive_membre.php?id_valider='.$idiv.'">Restaurer</a>';
                     echo "</div>";
                     echo "</form>";
                     echo "</div>";
@@ -485,21 +355,7 @@ if (isset($_GET['id_invalider'])) {
                 ?>
         </div>
         <div class="case-membre_2">
-            <?php
-            if(isset($_GET["idv"])){
-                if($_SESSION["role_user"]==1){
-                echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
-                echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
-                }elseif ($_SESSION["role_user"]==2){ // validateur
-                    echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
-                    if($id_membre==$_SESSION['logged_user']){
-                        echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
-                    }
-
-                }
-            }
             
-            ?>
             <?php
             
             ?>
