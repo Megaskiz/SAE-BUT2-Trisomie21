@@ -36,6 +36,16 @@ if (isset($_GET['id_invalider'])) {
         die('Erreur : ' . $e->getMessage());
     }
 }
+if (isset($_GET['id_archiver'])) {
+    $id_invalider_membre = $_GET['id_archiver'];
+    $req_add = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
+    try {
+        $res = $linkpdo->query($req_add);
+        header('Location: page_certif_compte.php');
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+}
 
 ?>
 
@@ -198,7 +208,7 @@ if (isset($_GET['id_invalider'])) {
                     
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE  visibilite = 0  and compte_valide= 1");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -240,7 +250,7 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
                     ///Sélection de tout le contenu de la table 
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0 ORDER BY nom;");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 0 and compte_valide= 0 ORDER BY nom;");
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -490,6 +500,22 @@ if (isset($_GET['id_invalider'])) {
                 if($_SESSION["role_user"]==1){
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe membre</button>';
+                
+                echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogT".$idiv."', this)\">Archiver ce compte membre</button>";
+
+                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                    echo "<div role=\"dialog\" id=\"dialogT".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
+                    echo "<p class='popup-txt'>Voulez-vous archiver ce compte membre dans l'application ?</p>";
+                    echo "<div class=\"dialog_form_actions\">";
+                    echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                    echo '<a class="popup-btn" href="page_certif_compte.php?id_archiver='.$idiv.'">Archiver</a>';
+                    echo "</div>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+
                 }elseif ($_SESSION["role_user"]==2){ // validateur
                     echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier ce compte membre</button>';
                     if($id_membre==$_SESSION['logged_user']){
