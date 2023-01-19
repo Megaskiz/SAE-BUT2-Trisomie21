@@ -153,7 +153,7 @@ if (isset($_GET['id_suppr'])) {
                     <?php
                     ///Sélection de tout le contenu de la table enfant
                     try {
-                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant');
+                        $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 0');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                         die('Erreur : ' . $e->getMessage());
                     }
@@ -204,7 +204,7 @@ if (isset($_GET['id_suppr'])) {
 
 
 
-        ///Sélection de tout le contenu de la table carnet_adresse
+        ///Sélection de tout le contenu de la table 
         try {
             $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
         } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
@@ -304,7 +304,6 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                 echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
                 echo "<p> Attention vous enlever definitivement cet enfant du programme ! Êtes vous sur de votre choix ?</p>";
                 echo "<div class=\"dialog_form_actions\">";
                 echo "<a class=\"s\" href=\"page_admin.php?id_suppr='$identifiant'\"><button class=\"s\">Valider</button></a>";
@@ -312,12 +311,11 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                 echo "</div>";
-                echo "</form>";
                 echo "</div>";
                 echo "</div>";
 
 
-                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Retirer l'enfant</button>";
+                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">archiver le profil de l'enfant</button>";
 
 
 
