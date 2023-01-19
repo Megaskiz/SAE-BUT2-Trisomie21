@@ -214,6 +214,20 @@
         text-align: center;
         margin: 3%;
     }
+
+    .retour {
+        display: inline-block;
+        position: initial;
+        padding: 10px 20px;
+        color: #fff;
+        margin: auto;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
     .acceder-information-membre {
         display: block;
         padding: 5px 15px;

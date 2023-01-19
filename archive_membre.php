@@ -94,10 +94,10 @@ if (isset($_GET['id_invalider'])) {
     <main>
 
         <nav class="left-contenu">
-        <div style="margin:auto; width:50%  ">
-                <center>
-                    <button class="ajouter-membre" style="margin-top: 5%;"><a href="page_certif_compte.php">retour</a></button>
-                </center>
+        <div style="display: flex;     margin: 3%;">
+           
+                    <a  class="retour"  href="page_certif_compte.php"> Retour</a>
+           
             </div>
             
             
