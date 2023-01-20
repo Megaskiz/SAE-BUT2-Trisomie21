@@ -264,6 +264,7 @@ if (isset($_GET['id_suppr'])) {
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
+                
 
                 <?php
 
@@ -416,29 +417,29 @@ if (isset($_GET['id_suppr'])) {
                     print_r(htmlspecialchars($double_tab[$i][0]));
                     echo "</td>";
 
-                    echo "<td>";
+                    echo "<td><center>";
                     print_r(htmlspecialchars($double_tab[$i][1]));
                     echo " Jetons";
-                    echo "</td>";
+                    echo "</center></td>";
 
-                    echo "<td>";
+                    echo "<td><center>";
                     print_r(1);
                     echo " semaine";
-                    echo "</td>";
+                    echo "</center></td>";
 
-                    echo "<td>";
+                    echo "<td><center>";
                     echo "niveau de priorité  : ";
                     print_r(htmlspecialchars($double_tab[$i][3]));
-                    echo "</td>";
+                    echo "</center></td>";
 
-                    echo "<td>";
+                    echo "<td><center>";
                     echo "Statut : ";
                     if ($double_tab[$i][4] == 1) {
                         print_r("En Utilisation");
                     } else {
                         print_r("Pas en utilisation");
                     }
-                    echo "</td>";
+                    echo "</center></td>";
 
 
 
