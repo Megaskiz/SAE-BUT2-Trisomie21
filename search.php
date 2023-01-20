@@ -17,15 +17,13 @@ catch (Exception $e) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Administrateur²</title>
+    <title>Administrateur</title>
     <link rel="stylesheet" href="style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
-
-
     <header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
         <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="photo du visage de l'utilisateur">
@@ -79,6 +77,7 @@ catch (Exception $e) {
                 }
 
                 ?>
+               
             </ul>
             <?php
 
@@ -149,6 +148,7 @@ catch (Exception $e) {
                     </div>
                     <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
                     </form>
+                    <a href=\"page_admin.php\"><button class=\"bouton_recherche_R\">&#x27F2;</button></a>
                     </div>";
                     echo "<table >";
 
@@ -209,7 +209,6 @@ catch (Exception $e) {
             <section class="nb-systeme">
             </section>
         </nav>
-
     </main>
 </body>
 
