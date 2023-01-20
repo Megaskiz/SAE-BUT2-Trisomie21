@@ -99,7 +99,7 @@ if (isset($_GET['id_suppr'])) {
                 <label>Combien de cases voulez-vous inserer ? : </label>
                 <div class="heure">
                 <input type="number" min="0"  name="rows" required="required"   placeholder="Nombre de cases ?">
-                <input id="bouton" type="submit" value="valider">
+                
                 </div>
             </div>
 

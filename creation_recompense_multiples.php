@@ -96,7 +96,7 @@ if (isset($_GET['id_suppr'])) {
 
         <form action="" method="post" class="form-nb-taches">
             <div class="flex_simple">
-                <label>combien de taches voulez vous inserer ? : </label>
+                <label>combien de récopmpenses voulez vous inserer ? : </label>
                 <div class="heure">
                 <input  class='insere_nb' #x1F5D9min="0"  max="15" type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Nombre de récompense ?">
                 <input id="bouton" type="submit" value="valider">
