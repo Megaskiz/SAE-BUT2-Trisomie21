@@ -92,13 +92,13 @@ catch (Exception $e) {
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <div class="section_membre">
+            <div class="section_membre" style=" display:grid; grid-template-columns: 30% 1fr ; grid-template-rows:1fr;">
                 <?php
                 
 
                     //<!---- menu droit information ---->
-                    echo "<div class=\"case-membre_1\">";
-                    echo"   <button><a href='mon_compte.php'>Annuler les modifications</a></button>";
+                    echo "<div class=\"case-membre_1\"  style='display : flex; align-items: flex-end'>";
+                    echo"   <a href='page_certif_compte.php?idv='><button class='annuler'> Annuler &#x1F5D9;</button></a>";
                     echo "</div>";
 
                     echo"<form action=\"ajoute_modif_mon_mdp.php\" method=\"post\"";
@@ -110,7 +110,7 @@ catch (Exception $e) {
                         echo"</div>";
                         echo"<div style=\"display:inline-flex; align-items: center;\">";
 
-                        echo '<p> Nouveau mot de passe  :</p><input name=mdp_membre type="text" value="">';
+                        echo '<p> Nouveau mot de passe  :</p><input required = "required" name=mdp_membre type="text" value="">';
                         echo"</div>";
 
                     echo "</div>";
@@ -119,7 +119,7 @@ catch (Exception $e) {
                         
                     echo "</div>";
 
-                    echo'<input class="button" type="submit" value="Valider les modifications">';
+                    echo'<input class="valider" type="submit" value="Valider les modifications &#x2714;">';
 
 
 
