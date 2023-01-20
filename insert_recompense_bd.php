@@ -121,8 +121,8 @@ switch ($_SESSION['type_rec']) {
             ///Exécution de la requête
             try{
                 
-                $req->execute(array('intitule' => htmlspecialchars($intitule),
-                                    'descriptif' => htmlspecialchars($descriptif),
+                $req->execute(array('intitule' => ($intitule),
+                                    'descriptif' => ($descriptif),
                                     'lien_image' => $photo_recompense,
                                     ));
                                 // $req->debugDumpParams();
