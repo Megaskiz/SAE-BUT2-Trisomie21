@@ -502,7 +502,7 @@ if (isset($_FILES['photo_enfant'])) {
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         //acces au systèmes
                         if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1or $_SESSION["role_user"] == 3) {
-                            echo "<tr >";
+                            echo "<tr class='objectif_tr'>";
 
                             #affiche nom
                             echo "<td>";
@@ -568,7 +568,7 @@ if (isset($_FILES['photo_enfant'])) {
                             #affiche message
                             echo "<td class='sms'>";
                             echo "<center>";
-                            echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#128172; </span></button>";
+                            echo "<button class=\"message\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#128172; </span></button>";
                             echo "</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -699,7 +699,7 @@ if (isset($_FILES['photo_enfant'])) {
 
                                         echo "<td>";
                                         echo "<center>";
-                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif">Ne plus utiliser</button></a>';
+                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=0"><button class="status-objectif actif">Actif  &#x2714;</button></a>';
                                         echo "</center>";
                                         echo "</td>";
                                         break;
@@ -707,7 +707,7 @@ if (isset($_FILES['photo_enfant'])) {
                                     case 0:
                                         echo "<td>";
                                         echo "<center>";
-                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif">Commencer l\'utilisation</button></a>';
+                                        echo '<a href="utilisation.php?id_sys=' . $double_tab[$i][5] . '&valeur=1"><button class="status-objectif  nonactif">Désactivé  &#x1F5D9;</button></a>';
                                         echo "</center>";
                                         echo "</td>";
                                         break;
