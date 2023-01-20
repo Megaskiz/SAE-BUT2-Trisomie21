@@ -440,7 +440,7 @@ td {
     .list_equipier {
         display: inline-block;
         padding: 10px 20px;
-        font-size: 16px;
+        font-size: 12px;
         border: none;
         border-radius: 5px;
         color: white;
@@ -462,18 +462,33 @@ td {
     .bouton-equipe {
         display: inline-block;
         padding: 10px 20px;
-        font-size: 16px;
         border: none;
-        border-radius: 20px;
+        border-radius: 5px;
         color: white;
-        background-color: #71b4fd;
+        background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
-        margin-bottom: 5px;
+        font-size: 12px;
+
+    }
     }
     .bouton-equipe:hover {
         background-color: #fec107;
     }
+
+    .bouton-modif-photo {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        background-color: rgb(202, 196, 196) ;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 12px;
+
+    }
+
     .button-equipe {
         display: flex;
     }
@@ -481,7 +496,6 @@ td {
         width: 40%;
         border-radius: 20%;
         position: initial;
-        margin-top: 20%;
     }
     .div-photo-enfant {
         display: flex;
@@ -493,9 +507,12 @@ td {
     .div-modif-enfant {
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         height: 100%;
-    }
+        justify-content: space-around;
+}
+    
     .div-zone-texte {
         display: flex;
         justify-content: center;
@@ -814,7 +831,23 @@ td {
         align-items: center;
         justify-content: center;
     }
-}
+
+    
+    .btn-objectif {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .btn-stat {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+
+
 
 
 /*
