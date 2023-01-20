@@ -501,7 +501,10 @@ if (isset($_GET['id_archiver'])) {
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier le compte de ce membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe de ce membre</button>';
                 
-                echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogT".$idiv."', this)\">Archiver le compte de ce membre</button>";
+                if($idiv != 1){
+                    echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogT".$idiv."', this)\">Archiver le compte de ce membre</button>";
+
+                }
 
                     echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                     echo "<div role=\"dialog\" id=\"dialogT".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";

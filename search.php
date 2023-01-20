@@ -157,10 +157,10 @@ catch (Exception $e) {
                         // Préparation de la requête
                         $search = implode(array_filter(str_split($_POST['keywords']), "filter_spaces"));
                         $keywords = explode(" ", $search);
-                        $query = "SELECT * FROM enfant WHERE ";
+                        $query = "SELECT * FROM enfant WHERE visibilite=0 and  ";
 
                         for ($i = 0; $i < count($keywords); $i++) {
-                            $query .= "nom LIKE '%$keywords[$i]%' OR prenom LIKE '%$keywords[$i]%'; ";
+                            $query .= "nom LIKE '%$keywords[$i]%' OR prenom LIKE '%$keywords[$i]%' and visibilite=0 ; ";
                         }
                         // Exécution de la requête
                         $stmt = $linkpdo->query($query);
@@ -176,8 +176,8 @@ catch (Exception $e) {
                         </tr>";
                             foreach ($contacts as $contact) {
                                 echo "<tr>";
-                                echo "<td>" . $contact['nom'] . "</td>";
-                                echo "<td>" . $contact['prenom'] . "</td>";
+                                echo "<td>" . htmlspecialchars($contact['nom']) . "</td>";
+                                echo "<td>" . htmlspecialchars($contact['prenom']) . "</td>";
 
                                 echo "<td>";
                                 echo '<a href="page_admin.php?id=' . $contact['id_enfant'] . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
