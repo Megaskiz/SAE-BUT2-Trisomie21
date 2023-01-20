@@ -131,7 +131,20 @@ if (isset($_FILES['photo_enfant'])) {
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
 
+    <script>
+        function openMenu() {
+            document.querySelector('.left-contenu').classList.add('open');
+        }
+
+        function closeMenu() {
+            document.querySelector('.left-contenu').classList.remove('open');
+        }
+    </script>
+
+<div  class="open" onclick="openMenu()"> ☰</div>
+
         <nav  class="left-contenu">
+        <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                 <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
@@ -493,7 +506,6 @@ if (isset($_FILES['photo_enfant'])) {
                         <th>Jetons</th>
                         <th>Durée</th>
                         <th class='sms'>Message</th>
-                        <th class='sms'>Statut</th>
                         <th>Statut</th>
                         <th>Accéder</th>
                         <th class='sup'>Archiver</th>
@@ -679,18 +691,7 @@ if (isset($_FILES['photo_enfant'])) {
 
 
 
-                            #affiche statu
-                            echo "<td class='sms'>";
-                            if ($double_tab[$i][4] == 1) {
-                                echo "<center>";
-                                print_r("En Utilisation");
-                                echo "</center>";
-                            } else {
-                                echo "<center>";
-                                print_r("Pas en utilisation");
-                                echo "</center>";
-                            }
-                            echo "</td>";
+                      
 
                             //affiche bouton pour la mise en route des sys
                             if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
