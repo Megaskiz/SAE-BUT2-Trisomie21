@@ -183,7 +183,7 @@ if (isset($_GET['id_suppr'])) {
 
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">  Acceder &#x1F59D; </button> </a>';
+                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder </button> </a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -400,18 +400,18 @@ if (isset($_GET['id_suppr'])) {
                 $liste = array();
 
                 echo "<table class='affichage-objectif'>";
-
+                echo "<colgroup class='column'></colgroup>";
                 echo "<tr class='titre-objectif'>
                 <th>Nom</th>
                 <th>Jetons</th>
                 <th>Durée</th>
                 <th>Priorité</th>
-                <th>Status</th>
-                <th>Supprimer</th>
+                <th>Statut</th>
+                <th>Archiver</th>
                 </tr>";
 
                 for ($i = 0; $i < $nombre_ligne; $i++) {
-                    echo "<tr>";
+                    echo "<tr class='objectif_tr'>";
 
                     echo "<td>";
                     print_r(htmlspecialchars($double_tab[$i][0]));
@@ -451,7 +451,7 @@ if (isset($_GET['id_suppr'])) {
                     echo "<td>";
                     echo " <div class=\"case-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
-                        echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/delete.png'></a></button>";
+                        echo "<button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/archive.png'></a></button>";
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
                         echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
