@@ -319,7 +319,7 @@ if (isset($_GET['id_putback'])) {
                             #affiche message
                             echo "<td class='sms'>";
                             echo "<center>";
-                            echo "<button style=\"background-color:gray;\" type=\"button\" onclick=\"', this)\"> <span class=\" icon-mail\"> Messagerie &#x2709; </span></button>";
+                            echo "<button style=\"background-color:gray;\" type=\"button\" onclick=\"', this)\"> <span class=\" icon-mail\"> Messagerie &#128172; </span></button>";
                             echo "</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
