@@ -120,8 +120,12 @@ if (isset($_GET['id_archiver'])) {
             
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
-                <a href="archive_membre.php "><button class="btn_archive">Membres archivés</button></a>
-                    <?php
+                <?php
+                if($_SESSION["role_user"]==1 or $_SESSION["role_user"]==2 ){
+                    echo"<a href=\"archive_membre.php \"><button class=\"btn_archive\">Membres archivés</button></a>";
+                }
+                 
+                   
                     if($_SESSION["role_user"]!=3){
                     echo'<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';   
                     }
@@ -501,7 +505,7 @@ if (isset($_GET['id_archiver'])) {
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier le compte de ce membre</button>';
                 echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe de ce membre</button>';
                 
-                if($idiv != 1){
+                if($idiv != 1 ){
 
                     echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogT".$idiv."', this)\">Archiver le compte de ce membre</button>";
                 }
@@ -521,6 +525,34 @@ if (isset($_GET['id_archiver'])) {
 
                 }elseif ($_SESSION["role_user"]==2){ // validateur
                     echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_compte.php?id='.$_GET["idv"].'\'">Modifier le compte de ce membre</button>';
+                    
+                    if($idiv!=1){
+                        if( $idiv!=$_SESSION["role_user"]){
+                                                    
+
+                        echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogT".$idiv."', this)\">Archiver le compte de ce membre</button>";
+                
+
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialogT".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+    
+                        echo "<p class='popup-txt'>Voulez-vous archiver le compte de ce membre dans l'application ?</p>";
+                        echo "<div class=\"dialog_form_actions\">";
+                        echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo '<a class="popup-btn" href="page_certif_compte.php?id_archiver='.$idiv.'">Archiver</a>';
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
+
+                    }
+    
+
+                    }
+                    
+                   
+
                     if($id_membre==$_SESSION['logged_user']){
                         echo'<button class="modif-certif" type="button" onclick="window.location.href=\'modif_mdp.php?id='.$_GET["idv"].'\'">Modifier le mot de passe de ce membre</button>';
                     }
