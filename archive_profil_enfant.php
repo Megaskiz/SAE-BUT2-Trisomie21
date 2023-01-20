@@ -274,7 +274,7 @@ if (isset($_GET['id_putback'])) {
                     echo"<center>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver ce profil</button>';
                     echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo "<p class='popup-txt' > Voulez-vous réstaurer le compte de cet enfant ? </p>";
+                    echo "<p class='popup-txt' > Voulez-vous restaurer le compte de cet enfant ? Il sera visible par toutes les personnes l'ayant suivi </p>";
                     
                     echo ' <div style="display:flex; justify-content: space-evenly;">';
                     echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
