@@ -536,6 +536,7 @@ td {
         border-collapse: collapse;
         width: 100%;
         margin-top: 2vh;
+        table-layout: fixed;
     }
     .affichage-objectif th,
     td {
@@ -581,6 +582,7 @@ td {
     .actif {
         background-color: #4CAF50;
     }
+
 
     .nonactif {
         background-color: #f44336;
@@ -877,6 +879,19 @@ td {
         flex-direction: row;
     }
 
+    div.open {
+        display: none;
+        cursor: pointer;
+        font-size: 35px;
+
+    }
+
+    div.close {
+        display: none;
+        cursor: pointer;
+        font-size: 35px;
+    }
+
 
 
 
@@ -1040,6 +1055,20 @@ td {
     .bouton-modif-enfant:hover {
         background-color: #fec107;
     }
+
+    .bouton-modif-photo{
+        display: inline-block;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+
+    }
+
+    
     .icone-modif-enfant {
         display: inline-block;
         vertical-align: middle;
@@ -1092,7 +1121,6 @@ td {
         border-radius: 5px;
         border: none;
         color: white;
-        background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
     }
@@ -1352,7 +1380,7 @@ td {
         cursor: pointer;
     }
     table.affichage-objectif {
-        margin: 3%;
+        margin-top: 3%;
         width: 100%;
         height: 100%;
         border-collapse: collapse;
@@ -1360,7 +1388,7 @@ td {
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 0 20px rgb(0 0 0 / 15%);
-        background-color: #007bff;
+        color: #000;
     }
     button.objectif-acceder {
         display: block;
@@ -1385,7 +1413,7 @@ td {
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         background-color: white;
-        table-layout: fixed;
+        table-layout: auto;
     }
     .liste-enfant {
         padding: 2vh;
@@ -1598,6 +1626,20 @@ td {
     .delet-icon {
         width: 10%;
     }
+
+    .actif {
+        background-color: #4CAF50;
+    }
+
+    .nonactif {
+        background-color: #f44336;
+    }
+    .btn-objectif {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    align-items: center;
+    }
 }
 
 
@@ -1646,19 +1688,71 @@ td {
         justify-content: space-around;
         flex-direction: row-reverse;
     }
+    
     p.titre_recherche {
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;
         color: #000;
     }
+   
+
+    .left-contenu {
+        margin: 0;
+        color: black;
+        position: fixed;
+        top: 9vh;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        border-radius: 5px;
+        transform: translateX(-150%);
+        transition: transform 0.3s ease-in-out;
+        overflow: auto;
+    }
+
+    .left-contenu.open {
+        transform: initial;
+        display: block;
+    }
+
+
+    div.open {
+        display: block;
+        cursor: pointer;
+        font-size: 35px;
+        width: 15%;
+
+    }
+
+    div.close {
+        display: block;
+        cursor: pointer;
+        font-size: 35px;
+        width: 15%;
+    }
+
+
+    .photo-enfant {
+        width: 20vw;
+        border-radius: 10px;
+    }
+
+    .bouton-modif-enfant {
+        font-size: 12px;
+        background-color: rgb(202, 196, 196);
+        color: #000;
+
+    }
+
     .section_enfant {
-        height: 25vh;
+        height: 35vh;
         box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
         border-radius: 10px;
-        background-color: white;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 60% 1fr;
+        border-radius: 5px;
     }
+
 }
