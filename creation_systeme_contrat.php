@@ -116,8 +116,6 @@ if (isset($_GET['id_suppr'])) {
                 <div class="heure">
                     <input  class='insere_nb' type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
-                        <option value="h">heure(s)</option>
-                        <option value="h">jour(s)</option>
                         <option value="s">semaine(s)</option>
                     </select>
                 </div>
