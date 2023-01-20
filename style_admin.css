@@ -126,6 +126,23 @@ td {
         text-decoration: none;
         color: white;
     }
+    .retour {
+        display: inline-block;
+        position: initial;
+        padding: 10px 20px;
+        color: #fff;
+        margin: auto;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .retour:hover {
+        background-color: #fec107;
+    }
     img.photo-jeton {
         width: 20%;
         margin: auto;
