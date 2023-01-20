@@ -159,7 +159,7 @@ if (isset($_FILES['photo_enfant'])) {
 
                 echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
 
-                echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Archives profils enfants</button></a>';
+                echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>';
                 echo '<div id="dialog_layer" class="dialogs">';
                 echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                 echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
@@ -358,9 +358,9 @@ if (isset($_FILES['photo_enfant'])) {
                     // acces modif enfant
                     if ($_SESSION["role_user"] == 1) {
                         echo '<a href="modif_enfant.php"> 
-                        <button class="bouton-modif-enfant"> <span class="icon">&#x270E</span>   Modifer </button> </a>';
+                        <button class="bouton-modif-enfant">&#x270E Modifier</button> </a>';
 
-                        echo '<button class="bouton-equipe" type="button" onclick="openDialog(\'dialog5\', this)">Modifer le jeton</button>';
+                        echo '<button class="bouton-modif-photo" type="button" onclick="openDialog(\'dialog5\', this)">&#x270E Modifier le jeton</button>';
                         
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                         echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
@@ -452,12 +452,17 @@ if (isset($_FILES['photo_enfant'])) {
                     echo "<section class=\"nb-systeme\">";
                     //acces aux boutons -> ajouter sys, stat, stat4semaines
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-                        echo' <div style="display:flex">';
+                        echo' <div class="btn-objectif">';
+                        echo' <div class="btn-stat">';
                         echo '   <a href="page_creatsystem.php"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
-                        echo '   <a href="  archive_sys.php"><button class="button_ajouter-objectif">Objectifs archivées</button></a>';
+                        echo '   <a href="  archive_sys.php"><button class="button_ajouter-objectif">Objectifs archivés</button></a>';
+                        echo' </div>';
+                        echo' <div class="btn-stat">';
                         echo '   <a href="statistiques.php"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
                         echo '   <a href="statistiques_quatre_semaines.php"><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
-                        echo' </div>';                    }
+                        echo' </div>';   
+                        echo' </div>';                  
+                       }
 
 
 
@@ -482,7 +487,7 @@ if (isset($_FILES['photo_enfant'])) {
 
 
                     echo "<table class='affichage-objectif'>";
-
+                    echo "<colgroup class='column'></colgroup>";
                     echo "<tr class='titre-objectif'>
                         <th>Nom</th>
                         <th>Jetons</th>
@@ -563,7 +568,7 @@ if (isset($_FILES['photo_enfant'])) {
                             #affiche message
                             echo "<td class='sms'>";
                             echo "<center>";
-                            echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#x2709; </span></button>";
+                            echo "<button class=\"\" type=\"button\" onclick=\"openDialog('dialog_message" . $double_tab[$i][5] . "', this)\"> <span class=\" icon-mail\"> Messagerie &#128172; </span></button>";
                             echo "</center>";
                             echo "<div id=\"dialog_layer\" class=\"dialogs\">";
                             echo "<div role=\"dialog\" id=\"dialog_message" . $double_tab[$i][5] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
