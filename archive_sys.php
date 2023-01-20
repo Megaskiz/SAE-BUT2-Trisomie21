@@ -113,7 +113,7 @@ if (isset($_GET['id_putback'])) {
         <nav  class="left-contenu">
             <div style="margin:auto; width:50%  ">
                 <center>
-                    <button class="ajouter-enfant" style="margin-top: 5%;"><a href="page_admin.php">retour</a></button>
+                 <a href="page_admin.php"><button class="ajouter-enfant" style="margin-top: 5%;">retour</button></a>
                 </center>
             </div>
             <?php
