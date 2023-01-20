@@ -446,7 +446,7 @@ if (isset($_GET['id_putback'])) {
                     echo"<center>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver cet objectif</button>';
                     echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo "<p class='popup-txt'> Vous allez réstaurer ce système </p>";
+                    echo "<p class='popup-txt'> Voulez vous rendre de nouveau utilisable cet objectif ? Il sera visible par tous les membres suivant cet enfant et apparaitra dans les statistiques  </p>";
                     
                     echo ' <div style="display:flex; justify-content: space-evenly;" >';
                     echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
