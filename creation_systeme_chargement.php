@@ -87,10 +87,11 @@ if (isset($_GET['id_suppr'])) {
 
 
         <form  action="insert_systeme_bd.php" method="post">
-            <h1 class="flex-simple">Création d'un système de type : "chargement"</h1>
+            <h1 class="flex-simple">Création d'un objectif   de type : "chargement"</h1>
 
             <div class="flex_simple">
-                <label>Quel est le nom de ce système ? : </label>
+                <label>Quel est le nom de cet objectif ? : </label>
+            
                 <input type="text" name="nom" placeholder="Ecrivez le nom" required="required">
             </div>
 
@@ -99,7 +100,7 @@ if (isset($_GET['id_suppr'])) {
                 <label>Combien de cases voulez-vous inserer ? : </label>
                 <div class="heure">
                 <input type="number" min="0"  name="rows" required="required"   placeholder="Nombre de cases ?">
-                <input id="bouton" type="submit" value="valider">
+                
                 </div>
             </div>
 
@@ -111,7 +112,7 @@ if (isset($_GET['id_suppr'])) {
 
 
             <div class="flex_simple">
-                <label>Quel est la durée de ce système ? : </label>
+                <label>Quel est la durée de cet objectif ? : </label>
                 <div class="heure">
                     <input type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
@@ -123,7 +124,7 @@ if (isset($_GET['id_suppr'])) {
             </div>
 
             <div class="flex_simple">
-                <label>Quel est la priorité de ce système ? : </label>
+                <label>Quel est la priorité de cet objectif ? : </label>
                 <input type="text" name="prio" placeholder="Quelle est la prioritée ?">
             </div>
 
