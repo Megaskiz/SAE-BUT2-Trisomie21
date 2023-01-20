@@ -107,7 +107,7 @@ catch (Exception $e) {
                 <h2 class="titletype">Choisissez le type d'objectif :</h2>
                     <section class="choix-objectif">
                         <input   type="radio" name="radio1" id="choix11" value="1" required="required"> <label class="choix11-label four col detail1" for="choix11">  <div class="image_product"> <img class="img-systeme" src="img/project_images/img1.png"> <p><strong>Objectif Chargement</strong></p> </div></label>
-                        <input type="radio" name="radio1" id="choix13" value="3" required="required"><label class="choix13-label four col detail2" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> <p><strong>Objectif contrat</strong></p>   </div> </label>
+                        <input type="radio" name="radio1" id="choix13" value="3" required="required"><label class="choix13-label four col detail2" for="choix13"> <div class="image_product">   <img class="img-systeme" src="img/project_images/img2.png"> <p><strong>Objectif routine</strong></p>   </div> </label>
                     </section>
 
 
