@@ -9,13 +9,15 @@ is_validateur();
 <html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
   <meta charset="utf-8">
-  <title> Statistiques</title>
+  <title> Statistiques sur 4 semaines</title>
   <link rel="stylesheet" href="style_stat.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
 <?php
 echo '<a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
+echo '<center class="titre_page><h1>Statistiques 4 semaines</h1></center>';
 
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
@@ -196,7 +198,7 @@ $lose =0; // compteur de sessions non réussies
 echo'
 
 <center class="titre_stat">
-<h1>Objectif : '.$nom.'</h1>
+<h3>Objectif : '.$nom.'</h3>
 
 </center>
 <div class="case_stat" style="display:flex">
