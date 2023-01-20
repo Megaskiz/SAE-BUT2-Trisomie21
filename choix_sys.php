@@ -53,6 +53,7 @@ is_validateur();
 
 
     <?php
+    sleep(1);
 
     echo '
             <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>
