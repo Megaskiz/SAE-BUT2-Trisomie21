@@ -298,9 +298,9 @@ if (isset($_GET['id_putback'])) {
                     //acces aux boutons -> ajouter sys, stat, stat4semaines
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                         echo' <div style="display:flex">';
-                        echo '   <a href=""><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
-                        echo '   <a href=""><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
-                        echo '   <a href=""><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
+                        echo '   <a style="display:none;"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
+                        echo '   <a style="display:none;"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
+                        echo '   <a style="display:none;"><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
                         echo' </div>';                    }
 
 
