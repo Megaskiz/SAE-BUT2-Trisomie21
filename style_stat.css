@@ -2,6 +2,16 @@ a {
     text-decoration: none;
 }
 
+.titre_page {
+    color: white;
+    background-color: #007bff;
+    border: transparent;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .st_sys {
     border: none;
     border-radius: 10px;
