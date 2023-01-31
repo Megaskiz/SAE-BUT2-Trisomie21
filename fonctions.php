@@ -6,8 +6,9 @@ function filter_spaces($var){
     return $var != ' ';
 }
 
-function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session){           
-    $linkpdo = connexionBd();
+
+function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
+    
 
     $req = $linkpdo->prepare("UPDATE enfant  SET nom=? ,prenom= ?,date_naissance= ?,adresse= ?,activite= ?,handicap= ?, info_sup= ? WHERE id_enfant= ?");
 
@@ -32,8 +33,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
 
 }
 
-function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role,$session){
-    $linkpdo = connexionBd();
+function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role,$session, $linkpdo){
 
     if ($role==NULL){
         $role = '1';
@@ -59,8 +59,40 @@ function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance
     exit();
 }
 
-function uploadVisage($photo)
-{
+function modif_mdp($mdp, $session, $linkpdo){
+    
+    // fonction qui hash le mot de passe
+    $mot = "ZEN02anWobA4ve5zxzZz".$mdp; // je rajoute une chaine que je vais ajouter au mot de passe
+    $nouveau_mdp = hash('sha256', $mot);
+    
+
+    $req = $linkpdo->prepare("UPDATE membre  SET mdp=? WHERE id_membre= ?");
+
+    if ($req == false){
+        die("erreur linkpdo");
+    }   
+        ///Exécution de la requête
+    try{
+        $req->execute([$nouveau_mdp, $session]);
+        //$req->debugDumpParams();
+        //exit();
+
+        if ($req == false){
+            die("erreur execute");
+        }
+    }
+    
+    catch (Exception $e)
+    {die('Erreur : ' . $e->getMessage());}
+    
+    
+    }
+
+
+
+
+
+    function uploadVisage($photo){
 
     if (isset($photo)) {
         $tmpName = $photo['tmp_name'];
@@ -90,8 +122,8 @@ function uploadVisage($photo)
     return $result;
 }
 
-function uploadImage($photo)
-{
+
+function uploadImage($photo){
 
     if (isset($photo)) {
         $tmpName = $photo['tmp_name'];

@@ -101,7 +101,7 @@ catch (Exception $e) {
                     echo"   <a href='page_certif_compte.php?idv='><button class='annuler'> Annuler &#x1F5D9;</button></a>";
                     echo "</div>";
 
-                    echo"<form action=\"ajoute_modif_mon_mdp.php\" method=\"post\"";
+                    echo"<form action=\"appel_fonction.php?appel=modif_mon_mdp\" method=\"post\"";
 
                     echo"<div class='grille_4_cases'>";
 
