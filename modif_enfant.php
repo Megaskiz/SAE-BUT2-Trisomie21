@@ -321,7 +321,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
 
 
-                echo "<form action=\"ajoute_modif_enfant_bd.php\" method=\"post\">";
+                echo "<form action=\"appel_fonction.php?appel=modif_enfant\" method=\"post\">";
 
                 echo "<div class=\"grille_4_cases\" >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
 

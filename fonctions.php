@@ -1,7 +1,64 @@
 <?php
+function connexionBd(){
+        return new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
+}
 function filter_spaces($var){
     return $var != ' ';
 }
+
+function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session){           
+    $linkpdo = connexionBd();
+
+    $req = $linkpdo->prepare("UPDATE enfant  SET nom=? ,prenom= ?,date_naissance= ?,adresse= ?,activite= ?,handicap= ?, info_sup= ? WHERE id_enfant= ?");
+
+    if ($req == false){
+        die("erreur linkpdo");
+    }   
+        ///Exécution de la requête
+    try{
+        $req->execute([$nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $_SESSION['id_enfant']]);
+
+        if ($req == false){
+            $req->debugDumpParams();
+            die("erreur execute");
+        }
+    }
+    
+    catch (Exception $e)
+    {die('Erreur : ' . $e->getMessage());}
+    
+    header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+    exit();
+
+}
+
+function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role,$session){
+    $linkpdo = connexionBd();
+
+    if ($role==NULL){
+        $role = '1';
+    }
+    $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
+
+    if ($req == false){
+        die("erreur linkpdo");
+    }   
+        ///Exécution de la requête
+    try{
+        $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $session]);
+
+        if ($req == false){
+            die("erreur execute");
+        }
+    }
+    
+    catch (Exception $e)
+    {die('Erreur : ' . $e->getMessage());}
+    
+    header('Location: page_certif_compte.php?idv='.$_SESSION['id_compte_modif'].'');
+    exit();
+}
+
 function uploadVisage($photo)
 {
 

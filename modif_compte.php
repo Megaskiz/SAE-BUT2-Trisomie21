@@ -289,7 +289,7 @@ if (isset($_GET['id_invalider'])) {
                     echo"   <a href='page_certif_compte.php?idv=".$_GET['id']."'>  <button class='annuler'> Annuler &#x1F5D9;</button></a> ";
                     echo "</div>";
 
-                    echo"<form action=\"ajoute_modif_compte.php\" method=\"post\"";
+                    echo"<form action=\"appel_fonction.php?appel=modif_compte\" method=\"post\"";
 
                     echo"<div class='grille_4_cases' style='display=grid; align-content: space-between'>";
 
