@@ -74,11 +74,7 @@
                                             'courriel' => htmlspecialchars($courriel),
                                             'date_naissance' => htmlspecialchars($ddn),
                                             'mdp' => htmlspecialchars($insert_mdp),
-                                            'pro' => htmlspecialchars($pro), // à changer
                                             'compte_valide' => 0
-                                        
-                                        
-                                        
                                         ));
                         if ($req == false){
                             $req->debugDumpParams;
@@ -137,18 +133,7 @@
                         <input required type="date" name="ddn" placeholder="date de naissance"value=<?php echo htmlspecialchars($ddn) ?>>
                         <input required type="text" name="password" placeholder="Mot de passe"value=<?php echo htmlspecialchars($Mdp) ?>>
                         <input required type="text" name="password_verif" placeholder="Confirmer le Mot de passe"value=<?php echo htmlspecialchars($Mdp_verif) ?>>
-                        <p>Etes vous un professionel ?</p>
-                        <div class="sous-grille">
-                            <div>
-                                <label for="oui">oui</label>
-                                <input type="radio" id="oui" name="pro" value="1" >
-                            </div>
-                            <div>
-                                <label for="oui">non</label>
-                                <input type="radio" id="oui"  name="pro" value="0"checked>
-                            
-                            </div>
-                        </div>
+        
                         <input class="button" type="submit" value="Valider l'inscription">
                         <p class="message">Déjà un compte ? <a href="html_login.php">S'identifer</a></p>
                         
