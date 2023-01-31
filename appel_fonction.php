@@ -9,6 +9,7 @@ if(isset($_GET['appel'])){
     $linkpdo = connexionBd();
 
     switch ($_GET['appel']) {
+        
         case 'modif_enfant':
             $nom = $_POST['nom_enfant'];
             $prenom = $_POST['prenom_enfant'];
@@ -21,6 +22,8 @@ if(isset($_GET['appel'])){
         
             modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo);
             break;
+
+
         case 'modif_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);
             $session = $_SESSION['id_compte_modif'];
@@ -28,6 +31,8 @@ if(isset($_GET['appel'])){
             modif_mdp($mdp, $session, $linkpdo);
             header('Location: page_certif_compte.php?idv='.$_SESSION['id_compte_modif'].'');
             break;
+
+
         case 'modif_mon_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);
             $session = $_SESSION['logged_user'];
@@ -35,6 +40,8 @@ if(isset($_GET['appel'])){
             modif_mdp($mdp, $session, $linkpdo);
             header('Location:mon_compte.php');
             break;
+
+
         case 'modif_compte':
             $nom = htmlspecialchars($_POST['nom_membre']);
             $prenom = htmlspecialchars($_POST['prenom_membre']);
@@ -46,9 +53,12 @@ if(isset($_GET['appel'])){
             $session = $_SESSION['id_compte_modif'];
         
             modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $session, $linkpdo);
-            break;    
+            break; 
+            
+            
         default:
-           echo"autre";
+            echo"autre";
+            exit();
             break;
     
     }

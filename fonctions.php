@@ -6,6 +6,48 @@ function filter_spaces($var){
     return $var != ' ';
 }
 
+// ------------------------------------- fonctions pour les "blocs" html -----------------------------------------------------------
+
+function create_header($linkpdo){
+    
+    echo'<header>
+        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l\'utilisateur">';
+
+        $mail =  $_SESSION['login_user'];
+        try {
+            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
+        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        ///Affichage des entrées du résultat une à une
+
+        $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+        $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+        $liste = array();
+        echo "<table>";
+
+        for ($i = 0; $i < $nombre_ligne; $i++) {
+            echo "<tr>";
+            for ($y = 0; $y < 2; $y++) {
+                echo "<td>";
+                print_r($double_tab[$i][$y]);
+                $liste[$y] = $double_tab[$i][$y];
+                echo "</td>";
+            }
+
+            echo "</tr>";
+        }
+
+        echo "</table>";
+        echo'
+        <div onclick="window.location.href =\'logout.php\';" class="h-deconnexion">
+        <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
+        </div>
+    </header>';
+}
+
 
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
     

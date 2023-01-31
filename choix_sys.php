@@ -59,16 +59,7 @@ is_validateur();
             <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>
 
             <a href="page_recompense.php"><button class="droite">voir la/les récompenses</button></a>
-            <a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif">messagerie<span class=" icon-mail">&#x2709;</span></button></a>
-'
-            
-            ;
-
-    
-
-
-
-
+            <a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif">messagerie<span class=" icon-mail">&#x2709;</span></button></a>';
 
     ///Connexion au serveur MySQL
     try {

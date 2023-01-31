@@ -40,57 +40,8 @@ if (isset($_GET['id_suppr'])) {
 <body>
 
 
-    <header>
-        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="photo du visage de l'utilisateur">
-
-        <?php
-        $mail =  $_SESSION['login_user'];
-        try {
-            $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-            die('Erreur : ' . $e->getMessage());
-        }
-
-        ///Affichage des entrées du résultat une à une
-
-        $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-        $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
-        $liste = array();
-        echo "<table>";
-
-        for ($i = 0; $i < $nombre_ligne; $i++) {
-            echo "<tr>";
-            for ($y = 0; $y < 2; $y++) {
-                echo "<td class='nom-utilisateur'>";
-                print_r(htmlspecialchars($double_tab[$i][$y]));
-                $liste[$y] = $double_tab[$i][$y];
-                echo "</td>";
-            }
-
-            echo "</tr>";
-        }
-        echo "</table>";
-
-        if (isset($_FILES['photo_enfant'])) {
-            $id = $_SESSION["id_enfant"];
-            $photo_enfant = uploadImage($_FILES['photo_enfant']);
-            $reqM = "UPDATE enfant SET photo_enfant = '$photo_enfant' WHERE enfant.id_enfant = $id;";
-            try {
-                $res = $linkpdo->query($reqM);
-                echo $reqM;
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-                die('Erreur : ' . $e->getMessage());
-            }
-            header("Refresh:0");
-        }
-        ?>
-
-        <div onclick="window.location.href ='logout.php';" class="h-deconnexion">
-            <img class="img-deco" src="img/deconnexion.png" alt="Déconnexion"> Déconnexion
-        </div>
-
-    </header>
+        <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+<?php create_header($linkpdo);?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
