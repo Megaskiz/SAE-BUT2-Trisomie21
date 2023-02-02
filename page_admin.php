@@ -218,7 +218,7 @@ create_nav_user($linkpdo)
                         echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
                         echo "</div><div class=\"dialog_form_actions\">";
                         echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
-                        echo "<button class='popup-btn' type=\"submit\">Valider </button>";
+                        echo "<button class='popup-btn active' type=\"submit\">Valider </button>";
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";

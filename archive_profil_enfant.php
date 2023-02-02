@@ -75,7 +75,7 @@ if (isset($_GET['id_putback'])) {
         <nav  class="left-contenu">
 
        
-        <div style="display: flex;     margin: 3%;">
+        <div style="display: flex; margin: 3%;">
            
            <a  class="retour"  href="page_admin.php"> Retour</a>
   
