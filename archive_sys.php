@@ -55,7 +55,7 @@ if (isset($_GET['id_putback'])) {
 <head>
     <meta charset="utf-8">
     <title> Menu principal </title>
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="style_css/style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>

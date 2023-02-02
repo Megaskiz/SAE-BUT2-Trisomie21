@@ -10,7 +10,7 @@ is_validateur();
 <head>
   <meta charset="utf-8">
   <title>Statistiques Total</title>
-  <link rel="stylesheet" href="style_stat.css">
+  <link rel="stylesheet" href="style_css/style_stat.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 

@@ -9,8 +9,8 @@ is_validateur();
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
-    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="style_css/stylesheet.css" type="text/css" charset="utf-8">
     <title>bienvenue</title>
     <div id="color-picker-container">
        
@@ -315,7 +315,8 @@ is_validateur();
         
                             // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
                             if (strpos($chaine,'0')==false) { 
-                                echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                                $feux = true;
+                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
                             }
         
                             echo "<div class=\"sys\">";
@@ -409,7 +410,8 @@ is_validateur();
 
                     // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
                     if (strpos($chaine, '0') == false) {
-                        echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                        $feux = true;
+                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
                     }
 
                     echo "<div class=\"sys\">";
@@ -535,7 +537,8 @@ try {
 
         // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
         if (strpos($chaine, '0') == false) {
-            echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+            $feux = true;
+                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
         }
         
         echo "<div class=\"sys\">";
@@ -689,7 +692,8 @@ try {
     
             // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
             if (strpos($chaine, '0') == false) {
-                echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                $feux = true;
+                echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
             }
             
             echo "<div class=\"sys\">";
@@ -807,7 +811,11 @@ try {
 
                     // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
                     if (strpos($chaine,'0') == false) {
-                        echo "<h1><a href=\"page_recompense.php \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                        
+                        
+                        $feux = true;
+                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+
                     }
                     
                     echo "<div class=\"sys\">";

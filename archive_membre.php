@@ -42,7 +42,7 @@ if (isset($_GET['id_invalider'])) {
 <head>
     <meta charset="utf-8">
     <title> Administrateur </title>
-    <link rel="stylesheet" href="style_page_certif_account.css">
+    <link rel="stylesheet" href="style_css/style_page_certif_account.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -50,29 +50,26 @@ if (isset($_GET['id_invalider'])) {
 
 <body>
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php create_header($linkpdo);?>
+    <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
     <main>
-
         <nav class="left-contenu">
-        <div style="display: flex;     margin: 3%;">
-           
-                    <a  class="retour"  href="page_certif_compte.php"> Retour</a>
-           
+            <div style="display: flex; margin: 3%;">
+                <a class="retour" href="page_certif_compte.php"> Retour</a>
             </div>
-            
-            
-           
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
-                    <div id="myDropdown" class="dropdown-content">
+
+
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
+                <div id="myDropdown" class="dropdown-content">
                     <?php
-                    
-                    
+
+
                     ///Sélection de tout le contenu de la table 
                     try {
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1 and compte_valide= 1");
@@ -85,9 +82,9 @@ if (isset($_GET['id_invalider'])) {
                     $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
-                    echo"<div>";
+                    echo "<div>";
                     echo "<table class='no-break'>";
-                    
+
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         echo "<tr>";
@@ -101,21 +98,21 @@ if (isset($_GET['id_invalider'])) {
                         }
                         $identifiant = $double_tab[$i][0];
 
-                            echo "<td>";
-                            echo ' <a href="archive_membre.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Profil </button></a>';
-                            
+                        echo "<td>";
+                        echo ' <a href="archive_membre.php?idv=' . $identifiant . '">  <button  class="acceder-information-membre"> Profil </button></a>';
+
                         echo "</td>";
                         echo "</tr>";
                     }
                     echo "</table>";
 
-                    
+
                     ///Fermeture du curseur d'analyse des résultats
                     $res->closeCursor();
                     ?>
-                  </div>
+                </div>
             </div>
-                
+
 
         </nav>
 
@@ -191,7 +188,7 @@ if (isset($_GET['id_invalider'])) {
                 case '0':
                     $role = 'Utilisateur';
                     break;
-                
+
                 case '1':
                     $role = "Administrateur";
                     break;
@@ -204,7 +201,7 @@ if (isset($_GET['id_invalider'])) {
                     $role = "Coordinateur";
                     break;
             }
-            
+
             $date_naissance_membre =  date_format(new DateTime(strval($double_tab[0][7])), 'd/m/Y');
 
 
@@ -221,12 +218,12 @@ if (isset($_GET['id_invalider'])) {
             $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
             $liste = array();
         }
- 
+
 
         ?>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
-            <div  class="section_membre">
+            <div class="section_membre">
                 <?php
                 if (isset($_GET['id'])) {
                     //<!---- menu droit information ---->
@@ -238,36 +235,36 @@ if (isset($_GET['id_invalider'])) {
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\"> Nom :<strong> ".htmlspecialchars($nom_membre)."</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>".htmlspecialchars($prenom_membre)."</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>".htmlspecialchars($date_naissance_membre)."</strong></p>";
+                    echo "<p class=\"info\"> Nom :<strong> " . htmlspecialchars($nom_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>".htmlspecialchars($courriel_membre)."</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong>".htmlspecialchars($adresse_membre)."".htmlspecialchars($ville_membre)."</strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> ".htmlspecialchars($code_postal_membre)." </strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong>" . htmlspecialchars($adresse_membre) . "" . htmlspecialchars($ville_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . " </strong> </p>";
                     echo "</div>";
 
-                    echo"</div>";
+                    echo "</div>";
                     echo " <div class=\"case-membre_2\">";
-                    if($_SESSION["role_user"]!=3){
-                    echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog".$_GET['id']."', this)\">Valider ce compte membre</button>";
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialog".$_GET['id']."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                    echo "<p class='popup-txt'>Vous voulez valider ce compte membre dans l'application !</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo '<a class="popup-btn" href="page_certif_compte.php?id_valider='.$_GET['id'].'">Valider</a>';
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
+                    if ($_SESSION["role_user"] != 3) {
+                        echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog" . $_GET['id'] . "', this)\">Valider ce compte membre</button>";
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialog" . $_GET['id'] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+                        echo "<p class='popup-txt'>Vous voulez valider ce compte membre dans l'application !</p>";
+                        echo "<div class=\"dialog_form_actions\">";
+                        echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                        echo '<a class="popup-btn" href="page_certif_compte.php?id_valider=' . $_GET['id'] . '">Valider</a>';
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
                     }
                 }
                 if (isset($_GET['idv'])) {
-                    $idiv=$_GET['idv'];
+                    $idiv = $_GET['idv'];
                     //<!---- menu droit information ---->
                     echo "<div class=\"case-membre_1\">";
                     echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
@@ -276,55 +273,54 @@ if (isset($_GET['id_invalider'])) {
                     echo "<div class='grille_2_cases'>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong>".htmlspecialchars( $nom_membre)."</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>".htmlspecialchars($prenom_membre)."</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>".htmlspecialchars($date_naissance_membre)."</strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong>" . htmlspecialchars($nom_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>";
                     echo "<p class=\"info\">Role de l'utilisateur : <strong>$role</strong></p>";
 
 
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>".htmlspecialchars($courriel_membre)."</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong> ".htmlspecialchars($adresse_membre)."".htmlspecialchars($ville_membre)." </strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> ".htmlspecialchars($code_postal_membre)."</strong> </p>";
+                    echo "<p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>";
+                    echo "<p class=\"info\">Adresse : <strong> " . htmlspecialchars($adresse_membre) . "" . htmlspecialchars($ville_membre) . " </strong></p>";
+                    echo "<p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . "</strong> </p>";
                     echo "</div>";
 
-                    echo"</div>";
+                    echo "</div>";
 
                     echo " <div class=\"case-membre_2\">";
-                    if($_SESSION["role_user"]!=3){
-                    if ( $idiv!=$_SESSION['logged_user']){
-                        if($_GET["idv"]!=1){
-                        
-                        
-                    echo "<button  class=\"valider\" type=\"button\" onclick=\"openDialog('dialogI".$idiv."', this)\">Restaurer ce compte membre</button>";
+                    if ($_SESSION["role_user"] != 3) {
+                        if ($idiv != $_SESSION['logged_user']) {
+                            if ($_GET["idv"] != 1) {
 
-                    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                    echo "<div role=\"dialog\" id=\"dialogI".$idiv."\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                    echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
 
-                    echo "<p class='popup-txt'>Voulez-vous restaurer ce compte membre dans l'application ?</p>";
-                    echo "<div class=\"dialog_form_actions\">";
-                    echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                    echo '<a class="popup-btn" href="archive_membre.php?id_valider='.$idiv.'">Restaurer</a>';
-                    echo "</div>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-                }
+                                echo "<button  class=\"valider\" type=\"button\" onclick=\"openDialog('dialogI" . $idiv . "', this)\">Restaurer ce compte membre</button>";
+
+                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                                echo "<div role=\"dialog\" id=\"dialogI" . $idiv . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
+                                echo "<p class='popup-txt'>Voulez-vous restaurer ce compte membre dans l'application ?</p>";
+                                echo "<div class=\"dialog_form_actions\">";
+                                echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                                echo '<a class="popup-btn" href="archive_membre.php?id_valider=' . $idiv . '">Restaurer</a>';
+                                echo "</div>";
+                                echo "</form>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                        }
                     }
                 }
-
-                }
                 ?>
-        </div>
-        <div class="case-membre_2">
-            
-            <?php
-            
-            ?>
-        </div>
+            </div>
+            <div class="case-membre_2">
+
+                <?php
+
+                ?>
+            </div>
 
         </nav>
     </main>

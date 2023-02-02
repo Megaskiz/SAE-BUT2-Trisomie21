@@ -20,7 +20,7 @@ catch (Exception $e) {
 
 <head>
     <title> Administrateur </title>
-    <link rel="stylesheet" href="style_creatsystem.css">
+    <link rel="stylesheet" href="style_css/style_creatsystem.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
     <link rel="icon" href="logo/icon-admin.png">

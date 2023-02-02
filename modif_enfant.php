@@ -32,7 +32,7 @@ if (isset($_GET['id_suppr'])) {
 <head>
     <meta charset="utf-8">
     <title> Administrateur </title>
-    <link rel="stylesheet" href="style_admin_modif_enfant.css">
+    <link rel="stylesheet" href="style_css/style_admin_modif_enfant.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>

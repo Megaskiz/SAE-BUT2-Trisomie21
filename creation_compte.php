@@ -112,7 +112,7 @@
     <head>
         <meta charset="utf-8">
         <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="style_setup.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="style_css/style_setup.css" media="screen" type="text/css" />
         <title>bienvenue</title>
     </head>
     <body>

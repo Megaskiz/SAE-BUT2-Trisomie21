@@ -77,7 +77,7 @@ if (isset($_FILES['photo_enfant'])) {
 <head>
     <meta charset="utf-8">
     <title> Menu principal </title>
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="style_css/style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
@@ -218,7 +218,7 @@ create_nav_admin($linkpdo) // pas fini
                         echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
                         echo "</div><div class=\"dialog_form_actions\">";
                         echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
-                        echo "<button class='popup-btn' type=\"submit\">Valider </button>";
+                        echo "<button class='popup-btn active' type=\"submit\">Valider </button>";
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";

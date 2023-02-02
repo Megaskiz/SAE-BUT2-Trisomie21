@@ -2,7 +2,7 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
         <title>récompenses</title>
         <div id="color-picker-container">
        
@@ -14,13 +14,65 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script type="text/javascript" src="choix_sys.js"></script>
     <center>
     <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
 
+    <?php
+     if (isset($_GET['feux'])) {
+            if ($_GET['feux'] == '1') {
+                ?>
 
+                <script>
+        
+
+            function fire(ratio, opt){
+            confetti(Object.assign({}, opt, {
+            origin: {y: .6},
+            particleCount: Math.floor(200 * ratio)
+            }));
+            }
+
+            fire(0.25, {
+            spread: 26,
+            startVelocity: 55,
+            });
+            fire(.2,{spread: 60});
+            fire(.35, {
+            spread: 100,
+            decay: .91,
+            scalar: .8
+            });
+            fire(.1, {
+            spread: 120,
+            startVelocity: 25,
+            decay: .92,
+            scalar: 1.2
+            });
+            fire(2.5, {
+            spread: 120,
+            startVelocity: 45,
+            });
+            fire();
+        </script>
+    <?php
+     }
+
+            }
+            
+                
+           
+        ?>
+        
+     
+
+
+        
+    
 
     <script>
+        fire();
     // Récupérer la valeur stockée dans sessionStorage
     var bgColor = sessionStorage.getItem("bg-color");
     // Vérifier si la valeur existe
