@@ -9,8 +9,8 @@ is_validateur();
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
-    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="style_css/stylesheet.css" type="text/css" charset="utf-8">
     <title>bienvenue</title>
     <div id="color-picker-container">
        

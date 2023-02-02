@@ -2,7 +2,7 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style_choix_sys.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
         <title>récompenses</title>
         <div id="color-picker-container">
        

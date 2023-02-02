@@ -18,7 +18,7 @@ catch (Exception $e) {
 <head>
     <meta charset="UTF-8">
     <title>Administrateur</title>
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="style_css/style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="script.js"></script>
 </head>
