@@ -397,18 +397,78 @@ function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (part
 
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
     
+    $liste = array();
+    $data = array();
 
-    $req = $linkpdo->prepare("UPDATE enfant  SET nom=? ,prenom= ?,date_naissance= ?,adresse= ?,activite= ?,handicap= ?, info_sup= ? WHERE id_enfant= ?");
+    if ($nom != null) {
+        $liste += [ "nom" =>$nom ];
+    }
 
-    if ($req == false){
+    if ($prenom != null) {
+    $liste += [ "prenom" =>$prenom ];
+    }
+
+    if ($date_naissance != null) {
+    $liste += [ "date_naissance" =>$date_naissance ];
+    }
+
+    if ($adresse != null) {
+    $liste += [ "adresse" =>$adresse ];
+    }
+
+    if ($activite != null) {
+    array_push($liste, $activite);
+    $liste += [ "activite" =>$activite ];
+    }
+
+    if ($handicap != null) {
+    $liste += [ "handicap" =>$handicap ];
+    }
+
+    if ($info_sup != null) {
+    $liste += [ "info_sup" =>$info_sup ];
+    }
+
+
+    // faire un for dans la liste et créer la requête
+    // faire le éxecute aussi avec une liste
+
+    $req="UPDATE enfant SET ";
+
+
+
+    
+
+    foreach($liste as $key => $value){
+            if(!is_numeric($key)){
+            $req.=$key;
+            $req.='=? ';
+           array_push($data, $value);
+        }
+    }
+    
+    $req.="where id_enfant=?";
+    array_push($data,$_SESSION['id_enfant']);
+    echo"<br>";
+
+    // echo$req;
+    // echo"<br>";
+    // var_dump($data);
+    // echo"<br>";
+
+
+
+    $query = $linkpdo->prepare($req);
+
+    if ($query == false){
         die("erreur linkpdo");
     }   
         ///Exécution de la requête
     try{
-        $req->execute([$nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $_SESSION['id_enfant']]);
-
-        if ($req == false){
-            $req->debugDumpParams();
+        $query->execute($data);
+        
+        $query->debugDumpParams();
+        if ($query == false){
             die("erreur execute");
         }
     }

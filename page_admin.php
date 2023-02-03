@@ -216,9 +216,82 @@ switch ($_SESSION["role_user"]) {
                     echo " <div class=\"div-modif-enfant\">";
                     // acces modif enfant
                     if ($_SESSION["role_user"] == 1) {
-                        echo '<a href="modif_enfant.php"> 
-                        <button class="bouton-modif-enfant">&#x270E Modifier</button> </a>';
+                        // echo '<a href="modif_enfant.php"> 
+                        //<button class="bouton-modif-enfant">&#x270E Modifier</button> </a>';
+                        //mettre pop up de modification d'information sur les enfants ici
+                        //echo " <div class='div-supprimer-enfant'>";
+                        // dialog suppression
 
+                        echo "<button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog50', this)\">Modifier</button>";
+        
+                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                        echo "<div role=\"dialog\" id=\"dialog50\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+
+                        //intérieur de la pop up
+                        echo "<form action=\"appel_fonction.php?appel=modif_enfant\" method=\"post\">";
+
+                        echo "<div class=\"grille_4_cases\" >"; // partie de droite 'le form' -> 2* '3infos' + tuteurs + info sup
+
+
+                        // case 3 infos : nom, ddn, activité
+                        echo "<div class=\"case-3-infos\">";
+                        echo "<div class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo '<p> Nom :</p><input name=nom_enfant type="text" placeholder="'.htmlspecialchars($nom_enfant).'" value="' . htmlspecialchars($nom_enfant) . '">';
+                        echo "</div>";
+
+                        echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo "<p>Date de Naissance :</p><input name=date_naissance type=\"date\" placeholder=".htmlspecialchars($ddn_enfant)." value=" . htmlspecialchars($ddn_enfant) . ">";
+                        echo "</div>";
+
+
+
+                        echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" placeholder='".htmlspecialchars($activite)."' value='".htmlspecialchars($activite)."'>";
+                        echo "</div>";
+
+                        echo "</div>";
+
+                        // case 3 infos : prenom, adresse, handicap
+                        echo "<div class=\"case-3-infos\">";
+
+                        echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo "<p>Prénom :</p><input name=prenom_enfant type=\"text\" placeholder='".htmlspecialchars($prenom_enfant)."' value='" . htmlspecialchars($prenom_enfant) . "'>";
+                        echo "</div>";
+
+                        echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" placeholder='".htmlspecialchars($adresse)."' value='".htmlspecialchars($adresse)."'>";
+                        echo "</div>";
+
+                        echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
+                        echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" placeholder='".htmlspecialchars($handicap)."' value='".htmlspecialchars($handicap)."'>";
+                        echo "</div>";
+
+                        echo "</div>";
+
+
+
+                        // case tuteurs
+                        echo "<div   class='bouton-valider'>";
+                        echo "<button class='button-valider-modification' >valider les modifications</button>";
+                        echo "</div>";
+
+                        //case info supp
+                        echo "<div  class='zone-texte'>";
+                        echo "<textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>";
+                        echo "</div>";
+
+
+                        echo "</div>";
+
+                        echo "</form>";
+
+                        
+                        echo "</div>";
+                        echo "</div>";
+                        
+                        
+                        
+                        
                         echo '<button class="bouton-modif-photo" type="button" onclick="openDialog(\'dialog5\', this)">&#x270E Modifier le jeton</button>';
                         
                         echo "<div id=\"dialog_layer\" class=\"dialogs\">";
@@ -238,6 +311,8 @@ switch ($_SESSION["role_user"]) {
                         echo "</form>";
                         echo "</div>";
                         echo "</div>";
+                       // echo "</div>";
+
                     }
                     
                     echo "</div>";
