@@ -127,7 +127,7 @@ switch ($_SESSION["role_user"]) {
 
         <?php // affichage central de la page, avec les informations sur les enfants
 
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id'])) { // si on clique sur "acceder" alors on recherche les infos d'un enfant
             $id = $_GET['id'];
             $_SESSION["id_enfant"] = $id;
 
@@ -308,6 +308,9 @@ switch ($_SESSION["role_user"]) {
 
 
                     echo "</section>";
+
+
+                    
                     echo "<section class=\"nb-systeme\">";
                     //acces aux boutons -> ajouter sys, stat, stat4semaines
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
