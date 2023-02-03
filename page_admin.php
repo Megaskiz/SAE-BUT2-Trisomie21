@@ -107,7 +107,22 @@ if (isset($_FILES['photo_enfant'])) {
 
 
 <?php //affichage de la liste de gauche, avec les profils enfants, et les sous menus, en fonction des droits 
-create_nav_admin($linkpdo) // pas fini 
+switch ($_SESSION["role_user"]) {
+    case '0':
+        // utilisateur User
+        create_nav_user($linkpdo);
+        break;  
+    
+    case '1':
+        // utilisateur Admin
+        create_nav_admin($linkpdo);
+        break;
+   
+    default:
+        // utilisateur Coordinateur
+        create_nav_coordinateur($linkpdo);
+        break;
+}
 ?>
 
         <?php // affichage central de la page, avec les informations sur les enfants

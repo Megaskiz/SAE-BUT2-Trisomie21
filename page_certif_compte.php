@@ -8,13 +8,7 @@ is_user();
 
 <?php
 ///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo=connexionBd();
 
 if (isset($_GET['id_valider'])) {
     $id_valider_membre = $_GET['id_valider'];
@@ -84,12 +78,12 @@ if (isset($_GET['id_archiver'])) {
             ?>
             
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
-                <div class="bouton_tuteur">
+            <div class="bouton_tuteur">
                 <?php
                 if($_SESSION["role_user"]==1 or $_SESSION["role_user"]==2 ){
                     echo"<a href=\"archive_membre.php \"><button class=\"btn_archive\">Membres archivés</button></a>";
                 }
-                 
+                
                    
                     if($_SESSION["role_user"]!=3){
                     echo'<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';   

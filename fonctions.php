@@ -121,7 +121,7 @@ function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de ga
 
 };
 
-function create_nav_admin(){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs avec  tous les privilèges
+function create_nav_admin($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs avec  tous les privilèges
     echo'
     <div  class="open" onclick="openMenu()"> ☰</div>
 
@@ -267,7 +267,7 @@ function create_nav_admin(){ // fonction qui affiche le nav (partie de gauche) p
             </nav>";
 };
 
-function create_nav_coordinateur(){
+function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les coordinateurs
         echo'
     <div  class="open" onclick="openMenu()"> ☰</div>
 
@@ -390,7 +390,7 @@ function create_nav_coordinateur(){
             </nav>";
 };
 
-function create_nav_validateur(){};
+
 
 
 
