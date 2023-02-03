@@ -71,7 +71,7 @@ td {
     }
 
 
-    /*DESIGN DE LA PAGE */
+    /*FORMAT DE LA PAGE */
     main {
         display: grid;
         grid-template-columns: 23% 1fr;
@@ -158,7 +158,6 @@ td {
     .supprimer-objectif:hover{
         background-color: #f44336;
     }
-
 
 
     .bouton_enfant {
@@ -250,12 +249,22 @@ td {
         display: flex;
         align-items: center;
         justify-content: space-between;
-       
     }
-  
+
     .acces-enfant {
         margin-left: 40%;
         border-radius: none;
+    }
+
+
+    .popup_info {
+        display: flex;
+        margin: 3%;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid 1px;
+        border-top: solid 1px;
+        padding: 6px;
     }
 
     /* Pop-up JS ajouter un enfant*/
@@ -466,24 +475,6 @@ td {
         margin: bottom 1px;
         
     }
-
-    
-   
-
-
-    /* SECTION POPUP MEMBRE */
-    .popup_info {
-        display: flex;
-        margin: 3%;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: solid 1px;
-        border-top: solid 1px;
-        padding: 6px;
-    }
-
-   
-
 
 
     /*------------------------ MENU INFORMATION ENFANT (droite)--------------------*/

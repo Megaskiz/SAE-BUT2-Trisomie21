@@ -165,7 +165,7 @@ catch (Exception $e) {
                 echo "</table>";
 
                 ///Fermeture du curseur d'analyse des résultats
-                $res->closeCursor();
+               /// $res->closeCursor();
             }
             ?>
         </nav>
