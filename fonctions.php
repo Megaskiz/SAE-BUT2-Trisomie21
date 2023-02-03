@@ -397,8 +397,10 @@ function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (part
 
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
     
+    if($nom != null or $prenom != null or $date_naissance != null or $adresse != null or $activite != null or $handicap != null or $info_sup ){
     $liste = array();
     $data = array();
+
 
     if ($nom != null) {
         $liste += [ "nom" =>$nom ];
@@ -475,6 +477,8 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
     
     catch (Exception $e)
     {die('Erreur : ' . $e->getMessage());}
+
+    }
     
     header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
     exit();

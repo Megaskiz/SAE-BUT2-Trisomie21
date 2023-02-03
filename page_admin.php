@@ -272,6 +272,8 @@ switch ($_SESSION["role_user"]) {
 
                         // case tuteurs
                         echo "<div   class='bouton-valider'>";
+                        echo '<button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+
                         echo "<button class='button-valider-modification' >valider les modifications</button>";
                         echo "</div>";
 
