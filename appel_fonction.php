@@ -23,6 +23,17 @@ if(isset($_GET['appel'])){
             modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo);
             break;
 
+        case 'modif_jeton':
+            if (isset($_FILES['photo_enfant'])) {
+                $id = $_SESSION["id_enfant"];
+                $photo_enfant = uploadImage($_FILES['photo_enfant']);
+                modif_jeton($id, $photo_enfant, $linkpdo);
+
+
+                header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+            }
+            break;
+
 
         case 'modif_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);

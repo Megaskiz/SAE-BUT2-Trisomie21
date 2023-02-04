@@ -276,9 +276,7 @@ function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (part
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
-                    </li>';
-                    //acces à la page de membre
-                    echo '
+                    </li>
                     <li class="nav-item">
                         <a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>
                     </li>
@@ -393,6 +391,71 @@ function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (part
 
 
 
+function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup){
+    echo "
+    <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog50', this)\">Modifier</button>
+    <div id=\"dialog_layer\" class=\"dialogs\">
+        <div role=\"dialog\" id=\"dialog50\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+            <form action=\"appel_fonction.php?appel=modif_enfant\" method=\"post\">
+                <div class=\"grille_4_cases\" >
+                <div class=\"case-3-infos\">
+                    <div class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p> Nom :</p><input name=nom_enfant type=\"text\" placeholder='".htmlspecialchars($nom_enfant)."' value='" . htmlspecialchars($nom_enfant) . "'>
+                    </div>
+                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p>Date de Naissance :</p><input name=date_naissance type=\"date\" placeholder=".htmlspecialchars($ddn_enfant)." value=" . htmlspecialchars($ddn_enfant) . ">
+                    </div>
+                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p>Activité enfant :</p><input name=activite type=\"text-area\" placeholder='".htmlspecialchars($activite)."' value='".htmlspecialchars($activite)."'>
+                    </div>
+                </div>
+                <div class=\"case-3-infos\">
+                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p>Prénom :</p><input name=prenom_enfant type=\"text\" placeholder='".htmlspecialchars($prenom_enfant)."' value='" . htmlspecialchars($prenom_enfant) . "'>
+                    </div>
+                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p>Adresse enfant :</p><input name=adresse type=\"text\" placeholder='".htmlspecialchars($adresse)."' value='".htmlspecialchars($adresse)."'>
+                    </div>
+                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+                        <p>Handicap enfant :</p><input name=handicap type=\"text\" placeholder='".htmlspecialchars($handicap)."' value='".htmlspecialchars($handicap)."'>
+                    </div>
+                </div>
+                <div   class='bouton-valider'>
+                    <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                    <button class='button-valider-modification' >valider les modifications</button>
+                </div>
+                <div  class='zone-texte'>
+                    <textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>";
+};
+
+function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant){
+
+    echo '<button class="bouton-modif-photo" type="button" onclick="openDialog(\'dialog5\', this)">&#x270E Modifier le jeton</button>';
+
+    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+
+
+    echo "<img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
+
+    echo "<form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">";
+    echo "<div class=\"dialog_form_item\">";
+
+    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
+    echo "</div><div class=\"dialog_form_actions\">";
+    echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
+    echo "<button class='popup-btn active' type=\"submit\">Valider </button>";
+    echo "</div>";
+    echo "</form>";
+    echo "</div>";
+    echo "</div>";
+
+}
 
 
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
@@ -432,14 +495,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
     }
 
 
-    // faire un for dans la liste et créer la requête
-    // faire le éxecute aussi avec une liste
-
     $req="UPDATE enfant SET ";
-
-
-
-    
 
     foreach($liste as $key => $value){
             if(!is_numeric($key)){
@@ -452,11 +508,6 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
     $req.="where id_enfant=?";
     array_push($data,$_SESSION['id_enfant']);
     echo"<br>";
-
-    // echo$req;
-    // echo"<br>";
-    // var_dump($data);
-    // echo"<br>";
 
 
 
@@ -510,6 +561,25 @@ function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance
     header('Location: page_certif_compte.php?idv='.$_SESSION['id_compte_modif'].'');
     exit();
 }
+
+function modif_jeton($id, $photo_enfant, $linkpdo){
+    
+    $reqM = "UPDATE enfant SET lien_jeton = '$photo_enfant' WHERE enfant.id_enfant = $id;";
+    try {
+        $res = $linkpdo->query($reqM);
+        //echo $reqM;
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    
+
+    
+    
+}
+
+
+
 
 function modif_mdp($mdp, $session, $linkpdo){
     

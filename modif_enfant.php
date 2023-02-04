@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
-require('fonctions.php');
-is_logged();
-is_validateur();
-is_not_admin();
-///Connexion au serveur MySQL
+echo"on ne devrait pas etre sur cette page";
+exit();
+?>
 try {
     $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
 }
@@ -440,4 +435,4 @@ if (isset($_GET['id_suppr'])) {
 
 
 
-</html>
+</html> 
