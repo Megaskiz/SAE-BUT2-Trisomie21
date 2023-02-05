@@ -227,6 +227,8 @@ td {
         justify-content: space-around;
     }
 
+    
+
 
     /*------------------------ MENU LISTE ENFANT  (gauche)--------------------*/
 
@@ -297,7 +299,6 @@ td {
     input[type="text-area"]:focus,
     input[type="date"]:focus {
         border-color: #dc9c2d;
-        outline: none;
         box-shadow: 0px 0px 10px 1px #191970;
     }
 
@@ -606,6 +607,10 @@ td {
         height: 100%;
     }
 
+    button.button_ajouter-objectif {
+        margin: 5px;
+    }
+
 
 
 
@@ -684,6 +689,7 @@ td {
 
     textarea {
         width: 100%;
+        height: 80%;
         padding-top: 3%;
         border-radius: 5px;
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -1860,7 +1866,6 @@ td {
     input[type="text-area"]:focus,
     input[type="date"]:focus {
         border-color: #dc9c2d;
-        outline: none;
         box-shadow: 0px 0px 10px 1px #191970;
     }
 
