@@ -426,13 +426,15 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
                         <p>Handicap enfant :</p><input name=handicap type=\"text\" placeholder='".htmlspecialchars($handicap)."' value='".htmlspecialchars($handicap)."'>
                     </div>
                 </div>
+                <div  class='zone-texte' >
+                    <p style='font-size: 16px;
+                    font-weight: bold;'>Informations supplémentaires :</p><textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>
+                </div>
                 <div   class='bouton-valider'>
                     <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
                     <button class='button-valider-modification actif' >Valider &#x2714;</button>
                 </div>
-                <div  class='zone-texte'>
-                    <textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>
-                </div>
+                
                 </div>
             </form>
         </div>
