@@ -1,25 +1,25 @@
 <?php
-echo"on ne devrait pas etre sur cette page";
+echo "on ne devrait pas etre sur cette page";
 exit();
 ?>
 try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
+$linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
 }
 ///Capture des erreurs éventuelles
 catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+die('Erreur : ' . $e->getMessage());
 }
 
 
 if (isset($_GET['id_suppr'])) {
-    $id_suppression = $_GET['id_suppr'];
-    $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
-    try {
-        $res = $linkpdo->query($req_suppr);
-        header('Location: page_admin.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
+$id_suppression = $_GET['id_suppr'];
+$req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
+try {
+$res = $linkpdo->query($req_suppr);
+header('Location: page_admin.php');
+} catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+die('Erreur : ' . $e->getMessage());
+}
 }
 
 ?>
@@ -35,8 +35,8 @@ if (isset($_GET['id_suppr'])) {
 <body>
 
 
-        <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php create_header($linkpdo);?>
+    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
@@ -204,24 +204,14 @@ if (isset($_GET['id_suppr'])) {
 
 
         ?>
-
-
-
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
-                
 
                 <?php
-
-
                 //<!---- menu droit information sur l'enfant ---->
 
-
                 echo "<div class='grille2cases'>"; //morceau de gauche (logo enfant + boutons) :
-
-
-
                 // case du logo de l'enfant
                 echo "<div class='div-modif-photo'>";
                 //--------
@@ -234,13 +224,13 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" class=\"dialog_form\">";
                 echo "<div class=\"dialog_form_item\">";
-                echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
+                echo "<label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
                 echo "</div><div class=\"dialog_form_actions\">";
                 echo "  <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>";
                 echo "<button class='popup-btn' type=\"submit\">Valider </button></div></form></div></div>";
 
                 //--------
-                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
+                echo "<img class=\"logo-enfant\" src=\"$photo_enfant\" alt=\"Photo du visage de " . htmlspecialchars($prenom_enfant) . "\">";
                 echo "</div>";
 
                 // case 3 boutons : supprimer, modifier, creer systeme
@@ -258,7 +248,7 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
 
 
-                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">archiver le profil de l'enfant</button>";
+                echo "<button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Archiver le profil de l'enfant</button>";
 
 
 
@@ -285,7 +275,7 @@ if (isset($_GET['id_suppr'])) {
 
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='".htmlspecialchars($activite)."'>";
+                echo "<p>Activité enfant :</p><input name=activite type=\"text-area\" value='" . htmlspecialchars($activite) . "'>";
                 echo "</div>";
 
                 echo "</div>";
@@ -298,11 +288,11 @@ if (isset($_GET['id_suppr'])) {
                 echo "</div>";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='".htmlspecialchars($adresse)."'>";
+                echo "<p>Adresse enfant :</p><input name=adresse type=\"text\" value='" . htmlspecialchars($adresse) . "'>";
                 echo "</div>";
 
                 echo "<div  class='element_style' style=\"display:inline-flex; align-items: center;\">";
-                echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='".htmlspecialchars($handicap)."'>";
+                echo "<p>Handicap enfant :</p><input name=handicap type=\"text\" value='" . htmlspecialchars($handicap) . "'>";
                 echo "</div>";
 
                 echo "</div>";
@@ -311,14 +301,14 @@ if (isset($_GET['id_suppr'])) {
 
                 // case tuteurs
                 echo "<div   class='bouton-valider'>";
-                echo "<button class='button-valider-modification' >valider les modifications</button>";
+                echo "<button class='button-valider-modification' >Valider les modifications</button>";
                 echo "</div>";
 
                 //case info supp
                 echo "<div  class='zone-texte'>";
-                echo "<textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>";
-                echo "</div>";
+                echo "<textarea name=info_sup style=\"resize: none\">" . htmlspecialchars($info_sup) . "</textarea>";
 
+                echo "</div>";
 
                 echo "</div>";
 
@@ -326,11 +316,13 @@ if (isset($_GET['id_suppr'])) {
 
                 echo "</div>"; // fin de la div "section-enfant"
 
+
+
+
+
+
                 echo "<section class=\"nb-systeme\">";
-
-
-
-                // tous les systèmes de l'enfant :
+                // TOUS LES SYST7MES DE L'ENFANT //
 
                 ///Sélection de tout le contenu de la table enfant
                 try {
@@ -388,12 +380,6 @@ if (isset($_GET['id_suppr'])) {
                     echo "</center></td>";
 
 
-
-
-
-
-
-
                     echo "<td>";
                     echo " <div class=\"case-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
@@ -422,17 +408,11 @@ if (isset($_GET['id_suppr'])) {
                 ///Fermeture du curseur d'analyse des résultats
                 $res->closeCursor();
 
-
-
                 echo "</section>";
                 ?>
         </nav>
     </main>
 
-
-
 </body>
 
-
-
-</html> 
+</html>

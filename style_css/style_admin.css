@@ -76,14 +76,13 @@ td {
         display: grid;
         grid-template-columns: 23% 1fr;
         min-height: 85vh;
-        margin: 2%;
         border-radius: 10px;
     }
 
     .left-contenu {
         height: 100%;
         box-shadow: 0 10px 20px rgb(0 0 0 / 15%), 0 1px 5px rgb(0 0 0 / 22%);
-        border-radius: 20px;
+        border-radius: 5px;
         overflow: auto;
         background-color: #fff;
         color: black;
@@ -126,11 +125,11 @@ td {
     }
 
     .bouton-modif-enfant,
-    .bouton-modif-photo{
+    .bouton-modif-photo {
         color: #000;
     }
 
-    .message{
+    .message {
         background-color: transparent;
         color: #000;
         border: 1px solid #000;
@@ -150,12 +149,12 @@ td {
         padding: 5px 15px;
     }
 
-    .supprimer-objectif{
+    .supprimer-objectif {
         background-color: transparent;
         padding: 5px 15px;
     }
 
-    .supprimer-objectif:hover{
+    .supprimer-objectif:hover {
         background-color: #f44336;
     }
 
@@ -213,12 +212,21 @@ td {
 
     .bouton_recherche {
         padding: 0px 0px;
-        border-radius:  0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
         font-size: 20px;
         cursor: pointer;
         border: black 1px solid;
     }
 
+
+    .bouton-valider {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    
 
 
     /*------------------------ MENU LISTE ENFANT  (gauche)--------------------*/
@@ -244,7 +252,7 @@ td {
         text-align: center;
         margin: 3%;
     }
-    
+
     .btn_ajouter {
         display: flex;
         align-items: center;
@@ -266,6 +274,44 @@ td {
         border-top: solid 1px;
         padding: 6px;
     }
+
+
+    .element_style {
+        margin: 15px;
+        box-sizing: border-box;
+        padding-right: 0.5em;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    input[type="text"],
+    input[type="text-area"],
+    input[type="date"] {
+        padding: 5px 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #1E90FF;
+    }
+
+    input[type="text"]:focus,
+    input[type="text-area"]:focus,
+    input[type="date"]:focus {
+        border-color: #dc9c2d;
+        outline: none;
+        box-shadow: 0px 0px 10px 1px #191970;
+    }
+
+    input[class="input_recherche"] {
+        border-radius: 5px 0px 0px 5px;
+        padding: 8px 5px;
+        margin: bottom 1px;
+        border: solid 1px black;
+        font-size: 10px;
+        box-shadow: none;
+    }
+
 
     /* Pop-up JS ajouter un enfant*/
     .hidden {
@@ -454,7 +500,6 @@ td {
 
 
     /* SECTION RECHERCHE  */
-
     .recherche {
         margin: 2.5%;
         text-align: center;
@@ -470,10 +515,10 @@ td {
     }
 
     .input_recherche {
-        border-radius:  5px 0px 0px 5px ;
+        border-radius: 5px 0px 0px 5px;
         padding: 5px 5px;
         margin: bottom 1px;
-        
+
     }
 
 
@@ -486,18 +531,20 @@ td {
         grid-template-rows: 20vh 1fr;
         height: 40vh;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: white;
-        margin-left: 3%;
+        margin-right: 10px;
+        margin-left: 20px;
     }
 
     /*INFORMATION SYSTEME*/
     .nb-systeme {
         height: 40vh;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: white;
-        margin-left: 3%;
+        margin-right: 10px;
+        margin-left: 20px;
         overflow: auto;
     }
 
@@ -511,11 +558,6 @@ td {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
-
-
-
-
-
 
 
 
@@ -567,6 +609,10 @@ td {
         height: 100%;
     }
 
+    button.button_ajouter-objectif {
+        margin: 5px;
+    }
+
 
 
 
@@ -600,6 +646,7 @@ td {
         height: 25px;
         cursor: pointer;
     }
+
     .icone_info {
         height: 30px;
         text-decoration: none;
@@ -643,10 +690,10 @@ td {
 
 
     textarea {
+        width: 100%;
         height: 80%;
-        width: 80%;
         padding-top: 3%;
-        border-radius: 15px;
+        border-radius: 5px;
         font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
 
@@ -888,10 +935,10 @@ td {
     }
 
     .input_recherche {
-        border-radius:  5px 0px 0px 5px ;
+        border-radius: 5px 0px 0px 5px;
         padding: 5px 5px;
         margin: bottom 1px;
-        
+
     }
 
 
@@ -1022,7 +1069,7 @@ td {
 
     /*BOUTON*/
 
-    button{
+    button {
         font-size: 14px;
         display: block;
         padding: 5px 10px;
@@ -1033,7 +1080,7 @@ td {
         cursor: pointer;
         transition: all 0.3s;
         margin: 0.5px;
-       
+
     }
 
     .actif {
@@ -1046,7 +1093,7 @@ td {
 
     .bouton_recherche {
         padding: 0px 0px;
-        border-radius:  0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
         font-size: 20px;
     }
 
@@ -1061,7 +1108,7 @@ td {
         margin-right: 20px;
     }
 
-     .button_ajouter-objectif {
+    .button_ajouter-objectif {
         padding: 5px 15px;
         font-size: 14px;
         margin-right: 15px;
@@ -1078,7 +1125,7 @@ td {
 
     /*IMAGE/ICON*/
     img.icone-ajouter-membre {
-        width: 15px; 
+        width: 15px;
     }
 
     .icone_info {
@@ -1092,7 +1139,7 @@ td {
         font-size: 20px;
     }
 
-   
+
     .bouton_enfant2 {
         width: 70%;
     }
@@ -1158,13 +1205,13 @@ td {
         padding-right: 1%;
     }
 
-  
+
     .div-modif-enfant,
     .div-liste-equipe,
     .div-photo-enfant {
         margin: auto;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
     }
 
@@ -1395,10 +1442,10 @@ td {
     }
 
     .input_recherche {
-        border-radius:  5px 0px 0px 5px ;
+        border-radius: 5px 0px 0px 5px;
         padding: 5px 5px;
         margin: bottom 1px;
-        
+
     }
 
 
@@ -1425,7 +1472,6 @@ td {
     .photo-enfant {
         width: 10vw;
         border-radius: 20%;
-        margin-top: 20%;
     }
 
     .case-3-infos {
@@ -1683,8 +1729,8 @@ td {
     }
 
 
-    
-  
+
+
     .left-contenu.open {
         transform: initial;
         display: block;
@@ -1746,13 +1792,124 @@ td {
         margin: 2%;
     }
 
+    /*BOUTON*/
+    button {
+        font-size: 10px;
+        display: block;
+        padding: 3px 7px;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .bouton-modif-photo,
+    .bouton-modif-enfant {
+        background-color: rgb(202, 196, 196);
+        color: #000;
+    }
+
+    .btn-stat {
+        display: block;
+        margin: 5px;
+    }
+
+    .button_ajouter-objectif {
+        padding: 5px 15px;
+        margin: auto;
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .bouton-modif-enfant {
+        background-color: rgb(202, 196, 196);
+    }
+
+
+    .acceder-information-enfant {
+        padding: 3px 5px;
+        font-size: 0.8rem;
+    }
+
+    .popup-btn {
+        font-size: 10px;
+        margin: auto;
+    }
+
+
+
+    /*DIV CONTENUE*/
+    .bouton-valider {
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 20px;
+    }
+
+    .zone-texte {
+        width: 100%;
+        height: 10vh;
+    }
+
+    .element_style {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="text"],
+    input[type="text-area"],
+    input[type="date"] {
+        padding: 3px 7px;
+        border-radius: 5px;
+        border: 2px solid #1E90FF;
+        outline: none;
+        font-size: 10px;
+        box-shadow: 0px 0px 10px 1px #B0C4DE;
+    }
+
+    input[type="text"]:focus,
+    input[type="text-area"]:focus,
+    input[type="date"]:focus {
+        border-color: #dc9c2d;
+        outline: none;
+        box-shadow: 0px 0px 10px 1px #191970;
+    }
+
+    input[class="input_recherche"] {
+        border-radius: 5px 0px 0px 5px;
+        padding: 8px 5px;
+        margin: bottom 1px;
+        border: solid 1px black;
+        font-size: 10px;
+        box-shadow: none;
+    }
+
+
+
+
+    /*PHOTO/ICON*/
+    .photo-enfant {
+        width: 25vw;
+        border-radius: 10px;
+    }
+
+    .img_equipe {
+        display: none;
+    }
+
+    img.photo-jeton {
+        width: 70px;
+        margin: auto;
+        display: block;
+
+    }
+
+
     .dialog_form_actions {
         text-align: right;
         padding: 0 20px 20px;
         display: flex;
         align-items: center;
         justify-content: space-around;
-        flex-direction: row-reverse;
+
     }
 
     p.titre_recherche {
@@ -1795,16 +1952,6 @@ td {
         width: 15%;
     }
 
-    .photo-enfant {
-        width: 20vw;
-        border-radius: 10px;
-    }
-
-    .bouton-modif-enfant {
-        font-size: 12px;
-        background-color: rgb(202, 196, 196);
-        color: #000;
-    }
 
     .section_enfant {
         height: 35vh;
@@ -1815,4 +1962,16 @@ td {
         grid-template-rows: 60% 1fr;
         border-radius: 5px;
     }
+
+
+    .popup_info {
+        display: flex;
+        margin: 20px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid 1px;
+        border-top: solid 1px;
+        padding: 5px;
+    }
+
 }

@@ -22,6 +22,7 @@ is_validateur();
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script type="text/javascript" src="choix_sys.js"></script>
     <center>
     <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
@@ -446,7 +447,7 @@ is_validateur();
                         foreach ($tab_jeton as $case_tab) {
                             if ($case_tab == 0) {
                                 echo "<td class='case_jeton' id=$compteur >";
-                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" style="display: block;width: 5rem;height: 5rem;"></a>';
+                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="startConfetti();" style="display: block;width: 5rem;height: 5rem;"></a>';
                                 echo "</td>";
                             } else {
 
@@ -908,6 +909,16 @@ try {
 
 
     ?>
+
+<script>
+    ///L'animation peut être modifier///
+function startConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 360
+    });
+}
+</script>
     </div>
 </body>
 </center>
