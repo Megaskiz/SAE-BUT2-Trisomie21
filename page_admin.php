@@ -566,7 +566,7 @@ switch ($_SESSION["role_user"]) {
                                 echo "<div class=\"dialog_form_actions\">";
                                 
                                 echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                                echo "<a class='popup-btn' 'popup-btn' href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\">Archiver cet objectif </a>";
+                                echo "<a  href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"> <button> Archiver cet objectif </button> </a>";
                                 echo "</div>";
                                 
                             }

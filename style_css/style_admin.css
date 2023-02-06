@@ -76,14 +76,13 @@ td {
         display: grid;
         grid-template-columns: 23% 1fr;
         min-height: 85vh;
-        margin: 2%;
         border-radius: 10px;
     }
 
     .left-contenu {
         height: 100%;
         box-shadow: 0 10px 20px rgb(0 0 0 / 15%), 0 1px 5px rgb(0 0 0 / 22%);
-        border-radius: 20px;
+        border-radius: 5px;
         overflow: auto;
         background-color: #fff;
         color: black;
@@ -292,6 +291,7 @@ td {
     input[type="date"] {
         padding: 5px 10px;
         border-radius: 5px;
+        outline: none;
         border: 2px solid #1E90FF;
     }
 
@@ -299,6 +299,7 @@ td {
     input[type="text-area"]:focus,
     input[type="date"]:focus {
         border-color: #dc9c2d;
+        outline: none;
         box-shadow: 0px 0px 10px 1px #191970;
     }
 
@@ -499,7 +500,6 @@ td {
 
 
     /* SECTION RECHERCHE  */
-
     .recherche {
         margin: 2.5%;
         text-align: center;
@@ -531,18 +531,20 @@ td {
         grid-template-rows: 20vh 1fr;
         height: 40vh;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: white;
-        margin-left: 3%;
+        margin-right: 10px;
+        margin-left: 20px;
     }
 
     /*INFORMATION SYSTEME*/
     .nb-systeme {
         height: 40vh;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: white;
-        margin-left: 3%;
+        margin-right: 10px;
+        margin-left: 20px;
         overflow: auto;
     }
 
@@ -1858,6 +1860,7 @@ td {
         padding: 3px 7px;
         border-radius: 5px;
         border: 2px solid #1E90FF;
+        outline: none;
         font-size: 10px;
         box-shadow: 0px 0px 10px 1px #B0C4DE;
     }
@@ -1866,6 +1869,7 @@ td {
     input[type="text-area"]:focus,
     input[type="date"]:focus {
         border-color: #dc9c2d;
+        outline: none;
         box-shadow: 0px 0px 10px 1px #191970;
     }
 

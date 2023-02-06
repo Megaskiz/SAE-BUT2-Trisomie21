@@ -157,7 +157,7 @@ function create_nav_admin($linkpdo){ // fonction qui affiche le nav (partie de g
                     echo'
                     <div class="bouton_enfant">
                         <button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>
-                        <a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>
+                        <a href="archive_profil_enfant.php"><button >Profils enfants archivés</button></a>
                         <div id="dialog_layer" class="dialogs">
                             <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                                 <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
@@ -399,30 +399,36 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
             <form action=\"appel_fonction.php?appel=modif_enfant\" method=\"post\">
                 <div class=\"grille_4_cases\" >
                 <div class=\"case-3-infos\">
-                    <div class='element_style' style=\"display:inline-flex; align-items: center;\">
+                    <div class='element_style' style=\"display: flex; justify-content: flex-start;\">
                         <p> Nom :</p><input name=nom_enfant type=\"text\" placeholder='".htmlspecialchars($nom_enfant)."' value='" . htmlspecialchars($nom_enfant) . "'>
                     </div>
-                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
-                        <p>Date de Naissance :</p><input name=date_naissance type=\"date\" placeholder=".htmlspecialchars($ddn_enfant)." value=" . htmlspecialchars($ddn_enfant) . ">
-                    </div>
-                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
-                        <p>Activité enfant :</p><input name=activite type=\"text-area\" placeholder='".htmlspecialchars($activite)."' value='".htmlspecialchars($activite)."'>
-                    </div>
-                </div>
-                <div class=\"case-3-infos\">
-                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+
+                    <div  class='element_style' style=\"display: flex; justify-content: flex-start;\">
                         <p>Prénom :</p><input name=prenom_enfant type=\"text\" placeholder='".htmlspecialchars($prenom_enfant)."' value='" . htmlspecialchars($prenom_enfant) . "'>
                     </div>
-                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+
+                    <div class='element_style' style=\"display: flex; justify-content: flex-start;\">
+                        <p>Date de Naissance :</p><input name=date_naissance type=\"date\" placeholder=".htmlspecialchars($ddn_enfant)." value=" . htmlspecialchars($ddn_enfant) . ">
+                    </div>
+                    
+                </div>
+                <div class=\"case-3-infos\">
+                    
+                    <div  class='element_style' style=\"display: flex; justify-content: flex-start;\">
                         <p>Adresse enfant :</p><input name=adresse type=\"text\" placeholder='".htmlspecialchars($adresse)."' value='".htmlspecialchars($adresse)."'>
                     </div>
-                    <div  class='element_style' style=\"display:inline-flex; align-items: center;\">
+
+                    <div  class='element_style' style=\"display: flex; justify-content: flex-start;\">
+                        <p>Activité enfant :</p><input name=activite type=\"text-area\" placeholder='".htmlspecialchars($activite)."' value='".htmlspecialchars($activite)."'>
+                    </div>
+
+                    <div  class='element_style' style=\"display: flex; justify-content: flex-start;\">
                         <p>Handicap enfant :</p><input name=handicap type=\"text\" placeholder='".htmlspecialchars($handicap)."' value='".htmlspecialchars($handicap)."'>
                     </div>
                 </div>
                 <div   class='bouton-valider'>
-                    <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
-                    <button class='button-valider-modification' >valider les modifications</button>
+                    <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
+                    <button class='button-valider-modification actif' >Valider &#x2714;</button>
                 </div>
                 <div  class='zone-texte'>
                     <textarea name=info_sup style=\"resize: none\">".htmlspecialchars($info_sup)."</textarea>
@@ -449,7 +455,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant){
     echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
     echo "</div><div class=\"dialog_form_actions\">";
     echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
-    echo "<button class='popup-btn active' type=\"submit\">Valider </button>";
+    echo "<button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>";
     echo "</div>";
     echo "</form>";
     echo "</div>";
