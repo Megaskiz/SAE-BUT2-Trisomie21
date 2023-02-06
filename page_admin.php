@@ -181,56 +181,39 @@ switch ($_SESSION["role_user"]) {
                 if (isset($_GET['id'])) {
                     $_SESSION['id_enfant'] = $_GET['id'];
 
-
                     //<!---- menu droit information sur l'enfant ---->
-                    echo "<div class=\"div-photo-enfant\">";
-                    echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($photo_enfant)."\" alt=\"photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
-                    echo "</div>";
+                    echo"
+                    <div class=\"div-photo-enfant\">
+                    
+                        <img class=\"photo-enfant\" src=\"".htmlspecialchars($photo_enfant)."\" alt=\"photo du visage de ".htmlspecialchars($prenom_enfant)."\">
+                    </div>
+                    <div class=\"case-3-infos\">
+                        <p class=\"info\">  Nom :<strong> ".htmlspecialchars($nom_enfant)."</strong></p>
+                        <p class=\"info\">Date de Naissance :<strong>  ".htmlspecialchars($ddn_enfant)." </strong></p>
+                        <p class=\"info\">Activité enfant :<strong>  ".htmlspecialchars($activite )."    </strong></p>
+                    </div>
+                    <div class=\"case-3-infos\">
+                        <p class=\"info\">Prénom : <strong> ".htmlspecialchars($prenom_enfant)."  </strong></p>
+                        <p class=\"info\">Adresse enfant : <strong>  ".htmlspecialchars($adresse )."    </strong> </p>
+                        <p class=\"info\">Handicap enfant :<strong>  ".htmlspecialchars($handicap)."     </strong></p>
+                    </div>
 
 
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong> ".htmlspecialchars($nom_enfant)."</strong></p>";
-                    echo "<p class=\"info\">Date de Naissance :<strong>  ".htmlspecialchars($ddn_enfant)." </strong></p>";
-                    echo "<p class=\"info\">Activité enfant :<strong>  ".htmlspecialchars($activite )."    </strong></p>";
-                    echo "</div>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Prénom : <strong> ".htmlspecialchars($prenom_enfant)."  </strong></p>";
-                    echo "<p class=\"info\">Adresse enfant : <strong>  ".htmlspecialchars($adresse )."    </strong> </p>";
-                    echo "<p class=\"info\">Handicap enfant :<strong>  ".htmlspecialchars($handicap)."     </strong></p>";
-                    echo "</div>";
-
-
-                    echo " <div class=\"div-modif-enfant\">";
-                    // acces modif enfant
+                    <div class=\"div-modif-enfant\">";
                     if ($_SESSION["role_user"] == 1) {
-                        
+                        // acces modif enfant     
                         // seuls les admins on accès au formulaire de modification d'un profil d'enfant
                         pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);
-                        
-                        
-
                         pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant);
-                        
-                        
-                        
-                        
-                       // echo "</div>";
-
                     }
-                    
-                    echo "</div>";
+                    echo "</div>"; // fermeture de la div "div_modif_enfant"
 
+                    
 
                     echo "<div class='div-liste-equipe'>";
-
                     echo "<div class='button-equipe'>";
                     echo '<button class="bouton-equipe" type="button" onclick="openDialog(\'dialog2\', this)">Ajout Equipier</button>';
-
-
                     echo "</div>";
-                    //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
 
 
                     echo '<button class="list_equipier" type="button" onclick="openDialog(\'dialog8\', this)">Equipe</button>';

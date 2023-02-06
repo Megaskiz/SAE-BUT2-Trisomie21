@@ -500,15 +500,20 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
     foreach($liste as $key => $value){
             if(!is_numeric($key)){
             $req.=$key;
-            $req.='=? ';
+            $req.='=? ,';
            array_push($data, $value);
         }
     }
+
+    echo"<br>";
+
+    //$req = rtrim($req);
+    $req = substr($req, 0, -1);
+    //echo$req;
     
     $req.="where id_enfant=?";
     array_push($data,$_SESSION['id_enfant']);
     echo"<br>";
-
 
 
     $query = $linkpdo->prepare($req);
@@ -519,8 +524,9 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
         ///Exécution de la requête
     try{
         $query->execute($data);
-        
         $query->debugDumpParams();
+        
+        
         if ($query == false){
             die("erreur execute");
         }
