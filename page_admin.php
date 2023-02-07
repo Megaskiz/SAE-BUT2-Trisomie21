@@ -10,13 +10,8 @@ $linkpdo = connexionBd();
 
 if (isset($_GET['id_suppr'])) {
 	$id_suppression = $_GET['id_suppr'];
-	// faire un update dans la bd sur un champs en plus
-	// il faut le faire sur :
 	
-	/*
-	- la table enfant
-	*/
-	$req = $linkpdo->prepare('UPDATE enfant SET visibilite = "1" where id_enfant = '.$_SESSION["id_enfant"]);
+	$req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant='.$_SESSION["id_enfant"]);
 
 	if ($req == false){
 		die("erreur linkpdo");

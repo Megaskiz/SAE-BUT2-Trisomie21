@@ -10,6 +10,9 @@ if(isset($_GET['appel'])){
 
     switch ($_GET['appel']) {
         
+        case 'modif_image':
+            
+
         case 'modif_enfant':
             $nom = $_POST['nom_enfant'];
             $prenom = $_POST['prenom_enfant'];
@@ -28,6 +31,15 @@ if(isset($_GET['appel'])){
                 $id = $_SESSION["id_enfant"];
                 $photo_enfant = uploadImage($_FILES['photo_enfant']);
                 modif_jeton($id, $photo_enfant, $linkpdo);
+                header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+            }
+            break;
+
+        case 'modif_photo':
+            if (isset($_FILES['photo_enfant'])) {
+                $id = $_SESSION["id_enfant"];
+                $photo_enfant = uploadImage($_FILES['photo_enfant']);
+                modif_photo($id, $photo_enfant, $linkpdo);
                 header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
             }
             break;
