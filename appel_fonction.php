@@ -28,8 +28,6 @@ if(isset($_GET['appel'])){
                 $id = $_SESSION["id_enfant"];
                 $photo_enfant = uploadImage($_FILES['photo_enfant']);
                 modif_jeton($id, $photo_enfant, $linkpdo);
-
-
                 header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
             }
             break;

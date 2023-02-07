@@ -388,6 +388,118 @@ function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (part
             </nav>";
 };
 
+function create_section_info_enfant($linkpdo, $id_enfant){
+
+    ///Sélection de tout le contenu de la table carnet_adresse
+			try {
+				$res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id_enfant'");
+			} catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+				die('Erreur : ' . $e->getMessage());
+			}
+
+			$double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+			$nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+			$liste = array();
+
+
+			$id_enfant = $double_tab[0][0];
+			$nom_enfant = ucfirst($double_tab[0][1]);
+			$prenom_enfant = ucfirst($double_tab[0][2]);
+			$ddn_enfant = date_format(new DateTime(strval($double_tab[0][3])), 'd/m/Y');
+			$lien_jeton_enfant = $double_tab[0][4];
+			$adresse = $double_tab[0][5];
+			$activite = $double_tab[0][6];
+			$handicap = $double_tab[0][7];
+			$info_sup = $double_tab[0][8];
+			$photo_enfant = $double_tab[0][9];
+
+    
+    echo"
+            <section class=\"section_enfant\">
+				<div class=\"div-photo-enfant\">
+					<img class=\"photo-enfant\" src=\"".htmlspecialchars($photo_enfant)."\" alt=\"photo du visage de ".htmlspecialchars($prenom_enfant)."\">
+				</div>
+				<div class=\"case-3-infos\">
+					<p class=\"info\">  Nom :<strong> ".htmlspecialchars($nom_enfant)."</strong></p>
+					<p class=\"info\">Date de Naissance :<strong>  ".htmlspecialchars($ddn_enfant)." </strong></p>
+					<p class=\"info\">Activité enfant :<strong>  ".htmlspecialchars($activite )."    </strong></p>
+				</div>
+				<div class=\"case-3-infos\">
+					<p class=\"info\">Prénom : <strong> ".htmlspecialchars($prenom_enfant)."  </strong></p>
+					<p class=\"info\">Adresse enfant : <strong>  ".htmlspecialchars($adresse )."    </strong> </p>
+					<p class=\"info\">Handicap enfant :<strong>  ".htmlspecialchars($handicap)."     </strong></p>
+				</div>
+				<div class=\"div-modif-enfant\">";
+					if ($_SESSION["role_user"] == 1) {
+						// acces modif enfant     
+						// seuls les admins on accès au formulaire de modification d'un profil d'enfant
+						pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);
+						pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant);
+					}
+					echo "
+				</div>
+				<div class='div-liste-equipe'>
+					<div class='button-equipe'>
+						<button class=\"bouton-equipe\" type=\"button\" onclick=\"openDialog('dialog2', this)\">Ajout Equipier</button>
+					</div>
+					<button class=\"list_equipier\" type=\"button\" onclick=\"openDialog('dialog8', this)\">Equipe</button>
+						<div id=\"dialog_layer\" class=\"dialogs\">
+							<div role=\"dialog\" id=\"dialog8\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+								<h2 id=\"dialog1_label\" class=\"dialog_label\">Equipe</h2>
+					";
+
+					echo "
+								<a class=\"tuteur_4\"></a>
+					";
+					$getid = $_GET['id'];
+					echo "
+								<p>
+					";
+					$allTuteurs = $linkpdo->query('SELECT membre.id_membre, membre.nom, prenom, role_user FROM suivre, membre WHERE id_enfant= ' . $getid . " AND suivre.id_membre = membre.id_membre ORDER BY nom;");
+					while ($tuteur = $allTuteurs->fetch()) {
+						switch ($tuteur['role_user']) {
+							case '0':
+								$role = 'Utilisateur';
+								break;
+							case '1':
+								$role = "Administrateur";
+								break;
+							case '2':
+								$role = "Validateur (administration)";
+								break;
+							default:
+								$role = "Coordinateur";
+								break;
+						}
+						echo "
+								<div class='popup_info'>
+									<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
+									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " .  $role . "    
+									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
+									<a class=\"equipier\" href=\"page_admin.php?id=" . $getid . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
+								</div>
+						"; 
+					}
+				   echo "
+								</p>
+								<button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+							</div>
+						</div>
+					</div>
+					<div class='div-zone-texte'>
+						<textarea style=\"resize: none\">Informations supplémentaires sur " .htmlspecialchars($prenom_enfant) . " : " . htmlspecialchars($info_sup) . " </textarea>
+					</div>
+					
+					</div>
+
+                </section>";
+}
+
+
+function create_section_info_sys($linkpdo){
+
+}
+
 
 
 
@@ -442,27 +554,23 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
 };
 
 function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant){
-
-    echo "<button class=\"bouton-modif-photo\" type=\"button\" onclick=\"openDialog('dialog5', this)\">&#x270E Modifier le jeton</button>
-
+    echo "
+    <button class=\"bouton-modif-photo\" type=\"button\" onclick=\"openDialog('dialog5', this)\">&#x270E Modifier le jeton</button>
     <div id=\"dialog_layer\" class=\"dialogs\">
-    <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
-
-
-    <img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">
-
-    <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">
-    <div class=\"dialog_form_item\">
-
-    <label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
-    </div><div class=\"dialog_form_actions\">
-    <button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>
-    <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
+        <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+            <img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">
+            <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">
+                <div class=\"dialog_form_item\">
+                    <label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
+                </div>
+                <div class=\"dialog_form_actions\">
+                    <button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>
+                    <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
+                </div>
+            </form>
+        </div>
     </div>
-    </form>
-    </div>
-    </div>";
-
+    ";
 }
 
 
