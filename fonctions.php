@@ -441,25 +441,25 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
 
 function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant){
 
-    echo '<button class="bouton-modif-photo" type="button" onclick="openDialog(\'dialog5\', this)">&#x270E Modifier le jeton</button>';
+    echo "<button class=\"bouton-modif-photo\" type=\"button\" onclick=\"openDialog('dialog5', this)\">&#x270E Modifier le jeton</button>
 
-    echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-    echo "<div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+    <div id=\"dialog_layer\" class=\"dialogs\">
+    <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
 
 
-    echo "<img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">";
+    <img class=\"photo-jeton\" src=\"".htmlspecialchars($lien_jeton_enfant)."\" alt=\"jeton de ".htmlspecialchars($prenom_enfant)."\">
 
-    echo "<form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">";
-    echo "<div class=\"dialog_form_item\">";
+    <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">
+    <div class=\"dialog_form_item\">
 
-    echo "<label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>";
-    echo "</div><div class=\"dialog_form_actions\">";
-    echo "<button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>";
-    echo "<button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>";
-    echo "</div>";
-    echo "</form>";
-    echo "</div>";
-    echo "</div>";
+    <label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
+    </div><div class=\"dialog_form_actions\">
+    <button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>
+    <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
+    </div>
+    </form>
+    </div>
+    </div>";
 
 }
 
@@ -511,17 +511,11 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
         }
     }
 
-    echo"<br>";
-
-    //$req = rtrim($req);
     $req = substr($req, 0, -1);
-    //echo$req;
     
     $req.="where id_enfant=?";
     array_push($data,$_SESSION['id_enfant']);
-    echo"<br>";
-
-
+    
     $query = $linkpdo->prepare($req);
 
     if ($query == false){
