@@ -9,6 +9,8 @@ is_validateur();
 $linkpdo = connexionBd();
 
 if (isset($_GET['id_suppr'])) {
+	echo"ici";
+	exit();
 	$id_suppression = $_GET['id_suppr'];
 	
 	$req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant='.$_SESSION["id_enfant"]);

@@ -2,6 +2,7 @@
 function connexionBd(){
         return new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
 }
+
 function filter_spaces($var){
     return $var != ' ';
 }
@@ -47,7 +48,6 @@ function create_header($linkpdo){ // fonction qui affiche le header
         </div>
     </header>';
 }
-
 
 function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs sans privilèges
     echo'
@@ -529,7 +529,6 @@ function create_section_info_enfant($linkpdo, $id_enfant){
             
 }
 
-
 function create_section_info_sys($linkpdo,$id_enfant){
     /// début de la section des systèmes ///
 					
@@ -791,6 +790,8 @@ function create_section_info_sys($linkpdo,$id_enfant){
 
 }
 
+// ------------------------------------- fonctions pour les pop-in -----------------------------------------------------------
+
 
 function pop_in_archive_enfant($id_enfant){
     echo "
@@ -799,7 +800,7 @@ function pop_in_archive_enfant($id_enfant){
         <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
         <div class=\"dialog_form_actions\">
             <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-            <a class='popup-btn' href=\"page_admin.php?id_suppr='$id_enfant'\">Valider</a>
+            <a class='popup-btn' href=\"appel_fonction.php?appel=archive_enfant\">Valider</a>
         </div>
     </div>
     ";
@@ -893,6 +894,34 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant){
     ";
 }
 
+// ------------------------------------- fonctions pour les pop-in -----------------------------------------------------------
+
+
+function archive_enfant($linkpdo){
+    $req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant='.$_SESSION["id_enfant"]);
+
+	if ($req == false){
+		die("erreur linkpdo");
+	}   
+		///Exécution de la requête
+	try{
+		
+		$req->execute(array());
+		// $req->debugDumpParams();
+		// exit();
+		header("Location:page_admin.php");
+	   
+		if ($req == false){
+			$req->debugDumpParams;
+			die("erreur execute");
+		}else{
+			echo"<a href=\"page_admin.php\"> recharger la page</a>";         
+		   
+		}
+	}
+	catch (Exception $e)
+	{die('Erreur : ' . $e->getMessage());}
+}
 
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo){           
     
@@ -1019,9 +1048,6 @@ function modif_photo($id, $photo_enfant, $linkpdo){
     }    
 }
 
-
-
-
 function modif_mdp($mdp, $session, $linkpdo){
     
     // fonction qui hash le mot de passe
@@ -1085,7 +1111,6 @@ function modif_mdp($mdp, $session, $linkpdo){
     return $result;
 }
 
-
 function uploadImage($photo){
 
     if (isset($photo)) {
@@ -1115,9 +1140,6 @@ function uploadImage($photo){
     }
     return $result;
 }
-
-
-
 
 function is_logged(){
     session_start();
@@ -1156,7 +1178,6 @@ function is_coordinateur(){
        exit();
     }
 }
-
 
 function is_not_admin(){ 
     if($_SESSION['role_user']!=1 ){

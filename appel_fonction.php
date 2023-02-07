@@ -44,6 +44,9 @@ if(isset($_GET['appel'])){
             }
             break;
 
+        case 'archive_enfant':
+            archive_enfant($linkpdo);
+            break;
 
         case 'modif_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);
