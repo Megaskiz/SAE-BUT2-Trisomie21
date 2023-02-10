@@ -48,6 +48,15 @@ is_validateur();
 
 
     </div>
+    <script>
+    ///L'animation peut être modifier///
+function startConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 360
+    });
+}
+</script>
 </head>
 
 <body>
@@ -315,10 +324,13 @@ is_validateur();
                             
         
                             // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
-                            if (strpos($chaine,'0')==false) { 
+                            if (strpos($chaine, '0') == false) {
                                 $feux = true;
-                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                                echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                                echo "<script> startConfetti() </script>";
+                                echo "</a>";
                             }
+        
         
                             echo "<div class=\"sys\">";
                             echo "<table>";
@@ -409,11 +421,14 @@ is_validateur();
                     $chaine = $valeur[0];
                     
 
-                    // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
+                    // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI ICI
                     if (strpos($chaine, '0') == false) {
                         $feux = true;
                         echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                        echo "<script> startConfetti() </script>";
+                        echo "</a>";
                     }
+
 
                     echo "<div class=\"sys\">";
                     echo "<table>";
@@ -447,7 +462,7 @@ is_validateur();
                         foreach ($tab_jeton as $case_tab) {
                             if ($case_tab == 0) {
                                 echo "<td class='case_jeton' id=$compteur >";
-                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="startConfetti();" style="display: block;width: 5rem;height: 5rem;"></a>';
+                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
                                 echo "</td>";
                             } else {
 
@@ -539,8 +554,11 @@ try {
         // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
         if (strpos($chaine, '0') == false) {
             $feux = true;
-                        echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+            echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+            echo "<script> startConfetti() </script>";
+            echo "</a>";
         }
+
         
         echo "<div class=\"sys\">";
         echo "<table>";
@@ -695,7 +713,10 @@ try {
             if (strpos($chaine, '0') == false) {
                 $feux = true;
                 echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+                echo "<script> startConfetti() </script>";
+                echo "</a>";
             }
+
             
             echo "<div class=\"sys\">";
             echo "<table>";
@@ -811,14 +832,13 @@ try {
                     $chaine = $valeur[0];
 
                     // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI
-                    if (strpos($chaine,'0') == false) {
-                        
-                        
+                    if (strpos($chaine, '0') == false) {
                         $feux = true;
                         echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
-
+                        echo "<script> startConfetti() </script>";
+                        echo "</a>";
                     }
-                    
+
                     echo "<div class=\"sys\">";
                     echo "<table>";
 
@@ -876,7 +896,7 @@ try {
                         foreach ($tab_jeton as $case_tab) {
                             if ($case_tab == 0) {
                                 echo "<td id=$compteur >";
-                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" style="display: block;width: 5rem;height: 5rem;"></a>';
+                                echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
                                 echo "</td>";
                             } else {
                                 echo "<td id=$compteur>";
@@ -889,6 +909,17 @@ try {
 
 
                             $compteur += 1;
+                            ?>
+                            <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var header = document.getElementById("confetti-header");
+                                if (header) {
+                                    setTimeout(startConfetti,1000);
+                                }
+                            }); 
+                            </script>
+
+                            <?php
                         }
 
                         echo "</tr>";
@@ -909,16 +940,7 @@ try {
 
 
     ?>
-
-<script>
-    ///L'animation peut être modifier///
-function startConfetti() {
-    confetti({
-        particleCount: 100,
-        spread: 360
-    });
-}
-</script>
     </div>
+ 
 </body>
 </center>
