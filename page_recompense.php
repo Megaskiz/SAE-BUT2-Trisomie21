@@ -25,8 +25,7 @@
                 ?>
 
                 <script>
-        
-
+                    
             function fire(ratio, opt){
             confetti(Object.assign({}, opt, {
             origin: {y: .6},
@@ -43,6 +42,7 @@
             spread: 100,
             decay: .91,
             scalar: .8
+            
             });
             fire(.1, {
             spread: 120,
@@ -64,13 +64,6 @@
                 
            
         ?>
-        
-     
-
-
-        
-    
-
     <script>
         fire();
     // Récupérer la valeur stockée dans sessionStorage
