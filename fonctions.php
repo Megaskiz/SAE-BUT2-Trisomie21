@@ -51,10 +51,7 @@ function create_header($linkpdo){ // fonction qui affiche le header
 
 function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs sans privilèges
     echo'
-    <div  class="open" onclick="openMenu()"> ☰</div>
-
             <nav  class="left-contenu">
-                <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                         <li class="nav-item">
                             <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
@@ -123,10 +120,7 @@ function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de ga
 
 function create_nav_admin($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs avec  tous les privilèges
     echo'
-    <div  class="open" onclick="openMenu()"> ☰</div>
-
             <nav  class="left-contenu">
-            <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
@@ -269,10 +263,7 @@ function create_nav_admin($linkpdo){ // fonction qui affiche le nav (partie de g
 
 function create_nav_coordinateur($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les coordinateurs
         echo'
-    <div  class="open" onclick="openMenu()"> ☰</div>
-
             <nav  class="left-contenu">
-            <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
