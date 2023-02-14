@@ -44,6 +44,14 @@ if(isset($_GET['appel'])){
             }
             break;
 
+        case 'eject_equipe':
+            $id_eject = $_GET['eject'];
+            $Sid = $_GET['id'];
+            eject($Sid,$id_eject, $linkpdo);
+            header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+            break;
+
+
         case 'archive_enfant':
             archive_enfant($linkpdo);
             break;
