@@ -18,9 +18,6 @@ is_logged();
 
 $id=$_GET['id'];
 
-
-
-
 // update le premier jeton de la derniere session a la nouvelle session
 try {
     // je recup la derniere session pour ce sys
@@ -47,17 +44,10 @@ try {
             $req5 = $linkpdo->prepare("INSERT INTO `placer_jeton`(`id_objectif`, `date_heure`, `id_membre`, `id_session`) VALUES (:un,:deux,:trois,:quatre)");
             $req5->execute(array('un' => $id, 'deux'=>date("Y/m/d H:i:s"), 'trois' =>$_SESSION['logged_user'], 'quatre' => 1));
             // $req5 -> debugDumpParams();
-
-
-
             // exit();
         } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
             die('Erreur : ' . $e->getMessage());
         }
-
-        
-        
-        
 
     }else{
         $session_actuelle = $session_max + 1;

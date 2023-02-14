@@ -6,22 +6,11 @@ require('fonctions.php');
 is_logged();
 is_validateur();
 ///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
+
 
 if (isset($_GET['id_putback'])) {
-    
-    // faire un update dans la bd sur un champs en plus
-    // il faut le faire sur :
-    
-    /*
-    - la table enfant
-    */
+
     $req = $linkpdo->prepare('UPDATE enfant SET visibilite = "0" where id_enfant = '.$_GET['id_putback']);
 
     if ($req == false){
@@ -35,8 +24,6 @@ if (isset($_GET['id_putback'])) {
         // exit();
         header("Location:page_admin.php");
        
-
-
         if ($req == false){
             $req->debugDumpParams;
             die("erreur execute");
@@ -73,6 +60,8 @@ if (isset($_GET['id_putback'])) {
     <main>
 
         <nav  class="left-contenu">
+
+        
 
        
         <div style="display: flex; margin: 3%;">
