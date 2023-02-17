@@ -7,47 +7,6 @@ is_logged();
 is_validateur();
 ///Connexion au serveur MySQL
 $linkpdo = connexionBd();
-
-if (isset($_GET['id_suppr'])) {
-	echo "ici";
-	exit();
-	$id_suppression = $_GET['id_suppr'];
-
-	$req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant=' . $_SESSION["id_enfant"]);
-
-	if ($req == false) {
-		die("erreur linkpdo");
-	}
-	///Exécution de la requête
-	try {
-
-		$req->execute(array());
-		// $req->debugDumpParams();
-		// exit();
-		header("Location:page_admin.php");
-
-		if ($req == false) {
-			$req->debugDumpParams;
-			die("erreur execute");
-		} else {
-			echo "<a href=\"page_admin.php\"> recharger la page</a>";
-		}
-	} catch (Exception $e) {
-		die('Erreur : ' . $e->getMessage());
-	}
-}
-
-if (isset($_GET['eject'])) {
-	$id_eject = $_GET['eject'];
-	$Sid = $_GET['id'];
-	$req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
-	try {
-		$res = $linkpdo->query($req_eject);
-		header('Location: page_admin.php?id=' . $_SESSION['id_enfant']);
-	} catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-		die('Erreur : ' . $e->getMessage());
-	}
-}
 ?>
 
 <head>
@@ -62,8 +21,7 @@ if (isset($_GET['eject'])) {
 	<!--- HEADER -->
 	<?php create_header($linkpdo); ?>
 
-
-	<!--------------------------------------------------------------- CONTENUE ------------------------------------------------------------------->
+	<!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
 	<!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
 	<button class="openbtn" onclick="{
