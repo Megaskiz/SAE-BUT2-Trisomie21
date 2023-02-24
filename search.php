@@ -24,12 +24,13 @@ catch (Exception $e) {
 </head>
 
 <body>
-        <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php create_header($linkpdo);?>
+    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <?php create_header($linkpdo); ?>
+    <a href="page_admin.php"><button class="bouton_recherche_R">Retour</button></a>
 
+    <main class="search">
 
-    <main>
-        <nav class="left-contenu">
+        <nav class="left-contenu block_recherche">
             <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
                     <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
@@ -43,59 +44,9 @@ catch (Exception $e) {
                 }
 
                 ?>
-               
+
             </ul>
-            <?php
-
-            if ($_SESSION["role_user"] == 1) {
-
-                //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                echo '<div class="bouton_enfant">';
-                echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)"> Ajouter un profil <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
-                echo '<div id="dialog_layer" class="dialogs">';
-                echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
-                echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
-                echo '<div class="dialog_form_item">';
-                echo '<label>';
-                echo '<span class="label_text">nom :</span>';
-                echo '<input name="nom" type="text" required="required">';
-                echo '</label>';
-                echo '</div>';
-                echo '<div class="dialog_form_item">';
-                echo '<label>';
-                echo '<span class="label_text">prenom:</span>';
-                echo '<input name="prenom" type="text" class="city_input" required="required">';
-                echo '</label>';
-                echo '</div>';
-                echo '<div class="dialog_form_item">';
-                echo '<label>';
-                echo '<span class="label_text">date de naissance:</span>';
-                echo '<input name="date_naissance" type="date" class="state_input" required="required">';
-                echo '</label>';
-                echo '</div>';
-                echo '<div class="dialog_form_item">';
-                echo '<label>';
-                echo '<span class="label_text">jeton:</span>';
-                echo '<input name="lien_jeton" type="file" class="zip_input" required="required">';
-                echo '</label>';
-                echo '<label>';
-                echo '<span class="label_text">photo:</span>';
-                echo '<input name="photo_enfant" type="file" class="zip_input" required="required">';
-                echo '</label>';
-                echo '</div>';
-                echo '<div class="dialog_form_actions">';
-                echo '<button type="submit">Valider l\'ajout</button>';
-                echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
-                echo '</div>';
-                echo '</form>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-
-                /* fin de la fenêtre popin de l'ajout d'enfant" */
-            }
-            ?>
+           
 
 
             <?php
@@ -114,7 +65,6 @@ catch (Exception $e) {
                     </div>
                     <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
                     </form>
-                    <a href=\"page_admin.php\"><button class=\"bouton_recherche_R\">&#x27F2;</button></a>
                     </div>";
                     echo "<table >";
 
@@ -165,16 +115,11 @@ catch (Exception $e) {
                 echo "</table>";
 
                 ///Fermeture du curseur d'analyse des résultats
-               /// $res->closeCursor();
+                /// $res->closeCursor();
             }
             ?>
         </nav>
-        <nav class="right-contenu">
-            <div class="section_enfant">
-            </div>
-            <section class="nb-systeme">
-            </section>
-        </nav>
+
     </main>
 </body>
 

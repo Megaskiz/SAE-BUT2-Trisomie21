@@ -103,7 +103,7 @@ td {
         width: 50px;
         height: 50px;
         font-size: 24px;
-        margin: 5px     ;
+        margin: 5px;
         background-color: #333;
         border: none;
         border-radius: 50%;
@@ -520,6 +520,17 @@ td {
 
 
     /* SECTION RECHERCHE  */
+
+    .search {
+        display: flex;
+        justify-content: center;
+    }
+
+    .block_recherche {
+        width: 40%;
+        height: 80vh;
+    }
+
     .recherche {
         margin: 2.5%;
         text-align: center;
@@ -538,7 +549,16 @@ td {
         border-radius: 5px 0px 0px 5px;
         padding: 5px 5px;
         margin: bottom 1px;
+    }
 
+    .block_recherche {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bouton_recherche_R {
+        margin: 5px;
     }
 
 
@@ -1106,7 +1126,7 @@ td {
         width: 40px;
         height: 40px;
         font-size: 18px;
-        margin: 5px     ;
+        margin: 5px;
         background-color: #333;
         border: none;
         border-radius: 50%;
@@ -1998,7 +2018,7 @@ td {
         width: 40px;
         height: 40px;
         font-size: 18px;
-        margin: 5px     ;
+        margin: 5px;
         background-color: #333;
         border: none;
         border-radius: 50%;
