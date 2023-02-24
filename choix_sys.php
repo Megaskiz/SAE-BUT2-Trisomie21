@@ -66,10 +66,10 @@ function startConfetti() {
     sleep(1);
 
     echo '
-            <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>
+            <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button> Retour </button></a>
 
-            <a href="page_recompense.php"><button class="droite">voir la/les récompenses</button></a>
-            <a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif">messagerie<span class=" icon-mail">&#x2709;</span></button></a>';
+            <a href="page_recompense.php"><button class="droite"> Voir la/les récompenses</button></a>
+            <a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif"> Messagerie &#128172; </button></a>';
 
     ///Connexion au serveur MySQL
     try {
@@ -94,7 +94,7 @@ function startConfetti() {
 ?>
         <script>
   function confirmation() {
-    if (confirm("Voulez-vous vraiment démarrer une nouvelle session?")) {
+    if (confirm("Voulez-vous vraiment démarrer une nouvelle session ?")) {
       window.location.href = "new_session.php?id=" + "<?php echo $_SESSION['id_sys']; ?>";
     } else {
       window.close();
@@ -102,7 +102,7 @@ function startConfetti() {
   }
 </script>
 
-<a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
+
 <?php
         try {
             $res = $linkpdo->query("SELECT * FROM objectif where id_objectif=$id");

@@ -101,7 +101,7 @@ catch (Exception $e) {
 ?>
 
 <?php
-echo"<a href=\"choix_sys.php?id_sys=".$_SESSION['id_sys']."\"><button>retour</button></a>";
+echo"<a href=\"choix_sys.php?id_sys=".$_SESSION['id_sys']."\"><button>Retour</button></a>";
 ?>
 
 <h1>Les récompenses</h1>
