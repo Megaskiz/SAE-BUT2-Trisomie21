@@ -34,14 +34,14 @@ if (isset($_GET['id_suppr'])) {
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
 
 
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-    <?php create_header($linkpdo);?>
+    <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
@@ -61,8 +61,8 @@ if (isset($_GET['id_suppr'])) {
             <div class="flex_simple">
                 <label>combien de tâches voulez vous inserer ? : </label>
                 <div class="heure">
-                <input class='insere_nb' type="number" min="0" max="15" name="rows" required="required"  placeholder="Nombre de tâche ?">
-                <input id="bouton" type="submit" value="valider">
+                    <input class='insere_nb' type="number" min="0" max="15" name="rows" required="required" placeholder="Nombre de tâche ?">
+                    <input id="bouton" type="submit" value="valider">
                 </div>
             </div>
         </form>
@@ -78,7 +78,7 @@ if (isset($_GET['id_suppr'])) {
             <div class="flex_simple">
                 <label>Quel est la durée de cet objectif ? : </label>
                 <div class="heure">
-                    <input  class='insere_nb' type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
+                    <input class='insere_nb' type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
                         <option value="s">semaine(s)</option>
                     </select>

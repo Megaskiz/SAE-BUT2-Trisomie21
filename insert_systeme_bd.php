@@ -148,4 +148,3 @@ switch ($_SESSION["type_rec"]) {
         exit();
         break;
 }
-?>

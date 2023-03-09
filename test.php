@@ -31,4 +31,3 @@ if (isset($_POST["radio1"]) & isset($_POST["radio2"])) {
     }
 
 }
-?>

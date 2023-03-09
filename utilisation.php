@@ -40,5 +40,3 @@ if (isset($_GET["id_sys"]) and isset($_GET["valeur"]) ) {
 else {
     header('Location: page_admin?id='.$_SESSION["logged_user"].'.php');
 }
-
-?>

@@ -16,26 +16,26 @@ $linkpdo = connexionBd()
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
 
-<!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php
-create_header($linkpdo);
-?>
+    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <?php
+    create_header($linkpdo);
+    ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <main>
-        <form  action="insert_systeme_bd.php" method="post">
-            <h1 class="flex-simple">Création d'un objectif   de type : "chargement"</h1>
+        <form action="insert_systeme_bd.php" method="post">
+            <h1 class="flex-simple">Création d'un objectif de type : "chargement"</h1>
 
             <div class="flex_simple">
                 <label>Quel est le nom de cet objectif ? : </label>
-            
+
                 <input type="text" name="nom" placeholder="Ecrivez le nom" required="required">
             </div>
 
@@ -43,8 +43,8 @@ create_header($linkpdo);
             <div class="flex_simple">
                 <label>Combien de cases voulez-vous inserer ? : </label>
                 <div class="heure">
-                <input type="number" min="0"  name="rows" required="required"   placeholder="Nombre de cases ?">
-                
+                    <input type="number" min="0" name="rows" required="required" placeholder="Nombre de cases ?">
+
                 </div>
             </div>
 

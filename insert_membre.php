@@ -71,5 +71,3 @@ if ($count > 0) {
     header('Location: page_certif_compte.php');
     exit();
 }
-
-?>

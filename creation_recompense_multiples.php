@@ -16,16 +16,15 @@ $linkpdo = connexionBd()
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
 
-<!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php
-create_header($linkpdo);
-?>
-
+    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <?php
+    create_header($linkpdo);
+    ?>
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
@@ -46,8 +45,8 @@ create_header($linkpdo);
             <div class="flex_simple">
                 <label>combien de récopmpenses voulez vous inserer ? : </label>
                 <div class="heure">
-                <input  class='insere_nb' #x1F5D9min="0"  max="15" type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Nombre de récompense ?">
-                <input id="bouton" type="submit" value="valider">
+                    <input class='insere_nb' #x1F5D9min="0" max="15" type="number" name="rows" value=<?php echo $rows ?> required="required" placeholder="Nombre de récompense ?">
+                    <input id="bouton" type="submit" value="valider">
                 </div>
         </form>
 

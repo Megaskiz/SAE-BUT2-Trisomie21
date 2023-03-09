@@ -1,13 +1,13 @@
-
 <!DOCTYPE HTML>
 <html lang="fr" style="font-family: Arial,sans-serif;">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style_css/style_login.css" media="screen" type="text/css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>bienvenue</title>
-    </head>
-    
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style_css/style_login.css" media="screen" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bienvenue</title>
+</head>
+
 <?php
 
 // Connexion au serveur MySQL
@@ -20,7 +20,7 @@ catch (Exception $e) {
 }
 
 // Je récupère les informations de mon formulaire
-if (!empty($_POST['courriel']) && !empty($_POST['password'])){
+if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
     $courriel = $_POST['courriel'];
     $mdp_test = hash('sha256', "ZEN02anWobA4ve5zxzZz" . $_POST['password']);
 
@@ -42,52 +42,54 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])){
     $stmt2->execute();
     $valide = $stmt2->fetchAll();
 
-    if(count($valide) != 0){
+    if (count($valide) != 0) {
         $id = $valide[0][0];
         $compte_valide = $valide[0][1];
         $role = $valide[0][3];
 
-        if ($count == 1 && $compte_valide == 1){
+        if ($count == 1 && $compte_valide == 1) {
             session_start();
             $_SESSION['login_user'] = $courriel;
             $_SESSION['logged_user'] = $id;
             $_SESSION['role_user'] = $role;
 
-            if($_SESSION['role_user'] == 2){
+            if ($_SESSION['role_user'] == 2) {
                 header("location: page_certif_compte.php");
-            }else{
+            } else {
                 header("location: page_admin.php");
             }
-        }else{
+        } else {
             $message_erreur = "Votre compte n'est pas encore validé";
         }
-    }else{
+    } else {
         $message_erreur = "Identifiant ou mot de passe invalide";
     }
 }
 
 ?>
-    <body>
-        <div class="login-page"> 
-            <div class="form">
-            <p><?php if (isset($message_erreur)){
-                    echo$message_erreur;
-                }  ?></p>
-                <div class="grille">
-                    <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
-                    <form action="" method="post" class="login-form">
-                        <input type="text" name="courriel"placeholder="Adresse e-mail"/>
-                        <input type="password" name="password" placeholder="Mot de passe"/>
-                        <input class="button" type="submit" value="Acceder">
 
-                        <div class="texte_creer-compte">
+<body>
+    <div class="login-page">
+        <div class="form">
+            <p><?php if (isset($message_erreur)) {
+                    echo $message_erreur;
+                }  ?></p>
+            <div class="grille">
+                <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                <form action="" method="post" class="login-form">
+                    <input type="text" name="courriel" placeholder="Adresse e-mail" />
+                    <input type="password" name="password" placeholder="Mot de passe" />
+                    <input class="button" type="submit" value="Acceder">
+
+                    <div class="texte_creer-compte">
                         <p class="message">Pas de compte ? </p>
                         <a href="creation_compte.php">Creer un compte</a>
-                        </div>
-                        
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

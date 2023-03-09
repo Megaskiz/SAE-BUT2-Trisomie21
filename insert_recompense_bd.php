@@ -212,5 +212,3 @@ switch ($_SESSION['type_rec']) {
     
 
 header('Location: page_admin.php?id='.$_SESSION['id_enfant']);
-
-?>

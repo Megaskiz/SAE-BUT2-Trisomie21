@@ -14,7 +14,7 @@ $linkpdo = connexionBd();
 	<title> Menu principal </title>
 	<link rel="stylesheet" href="style_css/style_admin.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>

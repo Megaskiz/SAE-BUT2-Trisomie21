@@ -61,7 +61,6 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 <body>
 
     <main>
-        
         <?php
         echo '<div class="message-chat"> <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '" > <button class="chat_retour" >Retour</button> </a> </div>';
         ?>
@@ -112,25 +111,25 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
                     <?php
                     }
                     ?>
-                <?php
-                ?>
-            
-        </div>
-        <div class="chat_envoi_msg">
-            <form method="POST" action="" class="">
-                <div class="chat_sujet_msg">
-                    <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
-                </div>
-                <div class="chat_txt_msg">
-                    <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
+                    <?php
+                    ?>
+
+            </div>
+            <div class="chat_envoi_msg">
+                <form method="POST" action="" class="">
+                    <div class="chat_sujet_msg">
+                        <input type="text" id="sujet" name="sujet" class="chat_sujet" placeholder="Sujet ..." required></br>
+                    </div>
+                    <div class="chat_txt_msg">
+                        <input class="chat_messages" name="messages" placeholder="Entrez votre message ..." required></br>
 
                         <input type="submit" class="chat_send" name="envoie2">
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    </section>
+        </div>
+        </section>
 </body>
 
 
