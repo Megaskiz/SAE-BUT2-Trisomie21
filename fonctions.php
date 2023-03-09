@@ -318,7 +318,7 @@ function create_nav_coordinateur($linkpdo)
                                         </label>
                                     </div>
                                     <div class="dialog_form_actions">
-                                        <button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
+                                        <button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler &#x1F5D9;</button>
                                         <button class="popup-btn" type="submit">Valider l\'ajout</button>
                                     </div>
                                 </form>
@@ -465,7 +465,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
     }
 
     echo "
-                        <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                        <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
                         </div>    
                     </div>
                 <button class=\"list_equipier\" type=\"button\" onclick=\"openDialog('dialog8', this)\">Equipe</button>
@@ -786,8 +786,8 @@ function pop_in_archive_enfant($id_enfant)
     <div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
         <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
         <div class=\"dialog_form_actions\">
-            <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-            <a class='popup-btn' href=\"appel_fonction.php?appel=archive_enfant\">Valider</a>
+            <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
+            <button class='popup-btn'> <a href=\"appel_fonction.php?appel=archive_enfant\"> Valider &#x2714;</a></button>
         </div>
     </div>
     ";
@@ -804,8 +804,8 @@ function pop_in_modif_image()
                 <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
             </div>
             <div class=\"dialog_form_actions\">
-                <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
-                <button class='popup-btn' type=\"submit\">Valider </button></div></form></div></div>
+                <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
+                <button class='popup-btn' type=\"submit\">Valider &#x2714;</button></div>
             </div>
         </form>
     </div>
@@ -854,7 +854,7 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
                 </div>
                 <div   class='bouton-valider'>
                     <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-                    <button class='button-valider-modification actif' >Valider &#x2714;</button>
+                    <button class='button-valider-modification actif'> Valider &#x2714; </button>
                 </div>
                 
                 </div>
@@ -875,7 +875,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
                     <label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
                 </div>
                 <div class=\"dialog_form_actions\">
-                    <button class='popup-btn' onclick=\"closeDialog(this)\">Retour</button>
+                    <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
                     <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
                 </div>
             </form>
