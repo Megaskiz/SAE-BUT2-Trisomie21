@@ -11,29 +11,28 @@ $linkpdo = connexionBd();
 
 if (isset($_GET['id_putback'])) {
 
-    $req = $linkpdo->prepare('UPDATE enfant SET visibilite = "0" where id_enfant = '.$_GET['id_putback']);
+    $req = $linkpdo->prepare('UPDATE enfant SET visibilite = "0" where id_enfant = ' . $_GET['id_putback']);
 
-    if ($req == false){
+    if ($req == false) {
         die("erreur linkpdo");
-    }   
-        ///Exécution de la requête
-    try{
-        
+    }
+    ///Exécution de la requête
+    try {
+
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
         header("Location:page_admin.php");
-       
-        if ($req == false){
+
+        if ($req == false) {
             $req->debugDumpParams;
             die("erreur execute");
-        }else{
-            echo"<a href=\"page_admin.php\"> recharger la page</a>";         
-           
+        } else {
+            echo "<a href=\"page_admin.php\"> recharger la page</a>";
         }
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
     }
-    catch (Exception $e)
-    {die('Erreur : ' . $e->getMessage());}
 }
 
 
@@ -44,14 +43,14 @@ if (isset($_GET['id_putback'])) {
     <title> Menu principal </title>
     <link rel="stylesheet" href="style_css/style_admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
 
 
-        <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php create_header($linkpdo);?>
+    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
@@ -59,17 +58,11 @@ if (isset($_GET['id_putback'])) {
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
 
-        <nav  class="left-contenu">
+        <nav class="left-contenu">
+            <div style="display: flex; margin: 3%;">
+                <a class="retour" href="page_admin.php"> Retour</a>
+            </div>
 
-        
-
-       
-        <div style="display: flex; margin: 3%;">
-           
-           <a  class="retour"  href="page_admin.php"> Retour</a>
-  
-        </div>
-            
 
 
             <?php
@@ -81,7 +74,8 @@ if (isset($_GET['id_putback'])) {
                     //acces tous les enfants
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
                         $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 1 ORDER BY nom');
-                    } else {}
+                    } else {
+                    }
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
                 }
@@ -200,46 +194,45 @@ if (isset($_GET['id_putback'])) {
 
                     //<!---- menu droit information sur l'enfant ---->
                     echo "<div class=\"div-photo-enfant\">";
-                    echo "<img class=\"photo-enfant\" src=\"".htmlspecialchars($photo_enfant)."\" alt=\"photo du visage de ".htmlspecialchars($prenom_enfant)."\">";
+                    echo "<img class=\"photo-enfant\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"photo du visage de " . htmlspecialchars($prenom_enfant) . "\">";
                     echo "</div>";
 
 
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong> ".htmlspecialchars($nom_enfant)."</strong></p>";
-                    echo "<p class=\"info\">Date de Naissance :<strong>  ".htmlspecialchars($ddn_enfant)." </strong></p>";
-                    echo "<p class=\"info\">Activité enfant :<strong>  ".htmlspecialchars($activite )."    </strong></p>";
+                    echo "<p class=\"info\">  Nom :<strong> " . htmlspecialchars($nom_enfant) . "</strong></p>";
+                    echo "<p class=\"info\">Date de Naissance :<strong>  " . htmlspecialchars($ddn_enfant) . " </strong></p>";
+                    echo "<p class=\"info\">Activité enfant :<strong>  " . htmlspecialchars($activite) . "    </strong></p>";
                     echo "</div>";
 
                     echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Prénom : <strong> ".htmlspecialchars($prenom_enfant)."  </strong></p>";
-                    echo "<p class=\"info\">Adresse enfant : <strong>  ".htmlspecialchars($adresse )."    </strong> </p>";
-                    echo "<p class=\"info\">Handicap enfant :<strong>  ".htmlspecialchars($handicap)."     </strong></p>";
+                    echo "<p class=\"info\">Prénom : <strong> " . htmlspecialchars($prenom_enfant) . "  </strong></p>";
+                    echo "<p class=\"info\">Adresse enfant : <strong>  " . htmlspecialchars($adresse) . "    </strong> </p>";
+                    echo "<p class=\"info\">Handicap enfant :<strong>  " . htmlspecialchars($handicap) . "     </strong></p>";
                     echo "</div>";
 
 
                     echo " <div class=\"div-modif-enfant\">";
                     // acces modif enfant
                     if ($_SESSION["role_user"] == 1) {
-                        
                     }
-                    
+
                     echo "</div>";
 
-                    echo"<center>";
+                    echo "<center>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver ce profil</button>';
                     echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
                     echo "<p class='popup-txt' > Voulez-vous restaurer le compte de cet enfant ? Il sera visible par toutes les personnes l'ayant suivi </p>";
-                    
+
                     echo ' <div style="display:flex; justify-content: space-evenly;">';
                     echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
-                    echo '   <a  class="popup-btn"  href="archive_profil_enfant.php?id_putback='.$_GET["id"].'">Valider</a>';
-                    echo"</div>";
-                    
-                    echo"</div>";
-                    echo"</center>";
+                    echo '   <a  class="popup-btn"  href="archive_profil_enfant.php?id_putback=' . $_GET["id"] . '">Valider</a>';
+                    echo "</div>";
 
-                    
+                    echo "</div>";
+                    echo "</center>";
+
+
 
                     echo "</div>";
 
@@ -249,18 +242,19 @@ if (isset($_GET['id_putback'])) {
                     echo "<section class=\"nb-systeme\">";
                     //acces aux boutons -> ajouter sys, stat, stat4semaines
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-                        echo' <div style="display:flex">';
+                        echo ' <div style="display:flex">';
                         echo '   <a style="display:none;"><button class="button_ajouter-objectif">Ajouter un nouvel objectif</button></a>';
                         echo '   <a style="display:none;"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>';
                         echo '   <a style="display:none;"><button class="button_ajouter-objectif">Statistiques 4 dernières semaines</button></a>';
-                        echo' </div>';                    }
+                        echo ' </div>';
+                    }
 
 
 
 
                     // tous les systèmes de l'enfant :
 
-                   
+
                     try {
                         $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=0 and id_enfant=' . $id . ' ORDER BY priorite ');
                     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
@@ -292,7 +286,7 @@ if (isset($_GET['id_putback'])) {
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
                         //acces au systèmes
-                        if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1or $_SESSION["role_user"] == 3) {
+                        if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1 or $_SESSION["role_user"] == 3) {
                             echo "<tr >";
 
                             #affiche nom
@@ -464,7 +458,7 @@ if (isset($_GET['id_putback'])) {
                                 </div>
                             </div>
 
-                    <?php
+                <?php
 
 
                             echo "</form>";
@@ -532,7 +526,6 @@ if (isset($_GET['id_putback'])) {
                                 echo "<a href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"><button class='sup-objectif'>Supprimer le système</button></a>";
                                 echo "<button class=\"deco\" onclick=\"closeDialog(this)\">Annuler</button>";
                                 echo "</div>";
-                                
                             }
 
 
@@ -580,14 +573,14 @@ if (isset($_GET['id_putback'])) {
                     echo "<td>" . htmlspecialchars($tuteur['prenom']) . "</td>";
                     echo "<td class='Profil'>";
                     echo "<form action='groupe_validation.php?id_enfant=$getid&id_membre=$tuteur[id_membre]' method='post'>";
-                    
+
                     echo "<button type='submit'>Ajouter</button>";
                     echo "</form>";
                     echo "<br>";
                     echo "</td>";
                     echo "</tr>";
                 }
-                
+
                 echo "</table>";
 
                 echo '<button type="button" onclick="closeDialog(this)">Annuler</button>';
