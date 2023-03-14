@@ -86,6 +86,26 @@ if(isset($_GET['appel'])){
         
             modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $session, $linkpdo);
             break; 
+
+        // faire case d'insert :
+
+        case 'insert_enfant':
+            
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom =htmlspecialchars($_POST['prenom']);
+            $date_naissance = htmlspecialchars($_POST['date_naissance']);
+            $lien_jeton = uploadImage($_FILES['lien_jeton']); // encore a secu
+            $photo_enfant = uploadImage($_FILES['photo_enfant']); // encore à secu
+
+            insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo);
+            break;
+            //insert enfant done
+            //insert membre
+            //insert récompense
+            //insert systeme
+
+            // pour pouvoir retirer 4 autres fichiers
+            
             
             
         default:

@@ -11,8 +11,7 @@ function filter_spaces($var)
 
 // ------------------------------------- fonctions pour les "blocs" html -----------------------------------------------------------
 
-function create_header($linkpdo)
-{ // fonction qui affiche le header
+function create_header($linkpdo){ // fonction qui affiche le header
 
     echo '<header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
@@ -52,8 +51,7 @@ function create_header($linkpdo)
     </header>';
 }
 
-function create_nav_user($linkpdo)
-{ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs sans privilèges
+function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs sans privilèges
     echo '
             <nav  class="left-contenu">
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
@@ -157,7 +155,7 @@ function create_nav_admin($linkpdo)
                         <div id="dialog_layer" class="dialogs">
                             <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                                 <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
-                                <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
+                                <form enctype="multipart/form-data" action="appel_fonction.php?appel=insert_enfant" method="post" class="dialog_form">
                                     <div class="dialog_form_item">
                                         <label>
                                             <span class="label_text">Nom :</span>
@@ -276,9 +274,6 @@ function create_nav_coordinateur($linkpdo)
                     </li>
                     </ul>
                     ';
-    ?>
-
-    <?php
     //acces à l'ajout de profil d'enfant
     //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
     echo '
@@ -1065,8 +1060,63 @@ function modif_mdp($mdp, $session, $linkpdo)
     }
 }
 
+// ------------------------------------- fonctions pour les insert -----------------------------------------------------------
 
+function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo){
 
+    
+
+    // requete avec le mail si, rowcount() > 0 faire fail
+    $requete_verif_enfant = "SELECT count(*) FROM enfant WHERE nom='$nom' and prenom='$prenom' and date_naissance='$date_naissance';";
+    // Execution de la requete
+    try {
+        $res = $linkpdo->query($requete_verif_enfant);
+        $count = $res->fetchColumn();
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+    if ($count > 0) {
+        $message_erreur = "il y déjà un enfant avec ce nom et ce prénom ";
+        echo $message_erreur;
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+    } else {
+        // je creé la requete d'insertion 
+
+        $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton,photo_enfant)
+    VALUES(:nom, :prenom, :date_naissance, :lien_jeton, :photo_enfant)');
+
+        if ($req == false) {
+            die("erreur linkpdo");
+        }
+        ///Exécution de la requête
+        try {
+            $req->execute(array(
+                'nom' => htmlspecialchars($nom),
+                'prenom' => htmlspecialchars($prenom),
+                'date_naissance' => htmlspecialchars($date_naissance),
+                'lien_jeton' => htmlspecialchars($lien_jeton),
+                'photo_enfant' => htmlspecialchars($photo_enfant)
+            ));
+            // $req->debugDumpParams();
+            // exit();
+
+            if ($req == false) {
+                $req->debugDumpParams();
+                die("erreur execute");
+            }
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        header('Location: page_admin.php');
+        exit();
+    }
+}
 
 
 function uploadVisage($photo)

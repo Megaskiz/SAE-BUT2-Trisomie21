@@ -36,9 +36,6 @@ catch (Exception $e) {
 
     <main>
 
-
-
-
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
             <h1 class="flex-simple">Création d'une récompense de type : "unique"</h1>
 
