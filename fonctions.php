@@ -15,7 +15,8 @@ function create_header($linkpdo){ // fonction qui affiche le header
 
     echo '<header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l\'utilisateur">';
+        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l\'utilisateur">
+        ';
 
     $mail =  $_SESSION['login_user'];
     try {
@@ -50,6 +51,7 @@ function create_header($linkpdo){ // fonction qui affiche le header
         </div>
     </header>';
 }
+
 
 function create_nav_user($linkpdo){ // fonction qui affiche le nav (partie de gauche) pour les utilisateurs sans privilèges
     echo '
@@ -1064,47 +1066,63 @@ function modif_mdp($mdp, $session, $linkpdo)
 
 function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo){
 
-    
 
-    // requete avec le mail si, rowcount() > 0 faire fail
-    $requete_verif_enfant = "SELECT count(*) FROM enfant WHERE nom='$nom' and prenom='$prenom' and date_naissance='$date_naissance';";
-    // Execution de la requete
-    try {
-        $res = $linkpdo->query($requete_verif_enfant);
-        $count = $res->fetchColumn();
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-    if ($count > 0) {
-        $message_erreur = "il y déjà un enfant avec ce nom et ce prénom ";
-        echo $message_erreur;
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-    } else {
-        // je creé la requete d'insertion 
+    // je creé la requete d'insertion 
 
-        $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton,photo_enfant)
+    $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton,photo_enfant)
     VALUES(:nom, :prenom, :date_naissance, :lien_jeton, :photo_enfant)');
 
+    if ($req == false) {
+        die("erreur linkpdo");
+    }
+    ///Exécution de la requête
+    try {
+        $req->execute(array(
+            'nom' => htmlspecialchars($nom),
+            'prenom' => htmlspecialchars($prenom),
+            'date_naissance' => htmlspecialchars($date_naissance),
+            'lien_jeton' => htmlspecialchars($lien_jeton),
+            'photo_enfant' => htmlspecialchars($photo_enfant)
+        ));
+        // $req->debugDumpParams();
+        // exit();
+
+        if ($req == false) {
+            $req->debugDumpParams();
+            die("erreur execute");
+        }
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    header('Location: page_admin.php');
+    exit();
+
+}
+
+function insert_membre($nom,$prenom,$adresse,$code,$ville,$courriel,$ddn,$Mdp,$pro,$linkpdo){
+        // je creé la requete d'insertion 
+
+        $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
+        VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :pro, :compte_valide)');
+    
         if ($req == false) {
             die("erreur linkpdo");
         }
         ///Exécution de la requête
         try {
             $req->execute(array(
-                'nom' => htmlspecialchars($nom),
-                'prenom' => htmlspecialchars($prenom),
-                'date_naissance' => htmlspecialchars($date_naissance),
-                'lien_jeton' => htmlspecialchars($lien_jeton),
-                'photo_enfant' => htmlspecialchars($photo_enfant)
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'adresse' => $adresse,
+                'code_postal' => $code,
+                'ville' => $ville,
+                'courriel' => $courriel,
+                'date_naissance' => $ddn,
+                'mdp' => $Mdp,
+                'pro' => $pro, // à changer
+                'compte_valide' => 1
             ));
-            // $req->debugDumpParams();
-            // exit();
-
             if ($req == false) {
                 $req->debugDumpParams();
                 die("erreur execute");
@@ -1112,10 +1130,9 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-
-        header('Location: page_admin.php');
+    
+        header('Location: page_certif_compte.php');
         exit();
-    }
 }
 
 

@@ -89,6 +89,13 @@ if(isset($_GET['appel'])){
 
         // faire case d'insert :
 
+            //insert enfant done -> fichier supprimmé
+            //insert membre
+            //insert récompense
+            //insert systeme
+
+            // pour pouvoir retirer 4 autres fichiers
+
         case 'insert_enfant':
             
             $nom = htmlspecialchars($_POST['nom']);
@@ -97,20 +104,67 @@ if(isset($_GET['appel'])){
             $lien_jeton = uploadImage($_FILES['lien_jeton']); // encore a secu
             $photo_enfant = uploadImage($_FILES['photo_enfant']); // encore à secu
 
-            insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo);
-            break;
-            //insert enfant done
-            //insert membre
-            //insert récompense
-            //insert systeme
+            //vérification sur le nom et le prénom de l'enfant et sur la ddn
 
-            // pour pouvoir retirer 4 autres fichiers
+            // requete avec le mail si, rowcount() > 0 faire fail
+            $requete_verif_enfant = "SELECT count(*) FROM enfant WHERE nom='$nom' and prenom='$prenom' and date_naissance='$date_naissance';";
+            // Execution de la requete
+            try {
+                $res = $linkpdo->query($requete_verif_enfant);
+                $count = $res->fetchColumn();
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+            if ($count > 0) {
+                header('Location: insert_erreur_nom.php');
+                break;
+            }
+            else{
+                insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo);
+                break;
+            }
+
+        case 'insert_membre':
+
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom = htmlspecialchars($_POST['prenom']);
+            $adresse = htmlspecialchars($_POST['adresse']);
+            $code = htmlspecialchars($_POST['code_postal']);
+            $ville = htmlspecialchars($_POST['ville']);
+            $courriel = htmlspecialchars($_POST['courriel']);
+            $ddn = htmlspecialchars($_POST['ddn']);
+            $Mdp = htmlspecialchars($_POST['password']);
+            //$Mdp_verif = htmlspecialchars($_POST['password_verif']);
+            $pro = htmlspecialchars($_POST['pro']);
+
+            // requete avec le mail si, rowcount() > 0 faire fail
+            $requete_verif_mail = "SELECT count(*) FROM membre WHERE courriel='$courriel'";
+            // Execution de la requete
+            try {
+                $res = $linkpdo->query($requete_verif_mail);
+            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                die('Erreur : ' . $e->getMessage());
+            }
+
+            $count = $res->fetchColumn();
+
+            if ($count > 0) {
+                header('Location: insert_erreur_nom.php');
+                break;
+            } else {
+                insert_membre($nom,$prenom,$adresse,$code,$ville,$courriel,$ddn,$Mdp,$pro,$linkpdo);
+                break;
+            }
+            
+            
+
+
             
             
             
         default:
             echo"autre";
-            exit();
+            
             break;
     
     }

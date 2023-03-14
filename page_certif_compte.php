@@ -93,7 +93,7 @@ if (isset($_GET['id_archiver'])) {
                         <div role="dialog" id="dialogNEW1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                             <h2 id="dialog1_label" class="dialog_label">Ajouter un membre</h2>
 
-                            <form action="insert_membre.php" method="post" class="dialog_form">
+                            <form action="appel_fonction.php?appel=insert_membre" method="post" class="dialog_form">
                                 <div class="dialog_form_item">
                                     <label>
                                         <span class="label_text">nom :</span>
@@ -142,6 +142,7 @@ if (isset($_GET['id_archiver'])) {
                                         <input name='password' type="text" class="state_input" required="required">
                                     </label>
                                 </div>
+                            
                                 <div class="dialog_form_item">
                                     <span class="label_text">Etes vous un professionel ? :</span>
                                     <div>
@@ -307,7 +308,8 @@ if (isset($_GET['id_archiver'])) {
 
             ///Sélection de tout le contenu de la table carnet_adresse
             try {
-                $res = $linkpdo->query("SELECT * FROM membre,suivre where membre.id_membre='$id' ORDER BY nom;");
+                $res = $linkpdo->query("SELECT * FROM membre where membre.id_membre='$id' ORDER BY nom;");
+                //$res->debugDumpParams();
             } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
                 die('Erreur : ' . $e->getMessage());
             }
@@ -316,7 +318,7 @@ if (isset($_GET['id_archiver'])) {
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
-
+            
             $id_membre = $double_tab[0][0];
             $nom_membre = ucfirst($double_tab[0][1]);
             $prenom_membre = ucfirst($double_tab[0][2]);

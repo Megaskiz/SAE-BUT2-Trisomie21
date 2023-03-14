@@ -19,7 +19,7 @@ $linkpdo = connexionBd();
 
 <body>
 	<!--- HEADER -->
-	<?php create_header($linkpdo); ?>
+	<?php	create_header($linkpdo); ?>
 
 	<!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
@@ -87,6 +87,7 @@ $linkpdo = connexionBd();
 				$id_enfant = $_SESSION['id_enfant'];
 
 				//   ---- menu droit information sur l'enfant ---->
+				
 				echo "<section class=\"section_enfant\">";
 				create_section_info_enfant($linkpdo, $id_enfant);
 				echo "</section>";
