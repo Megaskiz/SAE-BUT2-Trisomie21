@@ -26,7 +26,6 @@ if (isset($_POST["radio1"]) & isset($_POST["radio2"])) {
         
         default:
             echo"erreur de choix de système";
-            exit();
             break;
     }
 

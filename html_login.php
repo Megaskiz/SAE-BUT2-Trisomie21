@@ -8,16 +8,9 @@
     <title>bienvenue</title>
 </head>
 
-<?php
+<?php require_once("fonctions.php");
 
-// Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-// Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo=connexionBd();
 
 // Je récupère les informations de mon formulaire
 if (!empty($_POST['courriel']) && !empty($_POST['password'])) {

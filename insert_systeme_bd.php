@@ -4,18 +4,7 @@ is_logged();
 is_validateur();
 is_not_admin();
 
-///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae","root","");
-    }
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-    }
-
-// 
-//  FICHIER QUI DOIT ETRE MODIFIE ! ANCIENE VERSION
-//
+$linkpdo=connexionBd();
 
 // fichier qui insert le système dans une base de données
 
@@ -28,7 +17,6 @@ unset($_POST["duree"]);
 
 $echelle = htmlspecialchars($_POST["echelle"]);
 unset($_POST["echelle"]);
-
 
 
 switch ($echelle) {  
@@ -48,7 +36,6 @@ switch ($echelle) {
         break;
 }
 
-
 $jeton = "jeton";
 
 $prio = htmlspecialchars($_POST["prio"]);
@@ -66,12 +53,6 @@ switch ($_SESSION['type_sys']) {
         }
         $res.=':';
         break;
-    
-    case '2':
-        echo"système non géré";
-        exit();
-        break;
-
     case '3':// type = routine  / contrat
         $all_keys = array_keys($_POST); // je récupères toutes les clés de mon $_POST dans lesqueles il y à toutes les taches
         $res="";
@@ -90,12 +71,6 @@ switch ($_SESSION['type_sys']) {
         echo"erreur, on ne devrait jamais être là";
         break;
 }
-
-
-
-
-
-
     
 // je creé la requete d'insertion 
 $req = $linkpdo->prepare('INSERT INTO `objectif`(`nom`, `intitule`, `nb_jetons`, `duree`, `lien_image`, `priorite`, `travaille`, `id_membre`, `id_enfant`, `type`)
@@ -106,7 +81,6 @@ if ($req == false){
 }   
 ///Exécution de la requête
 try{
-    
     $req->execute(array('nom' => $res, // la chaine que je reconstruit pour avoir ce que je veux
                         'intitule' => $nom,
                         'nb_jeton' => $total_jeton,
@@ -124,7 +98,6 @@ try{
         die("erreur execute");
     }
 }
-
 catch (Exception $e)
 {die('Erreur : ' . $e->getMessage());}
 
@@ -136,15 +109,9 @@ switch ($_SESSION["type_rec"]) {
     case '5':
         header('Location: creation_recompense_multiples.php');
         break;
-
-    case '6':
-        echo"page pas encore creée";
-        break;
-    
     default:
         echo$_SESSION["type_rec"];
         echo"erreur de choix de récompense";
         //header('Location: page_admin.php');
-        exit();
         break;
 }

@@ -5,20 +5,9 @@ is_validateur();
 is_not_admin();
 
 ///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae","root","");
-    }
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-    }
+$linkpdo=connexionBd();
 
 // fichier qui insert la récompense dans une base de données
-
-// je récupere les informations de mon formulaire
-                    // var_dump($_POST);
-                    // var_dump($_FILES);
-                    // exit();
 
 
 switch ($_SESSION['type_rec']) {
@@ -93,10 +82,6 @@ switch ($_SESSION['type_rec']) {
                 catch (Exception $e)
                 {die('Erreur : ' . $e->getMessage());}
 
-
-
-
-
         break;
     
     case '5':
@@ -157,9 +142,6 @@ switch ($_SESSION['type_rec']) {
         $double_tab = $res->fetchAll();
         $double_tab2 = $res2->fetchAll();
         
-        // var_dump($double_tab[0][0]);// j'ai l'id de la derniere récompense de la bd
-        // var_dump($double_tab2[0][0]);//j'ai l'id du dernier objectif de la bd
-
         //debut de la boucle
 
         $insert = 0;
@@ -194,21 +176,8 @@ switch ($_SESSION['type_rec']) {
 
         break;
 
-    case '3':
-        break;
-    
     default:
         echo"erreur, on ne devrait jamais être là";
         break;
 }
-
-
-//echo"on a fini de lier (normalement)";
-
-// lier la derniere récompense créee et le derniere systeme crée dans la table "lier"
-
-
-
-    
-
 header('Location: page_admin.php?id='.$_SESSION['id_enfant']);

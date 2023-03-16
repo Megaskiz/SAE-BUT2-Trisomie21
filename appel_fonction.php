@@ -89,8 +89,7 @@ if(isset($_GET['appel'])){
 
         // faire case d'insert :
 
-            //insert enfant done -> fichier supprimmé
-            //insert membre
+
             //insert récompense
             //insert systeme
 
