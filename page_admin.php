@@ -36,22 +36,8 @@ $linkpdo = connexionBd();
 	<main>
 
 		<?php //affichage de la liste de gauche, avec les profils enfants, et les sous menus, en fonction des droits 
-		switch ($_SESSION["role_user"]) {
-			case '0':
-				// utilisateur User
-				create_nav_user($linkpdo);
-				break;
 
-			case '1':
-				// utilisateur Admin
-				create_nav_admin($linkpdo);
-				break;
-
-			default:
-				// utilisateur Coordinateur
-				create_nav_coordinateur($linkpdo);
-				break;
-		}
+		create_nav($linkpdo);	
 		// affichage central de la page, avec les informations sur les enfants
 
 		if (isset($_GET['id'])) { // si on clique sur "acceder" alors on recherche les infos d'un enfant
