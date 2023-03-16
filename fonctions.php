@@ -1092,17 +1092,30 @@ function inverse_utilisation_objectif($sys,$val,$linkpdo){
 function supprime_objectif($id_objectif, $linkpdo)
 {
     // preparation de la Requête sql
-    $req = $linkpdo->prepare("Delete from lier,recompense where id_recompense in (select id_recompense from lier where id_objectif=:id)");
+    $req = $linkpdo->prepare("
+    
+    Delete from lier where id_objectif=:id;
+
+    Delete from recompense where id_recompense not in (select id_recompense from lier);
+    
+    Delete from message where id_objectif=:id;
+
+    Delete from placer_jeton where id_objectif=:id;
+    
+    Delete from objectif where id_objectif=:id;
+    ");
     if ($req == false) {
-        die('Erreur ! Delete');
+        $req->debugDumpParams();
+        return false;
     }
     // execution de la Requête sql
     $req->execute(array('id' => $id_objectif));
     if ($req == false) {
-        die('Erreur ! Delete');
+        $req->debugDumpParams();
+        return false;
     }
+    return true;
+
 }
 
 ?>
-
-Delete from lier,recompense where id_recompense in (select id_recompense from lier where id_objectif=28)

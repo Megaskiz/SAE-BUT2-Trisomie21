@@ -171,6 +171,14 @@ if(isset($_GET['appel'])){
             }
             break;
         
+        case 'supprime_objectif':
+            if(isset($_GET['id_sys'])){
+                $sys=$_GET['id_sys'];
+                $returne = supprime_objectif($sys, $linkpdo);
+                header('Location:archive_sys.php'); 
+            }else{
+                header('Location:archive_sys.php'); 
+            }
 
 
             
