@@ -156,13 +156,28 @@ if(isset($_GET['appel'])){
             }
             
             
+        case 'mise_en_route':
+            
+            if (isset($_GET["id_sys"]) and isset($_GET["valeur"]) ) {
+                $sys=$_GET["id_sys"];
+                $val=$_GET["valeur"];
+                inverse_utilisation_objectif($sys,$val,$linkpdo);
+
+                
+                header('Location: page_admin.php?id='.$_SESSION["id_enfant"]);    
+            }
+            else {
+                header('Location: page_admin?id='.$_SESSION["logged_user"].'.php');
+            }
+            break;
+        
 
 
             
             
             
         default:
-            echo"autre";
+            echo$_GET['appel'];
             
             break;
     

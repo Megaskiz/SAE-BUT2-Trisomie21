@@ -537,7 +537,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                         echo "
                                         <td>
 										    <center>
-										        <a href=\"utilisation.php?id_sys=" . $double_tab[$i][5] . "&valeur=0\"><button class=\"status-objectif actif\">Actif  &#x2714;</button></a>
+                                                <a href=\"appel_fonction.php?appel=mise_en_route&id_sys=" . $double_tab[$i][5] . "&valeur=0\"><button class=\"status-objectif actif\">Actif  &#x2714;</button></a>
 										    </center>
 										</td>";
                         break;
@@ -545,7 +545,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                         echo "
                                         <td>
                                             <center>
-                                                <a href=\"utilisation.php?id_sys=" . $double_tab[$i][5] . "&valeur=1 \"><button class=\"status-objectif nonactif\">Désactivé  &#x1F5D9;</button></a>
+                                                <a href=\"appel_fonction.php?appel=mise_en_route&id_sys=" . $double_tab[$i][5] . "&valeur=1 \"><button class=\"status-objectif nonactif\">Désactivé  &#x1F5D9;</button></a>
                                             </center>
 										</td>
                                         ";
@@ -1073,6 +1073,21 @@ function eject($Sid, $id_eject, $linkpdo)
         $res = $linkpdo->query($req_eject);
         header('Location: page_admin.php?id=' . $_SESSION['id_enfant']);
     } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
+function inverse_utilisation_objectif($sys,$val,$linkpdo){
+    $req = $linkpdo->prepare('UPDATE objectif SET travaille = :invers where id_objectif = :id ');
+
+    if ($req == false){
+        die("erreur linkpdo");
+    }   
+        ///Exécution de la requête
+    try{
+        $req->execute(array('invers' => $val, 'id' => $sys));
+        
+    }catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
 }
