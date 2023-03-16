@@ -180,6 +180,15 @@ if(isset($_GET['appel'])){
                 header('Location:archive_sys.php'); 
             }
 
+        case 'supprime_profil_enfant':
+            if(isset($_GET['id_enfant'])){
+                $sys=$_GET['id_enfant'];
+                $returne = supprime_profil_enfant($sys, $linkpdo);
+                header('Location:archive_profil_enfant.php'); 
+            }else{
+                header('Location:archive_profil_enfant.php'); 
+            }
+
 
             
             

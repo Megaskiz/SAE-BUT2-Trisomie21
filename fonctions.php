@@ -1118,4 +1118,48 @@ function supprime_objectif($id_objectif, $linkpdo)
 
 }
 
+function supprime_profil_enfant($id_enfant, $linkpdo)
+{
+    // il faut supprimer tous ses objectifs : 
+
+    $req = $linkpdo->prepare("select id_objectif from objectif where id_enfant = :id ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_enfant));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+
+    $double_tab = $req->fetchAll();
+
+    $i = 0;
+    for($i; $i<sizeof($double_tab);$i++){
+        supprime_objectif($double_tab[0][$i], $linkpdo); // suppression de tous les objectifs de cet enfant
+    }
+    // preparation de la Requête sql
+
+    $req = $linkpdo->prepare("
+    
+    Delete from suivre where id_enfant=:id;
+    
+    Delete from enfant where id_enfant =:id;
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_enfant));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    return true;
+
+}
+
 ?>
