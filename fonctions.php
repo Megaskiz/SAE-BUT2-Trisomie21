@@ -242,10 +242,12 @@ function create_section_info_enfant($linkpdo, $id_enfant)
         // acces modif enfant     
         // seuls les admins on accès au formulaire de modification d'un profil d'enfant
 
-        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);
-        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant);
+        
+       
+        
+        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);   
         pop_in_archive_enfant($id_enfant);
-        pop_in_modif_image();
+        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant); 
     }
     echo "
 				</div>
@@ -595,7 +597,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
 function pop_in_archive_enfant($id_enfant)
 {
     echo "
-    <button class=\"spprmrenfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Archiver le profil de l'enfant</button>
+    <button  type=\"button\" onclick=\"openDialog('dialog7', this)\">Archiver le profil de l'enfant</button>
     <div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
         <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
         <div class=\"dialog_form_actions\">
@@ -606,24 +608,7 @@ function pop_in_archive_enfant($id_enfant)
     ";
 }
 
-function pop_in_modif_image()
-{
-    echo "
-    <button class='modifier-photo' type=\"button\" onclick=\"openDialog('dialog11', this)\">Modifier la photo</button>
-    <div role=\"dialog\" id=\"dialog11\" aria-labelledby=\"dialog11_label\" aria-modal=\"true\" class=\"hidden\">
-        <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
-        <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
-            <div class=\"dialog_form_item\">
-                <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
-            </div>
-            <div class=\"dialog_form_actions\">
-                <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-                <button class='popup-btn' type=\"submit\">Valider &#x2714;</button></div>
-            </div>
-        </form>
-    </div>
-    ";
-};
+
 
 function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup)
 {
@@ -690,6 +675,16 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
                 <div class=\"dialog_form_actions\">
                     <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
                     <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
+                </div>
+            </form>
+            <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
+            <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
+                <div class=\"dialog_form_item\">
+                    <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
+                </div>
+                <div class=\"dialog_form_actions\">
+                    <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
+                    <button class='popup-btn' type=\"submit\">Valider &#x2714;</button></div>
                 </div>
             </form>
         </div>
