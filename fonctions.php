@@ -1092,5 +1092,22 @@ function inverse_utilisation_objectif($sys,$val,$linkpdo){
     }
 }
 
+// fonction de suppression dans la bd :
+
+function supprime_objectif($id_objectif, $linkpdo)
+{
+    // preparation de la Requête sql
+    $req = $linkpdo->prepare("Delete from lier,recompense where id_recompense in (select id_recompense from lier where id_objectif=:id)");
+    if ($req == false) {
+        die('Erreur ! Delete');
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_objectif));
+    if ($req == false) {
+        die('Erreur ! Delete');
+    }
+}
 
 ?>
+
+Delete from lier,recompense where id_recompense in (select id_recompense from lier where id_objectif=28)
