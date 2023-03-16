@@ -54,7 +54,10 @@ $linkpdo = connexionBd();
 			$nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
 			$liste = array();
 		}
+
+		echo"<a href=\"appel_fonction.php?appel=purge_image\">lkmlkj</a>";
 		?>
+		
 		<!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
 		<nav class="right-contenu">
 			<?php

@@ -179,6 +179,7 @@ if(isset($_GET['appel'])){
             }else{
                 header('Location:archive_sys.php'); 
             }
+            break;
 
         case 'supprime_profil_enfant':
             if(isset($_GET['id_enfant'])){
@@ -188,14 +189,16 @@ if(isset($_GET['appel'])){
             }else{
                 header('Location:archive_profil_enfant.php'); 
             }
+            break;
 
 
-            
-            
+        case 'purge_image':
+            supprimer_image($linkpdo);
+            header('Location: page_admin.php');
+            break;
             
         default:
             echo$_GET['appel'];
-            
             break;
     
     }

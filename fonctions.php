@@ -1162,4 +1162,54 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
 
 }
 
+function supprimer_image($linkpdo){
+    // recuperer toutes les images qui sont reliés dans la bd
+
+    // récompense = lien 
+    // enfant : lien_jeton 
+    // enfant : photo_enfant 
+
+    $liste=array();
+
+    $req = $linkpdo->prepare("
+    select lien_image, photo_enfant, lien_jeton from recompense, enfant;
+    
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array());
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+
+    $double_tab = $req->fetchAll();
+    for($i=0;$i<sizeof($double_tab);$i++){
+        for($y=0;$y<3;$y++){
+        if($double_tab[$i][$y]){ // pour ne pas ajouter les NULL
+            $liste[]=$double_tab[$i][$y];
+        }
+    }
+}
+    $files1 = scandir("./images");
+
+    unset($files1[0]);
+    unset($files1[1]);
+    unset($files1[2]);
+    unset($files1[3]);
+
+    print_r($files1); // ce que j'ai sur le disque
+    print_r($liste);
+
+
+    foreach($files1 as $key => $value){
+        if(!in_array("images/".$value, $liste)){
+            unlink("./images/".$value); // suppression de tous les objectifs de cet enfant
+        }
+    }
+}
+
 ?>
