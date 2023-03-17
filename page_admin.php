@@ -55,7 +55,7 @@ $linkpdo = connexionBd();
 			$liste = array();
 		}
 
-		echo"<a href=\"appel_fonction.php?appel=purge_image\">lkmlkj</a>";
+		//echo"<a href=\"appel_fonction.php?appel=purge_image\">lkmlkj</a>";
 		?>
 		
 		<!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
