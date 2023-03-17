@@ -309,6 +309,21 @@ if (isset($_GET['id_invalider'])) {
                                 echo "</form>";
                                 echo "</div>";
                                 echo "</div>";
+
+                                echo "<button  class=\"valider\" type=\"button\" onclick=\"openDialog('dialog_sup_membre" . $idiv . "', this)\">Supprimer ce compte membre</button>";
+
+                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
+                                echo "<div role=\"dialog\" id=\"dialog_sup_membre" . $idiv . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
+                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
+
+                                echo "<p class='popup-txt'>Voulez-vous supprimer ce compte membre dans l'application ? Cette action est irréversible, elle supprimera tous les messages de ce membre, et le retirera de toutes les équipes. </p>";
+                                echo "<div class=\"dialog_form_actions\">";
+                                echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
+                                echo '<a class="popup-btn" href="appel_fonction.php?appel=supprime_utilisateur&id_user=' . $idiv . '">Supprimer</a>';
+                                echo "</div>";
+                                echo "</form>";
+                                echo "</div>";
+                                echo "</div>";
                             }
                         }
                     }

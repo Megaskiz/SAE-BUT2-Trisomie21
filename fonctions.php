@@ -1161,6 +1161,52 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
 
 }
 
+function supprime_utilisateur($id_utilisateur, $linkpdo)
+{
+    // preparation de la Requête sql
+
+    /* Pour supprimer un membre de la base de donnée il faut :
+
+    Table        :  action 
+    _______________________
+    placer jeton :  mettre un id_membre factice
+    message      :  mettre un id_factice
+    objectif     :  mettre un id_factice
+    suivre       :  supprimer
+    membre       :  supprimer
+    */
+
+    $req = $linkpdo->prepare("
+    
+        UPDATE `placer_jeton` SET `id_membre` = '-1' WHERE `placer_jeton`.`id_membre` = :id ; 
+
+
+        UPDATE `message` SET `id_membre` = '-1' where `id_membre` = :id;
+
+
+        UPDATE `objectif` SET `id_membre` = '-1' where `id_membre` = :id;
+
+
+        DELETE from `suivre` where `id_membre`= :id;
+
+
+        DELETE from `membre` where `id_membre`= :id;
+    
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_utilisateur));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    return true;
+
+}
+
 function supprimer_image($linkpdo){
     // recuperer toutes les images qui sont reliés dans la bd
 

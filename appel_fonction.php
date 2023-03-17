@@ -191,6 +191,16 @@ if(isset($_GET['appel'])){
             }
             break;
 
+        case 'supprime_utilisateur':
+            if(isset($_GET['id_user'])){
+                $sys=$_GET['id_user'];
+                $returne = supprime_utilisateur($sys, $linkpdo);
+                header('Location:archive_membre.php'); 
+            }else{
+                header('Location:archive_membre.php'); 
+            }
+            break;
+
 
         case 'purge_image':
             supprimer_image($linkpdo);
