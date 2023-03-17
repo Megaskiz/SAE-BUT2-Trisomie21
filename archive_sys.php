@@ -32,13 +32,13 @@ if (isset($_GET['id_putback'])) {
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
-        header("Location:page_admin.php");
+        header("Location:page_admin.php?id=".$_SESSION['id_enfant']);
        
         if ($req == false){
-            $req->debugDumpParams;
+            $req->debugDumpParams();
             die("erreur execute");
         }else{
-            echo"<a href=\"page_admin.php\"> recharger la page</a>";          
+            echo"<a href=\"page_admin.php?id=".$_SESSION['id_enfant']."\"> recharger la page</a>";          
         }
     }
     catch (Exception $e)
@@ -60,7 +60,6 @@ if (isset($_GET['id_putback'])) {
         <?php
         $mail =  $_SESSION['login_user'];
         try {
-        http://localhost/sae-but2-s1/page_admin.php?id=27
             $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail' ORDER BY nom;");
         } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
             die('Erreur : ' . $e->getMessage());
@@ -231,6 +230,7 @@ if (isset($_GET['id_putback'])) {
                         <th class='sms'>Message</th>
                         <th>Accéder</th>
                         <th class='sup'>Ré-instaurer</th>
+                        <th class='sup'>Supprimer définitivement</th>
                         </tr>";
 
                     for ($i = 0; $i < $nombre_ligne; $i++) {
@@ -316,25 +316,51 @@ if (isset($_GET['id_putback'])) {
 
                             echo "<td>";
                             echo " <div class=\"case-enfant\">";
-                            //bouton supprimer un sys -> "archiver"
                             echo "</div>";
 
-                    echo"<center>";
-                    echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver cet objectif</button>';
-                    echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo "<p class='popup-txt'> Voulez vous rendre de nouveau utilisable cet objectif ? Il sera visible par tous les membres suivant cet enfant et apparaitra dans les statistiques  </p>";
-                    
-                    echo ' <div style="display:flex; justify-content: space-evenly;" >';
-                    echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
-                    echo '   <a class="popup-btn" href="archive_sys.php?id_putback='.$double_tab[$i][5].'">Valider</a>';
-                    echo"</div>";
-                    
-                    echo"</div>";
-                    echo"</center>";
+                            echo"<center>";
+                            echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog6\', this)">Dé-archiver cet objectif</button>';
+                            echo '<div role="dialog" id="dialog6" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                            echo "<p class='popup-txt'> Voulez vous rendre de nouveau utilisable cet objectif ? Il sera visible par tous les membres suivant cet enfant et apparaitra dans les statistiques  </p>";
+                            
+                            echo ' <div style="display:flex; justify-content: space-evenly;" >';
+                            echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                            echo '   <a class="popup-btn" href="archive_sys.php?id_putback='.$double_tab[$i][5].'">Valider</a>';
+                            echo"</div>";
+                            
+                            echo"</div>";
+                            echo"</center>";
 
-                    
+                            
 
-                    echo "</div>";
+                            echo "</div>";
+
+
+
+
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo " <div class=\"case-enfant\">";
+                            echo "</div>";
+
+                            echo"<center>";
+                            echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog7\', this)">Supprimer cet objectif</button>';
+                            echo '<div role="dialog" id="dialog7" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                            echo "<p class='popup-txt'> Voulez vous supprimer définitivement cet objectif ? cela le retirera des statistiques, supprimera tous ses messages, supprimera aussi toutes ses récompenses.  </p>";
+                            
+                            echo ' <div style="display:flex; justify-content: space-evenly;" >';
+                            echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                            echo '   <a class="popup-btn" href="appel_fonction.php?appel=supprime_objectif&id_sys='.$double_tab[$i][5].'">Valider</a>';
+                            echo"</div>";
+                            
+                            echo"</div>";
+                            echo"</center>";
+
+                            
+
+                            echo "</div>";
 
 
 

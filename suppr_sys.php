@@ -31,17 +31,9 @@ try{
     $req->execute(array());
     // $req->debugDumpParams();
     // exit();
-    header("Location:page_admin.php");
+    header("Location:page_admin.php?id=".$_SESSION['id_enfant']);
     
 
-
-    if ($req == false){
-        $req->debugDumpParams;
-        die("erreur execute");
-    }else{
-        echo"<a href=\"page_admin.php\"> recharger la page</a>";         
-        
-    }
 }
 catch (Exception $e)
 {die('Erreur : ' . $e->getMessage());}

@@ -171,14 +171,34 @@ if(isset($_GET['appel'])){
             }
             break;
         
+        case 'supprime_objectif':
+            if(isset($_GET['id_sys'])){
+                $sys=$_GET['id_sys'];
+                $returne = supprime_objectif($sys, $linkpdo);
+                header('Location:archive_sys.php'); 
+            }else{
+                header('Location:archive_sys.php'); 
+            }
+            break;
+
+        case 'supprime_profil_enfant':
+            if(isset($_GET['id_enfant'])){
+                $sys=$_GET['id_enfant'];
+                $returne = supprime_profil_enfant($sys, $linkpdo);
+                header('Location:archive_profil_enfant.php'); 
+            }else{
+                header('Location:archive_profil_enfant.php'); 
+            }
+            break;
 
 
-            
-            
+        case 'purge_image':
+            supprimer_image($linkpdo);
+            header('Location: page_admin.php');
+            break;
             
         default:
             echo$_GET['appel'];
-            
             break;
     
     }

@@ -25,7 +25,7 @@ if (isset($_GET['id_putback'])) {
         header("Location:page_admin.php");
 
         if ($req == false) {
-            $req->debugDumpParams;
+            $req->debugDumpParams();
             die("erreur execute");
         } else {
             echo "<a href=\"page_admin.php\"> recharger la page</a>";
@@ -230,12 +230,28 @@ if (isset($_GET['id_putback'])) {
                     echo "</div>";
 
                     echo "</div>";
-                    echo "</center>";
 
+                    echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog7\', this)">Supprimer ce profil</button>';
+                    echo '<div role="dialog" id="dialog7" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+                    echo "<p class='popup-txt' > Voulez-vous supprimer le compte de cet enfant ? Cette action est définitive, cela supprimera tous ses objetifs, tous les messages associés, toutes les récompenses, et les statistiques de cet enfant. </p>";
 
+                    echo ' <div style="display:flex; justify-content: space-evenly;">';
+                    echo '  <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+                    echo '   <a  class="popup-btn"  href="appel_fonction.php?appel=supprime_profil_enfant&id_enfant=' . $_GET["id"] . '">Valider</a>';
+                    echo "</div>";
 
                     echo "</div>";
 
+
+                    echo "</center>";
+
+                    
+
+                    
+                    
+
+                    echo "</div>";
+                    
 
 
                     echo "</section>";
@@ -562,7 +578,7 @@ if (isset($_GET['id_putback'])) {
 
 
                 try {
-                    $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$getid' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
+                    $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = ".$getid." WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
                 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
                     die('Erreur : ' . $e->getMessage());
                 }
@@ -572,7 +588,7 @@ if (isset($_GET['id_putback'])) {
                     echo "<td>" . htmlspecialchars($tuteur['nom']) . "&nbsp" . "</td>";
                     echo "<td>" . htmlspecialchars($tuteur['prenom']) . "</td>";
                     echo "<td class='Profil'>";
-                    echo "<form action='groupe_validation.php?id_enfant=$getid&id_membre=$tuteur[id_membre]' method='post'>";
+                    echo "<form action='groupe_validation.php?id_enfant=".$getid."&id_membre=".$tuteur."$[id_membre]' method='post'>";
 
                     echo "<button type='submit'>Ajouter</button>";
                     echo "</form>";

@@ -1084,5 +1084,129 @@ function inverse_utilisation_objectif($sys,$val,$linkpdo){
     }
 }
 
+// fonction de suppression dans la bd :
+
+function supprime_objectif($id_objectif, $linkpdo)
+{
+    // preparation de la Requête sql
+    $req = $linkpdo->prepare("
+    
+    Delete from lier where id_objectif=:id;
+
+    Delete from recompense where id_recompense not in (select id_recompense from lier);
+    
+    Delete from message where id_objectif=:id;
+
+    Delete from placer_jeton where id_objectif=:id;
+    
+    Delete from objectif where id_objectif=:id;
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_objectif));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    return true;
+
+}
+
+function supprime_profil_enfant($id_enfant, $linkpdo)
+{
+    // il faut supprimer tous ses objectifs : 
+
+    $req = $linkpdo->prepare("select id_objectif from objectif where id_enfant = :id ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_enfant));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+
+    $double_tab = $req->fetchAll();
+
+    $i = 0;
+    for($i; $i<sizeof($double_tab);$i++){
+        supprime_objectif($double_tab[0][$i], $linkpdo); // suppression de tous les objectifs de cet enfant
+    }
+    // preparation de la Requête sql
+
+    $req = $linkpdo->prepare("
+    
+    Delete from suivre where id_enfant=:id;
+    
+    Delete from enfant where id_enfant =:id;
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array('id' => $id_enfant));
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    return true;
+
+}
+
+function supprimer_image($linkpdo){
+    // recuperer toutes les images qui sont reliés dans la bd
+
+    // récompense = lien 
+    // enfant : lien_jeton 
+    // enfant : photo_enfant 
+
+    $liste=array();
+
+    $req = $linkpdo->prepare("
+    select lien_image, photo_enfant, lien_jeton from recompense, enfant;
+    
+    ");
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+    // execution de la Requête sql
+    $req->execute(array());
+    if ($req == false) {
+        $req->debugDumpParams();
+        return false;
+    }
+
+    $double_tab = $req->fetchAll();
+    for($i=0;$i<sizeof($double_tab);$i++){
+        for($y=0;$y<3;$y++){
+        if($double_tab[$i][$y]){ // pour ne pas ajouter les NULL
+            $liste[]=$double_tab[$i][$y];
+        }
+    }
+}
+    $files1 = scandir("./images");
+
+    unset($files1[0]);
+    unset($files1[1]);
+    unset($files1[2]);
+    unset($files1[3]);
+
+    print_r($files1); // ce que j'ai sur le disque
+    print_r($liste);
+
+
+    foreach($files1 as $key => $value){
+        if(!in_array("images/".$value, $liste)){
+            unlink("./images/".$value); // suppression de tous les objectifs de cet enfant
+        }
+    }
+}
 
 ?>
