@@ -241,13 +241,12 @@ function create_section_info_enfant($linkpdo, $id_enfant)
     if ($_SESSION["role_user"] == 1) {
         // acces modif enfant     
         // seuls les admins on accès au formulaire de modification d'un profil d'enfant
-
         
-       
-        
-        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);   
         pop_in_archive_enfant($id_enfant);
-        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant); 
+        echo "<div class='button_edit'>";
+        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup); 
+        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant);
+        "</div>";
     }
     echo "
 				</div>
@@ -594,26 +593,10 @@ function create_section_info_sys($linkpdo, $id_enfant)
 // ------------------------------------- fonctions pour les pop-in -----------------------------------------------------------
 
 
-function pop_in_archive_enfant($id_enfant)
-{
-    echo "
-    <button  type=\"button\" onclick=\"openDialog('dialog7', this)\">Archiver le profil de l'enfant</button>
-    <div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
-        <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
-        <div class=\"dialog_form_actions\">
-            <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-            <button class='popup-btn'> <a href=\"appel_fonction.php?appel=archive_enfant\"> Valider &#x2714;</a></button>
-        </div>
-    </div>
-    ";
-}
-
-
-
 function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup)
 {
     echo "
-    <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog50', this)\">Modifier</button>
+    <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog50', this)\">Modifier profil</button>
     <div id=\"dialog_layer\" class=\"dialogs\">
         <div role=\"dialog\" id=\"dialog50\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
             <form action=\"appel_fonction.php?appel=modif_enfant\" method=\"post\">
@@ -664,7 +647,7 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
 function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
 {
     echo "
-    <button class=\"bouton-modif-photo\" type=\"button\" onclick=\"openDialog('dialog5', this)\">&#x270E Modifier le jeton</button>
+    <button  class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Modifier images</button>
     <div id=\"dialog_layer\" class=\"dialogs\">
         <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
             <img class=\"photo-jeton\" src=\"" . htmlspecialchars($lien_jeton_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
@@ -687,6 +670,20 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
                     <button class='popup-btn' type=\"submit\">Valider &#x2714;</button></div>
                 </div>
             </form>
+        </div>
+    </div>
+    ";
+}
+
+function pop_in_archive_enfant($id_enfant)
+{
+    echo "
+    <button  class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog7', this)\">Archiver le profil de l'enfant</button>
+    <div role=\"dialog\" id=\"dialog7\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+        <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
+        <div class=\"dialog_form_actions\">
+            <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
+            <button class='popup-btn'> <a href=\"appel_fonction.php?appel=archive_enfant\"> Valider &#x2714;</a></button>
         </div>
     </div>
     ";
