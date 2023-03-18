@@ -1253,4 +1253,147 @@ function supprimer_image($linkpdo){
     }
 }
 
+
+function afficher_systeme($type,$param, $linkpdo, $id){
+
+    /* valeur possible de $type :
+            routine
+            chaargement
+    */
+    
+    /* valeur possible de $param :
+            valide
+            non_valide
+    */
+
+
+    try {
+        $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
+        $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=" . $_SESSION['id_enfant'] . "");
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    $double_tab = $res->fetchAll();
+    $talbeau_jeton = $res2->fetchAll();
+
+    $lien_jeton = $talbeau_jeton[0][0];                            
+    $chaine = $double_tab[0][0];
+
+    if($param=="valide"){
+        // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI ICI
+        if (strpos($chaine, '0') == false) {
+            $feux = true;
+            echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+            echo "<script> startConfetti() </script>";
+            echo "</a>";
+        }
+    }
+    echo "<div class=\"sys\" style=\"margin-left: auto;margin-right: auto;\">";
+    echo "<table>";
+    if($type=="routine"){
+        echo "<tr>";
+        echo "<td class=\"struct\">";
+        echo "<p></p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Lundi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Mardi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Mercredi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Jeudi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Vendredi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Samedi</p>";
+        echo "</td>";
+        echo "<td class=\"struct\">";
+        echo "<p>Dimanche</p>";
+        echo "</td>";
+        echo "</tr>";
+    }
+
+    
+    $morceau = explode(":", $chaine);
+    array_pop($morceau); // je retire la partie apres le dernier ":" 
+    $compteur = 0;
+    
+    foreach ($morceau as $ligne) {
+        $element = explode("_", $ligne);
+        $tache = $element[0];
+        $jetons = $element[1];
+        $tab_jeton = str_split($jetons);
+        echo "<tr>";
+        echo "<td class='struct'>";
+        
+        echo "<p>".htmlspecialchars($tache)."</p>";
+        echo "</td>";
+        //ajout des cases de jetons
+        foreach ($tab_jeton as $case_tab) {
+            if ($case_tab == 0) {
+                echo "<td class='case_jeton' id=$compteur >";
+                
+                if($param=="valide"){                                
+                    echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
+                }else{
+                    echo '<a style="display: block;width: 5rem;height: 5rem;"></a>';
+                }
+                
+                
+                echo "</td>";
+            } else {
+                echo "<td class='case_jeton' id=$compteur>";
+                echo "<center>";
+
+                if($param=="valide"){                                
+                    echo '<a href="choix_sys_remove.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine .'" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src='.$lien_jeton.' alt='.$lien_jeton.'></a>';
+                }else{
+                    echo "<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
+                }
+                echo "</center>";
+                echo "</td>";
+            }
+            $compteur += 1;
+        }
+        echo "</tr>";
+    }
+    echo"</div>";
+    echo "</table>";
+    echo"</div>";
+}
+
+function verifie_session_echue($session_max, $id, $linkpdo){
+    try {
+        //je recupere la date du premier jeton placé pour cette session dans ce sys
+        $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
+        // je recupere la duree totale du sys prevu
+        $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
+
+    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    ///Affichage des entrées du résultat une à une
+
+    $double_tab = $jeton_premier_query->fetchAll();
+    $double_tab2 = $duree_sys_query->fetchAll();
+
+    $jeton_premier = $double_tab[0][0];
+    $duree_sys = $double_tab2[0][0];
+
+    $duree_sys_en_seconde = $duree_sys * 3600;
+
+    $secondes_premier_jeton = strtotime($jeton_premier);
+
+    return $secondes_premier_jeton + $duree_sys_en_seconde < time();
+}
+
+
 ?>

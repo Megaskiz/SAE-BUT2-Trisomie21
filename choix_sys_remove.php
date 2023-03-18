@@ -5,9 +5,11 @@ is_validateur();
 ?>
 <?php
 
+
+///Connexion au serveur MySQL
+$linkpdo = connexionBd();
+
 // fichier qui retire un jeton dans le système
-
-
 if (isset($_GET['case'])) {
     $case_tableau = $_GET['case'];
     $chaine = $_GET['chaine'];
@@ -31,14 +33,7 @@ if (isset($_GET['case'])) {
         }
     }
 
-    ///Connexion au serveur MySQL
-    try {
-        $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-    }
-    ///Capture des erreurs éventuelles
-    catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+
 
     $tableau_final = join("", $tab_string);
     // echo"letabstring: ";echo"<br>";
@@ -98,8 +93,6 @@ if (isset($_GET['case'])) {
 
 
 
-    // connexion bd 
-
     // modif dans le nom
 
     $req = $linkpdo->prepare('UPDATE objectif SET nom = :intit where id_objectif = :id ');
@@ -116,7 +109,6 @@ if (isset($_GET['case'])) {
 
 
         if ($req == false) {
-            $req->debugDumpParams;
             die("erreur execute");
         } else {
             echo "<a href=\"choix_sys.php?id_sys=$id\"> recharger la page</a>";
