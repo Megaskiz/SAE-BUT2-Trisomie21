@@ -134,7 +134,7 @@ if (
                     <input required type="text" name="password_verif" placeholder="Confirmer le Mot de passe" value=<?php echo htmlspecialchars($Mdp_verif) ?>>
 
                     <input class="button" type="submit" value="Valider l'inscription">
-                    <p class="message">Déjà un compte ? <a href="html_login.php">S'identifer</a></p>
+                    <p class="message">Déjà un compte ? <a href="login.php">S'identifer</a></p>
 
                 </form>
             </div>

@@ -31,7 +31,7 @@ if(isset($_GET['appel'])){
                 $id = $_SESSION["id_enfant"];
                 $photo_enfant = uploadImage($_FILES['photo_enfant']);
                 modif_jeton($id, $photo_enfant, $linkpdo);
-                header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+                header('Location: index.php?id='.$_SESSION['id_enfant'].'');
             }
             break;
 
@@ -40,7 +40,7 @@ if(isset($_GET['appel'])){
                 $id = $_SESSION["id_enfant"];
                 $photo_enfant = uploadImage($_FILES['photo_enfant']);
                 modif_photo($id, $photo_enfant, $linkpdo);
-                header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+                header('Location: index.php?id='.$_SESSION['id_enfant'].'');
             }
             break;
 
@@ -48,7 +48,7 @@ if(isset($_GET['appel'])){
             $id_eject = $_GET['eject'];
             $Sid = $_GET['id'];
             eject($Sid,$id_eject, $linkpdo);
-            header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+            header('Location: index.php?id='.$_SESSION['id_enfant'].'');
             break;
 
 
@@ -164,10 +164,10 @@ if(isset($_GET['appel'])){
                 inverse_utilisation_objectif($sys,$val,$linkpdo);
 
                 
-                header('Location: page_admin.php?id='.$_SESSION["id_enfant"]);    
+                header('Location: index.php?id='.$_SESSION["id_enfant"]);    
             }
             else {
-                header('Location: page_admin?id='.$_SESSION["logged_user"].'.php');
+                header('Location: index?id='.$_SESSION["logged_user"].'.php');
             }
             break;
         
@@ -204,7 +204,7 @@ if(isset($_GET['appel'])){
 
         case 'purge_image':
             supprimer_image($linkpdo);
-            header('Location: page_admin.php');
+            header('Location: index.php');
             break;
             
         default:

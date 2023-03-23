@@ -26,14 +26,14 @@ catch (Exception $e) {
 <body>
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
     <?php create_header($linkpdo); ?>
-    <a href="page_admin.php"><button class="bouton_recherche_R">Retour</button></a>
+    <a href="index.php"><button class="bouton_recherche_R">Retour</button></a>
 
     <main class="search">
 
         <nav class="left-contenu block_recherche">
             <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                 <li class="nav-item">
-                    <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Enfant</a>
+                    <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Enfant</a>
                 </li>
                 <?php
                 if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
@@ -96,7 +96,7 @@ catch (Exception $e) {
                                 echo "<td>" . htmlspecialchars($contact['prenom']) . "</td>";
 
                                 echo "<td>";
-                                echo '<a href="page_admin.php?id=' . $contact['id_enfant'] . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
+                                echo '<a href="index.php?id=' . $contact['id_enfant'] . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
                                 echo "</td>";
                                 echo "</tr>";
                             }

@@ -32,13 +32,13 @@ if (isset($_GET['id_putback'])) {
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
-        header("Location:page_admin.php?id=".$_SESSION['id_enfant']);
+        header("Location:index.php?id=".$_SESSION['id_enfant']);
        
         if ($req == false){
             $req->debugDumpParams();
             die("erreur execute");
         }else{
-            echo"<a href=\"page_admin.php?id=".$_SESSION['id_enfant']."\"> recharger la page</a>";          
+            echo"<a href=\"index.php?id=".$_SESSION['id_enfant']."\"> recharger la page</a>";          
         }
     }
     catch (Exception $e)
@@ -102,7 +102,7 @@ if (isset($_GET['id_putback'])) {
         <nav  class="left-contenu">
         <div style="display: flex;     margin: 3%;">
            
-           <a  class="retour"  href="page_admin.php"> Retour</a>
+           <a  class="retour"  href="index.php"> Retour</a>
   
         </div>
             <?php

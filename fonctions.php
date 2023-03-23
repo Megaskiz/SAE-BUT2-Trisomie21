@@ -60,7 +60,7 @@ function create_nav($linkpdo){
             <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
-                        <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="page_admin.php">Affichage Enfant</a>
+                        <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Affichage Enfant</a>
                     </li>';
     
                     //acces à la page de membre
@@ -178,7 +178,7 @@ function create_nav($linkpdo){
     
                         $identifiant = $double_tab[$i][0];
                         echo "<td>";
-                        echo '<a href="page_admin.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
+                        echo '<a href="index.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -705,13 +705,13 @@ function archive_enfant($linkpdo)
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
-        header("Location:page_admin.php");
+        header("Location:index.php");
 
         if ($req == false) {
             $req->debugDumpParams;
             die("erreur execute");
         } else {
-            echo "<a href=\"page_admin.php\"> recharger la page</a>";
+            echo "<a href=\"index.php\"> recharger la page</a>";
         }
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
@@ -790,7 +790,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
         }
     }
 
-    header('Location: page_admin.php?id=' . $_SESSION['id_enfant'] . '');
+    header('Location: index.php?id=' . $_SESSION['id_enfant'] . '');
     exit();
 }
 
@@ -903,7 +903,7 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
         die('Erreur : ' . $e->getMessage());
     }
 
-    header('Location: page_admin.php');
+    header('Location: index.php');
     exit();
 
 }
@@ -1012,8 +1012,8 @@ function is_logged()
 
     if (!isset($_SESSION['logged_user'])) {
         echo "vous n'etes pas connecté : ";
-        echo '<a href="html_login.php">aller vers la page de connexion</a>';
-        header("location: html_login.php");
+        echo '<a href="login.php">aller vers la page de connexion</a>';
+        header("location: login.php");
         exit();
     }
 }
@@ -1022,8 +1022,8 @@ function is_user()
 {
     if ($_SESSION['role_user'] == 0) {
         echo "vous ne devriez pas etre la : ";
-        echo '<a href="page_admin.php">aller vers la page de connexion</a>';
-        header("location: page_admin.php");
+        echo '<a href="index.php">aller vers la page de connexion</a>';
+        header("location: index.php");
         exit();
     }
 }
@@ -1042,8 +1042,8 @@ function is_coordinateur()
 {
     if ($_SESSION['role_user'] == 3) {
         echo "vous ne devriez pas etre la : ";
-        echo '<a href="page_admin.php">aller vers la page de connexion</a>';
-        header("location: page_admin.php");
+        echo '<a href="index.php">aller vers la page de connexion</a>';
+        header("location: index.php");
         exit();
     }
 }
@@ -1052,8 +1052,8 @@ function is_not_admin()
 {
     if ($_SESSION['role_user'] != 1) {
         echo "vous ne devriez pas etre la : ";
-        echo '<a href="page_admin.php">aller vers la page de connexion</a>';
-        header("location: page_admin.php");
+        echo '<a href="index.php">aller vers la page de connexion</a>';
+        header("location: index.php");
         exit();
     }
 }
@@ -1063,7 +1063,7 @@ function eject($Sid, $id_eject, $linkpdo)
     $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
     try {
         $res = $linkpdo->query($req_eject);
-        header('Location: page_admin.php?id=' . $_SESSION['id_enfant']);
+        header('Location: index.php?id=' . $_SESSION['id_enfant']);
     } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
         die('Erreur : ' . $e->getMessage());
     }

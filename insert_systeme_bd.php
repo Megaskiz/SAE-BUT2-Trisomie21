@@ -112,6 +112,6 @@ switch ($_SESSION["type_rec"]) {
     default:
         echo$_SESSION["type_rec"];
         echo"erreur de choix de récompense";
-        //header('Location: page_admin.php');
+        //header('Location: index.php');
         break;
 }

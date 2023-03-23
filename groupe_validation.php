@@ -28,5 +28,5 @@ if(!$stmt){
 }
 
 
-header('Location: page_admin.php?id='.$_SESSION['id_enfant'].'');
+header('Location: index.php?id='.$_SESSION['id_enfant'].'');
 ?>

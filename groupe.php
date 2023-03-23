@@ -13,7 +13,7 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 if (!$_SESSION['logged_user']) {
-    header('Location: html_login.php');
+    header('Location: login.php');
 }
 
 if (isset($_GET['id'])) {

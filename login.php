@@ -49,7 +49,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
             if ($_SESSION['role_user'] == 2) {
                 header("location: page_certif_compte.php");
             } else {
-                header("location: page_admin.php");
+                header("location: index.php");
             }
         } else {
             $message_erreur = "Votre compte n'est pas encore validé";

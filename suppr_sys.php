@@ -31,7 +31,7 @@ try{
     $req->execute(array());
     // $req->debugDumpParams();
     // exit();
-    header("Location:page_admin.php?id=".$_SESSION['id_enfant']);
+    header("Location:index.php?id=".$_SESSION['id_enfant']);
     
 
 }

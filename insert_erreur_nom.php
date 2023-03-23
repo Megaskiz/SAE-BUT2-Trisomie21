@@ -15,7 +15,7 @@
                 <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                 <form>
                     <p>Il est impossible d'ajouter ce profil, car un profil avec les mêmes informations existe déjà.</p>
-                    <a href="page_admin.php">retour sur la page principale</a>
+                    <a href="index.php">retour sur la page principale</a>
                 </form>
             </div>
         </div>

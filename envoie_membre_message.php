@@ -19,7 +19,7 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 if (!$_SESSION['logged_user']) {
-    header('Location: html_login.php');
+    header('Location: login.php');
 }
 
 if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
@@ -62,7 +62,7 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 
     <main>
         <?php
-        echo '<div class="message-chat"> <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '" > <button class="chat_retour" >Retour</button> </a> </div>';
+        echo '<div class="message-chat"> <a href="index.php?id=' . $_SESSION['id_enfant'] . '" > <button class="chat_retour" >Retour</button> </a> </div>';
         ?>
 
         <div class="chat_all">

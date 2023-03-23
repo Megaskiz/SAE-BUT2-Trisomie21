@@ -5,6 +5,6 @@ session_start();
 $_SESSION['logged_user']=null;
 session_destroy();
 
-header('Location: html_login.php');
+header('Location: login.php');
 
 ?>

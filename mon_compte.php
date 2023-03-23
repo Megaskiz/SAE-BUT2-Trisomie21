@@ -62,7 +62,7 @@ if (isset($_GET['id_invalider'])) {
             if($_SESSION["role_user"]!=2){
                 echo'<ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">';
                echo'<li class="nav-item">';
-               echo'<a class="nav-link gl-tab-nav-item" data-placement="right" href="page_admin.php">Affichage Enfant</a>';
+               echo'<a class="nav-link gl-tab-nav-item" data-placement="right" href="index.php">Affichage Enfant</a>';
                echo'</li>';
                 echo'<li class="nav-item">';
                 echo'<a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Mon profil</a>';

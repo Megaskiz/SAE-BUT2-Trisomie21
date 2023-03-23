@@ -180,4 +180,4 @@ switch ($_SESSION['type_rec']) {
         echo"erreur, on ne devrait jamais être là";
         break;
 }
-header('Location: page_admin.php?id='.$_SESSION['id_enfant']);
+header('Location: index.php?id='.$_SESSION['id_enfant']);

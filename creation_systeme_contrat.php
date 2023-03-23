@@ -21,7 +21,7 @@ if (isset($_GET['id_suppr'])) {
     $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
     try {
         $res = $linkpdo->query($req_suppr);
-        header('Location: page_admin.php');
+        header('Location: index.php');
     } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
         die('Erreur : ' . $e->getMessage());
     }

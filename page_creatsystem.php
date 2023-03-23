@@ -35,7 +35,7 @@ catch (Exception $e) {
     <main>
         <nav class="div-info-enfant">
             <div class="info-enfant">
-                <a class="retour" href="page_admin.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour">Retour</button> </a>
+                <a class="retour" href="index.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour">Retour</button> </a>
                 <?php
                 $id = $_SESSION['id_enfant'];
                 ///Sélection de tout le contenu de la table carnet_adresse

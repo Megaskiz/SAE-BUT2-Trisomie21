@@ -17,7 +17,7 @@ is_validateur();
 
 
 <?php
-echo '<a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
+echo '<a href="index.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
 echo '<center class="titre_page"><h1>Statistiques Totales</h1></center>';
 
 try {
