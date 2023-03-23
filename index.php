@@ -12,7 +12,7 @@ $linkpdo = connexionBd();
 <head>
 	<meta charset="utf-8">
 	<title> Menu principal </title>
-	<link rel="stylesheet" href="style_css/style_admin.css">
+	<link rel="stylesheet" href="style_css/style_index.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="text/javascript" src="js/script.js"></script>
 </head>
