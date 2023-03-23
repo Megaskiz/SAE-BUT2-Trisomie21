@@ -80,12 +80,12 @@ if (isset($_GET['case'])) {
         try {
             $req->execute(array('intit' => $tableau_final, 'id' => $id, ));
             $req2->execute(array('id_objectif' => $id, 'time' => date("Y/m/d H:i:s"), 'id_membre' => $_SESSION['logged_user'], 'session' => $session_max));
-            header("Location:choix_sys.php?id_sys=$id");
+            header("Location:objectif.php?id_sys=$id");
 
             if ($req == false) {
                 die("erreur execute");
             } else {
-                echo "<a href=\"choix_sys.php?id_sys=$id\"> recharger la page</a>";
+                echo "<a href=\"objectif.php?id_sys=$id\"> recharger la page</a>";
             }
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
@@ -93,5 +93,5 @@ if (isset($_GET['case'])) {
     }
 
 }
-header("Location:choix_sys.php?id_sys=$id");
+header("Location:objectif.php?id_sys=$id");
 ?>

@@ -104,4 +104,4 @@ if ($session_max == NULL) {
 
 
 
-header('Location: choix_sys.php?id_sys=' . $id);
+header('Location: objectif.php?id_sys=' . $id);

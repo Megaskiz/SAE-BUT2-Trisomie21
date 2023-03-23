@@ -104,14 +104,14 @@ if (isset($_GET['case'])) {
     try {
 
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));
-        header("Location:choix_sys.php?id_sys=$id");
+        header("Location:objectif.php?id_sys=$id");
 
 
 
         if ($req == false) {
             die("erreur execute");
         } else {
-            echo "<a href=\"choix_sys.php?id_sys=$id\"> recharger la page</a>";
+            echo "<a href=\"objectif.php?id_sys=$id\"> recharger la page</a>";
         }
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());

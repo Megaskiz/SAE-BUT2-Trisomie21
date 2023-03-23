@@ -2,7 +2,7 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="style_css/style_objectif.css" media="screen" type="text/css" />
         <title>récompenses</title>
         <div id="color-picker-container">
        
@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script type="text/javascript" src="choix_sys.js"></script>
+    <script type="text/javascript" src="objectif.js"></script>
     <center>
     
     <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
@@ -110,7 +110,7 @@ catch (Exception $e) {
 ?>
 
 <?php
-echo"<a href=\"choix_sys.php?id_sys=".$_SESSION['id_sys']."\"><button>retour</button></a>";
+echo"<a href=\"objectif.php?id_sys=".$_SESSION['id_sys']."\"><button>retour</button></a>";
 ?>
 
 <h1>Les récompenses</h1>

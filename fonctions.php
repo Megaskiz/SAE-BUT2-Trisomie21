@@ -558,7 +558,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
             echo "
                             <td>
                                 <center>
-                                    <a href=\"choix_sys.php?id_sys=" . $double_tab[$i][5] . "\"><button class=\"objectif-acceder\"> Acceder </button></a>
+                                    <a href=\"objectif.php?id_sys=" . $double_tab[$i][5] . "\"><button class=\"objectif-acceder\"> Acceder </button></a>
                                 </center>
 							</td>
 							<td>
@@ -1341,7 +1341,7 @@ function afficher_systeme($type,$param, $linkpdo, $id){
                 echo "<td class='case_jeton' id=$compteur >";
                 
                 if($param=="valide"){                                
-                    echo '<a href="choix_sys_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
+                    echo '<a href="objectif_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
                 }else{
                     echo '<a style="display: block;width: 5rem;height: 5rem;"></a>';
                 }
@@ -1353,7 +1353,7 @@ function afficher_systeme($type,$param, $linkpdo, $id){
                 echo "<center>";
 
                 if($param=="valide"){                                
-                    echo '<a href="choix_sys_remove.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine .'" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src='.$lien_jeton.' alt='.$lien_jeton.'></a>';
+                    echo '<a href="objectif_remove.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine .'" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src='.$lien_jeton.' alt='.$lien_jeton.'></a>';
                 }else{
                     echo "<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                 }

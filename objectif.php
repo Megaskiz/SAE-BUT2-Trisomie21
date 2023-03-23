@@ -9,7 +9,7 @@ is_validateur();
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="style_css/style_choix_sys.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="style_css/style_objectif.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="style_css/stylesheet.css" type="text/css" charset="utf-8">
     <title>bienvenue</title>
     <div id="color-picker-container">
@@ -19,7 +19,7 @@ is_validateur();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script type="text/javascript" src="choix_sys.js"></script>
+    <script type="text/javascript" src="objectif.js"></script>
     <script>
         // Récupérer la valeur stockée dans sessionStorage
         var bgColor = sessionStorage.getItem("bg-color");
