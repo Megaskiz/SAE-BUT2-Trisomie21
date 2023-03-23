@@ -38,8 +38,8 @@ is_validateur();
         ///L'animation peut être modifier///
         function startConfetti() {
             confetti({
-                particleCount: 100,
-                spread: 360
+                particleCount: 1000,
+                spread: 280
             });
         }
         function confirmation() {
@@ -58,7 +58,6 @@ is_validateur();
             sleep(1); // pour ne jamais avoir 2 jetons ajoutés dans la même seconde
             echo '
                 <a href="page_admin.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>
-            
                 <a href="page_recompense.php"><button class="droite">voir la/les récompenses</button></a>
                 <a href="envoie_membre_message.php?id_objectif=' . $_GET['id_sys'] . '"><button class="message-objectif">messagerie<span class=" icon-mail">&#x2709;</span></button></a>
                 <a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
