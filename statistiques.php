@@ -1,5 +1,5 @@
 <?php
-require("fonctions.php");
+require_once("fonctions.php");
 is_logged();
 is_not_admin();
 is_validateur();
