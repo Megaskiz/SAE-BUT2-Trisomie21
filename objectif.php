@@ -2,6 +2,7 @@
 require('fonctions.php');
 is_logged();
 is_validateur();
+$linkpdo = connexionBd();
 ?>
 <!DOCTYPE HTML>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -63,7 +64,7 @@ is_validateur();
                 <a href="#"><button class="droite" onclick="confirmation()">Démarrer une nouvelle session</button></a>
             ';
 
-            $linkpdo = connexionBd();
+            
 
             $id = $_GET['id_sys'];
             $_SESSION['id_sys'] = $_GET['id_sys'];

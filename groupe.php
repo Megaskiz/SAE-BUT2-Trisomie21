@@ -5,13 +5,7 @@
 require('fonctions.php');
 is_logged();
 is_validateur();
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
 if (!$_SESSION['logged_user']) {
     header('Location: login.php');
 }

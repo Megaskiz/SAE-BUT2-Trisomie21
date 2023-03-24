@@ -3,11 +3,8 @@ require('fonctions.php');
 is_logged();
 is_validateur();
 
-try {
-  $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-} catch (Exception $e) {
-  die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
+
 
 $id_enfant = $_GET['id_enfant'];
 $id_membre = $_GET['id_membre'];

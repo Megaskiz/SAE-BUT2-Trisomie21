@@ -8,13 +8,7 @@ is_user();
 
 <?php
 ///Connexion au serveur MySQL
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
 
 if (isset($_GET['id_valider'])) {
     $id_valider_membre = $_GET['id_valider'];
