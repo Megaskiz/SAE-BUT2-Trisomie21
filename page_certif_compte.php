@@ -53,13 +53,15 @@ if (isset($_GET['id_archiver'])) {
 </head>
 
 <body>
-    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+
+    <!--- HEADER -->
     <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
+
     <main>
 
         <nav class="left-contenu">
@@ -80,13 +82,12 @@ if (isset($_GET['id_archiver'])) {
             <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
                     <?php
-                    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
-                        echo "<a href=\"archive_membre.php \"><button class=\"btn_archive\">Membres archivés</button></a>";
+                    if ($_SESSION["role_user"] != 3) {
+                        echo '<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';
                     }
 
-
-                    if ($_SESSION["role_user"] != 3) {
-                        echo '<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';
+                    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
+                        echo "<a href=\"archive_membre.php \"><button class=\"btn_archive\">Membres archivés</button></a>";
                     }
                     ?>
                     <div id="dialog_layer" class="dialogs">
@@ -96,68 +97,61 @@ if (isset($_GET['id_archiver'])) {
                             <form action="appel_fonction.php?appel=insert_membre" method="post" class="dialog_form">
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">nom :</span>
+                                        <span class="label_text">Nom :</span>
                                         <input name='nom' type="text" required="required">
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">prenom:</span>
+                                        <span class="label_text">Prenom:</span>
                                         <input name='prenom' type="text" class="city_input" required="required">
                                     </label>
                                 </div>
+
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">adresse :</span>
+                                        <span class="label_text">Date de naissance:</span>
+                                        <input name='ddn' type="date" class="state_input" required="required">
+                                    </label>
+                                </div>
+
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span class="label_text">Adresse :</span>
                                         <input name='adresse' type="text" class="state_input" required="required">
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">code postal:</span>
+                                        <span class="label_text">Code Postal:</span>
                                         <input name='code_postal' type="text" class="zip_input" required="required">
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">ville:</span>
+                                        <span class="label_text">Ville:</span>
                                         <input name='ville' type="text" class="zip_input" required="required">
                                     </label>
                                 </div>
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span class="label_text">courriel:</span>
+                                        <span class="label_text">Courriel:</span>
                                         <input name='courriel' type="text" class="zip_input" required="required">
                                     </label>
                                 </div>
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span class="label_text">date de naissance:</span>
-                                        <input name='ddn' type="date" class="state_input" required="required">
-                                    </label>
-                                </div>
+
                                 <div class="dialog_form_item">
                                     <label>
                                         <span class="label_text">mots de passe :</span>
                                         <input name='password' type="text" class="state_input" required="required">
                                     </label>
                                 </div>
-                            
-                                <div class="dialog_form_item">
-                                    <span class="label_text">Etes vous un professionel ? :</span>
-                                    <div>
-                                        <span class="label_text" for="oui">oui</span>
-                                        <input type="radio" id="oui" name='pro' value="1">
 
-                                        <span class="label_text" for="oui">non</span>
-                                        <input type="radio" id="oui" name='pro' value="0" checked>
 
-                                    </div>
-                                </div>
 
                                 <div class="dialog_form_actions">
                                     <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
-                                    <button class="popup-btn" type="submit">Valider l'ajout</button>
+                                    <button class="popup-btn" type="submit">Valider</button>
                                 </div>
                             </form>
                         </div>
@@ -318,7 +312,7 @@ if (isset($_GET['id_archiver'])) {
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
-            
+
             $id_membre = $double_tab[0][0];
             $nom_membre = ucfirst($double_tab[0][1]);
             $prenom_membre = ucfirst($double_tab[0][2]);

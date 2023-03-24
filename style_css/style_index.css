@@ -706,10 +706,6 @@ td {
     }
 
 
-
-
-
-
     .affichage-objectif {
         border-collapse: collapse;
         width: 100%;
@@ -730,7 +726,6 @@ td {
     .affichage-objectif td {
         border-radius: 0 0 5px 5px;
     }
-
 
 
     textarea {
