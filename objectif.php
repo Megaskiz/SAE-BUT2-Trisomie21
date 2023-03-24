@@ -17,9 +17,9 @@ $linkpdo = connexionBd();
         <div id="color-bar"></div>
         <input type="color" id="color-picker">
     </div>
-    <script src="jquery.js"></script>
-    <script src="jquery_ui.js"></script>
-    <script src="confetti.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery_ui.js"></script>
+    <script src="js/confetti.js"></script>
     <script type="text/javascript" src="objectif.js"></script>
     <script>
         // Récupérer la valeur stockée dans sessionStorage
