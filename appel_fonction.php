@@ -1,9 +1,6 @@
 <?php
 require('fonctions.php');
 is_logged();
-?>
-
-<?php
 
 if(isset($_GET['appel'])){
     $linkpdo = connexionBd();
@@ -88,12 +85,6 @@ if(isset($_GET['appel'])){
             break; 
 
         // faire case d'insert :
-
-
-            //insert récompense
-            //insert systeme
-
-            // pour pouvoir retirer 4 autres fichiers
 
         case 'insert_enfant':
             

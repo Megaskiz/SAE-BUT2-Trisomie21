@@ -8,13 +8,7 @@ $id_sys = $_GET['id_sys'];
 
 ///Sélection de tout le contenu de la table enfant
 
-try {
-    $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
 
    
 /*
