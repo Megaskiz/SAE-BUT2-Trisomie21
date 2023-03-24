@@ -336,6 +336,10 @@ td {
         font-size: 10px;
         box-shadow: none;
     }
+    
+    .default_dialog {
+        display: flex;
+    }
 
 
     /* Pop-up JS ajouter un enfant*/
@@ -603,9 +607,6 @@ td {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
     }
-
-
-
 
     /*DIV CONTENUE BOUTON */
     .btn-objectif {

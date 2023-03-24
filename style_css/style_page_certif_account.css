@@ -63,11 +63,12 @@ td {
 
     p.info {
         border: solid 1px #000;
-        border-radius: 100px;
         margin: auto;
         width: 90%;
-        transition: all 0.3s;
         padding: 5px 4%;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #1E90FF;
     }
 
     /*--------SEPARATION----------*/

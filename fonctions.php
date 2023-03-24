@@ -11,7 +11,8 @@ function filter_spaces($var)
 
 // ------------------------------------- fonctions pour les "blocs" html -----------------------------------------------------------
 
-function create_header($linkpdo){ // fonction qui affiche le header
+function create_header($linkpdo)
+{ // fonction qui affiche le header
 
     echo '<header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
@@ -52,8 +53,9 @@ function create_header($linkpdo){ // fonction qui affiche le header
     </header>';
 }
 
-function create_nav($linkpdo){
-    echo'
+function create_nav($linkpdo)
+{
+    echo '
     <div  class="open" onclick="openMenu()"> ☰</div>
     
             <nav  class="left-contenu">
@@ -62,99 +64,99 @@ function create_nav($linkpdo){
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Affichage Enfant</a>
                     </li>';
-    
-                    //acces à la page de membre
-                    if ($_SESSION["role_user"] !=0) {
-                        echo '<li class="nav-item">';
-                        echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>';
-                        echo '</li>';
-                    }else{
-                        echo '<li class="nav-item">';
-                        echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="mon_compte.php">Mon profil</a>';
-                        echo '</li>';
-                    }
-    
-                    ?>
-                </ul>
-                <?php
-                //acces à l'ajout de profil d'enfant
-                if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-    
-                    //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-                    echo '<div class="bouton_enfant">';
-    
-                    echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
-    
-                    echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>';
-                    echo '<div id="dialog_layer" class="dialogs">';
-                    echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-                    echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
-                    echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
-                    echo '<div class="dialog_form_item">';
-                    echo '<label>';
-                    echo '<span class="label_text">Nom :</span>';
-                    echo '<input name="nom" type="text" required="required">';
-                    echo '</label>';
-                    echo '</div>';
-                    echo '<div class="dialog_form_item">';
-                    echo '<label>';
-                    echo '<span class="label_text">Prenom:</span>';
-                    echo '<input name="prenom" type="text" class="city_input" required="required">';
-                    echo '</label>';
-                    echo '</div>';
-                    echo '<div class="dialog_form_item">';
-                    echo '<label>';
-                    echo '<span class="label_text">Date de naissance:</span>';
-                    echo '<input name="date_naissance" type="date" class="state_input" required="required">';
-                    echo '</label>';
-                    echo '</div>';
-                    echo '<div class="dialog_form_item">';
-                    echo '<label>';
-                    echo '<span class="label_text">Jeton:</span>';
-                    echo '<input name="lien_jeton" type="file" class="zip_input" required="required">';
-                    echo '</label>';
-                    echo '<label>';
-                    echo '<span class="label_text">Enfant:</span>';
-                    echo '<input name="photo_enfant" type="file" class="zip_input" required="required">';
-                    echo '</label>';
-                    echo '</div>';
-                    echo '<div class="dialog_form_actions">';
-                    echo '<button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
-                    echo '<button class="popup-btn" type="submit">Valider l\'ajout</button>';
-                    echo '</div>';
-                    echo '</form>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-    
-                    /* fin de la fenêtre popin de l'ajout d'enfant" */
-                }
-                ?>
-    
-    
-                <?php
-                ///Sélection de tout le contenu de la table enfant
-                if ($_SESSION["role_user"] != 2) {
-    
-    
-                    try {
-                        //acces tous les enfants
-                        if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-                            $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 0 ORDER BY nom');
-                        } else {
-                            $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where visibilite = 0  and id_membre=' . $_SESSION["logged_user"] . ')');
-                        }
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
-                        die('Erreur : ' . $e->getMessage());
-                    }
-    
-                    ///Affichage des entrées du résultat une à une
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-                    $nombre_ligne = $res->rowCount();
-                    $liste = array();
-    
-                    echo "<div class='liste-enfant'>";
-                    echo "<div class=\"recherche\">
+
+    //acces à la page de membre
+    if ($_SESSION["role_user"] != 0) {
+        echo '<li class="nav-item">';
+        echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="page_certif_compte.php">Affichage Membre</a>';
+        echo '</li>';
+    } else {
+        echo '<li class="nav-item">';
+        echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="mon_compte.php">Mon profil</a>';
+        echo '</li>';
+    }
+
+?>
+    </ul>
+    <?php
+    //acces à l'ajout de profil d'enfant
+    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
+
+        //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
+        echo '<div class="bouton_enfant">';
+
+        echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
+
+        echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>';
+        echo '<div id="dialog_layer" class="dialogs">';
+        echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
+        echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
+        echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
+        echo '<div class="dialog_form_item">';
+        echo '<label>';
+        echo '<span class="label_text">Nom :</span>';
+        echo '<input name="nom" type="text" required="required">';
+        echo '</label>';
+        echo '</div>';
+        echo '<div class="dialog_form_item">';
+        echo '<label>';
+        echo '<span class="label_text">Prenom:</span>';
+        echo '<input name="prenom" type="text" class="city_input" required="required">';
+        echo '</label>';
+        echo '</div>';
+        echo '<div class="dialog_form_item">';
+        echo '<label>';
+        echo '<span class="label_text">Date de naissance:</span>';
+        echo '<input name="date_naissance" type="date" class="state_input" required="required">';
+        echo '</label>';
+        echo '</div>';
+        echo '<div class="dialog_form_item">';
+        echo '<label>';
+        echo '<span class="label_text">Jeton:</span>';
+        echo '<input name="lien_jeton" type="file" class="zip_input" required="required">';
+        echo '</label>';
+        echo '<label>';
+        echo '<span class="label_text">Enfant:</span>';
+        echo '<input name="photo_enfant" type="file" class="zip_input" required="required">';
+        echo '</label>';
+        echo '</div>';
+        echo '<div class="dialog_form_actions">';
+        echo '<button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
+        echo '<button class="popup-btn" type="submit">Valider l\'ajout</button>';
+        echo '</div>';
+        echo '</form>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+
+        /* fin de la fenêtre popin de l'ajout d'enfant" */
+    }
+    ?>
+
+
+    <?php
+    ///Sélection de tout le contenu de la table enfant
+    if ($_SESSION["role_user"] != 2) {
+
+
+        try {
+            //acces tous les enfants
+            if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
+                $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 0 ORDER BY nom');
+            } else {
+                $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where visibilite = 0  and id_membre=' . $_SESSION["logged_user"] . ')');
+            }
+        } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        ///Affichage des entrées du résultat une à une
+        $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+        $nombre_ligne = $res->rowCount();
+        $liste = array();
+
+        echo "<div class='liste-enfant'>";
+        echo "<div class=\"recherche\">
                     <form class='recherche' method=\"post\" action=\"search.php\">
                     <div>
                     <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
@@ -162,39 +164,37 @@ function create_nav($linkpdo){
                     <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
                     </form>
                     </div>";
-                    echo "<table >";
-    
-                    for ($i = 0; $i < $nombre_ligne; $i++) {
-    
-                        for ($y = 1; $y < 3; $y++) {
-                            echo "<td>";
-                            print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
-                            $liste[$y] = ucfirst($double_tab[$i][$y]);
-                            $nom = ucfirst($double_tab[$i][1]);
-                            $prenom = ucfirst($double_tab[$i][2]);
-                            $age = $double_tab[0][$y];
-                            echo "</td>";
-                        }
-    
-                        $identifiant = $double_tab[$i][0];
-                        echo "<td>";
-                        echo '<a href="index.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-    
-                    echo "</table>";
-    
-                    ///Fermeture du curseur d'analyse des résultats
-                    $res->closeCursor();
-                }
-                echo"
+        echo "<table >";
+
+        for ($i = 0; $i < $nombre_ligne; $i++) {
+
+            for ($y = 1; $y < 3; $y++) {
+                echo "<td>";
+                print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
+                $liste[$y] = ucfirst($double_tab[$i][$y]);
+                $nom = ucfirst($double_tab[$i][1]);
+                $prenom = ucfirst($double_tab[$i][2]);
+                $age = $double_tab[0][$y];
+                echo "</td>";
+            }
+
+            $identifiant = $double_tab[$i][0];
+            echo "<td>";
+            echo '<a href="index.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
+            echo "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+
+        ///Fermeture du curseur d'analyse des résultats
+        $res->closeCursor();
+    }
+    echo "
                 </div>
             </nav>";
-    
-    
-    };
-    
+};
+
 function create_section_info_enfant($linkpdo, $id_enfant)
 {
 
@@ -241,11 +241,11 @@ function create_section_info_enfant($linkpdo, $id_enfant)
     if ($_SESSION["role_user"] == 1) {
         // acces modif enfant     
         // seuls les admins on accès au formulaire de modification d'un profil d'enfant
-        
+
         pop_in_archive_enfant($id_enfant);
         echo "<div class='button_edit'>";
-        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup); 
-        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant);
+        pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);
+        pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant);
         "</div>";
     }
     echo "
@@ -644,12 +644,15 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
     </div>";
 };
 
-function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
+function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
 {
     echo "
     <button  class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Modifier images</button>
     <div id=\"dialog_layer\" class=\"dialogs\">
         <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+
+            <div>
+            <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier le jeton</h2>
             <img class=\"photo-jeton\" src=\"" . htmlspecialchars($lien_jeton_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">
                 <div class=\"dialog_form_item\">
@@ -660,7 +663,12 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
                     <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
                 </div>
             </form>
+            </div>
+
+
+            <div>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
+            <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
                 <div class=\"dialog_form_item\">
                     <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
@@ -670,7 +678,11 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant)
                     <button class='popup-btn' type=\"submit\">Valider &#x2714;</button></div>
                 </div>
             </form>
+            </div>
+
+
         </div>
+        
     </div>
     ";
 }
@@ -872,7 +884,8 @@ function modif_mdp($mdp, $session, $linkpdo)
 
 // ------------------------------------- fonctions pour les insert -----------------------------------------------------------
 
-function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo){
+function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo)
+{
 
 
     // je creé la requete d'insertion 
@@ -905,42 +918,42 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
 
     header('Location: index.php');
     exit();
-
 }
 
-function insert_membre($nom,$prenom,$adresse,$code,$ville,$courriel,$ddn,$Mdp,$pro,$linkpdo){
-        // je creé la requete d'insertion 
+function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo)
+{
+    // je creé la requete d'insertion 
 
-        $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
+    $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
         VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :pro, :compte_valide)');
-    
+
+    if ($req == false) {
+        die("erreur linkpdo");
+    }
+    ///Exécution de la requête
+    try {
+        $req->execute(array(
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'adresse' => $adresse,
+            'code_postal' => $code,
+            'ville' => $ville,
+            'courriel' => $courriel,
+            'date_naissance' => $ddn,
+            'mdp' => $Mdp,
+            'pro' => $pro, // à changer
+            'compte_valide' => 1
+        ));
         if ($req == false) {
-            die("erreur linkpdo");
+            $req->debugDumpParams();
+            die("erreur execute");
         }
-        ///Exécution de la requête
-        try {
-            $req->execute(array(
-                'nom' => $nom,
-                'prenom' => $prenom,
-                'adresse' => $adresse,
-                'code_postal' => $code,
-                'ville' => $ville,
-                'courriel' => $courriel,
-                'date_naissance' => $ddn,
-                'mdp' => $Mdp,
-                'pro' => $pro, // à changer
-                'compte_valide' => 1
-            ));
-            if ($req == false) {
-                $req->debugDumpParams();
-                die("erreur execute");
-            }
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
-    
-        header('Location: page_certif_compte.php');
-        exit();
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    header('Location: page_certif_compte.php');
+    exit();
 }
 
 
@@ -1069,17 +1082,17 @@ function eject($Sid, $id_eject, $linkpdo)
     }
 }
 
-function inverse_utilisation_objectif($sys,$val,$linkpdo){
+function inverse_utilisation_objectif($sys, $val, $linkpdo)
+{
     $req = $linkpdo->prepare('UPDATE objectif SET travaille = :invers where id_objectif = :id ');
 
-    if ($req == false){
+    if ($req == false) {
         die("erreur linkpdo");
-    }   
-        ///Exécution de la requête
-    try{
+    }
+    ///Exécution de la requête
+    try {
         $req->execute(array('invers' => $val, 'id' => $sys));
-        
-    }catch (Exception $e){
+    } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -1113,7 +1126,6 @@ function supprime_objectif($id_objectif, $linkpdo)
     }
     supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
-
 }
 
 function supprime_profil_enfant($id_enfant, $linkpdo)
@@ -1135,7 +1147,7 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
     $double_tab = $req->fetchAll();
 
     $i = 0;
-    for($i; $i<sizeof($double_tab);$i++){
+    for ($i; $i < sizeof($double_tab); $i++) {
         supprime_objectif($double_tab[0][$i], $linkpdo); // suppression de tous les objectifs de cet enfant
     }
     // preparation de la Requête sql
@@ -1158,7 +1170,6 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
     }
     supprimer_image($linkpdo); // une fois qu'on a supprimé le profil enfant, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
-
 }
 
 function supprime_utilisateur($id_utilisateur, $linkpdo)
@@ -1204,17 +1215,17 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
         return false;
     }
     return true;
-
 }
 
-function supprimer_image($linkpdo){
+function supprimer_image($linkpdo)
+{
     // recuperer toutes les images qui sont reliés dans la bd
 
     // récompense = lien 
     // enfant : lien_jeton 
     // enfant : photo_enfant 
 
-    $liste=array();
+    $liste = array();
 
     $req = $linkpdo->prepare("
     select lien_image, photo_enfant, lien_jeton from recompense, enfant;
@@ -1232,13 +1243,13 @@ function supprimer_image($linkpdo){
     }
 
     $double_tab = $req->fetchAll();
-    for($i=0;$i<sizeof($double_tab);$i++){
-        for($y=0;$y<3;$y++){
-        if($double_tab[$i][$y]){ // pour ne pas ajouter les NULL
-            $liste[]=$double_tab[$i][$y];
+    for ($i = 0; $i < sizeof($double_tab); $i++) {
+        for ($y = 0; $y < 3; $y++) {
+            if ($double_tab[$i][$y]) { // pour ne pas ajouter les NULL
+                $liste[] = $double_tab[$i][$y];
+            }
         }
     }
-}
     $files1 = scandir("./images");
 
     unset($files1[0]); // on retire le . du $files1
@@ -1246,21 +1257,22 @@ function supprimer_image($linkpdo){
     unset($files1[2]); // on retire le .gitignore du $files1
 
 
-    foreach($files1 as $key => $value){
-        if(!in_array("images/".$value, $liste)){
-            unlink("./images/".$value); // suppression de tous les objectifs de cet enfant
+    foreach ($files1 as $key => $value) {
+        if (!in_array("images/" . $value, $liste)) {
+            unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
         }
     }
 }
 
 
-function afficher_systeme($type,$param, $linkpdo, $id){
+function afficher_systeme($type, $param, $linkpdo, $id)
+{
 
     /* valeur possible de $type :
             routine
             chaargement
     */
-    
+
     /* valeur possible de $param :
             valide
             non_valide
@@ -1277,21 +1289,21 @@ function afficher_systeme($type,$param, $linkpdo, $id){
     $double_tab = $res->fetchAll();
     $talbeau_jeton = $res2->fetchAll();
 
-    $lien_jeton = $talbeau_jeton[0][0];                            
+    $lien_jeton = $talbeau_jeton[0][0];
     $chaine = $double_tab[0][0];
 
-    if($param=="valide"){
+    if ($param == "valide") {
         // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI ICI
         if (strpos($chaine, '0') == false) {
             $feux = true;
-            echo "<h1><a href=\"page_recompense.php?id_sys=".$_GET['id_sys']."&feux=".$feux." \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
+            echo "<h1><a href=\"page_recompense.php?id_sys=" . $_GET['id_sys'] . "&feux=" . $feux . " \">BRAVO CE SYSTEME EST COMPLET, TU PEUX CHOISIR UNE RECOMPENSE !</h1>";
             echo "<script> startConfetti() </script>";
             echo "</a>";
         }
     }
     echo "<div class=\"sys\" style=\"margin-left: auto;margin-right: auto;\">";
     echo "<table>";
-    if($type=="routine"){
+    if ($type == "routine") {
         echo "<tr>";
         echo "<td class=\"struct\">";
         echo "<p></p>";
@@ -1320,11 +1332,11 @@ function afficher_systeme($type,$param, $linkpdo, $id){
         echo "</tr>";
     }
 
-    
+
     $morceau = explode(":", $chaine);
     array_pop($morceau); // je retire la partie apres le dernier ":" 
     $compteur = 0;
-    
+
     foreach ($morceau as $ligne) {
         $element = explode("_", $ligne);
         $tache = $element[0];
@@ -1332,29 +1344,29 @@ function afficher_systeme($type,$param, $linkpdo, $id){
         $tab_jeton = str_split($jetons);
         echo "<tr>";
         echo "<td class='struct'>";
-        
-        echo "<p>".htmlspecialchars($tache)."</p>";
+
+        echo "<p>" . htmlspecialchars($tache) . "</p>";
         echo "</td>";
         //ajout des cases de jetons
         foreach ($tab_jeton as $case_tab) {
             if ($case_tab == 0) {
                 echo "<td class='case_jeton' id=$compteur >";
-                
-                if($param=="valide"){                                
+
+                if ($param == "valide") {
                     echo '<a href="objectif_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
-                }else{
+                } else {
                     echo '<a style="display: block;width: 5rem;height: 5rem;"></a>';
                 }
-                
-                
+
+
                 echo "</td>";
             } else {
                 echo "<td class='case_jeton' id=$compteur>";
                 echo "<center>";
 
-                if($param=="valide"){                                
-                    echo '<a href="objectif_remove.php?id='.$id.'&amp;case='.$compteur.'&amp;chaine='.$chaine .'" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src='.$lien_jeton.' alt='.$lien_jeton.'></a>';
-                }else{
+                if ($param == "valide") {
+                    echo '<a href="objectif_remove.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src=' . $lien_jeton . ' alt=' . $lien_jeton . '></a>';
+                } else {
                     echo "<img class=\"jeton\" src=$lien_jeton alt=$lien_jeton>";
                 }
                 echo "</center>";
@@ -1364,18 +1376,18 @@ function afficher_systeme($type,$param, $linkpdo, $id){
         }
         echo "</tr>";
     }
-    echo"</div>";
+    echo "</div>";
     echo "</table>";
-    echo"</div>";
+    echo "</div>";
 }
 
-function verifie_session_echue($session_max, $id, $linkpdo){
+function verifie_session_echue($session_max, $id, $linkpdo)
+{
     try {
         //je recupere la date du premier jeton placé pour cette session dans ce sys
         $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
         // je recupere la duree totale du sys prevu
         $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
-
     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
         die('Erreur : ' . $e->getMessage());
     }

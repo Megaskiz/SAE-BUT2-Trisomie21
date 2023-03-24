@@ -96,7 +96,7 @@ if (isset($_GET['id_invalider'])) {
                             echo "</div>";
                             echo '</td>';
                             echo "<td class=\"Profil\" >";
-                                echo '<a href="page_certif_compte.php?idv='.$identifiant.'"><button class="acceder">Profil</button></a>';
+                                echo '<button class="acceder"> <a href="page_certif_compte.php?idv='.$identifiant.'">Profil</a> </button>';
                             echo "</td>";
                         echo "</tr>";
                     }
