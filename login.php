@@ -1,13 +1,3 @@
-<!DOCTYPE HTML>
-<html lang="fr" style="font-family: Arial,sans-serif;">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style_css/style_login.css" media="screen" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bienvenue</title>
-</head>
-
 <?php require_once("fonctions.php");
 
 $linkpdo=connexionBd();
@@ -16,7 +6,7 @@ $linkpdo=connexionBd();
 if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
     $courriel = $_POST['courriel'];
     $mdp_test = hash('sha256', "ZEN02anWobA4ve5zxzZz" . $_POST['password']);
-
+    
     // Je créé la requête préparée avec des paramètres nommés
     $query = "SELECT count(*) FROM membre WHERE courriel=:courriel AND mdp=:mdp";
     $stmt = $linkpdo->prepare($query);
@@ -26,7 +16,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
 
     // Je récupère le nombre de résultats
     $count = $stmt->fetchColumn();
-
+    
     // Je récupère les informations sur le compte de l'utilisateur
     $query2 = "SELECT id_membre, compte_valide, pro, role_user FROM membre WHERE courriel=:courriel AND mdp=:mdp";
     $stmt2 = $linkpdo->prepare($query2);
@@ -61,6 +51,17 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
 
 ?>
 
+<!DOCTYPE HTML>
+<html lang="fr" style="font-family: Arial,sans-serif;">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style_css/style_login.css" media="screen" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bienvenue</title>
+</head>
+
+
 <body>
     <div class="login-page">
         <div class="form">
@@ -68,7 +69,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
                     echo $message_erreur;
                 }  ?></p>
             <div class="grille">
-                <img class="logo" src="/sae-but2-s1/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                <img class="logo" src="/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                 <form action="" method="post" class="login-form">
                     <input type="text" name="courriel" placeholder="Adresse e-mail" />
                     <input type="password" name="password" placeholder="Mot de passe" />
