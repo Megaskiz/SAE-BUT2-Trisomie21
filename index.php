@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
-
 <?php
 require('fonctions.php');
 is_logged();
@@ -8,6 +5,8 @@ is_validateur();
 ///Connexion au serveur MySQL
 $linkpdo = connexionBd();
 ?>
+<!DOCTYPE html>
+<html lang="fr" style="font-family: Arial,sans-serif;">
 
 <head>
 	<meta charset="utf-8">

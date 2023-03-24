@@ -12,9 +12,9 @@
         <input type="color" id="color-picker">
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery_ui.js"></script>
+    <script src="js/confetti.js"></script>
     <script type="text/javascript" src="objectif.js"></script>
     <center>
     
@@ -95,7 +95,7 @@
     </div>
     </head>
 <?php
-require('fonctions.php');
+require_once('fonctions.php');
 is_logged();
 is_validateur();
 

@@ -2,7 +2,7 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-require('fonctions.php');
+require_once('fonctions.php');
 is_logged();
 is_validateur();
 ///Connexion au serveur MySQL

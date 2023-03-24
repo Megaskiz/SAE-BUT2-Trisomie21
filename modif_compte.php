@@ -1,5 +1,5 @@
 <?php
-require('fonctions.php');
+require_once('fonctions.php');
 is_logged(); //redirige si on est pas logged
 is_user();   //redirige si on est "utilisateur"
 is_coordinateur(); // redirige si on est "coordinateur"
