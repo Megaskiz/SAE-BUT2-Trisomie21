@@ -70,7 +70,7 @@ catch (Exception $e) {
             </div>
         </nav>
         <div class="choix-systeme">
-            <form action="test.php" class="forme titre" method="POST">
+            <form action="aiguillage" class="forme titre" method="POST">
 
                 <h2 class="titletype">Choisissez le type d'objectif :</h2>
                 <section class="choix-objectif">
