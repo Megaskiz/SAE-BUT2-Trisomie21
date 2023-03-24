@@ -95,7 +95,7 @@
     </div>
     </head>
 <?php
-require('fonctions.php');
+require_once('fonctions.php');
 is_logged();
 is_validateur();
 
