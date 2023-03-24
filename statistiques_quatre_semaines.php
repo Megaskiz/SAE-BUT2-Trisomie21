@@ -20,13 +20,8 @@ is_validateur();
 echo '<a href="index.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
 echo '<center class="titre_page"><h1>Statistiques 4 semaines</h1></center>';
 
-try {
-  $linkpdo = new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
-}
-///Capture des erreurs éventuelles
-catch (Exception $e) {
-  die('Erreur : ' . $e->getMessage());
-}
+$linkpdo = connexionBd();
+
 
 //var_dump($_SESSION);
 
