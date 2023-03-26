@@ -29,7 +29,7 @@ $linkpdo = connexionBd();
     <main>
         <nav class="div-info-enfant">
             <div class="info-enfant">
-                <a class="retour" href="index.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour">Retour</button> </a>
+                <a href="index.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour">Retour</button> </a>
                 <?php
                 $id = $_SESSION['id_enfant'];
                 

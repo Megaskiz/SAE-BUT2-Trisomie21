@@ -164,7 +164,7 @@ $linkpdo = connexionBd();
                                             <p class='popup-txt'>Voulez-vous restaurer ce compte membre dans l'application ?</p>
                                             <div class=\"dialog_form_actions\">
                                                 <button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-                                                <a class=\"popup-btn\" href=\"appel_fonction.php?appel=restaure_utilisateur&id_user=".$idiv."\">Restaurer</a>
+                                                <a href=\"appel_fonction.php?appel=restaure_utilisateur&id_user=".$idiv."\"> <button class='popup-btn'> Restaurer </button></a>
                                             </div>
                                         </form>
                                     </div>
@@ -176,7 +176,7 @@ $linkpdo = connexionBd();
                                             <p class='popup-txt'>Voulez-vous supprimer ce compte membre dans l'application ? Cette action est irréversible, elle supprimera tous les messages de ce membre, et le retirera de toutes les équipes. </p>
                                             <div class=\"dialog_form_actions\">
                                                 <button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-                                                <a class=\"popup-btn\" href=\"appel_fonction.php?appel=supprime_utilisateur&id_user=".$idiv."\">Supprimer</a>
+                                                <a href=\"appel_fonction.php?appel=supprime_utilisateur&id_user=".$idiv."\"> <button class='popup-btn'> Supprimer </button> </a>
                                             </div>
                                         </form>
                                     </div>

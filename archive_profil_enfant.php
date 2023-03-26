@@ -143,7 +143,7 @@ $linkpdo = connexionBd();
                             <p class='popup-txt' > Voulez-vous restaurer le compte de cet enfant ? Il sera visible par toutes les personnes l'ayant suivi </p>
                             <div style=\"display:flex; justify-content: space-evenly;\">
                                 <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
-                                <a  class=\"popup-btn\"  href=\"appel_fonction.php?appel=restaure_profil_enfant&id=".$_GET['id']."\">Valider</a>
+                                <a href=\"appel_fonction.php?appel=restaure_profil_enfant&id=".$_GET['id']."\">  <button class='popup-btn'> Valider </button></a>
                             </div>
                         </div>
     
@@ -152,7 +152,7 @@ $linkpdo = connexionBd();
                             <p class='popup-txt' > Voulez-vous supprimer le compte de cet enfant ? Cette action est définitive, cela supprimera tous ses objetifs, tous les messagesssociés, toutes les récompenses, et les statistiques de cet enfant. </p>
                             <div style=\"display:flex; justify-content: space-evenly;\">
                                 <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
-                                <a  class=\"popup-btn\"  href=\"appel_fonction.php?appel=supprime_profil_enfant&id_enfant=".$_GET["id"]."\">Valider</a>
+                                <a href=\"appel_fonction.php?appel=supprime_profil_enfant&id_enfant=".$_GET["id"]."\"> <button class='popup-btn'> Valider </button> </a>
                             </div>
                         </div>
                     </center>
