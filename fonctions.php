@@ -744,6 +744,16 @@ function eject($Sid, $id_eject, $linkpdo)
     }
 }
 
+function restaure_utilisateur($id, $linkpdo){
+
+        $req = "UPDATE `membre` SET `visibilite` = '0' WHERE `membre`.`id_membre` =$id ;";
+        try {
+            $linkpdo->query($req);
+        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            die('Erreur : ' . $e->getMessage());
+        }
+}
+
 // ------------------------------------- fonctions pour les modifications -----------------------------------------------------------
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo)
 {
