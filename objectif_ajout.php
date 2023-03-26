@@ -10,7 +10,7 @@ is_validateur();
 <?php
 // fichier qui ajoute chaque jeton dans le système
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 if (isset($_GET['case'])) {
@@ -29,7 +29,7 @@ if (isset($_GET['case'])) {
         // je recupere la duree totale du sys prevu
         $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
 
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -66,7 +66,7 @@ if (isset($_GET['case'])) {
 
         try {
             $session_max_query = $linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=$id");
-        } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
         $double_tab = $session_max_query->fetchAll();

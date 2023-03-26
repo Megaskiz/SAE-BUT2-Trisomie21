@@ -2,7 +2,7 @@
 require('fonctions.php');
 is_logged();
 is_validateur();
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $linkpdo = connexionBd();
 		<?php //affichage de la liste de gauche, avec les profils enfants, et les sous menus, en fonction des droits 
 
 		create_nav($linkpdo);	
-		// affichage central de la page, avec les informations sur les enfants
+		
 
 		if (isset($_GET['id'])) { // si on clique sur "acceder" alors on recherche les infos d'un enfant
 			$id = $_GET['id'];

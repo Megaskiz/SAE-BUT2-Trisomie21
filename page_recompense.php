@@ -99,7 +99,7 @@ require_once('fonctions.php');
 is_logged();
 is_validateur();
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 ?>
@@ -117,7 +117,7 @@ echo"<a href=\"objectif.php?id_sys=".$_SESSION['id_sys']."\"><button>retour</but
 try {
     $res = $linkpdo->query("select * from recompense where id_recompense in (SELECT id_recompense FROM lier where id_objectif=".$_SESSION['id_sys'].")");
     }
-    catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }    
     $double_tab = $res -> fetchAll(); 

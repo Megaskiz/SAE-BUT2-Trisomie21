@@ -5,7 +5,7 @@ is_logged();
 
 <?php
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 // retourner sur la page avec le nouveau sys et la nouvelle session
@@ -18,7 +18,7 @@ try {
     $session_max_query = $linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=" . $id);
     //$session_max_query->debugDumpParams();
 
-} catch (Exception $e) { // toujours faire un test de retour en cas de crash
+} catch (Exception $e) { 
     die('Erreur : ' . $e->getMessage());
 }
 $double_tab = $session_max_query->fetchAll(); 
@@ -47,7 +47,7 @@ if ($session_max == NULL) {
     try {
         //je recupere la date du premier jeton placé pour cette session dans ce sys (jeton factice, témoin du début de la session)
         $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 

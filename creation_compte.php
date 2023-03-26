@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php // la partie de la connexion
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 
@@ -58,7 +58,7 @@ if (
             if ($req == false) {
                 die("erreur linkpdo");
             }
-            ///Exécution de la requête
+            
             try {
                 $req->execute(array(
                     'nom' => htmlspecialchars($nom),

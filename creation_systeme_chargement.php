@@ -7,7 +7,7 @@ is_validateur();
 <html lang="fr">
 
 <?php
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd()
 ?>
 

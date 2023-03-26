@@ -6,7 +6,7 @@ is_logged();
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 if (isset($_GET['id_valider'])) {
@@ -93,7 +93,7 @@ if (isset($_GET['id_invalider'])) {
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 

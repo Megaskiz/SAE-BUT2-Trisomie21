@@ -3,7 +3,7 @@ require_once('fonctions.php');
 is_logged();
 is_user();
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
@@ -124,10 +124,10 @@ $linkpdo = connexionBd();
                             <?php
 
 
-                            ///Sélection de tout le contenu de la table 
+                             
                             try {
                                 $res = $linkpdo->query("SELECT * FROM `membre` WHERE  visibilite = 0  and compte_valide= 1");
-                            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                            } catch (Exception $e) { 
                                 die('Erreur : ' . $e->getMessage());
                             }
 
@@ -166,10 +166,10 @@ $linkpdo = connexionBd();
                             ///--------------------------------------------------------------------membre non valide-------------------------------------------
 
                             echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
-                            ///Sélection de tout le contenu de la table 
+                             
                             try {
                                 $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 0 and compte_valide= 0 ORDER BY nom;");
-                            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                            } catch (Exception $e) { 
                                 die('Erreur : ' . $e->getMessage());
                             }
 
@@ -227,7 +227,7 @@ $linkpdo = connexionBd();
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 
@@ -269,7 +269,7 @@ $linkpdo = connexionBd();
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 

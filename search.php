@@ -5,7 +5,7 @@
 require_once('fonctions.php');
 is_logged();
 is_validateur();
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 ?>
 
@@ -44,7 +44,6 @@ $linkpdo = connexionBd();
 
 
             <?php
-            ///Sélection de tout le contenu de la table enfant
             if ($_SESSION["role_user"] != 2) {
                 echo "<table >";
 

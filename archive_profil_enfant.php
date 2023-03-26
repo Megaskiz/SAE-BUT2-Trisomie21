@@ -5,7 +5,7 @@
 require_once('fonctions.php');
 is_logged();
 is_validateur();
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 
@@ -16,7 +16,7 @@ if (isset($_GET['id_putback'])) {
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
 
         $req->execute(array());
@@ -66,7 +66,7 @@ if (isset($_GET['id_putback'])) {
                         $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where visibilite = 1 ORDER BY nom');
                     } else {
                     }
-                } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                } catch (Exception $e) { 
                     die('Erreur : ' . $e->getMessage());
                 }
 
@@ -114,7 +114,7 @@ if (isset($_GET['id_putback'])) {
             </div>
         </nav>
 
-        <?php // affichage central de la page, avec les informations sur les enfants
+        <?php 
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -130,7 +130,7 @@ if (isset($_GET['id_putback'])) {
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 
@@ -251,7 +251,7 @@ if (isset($_GET['id_putback'])) {
 
                     try {
                         $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=0 and id_enfant=' . $id . ' ORDER BY priorite ');
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }
 
@@ -557,7 +557,7 @@ if (isset($_GET['id_putback'])) {
 
                 try {
                     $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = ".$getid." WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
-                } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                } catch (Exception $e) { 
                     die('Erreur : ' . $e->getMessage());
                 }
 

@@ -139,7 +139,6 @@ function create_nav($linkpdo)
 
 
     <?php
-    ///Sélection de tout le contenu de la table enfant
     if ($_SESSION["role_user"] != 2) {
 
 
@@ -150,7 +149,7 @@ function create_nav($linkpdo)
             } else {
                 $res = $linkpdo->query('SELECT id_enfant, nom, prenom FROM enfant where id_enfant in (select id_enfant from suivre where visibilite = 0  and id_membre=' . $_SESSION["logged_user"] . ')');
             }
-        } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 
@@ -210,7 +209,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
     }
 
     $double_tab = $res->fetchAll(); 
-    $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+    $nombre_ligne = $res->rowCount(); 
     $liste = array();
 
 
@@ -261,7 +260,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 
     try {
         $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$id_enfant' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -358,7 +357,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
     // tous les systèmes de l'enfant :  
     try {
         $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=0 and id_enfant=' . $id_enfant . ' ORDER BY priorite ');
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
     
@@ -716,7 +715,7 @@ function archive_enfant($linkpdo)
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         
         $req->execute(array());
@@ -846,7 +845,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
         if ($query == false) {
             die("erreur linkpdo");
         }
-        ///Exécution de la requête
+        
         try {
             $query->execute($data);
             $query->debugDumpParams();
@@ -875,7 +874,7 @@ function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session]);
 
@@ -926,7 +925,7 @@ function modif_mdp($mdp, $session, $linkpdo)
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         $req->execute([$nouveau_mdp, $session]);
         //$req->debugDumpParams();
@@ -954,7 +953,7 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         $req->execute(array(
             'nom' => htmlspecialchars($nom),
@@ -988,7 +987,7 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         $req->execute(array(
             'nom' => $nom,
@@ -1427,7 +1426,7 @@ function verifie_session_echue($session_max, $id, $linkpdo)
         $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
         // je recupere la duree totale du sys prevu
         $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -1453,7 +1452,7 @@ function inverse_utilisation_objectif($sys, $val, $linkpdo)
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
         $req->execute(array('invers' => $val, 'id' => $sys));
     } catch (Exception $e) {

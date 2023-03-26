@@ -4,7 +4,7 @@ is_logged();
 is_validateur();
 is_not_admin();
 
-///Connexion au serveur MySQL
+
 $linkpdo=connexionBd();
 
 // fichier qui insert la récompense dans une base de données
@@ -27,7 +27,7 @@ switch ($_SESSION['type_rec']) {
         if ($req == false){
             die("erreur linkpdo");
         }   
-        ///Exécution de la requête
+        
         try{
             
             $req->execute(array('intitule' => htmlspecialchars($intitule), // la chaine que je reconstruit pour avoir ce que je veux
@@ -65,7 +65,7 @@ switch ($_SESSION['type_rec']) {
                 if ($req == false){
                     die("erreur linkpdo");
                 }   
-                ///Exécution de la requête
+                
                 try{
                     
                     $req->execute(array('id_objectif' => $double_tab2[0][0], // la chaine que je reconstruit pour avoir ce que je veux
@@ -103,7 +103,7 @@ switch ($_SESSION['type_rec']) {
             if ($req == false){
                 die("erreur linkpdo");
             }   
-            ///Exécution de la requête
+            
             try{
                 
                 $req->execute(array('intitule' => ($intitule),
@@ -153,7 +153,7 @@ switch ($_SESSION['type_rec']) {
                 if ($req == false){
                     die("erreur linkpdo");
                 }   
-                ///Exécution de la requête
+                
                 try{
                     
                     $req->execute(array('id_objectif' => $double_tab2[0][0], // la chaine que je reconstruit pour avoir ce que je veux

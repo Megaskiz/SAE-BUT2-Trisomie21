@@ -5,27 +5,20 @@
 require_once('fonctions.php');
 is_logged();
 is_validateur();
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 if (isset($_GET['id_putback'])) {
-    
-    // faire un update dans la bd sur un champs en plus
-    // il faut le faire sur :
-    /*
-    - la table enfant
-    */
+
     $req = $linkpdo->prepare('UPDATE objectif SET visibilite = "0" where id_objectif = '.$_GET['id_putback']);
 
     if ($req == false){
         die("erreur linkpdo");
     }   
-        ///Exécution de la requête
+        
     try{
         
         $req->execute(array());
-        // $req->debugDumpParams();
-        // exit();
         header("Location:index.php?id=".$_SESSION['id_enfant']);
        
         if ($req == false){
@@ -133,7 +126,7 @@ if (isset($_GET['id_putback'])) {
 
         </nav>
 
-        <?php // affichage central de la page, avec les informations sur les enfants
+        <?php 
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -149,7 +142,7 @@ if (isset($_GET['id_putback'])) {
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 
@@ -180,10 +173,6 @@ if (isset($_GET['id_putback'])) {
             $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
-            // print_r($double_tab_tuteur);
-            // exit();
-
-
             echo "</div>";
         }
 
@@ -197,14 +186,11 @@ if (isset($_GET['id_putback'])) {
         <nav class="right-contenu" >
 <?php
                     echo "<section style=\"height: 100%;\" class=\"nb-systeme\">";
-                    //acces aux boutons -> ajouter sys, stat, stat4semaines
-
-                    // tous les systèmes de l'enfant :
 
                    
                     try {
                         $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=1 and id_enfant=' . $_SESSION["id_enfant"] . ' ORDER BY priorite ');
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }
 
@@ -385,7 +371,7 @@ if (isset($_GET['id_putback'])) {
 
                 try {
                     $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$getid' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
-                } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                } catch (Exception $e) { 
                     die('Erreur : ' . $e->getMessage());
                 }
 

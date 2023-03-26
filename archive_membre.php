@@ -3,7 +3,7 @@ require_once('fonctions.php');
 is_logged();
 is_user();
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
@@ -33,10 +33,10 @@ $linkpdo = connexionBd();
                 <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
                 <div id="myDropdown" class="dropdown-content">
                     <?php
-                    ///Sélection de tout le contenu de la table 
+                     
                     try {
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1 and compte_valide= 1");
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }
 
@@ -86,7 +86,7 @@ $linkpdo = connexionBd();
             }
 
             $double_tab = $res->fetchAll(); 
-            $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
 

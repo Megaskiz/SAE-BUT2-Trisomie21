@@ -71,7 +71,7 @@ $linkpdo = connexionBd();
 
             try {
                 $res = $linkpdo->query("SELECT * FROM objectif where id_objectif=$id");
-            } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
@@ -147,7 +147,7 @@ $linkpdo = connexionBd();
                             $session_max_query = $linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=" . $id);
                             //$session_max_query->debugDumpParams();
         
-                        } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                        } catch (Exception $e) { 
                             die('Erreur : ' . $e->getMessage());
                         }
 

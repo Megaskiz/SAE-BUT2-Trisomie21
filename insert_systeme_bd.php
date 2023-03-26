@@ -79,7 +79,7 @@ VALUES (:nom, :intitule, :nb_jeton, :duree, :jeton, :prio, :etat, :id_membre, :i
 if ($req == false){
     die("erreur linkpdo");
 }   
-///Exécution de la requête
+
 try{
     $req->execute(array('nom' => $res, // la chaine que je reconstruit pour avoir ce que je veux
                         'intitule' => $nom,

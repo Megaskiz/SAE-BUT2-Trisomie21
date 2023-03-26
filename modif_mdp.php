@@ -7,7 +7,7 @@ is_logged();
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 if (isset($_GET['id_valider'])) {
@@ -65,10 +65,10 @@ if (isset($_GET['id_invalider'])) {
                 echo'</ul>';
             }
                     
-                    ///Sélection de tout le contenu de la table 
+                     
                     try {
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 1;");
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }
 
@@ -107,10 +107,10 @@ if (isset($_GET['id_invalider'])) {
                     ///--------------------------------------------------------------------membre non valide-------------------------------------------
                     
                     echo "<div class='divider'><span></span><span>Demande de compte membre</span><span></span></div>";
-                    ///Sélection de tout le contenu de la table 
+                     
                     try {
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE compte_valide= 0;");
-                    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+                    } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }
 

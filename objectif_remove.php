@@ -6,7 +6,7 @@ is_validateur();
 <?php
 
 
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 // fichier qui retire un jeton dans le système
@@ -50,7 +50,7 @@ if (isset($_GET['case'])) {
         $session_max_query = $linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=" . $id);
         // $session_max_query->debugDumpParams();
         // exit();
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -83,7 +83,7 @@ if (isset($_GET['case'])) {
         //$jeton_max_query -> debugDumpParams();
         //exit();
 
-    } catch (Exception $e) { // toujours faire un test de retour en cas de crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -100,7 +100,7 @@ if (isset($_GET['case'])) {
     if ($req == false) {
         die("erreur linkpdo");
     }
-    ///Exécution de la requête
+    
     try {
 
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));

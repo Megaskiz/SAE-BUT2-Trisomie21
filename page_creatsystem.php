@@ -4,7 +4,7 @@ is_logged();
 is_validateur();
 ?>
 <?php
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 ?>

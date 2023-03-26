@@ -4,10 +4,6 @@ session_start();
 
 $id_sys = $_GET['id_sys'];
 
-
-
-///Sélection de tout le contenu de la table enfant
-
 $linkpdo = connexionBd();
 
    
@@ -19,7 +15,7 @@ $req = $linkpdo->prepare('UPDATE objectif SET visibilite = "1" where id_objectif
 if ($req == false){
     die("erreur linkpdo");
 }   
-    ///Exécution de la requête
+    
 try{
     
     $req->execute(array());

@@ -7,7 +7,7 @@ is_validateur();
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-///Connexion au serveur MySQL
+
 $linkpdo = connexionBd();
 
 if (isset($_GET['id_suppr'])) {
