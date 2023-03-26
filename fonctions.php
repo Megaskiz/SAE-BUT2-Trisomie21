@@ -754,6 +754,37 @@ function restaure_utilisateur($id, $linkpdo){
         }
 }
 
+function archive_membre($id, $linkpdo){
+
+        $req = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id ;";
+        try {
+            $linkpdo->query($req);
+        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            die('Erreur : ' . $e->getMessage());
+        }
+}
+
+function valide_membre($id, $linkpdo){
+        $req = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id ;";
+        try {
+            $linkpdo->query($req);
+        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            die('Erreur : ' . $e->getMessage());
+        }
+}
+
+function invalide_membre($id, $linkpdo){
+
+        $req = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id ;";
+        try {
+            $linkpdo->query($req);
+        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            die('Erreur : ' . $e->getMessage());
+        }
+}
+
+
+
 // ------------------------------------- fonctions pour les modifications -----------------------------------------------------------
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo)
 {

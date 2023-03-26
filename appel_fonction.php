@@ -191,7 +191,6 @@ if(isset($_GET['appel'])){
             break;
 
         case 'restaure_utilisateur':
-
             if(isset($_GET['id_user'])){
                 $id=$_GET['id_user'];
                 restaure_utilisateur($id, $linkpdo);
@@ -200,7 +199,37 @@ if(isset($_GET['appel'])){
                 header('Location:archive_membre.php'); 
             }
             break;
-        
+
+        case 'archive_membre':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                archive_membre($id, $linkpdo);
+                header('Location:page_certif_compte.php'); 
+            }else{
+                header('Location:page_certif_compte.php'); 
+            }
+            break;
+
+        case 'valide_membre':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                valide_membre($id, $linkpdo);
+                header('Location:page_certif_compte.php'); 
+            }else{
+                header('Location:page_certif_compte.php'); 
+            }
+            break;
+
+        case 'invalide_membre':
+            
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                invalide_membre($id, $linkpdo);
+                header('Location:page_certif_compte.php'); 
+            }else{
+                header('Location:page_certif_compte.php'); 
+            }
+            break;
 
 
         case 'purge_image':

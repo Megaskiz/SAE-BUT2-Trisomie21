@@ -2,50 +2,12 @@
 require_once('fonctions.php');
 is_logged();
 is_user();
+
+///Connexion au serveur MySQL
+$linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
-
-<?php
-///Connexion au serveur MySQL
-$linkpdo = connexionBd();
-
-// faire des fonctions : 
-
-
-if (isset($_GET['id_valider'])) {
-    $id_valider_membre = $_GET['id_valider'];
-    $req_add = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id_valider_membre ;";
-    try {
-        $res = $linkpdo->query($req_add);
-        header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-if (isset($_GET['id_invalider'])) {
-    $id_invalider_membre = $_GET['id_invalider'];
-    $req_add = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
-    try {
-        $res = $linkpdo->query($req_add);
-        header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-if (isset($_GET['id_archiver'])) {
-    $id_invalider_membre = $_GET['id_archiver'];
-    $req_add = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
-    try {
-        $res = $linkpdo->query($req_add);
-        header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-
-?>
-
 <head>
     <meta charset="utf-8">
     <title> Administrateur </title>
@@ -149,9 +111,6 @@ if (isset($_GET['id_archiver'])) {
                                         <input name='password' type="text" class="state_input" required="required">
                                     </label>
                                 </div>
-
-
-
                                 <div class="dialog_form_actions">
                                     <button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
                                     <button class="popup-btn" type="submit">Valider</button>
@@ -396,7 +355,7 @@ if (isset($_GET['id_archiver'])) {
                         echo "<p class='popup-txt'>Vous voulez valider le compte de ce membre dans l'application !</p>";
                         echo "<div class=\"dialog_form_actions\">";
                         echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo '<a class="popup-btn" href="page_certif_compte.php?id_valider=' . $_GET['id'] . '">Valider</a>';
+                        echo '<a class="popup-btn" href="appel_fonction.php?appel=valide_membre&id='.$_GET['id'].'">Valider</a>';
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";
@@ -444,7 +403,7 @@ if (isset($_GET['id_archiver'])) {
                                 echo "<p class='popup-txt'>Voulez-vous invalider le compte de ce membre dans l'application ?</p>";
                                 echo "<div class=\"dialog_form_actions\">";
                                 echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                                echo '<a class="popup-btn" href="page_certif_compte.php?id_invalider=' . $idiv . '">Invalider</a>';
+                                echo '<a class="popup-btn" href="appel_fonction.php?appel=invalide_membre&id='.$idiv.'">Invalider</a>';
                                 echo "</div>";
                                 echo "</form>";
                                 echo "</div>";
@@ -474,7 +433,7 @@ if (isset($_GET['id_archiver'])) {
                         echo "<p class='popup-txt'>Voulez-vous archiver le compte de ce membre dans l'application ?</p>";
                         echo "<div class=\"dialog_form_actions\">";
                         echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo '<a class="popup-btn" href="page_certif_compte.php?id_archiver=' . $idiv . '">Archiver</a>';
+                        echo '<a class="popup-btn" href="appel_fonction.php?appel=archive_membre&id='.$idiv.'">Archiver</a>';
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";
