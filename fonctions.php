@@ -1,4 +1,8 @@
 <?php
+
+
+// ------------------------------------- fonctions diverses -----------------------------------------------------------
+
 function connexionBd()
 {
     return new PDO("mysql:host=localhost;dbname=bddsae", "root", "");
@@ -12,7 +16,7 @@ function filter_spaces($var)
 // ------------------------------------- fonctions pour les "blocs" html -----------------------------------------------------------
 
 function create_header($linkpdo)
-{ // fonction qui affiche le header
+{
 
     echo '<header>
         <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
@@ -700,25 +704,24 @@ function pop_in_archive_enfant($id_enfant)
     </div>
     ";
 }
-
-// ------------------------------------- fonctions pour les pop-in -----------------------------------------------------------
+// ------------------------------------- fonctions pour l'administration des enfant / membres -----------------------------------------------------------
 
 
 function archive_enfant($linkpdo)
 {
     $req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant=' . $_SESSION["id_enfant"]);
-
+    
     if ($req == false) {
         die("erreur linkpdo");
     }
     ///Exécution de la requête
     try {
-
+        
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
         header("Location:index.php");
-
+        
         if ($req == false) {
             $req->debugDumpParams;
             die("erreur execute");
@@ -730,6 +733,18 @@ function archive_enfant($linkpdo)
     }
 }
 
+function eject($Sid, $id_eject, $linkpdo)
+{
+    $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
+    try {
+        $res = $linkpdo->query($req_eject);
+        header('Location: index.php?id=' . $_SESSION['id_enfant']);
+    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
+// ------------------------------------- fonctions pour les modifications -----------------------------------------------------------
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo)
 {
 
@@ -956,6 +971,7 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     exit();
 }
 
+// ------------------------------------- fonctions pour les images -----------------------------------------------------------
 
 function uploadVisage($photo)
 {
@@ -1019,6 +1035,8 @@ function uploadImage($photo)
     return $result;
 }
 
+
+// ------------------------------------- fonctions de vérification de droit -----------------------------------------------------------
 function is_logged()
 {
     session_start();
@@ -1071,33 +1089,8 @@ function is_not_admin()
     }
 }
 
-function eject($Sid, $id_eject, $linkpdo)
-{
-    $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
-    try {
-        $res = $linkpdo->query($req_eject);
-        header('Location: index.php?id=' . $_SESSION['id_enfant']);
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-}
 
-function inverse_utilisation_objectif($sys, $val, $linkpdo)
-{
-    $req = $linkpdo->prepare('UPDATE objectif SET travaille = :invers where id_objectif = :id ');
-
-    if ($req == false) {
-        die("erreur linkpdo");
-    }
-    ///Exécution de la requête
-    try {
-        $req->execute(array('invers' => $val, 'id' => $sys));
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-
-// fonction de suppression dans la bd :
+// ------------------------------------- fonctions de suppression dans la bd -----------------------------------------------------------
 
 function supprime_objectif($id_objectif, $linkpdo)
 {
@@ -1265,6 +1258,9 @@ function supprimer_image($linkpdo)
 }
 
 
+// ------------------------------------- fonctions par rapport aux systèmes/objectifs -----------------------------------------------------------
+ 
+
 function afficher_systeme($type, $param, $linkpdo, $id)
 {
 
@@ -1407,5 +1403,19 @@ function verifie_session_echue($session_max, $id, $linkpdo)
     return $secondes_premier_jeton + $duree_sys_en_seconde < time();
 }
 
+function inverse_utilisation_objectif($sys, $val, $linkpdo)
+{
+    $req = $linkpdo->prepare('UPDATE objectif SET travaille = :invers where id_objectif = :id ');
+
+    if ($req == false) {
+        die("erreur linkpdo");
+    }
+    ///Exécution de la requête
+    try {
+        $req->execute(array('invers' => $val, 'id' => $sys));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}
 
 ?>
