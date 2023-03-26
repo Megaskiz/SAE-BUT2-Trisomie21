@@ -72,7 +72,6 @@ if (
                     'compte_valide' => 0
                 ));
                 if ($req == false) {
-                    $req->debugDumpParams;
                     die("erreur execute");
                 }
             } catch (Exception $e) {
