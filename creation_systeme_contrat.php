@@ -9,18 +9,6 @@ is_validateur();
 <?php
 
 $linkpdo = connexionBd();
-
-if (isset($_GET['id_suppr'])) {
-    $id_suppression = $_GET['id_suppr'];
-    $req_suppr = "DELETE FROM suivre where id_enfant=$id_suppression;DELETE FROM enfant where id_enfant=$id_suppression";
-    try {
-        $res = $linkpdo->query($req_suppr);
-        header('Location: index.php');
-    } catch (Exception $e) { 
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-
 ?>
 
 <head>
@@ -86,31 +74,32 @@ if (isset($_GET['id_suppr'])) {
 
 
             <table class="tableau">
+                <caption>Aperçu du tableau de l'objectif avec ses tâches</caption>
                 <tr class="jour">
-                    <td>
-                        <p></p>
-                    </td>
-                    <td>
+                    <th>
+                       
+                    </th>
+                    <th>
                         <p>Lundi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Mardi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Mercredi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Jeudi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Vendredi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Samedi</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>Dimanche</p>
-                    </td>
+                    </th>
                 </tr>
 
                 <?php
