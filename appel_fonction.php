@@ -84,8 +84,6 @@ if(isset($_GET['appel'])){
             modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $session, $linkpdo);
             break; 
 
-        // faire case d'insert :
-
         case 'insert_enfant':
             
             $nom = htmlspecialchars($_POST['nom']);
@@ -204,9 +202,4 @@ if(isset($_GET['appel'])){
     
     }
 }
-
-
-
-
-
 ?>

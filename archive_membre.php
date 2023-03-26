@@ -20,16 +20,6 @@ if (isset($_GET['id_valider'])) {
         die('Erreur : ' . $e->getMessage());
     }
 }
-if (isset($_GET['id_invalider'])) {
-    $id_invalider_membre = $_GET['id_invalider'];
-    $req_add = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id_invalider_membre ;";
-    try {
-        $res = $linkpdo->query($req_add);
-        header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
-        die('Erreur : ' . $e->getMessage());
-    }
-}
 
 ?>
 

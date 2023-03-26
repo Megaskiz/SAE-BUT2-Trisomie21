@@ -10,6 +10,9 @@ is_user();
 ///Connexion au serveur MySQL
 $linkpdo = connexionBd();
 
+// faire des fonctions : 
+
+
 if (isset($_GET['id_valider'])) {
     $id_valider_membre = $_GET['id_valider'];
     $req_add = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id_valider_membre ;";
