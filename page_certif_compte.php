@@ -22,7 +22,6 @@ $linkpdo = connexionBd();
     <!--- HEADER -->
     <?php create_header($linkpdo); ?>
 
-
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
@@ -32,21 +31,20 @@ $linkpdo = connexionBd();
         <nav class="left-contenu">
             <?php
             if ($_SESSION["role_user"] != 2) {
-                echo '<ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">';
-                echo '<li class="nav-item">';
-                echo '<a class="nav-link gl-tab-nav-item" data-placement="right" href="index.php">Affichage Enfant</a>';
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo '<a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Affichage Membre</a>';
-                echo '</li>';
-                echo '</ul>';
+                echo '
+                <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
+                    <li class="nav-item">
+                        <a class="nav-link gl-tab-nav-item" data-placement="right" href="index.php">Affichage Enfant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-placement="" class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" href="page_certif_compte.php">Affichage Membre</a>
+                    </li>
+                </ul>';
             }
-
             ?>
-
-            <! -- /* Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre" */ -->
                 <div class="bouton_tuteur">
                     <?php
+                    // Le bloc suivant est la fenêtre pop-in de l'ajout d'membre, elle est caché tant qu'on appuie pas sur le bouton "ajouter membre"
                     if ($_SESSION["role_user"] != 3) {
                         echo '<button class="ajouter-membre" type="button" onclick="openDialog(\'dialogNEW1\', this)">Ajouter un membre <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" ></button>';
                     }
@@ -326,88 +324,80 @@ $linkpdo = connexionBd();
                 <?php
                 if (isset($_GET['id'])) {
                     //<!---- menu droit information ---->
-                    echo "<div class=\"case-membre_1\">";
-                    echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
-                    echo "</div>";
-
-                    echo "<div class='grille_2_cases'>";
-
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\"> Nom :<strong> " . htmlspecialchars($nom_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>";
-                    echo "</div>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong>" . htmlspecialchars($adresse_membre) . ", " . htmlspecialchars($ville_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . " </strong> </p>";
-                    echo "</div>";
-
-                    echo "</div>";
-                    echo " <div class=\"case-membre_2\">";
+                    echo "
+                    <div class=\"case-membre_1\">
+                        <img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">
+                    </div>
+                    <div class='grille_2_cases'>
+                        <div class=\"case-3-infos\">
+                            <p class=\"info\"> Nom :<strong> " . htmlspecialchars($nom_membre) . "</strong></p>
+                            <p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>
+                            <p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>
+                        </div>
+                        <div class=\"case-3-infos\">
+                            <p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>
+                            <p class=\"info\">Adresse : <strong>" . htmlspecialchars($adresse_membre) . ", " . htmlspecialchars($ville_membre) . "</strong></p>
+                            <p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . " </strong> </p>
+                        </div>
+                    </div>
+                    <div class=\"case-membre_2\">
+                    ";
                     if ($_SESSION["role_user"] != 3) {
-                        echo "<button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog" . $_GET['id'] . "', this)\">Valider le compte de ce membre</button>";
-                        echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                        echo "<div role=\"dialog\" id=\"dialog" . $_GET['id'] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                        echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-                        echo "<p class='popup-txt'>Vous voulez valider le compte de ce membre dans l'application !</p>";
-                        echo "<div class=\"dialog_form_actions\">";
-                        echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                        echo '<a class="popup-btn" href="appel_fonction.php?appel=valide_membre&id='.$_GET['id'].'">Valider</a>';
-                        echo "</div>";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</div>";
+                        echo "
+                        <button class=\"certifmembre\" type=\"button\" onclick=\"openDialog('dialog" . $_GET['id'] . "', this)\">Valider le compte de ce membre</button>
+                        <div id=\"dialog_layer\" class=\"dialogs\">
+                            <div role=\"dialog\" id=\"dialog" . $_GET['id'] . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                                <form action=\"\" method=\"post\" class=\"dialog_form\">
+                                    <p class='popup-txt'>Vous voulez valider le compte de ce membre dans l'application !</p>
+                                    <div class=\"dialog_form_actions\">
+                                        <button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
+                                        <a class=\"popup-btn\" href=\"appel_fonction.php?appel=valide_membre&id=".$_GET['id']."\">Valider</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        ";
                     }
                 }
                 if (isset($_GET['idv'])) {
                     $idiv = $_GET['idv'];
                     //<!---- menu droit information ---->
-                    echo "<div class=\"case-membre_1\">";
-                    echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
-                    echo "</div>";
-
-                    echo "<div class='grille_2_cases'>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">  Nom :<strong>" . htmlspecialchars($nom_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Role de l'utilisateur : <strong>$role</strong></p>";
-
-
-                    echo "</div>";
-
-                    echo "<div class=\"case-3-infos\">";
-                    echo "<p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>";
-                    echo "<p class=\"info\">Adresse : <strong> " . htmlspecialchars($adresse_membre) . ", " . htmlspecialchars($ville_membre) . " </strong></p>";
-                    echo "<p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . "</strong> </p>";
-                    echo "</div>";
-
-                    echo "</div>";
-
-                    echo " <div class=\"case-membre_2\">";
+                    echo "
+                    <div class=\"case-membre_1\">
+                        <img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">
+                    </div>
+                    <div class='grille_2_cases'>
+                        <div class=\"case-3-infos\">
+                            <p class=\"info\">  Nom :<strong>" . htmlspecialchars($nom_membre) . "</strong></p>
+                            <p class=\"info\">Prénom : <strong>" . htmlspecialchars($prenom_membre) . "</strong></p>
+                            <p class=\"info\">Date de naissance : <strong>" . htmlspecialchars($date_naissance_membre) . "</strong></p>
+                            <p class=\"info\">Role de l'utilisateur : <strong>$role</strong></p>
+                        </div>
+                        <div class=\"case-3-infos\">
+                            <p class=\"info\">Adresse mail : <strong>" . htmlspecialchars($courriel_membre) . "</strong></p>
+                            <p class=\"info\">Adresse : <strong> " . htmlspecialchars($adresse_membre) . ", " . htmlspecialchars($ville_membre) . " </strong></p>
+                            <p class=\"info\">Code postal : <strong> " . htmlspecialchars($code_postal_membre) . "</strong> </p>
+                        </div>
+                    </div>
+                    <div class=\"case-membre_2\">
+                    ";
                     if ($_SESSION["role_user"] != 3) {
                         if ($idiv != $_SESSION['logged_user']) {
                             if ($_GET["idv"] != 1) {
-
-
-                                echo "<button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI" . $idiv . "', this)\">Invalider le compte de ce membre</button>";
-
-                                echo "<div id=\"dialog_layer\" class=\"dialogs\">";
-                                echo "<div role=\"dialog\" id=\"dialogI" . $idiv . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-                                echo "<form action=\"\" method=\"post\" class=\"dialog_form\">";
-
-                                echo "<p class='popup-txt'>Voulez-vous invalider le compte de ce membre dans l'application ?</p>";
-                                echo "<div class=\"dialog_form_actions\">";
-                                echo "<button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>";
-                                echo '<a class="popup-btn" href="appel_fonction.php?appel=invalide_membre&id='.$idiv.'">Invalider</a>';
-                                echo "</div>";
-                                echo "</form>";
-                                echo "</div>";
-                                echo "</div>";
+                                echo "
+                                <button class=\"invalider\" type=\"button\" onclick=\"openDialog('dialogI" . $idiv . "', this)\">Invalider le compte de ce membre</button>
+                                <div id=\"dialog_layer\" class=\"dialogs\">
+                                    <div role=\"dialog\" id=\"dialogI" . $idiv . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                                        <form action=\"\" method=\"post\" class=\"dialog_form\">
+                                            <p class='popup-txt'>Voulez-vous invalider le compte de ce membre dans l'application ?</p>
+                                            <div class=\"dialog_form_actions\">
+                                                <button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
+                                                <a class=\"popup-btn\" href=\"appel_fonction.php?appel=invalide_membre&id=".$idiv."\">Invalider</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                ";
                             }
                         }
                     }
