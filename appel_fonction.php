@@ -191,12 +191,24 @@ if(isset($_GET['appel'])){
             break;
 
         case 'restaure_utilisateur':
+
             if(isset($_GET['id_user'])){
                 $id=$_GET['id_user'];
                 restaure_utilisateur($id, $linkpdo);
                 header('Location:page_certif_compte.php?idv='.$id); 
             }else{
                 header('Location:archive_membre.php'); 
+            }
+            break;
+
+
+         case 'restaure_profil_enfant':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                restaure_profil_enfant($id, $linkpdo);
+                header('Location:index.php?id='.$id); 
+            }else{
+                header('Location:archive_profil_enfant.php'); 
             }
             break;
 

@@ -755,6 +755,15 @@ function restaure_utilisateur($id, $linkpdo){
         }
 }
 
+function restaure_profil_enfant($id, $linkpdo){
+    $req = "UPDATE `enfant` SET `visibilite` = '0' WHERE `id_enfant` =$id ;";
+    try {
+        $linkpdo->query($req);
+    } catch (Exception $e) { 
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
 function archive_membre($id, $linkpdo){
 
         $req = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id ;";

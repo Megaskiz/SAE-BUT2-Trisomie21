@@ -1,43 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
-
 <?php
 require_once('fonctions.php');
 is_logged();
 is_validateur();
 
 $linkpdo = connexionBd();
-
-
-if (isset($_GET['id_putback'])) {
-
-    $req = $linkpdo->prepare('UPDATE enfant SET visibilite = "0" where id_enfant = ' . $_GET['id_putback']);
-
-    if ($req == false) {
-        die("erreur linkpdo");
-    }
-    
-    try {
-
-        $req->execute(array());
-        // $req->debugDumpParams();
-        // exit();
-        header("Location:index.php");
-
-        if ($req == false) {
-            $req->debugDumpParams();
-            die("erreur execute");
-        } else {
-            echo "<a href=\"index.php\"> recharger la page</a>";
-        }
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-
-
 ?>
-
+<!DOCTYPE html>
+<html lang="fr" style="font-family: Arial,sans-serif;">
 <head>
     <meta charset="utf-8">
     <title> Menu principal </title>
@@ -74,16 +43,18 @@ if (isset($_GET['id_putback'])) {
                 $nombre_ligne = $res->rowCount();
                 $liste = array();
 
-                echo "<div class='liste-enfant'>";
-                echo "<div class=\"recherche\">
+                echo "
+                <div class='liste-enfant'>
+                <div class=\"recherche\">
                 <form class='recherche' method=\"post\" action=\"search.php\">
                 <div>
                 <input class=\"input_recherche\" type=\"text\" placeholder=\"Mots-clés ...\" id=\"keywords\" name=\"keywords\" required> 
                 </div>
                 <input class=\"bouton_recherche\" type=\"submit\" value=\" &#x1F50E;\">
                 </form>
-                </div>";
-                echo "<table >";
+                </div>
+                <table >
+                ";
 
                 for ($i = 0; $i < $nombre_ligne; $i++) {
 
@@ -187,8 +158,6 @@ if (isset($_GET['id_putback'])) {
 
 
                     echo " <div class=\"div-modif-enfant\">";
-                    // acces modif enfant
-
                     echo "</div>";
 
                     echo "<center>";
@@ -197,7 +166,7 @@ if (isset($_GET['id_putback'])) {
                     echo "<p class='popup-txt' > Voulez-vous restaurer le compte de cet enfant ? Il sera visible par toutes les personnes l'ayant suivi </p>";
                     echo '<div style="display:flex; justify-content: space-evenly;">';
                     echo '<button class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
-                    echo '<a  class="popup-btn"  href="archive_profil_enfant.php?id_putback=' . $_GET["id"] . '">Valider</a>';
+                    echo '<a  class="popup-btn"  href="appel_fonction.php?appel=restaure_profil_enfant&id='.$_GET["id"].'">Valider</a>';
                     echo "</div>";
                     echo "</div>";
                     echo '<button class="button_ajouter-objectif" type="button" onclick="openDialog(\'dialog7\', this)">Supprimer ce profil</button>';
