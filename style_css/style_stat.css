@@ -2,6 +2,11 @@ a {
     text-decoration: none;
 }
 
+center {
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
 .titre_page {
     color: white;
     background-color: #007bff;
@@ -18,19 +23,16 @@ a {
     padding-bottom: 3%;
 }
 
-center {
-    border: 1px solid #000000;
-    border-radius: 10px;
-}
-
 .titre_stat {
     color: white;
     background-color: #007bff;
     border: transparent;
     margin: 2%;
-    padding: 2%;
+    padding: 10px 10%;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .case_stat {
@@ -62,14 +64,17 @@ center {
     background-color: #acd4ff;
 }
 
+
+
 button {
+    font-size: 14px;
     display: block;
     padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
+    color: white;
     background-color: #007bff;
     cursor: pointer;
     transition: all 0.3s;
     margin: 0.5px;
-    color: #fff;
 }
