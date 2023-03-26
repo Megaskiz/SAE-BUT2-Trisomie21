@@ -337,10 +337,15 @@ td {
         box-shadow: none;
     }
     
-    .default_dialog {
-        display: flex;
-    }
+   .popup_photo{
+    display: flex;
+   }
 
+
+   .separateur{
+    border: 1px solid black;
+    margin: 10px;
+    }
 
     /* Pop-up JS ajouter un enfant*/
     .hidden {
@@ -663,7 +668,7 @@ td {
 
     /*PHOTO*/
     .photo-enfant {
-        width: 40%;
+        width: 135px;
         border-radius: 20%;
         position: initial;
     }

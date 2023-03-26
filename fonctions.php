@@ -654,7 +654,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
     <button  class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog5', this)\">Modifier images</button>
     <div id=\"dialog_layer\" class=\"dialogs\">
         <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
-
+    <div class='popup_photo'>
             <div>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier le jeton</h2>
             <img class=\"photo-jeton\" src=\"" . htmlspecialchars($lien_jeton_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
@@ -668,6 +668,8 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
                 </div>
             </form>
             </div>
+
+            <div class=\"separateur\"></div>
 
 
             <div>
@@ -684,7 +686,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
             </form>
             </div>
 
-
+            </div>
         </div>
         
     </div>
@@ -699,7 +701,7 @@ function pop_in_archive_enfant($id_enfant)
         <p class='popup-txt'> Attention vous allez masquer l'affichage de cet enfant de l'application ! Il sera accesible seulement par les coordinateurs et adminstrateur ! Êtes vous sur de votre choix ? </p>
         <div class=\"dialog_form_actions\">
             <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-            <button class='popup-btn'> <a href=\"appel_fonction.php?appel=archive_enfant\"> Valider &#x2714;</a></button>
+            <a href=\"appel_fonction.php?appel=archive_enfant\"> <button class='popup-btn'>  Valider &#x2714; </button> </a>
         </div>
     </div>
     ";
