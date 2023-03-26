@@ -69,7 +69,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
                     echo $message_erreur;
                 }  ?></p>
             <div class="grille">
-                <img class="logo" src="/img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
+                <img class="logo" src="./img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                 <form action="" method="post" class="login-form">
                     <input type="text" name="courriel" placeholder="Adresse e-mail" />
                     <input type="password" name="password" placeholder="Mot de passe" />
