@@ -17,7 +17,7 @@ is_validateur();
 
 
 <?php
-echo '<a href="index.php?id=' . $_SESSION['id_enfant'] . '"><button>retour au menu</button></a>';
+echo '<a href="index.php?id=' . $_SESSION['id_enfant'] . '"><button class="acceder-information-enfant">Retour</button></a>';
 echo '<center class="titre_page"><h1>Statistiques 4 semaines</h1></center>';
 
 $linkpdo = connexionBd();
@@ -48,13 +48,13 @@ pour chaque sys faire :
 // je récupere tous le systèmes d'un enfant
 try {
   $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where visibilite=0 and id_enfant=$id_enfant");
-} catch (Exception $e) { 
+} catch (Exception $e) {
   die('Erreur : ' . $e->getMessage());
 }
 
 
-$double_tab = $res->fetchAll(); 
-$nombre_ligne = $res->rowCount(); 
+$double_tab = $res->fetchAll();
+$nombre_ligne = $res->rowCount();
 
 $liste_sys = array();
 $liste_nb_jetons = array();
@@ -103,13 +103,13 @@ foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nom
     die('Erreur : ' . $e->getMessage());
   }
 
-  $double_tab = $res->fetchAll(); 
+  $double_tab = $res->fetchAll();
 
   if ($double_tab != NULL) {
 
     $first_session = $double_tab[0][0];
 
-    $double_tab2 = $res2->fetchAll(); 
+    $double_tab2 = $res2->fetchAll();
     $last_session = $double_tab2[0][0];
   } else {
     $first_session = null;
@@ -131,12 +131,12 @@ foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nom
         $res = $linkpdo->query("SELECT date_heure from placer_jeton where id_objectif=$liste_sys[$iteration] and id_session=$i");
         //$res->debugDumpParams();
 
-      } catch (Exception $e) { 
+      } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
       }
 
       // pour chaque session je récup le nombre de jetohns placés 
-      $double_tab = $res->fetchAll(); 
+      $double_tab = $res->fetchAll();
       $nombre_jetons = $res->rowCount();
 
       //echo"Voici le nombre de jetons pour la session n°".$i." : ".$nombre_jetons;echo"<br>";
@@ -184,7 +184,7 @@ foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nom
         $res = $linkpdo->query("SELECT intitule from objectif where id_objectif=$liste_sys[$iteration]");
         //$res->debugDumpParams();
 
-      } catch (Exception $e) { 
+      } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
       }
 

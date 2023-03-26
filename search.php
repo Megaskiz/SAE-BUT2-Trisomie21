@@ -11,8 +11,8 @@ $linkpdo = connexionBd();
 
 <head>
     <meta charset="UTF-8">
-    <title>Administrateur</title>
-    <link rel="stylesheet" href="style_css/style_admin.css">
+    <title>Recherche</title>
+    <link rel="stylesheet" href="style_css/style_index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
 </head>
