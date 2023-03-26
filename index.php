@@ -45,12 +45,12 @@ $linkpdo = connexionBd();
 
 			try {
 				$res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
-			} catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+			} catch (Exception $e) { 
 				die('Erreur : ' . $e->getMessage());
 			}
 
-			$double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-			$nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+			$double_tab_tuteur = $res->fetchAll(); 
+			$nombre_ligne = $res->rowCount(); 
 			$liste = array();
 		}
 

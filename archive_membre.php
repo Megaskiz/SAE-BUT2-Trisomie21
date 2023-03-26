@@ -40,9 +40,9 @@ $linkpdo = connexionBd();
                         die('Erreur : ' . $e->getMessage());
                     }
 
-                    ///Affichage des entrées du résultat une à une
+                    
 
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $double_tab = $res->fetchAll(); 
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
                     echo "<div>";
@@ -67,7 +67,7 @@ $linkpdo = connexionBd();
                     }
                     echo "</table>";
 
-                    ///Fermeture du curseur d'analyse des résultats
+                    
                     $res->closeCursor();
                     ?>
                 </div>
@@ -78,14 +78,14 @@ $linkpdo = connexionBd();
         if (isset($_GET['idv'])) {
             $id = $_GET['idv'];
 
-            ///Sélection de tout le contenu de la table carnet_adresse
+            
             try {
                 $res = $linkpdo->query("SELECT * FROM membre,suivre where membre.id_membre='$id' ORDER BY nom;");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $double_tab = $res->fetchAll(); 
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
@@ -119,12 +119,12 @@ $linkpdo = connexionBd();
             
             try {
                 $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id' ORDER BY nom;");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $double_tab_tuteur = $res->fetchAll(); 
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
         }
         ?>

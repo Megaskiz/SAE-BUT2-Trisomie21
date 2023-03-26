@@ -48,11 +48,11 @@ switch ($_SESSION['type_rec']) {
         try {
             $res = $linkpdo->query("SELECT MAX(id_recompense) FROM recompense");
             $res2 = $linkpdo->query("SELECT MAX(id_objectif) FROM objectif");
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage()); 
         }
         
-        ///Affichage des entrées du résultat une à une
+        
         
         $double_tab = $res->fetchAll();
         $double_tab2 = $res2->fetchAll();
@@ -133,11 +133,11 @@ switch ($_SESSION['type_rec']) {
         try {
             $res = $linkpdo->query("SELECT MAX(id_recompense) FROM recompense");
             $res2 = $linkpdo->query("SELECT MAX(id_objectif) FROM objectif");
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage()); 
         }
         
-        ///Affichage des entrées du résultat une à une
+        
         
         $double_tab = $res->fetchAll();
         $double_tab2 = $res2->fetchAll();

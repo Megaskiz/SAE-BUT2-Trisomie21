@@ -47,29 +47,19 @@ if (isset($_GET['id_putback'])) {
 </head>
 
 <body>
-
-
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
     <?php create_header($linkpdo); ?>
-
-
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->
     <main>
-
         <nav class="left-contenu">
             <div style="display: flex; margin: 3%;">
                 <a class="retour" href="index.php"> Retour</a>
             </div>
-
-
-
             <?php
-            ///Sélection de tout le contenu de la table enfant
+            
             if ($_SESSION["role_user"] != 2) {
-
-
                 try {
                     //acces tous les enfants
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
@@ -80,8 +70,8 @@ if (isset($_GET['id_putback'])) {
                     die('Erreur : ' . $e->getMessage());
                 }
 
-                ///Affichage des entrées du résultat une à une
-                $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                
+                $double_tab = $res->fetchAll(); 
                 $nombre_ligne = $res->rowCount();
                 $liste = array();
 
@@ -117,7 +107,7 @@ if (isset($_GET['id_putback'])) {
 
                 echo "</table>";
 
-                ///Fermeture du curseur d'analyse des résultats
+                
                 $res->closeCursor();
             }
             ?>
@@ -132,14 +122,14 @@ if (isset($_GET['id_putback'])) {
 
 
 
-            ///Sélection de tout le contenu de la table carnet_adresse
+            
             try {
                 $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $double_tab = $res->fetchAll(); 
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
@@ -155,35 +145,23 @@ if (isset($_GET['id_putback'])) {
             $info_sup = $double_tab[0][8];
             $photo_enfant = $double_tab[0][9];
 
-
-
-
             try {
                 $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
 
-            ///Affichage des entrées du résultat une à une
+            
 
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $double_tab_tuteur = $res->fetchAll(); 
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
-
-            // print_r($double_tab_tuteur);
-            // exit();
 
 
             echo "</div>";
         }
-
-
         ?>
-
-
-
-
         <!--------------------------------------- menu information sur l'enfant (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_enfant">
@@ -278,9 +256,9 @@ if (isset($_GET['id_putback'])) {
                     }
 
 
-                    ///Affichage des entrées du résultat une à une
+                    
 
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $double_tab = $res->fetchAll(); 
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
 
@@ -556,7 +534,7 @@ if (isset($_GET['id_putback'])) {
                     }
                     echo "</table>";
 
-                    ///Fermeture du curseur d'analyse des résultats
+                    
                     $res->closeCursor();
 
 

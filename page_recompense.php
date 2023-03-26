@@ -120,7 +120,7 @@ try {
     catch (Exception $e) { // toujours faire un test de retour en cas de crash
         die('Erreur : ' . $e->getMessage());
     }    
-    $double_tab = $res -> fetchAll(); // je met le result de ma query dans un double tableau
+    $double_tab = $res -> fetchAll(); 
     $lignes = $res -> rowCount();
 ?>
 <table>

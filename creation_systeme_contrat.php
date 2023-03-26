@@ -16,7 +16,7 @@ if (isset($_GET['id_suppr'])) {
     try {
         $res = $linkpdo->query($req_suppr);
         header('Location: index.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }

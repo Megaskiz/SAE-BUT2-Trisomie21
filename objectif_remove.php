@@ -54,9 +54,9 @@ if (isset($_GET['case'])) {
         die('Erreur : ' . $e->getMessage());
     }
 
-    ///Affichage des entrées du résultat une à une
+    
 
-    $double_tab = $session_max_query->fetchAll(); // je met le result de ma query dans un double tableau
+    $double_tab = $session_max_query->fetchAll(); 
     $session_max = $double_tab[0][0];
 
     if ($session_max == NULL) {

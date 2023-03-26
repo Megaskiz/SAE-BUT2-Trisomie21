@@ -55,14 +55,14 @@ if (isset($_GET['id_putback'])) {
         $mail =  $_SESSION['login_user'];
         try {
             $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail' ORDER BY nom;");
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 
-        ///Affichage des entrées du résultat une à une
+        
 
-        $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-        $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+        $double_tab = $res->fetchAll(); 
+        $nombre_ligne = $res->rowCount(); 
         $liste = array();
         echo "<table>";
 
@@ -101,13 +101,13 @@ if (isset($_GET['id_putback'])) {
         </div>
             <?php
                 $id = $_SESSION['id_enfant'];
-                ///Sélection de tout le contenu de la table carnet_adresse
+                
                 try {
                     $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                } catch (Exception $e) { 
                     die('Erreur : ' . $e->getMessage());
                 }
-                ///Affichage des entrées du résultat une à une
+                
                 while ($data = $res->fetch()) {
                     
                     
@@ -141,14 +141,14 @@ if (isset($_GET['id_putback'])) {
 
 
 
-            ///Sélection de tout le contenu de la table carnet_adresse
+            
             try {
                 $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $double_tab = $res->fetchAll(); 
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
@@ -169,15 +169,15 @@ if (isset($_GET['id_putback'])) {
 
             try {
                 $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_enfant='$id'");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
 
-            ///Affichage des entrées du résultat une à une
+            
 
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $double_tab_tuteur = $res->fetchAll(); 
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
 
             // print_r($double_tab_tuteur);
@@ -209,9 +209,9 @@ if (isset($_GET['id_putback'])) {
                     }
 
 
-                    ///Affichage des entrées du résultat une à une
+                    
 
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $double_tab = $res->fetchAll(); 
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
 
@@ -368,7 +368,7 @@ if (isset($_GET['id_putback'])) {
                     }
                     echo "</table>";
 
-                    ///Fermeture du curseur d'analyse des résultats
+                    
                     $res->closeCursor();
 
 

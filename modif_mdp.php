@@ -16,7 +16,7 @@ if (isset($_GET['id_valider'])) {
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -26,7 +26,7 @@ if (isset($_GET['id_invalider'])) {
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -72,9 +72,9 @@ if (isset($_GET['id_invalider'])) {
                         die('Erreur : ' . $e->getMessage());
                     }
 
-                    ///Affichage des entrées du résultat une à une
+                    
 
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $double_tab = $res->fetchAll(); 
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
                     echo "<table class='no-break'>";
@@ -102,7 +102,7 @@ if (isset($_GET['id_invalider'])) {
                     }
                     echo "</table>";
                     
-                    ///Fermeture du curseur d'analyse des résultats
+                    
                     $res->closeCursor();
                     ///--------------------------------------------------------------------membre non valide-------------------------------------------
                     
@@ -114,9 +114,9 @@ if (isset($_GET['id_invalider'])) {
                         die('Erreur : ' . $e->getMessage());
                     }
 
-                    ///Affichage des entrées du résultat une à une
+                    
 
-                    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+                    $double_tab = $res->fetchAll(); 
                     $nombre_ligne = $res->rowCount();
                     $liste = array();
                     echo "<table>";
@@ -145,7 +145,7 @@ if (isset($_GET['id_invalider'])) {
                     }
                     echo "</table>";
 
-                    ///Fermeture du curseur d'analyse des résultats
+                    
                     $res->closeCursor();
                     ?>
         </nav>
@@ -167,15 +167,15 @@ if (isset($_GET['id_invalider'])) {
 // ne sert a rien je crois : 
             // try {
             //     $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id'");
-            // } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            // } catch (Exception $e) { 
             //     die('Erreur : ' . $e->getMessage());
             // }
 
 
-            // ///Affichage des entrées du résultat une à une
+            // 
 
-            // $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            // $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            // $double_tab_tuteur = $res->fetchAll(); 
+            // $nombre_ligne = $res->rowCount(); 
             // $liste = array();
         }
         ?>

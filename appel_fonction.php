@@ -100,7 +100,7 @@ if(isset($_GET['appel'])){
             try {
                 $res = $linkpdo->query($requete_verif_enfant);
                 $count = $res->fetchColumn();
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
             if ($count > 0) {
@@ -130,7 +130,7 @@ if(isset($_GET['appel'])){
             // Execution de la requete
             try {
                 $res = $linkpdo->query($requete_verif_mail);
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 

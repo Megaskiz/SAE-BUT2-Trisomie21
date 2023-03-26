@@ -15,7 +15,7 @@ if (isset($_GET['id_valider'])) {
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -25,7 +25,7 @@ if (isset($_GET['id_invalider'])) {
     try {
         $res = $linkpdo->query($req_add);
         header('Location: page_certif_compte.php');
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -85,14 +85,14 @@ if (isset($_GET['id_invalider'])) {
 
 
 
-            ///Sélection de tout le contenu de la table carnet_adresse
+            
             try {
                 $res = $linkpdo->query("SELECT * FROM membre where id_membre='$id' ORDER BY nom;");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
-            $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+            $double_tab = $res->fetchAll(); 
             $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
             $liste = array();
 
@@ -109,15 +109,15 @@ if (isset($_GET['id_invalider'])) {
 
             try {
                 $res = $linkpdo->query("SELECT * FROM suivre natural join membre  where id_membre='$id' ORDER BY nom;");
-            } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+            } catch (Exception $e) { 
                 die('Erreur : ' . $e->getMessage());
             }
 
 
-            ///Affichage des entrées du résultat une à une
+            
 
-            $double_tab_tuteur = $res->fetchAll(); // je met le result de ma query dans un double tableau
-            $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+            $double_tab_tuteur = $res->fetchAll(); 
+            $nombre_ligne = $res->rowCount(); 
             $liste = array();
     
  

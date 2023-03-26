@@ -21,7 +21,7 @@ try {
 } catch (Exception $e) { // toujours faire un test de retour en cas de crash
     die('Erreur : ' . $e->getMessage());
 }
-$double_tab = $session_max_query->fetchAll(); // je met le result de ma query dans un double tableau
+$double_tab = $session_max_query->fetchAll(); 
 $session_max = $double_tab[0][0];
 
 if ($session_max == NULL) {
@@ -38,7 +38,7 @@ if ($session_max == NULL) {
         $req5->execute(array('un' => $id, 'deux' => date("Y/m/d H:i:s"), 'trois' => $_SESSION['logged_user'], 'quatre' => 1));
         // $req5 -> debugDumpParams();
         // exit();
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 } else {
@@ -51,7 +51,7 @@ if ($session_max == NULL) {
         die('Erreur : ' . $e->getMessage());
     }
 
-    ///Affichage des entrées du résultat une à une
+    
 
     $double_tab = $jeton_premier_query->fetchAll();
 
@@ -63,14 +63,14 @@ if ($session_max == NULL) {
         $req5->execute(array('nouvelle_heure' => date("Y/m/d H:i:s"), 'id_session' => $session_actuelle, 'ancienne_date' => $jeton_premier,));
 
         //$req5 -> debugDumpParams();
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
     // remise a 0 du système :
     try {
         $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id");
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
     $double_tab = $res->fetchAll();
@@ -85,7 +85,7 @@ if ($session_max == NULL) {
         $req5->execute(array('intit' => $MaVariable, 'id' => $id,));
 
         //$req5 -> debugDumpParams();
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }

@@ -32,16 +32,16 @@ $linkpdo = connexionBd();
                 <a class="retour" href="index.php?id=<?php echo $_SESSION['id_enfant']  ?>"> <button class="button-retour">Retour</button> </a>
                 <?php
                 $id = $_SESSION['id_enfant'];
-                ///Sélection de tout le contenu de la table carnet_adresse
+                
                 try {
                     $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-                } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+                } catch (Exception $e) { 
                     die('Erreur : ' . $e->getMessage());
                 }
 
 
 
-                ///Affichage des entrées du résultat une à une
+                
                 while ($data = $res->fetch()) {
                     echo '<div class="div-photo-enfant">';
                     echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"visage de : " . $data['prenom'] . "\">";

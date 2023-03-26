@@ -39,7 +39,7 @@ if (
         // Execution de la requete
         try {
             $res = $linkpdo->query($requete_verif_mail);
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 

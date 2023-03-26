@@ -108,7 +108,7 @@ $linkpdo = connexionBd();
 
                 echo "</table>";
 
-                ///Fermeture du curseur d'analyse des résultats
+                
                 /// $res->closeCursor();
             }
             ?>

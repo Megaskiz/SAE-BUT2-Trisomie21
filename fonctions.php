@@ -26,14 +26,14 @@ function create_header($linkpdo)
     $mail =  $_SESSION['login_user'];
     try {
         $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
-    ///Affichage des entrées du résultat une à une
+    
 
-    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
-    $nombre_ligne = $res->rowCount(); // =2 car il y a 2 ligne dans ma base
+    $double_tab = $res->fetchAll(); 
+    $nombre_ligne = $res->rowCount(); 
     $liste = array();
     echo "<table>";
 
@@ -154,8 +154,8 @@ function create_nav($linkpdo)
             die('Erreur : ' . $e->getMessage());
         }
 
-        ///Affichage des entrées du résultat une à une
-        $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+        
+        $double_tab = $res->fetchAll(); 
         $nombre_ligne = $res->rowCount();
         $liste = array();
 
@@ -191,7 +191,7 @@ function create_nav($linkpdo)
 
         echo "</table>";
 
-        ///Fermeture du curseur d'analyse des résultats
+        
         $res->closeCursor();
     }
     echo "
@@ -202,14 +202,14 @@ function create_nav($linkpdo)
 function create_section_info_enfant($linkpdo, $id_enfant)
 {
 
-    ///Sélection de tout le contenu de la table carnet_adresse
+    
     try {
         $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id_enfant'");
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
-    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+    $double_tab = $res->fetchAll(); 
     $nombre_ligne = $res->rowCount(); // =1 car il y a 1 ligne dans ma requete
     $liste = array();
 
@@ -361,8 +361,8 @@ function create_section_info_sys($linkpdo, $id_enfant)
     } catch (Exception $e) { // toujours faire un test de retour en cas de crash
         die('Erreur : ' . $e->getMessage());
     }
-    ///Affichage des entrées du résultat une à une
-    $double_tab = $res->fetchAll(); // je met le result de ma query dans un double tableau
+    
+    $double_tab = $res->fetchAll(); 
     $nombre_ligne = $res->rowCount();
     $liste = array();
 
@@ -590,7 +590,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
         }
     }
     echo "</table>";
-    ///Fermeture du curseur d'analyse des résultats
+    
     $res->closeCursor();
 }
 
@@ -741,7 +741,7 @@ function eject($Sid, $id_eject, $linkpdo)
     try {
         $res = $linkpdo->query($req_eject);
         header('Location: index.php?id=' . $_SESSION['id_enfant']);
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -751,7 +751,7 @@ function restaure_utilisateur($id, $linkpdo){
         $req = "UPDATE `membre` SET `visibilite` = '0' WHERE `membre`.`id_membre` =$id ;";
         try {
             $linkpdo->query($req);
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 }
@@ -761,7 +761,7 @@ function archive_membre($id, $linkpdo){
         $req = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id ;";
         try {
             $linkpdo->query($req);
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 }
@@ -770,7 +770,7 @@ function valide_membre($id, $linkpdo){
         $req = "UPDATE `membre` SET `compte_valide` = '1' WHERE `membre`.`id_membre` =$id ;";
         try {
             $linkpdo->query($req);
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 }
@@ -780,7 +780,7 @@ function invalide_membre($id, $linkpdo){
         $req = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id ;";
         try {
             $linkpdo->query($req);
-        } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+        } catch (Exception $e) { 
             die('Erreur : ' . $e->getMessage());
         }
 }
@@ -897,7 +897,7 @@ function modif_jeton($id, $photo_enfant, $linkpdo)
     try {
         $res = $linkpdo->query($reqM);
         //echo $reqM;
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -908,7 +908,7 @@ function modif_photo($id, $photo_enfant, $linkpdo)
     try {
         $res = $linkpdo->query($reqM);
         //echo $reqM;
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 }
@@ -1321,7 +1321,7 @@ function afficher_systeme($type, $param, $linkpdo, $id)
     try {
         $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
         $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=" . $_SESSION['id_enfant'] . "");
-    } catch (Exception $e) { // toujours faire un test de retour au cas ou ça crash
+    } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
 
@@ -1431,7 +1431,7 @@ function verifie_session_echue($session_max, $id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 
-    ///Affichage des entrées du résultat une à une
+    
 
     $double_tab = $jeton_premier_query->fetchAll();
     $double_tab2 = $duree_sys_query->fetchAll();
