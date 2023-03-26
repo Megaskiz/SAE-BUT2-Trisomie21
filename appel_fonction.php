@@ -163,7 +163,7 @@ if(isset($_GET['appel'])){
         case 'supprime_objectif':
             if(isset($_GET['id_sys'])){
                 $sys=$_GET['id_sys'];
-                $returne = supprime_objectif($sys, $linkpdo);
+                supprime_objectif($sys, $linkpdo);
                 header('Location:archive_sys.php'); 
             }else{
                 header('Location:archive_sys.php'); 
@@ -173,7 +173,7 @@ if(isset($_GET['appel'])){
         case 'supprime_profil_enfant':
             if(isset($_GET['id_enfant'])){
                 $sys=$_GET['id_enfant'];
-                $returne = supprime_profil_enfant($sys, $linkpdo);
+                supprime_profil_enfant($sys, $linkpdo);
                 header('Location:archive_profil_enfant.php'); 
             }else{
                 header('Location:archive_profil_enfant.php'); 
@@ -182,13 +182,25 @@ if(isset($_GET['appel'])){
 
         case 'supprime_utilisateur':
             if(isset($_GET['id_user'])){
-                $sys=$_GET['id_user'];
-                $returne = supprime_utilisateur($sys, $linkpdo);
+                $id=$_GET['id_user'];
+                supprime_utilisateur($id, $linkpdo);
                 header('Location:archive_membre.php'); 
             }else{
                 header('Location:archive_membre.php'); 
             }
             break;
+
+        case 'restaure_utilisateur':
+
+            if(isset($_GET['id_user'])){
+                $id=$_GET['id_user'];
+                restaure_utilisateur($id, $linkpdo);
+                header('Location:page_certif_compte.php?idv='.$id); 
+            }else{
+                header('Location:archive_membre.php'); 
+            }
+            break;
+        
 
 
         case 'purge_image':
