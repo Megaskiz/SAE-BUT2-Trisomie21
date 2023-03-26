@@ -105,16 +105,17 @@
     ?>
 
     <table style="margin: auto;">
+    <caption></caption>
         <tr>
-            <td>
+            <th>
                 <p>Nom de la récompense</p>
-            </td>
-            <td>
+            </th>
+            <th>
                 <p>Description de la récompense</p>
-            </td>
-            <td>
+            </th>
+            <th>
                 <p>image de la récompense</p>
-            </td>
+            </th>
         </tr>
         <?php
         for ($i = 0; $i < $lignes; $i++) { //affichage des récompenses ATTENTION il faut faire l'affichage de l'image de la récompense
