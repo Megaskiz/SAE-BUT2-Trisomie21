@@ -400,36 +400,28 @@ td {
 
 
 
-    .retour {
+    .button-retour {
         display: inline-block;
         position: initial;
         padding: 10px 20px;
-        margin: auto;
+        margin: 10px;
         font-size: 16px;
         border: none;
+        color: white;
         border-radius: 5px;
         background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
-
     }
 
-
-    .retour:hover {
+    .button-retour:hover {
         background-color: #fec107;
     }
-
-
-    .button-retour{
-        background-color: transparent;
-        border: none;
-    }
-
 
     .detail1,
     .detail2,
     .detail3,
-    .detail4{    
+    .detail4 {
         border: none;
         cursor: pointer;
         color: black;
@@ -440,24 +432,24 @@ td {
         font-size: 14px;
         transition: 0.5s;
         display: none;
-     
+
     }
 
     .detail1:hover:before,
     .detail2:hover:before,
     .detail3:hover:before,
-    .detail4:hover:before{
+    .detail4:hover:before {
         width: 52vh;
         height: 25vh;
         border-radius: 10px;
         left: 0px;
-        top:0px;
-        position:absolute;
+        top: 0px;
+        position: absolute;
         background-color: whitesmoke;
-              
+
     }
 
-    .detail1:hover::before{
+    .detail1:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -466,7 +458,7 @@ td {
         content: "Objectif de type 'chargement', organisé comme une barre de progression qui avance, au fur et à mesure que les jetons sont placés";
     }
 
-    .detail2:hover::before{
+    .detail2:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -475,7 +467,7 @@ td {
         content: "Objectif qui se compose de tâches qui se répetent sur 1 semaine";
     }
 
-    .detail3:hover::before{
+    .detail3:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -484,7 +476,7 @@ td {
         content: "L'objectif est orienté vers un prix unique";
     }
 
-    .detail4:hover::before{
+    .detail4:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -557,8 +549,6 @@ td {
     .annuler:hover {
         background-color: #d14a3c;
     }
-
-
 
 
 
@@ -668,17 +658,17 @@ td {
 
 
 
-    
+
     .retour:hover {
         background-color: #fec107;
     }
 
 
-    .button-retour{
+    .button-retour {
         background-color: transparent;
         border: none;
     }
-    
+
 
 
 
@@ -715,7 +705,7 @@ td {
         justify-content: center;
         flex-direction: row;
         margin-top: 5%;
-        
+
     }
 
     .valider {
@@ -771,7 +761,7 @@ td {
         color: black;
         padding: 10px 5%;
         border-radius: 10px;
-     margin: auto;
+        margin: auto;
         width: 65%;
     }
 
@@ -785,9 +775,9 @@ td {
 
     .photo-enfant {
         display: grid;
-    text-align: center;
-    border-radius: 5px;
-    height: 10vh;
+        text-align: center;
+        border-radius: 5px;
+        height: 10vh;
 
     }
 
@@ -799,7 +789,7 @@ td {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 2fr 1fr 1fr 1fr;
         justify-items: center;
-        
+
     }
 
     .forme .choix-objectif input,
@@ -872,7 +862,7 @@ td {
 
     .id-enfant,
     .id-enfants,
-    .id-enfan  {
+    .id-enfan {
         /*place le texte au mileu*/
         display: flex;
         justify-content: center;
@@ -896,14 +886,15 @@ td {
 @media screen and (max-width: 730px) {
 
 
-    html{
+    html {
         font-size: 10px;
     }
+
     header {
         height: 8vh;
     }
 
-    body{
+    body {
         height: 100vh;
     }
 
@@ -928,10 +919,11 @@ td {
         border-radius: 5px;
     }
 
-    a{
+    a {
         font-size: 12px;
+        color: #fff;
     }
-   
+
 
 
 
@@ -998,7 +990,8 @@ td {
         width: 25vh;
     }
 
-    .choix-objectif, .choix-recompense {
+    .choix-objectif,
+    .choix-recompense {
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
@@ -1033,9 +1026,12 @@ td {
         font-size: 12px;
     }
 
-    .id-age, .id-nom,
-    .id-enfant, .id-enfan,
-    .id-prenm, .id-adresse,
+    .id-age,
+    .id-nom,
+    .id-enfant,
+    .id-enfan,
+    .id-prenm,
+    .id-adresse,
     .id-activite {
         display: flex;
         align-items: center;
@@ -1058,5 +1054,3 @@ td {
 
 
 }
-
-

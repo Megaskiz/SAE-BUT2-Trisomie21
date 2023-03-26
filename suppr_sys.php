@@ -1,12 +1,11 @@
 <?php
-
+require_once('fonctions.php');
 session_start();
 
 $id_sys = $_GET['id_sys'];
 
 $linkpdo = connexionBd();
 
-   
 /*
 - la table système
 */

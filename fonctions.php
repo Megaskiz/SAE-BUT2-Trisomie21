@@ -578,7 +578,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                         <p class='popup-txt'> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive.</p>
                                         <div class=\"dialog_form_actions\">
                                             <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-                                                <a  href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"> <button> Archiver cet objectif </button> </a>
+                                                <a  href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"> <button class='popup-btn'> Archiver cet objectif </button> </a>
 								        </div>
                                     </div>
                                 </div>";
