@@ -5,6 +5,9 @@
 
 function connexionBd()
 {
+
+    // mettre le mdp dans un fichier, appeler ce fichier pour le récup, mais ne pas metre le fichier sur le git
+    
     //3wMb5!B2806p
     return new PDO("mysql:host=localhost;dbname=bddsae", "root", "3wMb5!B2806p");
 }
