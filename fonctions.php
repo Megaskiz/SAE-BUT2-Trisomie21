@@ -5,9 +5,9 @@
 
 function connexionBd()
 {
-    //3wMb5!B2806p
-    return new PDO("mysql:host=localhost;dbname=bddsae", "root", "3wMb5!B2806p");
+    return new PDO("mysql:host=localhost;dbname=sae", "sae", "XkQQCQUD0azqRP7R");
 }
+
 
 function filter_spaces($var)
 {
