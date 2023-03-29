@@ -1435,7 +1435,7 @@ function verifie_session_echue($session_max, $id, $linkpdo)
         //je recupere la date du premier jeton placé pour cette session dans ce sys
         $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
         // je recupere la duree totale du sys prevu
-        $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
+        $duree_sys_query = $linkpdo->query("SELECT duree from objectif where id_objectif=" . $id);
     } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
