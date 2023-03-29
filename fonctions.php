@@ -20,8 +20,8 @@ function create_header($linkpdo)
 {
 
     echo '<header>
-        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l\'utilisateur">
+        <img class="logo-association" src="img/logo_trisomie.png" alt="logo de l\'association">
+        <img class="img-user" src="img/user_logo.png" alt="tete de l\'utilisateur">
         ';
 
     $mail =  $_SESSION['login_user'];
@@ -61,10 +61,7 @@ function create_header($linkpdo)
 function create_nav($linkpdo)
 {
     echo '
-    <div  class="open" onclick="openMenu()"> ☰</div>
-    
             <nav  class="left-contenu">
-            <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Affichage Enfant</a>
@@ -317,7 +314,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
         }
         echo "
 								<div class='popup_info'>
-									<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
+									<img class=\"img_equipe\" src=\"img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
 									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " .  $role . "    
 									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
 									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
@@ -487,7 +484,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                             if ($message['id_membre'] == $_SESSION['logged_user']) {
                         ?>
                                 <div class="chat_msgR">
-                                    <img class="chat_img_R" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                                    <img class="chat_img_R" src="img/user_logo.png" alt="tete de l'utilisateur">
                                     <div class="chat_vous">
                                         <div class="chat_info">
                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
@@ -500,7 +497,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                             } else {
                             ?>
                                 <div class="chat_msgL">
-                                    <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tête de l'utilisateur">
+                                    <img class="chat_img_L" src="img/user_logo.png" alt="tête de l'utilisateur">
                                     <div class="chat_autre">
                                         <div class="chat_info">
                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
