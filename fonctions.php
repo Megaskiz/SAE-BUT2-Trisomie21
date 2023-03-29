@@ -1450,9 +1450,14 @@ function verifie_session_echue($session_max, $id, $linkpdo)
 
     $duree_sys_en_seconde = $duree_sys * 3600;
 
-    $secondes_premier_jeton = strtotime($jeton_premier);
+    $temps_total =  $duree_sys_en_seconde + strtotime($jeton_premier);
 
-    return $secondes_premier_jeton + $duree_sys_en_seconde < time();
+
+    if(($temps_total-time())>0){
+        return true;
+    }else{
+        return false;
+    };
 }
 
 function inverse_utilisation_objectif($sys, $val, $linkpdo)

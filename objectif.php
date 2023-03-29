@@ -157,6 +157,8 @@ $linkpdo = connexionBd();
                         $double_tab = $session_max_query->fetchAll(); 
                         $session_max = $double_tab[0][0];
 
+                        echo(verifie_session_echue($session_max, $id, $linkpdo));
+
                         if ($session_max == NULL) { // vérification du timer     
                             //mettre le bouton qui propose de créer une nouvelle session
         
