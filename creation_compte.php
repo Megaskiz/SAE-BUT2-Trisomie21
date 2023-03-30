@@ -24,11 +24,9 @@ if (
     $ddn =  htmlspecialchars($_POST['ddn']);
     $Mdp =  htmlspecialchars($_POST['password']);
     $Mdp_verif =  htmlspecialchars($_POST['password_verif']);
-    $pro =  htmlspecialchars($_POST['pro']);
 
     // fonction qui hash le mot de passe
-    $mot = "ZEN02anWobA4ve5zxzZz" . $Mdp; // je rajoute une chaine que je vais ajouter au mot de passe
-    $insert_mdp = hash('sha256', $mot);
+    $insert_mdp = password_hash($Mdp, PASSWORD_BCRYPT );
 
     if ($Mdp == $Mdp_verif) {
         // requete avec le mail si, rowcount() > 0 faire fail
@@ -49,8 +47,8 @@ if (
 
             // je creé la requete d'insertion 
 
-            $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
-                    VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :pro, :compte_valide)');
+            $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp,  compte_valide)
+                    VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :compte_valide)');
 
             if ($req == false) {
                 die("erreur linkpdo");

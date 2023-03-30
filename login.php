@@ -5,33 +5,27 @@ $linkpdo=connexionBd();
 // Je récupère les informations de mon formulaire
 if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
     $courriel = $_POST['courriel'];
-    $mdp_test = hash('sha256', "ZEN02anWobA4ve5zxzZz" . $_POST['password']);
+    $mdp_test = $_POST['password'];
+    //$mdp_test = hash('sha256', "ZEN02anWobA4ve5zxzZz" . $_POST['password']);
     
-    // Je créé la requête préparée avec des paramètres nommés
-    $query = "SELECT count(*) FROM membre WHERE courriel=:courriel AND mdp=:mdp";
+    // Je récupère le mot de passe hashé correspondant à l'adresse email fournie
+    $query = "SELECT id_membre, compte_valide, pro, role_user, mdp FROM membre WHERE courriel=:courriel";
     $stmt = $linkpdo->prepare($query);
     $stmt->bindParam(':courriel', $courriel, PDO::PARAM_STR);
-    $stmt->bindParam(':mdp', $mdp_test, PDO::PARAM_STR);
     $stmt->execute();
 
-    // Je récupère le nombre de résultats
-    $count = $stmt->fetchColumn();
-    
     // Je récupère les informations sur le compte de l'utilisateur
-    $query2 = "SELECT id_membre, compte_valide, pro, role_user FROM membre WHERE courriel=:courriel AND mdp=:mdp";
-    $stmt2 = $linkpdo->prepare($query2);
-    $stmt2->bindParam(':courriel', $courriel, PDO::PARAM_STR);
-    $stmt2->bindParam(':mdp', $mdp_test, PDO::PARAM_STR);
-    $stmt2->execute();
-    $valide = $stmt2->fetchAll();
+    $valide = $stmt->fetchAll();
 
     if (count($valide) != 0) {
         $id = $valide[0][0];
         $compte_valide = $valide[0][1];
         $role = $valide[0][3];
+        $hashed_password = $valide[0][4];
 
-        if ($count == 1 && $compte_valide == 1) {
-            session_start();
+        if (password_verify($mdp_test, $hashed_password)) {
+            if($compte_valide==1){
+                session_start();
             $_SESSION['login_user'] = $courriel;
             $_SESSION['logged_user'] = $id;
             $_SESSION['role_user'] = $role;
@@ -41,8 +35,11 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
             } else {
                 header("location: index.php");
             }
+            }else{
+                $message_erreur = "Votre compte n'est pas encore validé";
+            }
         } else {
-            $message_erreur = "Votre compte n'est pas encore validé";
+            $message_erreur = "Identifiant ou mot de passe invalide";
         }
     } else {
         $message_erreur = "Identifiant ou mot de passe invalide";

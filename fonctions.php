@@ -6,7 +6,8 @@
 //fonction pour se connecter à la base de données avec PDO
 function connexionBd()
 {
-    return new PDO("mysql:host=localhost;dbname=sae", "sae", "XkQQCQUD0azqRP7R");
+    $mdp ='XkQQCQUD0azqRP7R';
+    return new PDO("mysql:host=localhost;dbname=sae", "sae", $mdp);
 }
 
 //fonction pour filtrer les espaces dans une chaine de caractère
@@ -1191,78 +1192,58 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
 }
 
 // ------------------------------------- fonctions pour les images -----------------------------------------------------------
-
-/**
- * Fonction qui permet d'uploader une photo
- * @param $photo : photo
- * @param $session : id du membre
- * @param $linkpdo : lien pdo
- * 
- * @return void
- */
-function uploadVisage($photo)
-{
-
-    if (isset($photo)) {
-        $tmpName = $photo['tmp_name'];
-        $name = $photo['name'];
-        $size = $photo['size'];
-        $error = $photo['error'];
-
-        $tabExtension = explode('.', $name);
-        $extension = strtolower(end($tabExtension));
-
-        $extensions = ['jpg', 'png', 'jpeg', 'gif', 'svg', 'webp', 'bmp'];
-        $maxSize = 400000000000;
-
-        if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
-
-            $uniqueName = uniqid('', true);
-            //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-            $file = $uniqueName . "." . $extension;
-            $chemin = "images/";
-            //$file = 5f586bf96dcd38.73540086.jpg
-            move_uploaded_file($tmpName, 'visage/' . $file);
-            $result = $chemin . $file;
-        }
-    } else {
-        echo '<h1>erreur</h1>';
-    }
-    return $result;
-}
-
-/**
- * Fonction qui permet d'uploader une photo
- * @param $photo : photo
- * @param $session : id du membre
- * @param $linkpdo : lien pdo
- * 
- * @return void
- */
 function uploadImage($photo)
 {
-
     if (isset($photo)) {
-        $tmpName = $photo['tmp_name'];
-        $name = $photo['name'];
-        $size = $photo['size'];
-        $error = $photo['error'];
+        // File information
+        $uploaded_name = $photo['name'];
+        $uploaded_ext  = strtolower(substr($uploaded_name, strrpos($uploaded_name, '.') + 1));
+        $uploaded_size = $photo['size'];
+        $uploaded_tmp  = $photo['tmp_name'];
+        $uploaded_error = $photo['error'];
 
-        $tabExtension = explode('.', $name);
-        $extension = strtolower(end($tabExtension));
+        // Where are we going to be writing to?
+        $target_path   = "images/";
+        $target_file   =  md5(uniqid() . $uploaded_name) . '.' . $uploaded_ext;
+        $temp_file     = ( ( ini_get( 'upload_tmp_dir' ) == '' ) ? ( sys_get_temp_dir() ) : ( ini_get( 'upload_tmp_dir' ) ) );
+        $temp_file    .= DIRECTORY_SEPARATOR . md5( uniqid() . $uploaded_name ) . '.' . $uploaded_ext;
 
+        // Is it an image?
         $extensions = ['jpg', 'png', 'jpeg', 'gif', 'svg', 'webp', 'bmp'];
-        $maxSize = 400000000000;
+        $maxSize = 1000000; // 1MB
+        if( in_array($uploaded_ext, $extensions) &&
+            ( $uploaded_size < $maxSize ) &&
+            ( $uploaded_error == 0 ) &&
+            getimagesize( $uploaded_tmp ) ) {
 
-        if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+            // Strip any metadata, by re-encoding image (Note, using php-Imagick is recommended over php-GD)
+            if( $uploaded_ext == 'jpg' || $uploaded_ext == 'jpeg' ) {
+                $img = imagecreatefromjpeg( $uploaded_tmp );
+                imagejpeg( $img, $temp_file, 100);
+            }
+            else {
+                $img = imagecreatefrompng( $uploaded_tmp );
+                imagepng( $img, $temp_file, 9);
+            }
+            imagedestroy( $img );
 
-            $uniqueName = uniqid('', true);
-            //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-            $file = $uniqueName . "." . $extension;
-            $chemin = "images/";
-            //$file = 5f586bf96dcd38.73540086.jpg
-            move_uploaded_file($tmpName, 'images/' . $file);
-            $result = $chemin . $file;
+            // Can we move the file to the web root from the temp folder?
+            if( rename( $temp_file, ( getcwd() . DIRECTORY_SEPARATOR . $target_path . $target_file ) ) ) {
+                // Yes!
+                $result = $target_path . $target_file;
+            }
+            else {
+                // No
+                echo '<pre>Your image was not uploaded.</pre>';
+            }
+
+            // Delete any temp files
+            if( file_exists( $temp_file ) )
+                unlink( $temp_file );
+        }
+        else {
+            // Invalid file
+            echo '<pre>Your image was not uploaded. We can only accept JPEG, PNG, GIF, SVG, WEBP or BMP images up to 1MB.</pre>';
         }
     } else {
         echo '<h1>erreur</h1>';
@@ -1591,32 +1572,34 @@ function afficher_systeme($type, $param, $linkpdo, $id)
     echo "<div class=\"sys\" style=\"margin-left: auto;margin-right: auto;\">";
     echo "<table>";
     if ($type == "routine") {
-        echo "<tr>";
-        echo "<td class=\"struct\">";
-        echo "<p></p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Lundi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Mardi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Mercredi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Jeudi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Vendredi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Samedi</p>";
-        echo "</td>";
-        echo "<td class=\"struct\">";
-        echo "<p>Dimanche</p>";
-        echo "</td>";
-        echo "</tr>";
+        echo "
+        <tr>
+            <td class=\"struct\">
+                <p></p>
+            </td>
+            <td class=\"struct\">
+                <p>Lundi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Mardi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Mercredi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Jeudi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Vendredi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Samedi</p>
+            </td>
+            <td class=\"struct\">
+                <p>Dimanche</p>
+            </td>
+        </tr>
+        ";
     }
 
 
