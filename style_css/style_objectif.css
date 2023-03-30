@@ -318,3 +318,6 @@ button:hover {
         white-space: nowrap;
     }
 
+    .suppr{
+        background-color: red;
+    }

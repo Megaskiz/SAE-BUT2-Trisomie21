@@ -1476,9 +1476,10 @@ function modif_recompense($id_rec, $nom, $description, $image)// fonction qui pe
     {
         echo "
     <td style=\"border: hidden;\">
-        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompense</button>
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompens</button>
         <div id=\"dialog_layer\" class=\"dialogs\">
             <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <p id=\"dialog1_label\" class=\"dialog_label\">Modifier la récompense</p>
                 <form enctype=\"multipart/form-data\" action=\"modif_recompense.php?id_recompense=" . $id_rec . "\" method=\"post\">
                     <label for=\"nom_recompense\">Nom de la récompense</label>
                     <input type=\"text\" name=\"nom_recompense\" placeholder=\"" . htmlspecialchars($nom) . "\">
@@ -1501,9 +1502,11 @@ function modif_recompense($id_rec, $nom, $description, $image)// fonction qui pe
     {
         echo "
     <td style=\"border: hidden;\">
-        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialogsuppr" . $id_rec . "', this)\">Supprimer la récompense</button>
+        <button class=\"bouton-modif-enfant suppr\" type=\"button\" onclick=\"openDialog('dialogsuppr" . $id_rec . "', this)\">Supprimer la récompense</button>
         <div id=\"dialog_layer\" class=\"dialogs\">
             <div role=\"dialog\" id=\"dialogsuppr" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <p>Êtes-vous sûr de vouloir supprimer cette récompense ?</p>
+                <p>Attention, cette action est irréversible !</p>
                 <a href=\"modif_recompense.php?id_suppr=" . $id_rec . "\"><button>Supprimer la récompense</button></a>
                 <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
             </div>
