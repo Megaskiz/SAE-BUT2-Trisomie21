@@ -5,7 +5,8 @@
 
 function connexionBd()
 {
-    return new PDO("mysql:host=localhost;dbname=sae", "sae", "XkQQCQUD0azqRP7R");
+    $mdp ='XkQQCQUD0azqRP7R';
+    return new PDO("mysql:host=localhost;dbname=sae", "sae", $mdp);
 }
 
 
