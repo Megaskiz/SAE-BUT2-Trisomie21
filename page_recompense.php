@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style_css/style_objectif.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="style_css/
+    .css" media="screen" type="text/css" />
     <title>récompenses</title>
     <div id="color-picker-container">
 
@@ -17,11 +18,12 @@
     <script src="js/jquery_ui.js"></script>
     <script src="js/confetti.js"></script>
     <script type="text/javascript" src="objectif.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
 
 <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
 
-
+    
 
     <script>
         // Récupérer la valeur stockée dans sessionStorage
@@ -39,6 +41,7 @@
         });
     </script>
     <?php
+    require_once('fonctions.php');
     if (isset($_GET['feux'])) {
         if ($_GET['feux'] == '1') {
             ?>
@@ -127,6 +130,13 @@
         <center>
             <img src=" . $double_tab[$i][3] . " alt=\"image de la récompense\" >
         </center>
+    </td>
+    <td>
+        ".modif_recompense($double_tab[$i][0],$double_tab[$i][1],$double_tab[$i][2],$double_tab[$i][3])."
+
+    </td>
+    <td>
+        ".suppr_recompense($double_tab[$i][0])."
     </td>
 </tr>";
         }

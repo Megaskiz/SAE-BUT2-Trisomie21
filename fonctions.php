@@ -1472,4 +1472,44 @@ function inverse_utilisation_objectif($sys, $val, $linkpdo)
     }
 }
 
+function modif_recompense($id_rec, $nom, $description, $image)// fonction qui permet de modifier une récompense
+    {
+        echo "
+    <td style=\"border: hidden;\">
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompense</button>
+        <div id=\"dialog_layer\" class=\"dialogs\">
+            <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <form enctype=\"multipart/form-data\" action=\"modif_recompense.php?id_recompense=" . $id_rec . "\" method=\"post\">
+                    <label for=\"nom_recompense\">Nom de la récompense</label>
+                    <input type=\"text\" name=\"nom_recompense\" placeholder=\"" . htmlspecialchars($nom) . "\">
+                    <br>
+                    <label for=\"description_recompense\">Description de la récompense</label>
+                    <input type=\"text\" name=\"descriptif_recompense\" placeholder=\"" .htmlspecialchars($description). "\"  required=required >
+                    <br>
+                    <label for=\"image_recompense\">Image de la récompense</label>
+                    <input type=\"file\" class=\"zip_input\" name=\"image_recompense\" placeholder=\"" . htmlspecialchars($image) . "\">
+                    <br>
+                    <button type=\"submit\" name=\"modifier_recompense\">Valider</button>
+                    <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </td>";
+    }
+
+    function suppr_recompense($id_rec)// fonction qui permet de supprimer une récompense
+    {
+        echo "
+    <td style=\"border: hidden;\">
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialogsuppr" . $id_rec . "', this)\">Supprimer la récompense</button>
+        <div id=\"dialog_layer\" class=\"dialogs\">
+            <div role=\"dialog\" id=\"dialogsuppr" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <a href=\"modif_recompense.php?id_suppr=" . $id_rec . "\"><button>Supprimer la récompense</button></a>
+                <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+            </div>
+        </div>
+    </td>
+    </tr>";
+    }
+
 ?>
