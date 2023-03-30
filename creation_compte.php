@@ -1,10 +1,7 @@
 <!DOCTYPE HTML>
 <?php // la partie de la connexion
-
-
-$linkpdo = connexionBd();
-
-
+require_once("fonctions.php");
+$linkpdo=connexionBd();
 
 // je récupere les informations de mon formulaire
 if (
@@ -46,7 +43,7 @@ if (
         $count = $res->fetchColumn();
 
         if ($count > 0) {
-            $message_erreur = "il y déjà un compte avec cette adresse mail ";
+            $message_erreur = "Il y a déjà un compte avec cette adresse mail ";
         } else {
 
 

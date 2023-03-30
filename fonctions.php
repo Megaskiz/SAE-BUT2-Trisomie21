@@ -5,12 +5,9 @@
 
 function connexionBd()
 {
-
-    // mettre le mdp dans un fichier, appeler ce fichier pour le récup, mais ne pas metre le fichier sur le git
-    
-    //3wMb5!B2806p
-    return new PDO("mysql:host=localhost;dbname=bddsae", "root", "3wMb5!B2806p");
+    return new PDO("mysql:host=localhost;dbname=sae", "sae", "XkQQCQUD0azqRP7R");
 }
+
 
 function filter_spaces($var)
 {
@@ -23,8 +20,8 @@ function create_header($linkpdo)
 {
 
     echo '<header>
-        <img class="logo-association" src="/sae-but2-s1/img/logo_trisomie.png" alt="logo de l\'association">
-        <img class="img-user" src="/sae-but2-s1/img/user_logo.png" alt="tete de l\'utilisateur">
+        <img class="logo-association" src="img/logo_trisomie.png" alt="logo de l\'association">
+        <img class="img-user" src="img/user_logo.png" alt="tete de l\'utilisateur">
         ';
 
     $mail =  $_SESSION['login_user'];
@@ -64,10 +61,7 @@ function create_header($linkpdo)
 function create_nav($linkpdo)
 {
     echo '
-    <div  class="open" onclick="openMenu()"> ☰</div>
-    
             <nav  class="left-contenu">
-            <div class="close" onclick="closeMenu()"> &#x1F5D9;</div>
                     <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Affichage Enfant</a>
@@ -320,7 +314,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
         }
         echo "
 								<div class='popup_info'>
-									<img class=\"img_equipe\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
+									<img class=\"img_equipe\" src=\"img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
 									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " .  $role . "    
 									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
 									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
@@ -490,7 +484,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                             if ($message['id_membre'] == $_SESSION['logged_user']) {
                         ?>
                                 <div class="chat_msgR">
-                                    <img class="chat_img_R" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
+                                    <img class="chat_img_R" src="img/user_logo.png" alt="tete de l'utilisateur">
                                     <div class="chat_vous">
                                         <div class="chat_info">
                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
@@ -503,7 +497,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                             } else {
                             ?>
                                 <div class="chat_msgL">
-                                    <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tête de l'utilisateur">
+                                    <img class="chat_img_L" src="img/user_logo.png" alt="tête de l'utilisateur">
                                     <div class="chat_autre">
                                         <div class="chat_info">
                                             <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
@@ -1436,7 +1430,7 @@ function verifie_session_echue($session_max, $id, $linkpdo)
         //je recupere la date du premier jeton placé pour cette session dans ce sys
         $jeton_premier_query = $linkpdo->query("SELECT min(date_heure) from placer_jeton where id_session=" . $session_max . " and id_objectif=" . $id);
         // je recupere la duree totale du sys prevu
-        $duree_sys_query = $linkpdo->query("SELECT duree from OBJECTIF where id_objectif=" . $id);
+        $duree_sys_query = $linkpdo->query("SELECT duree from objectif where id_objectif=" . $id);
     } catch (Exception $e) { 
         die('Erreur : ' . $e->getMessage());
     }
@@ -1451,9 +1445,14 @@ function verifie_session_echue($session_max, $id, $linkpdo)
 
     $duree_sys_en_seconde = $duree_sys * 3600;
 
-    $secondes_premier_jeton = strtotime($jeton_premier);
+    $temps_total =  $duree_sys_en_seconde + strtotime($jeton_premier);
 
-    return $secondes_premier_jeton + $duree_sys_en_seconde < time();
+
+    if(($temps_total-time())>0){
+        return true;
+    }else{
+        return false;
+    };
 }
 
 function inverse_utilisation_objectif($sys, $val, $linkpdo)
@@ -1470,5 +1469,48 @@ function inverse_utilisation_objectif($sys, $val, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
+
+function modif_recompense($id_rec, $nom, $description, $image)// fonction qui permet de modifier une récompense
+    {
+        echo "
+    <td style=\"border: hidden;\">
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompens</button>
+        <div id=\"dialog_layer\" class=\"dialogs\">
+            <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <p id=\"dialog1_label\" class=\"dialog_label\">Modifier la récompense</p>
+                <form enctype=\"multipart/form-data\" action=\"modif_recompense.php?id_recompense=" . $id_rec . "\" method=\"post\">
+                    <label for=\"nom_recompense\">Nom de la récompense</label>
+                    <input type=\"text\" name=\"nom_recompense\" placeholder=\"" . htmlspecialchars($nom) . "\">
+                    <br>
+                    <label for=\"description_recompense\">Description de la récompense</label>
+                    <input type=\"text\" name=\"descriptif_recompense\" placeholder=\"" .htmlspecialchars($description). "\"  required=required >
+                    <br>
+                    <label for=\"image_recompense\">Image de la récompense</label>
+                    <input type=\"file\" class=\"zip_input\" name=\"image_recompense\" placeholder=\"" . htmlspecialchars($image) . "\">
+                    <br>
+                    <button type=\"submit\" name=\"modifier_recompense\">Valider</button>
+                    <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </td>";
+    }
+
+    function suppr_recompense($id_rec)// fonction qui permet de supprimer une récompense
+    {
+        echo "
+    <td style=\"border: hidden;\">
+        <button class=\"bouton-modif-enfant suppr\" type=\"button\" onclick=\"openDialog('dialogsuppr" . $id_rec . "', this)\">Supprimer la récompense</button>
+        <div id=\"dialog_layer\" class=\"dialogs\">
+            <div role=\"dialog\" id=\"dialogsuppr" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
+                <p>Êtes-vous sûr de vouloir supprimer cette récompense ?</p>
+                <p>Attention, cette action est irréversible !</p>
+                <a href=\"modif_recompense.php?id_suppr=" . $id_rec . "\"><button>Supprimer la récompense</button></a>
+                <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+            </div>
+        </div>
+    </td>
+    </tr>";
+    }
 
 ?>

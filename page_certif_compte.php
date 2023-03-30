@@ -326,7 +326,7 @@ $linkpdo = connexionBd();
                     //<!---- menu droit information ---->
                     echo "
                     <div class=\"case-membre_1\">
-                        <img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">
+                        <img class=\"img-tuteur\" src=\"img/user_logo.png\" alt=\"tete de l'utilisateur\">
                     </div>
                     <div class='grille_2_cases'>
                         <div class=\"case-3-infos\">
@@ -364,7 +364,7 @@ $linkpdo = connexionBd();
                     //<!---- menu droit information ---->
                     echo "
                     <div class=\"case-membre_1\">
-                        <img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">
+                        <img class=\"img-tuteur\" src=\"img/user_logo.png\" alt=\"tete de l'utilisateur\">
                     </div>
                     <div class='grille_2_cases'>
                         <div class=\"case-3-infos\">
