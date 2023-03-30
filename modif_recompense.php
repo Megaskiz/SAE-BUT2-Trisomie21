@@ -74,47 +74,26 @@ if (isset($_GET['id_suppr'])) {
     try {
         $res = $linkpdo->query($req);
         echo "La récompense a été supprimée";
+        header("Location: page_recompense.php");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
     echo "La récompense a été supprimée avec la requête : $req";
 }
 
-
-//add recompense
-//INSERT INTO recompenses (nom, description) VALUES ('nom de la récompense', 'description de la récompense');
-
-
 if (isset($_GET['id_add'])) {
     $id_add = $_GET['id_add'];
-
 
     if ($_FILES['image_recompense_add']['size'] > 0) {
         // Changer le nom de l'image dans la base de données
         $image_recompense = uploadImage($_FILES['image_recompense_add']);
     }
-
-
    
     $intitule_add= $_POST['nom_recompense_add'];
     $descriptif_add = $_POST['descriptif_recompense_add'];
 
-
-    /*
-    INSERT INTO recompenses (nom, description, valeur)
-VALUES ('Nom de la récompense', 'Description de la récompense', 'Valeur de la récompense');
-
-
-INSERT INTO objectifs_recompenses (id_objectif, id_recompense)
-VALUES ('ID de l'objectif', 'ID de la récompense');
-
-
-    */
-
-
     $req = "INSERT INTO recompense (intitule, descriptif, lien_image) VALUES ('$intitule_add', '$descriptif_add', '$image_recompense');
     INSERT INTO lier (id_objectif, id_recompense) VALUES ($id_add, (SELECT MAX(id_recompense) FROM recompense));";
-
 
    try {
         $res = $linkpdo->query($req);
@@ -123,4 +102,7 @@ VALUES ('ID de l'objectif', 'ID de la récompense');
         die('Erreur : ' . $e->getMessage());
     }
     echo "La récompense a été ajoutée avec la requête : $req";
+
+
+
 }
