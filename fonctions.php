@@ -1727,17 +1727,19 @@ function modif_recompense($id_rec, $nom, $description, $image) // fonction qui p
             <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
                 <p id=\"dialog1_label\" class=\"dialog_label\">Modifier la récompense</p>
                 <form enctype=\"multipart/form-data\" action=\"modif_recompense.php?id_recompense=" . $id_rec . "\" method=\"post\">
-                    <label for=\"nom_recompense\">Nom de la récompense</label>
+                    <label for=\"nom_recompense\">Nom de la récompense: </label>
                     <input type=\"text\" name=\"nom_recompense\" placeholder=\"" . htmlspecialchars($nom) . "\">
                     <br>
-                    <label for=\"description_recompense\">Description de la récompense</label>
-                    <input type=\"text\" name=\"descriptif_recompense\" placeholder=\"" . htmlspecialchars($description) . "\"  required=required >
+                    <label for=\"description_recompense\">Description de la récompense: </label>
+                    <input type=\"text\" name=\"descriptif_recompense\" placeholder=\"" . htmlspecialchars($description) . "\"   >
                     <br>
-                    <label for=\"image_recompense\">Image de la récompense</label>
+                    <label for=\"image_recompense\">Image de la récompense: </label>
                     <input type=\"file\" class=\"zip_input\" name=\"image_recompense\" placeholder=\"" . htmlspecialchars($image) . "\">
                     <br>
-                    <button type=\"submit\" name=\"modifier_recompense\">Valider</button>
-                    <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                    <div style='margin: 10px; text-align: center;'>
+                    <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                    <button class='popup-btn' type=\"submit\" name=\"modifier_recompense\">Valider</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1758,8 +1760,10 @@ function suppr_recompense($id_rec) // fonction qui permet de supprimer une réco
             <div role=\"dialog\" id=\"dialogsuppr" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
                 <p>Êtes-vous sûr de vouloir supprimer cette récompense ?</p>
                 <p>Attention, cette action est irréversible !</p>
-                <a href=\"modif_recompense.php?id_suppr=" . $id_rec . "\"><button>Supprimer la récompense</button></a>
-                <button type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                <div style='margin: 5px; text-align: center;'>
+                <button class='popup-btn' type=\"button\" onclick=\"closeDialog(this)\">Annuler</button>
+                <a href=\"modif_recompense.php?id_suppr=" . $id_rec . "\"><button class='popup-btn' >Supprimer la récompense</button></a>
+                </div>
             </div>
         </div>
     </td>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style_css/style_objectif.css" media="screen" type="text/css" />
-    <title>récompenses</title>
+    <title>Récompenses</title>
     <div id="color-picker-container">
 
 
@@ -22,7 +22,7 @@
 
 <body style="background-color: <?php echo (isset($_SESSION['bg-color'])) ? $_SESSION['bg-color'] : '#afeeee'; ?>">
 
-    
+
 
     <script>
         // Récupérer la valeur stockée dans sessionStorage
@@ -35,7 +35,7 @@
     </script>
     <script>
         var colorPicker = document.getElementById("color-picker");
-        colorPicker.addEventListener("change", function () {
+        colorPicker.addEventListener("change", function() {
             localStorage.setItem("bg-color", colorPicker.value);
         });
     </script>
@@ -43,13 +43,14 @@
     require_once('fonctions.php');
     if (isset($_GET['feux'])) {
         if ($_GET['feux'] == '1') {
-            ?>
+    ?>
 
             <script>
-
                 function fire(ratio, opt) {
                     confetti(Object.assign({}, opt, {
-                        origin: { y: .6 },
+                        origin: {
+                            y: .6
+                        },
                         particleCount: Math.floor(200 * ratio)
                     }));
                 }
@@ -58,7 +59,9 @@
                     spread: 26,
                     startVelocity: 55,
                 });
-                fire(.2, { spread: 60 });
+                fire(.2, {
+                    spread: 60
+                });
                 fire(.35, {
                     spread: 100,
                     decay: .91,
@@ -77,9 +80,8 @@
                 });
                 fire();
             </script>
-            <?php
+    <?php
         }
-
     }
     ?>
     <script>
@@ -92,11 +94,11 @@
     is_logged();
     is_validateur();
     $linkpdo = connexionBd();
-    echo "<a href=\"objectif.php?id_sys=" . $_SESSION['id_sys'] . "\"><button>retour</button></a>";
+    echo "<a href=\"objectif.php?id_sys=" . $_SESSION['id_sys'] . "\"><button>Retour</button></a>";
     ?>
     <h1>Les récompenses</h1>
     <?php
-    
+
     try {
         $res = $linkpdo->query("select * from recompense where id_recompense in (SELECT id_recompense FROM lier where id_objectif=" . $_SESSION['id_sys'] . ")");
     } catch (Exception $e) {
@@ -107,7 +109,7 @@
     ?>
 
     <table style="margin: auto;">
-    <caption></caption>
+        <caption></caption>
         <tr>
             <th>
                 <p>Nom de la récompense</p>
@@ -130,9 +132,9 @@
             <img src=" . $double_tab[$i][3] . " alt=\"image de la récompense\" >
         </center>
     </td>";
-    modif_recompense($double_tab[$i][0], $double_tab[$i][1], $double_tab[$i][2], $double_tab[$i][3]);
-    suppr_recompense($double_tab[$i][0]);
-echo "
+            modif_recompense($double_tab[$i][0], $double_tab[$i][1], $double_tab[$i][2], $double_tab[$i][3]);
+            suppr_recompense($double_tab[$i][0]);
+            echo "
 </tr>";
         }
         ?>
