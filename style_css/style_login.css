@@ -11,7 +11,7 @@
         display: grid;
     }
     .logo {
-        width: 90%;
+        width: 140px;
         margin-bottom: auto;
         margin-right: auto;
         margin-left: auto;
@@ -21,7 +21,6 @@
         z-index: 1;
         background: #FFFFFF;
         margin: 0 auto 100px;
-        padding: 45px;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
     .form input {
@@ -64,9 +63,11 @@
     .form button:focus {
         background: #9f751b;
     }
+    
     .texte_creer-compte {
-        margin-left: 40%;
+        text-align: center;
     }
+
     .form .message {
         padding: 5px;
         color: #b3b3b3;
@@ -132,7 +133,7 @@
         grid-template-columns: repeat(2, 50%);
     }
     .logo {
-        width: 90%;
+        width: 140px;
         margin-top: 10%;
         margin-bottom: auto;
         margin-right: auto;
