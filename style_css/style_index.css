@@ -211,11 +211,11 @@ td {
 
     .bouton-modif-enfant,
     .bouton-modif-photo {
-        background-color: rgb(202, 196, 196); 
+        background-color: rgb(202, 196, 196);
         margin: 10px;
     }
 
-    .button_edit{
+    .button_edit {
         display: flex;
     }
 
@@ -336,15 +336,15 @@ td {
         font-size: 10px;
         box-shadow: none;
     }
-    
-   .popup_photo{
-    display: flex;
-   }
+
+    .popup_photo {
+        display: flex;
+    }
 
 
-   .separateur{
-    border: 1px solid black;
-    margin: 10px;
+    .separateur {
+        border: 1px solid black;
+        margin: 10px;
     }
 
     /* Pop-up JS ajouter un enfant*/
@@ -1294,7 +1294,7 @@ td {
     .div-photo-enfant {
         margin: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
     }
 
@@ -1950,7 +1950,6 @@ td {
 
 
 
-
     /*PHOTO/ICON*/
     .photo-enfant {
         width: 25vw;
@@ -2043,6 +2042,16 @@ td {
         border-radius: 5px;
     }
 
+    .separateur {
+        border: 1px solid black;
+        margin: 10px;
+    }
+
+
+    .affichage-photo-jeton,
+    .affichage-photo-visage {
+        border: 1px solid black;
+    }
 
     .popup_info {
         display: flex;

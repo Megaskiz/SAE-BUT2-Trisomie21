@@ -667,9 +667,9 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
                     <p style='font-size: 16px;
                     font-weight: bold;'>Informations supplémentaires :</p><textarea name=info_sup style=\"resize: none\">" . htmlspecialchars($info_sup) . "</textarea>
                 </div>
-                <div   class='bouton-valider'>
+                <div class='bouton-valider'>
                     <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-                    <button class='button-valider-modification actif'> Valider &#x2714; </button>
+                    <button class=\"popup-btn\"> Valider &#x2714; </button>
                 </div>
                 
                 </div>
@@ -692,16 +692,16 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
     <div id=\"dialog_layer\" class=\"dialogs\">
         <div role=\"dialog\" id=\"dialog5\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
     <div class='popup_photo'>
-            <div>
+            <div class='affichage-photo-jeton'>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier le jeton</h2>
             <img class=\"photo-jeton\" src=\"" . htmlspecialchars($lien_jeton_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_jeton\" method=\"POST\" class=\"dialog_form\">
                 <div class=\"dialog_form_item\">
-                    <label><span class=\"label_text\">photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
+                    <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
                 </div>
                 <div class=\"dialog_form_actions\">
                     <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
-                    <button class='popup-btn actif' type=\"submit\">Valider &#x2714;</button>
+                    <button class='popup-btn' type=\"submit\">Valider &#x2714;</button>
                 </div>
             </form>
             </div>
@@ -709,7 +709,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
             <div class=\"separateur\"></div>
 
 
-            <div>
+            <div class='affichage-photo-visage'>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
             <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
