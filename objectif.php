@@ -3,6 +3,8 @@ require_once('fonctions.php');
 is_logged();
 is_validateur();
 $linkpdo = connexionBd();
+$id = $_GET['id_sys'];
+$_SESSION['id_sys'] = $_GET['id_sys'];
 ?>
 <!DOCTYPE HTML>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -68,8 +70,7 @@ $linkpdo = connexionBd();
 
 
 
-            $id = $_GET['id_sys'];
-            $_SESSION['id_sys'] = $_GET['id_sys'];
+            
 
             try {
                 $res = $linkpdo->query("SELECT * FROM objectif where id_objectif=$id");
