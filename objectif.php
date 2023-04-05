@@ -125,7 +125,7 @@ $linkpdo = connexionBd();
 
                             afficher_systeme("chargement", "non_valide", $linkpdo, $id);
                             exit;
-                        } elseif (verifie_session_echue($session_max, $id, $linkpdo)) { // si la session est échue
+                        } elseif (!verifie_session_echue($session_max, $id, $linkpdo)) { // si la session est échue
                             echo "
                             <p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>
                             <div style='text-align: center;'><button class=\"droite\" onclick=\"confirmation()\">Démarrer une nouvelle session</button></div>
