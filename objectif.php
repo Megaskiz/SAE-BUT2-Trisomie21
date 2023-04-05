@@ -80,7 +80,6 @@ $linkpdo = connexionBd();
             $double_tab = $res->fetchAll();
             $nombre_ligne = $res->rowCount();
 
-            echo $double_tab[0][10];
             echo "<h1>" . htmlspecialchars($double_tab[0][1]) . "</h1>";
 
             switch ($double_tab[0][10]) { // switch pour faire un traitement different pour chaque type de système
@@ -159,7 +158,6 @@ $linkpdo = connexionBd();
                         $double_tab = $session_max_query->fetchAll();
                         $session_max = $double_tab[0][0];
 
-                        echo (verifie_session_echue($session_max, $id, $linkpdo));
 
                         if ($session_max == NULL) { // vérification du timer     
                             //mettre le bouton qui propose de créer une nouvelle session
@@ -172,7 +170,7 @@ $linkpdo = connexionBd();
                             // afficher le sys, en l'état mais sans bouton cliquable
                             afficher_systeme("routine", "non_valide", $linkpdo, $id);
                             exit;
-                        } elseif (verifie_session_echue($session_max, $id, $linkpdo)) { // si la session est échue
+                        } elseif (!verifie_session_echue($session_max, $id, $linkpdo)) { // si la session est échue
                             echo "
                                 <p>La session précédente est arrivée à son terme, voulez vous en démarrer une nouvelle?</p> <br>
                                 <div style='text-align: center;'><button class=\"droite\" onclick=\"confirmation()\">Démarrer une nouvelle session</button></div>
