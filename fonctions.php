@@ -85,51 +85,50 @@ function create_nav($linkpdo)
     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
 
         //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
-        echo '<div class="bouton_enfant">';
-
-        echo '<button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>';
-
-        echo '<a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>';
-        echo '<div id="dialog_layer" class="dialogs">';
-        echo '<div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">';
-        echo '<h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>';
-        echo '<form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">';
-        echo '<div class="dialog_form_item">';
-        echo '<label>';
-        echo '<span class="label_text">Nom :</span>';
-        echo '<input name="nom" type="text" required="required">';
-        echo '</label>';
-        echo '</div>';
-        echo '<div class="dialog_form_item">';
-        echo '<label>';
-        echo '<span class="label_text">Prenom:</span>';
-        echo '<input name="prenom" type="text" class="city_input" required="required">';
-        echo '</label>';
-        echo '</div>';
-        echo '<div class="dialog_form_item">';
-        echo '<label>';
-        echo '<span class="label_text">Date de naissance:</span>';
-        echo '<input name="date_naissance" type="date" class="state_input" required="required">';
-        echo '</label>';
-        echo '</div>';
-        echo '<div class="dialog_form_item">';
-        echo '<label>';
-        echo '<span class="label_text">Jeton:</span>';
-        echo '<input name="lien_jeton" type="file" class="zip_input" required="required">';
-        echo '</label>';
-        echo '<label>';
-        echo '<span class="label_text">Enfant:</span>';
-        echo '<input name="photo_enfant" type="file" class="zip_input" required="required">';
-        echo '</label>';
-        echo '</div>';
-        echo '<div class="dialog_form_actions">';
-        echo '<button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>';
-        echo '<button class="popup-btn" type="submit">Valider l\'ajout</button>';
-        echo '</div>';
-        echo '</form>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+        echo '
+        <div class="bouton_enfant">
+            <button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>
+            <a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>
+                <div id="dialog_layer" class="dialogs">
+                    <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+                        <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
+                        <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span class="label_text">Nom :</span>
+                                    <input name="nom" type="text" required="required">
+                                </label>
+                            </div>
+                            <div class="dialog_form_item">
+                            <label>
+                                <span class="label_text">Prenom:</span>
+                                <input name="prenom" type="text" class="city_input" required="required">
+                            </label>
+                            </div>
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span class="label_text">Date de naissance:</span>
+                                    <input name="date_naissance" type="date" class="state_input" required="required">
+                                </label>
+                            </div>
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span class="label_text">Jeton:</span>
+                                    <input name="lien_jeton" type="file" class="zip_input" required="required">
+                                </label>
+                                <label>
+                                    <span class="label_text">Enfant:</span>
+                                    <input name="photo_enfant" type="file" class="zip_input" required="required">
+                                </label>
+                            </div>
+                            <div class="dialog_form_actions">
+                                <button  class="popup-btn" type="button" onclick="closeDialog(this)">Annuler</button>
+                                <button class="popup-btn" type="submit">Valider l\'ajout</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>';
 
         /* fin de la fenêtre popin de l'ajout d'enfant" */
     }
