@@ -6,7 +6,6 @@
 
 @media screen and (min-width: 1250px) {
 
-
     body {
         min-height: 100vh;
         background: linear-gradient(0deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
@@ -16,7 +15,6 @@
 
     main {
         min-height: 85vh;
-        margin: 2%;
         border-radius: 10px;
     }
 
@@ -143,33 +141,47 @@
     }
 
     .chat_retour {
-        width: 1%px;
-        height: 1%
+        margin: 10px;
+        
     }
 
     .chat_retour {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        padding: 15px 25px;
-        border-radius: 10px;
+        display: inline-block;
+        position: initial;
+        padding: 10px 20px;
         font-size: 12px;
+        font-weight: bold;
         border: none;
-        color: black;
-        background-color: rgb(202, 196, 196);
+        border-radius: 5px;
+        color: white;
+        background-color:  #fec107;
         cursor: pointer;
         transition: all 0.3s;
     }
 
     button.chat_retour:hover {
-        background-color: #0069d9;
+        background-color: #007bff;
+        cursor: pointer;
     }
-
-
 
     a {
         text-decoration: none;
         color: black;
+    }
+
+    input[type="text"],
+    input[type="text-area"]{
+        padding: 5px 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #1E90FF;
+    }
+
+    input[type="text"]:focus,
+    input[type="text-area"]:focus {
+        border-color: #dc9c2d;
+        outline: none;
+        box-shadow: 0px 0px 10px 1px #191970;
     }
 }
 
@@ -350,20 +362,20 @@
     }
 
     .chat_retour {
-        width: 1%px;
+        width: 1%;
         height: 1%
     }
 
     .chat_retour {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        padding: 20px 30px;;
-        border-radius: 10px;
+       display: inline-block;
+        position: initial;
+        padding: 10px 20px;
         font-size: 12px;
+        font-weight: bold;
         border: none;
-        color: black;
-        background-color: rgb(202, 196, 196);
+        border-radius: 5px;
+        color: white;
+        background-color: #007bff;
         cursor: pointer;
         transition: all 0.3s;
     }
@@ -372,18 +384,12 @@
         background-color: #0069d9;
     }
 
-
-
     a {
         text-decoration: none;
         color: black;
     }
 
-
-
 }
-
-
 
 
 /*
@@ -425,10 +431,7 @@
 
     .chat_retour {
         padding: 10px 20px;
-   
     }
-
-
 
     .chat_all {
         margin-top: 5%;
@@ -438,9 +441,5 @@
         background-color: white;
         border-radius: 10px;
     }
-
-
-
-
 
 }

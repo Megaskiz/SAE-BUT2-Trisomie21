@@ -18,9 +18,8 @@
   }
 
   .logo{
-    width: 90%;
-    margin-top: 10%;
-    margin-bottom: auto;
+    width: 250px;
+    margin: 10px;
     margin-right: auto;
     margin-left: auto;
   }
@@ -43,7 +42,7 @@
     margin: 0 0 5%;
     padding: 5%;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 20px;
   }
   .form button {
     font-family: "Roboto", sans-serif;
@@ -65,7 +64,7 @@
   .form .message {
     margin: 15px 0 0;
     color: #b3b3b3;
-    font-size: 12px;
+    font-size: 20px;
   }
   .form .message a {
     color: #000 ;

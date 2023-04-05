@@ -74,7 +74,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
 
                     <div class="texte_creer-compte">
                         <p class="message">Pas de compte ? </p>
-                        <a href="creation_compte.php">Creer un compte</a>
+                        <a href="creation_compte.php">Créer un compte</a>
                     </div>
 
                 </form>
