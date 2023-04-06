@@ -1,16 +1,30 @@
 <?php
 
+/** 
+ * @file fonctions.php
+ * @brief fichier contenant les fonctions php utilisées dans le projet
+ * @version 1.0
+ * @date 2023-06-01
+ */
+
 
 // ------------------------------------- fonctions diverses -----------------------------------------------------------
 
-//fonction pour se connecter à la base de données avec PDO
+/**
+ * fonction pour se connecter à la base de données avec PDO
+ * @return PDO : lien de connexion à la base de données
+ */
 function connexionBd()
 {
     $mdp ='XkQQCQUD0azqRP7R';
     return new PDO("mysql:host=localhost;dbname=sae", "sae", $mdp);
 }
 
-//fonction pour filtrer les espaces dans une chaine de caractère
+/**
+ * Fonction qui permet de vérifier si une chaine de caractère ne contient pas d'espace
+ * @param $var : chaine de caractère
+ * @return bool : true si la chaine de caractère ne contient pas d'espace, false sinon
+ */
 function filter_spaces($var)
 {
     return $var != ' ';
@@ -1191,6 +1205,11 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
 }
 
 // ------------------------------------- fonctions pour les images -----------------------------------------------------------
+/**
+ * Fonction qui upload une image dans le dossier images
+ * @param $photo : image à uploader
+ * @return string : chemin de l'image
+ * */
 function uploadImage($photo)
 {
     if (isset($photo)) {
