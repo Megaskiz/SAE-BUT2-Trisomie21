@@ -35,7 +35,7 @@ $linkpdo = connexionBd();
                     <?php
                      
                     try {
-                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1 and compte_valide= 1");
+                        $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1");
                     } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());
                     }

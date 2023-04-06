@@ -11,7 +11,7 @@
         display: grid;
     }
     .logo {
-        width: 140px;
+        width: 200px;
         margin-bottom: auto;
         margin-right: auto;
         margin-left: auto;
@@ -133,7 +133,7 @@
         grid-template-columns: repeat(2, 50%);
     }
     .logo {
-        width: 140px;
+        width: 200px;
         margin-top: 10%;
         margin-bottom: auto;
         margin-right: auto;
@@ -164,7 +164,6 @@
         text-transform: uppercase;
         outline: 0;
         background: linear-gradient(101deg, rgba(255, 198, 76, 1) 0%, rgba(69, 45, 253, 1) 100%);
-        ;
         width: 100%;
         border: 0;
         padding: 15px;
@@ -174,6 +173,7 @@
         transition: all 0.3 ease;
         cursor: pointer;
     }
+    
     a {
         font-family: "Roboto", sans-serif;
         outline: 0;
