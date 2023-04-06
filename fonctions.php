@@ -99,7 +99,7 @@ function create_nav($linkpdo)
         echo '
         <div class="bouton_enfant">
             <button class="ajouter-enfant" type="button" onclick="openDialog(\'dialog1\', this)">Ajouter un profil  <img class="icone-ajouter-membre" src="img/ajouter-utilisateur.png" > </button>
-            <a href="archive_profil_enfant.php"><button class="button_ajouter-objectif">Profils enfants archivés</button></a>
+            <a href="archive_profil_enfant.php"><button class="archiver">Enfants archivés</button></a>
                 <div id="dialog_layer" class="dialogs">
                     <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                         <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
@@ -366,7 +366,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                         <div class="btn-objectif">
 					        <div class="btn-stat">
                                 <a href="page_creatsystem.php"><button class="button_ajouter-objectif"> Ajouter un nouvel objectif</button></a>
-                                <a href="  archive_sys.php"><button class="button_ajouter-objectif"> Objectifs archivés</button></a>
+                                <a href="  archive_sys.php"><button class="archiver"> Objectifs archivés</button></a>
                             </div>
 					        <div class="btn-stat">
 						        <a href="statistiques.php"><button class="button_ajouter-objectif">Toutes les statistiques</button></a>
@@ -597,7 +597,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                         <p class='popup-txt'> Attention, archiver ce système le retirera de tous les affichages et des statistiques, il ne sera accessible qu'aux coordinateur et à l'administrateur, dans l'archive.</p>
                                         <div class=\"dialog_form_actions\">
                                             <button class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>
-                                                <a  href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"> <button class='popup-btn'> Archiver cet objectif </button> </a>
+                                                <a  href=\"suppr_sys.php?id_sys=" . $double_tab[$i][5] . "\"> <button class='archiver'> Archiver cet objectif </button> </a>
 								        </div>
                                     </div>
                                 </div>";

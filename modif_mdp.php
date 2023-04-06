@@ -96,7 +96,7 @@ if (isset($_GET['id_invalider'])) {
                             echo "</div>";
                             echo '</td>';
                             echo "<td class=\"Profil\" >";
-                                echo '<button class="acceder"> <a href="page_certif_compte.php?idv='.$identifiant.'">Profil</a> </button>';
+                                echo '<button class="acceder-information-membre"> <a href="page_certif_compte.php?idv='.$identifiant.'">Profil</a> </button>';
                             echo "</td>";
                         echo "</tr>";
                     }
@@ -139,7 +139,7 @@ if (isset($_GET['id_invalider'])) {
                         echo "</div>";
                         echo '</td>';
                         echo "<td class=\"Profil2\" >";
-                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button class="acceder">Profil</button></a>';
+                        echo '<a href="page_certif_compte.php?id=' . $identifiant . '"><button class="acceder-information-membre">Profil</button></a>';
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -208,7 +208,7 @@ if (isset($_GET['id_invalider'])) {
                         
                     echo "</div>";
 
-                    echo'<input class="valider" type="submit" value="Valider les modifications &#x2714;">';
+                    echo'<input class="valider" type="submit" value="Valider &#x2714;">';
 
 
 
