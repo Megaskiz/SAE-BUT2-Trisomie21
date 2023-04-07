@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file index.php
+ * @brief Page d'accueil du site
+ * @details Page d'accueil du site, affiche les informations de l'enfant, et les objectifs de l'enfant en fonction de l'enfant selectionné
+ * @version 1.0
+ */
+
+ 
 require_once('fonctions.php');
 is_logged();
 is_validateur();

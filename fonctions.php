@@ -23,7 +23,8 @@ function connexionBd()
 /**
  * Fonction qui permet de vérifier si une chaine de caractère ne contient pas d'espace
  * @param $var : chaine de caractère
- * @return bool : true si la chaine de caractère ne contient pas d'espace, false sinon
+ * @retval true : si la chaine de caractère ne contient pas d'espace
+ * @retval false : si la chaine de caractère contient un espace
  */
 function filter_spaces($var)
 {

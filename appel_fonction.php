@@ -1,15 +1,34 @@
 <?php
+/**
+ * @file appel_fonction.php
+ * @brief Ce fichier contient les appels aux fonctions php
+ * @details Ce fichier contient les appels aux fonctions php, il est appelé par les pages php qui ont besoin d'appeler des fonctions
+ * @version 1.0
+ */
+
+
 require_once('fonctions.php');
 is_logged();
 
+/**
+ * @brief if qui permet de savoir quel appel de fonction on veut faire
+ * @version 1.0
+ */
 if(isset($_GET['appel'])){
     $linkpdo = connexionBd();
 
+    /**
+     * @brief switch qui permet de savoir quel appel de fonction on veut faire
+     * @version 1.0
+     */
     switch ($_GET['appel']) {
         
         case 'modif_image':
             
-
+        /**
+         * @brief case qui permet de modifier le compte de l'enfant
+         * @details recupere les informations du formulaire, et les envoie en parametre de la fonction modif_enfant
+         */
         case 'modif_enfant':
             $nom = $_POST['nom_enfant'];
             $prenom = $_POST['prenom_enfant'];
@@ -22,7 +41,10 @@ if(isset($_GET['appel'])){
         
             modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo);
             break;
-
+        /**
+         * @brief case qui permet de modifier le jeton de l'enfant
+         * @details si l'image est bien envoyée, alors on l'upload, et on envoie en parametre de la fonction modif_jeton et on redirige vers la page index.php avec l'id de l'enfant dans l'url
+         */
         case 'modif_jeton':
             if (isset($_FILES['photo_enfant'])) {
                 $id = $_SESSION["id_enfant"];
@@ -31,7 +53,10 @@ if(isset($_GET['appel'])){
                 header('Location: index.php?id='.$_SESSION['id_enfant'].'');
             }
             break;
-
+        /**
+         * @brief case qui permet de modifier la photo de l'enfant
+         * @details si l'image est bien envoyée, alors on l'upload, et on envoie en parametre de la fonction modif_photo et on redirige vers la page index.php avec l'id de l'enfant dans l'url
+         */
         case 'modif_photo':
             if (isset($_FILES['photo_enfant'])) {
                 $id = $_SESSION["id_enfant"];
@@ -41,6 +66,11 @@ if(isset($_GET['appel'])){
             }
             break;
 
+
+        /**
+         * @brief case qui permet de supprimer un membre de l'équipe
+         * @details recupere l'id du membre a supprimer, et l'id de l'enfant, et on envoie en parametre de la fonction eject, et on redirige vers la page index.php avec l'id de l'enfant dans l'url
+         */
         case 'eject_equipe':
             $id_eject = $_GET['eject'];
             $Sid = $_GET['id'];
@@ -48,11 +78,17 @@ if(isset($_GET['appel'])){
             header('Location: index.php?id='.$_SESSION['id_enfant'].'');
             break;
 
-
+        /**
+         * @brief case qui permet d'archiver un enfant
+         * @datails envoie linkpdo en parametre de la fonction archive_enfant
+         */
         case 'archive_enfant':
             archive_enfant($linkpdo);
             break;
-
+        /**
+         * @brief case qui permet de modifier le mot de passe d'un membre
+         * @details recupere le mot de passe du formulaire, et l'id du membre, et on envoie en parametre de la fonction modif_mdp, et on redirige vers la page page_certif_compte.php avec l'id du membre dans l'url
+         */
         case 'modif_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);
             $session = $_SESSION['id_compte_modif'];
@@ -61,7 +97,10 @@ if(isset($_GET['appel'])){
             header('Location: page_certif_compte.php?idv='.$_SESSION['id_compte_modif'].'');
             break;
 
-
+        /**
+         * @brief case qui permet de modifier le mots de passe de son compte
+         * @details recupere le mot de passe du formulaire, et l'id du membre, et on envoie en parametre de la fonction modif_mdp, et on redirige vers la page mon_compte.php
+         */
         case 'modif_mon_mdp':
             $mdp=htmlspecialchars($_POST['mdp_membre']);
             $session = $_SESSION['logged_user'];
@@ -70,7 +109,10 @@ if(isset($_GET['appel'])){
             header('Location:mon_compte.php');
             break;
 
-
+        /**
+         * @brief case qui permet de modifier le compte d'un membre
+         * @details recupere les informations du formulaire, et envoie en parametre de la fonction modif_compte
+         */
         case 'modif_compte':
             $nom = htmlspecialchars($_POST['nom_membre']);
             $prenom = htmlspecialchars($_POST['prenom_membre']);
@@ -83,7 +125,10 @@ if(isset($_GET['appel'])){
         
             modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance,$role, $session, $linkpdo);
             break; 
-
+        /**
+         * @brief case insert_enfant qui permet d'insérer un enfant dans la base de donnée
+         * @details recupere les informations du formulaire, et envoie en parametre de la fonction insert_enfant avec un try catch pour la requete
+         */
         case 'insert_enfant':
             
             $nom = htmlspecialchars($_POST['nom']);
@@ -112,6 +157,11 @@ if(isset($_GET['appel'])){
                 break;
             }
 
+
+        /**
+         * @brief case insert_membre qui permet d'insérer un membre dans la base de donnée
+         * @details recupere les informations du formulaire, et envoie en parametre de la fonction insert_membre avec un try catch pour la requete
+         */
         case 'insert_membre':
 
             $nom = htmlspecialchars($_POST['nom']);
@@ -144,7 +194,11 @@ if(isset($_GET['appel'])){
                 break;
             }
             
-            
+
+        /**
+         * @brief case mise_en_route qui permet de mettre en route un objectif
+         * @details recupere l'id de l'objectif et la valeur de l'objectif, et envoie en parametre de la fonction inverse_utilisation_objectif
+         */   
         case 'mise_en_route':
             
             if (isset($_GET["id_sys"]) and isset($_GET["valeur"]) ) {
@@ -159,7 +213,10 @@ if(isset($_GET['appel'])){
                 header('Location: index?id='.$_SESSION["logged_user"].'.php');
             }
             break;
-        
+        /**
+         * @brief case supprime_objectif qui permet de supprimer un objectif
+         * @details recupere l'id de l'objectif, et envoie en parametre de la fonction supprime_objectif
+         */
         case 'supprime_objectif':
             if(isset($_GET['id_sys'])){
                 $sys=$_GET['id_sys'];
@@ -169,7 +226,10 @@ if(isset($_GET['appel'])){
                 header('Location:archive_sys.php'); 
             }
             break;
-
+        /**
+         * @brief case supprime_profil_enfant qui permet de supprimer un profil enfant
+         * @details recupere l'id du profil enfant, et envoie en parametre de la fonction supprime_profil_enfant
+         */
         case 'supprime_profil_enfant':
             if(isset($_GET['id_enfant'])){
                 $sys=$_GET['id_enfant'];
@@ -179,7 +239,10 @@ if(isset($_GET['appel'])){
                 header('Location:archive_profil_enfant.php'); 
             }
             break;
-
+        /**
+         * @brief case supprime_utilisateur qui permet de supprimer un utilisateur
+         * @details recupere l'id de l'utilisateur, et envoie en parametre de la fonction supprime_utilisateur
+         */
         case 'supprime_utilisateur':
             if(isset($_GET['id_user'])){
                 $id=$_GET['id_user'];
@@ -190,6 +253,10 @@ if(isset($_GET['appel'])){
             }
             break;
 
+        /**
+         * @brief case restaure_utilisateur qui permet de restaurer un utilisateur archivé
+         * @details recupere l'id de l'utilisateur, et envoie en parametre de la fonction restaure_utilisateur
+         */
         case 'restaure_utilisateur':
 
             if(isset($_GET['id_user'])){
@@ -201,7 +268,10 @@ if(isset($_GET['appel'])){
             }
             break;
 
-
+            /**
+             * @brief case restaure_profil_enfant qui permet de restaurer un profil enfant archivé
+             * @details recupere l'id du profil enfant, et envoie en parametre de la fonction restaure_profil_enfant
+             */
          case 'restaure_profil_enfant':
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
@@ -211,7 +281,10 @@ if(isset($_GET['appel'])){
                 header('Location:archive_profil_enfant.php'); 
             }
             break;
-
+        /**
+         * @brief case archive_membre qui permet d'archiver un utilisateur
+         * @details recupere l'id de l'utilisateur, et envoie en parametre de la fonction archive_membre
+         */
         case 'archive_membre':
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
@@ -221,7 +294,10 @@ if(isset($_GET['appel'])){
                 header('Location:page_certif_compte.php'); 
             }
             break;
-
+        /**
+         * @brief case valide_membre qui permet de valider un utilisateur
+         * @details recupere l'id de l'utilisateur, et envoie en parametre de la fonction valide_membre
+         */
         case 'valide_membre':
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
@@ -231,7 +307,10 @@ if(isset($_GET['appel'])){
                 header('Location:page_certif_compte.php'); 
             }
             break;
-
+        /**
+         * @brief case invalide_membre qui permet d'invalider un utilisateur
+         * @details recupere l'id de l'utilisateur, et envoie en parametre de la fonction invalide_membre
+         */
         case 'invalide_membre':
             
             if(isset($_GET['id'])){
@@ -242,7 +321,6 @@ if(isset($_GET['appel'])){
                 header('Location:page_certif_compte.php'); 
             }
             break;
-
 
         case 'purge_image':
             supprimer_image($linkpdo);
