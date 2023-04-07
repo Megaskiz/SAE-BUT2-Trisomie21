@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file creation_systeme_chargement.php
+ * @brief Page de création d'un système de type "chargement"
+ * @details Page de création d'un système de type "chargement", permet à l'utilisateur de créer un système de type "chargement" et de rentrer ses informations personnelles
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

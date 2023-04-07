@@ -1,7 +1,13 @@
 <?php
-require_once('fonctions.php');
-is_logged();
-is_validateur();
+/**
+ * @file creation_recompense_unique.php
+ * @brief Page de création d'une récompense de type unique
+ * @details Page de création d'une récompense de type unique, permet à l'utilisateur de créer une récompense de type unique
+ * @version 1.0
+ */
+require_once('fonctions.php');//utilisation des fonctions de la page fonctions.php
+is_logged();//vérifie si l'utilisateur est connecté
+is_validateur();//vérifie si l'utilisateur est un validateur
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">

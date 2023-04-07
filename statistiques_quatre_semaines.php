@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file statistiques_quatre_semaines.php
+ * @brief Page de statistiques sur 4 semaines
+ * @details Page de statistiques sur 4 semaines, permet à un validateur de voir les statistiques sur 4 semaines d'un enfant
+ */
 require_once("fonctions.php");
 is_logged();
 is_not_admin();

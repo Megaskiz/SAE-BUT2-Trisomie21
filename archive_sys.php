@@ -2,13 +2,20 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-require_once('fonctions.php');
-is_logged();
-is_validateur();
+/**
+ * @file archive_sys.php
+ * @brief Page d'archivage d'un système
+ * @details Page d'archivage des système, permet à l'utilisateur de mettre un système en archive ou de le remettre en ligne ou de le supprimer
+ */
 
-$linkpdo = connexionBd();
 
-if (isset($_GET['id_putback'])) {
+require_once('fonctions.php');//    utilisation des fonctions de la page fonctions.php
+is_logged();//vérifie si l'utilisateur est connecté
+is_validateur(); //vérifie si l'utilisateur est un validateur
+
+$linkpdo = connexionBd();//   connexion à la base de données
+
+if (isset($_GET['id_putback'])) {//    remettre un système en ligne
 
     $req = $linkpdo->prepare('UPDATE objectif SET visibilite = "0" where id_objectif = ' . $_GET['id_putback']);
 
@@ -66,7 +73,7 @@ if (isset($_GET['id_putback'])) {
                 die('Erreur : ' . $e->getMessage());
             }
 
-            while ($data = $res->fetch()) {
+            while ($data = $res->fetch()) { //affichage des données de l'enfant
 
 
                 echo "<center><img class=\"photo-enfant\" src=\"$data[9]\" alt=\"Tête de l'enfant\"></center>";
@@ -93,7 +100,7 @@ if (isset($_GET['id_putback'])) {
 
         <?php
 
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id'])) {//    affichage des systèmes de l'enfant
             $id = $_GET['id'];
             $_SESSION["id_enfant"] = $id;
 
@@ -178,7 +185,7 @@ if (isset($_GET['id_putback'])) {
                         <th class='sup'>Supprimer définitivement</th>
                         </tr>";
 
-            for ($i = 0; $i < $nombre_ligne; $i++) {
+            for ($i = 0; $i < $nombre_ligne; $i++) {//affichage des objectifs
                 //acces au systèmes
                 if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1 or $_SESSION["role_user"] == 3) {
                     echo "<tr >";

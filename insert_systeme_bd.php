@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file insert_systeme_bd.php
+ * @brief Insertion d'un système dans la base de données
+ * @details Page d'insertion d'un système dans la base de données, permet à un validateur de créer un système
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

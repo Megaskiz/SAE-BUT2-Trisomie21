@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file insert_erreur_nom.php
+ * @brief Page d'erreur lors de la création d'un profil
+ * @details Page d'erreur lors de la création d'un profil, permet d'afficher une erreur lors de la création d'un profil qui existe déjà
+ * @version 1.0
+ */
+?>
 <!DOCTYPE HTML>
 <html lang="fr" style="font-family: Arial,sans-serif;">
 

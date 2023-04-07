@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file page_certif_compte.php
+ * @brief Page de certification des comptes
+ * @details Page de certification des comptes, permet à un administrateur de valider ou invalider un compte
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 $linkpdo = connexionBd();

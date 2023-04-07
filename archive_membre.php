@@ -1,10 +1,16 @@
 <?php
-require_once('fonctions.php');
-is_logged();
-is_user();
+/**
+ * @file archive_membre.php
+ * @brief Page d'archivage d'un membre
+ * @details Page d'archivage d'un membre, permet à l'administrateur de rendre un membre invisible pour les autres utilisateurs
+ * @version 1.0
+ */
+require_once('fonctions.php');//utilisation des fonctions de la page fonctions.php
+is_logged();//vérifie si l'utilisateur est connecté
+is_user();//vérifie si l'utilisateur est un administrateur
 
 
-$linkpdo = connexionBd();
+$linkpdo = connexionBd();//connexion à la base de données
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -19,7 +25,7 @@ $linkpdo = connexionBd();
 
 <body>
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-    <?php create_header($linkpdo); ?>
+    <?php create_header($linkpdo);//affichage du header ?>
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
@@ -34,7 +40,7 @@ $linkpdo = connexionBd();
                 <div id="myDropdown" class="dropdown-content">
                     <?php
                      
-                    try {
+                    try { //affichage de la liste des membres
                         $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1");
                     } catch (Exception $e) { 
                         die('Erreur : ' . $e->getMessage());

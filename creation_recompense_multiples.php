@@ -1,7 +1,17 @@
 <?php
-require_once('fonctions.php');
-is_logged();
-is_validateur();
+/**
+ * @file creation_recompense_multiples.php
+ * @brief Page de création de récompenses multiples
+ * @details Page de création de récompenses multiples, permet à l'utilisateur de créer des récompenses multiples
+ * @version 1.0
+ */
+
+
+
+
+require_once('fonctions.php');//utilisation des fonctions de la page fonctions.php
+is_logged();//vérifie si l'utilisateur est connecté
+is_validateur();//vérifie si l'utilisateur est un validateur
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -23,7 +33,7 @@ $linkpdo = connexionBd()
 
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
     <?php
-    create_header($linkpdo);
+    create_header($linkpdo);//création du header
     ?>
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->

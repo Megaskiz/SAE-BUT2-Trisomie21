@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file suppr_sys.php
+ * @brief Suppression d'un système
+ * @details Page de suppression d'un système, permet à un validateur de supprimer un système
+ * @version 1.0
+ */
 require_once('fonctions.php');
 session_start();
 

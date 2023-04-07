@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file mon_compte.php
+ * @brief Page de mon compte
+ * @details Page de mon compte, permet à l'utilisateur de voir ses informations personnelles quand il est connecté
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 ?>

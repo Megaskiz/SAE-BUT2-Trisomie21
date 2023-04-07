@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file objectif_remove.php
+ * @brief Page de suppression d'un jeton dans un système
+ * @details Page de suppression d'un jeton dans un système, permet à un validateur de supprimer un jeton dans un système
+ * @version 1.0
+ * 
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

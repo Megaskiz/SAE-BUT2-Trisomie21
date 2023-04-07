@@ -1,6 +1,16 @@
-<?php require_once("fonctions.php");
+<?php 
+/**
+ * @file login.php
+ * @brief Page de connexion
+ * @details Page de connexion, permet à l'utilisateur de se connecter à son compte ou etre redirigé vers la page d'inscription
+ * @version 1.0
+ */
 
-$linkpdo=connexionBd();
+//utilisation des fonctions de la page fonctions.php
+require_once("fonctions.php");
+
+
+$linkpdo=connexionBd();//connexion à la base de données
 
 // Je récupère les informations de mon formulaire
 if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
@@ -17,6 +27,7 @@ if (!empty($_POST['courriel']) && !empty($_POST['password'])) {
     // Je récupère les informations sur le compte de l'utilisateur
     $valide = $stmt->fetchAll();
 
+    // Je vérifie que le compte existe et que le mot de passe est correct
     if (count($valide) != 0) {
         $id = $valide[0][0];
         $compte_valide = $valide[0][1];

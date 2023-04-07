@@ -3,6 +3,13 @@
 
 
 <?php
+/**
+ * @file objectif_ajout.php
+ * @brief Page d'ajout d'un jeton dans un objectif
+ * @details Page d'ajout d'un jeton dans un objectif, permet à un validateur d'ajouter un jeton dans un objectif
+ * @version 1.0
+ * 
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

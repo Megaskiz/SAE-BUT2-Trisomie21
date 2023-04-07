@@ -1,5 +1,11 @@
-<?php session_start();
-if (isset($_POST["radio1"]) & isset($_POST["radio2"])) {
+<?php 
+/**
+ * @file aiguillage.php
+ * @brief Page d'aiguillage
+ * @details Page d'aiguillage, permet à l'utilisateur de choisir le type de système et de récompenses qu'il souhaite créer
+ */
+session_start();
+if (isset($_POST["radio1"]) & isset($_POST["radio2"])) { // si les deux boutons radio sont cochés
     $res1 = $_POST["radio1"];
     $res2 = $_POST["radio2"];
       

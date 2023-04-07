@@ -1,5 +1,13 @@
 <!DOCTYPE HTML>
-<?php // la partie de la connexion
+<?php 
+/**
+ * @file creation_compte.php
+ * @brief Page de création de compte
+ * @details Page de création de compte, permet à l'utilisateur de créer un compte et de rentrer ses informations personnelles
+ * @version 1.0
+ */
+
+// la partie de la connexion
 require_once("fonctions.php");
 $linkpdo=connexionBd();
 

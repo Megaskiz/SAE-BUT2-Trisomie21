@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file modif_recompense.php
+ * @brief Page de modification d'une récompense
+ * @details Page de modification d'une récompense, permet à un validateur de modifier une récompense
+ */
 require_once('fonctions.php');
 $linkpdo = connexionBd();
 

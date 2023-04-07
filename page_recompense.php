@@ -1,4 +1,12 @@
+<?php
+/**
+ * @file page_recompense.php
+ * @brief Page de gestion des récompenses
+ * @details Page de gestion des récompenses, permet à un validateur de gérer les récompenses
+ */
+?>
 <!DOCTYPE html>
+
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <head>

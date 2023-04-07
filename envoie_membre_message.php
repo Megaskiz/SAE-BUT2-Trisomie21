@@ -8,6 +8,12 @@
 <html lang="fr">
 
 <?php
+/**
+ * @file envoie_membre_message.php
+ * @brief Page d'envoie de message à un membre
+ * @details Page d'envoie de message à un membre, permet à l'utilisateur de pouvoir envoyer un message à un membres
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

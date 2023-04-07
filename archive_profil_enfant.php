@@ -1,9 +1,14 @@
 <?php
-require_once('fonctions.php');
-is_logged();
-is_validateur();
+/**
+ * @file archive_profil_enfant.php
+ * @brief Page d'archivage d'un profil enfant
+ * @details Page d'archivage d'un profil enfant, permet à l'utilisateur de supprimer un profil enfant ou de le réactiver
+ */
+require_once('fonctions.php');// utilisation des fonctions de la page fonctions.php
+is_logged();  // vérifie si l'utilisateur est connecté
+is_validateur(); // vérifie si l'utilisateur est un validateur
 
-$linkpdo = connexionBd();
+$linkpdo = connexionBd(); // connexion à la base de données
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
@@ -17,7 +22,7 @@ $linkpdo = connexionBd();
 
 <body>
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-    <?php create_header($linkpdo); ?>
+    <?php create_header($linkpdo);  // affichage du header ?>
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste enfant (gauche) -------------------------------------------->

@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file insert_recompense_bd.php
+ * @brief Page d'insertion d'une récompense dans la base de données
+ * @details Page d'insertion d'une récompense dans la base de données, permet à un validateur de créer une récompense
+ * @version 1.0
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

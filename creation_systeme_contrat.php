@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file creation_systeme_contrat.php
+ * @brief Page de création d'un système de type "Contrat"
+ * @details Page de création d'un système de type "Contrat", permet à l'utilisateur de créer un système de type "Contrat" et de rentrer ses informations personnelles
+ * @version 1.0
+ * 
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

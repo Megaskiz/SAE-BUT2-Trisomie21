@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file new_session.php
+ * @brief Création d'une nouvelle session
+ * @details Création d'une nouvelle session, permet de créer une nouvelle session pour un système
+ * @version 1.0
+ * 
+ */
 require_once('fonctions.php');
 is_logged();
 ?>

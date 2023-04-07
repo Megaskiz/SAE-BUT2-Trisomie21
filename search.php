@@ -2,6 +2,11 @@
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
+/**
+ * @file search.php
+ * @brief Page de recherche
+ * @details Page de recherche, permet de rechercher un enfant  dans la base de données
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

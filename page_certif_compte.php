@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file page_certif_compte.php
+ * @brief Page de validation d'un compte membre
+ * @details Page de validation d'un compte membre, permet à un administrateur de valider ou invalider un compte membre avec la liste des comptes à valider
+ */
 require_once('fonctions.php');
 is_logged();
 is_user();

@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file objectif.php
+ * @brief Page de gestion des objectifs
+ * @details Page de gestion des objectifs, permet à un validateur de créer des objectifs pour un système
+ * @version 1.0
+ * 
+ */
 require_once('fonctions.php');
 is_logged();
 is_validateur();

@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file statistiques.php
+ * @brief Page de statistiques
+ * @details Page de statistiques, permet à un validateur de voir toutes les statistiques d'un enfant
+ */
 require_once("fonctions.php");
 is_logged();
 is_not_admin();

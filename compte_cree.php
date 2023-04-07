@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file compte_cree.php
+ * @brief Page de compte crée
+ * @details Page de compte crée, permet à l'utilisateur de savoir que son compte a bien été crée
+ * @version 1.0
+ */
+?>
+
 <!DOCTYPE HTML>
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
@@ -22,3 +31,4 @@
 </body>
 
 </html>
+
