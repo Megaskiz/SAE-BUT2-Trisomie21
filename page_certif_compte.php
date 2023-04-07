@@ -50,7 +50,7 @@ $linkpdo = connexionBd();
                     }
 
                     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 2) {
-                        echo "<a href=\"archive_membre.php \"><button class=\"btn_archive\">Membres archivés</button></a>";
+                        echo "<a href=\"archive_membre.php \"><button class=\"archiver\">Membres archivés</button></a>";
                     }
                     ?>
                     <div id="dialog_layer" class="dialogs">
