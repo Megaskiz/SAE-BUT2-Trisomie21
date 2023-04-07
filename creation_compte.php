@@ -1,86 +1,56 @@
 <!DOCTYPE HTML>
-<?php 
+<?php
 /**
  * @file creation_compte.php
  * @brief Page de création de compte
  * @details Page de création de compte, permet à l'utilisateur de créer un compte et de rentrer ses informations personnelles
  * @version 1.0
  */
-
 // la partie de la connexion
-require_once("fonctions.php");
-$linkpdo=connexionBd();
-
+require_once ("fonctions.php");
+$linkpdo = connexionBd();
 // je récupere les informations de mon formulaire
-if (
-    !empty($_POST['nom'])
-    && !empty($_POST['prenom'])
-    && !empty($_POST['adresse'])
-    && !empty($_POST['code_postal'])
-    && !empty($_POST['ville'])
-    && !empty($_POST['courriel'])
-    && !empty($_POST['ddn'])
-    && !empty($_POST['password'])
-    && !empty($_POST['password_verif'])
-) {
+if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['code_postal']) && !empty($_POST['ville']) && !empty($_POST['courriel']) && !empty($_POST['ddn']) && !empty($_POST['password']) && !empty($_POST['password_verif'])) {
     $nom = htmlspecialchars($_POST['nom']);
-    $prenom =  htmlspecialchars($_POST['prenom']);
-    $adresse =  htmlspecialchars($_POST['adresse']);
-    $code =  htmlspecialchars($_POST['code_postal']);
-    $ville =  htmlspecialchars($_POST['ville']);
-    $courriel =  htmlspecialchars($_POST['courriel']);
-    $ddn =  htmlspecialchars($_POST['ddn']);
-    $Mdp =  htmlspecialchars($_POST['password']);
-    $Mdp_verif =  htmlspecialchars($_POST['password_verif']);
-
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $code = htmlspecialchars($_POST['code_postal']);
+    $ville = htmlspecialchars($_POST['ville']);
+    $courriel = htmlspecialchars($_POST['courriel']);
+    $ddn = htmlspecialchars($_POST['ddn']);
+    $Mdp = htmlspecialchars($_POST['password']);
+    $Mdp_verif = htmlspecialchars($_POST['password_verif']);
     // fonction qui hash le mot de passe
-    $insert_mdp = password_hash($Mdp, PASSWORD_BCRYPT );
-
+    $insert_mdp = password_hash($Mdp, PASSWORD_BCRYPT);
     if ($Mdp == $Mdp_verif) {
         // requete avec le mail si, rowcount() > 0 faire fail
         $requete_verif_mail = "SELECT count(*) FROM membre WHERE courriel='$courriel'";
         // Execution de la requete
         try {
             $res = $linkpdo->query($requete_verif_mail);
-        } catch (Exception $e) { 
+        }
+        catch(Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-
         $count = $res->fetchColumn();
-
         if ($count > 0) {
             $message_erreur = "Il y a déjà un compte avec cette adresse mail ";
         } else {
-
-
-            // je creé la requete d'insertion 
-
+            // je creé la requete d'insertion
             $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp,  compte_valide)
                     VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :compte_valide)');
-
             if ($req == false) {
                 die("erreur linkpdo");
             }
-            
             try {
-                $req->execute(array(
-                    'nom' => htmlspecialchars($nom),
-                    'prenom' => htmlspecialchars($prenom),
-                    'adresse' => htmlspecialchars($adresse),
-                    'code_postal' => htmlspecialchars($code),
-                    'ville' => htmlspecialchars($ville),
-                    'courriel' => htmlspecialchars($courriel),
-                    'date_naissance' => htmlspecialchars($ddn),
-                    'mdp' => htmlspecialchars($insert_mdp),
-                    'compte_valide' => 0
-                ));
+                $req->execute(array('nom' => htmlspecialchars($nom), 'prenom' => htmlspecialchars($prenom), 'adresse' => htmlspecialchars($adresse), 'code_postal' => htmlspecialchars($code), 'ville' => htmlspecialchars($ville), 'courriel' => htmlspecialchars($courriel), 'date_naissance' => htmlspecialchars($ddn), 'mdp' => htmlspecialchars($insert_mdp), 'compte_valide' => 0));
                 if ($req == false) {
                     die("erreur execute");
                 }
-            } catch (Exception $e) {
+            }
+            catch(Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
-
             header('Location: compte_cree.php');
             exit();
         }
@@ -88,18 +58,16 @@ if (
         $message_erreur = " Les mots de passe ne correspondent pas.";
     }
 } else {
-
     $nom = "";
     $prenom = "";
-    $adresse =  "";
-    $code =  "";
-    $ville =  "";
-    $courriel =  "";
+    $adresse = "";
+    $code = "";
+    $ville = "";
+    $courriel = "";
     $ddn = "";
     $Mdp = "";
-    $Mdp_verif =  "";
+    $Mdp_verif = "";
 }
-
 ?>
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
@@ -114,8 +82,8 @@ if (
     <div class="login-page">
         <div class="form">
             <p><?php if (isset($message_erreur)) {
-                    echo $message_erreur;
-                }  ?></p>
+    echo $message_erreur;
+} ?></p>
             <div class="grille">
                 <img class="logo" src="img/logo_trisomie.png" alt="Logo de l'association Trisomie 21">
                 <form action="" method="post" class="login-form">

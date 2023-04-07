@@ -5,37 +5,34 @@
  * @details Page de création d'une récompense de type unique, permet à l'utilisateur de créer une récompense de type unique
  * @version 1.0
  */
-require_once('fonctions.php');//utilisation des fonctions de la page fonctions.php
-is_logged();//vérifie si l'utilisateur est connecté
-is_validateur();//vérifie si l'utilisateur est un validateur
+require_once ('fonctions.php'); //utilisation des fonctions de la page fonctions.php
+is_logged(); //vérifie si l'utilisateur est connecté
+is_validateur(); //vérifie si l'utilisateur est un validateur
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" style="font-family: Arial,sans-serif;">
 
 <?php
-
 $linkpdo = connexionBd();
-
 ?>
 
 <head>
     <meta charset="utf-8">
-    <title> Administrateur </title>
+    <title> Récompense </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
-    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-    <?php
-    create_header($linkpdo);
+    <!--HEADER-->
+    <?php create_header($linkpdo); //création du header
     ?>
 
-    <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
+    <!----------------------------------------- Contenu ------------------------------------------------>
     <main>
-
         <form action="insert_recompense_bd.php" enctype="multipart/form-data" method="post">
             <h1 class="flex-simple">Création d'une récompense de type : "unique"</h1>
 
@@ -63,7 +60,5 @@ $linkpdo = connexionBd();
 
     </main>
 </body>
-
-
 
 </html>

@@ -6,8 +6,6 @@
  * @version 1.0
  * @date 2023-06-01
  */
-
-
 // ------------------------------------- fonctions diverses -----------------------------------------------------------
 
 /**
@@ -16,10 +14,9 @@
  */
 function connexionBd()
 {
-    $mdp ='XkQQCQUD0azqRP7R';
+    $mdp = 'XkQQCQUD0azqRP7R';
     return new PDO("mysql:host=localhost;dbname=sae", "sae", $mdp);
 }
-
 /**
  * Fonction qui permet de vérifier si une chaine de caractère ne contient pas d'espace
  * @param $var : chaine de caractère
@@ -30,7 +27,6 @@ function filter_spaces($var)
 {
     return $var != ' ';
 }
-
 // ------------------------------------- fonctions pour les "blocs" html -----------------------------------------------------------
 
 /**
@@ -40,26 +36,20 @@ function filter_spaces($var)
  */
 function create_header($linkpdo)
 {
-
     echo '<header>
         <img class="logo-association" src="img/logo_trisomie.png" alt="logo de l\'association">
         <img class="img-user" src="img/user_logo.png" alt="tete de l\'utilisateur">
         ';
-
-    $mail =  $_SESSION['login_user'];
+    $mail = $_SESSION['login_user'];
     try {
         $res = $linkpdo->query("SELECT nom, prenom FROM membre where courriel='$mail'");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
-
-
     $double_tab = $res->fetchAll();
     $nombre_ligne = $res->rowCount();
     $liste = array();
     echo "<table>";
-
     for ($i = 0; $i < $nombre_ligne; $i++) {
         echo "<tr>";
         for ($y = 0; $y < 2; $y++) {
@@ -68,10 +58,8 @@ function create_header($linkpdo)
             $liste[$y] = $double_tab[$i][$y];
             echo "</td>";
         }
-
         echo "</tr>";
     }
-
     echo "</table>";
     echo '
         <div onclick="window.location.href =\'logout.php\';" class="h-deconnexion">
@@ -80,7 +68,7 @@ function create_header($linkpdo)
     </header>';
 }
 /**
- * function qui permet de créer le menu de navigation de la page web avec la liste des enfants ou des membres, selon le rôle de l'utilisateur 
+ * function qui permet de créer le menu de navigation de la page web avec la liste des enfants ou des membres, selon le rôle de l'utilisateur
  * @param $linkpdo : lien de connexion à la base de données
  * @return html : le menu de navigation de la page web
  */
@@ -92,7 +80,6 @@ function create_nav($linkpdo)
                     <li class="nav-item">
                         <a class="shortcuts-activity nav-link gl-tab-nav-item active gl-tab-nav-item-active" data-placement="" href="index.php">Affichage Enfant</a>
                     </li>';
-
     //acces à la page de membre
     if ($_SESSION["role_user"] != 0) {
         echo '<li class="nav-item">';
@@ -103,13 +90,11 @@ function create_nav($linkpdo)
         echo '<a data-placement="" class="nav-link gl-tab-nav-item" href="mon_compte.php">Mon profil</a>';
         echo '</li>';
     }
-
-    ?>
+?>
     </ul>
     <?php
     //acces à l'ajout de profil d'enfant
     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
-
         //Le bloc suivant est la fenêtre pop-in de l'ajout d'enfant, elle est caché tant qu'on appuie pas sur le bouton "ajouter enfant"
         echo '
         <div class="bouton_enfant">
@@ -155,7 +140,6 @@ function create_nav($linkpdo)
                     </div>
                 </div>
         </div>';
-
         /* fin de la fenêtre popin de l'ajout d'enfant" */
     }
     ?>
@@ -163,8 +147,6 @@ function create_nav($linkpdo)
 
     <?php
     if ($_SESSION["role_user"] != 2) {
-
-
         try {
             //acces tous les enfants
             if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
@@ -175,12 +157,9 @@ function create_nav($linkpdo)
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-
-
         $double_tab = $res->fetchAll();
         $nombre_ligne = $res->rowCount();
         $liste = array();
-
         echo "<div class='liste-enfant'>";
         echo "<div class=\"recherche\">
                     <form class='recherche' method=\"post\" action=\"search.php\">
@@ -191,9 +170,7 @@ function create_nav($linkpdo)
                     </form>
                     </div>";
         echo "<table >";
-
         for ($i = 0; $i < $nombre_ligne; $i++) {
-
             for ($y = 1; $y < 3; $y++) {
                 echo "<td>";
                 print_r(ucfirst(htmlspecialchars($double_tab[$i][$y])));
@@ -203,24 +180,19 @@ function create_nav($linkpdo)
                 $age = $double_tab[0][$y];
                 echo "</td>";
             }
-
             $identifiant = $double_tab[$i][0];
             echo "<td>";
             echo '<a href="index.php?id=' . $identifiant . '"><button  class="acceder-information-enfant">Acceder</button> </a>';
             echo "</td>";
             echo "</tr>";
         }
-
         echo "</table>";
-
-
         $res->closeCursor();
     }
     echo "
                 </div>
             </nav>";
 };
-
 /**
  * Fonction qui permet de créer la section d'information d'un enfant en fonction de son id
  * @param $linkpdo : lien de la base de donnée
@@ -229,19 +201,14 @@ function create_nav($linkpdo)
  */
 function create_section_info_enfant($linkpdo, $id_enfant)
 {
-
-
     try {
         $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id_enfant'");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     $double_tab = $res->fetchAll();
     $nombre_ligne = $res->rowCount();
     $liste = array();
-
-
     $id_enfant = $double_tab[0][0];
     $nom_enfant = ucfirst($double_tab[0][1]);
     $prenom_enfant = ucfirst($double_tab[0][2]);
@@ -252,8 +219,6 @@ function create_section_info_enfant($linkpdo, $id_enfant)
     $handicap = $double_tab[0][7];
     $info_sup = $double_tab[0][8];
     $photo_enfant = $double_tab[0][9];
-
-
     echo "
     
 				<div class=\"div-photo-enfant\">
@@ -271,9 +236,8 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 				</div>
 				<div class=\"div-modif-enfant\">";
     if ($_SESSION["role_user"] == 1) {
-        // acces modif enfant     
+        // acces modif enfant
         // seuls les admins on accès au formulaire de modification d'un profil d'enfant
-
         pop_in_archive_enfant($id_enfant);
         echo "<div class='button_edit'>";
         pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup);
@@ -286,13 +250,11 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 					<div class='button-equipe'>
 						<button class=\"bouton-equipe\" type=\"button\" onclick=\"openDialog('dialog2', this)\">Ajout Equipier</button>
                         <div role=\"dialog\" id=\"dialog2\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">";
-
     try {
         $res = $linkpdo->query("SELECT membre.* FROM membre LEFT JOIN suivre ON membre.id_membre = suivre.id_membre AND suivre.id_enfant = '$id_enfant' WHERE membre.compte_valide = 1 AND suivre.id_membre IS NULL ORDER BY nom;");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     while ($tuteur = $res->fetch()) {
         echo "
                             <div class='btn_ajouter'>
@@ -309,7 +271,6 @@ function create_section_info_enfant($linkpdo, $id_enfant)
                         <br>
                             ";
     }
-
     echo "
                         <button class=\"popup-btn\" type=\"button\" onclick=\"closeDialog(this)\">Annuler &#x1F5D9;</button>
                         </div>    
@@ -319,7 +280,6 @@ function create_section_info_enfant($linkpdo, $id_enfant)
                 <div role=\"dialog\" id=\"dialog8\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
                     <h2 id=\"dialog1_label\" class=\"dialog_label\">Equipe</h2>
 					";
-
     echo "
 								<a class=\"tuteur_4\"></a>
 					";
@@ -346,7 +306,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
         echo "
 								<div class='popup_info'>
 									<img class=\"img_equipe\" src=\"img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
-									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " .  $role . "    
+									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " . $role . "    
 									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
 									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
 								</div>
@@ -364,7 +324,6 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 					</div>
                     ";
 }
-
 /**
  * Fonction qui permet de créer la liste des systèmes de l'enfant en fonction de son id et de son rôle
  * @param $linkpdo : lien de la base de données
@@ -374,7 +333,6 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 function create_section_info_sys($linkpdo, $id_enfant)
 {
     /// début de la section des systèmes ///
-
     //acces aux boutons -> ajouter sys, stat, stat4semaines
     if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
         echo ' 
@@ -389,18 +347,15 @@ function create_section_info_sys($linkpdo, $id_enfant)
 					        </div>
 					    </div>';
     }
-    // tous les systèmes de l'enfant :  
+    // tous les systèmes de l'enfant :
     try {
         $res = $linkpdo->query('SELECT intitule, nb_jetons, duree, priorite, travaille, id_objectif FROM objectif where visibilite=0 and id_enfant=' . $id_enfant . ' ORDER BY priorite ');
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     $double_tab = $res->fetchAll();
     $nombre_ligne = $res->rowCount();
     $liste = array();
-
-
     echo "
                         <table class='affichage-objectif'>
 					        <colgroup class='column'></colgroup>
@@ -413,24 +368,20 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                 <th>Accéder</th>
                                 <th class='sup'>Archiver</th>
                             </tr>";
-
     for ($i = 0; $i < $nombre_ligne; $i++) {
         //acces au systèmes
         if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1 or $_SESSION["role_user"] == 3) {
             echo "<tr class='objectif_tr'>";
-
             #affiche nom
             echo "<td>";
             print_r(htmlspecialchars($double_tab[$i][0]));
             echo "</td>";
-
             #affiche nombre de jeton
             echo "<td>";
             echo "<center>";
             print_r(htmlspecialchars($double_tab[$i][1]));
             echo "</center>";
             echo "</td>";
-
             #affiche nombre de jour
             echo "<td>";
             $value = $double_tab[$i][2];
@@ -441,7 +392,6 @@ function create_section_info_sys($linkpdo, $id_enfant)
                     echo " Heure(s)";
                     echo "</center>";
                     break;
-
                 case ($value < 24 * 7 ? $value : !$value):
                     $reste = $value % 24;
                     $jours = intdiv($value, 24);
@@ -449,14 +399,12 @@ function create_section_info_sys($linkpdo, $id_enfant)
                     echo $jours . " jour(s), " . $reste . " heure(s)";
                     echo "</center>";
                     break;
-
                 default:
                     $semaines = intdiv($value, (7 * 24));
-                    $reste1 = $value % (7 * 24); // pour savoir s'il reste quoi que ce soit 
+                    $reste1 = $value % (7 * 24); // pour savoir s'il reste quoi que ce soit
                     echo "<center>";
                     echo $semaines . " semaine(s) ";
                     echo "</center>";
-
                     if ($reste1 > 23) { // il reste + d'un jour
                         $restej = $value - (7 * 24); // le nombre d'heure au dela d'une semaine
                         if ($reste1 > 23) { // si ce nombre d'heure au dela d'une semaine dépasse 1 jour
@@ -500,7 +448,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                 echo ("aucun id trouvé");
             }
             echo "<title>Envoie de mesage</title>";
-            ?>
+    ?>
             <div class="chat_all">
                 <div class="chat_title">
                     💬Messagerie du système à jeton
@@ -516,7 +464,6 @@ function create_section_info_sys($linkpdo, $id_enfant)
                         if (!$recupMessages) {
                             die("Erreur prepare");
                         }
-
                         while ($message = $recupMessages->fetch()) {
                             if ($message['id_membre'] == $_SESSION['logged_user']) {
                         ?>
@@ -564,7 +511,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
                 </div>
             </div>
 
-        <?php
+<?php
             echo "
                             </form>
 							</td>
@@ -591,8 +538,6 @@ function create_section_info_sys($linkpdo, $id_enfant)
                         break;
                 }
             }
-
-
             echo "
                             <td>
                                 <center>
@@ -617,17 +562,14 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                     </div>
                                 </div>";
             }
-
             echo "
                             </td>
 						</tr>";
         }
     }
     echo "</table>";
-
     $res->closeCursor();
 }
-
 // ------------------------------------- fonctions pour les pop-in -----------------------------------------------------------
 
 /**
@@ -639,7 +581,7 @@ function create_section_info_sys($linkpdo, $id_enfant)
  * @param $adresse : adresse de l'enfant
  * @param $handicap : handicap de l'enfant
  * @param $info_sup : information supplémentaire sur l'enfant
- * @return html pop-in 
+ * @return html pop-in
  */
 function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite, $adresse, $handicap, $info_sup)
 {
@@ -691,13 +633,12 @@ function pop_in_modif_enfant($nom_enfant, $prenom_enfant, $ddn_enfant, $activite
         </div>
     </div>";
 };
-
 /**
  * Fonction qui affiche la pop-in pour modifier une photo de jeton et la photo de profil
  * @param $lien_jeton_enfant : lien de la photo de jeton
  * @param $prenom_enfant : prenom de l'enfant
  * @param $photo_enfant : lien de la photo de profil
- * @return html pop-in 
+ * @return html pop-in
  */
 function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
 {
@@ -743,11 +684,10 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
     </div>
     ";
 }
-
 /**
  * Fonction qui affiche la pop-in pour archiver un enfant
  * @param $id_enfant : id de l'enfant
- * @return html pop-in 
+ * @return html pop-in
  */
 function pop_in_archive_enfant($id_enfant)
 {
@@ -772,18 +712,14 @@ function pop_in_archive_enfant($id_enfant)
 function archive_enfant($linkpdo)
 {
     $req = $linkpdo->prepare('UPDATE enfant SET visibilite="1" where id_enfant=' . $_SESSION["id_enfant"]);
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
-
         $req->execute(array());
         // $req->debugDumpParams();
         // exit();
         header("Location:index.php");
-
         if ($req == false) {
             $req->debugDumpParams;
             die("erreur execute");
@@ -794,7 +730,6 @@ function archive_enfant($linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui ejecte un membre de l'équipe l'enfant
  * @param $Sid : id de l'enfant
@@ -802,7 +737,6 @@ function archive_enfant($linkpdo)
  * @param $linkpdo : lien pdo
  * @return redirect vers la page de l'enfant
  */
-
 function eject($Sid, $id_eject, $linkpdo)
 {
     $req_eject = "DELETE FROM suivre WHERE `suivre`.`id_enfant` = $Sid AND `suivre`.`id_membre` = $id_eject";
@@ -813,7 +747,6 @@ function eject($Sid, $id_eject, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui restaure un compte membre
  * @param $id : id du membre
@@ -822,7 +755,6 @@ function eject($Sid, $id_eject, $linkpdo)
  */
 function restaure_utilisateur($id, $linkpdo)
 {
-
     $req = "UPDATE `membre` SET `visibilite` = '0' WHERE `membre`.`id_membre` =$id ;";
     try {
         $linkpdo->query($req);
@@ -830,7 +762,6 @@ function restaure_utilisateur($id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui restaure un compte enfant
  * @param $id : id de l'enfant
@@ -846,7 +777,6 @@ function restaure_profil_enfant($id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui archive un compte membre
  * @param $id : id du membre
@@ -855,7 +785,6 @@ function restaure_profil_enfant($id, $linkpdo)
  */
 function archive_membre($id, $linkpdo)
 {
-
     $req = "UPDATE `membre` SET `visibilite` = '1' WHERE `membre`.`id_membre` =$id ;";
     try {
         $linkpdo->query($req);
@@ -863,9 +792,8 @@ function archive_membre($id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
- * Fonction qui valide un compte membre 
+ * Fonction qui valide un compte membre
  * @param $id : id du membre
  * @param $linkpdo : lien pdo
  * @return void
@@ -879,17 +807,14 @@ function valide_membre($id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
-
 /**
- * Fonction qui invalide un compte membre 
+ * Fonction qui invalide un compte membre
  * @param $id : id du membre
  * @param $linkpdo : lien pdo
  * @return void
  */
 function invalide_membre($id, $linkpdo)
 {
-
     $req = "UPDATE `membre` SET `compte_valide` = '0' WHERE `membre`.`id_membre` =$id ;";
     try {
         $linkpdo->query($req);
@@ -897,9 +822,6 @@ function invalide_membre($id, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
-
-
 // ------------------------------------- fonctions pour les modifications -----------------------------------------------------------
 
 /**
@@ -913,50 +835,38 @@ function invalide_membre($id, $linkpdo)
  * @param $info_sup
  * @param $session
  * @param $linkpdo
- * 
+ *
  * @return void
  * renvoie sur la page index.php en fonction de l'enfant modifié
  */
 function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $handicap, $info_sup, $session, $linkpdo)
 {
-
     if ($nom != null or $prenom != null or $date_naissance != null or $adresse != null or $activite != null or $handicap != null or $info_sup) {
         $liste = array();
         $data = array();
-
-
         if ($nom != null) {
             $liste += ["nom" => $nom];
         }
-
         if ($prenom != null) {
             $liste += ["prenom" => $prenom];
         }
-
         if ($date_naissance != null) {
             $liste += ["date_naissance" => $date_naissance];
         }
-
         if ($adresse != null) {
             $liste += ["adresse" => $adresse];
         }
-
         if ($activite != null) {
             array_push($liste, $activite);
             $liste += ["activite" => $activite];
         }
-
         if ($handicap != null) {
             $liste += ["handicap" => $handicap];
         }
-
         if ($info_sup != null) {
             $liste += ["info_sup" => $info_sup];
         }
-
-
         $req = "UPDATE enfant SET ";
-
         foreach ($liste as $key => $value) {
             if (!is_numeric($key)) {
                 $req .= $key;
@@ -964,23 +874,16 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
                 array_push($data, $value);
             }
         }
-
         $req = substr($req, 0, -1);
-
         $req .= "where id_enfant=?";
         array_push($data, $_SESSION['id_enfant']);
-
         $query = $linkpdo->prepare($req);
-
         if ($query == false) {
             die("erreur linkpdo");
         }
-
         try {
             $query->execute($data);
             $query->debugDumpParams();
-
-
             if ($query == false) {
                 die("erreur execute");
             }
@@ -988,11 +891,9 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
             die('Erreur : ' . $e->getMessage());
         }
     }
-
     header('Location: index.php?id=' . $_SESSION['id_enfant'] . '');
     exit();
 }
-
 /**
  * Fonction qui permet de créer la requête de modification d'un compt membre et l'exécute
  * @param $nom : nom du membre
@@ -1004,60 +905,53 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
  * @param $role : role du membre
  * @param $session  : id du membre
  * @param $linkpdo : lien pdo
- * 
- * @return void 
+ *
+ * @return void
  */
 function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session, $linkpdo)
 {
-
     if ($role == NULL) {
         $role = '1';
     }
     $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
         $req->execute([$nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session]);
-
         if ($req == false) {
             die("erreur execute");
         }
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     header('Location: page_certif_compte.php?idv=' . $_SESSION['id_compte_modif'] . '');
     exit();
 }
-
 /**
  * Fonction qui permet de créer la requête de modification d'un jeton et l'exécute
  * @param $id : id de l'enfant
  * @param $photo_enfant : lien de la photo
  * @param $linkpdo : lien pdo
- * 
+ *
  */
 function modif_jeton($id, $photo_enfant, $linkpdo)
 {
-
     $reqM = "UPDATE enfant SET lien_jeton = '$photo_enfant' WHERE enfant.id_enfant = $id;";
     try {
         $res = $linkpdo->query($reqM);
         //echo $reqM;
+
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui permet de créer la requête de modification d'une photo et l'exécute
  * @param $id : id de l'enfant
  * @param $photo_enfant : lien de la photo
  * @param $linkpdo : lien pdo
- * 
+ *
  * @return void
  */
 function modif_photo($id, $photo_enfant, $linkpdo)
@@ -1066,38 +960,32 @@ function modif_photo($id, $photo_enfant, $linkpdo)
     try {
         $res = $linkpdo->query($reqM);
         //echo $reqM;
+
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui permet de créer la requête de modification d'un mot de passe et l'exécute
  * @param $mdp : mot de passe
  * @param $session : id du membre
  * @param $linkpdo : lien pdo
- * 
+ *
  * @return void
  */
 function modif_mdp($mdp, $session, $linkpdo)
 {
-
     // fonction qui hash le mot de passe
     $mot = "ZEN02anWobA4ve5zxzZz" . $mdp; // je rajoute une chaine que je vais ajouter au mot de passe
     $nouveau_mdp = hash('sha256', $mot);
-
-
     $req = $linkpdo->prepare("UPDATE membre  SET mdp=? WHERE id_membre= ?");
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
         $req->execute([$nouveau_mdp, $session]);
         //$req->debugDumpParams();
         //exit();
-
         if ($req == false) {
             die("erreur execute");
         }
@@ -1105,8 +993,8 @@ function modif_mdp($mdp, $session, $linkpdo)
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 // ------------------------------------- fonctions pour les insert -----------------------------------------------------------
+
 /**
  * Fonction qui permet de créer la requête d'insertion d'un membre et l'exécute
  * @param $nom : nom du membre
@@ -1117,33 +1005,21 @@ function modif_mdp($mdp, $session, $linkpdo)
  * @param $date_naissance : date de naissance du membre
  * @param $role : role du membre
  * @param $linkpdo : lien pdo
- * 
+ *
  * @return void
  */
 function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfant, $linkpdo)
 {
-
-
-    // je creé la requete d'insertion 
-
+    // je creé la requete d'insertion
     $req = $linkpdo->prepare('INSERT INTO enfant(nom, prenom, date_naissance, lien_jeton,photo_enfant)
     VALUES(:nom, :prenom, :date_naissance, :lien_jeton, :photo_enfant)');
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
-        $req->execute(array(
-            'nom' => htmlspecialchars($nom),
-            'prenom' => htmlspecialchars($prenom),
-            'date_naissance' => htmlspecialchars($date_naissance),
-            'lien_jeton' => htmlspecialchars($lien_jeton),
-            'photo_enfant' => htmlspecialchars($photo_enfant)
-        ));
+        $req->execute(array('nom' => htmlspecialchars($nom), 'prenom' => htmlspecialchars($prenom), 'date_naissance' => htmlspecialchars($date_naissance), 'lien_jeton' => htmlspecialchars($lien_jeton), 'photo_enfant' => htmlspecialchars($photo_enfant)));
         // $req->debugDumpParams();
         // exit();
-
         if ($req == false) {
             $req->debugDumpParams();
             die("erreur execute");
@@ -1151,11 +1027,9 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     header('Location: index.php');
     exit();
 }
-
 /**
  * Fonction qui permet de créer la requête d'insertion d'un membre et l'exécute
  * @param $nom : nom du membre
@@ -1166,31 +1040,20 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
  * @param $date_naissance : date de naissance du membre
  * @param $role : role du membre
  * @param $linkpdo : lien pdo
- * 
+ *
  * @return void
  */
 function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo)
 {
-    // je creé la requete d'insertion 
-
+    // je creé la requete d'insertion
     $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
         VALUES(:nom, :prenom, :adresse, :code_postal, :ville, :courriel, :date_naissance, :mdp, :pro, :compte_valide)');
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
         $req->execute(array(
-            'nom' => $nom,
-            'prenom' => $prenom,
-            'adresse' => $adresse,
-            'code_postal' => $code,
-            'ville' => $ville,
-            'courriel' => $courriel,
-            'date_naissance' => $ddn,
-            'mdp' => $Mdp,
-            'pro' => $pro, // à changer
+            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' => $Mdp, 'pro' => $pro, // à changer
             'compte_valide' => 1
         ));
         if ($req == false) {
@@ -1200,67 +1063,55 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     header('Location: page_certif_compte.php');
     exit();
 }
-
 // ------------------------------------- fonctions pour les images -----------------------------------------------------------
+
 /**
  * Fonction qui upload une image dans le dossier images
  * @param $photo : image à uploader
  * @return string : chemin de l'image
- * */
+ *
+ */
 function uploadImage($photo)
 {
     if (isset($photo)) {
         // File information
         $uploaded_name = $photo['name'];
-        $uploaded_ext  = strtolower(substr($uploaded_name, strrpos($uploaded_name, '.') + 1));
+        $uploaded_ext = strtolower(substr($uploaded_name, strrpos($uploaded_name, '.') + 1));
         $uploaded_size = $photo['size'];
-        $uploaded_tmp  = $photo['tmp_name'];
+        $uploaded_tmp = $photo['tmp_name'];
         $uploaded_error = $photo['error'];
-
         // Where are we going to be writing to?
-        $target_path   = "images/";
-        $target_file   =  md5(uniqid() . $uploaded_name) . '.' . $uploaded_ext;
-        $temp_file     = ( ( ini_get( 'upload_tmp_dir' ) == '' ) ? ( sys_get_temp_dir() ) : ( ini_get( 'upload_tmp_dir' ) ) );
-        $temp_file    .= DIRECTORY_SEPARATOR . md5( uniqid() . $uploaded_name ) . '.' . $uploaded_ext;
-
+        $target_path = "images/";
+        $target_file = md5(uniqid() . $uploaded_name) . '.' . $uploaded_ext;
+        $temp_file = ((ini_get('upload_tmp_dir') == '') ? (sys_get_temp_dir()) : (ini_get('upload_tmp_dir')));
+        $temp_file .= DIRECTORY_SEPARATOR . md5(uniqid() . $uploaded_name) . '.' . $uploaded_ext;
         // Is it an image?
         $extensions = ['jpg', 'png', 'jpeg', 'gif', 'svg', 'webp', 'bmp'];
         $maxSize = 1000000; // 1MB
-        if( in_array($uploaded_ext, $extensions) &&
-            ( $uploaded_size < $maxSize ) &&
-            ( $uploaded_error == 0 ) &&
-            getimagesize( $uploaded_tmp ) ) {
-
+        if (in_array($uploaded_ext, $extensions) && ($uploaded_size < $maxSize) && ($uploaded_error == 0) && getimagesize($uploaded_tmp)) {
             // Strip any metadata, by re-encoding image (Note, using php-Imagick is recommended over php-GD)
-            if( $uploaded_ext == 'jpg' || $uploaded_ext == 'jpeg' ) {
-                $img = imagecreatefromjpeg( $uploaded_tmp );
-                imagejpeg( $img, $temp_file, 100);
+            if ($uploaded_ext == 'jpg' || $uploaded_ext == 'jpeg') {
+                $img = imagecreatefromjpeg($uploaded_tmp);
+                imagejpeg($img, $temp_file, 100);
+            } else {
+                $img = imagecreatefrompng($uploaded_tmp);
+                imagepng($img, $temp_file, 9);
             }
-            else {
-                $img = imagecreatefrompng( $uploaded_tmp );
-                imagepng( $img, $temp_file, 9);
-            }
-            imagedestroy( $img );
-
+            imagedestroy($img);
             // Can we move the file to the web root from the temp folder?
-            if( rename( $temp_file, ( getcwd() . DIRECTORY_SEPARATOR . $target_path . $target_file ) ) ) {
+            if (rename($temp_file, (getcwd() . DIRECTORY_SEPARATOR . $target_path . $target_file))) {
                 // Yes!
                 $result = $target_path . $target_file;
-            }
-            else {
+            } else {
                 // No
                 echo '<pre>Your image was not uploaded.</pre>';
             }
-
             // Delete any temp files
-            if( file_exists( $temp_file ) )
-                unlink( $temp_file );
-        }
-        else {
+            if (file_exists($temp_file)) unlink($temp_file);
+        } else {
             // Invalid file
             echo '<pre>Your image was not uploaded. We can only accept JPEG, PNG, GIF, SVG, WEBP or BMP images up to 1MB.</pre>';
         }
@@ -1269,19 +1120,16 @@ function uploadImage($photo)
     }
     return $result;
 }
-
-
 // ------------------------------------- fonctions de vérification de droit -----------------------------------------------------------
 
 /**
  * Fonction qui permet de vérifier si l'utilisateur est connecté
- * 
+ *
  * @return void
  */
 function is_logged()
 {
     session_start();
-
     if (!isset($_SESSION['logged_user'])) {
         echo "vous n'etes pas connecté : ";
         echo '<a href="login.php">aller vers la page de connexion</a>';
@@ -1289,10 +1137,9 @@ function is_logged()
         exit();
     }
 }
-
 /**
  * Fonction qui permet de vérifier si l'utilisateur est un utilisateur
- * 
+ *
  * @return void
  */
 function is_user()
@@ -1304,10 +1151,9 @@ function is_user()
         exit();
     }
 }
-
 /**
  * Fonction qui permet de vérifier si l'utilisateur est un validateur
- * 
+ *
  * @return void
  */
 function is_validateur()
@@ -1319,10 +1165,9 @@ function is_validateur()
         exit();
     }
 }
-
 /**
  * Fonction qui permet de vérifier si l'utilisateur est un coordinateur
- * 
+ *
  * @return void
  */
 function is_coordinateur()
@@ -1334,10 +1179,9 @@ function is_coordinateur()
         exit();
     }
 }
-
 /**
  * Fonction qui permet de vérifier si l'utilisateur est un administrateur
- * 
+ *
  * @return void
  */
 function is_not_admin()
@@ -1349,8 +1193,6 @@ function is_not_admin()
         exit();
     }
 }
-
-
 // ------------------------------------- fonctions de suppression dans la bd -----------------------------------------------------------
 
 /**
@@ -1387,7 +1229,6 @@ function supprime_objectif($id_objectif, $linkpdo)
     supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
 }
-
 /**
  * Fonction qui permet de supprimer un profil enfant
  * @param $id_enfant : id de l'enfant
@@ -1396,8 +1237,7 @@ function supprime_objectif($id_objectif, $linkpdo)
  */
 function supprime_profil_enfant($id_enfant, $linkpdo)
 {
-    // il faut supprimer tous ses objectifs : 
-
+    // il faut supprimer tous ses objectifs :
     $req = $linkpdo->prepare("select id_objectif from objectif where id_enfant = :id ");
     if ($req == false) {
         $req->debugDumpParams();
@@ -1409,15 +1249,13 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
         $req->debugDumpParams();
         return false;
     }
-
     $double_tab = $req->fetchAll();
-
     $i = 0;
     for ($i; $i < sizeof($double_tab); $i++) {
         supprime_objectif($double_tab[0][$i], $linkpdo); // suppression de tous les objectifs de cet enfant
+
     }
     // preparation de la Requête sql
-
     $req = $linkpdo->prepare("
     
     Delete from suivre where id_enfant=:id;
@@ -1437,7 +1275,6 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
     supprimer_image($linkpdo); // une fois qu'on a supprimé le profil enfant, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
 }
-
 /**
  * Fonction qui permet de supprimer un compte membre
  * @param $id_utilisateur : id de l'utilisateur
@@ -1447,9 +1284,8 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
 function supprime_utilisateur($id_utilisateur, $linkpdo)
 {
     // preparation de la Requête sql
-
     /* Pour supprimer un membre de la base de donnée il faut :
-
+    
     Table        :  action 
     _______________________
     placer jeton :  mettre un id_membre factice
@@ -1458,7 +1294,6 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
     suivre       :  supprimer
     membre       :  supprimer
     */
-
     $req = $linkpdo->prepare("
     
         UPDATE `placer_jeton` SET `id_membre` = '-1' WHERE `placer_jeton`.`id_membre` = :id ; 
@@ -1488,7 +1323,6 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
     }
     return true;
 }
-
 /**
  * Fonction qui permet de supprimer une image
  * @param $linkpdo : lien pdo
@@ -1497,13 +1331,10 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
 function supprimer_image($linkpdo)
 {
     // recuperer toutes les images qui sont reliés dans la bd
-
-    // récompense = lien 
-    // enfant : lien_jeton 
-    // enfant : photo_enfant 
-
+    // récompense = lien
+    // enfant : lien_jeton
+    // enfant : photo_enfant
     $liste = array();
-
     $req = $linkpdo->prepare("
     select lien_image, photo_enfant, lien_jeton from recompense, enfant;
     
@@ -1518,7 +1349,6 @@ function supprimer_image($linkpdo)
         $req->debugDumpParams();
         return false;
     }
-
     $double_tab = $req->fetchAll();
     for ($i = 0; $i < sizeof($double_tab); $i++) {
         for ($y = 0; $y < 3; $y++) {
@@ -1528,21 +1358,17 @@ function supprimer_image($linkpdo)
         }
     }
     $files1 = scandir("./images");
-
     unset($files1[0]); // on retire le . du $files1
     unset($files1[1]); // on retire le .. du $files1
     unset($files1[2]); // on retire le .gitignore du $files1
-
-
     foreach ($files1 as $key => $value) {
         if (!in_array("images/" . $value, $liste)) {
             unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
+
         }
     }
 }
-
-
-// ------------------------------------- fonctions par rapport aux systèmes/objectifs -----------------------------------------------------------
+// ------------------------------------- fonction pour les systèmes/objectifs -----------------------------------------------------------
 
 /**
  * Fonction qui permet d'a'fficher un objectif
@@ -1554,31 +1380,24 @@ function supprimer_image($linkpdo)
  */
 function afficher_systeme($type, $param, $linkpdo, $id)
 {
-
     /* valeur possible de $type :
             routine
             chaargement
     */
-
     /* valeur possible de $param :
             valide
             non_valide
     */
-
-
     try {
         $res = $linkpdo->query("SELECT nom FROM objectif where id_objectif=$id"); // le nom est la chaine que j'utilise pour construire le système
         $res2 = $linkpdo->query("SELECT lien_jeton FROM enfant where id_enfant=" . $_SESSION['id_enfant'] . "");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
     $double_tab = $res->fetchAll();
     $talbeau_jeton = $res2->fetchAll();
-
     $lien_jeton = $talbeau_jeton[0][0];
     $chaine = $double_tab[0][0];
-
     if ($param == "valide") {
         // TESTER SI IL Y A DES 0 DANS LA CHAINE, SI NON, çA VEUT DIRE QUE LE SYSTEME EST FINI ICI
         if (strpos($chaine, '0') == false) {
@@ -1620,12 +1439,9 @@ function afficher_systeme($type, $param, $linkpdo, $id)
         </tr>
         ";
     }
-
-
     $morceau = explode(":", $chaine);
-    array_pop($morceau); // je retire la partie apres le dernier ":" 
+    array_pop($morceau); // je retire la partie apres le dernier ":"
     $compteur = 0;
-
     foreach ($morceau as $ligne) {
         $element = explode("_", $ligne);
         $tache = $element[0];
@@ -1633,26 +1449,21 @@ function afficher_systeme($type, $param, $linkpdo, $id)
         $tab_jeton = str_split($jetons);
         echo "<tr>";
         echo "<td class='struct'>";
-
         echo "<p>" . htmlspecialchars($tache) . "</p>";
         echo "</td>";
         //ajout des cases de jetons
         foreach ($tab_jeton as $case_tab) {
             if ($case_tab == 0) {
                 echo "<td class='case_jeton' id=$compteur >";
-
                 if ($param == "valide") {
                     echo '<a href="objectif_ajout.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" onclick="setTimeout(startConfetti,500);" style="display: block;width: 5rem;height: 5rem;"></a>';
                 } else {
                     echo '<a style="display: block;width: 5rem;height: 5rem;"></a>';
                 }
-
-
                 echo "</td>";
             } else {
                 echo "<td class='case_jeton' id=$compteur>";
                 echo "<center>";
-
                 if ($param == "valide") {
                     echo '<a href="objectif_remove.php?id=' . $id . '&amp;case=' . $compteur . '&amp;chaine=' . $chaine . '" style="display: block;width: 5rem;height: 5rem;"><img class=\"jeton\" src=' . $lien_jeton . ' alt=' . $lien_jeton . '></a>';
                 } else {
@@ -1669,7 +1480,6 @@ function afficher_systeme($type, $param, $linkpdo, $id)
     echo "</table>";
     echo "</div>";
 }
-
 /**
  * Fonction qui permet de verifier si une session est echue
  * @param $session_max : id de la session
@@ -1686,27 +1496,18 @@ function verifie_session_echue($session_max, $id, $linkpdo)
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
-
-
     $double_tab = $jeton_premier_query->fetchAll();
     $double_tab2 = $duree_sys_query->fetchAll();
-
     $jeton_premier = $double_tab[0][0];
     $duree_sys = $double_tab2[0][0];
-
     $duree_sys_en_seconde = $duree_sys * 3600;
-
-    $temps_total =  $duree_sys_en_seconde + strtotime($jeton_premier);
-
-
+    $temps_total = $duree_sys_en_seconde + strtotime($jeton_premier);
     if (($temps_total - time()) > 0) {
         return true;
     } else {
         return false;
     };
 }
-
 /**
  * Fonction qui inverse l'etat de travaille d'un objectif
  * @param $sys : id de l'objectif
@@ -1717,18 +1518,15 @@ function verifie_session_echue($session_max, $id, $linkpdo)
 function inverse_utilisation_objectif($sys, $val, $linkpdo)
 {
     $req = $linkpdo->prepare('UPDATE objectif SET travaille = :invers where id_objectif = :id ');
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-
     try {
         $req->execute(array('invers' => $val, 'id' => $sys));
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
 }
-
 /**
  * Fonction qui permet faire une popup pour modifier une récompense
  * @param $id_rec : id de la récompense
@@ -1764,7 +1562,6 @@ function modif_recompense($id_rec, $nom, $description, $image) // fonction qui p
         </div>
     </td>";
 }
-
 /**
  * Fonction qui permet faire une popup pour supprimer une récompense
  * @param $id_rec : id de la récompense
@@ -1788,5 +1585,4 @@ function suppr_recompense($id_rec) // fonction qui permet de supprimer une réco
     </td>
     </tr>";
 }
-
 ?>
