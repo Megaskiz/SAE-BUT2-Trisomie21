@@ -5,7 +5,7 @@
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 </script>
-<html lang="fr">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <?php
 /**

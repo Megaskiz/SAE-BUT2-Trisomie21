@@ -5,22 +5,19 @@
  * @details Page de validation d'une demande d'adhésion à une équipe, permet à un validateur de valider une demande d'adhésion à une équipe
  * @version 1.0
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 is_validateur();
 ?>
 <?php
-
 $linkpdo = connexionBd();
-
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
-<html lang="fr">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <head>
-    <title> Administrateur </title>
+    <title> Objectif </title>
     <link rel="stylesheet" href="style_css/style_creatsystem.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
@@ -28,7 +25,7 @@ $linkpdo = connexionBd();
 </head>
 
 <body>
-    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <!--HEADER -->
     <?php create_header($linkpdo); ?>
 
 
@@ -39,36 +36,28 @@ $linkpdo = connexionBd();
                 <a class="retour" href="index.php?id=<?php echo $_SESSION['id_enfant'] ?>"> <button
                         class="button-retour">Retour</button> </a>
                 <?php
-                $id = $_SESSION['id_enfant'];
-
-                try {
-                    $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
-                } catch (Exception $e) {
-                    die('Erreur : ' . $e->getMessage());
-                }
-
-
-
-
-                while ($data = $res->fetch()) {
-                    echo '<div class="div-photo-enfant">';
-                    echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"visage de : " . $data['prenom'] . "\">";
-                    echo '</div>';
-                    $date = strval($data[3]);
-                    $datefinal = new DateTime($date);
-                    echo (
-                        ucfirst(
-                            "
+$id = $_SESSION['id_enfant'];
+try {
+    $res = $linkpdo->query("SELECT * FROM enfant where id_enfant='$id'");
+}
+catch(Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+while ($data = $res->fetch()) {
+    echo '<div class="div-photo-enfant">';
+    echo "<img class=\"photo-enfant\" src=\"$data[9]\" alt=\"visage de : " . $data['prenom'] . "\">";
+    echo '</div>';
+    $date = strval($data[3]);
+    $datefinal = new DateTime($date);
+    echo (ucfirst("
                         <div class='id-enfant'> <a class='id-nom'>Nom: <strong> $data[1] </strong></a> </div>
                         <div class='id-enfan'> <a class='id-prenm'>Prénom: <strong> $data[2]  </strong></a> </div>
                         <div class='id-enfant'> <a class='id-age'>Date de naissance: <strong> " . date_format($datefinal, 'd/m/Y') . "</strong></a></div>
                         <div class='id-enfants'> <a class='id-adresse'>Adresse: <strong> $data[5] </strong> </a></div>
                         <div class='id-enfants'> <a class='id-activite'>Handicap : <strong> $data[7] </strong> </a></div>
-                        <div class='id-enfants'> <a class='id-activite'>Activité : <strong> $data[6] </strong> </a></div>"
-                        )
-                    );
-                }
-                ?>
+                        <div class='id-enfants'> <a class='id-activite'>Activité : <strong> $data[6] </strong> </a></div>"));
+}
+?>
 
             </div>
         </nav>

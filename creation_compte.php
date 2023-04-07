@@ -69,7 +69,7 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse'
     $Mdp_verif = "";
 }
 ?>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <head>
     <meta charset="utf-8">

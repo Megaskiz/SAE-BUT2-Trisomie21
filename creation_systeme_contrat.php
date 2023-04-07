@@ -12,7 +12,7 @@ is_validateur();
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 
 

@@ -5,33 +5,32 @@
  * @details Page de certification des comptes, permet à un administrateur de valider ou invalider un compte
  * @version 1.0
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 <head>
     <meta charset="utf-8">
-    <title> changement de mot de passe </title>
+    <title> Changement de mot de passe </title>
     <link rel="stylesheet" href="style_css/style_page_certif_account.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
         <!--------------------------------------------------------------- header ------------------------------------------------------------------->
-<?php create_header($linkpdo);?>
+<?php create_header($linkpdo); ?>
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
 
     <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
     <main>
         <nav class="left-contenu">
-            <?php 
-            if($_SESSION["role_user"]!=2){
-                echo'
+            <?php
+if ($_SESSION["role_user"] != 2) {
+    echo '
                 <ul class="scrolling-tabs nav-links gl-display-flex gl-flex-grow-1 gl-w-full nav gl-tabs-nav nav gl-tabs-nav">
                     <li class="nav-item">
                         <a class="nav-link gl-tab-nav-item" data-placement="right" href="index.php">Enfant</a>
@@ -41,15 +40,15 @@ $linkpdo = connexionBd();
                     </li>
                 </ul>
                 ';
-            }
-            ?>
+}
+?>
         </nav>
         <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_membre" style=" display:grid; grid-template-columns: 30% 1fr ; grid-template-rows:1fr;">
                 <?php
-                    //<!---- menu droit information ---->
-                    echo"
+//<!---- menu droit information ---->
+echo "
                     <div class=\"case-membre_1\"  style='display : flex; align-items: flex-end'>
                         <a href='page_certif_compte.php?idv='><button class='annuler'> Annuler &#x1F5D9;</button></a>
                     </div>
@@ -70,7 +69,7 @@ $linkpdo = connexionBd();
                     <div class=\"case-membre_2\">
                         <p></p>
                     </div>";
-                ?>
+?>
         </div>
         </nav>
     </main>

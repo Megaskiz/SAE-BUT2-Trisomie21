@@ -11,7 +11,7 @@ is_validateur(); //vérifie si l'utilisateur est un validateur
 
 ?>
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <?php
 $linkpdo = connexionBd();
