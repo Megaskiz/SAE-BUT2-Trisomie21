@@ -1,10 +1,10 @@
 <?php
 /** 
- * @file page_certif_compte.php
- * @brief Page de validation des comptes
- * @details Page de validation des comptes, permet à un coordinateur de valider ou invalider un compte
- * @version 1.0
+ * @file modif_compte.php
+ * @brief Page de modification d'un compte membre
+ * @details Page de modification d'un compte membre, permet à un coordinateur de modifier un compte membre
  */
+
 require_once('fonctions.php');
 is_logged(); //redirige si on est pas logged
 is_user();   //redirige si on est "utilisateur"

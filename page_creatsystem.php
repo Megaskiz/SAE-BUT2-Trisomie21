@@ -1,8 +1,8 @@
 <?php
-/** 
- * @file groupe_validation.php
- * @brief Page de validation d'une demande d'adhésion à une équipe
- * @details Page de validation d'une demande d'adhésion à une équipe, permet à un validateur de valider une demande d'adhésion à une équipe
+/**
+ * @file page_creatsystem.php
+ * @brief Page de création d'un système
+ * @details Page de création d'un système, permet à un validateur de créer un système pour un enfant
  * @version 1.0
  */
 require_once('fonctions.php');

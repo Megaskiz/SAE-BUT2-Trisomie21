@@ -1,8 +1,8 @@
 <?php
 /**
- * @file page_certif_compte.php
- * @brief Page de validation des comptes
- * @details Page de validation des comptes, permet à un administrateur de valider ou invalider un compte
+ * @file modif_mdp.php
+ * @brief Modification du mot de passe
+ * @details Page de modification du mot de passe, permet à un utilisateur de modifier son mot de passe
  * @version 1.0
  */
 require_once('fonctions.php');
