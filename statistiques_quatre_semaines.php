@@ -4,14 +4,14 @@
  * @brief Page de statistiques sur 4 semaines
  * @details Page de statistiques sur 4 semaines, permet à un validateur de voir les statistiques sur 4 semaines d'un enfant
  */
-require_once("fonctions.php");
+require_once ("fonctions.php");
 is_logged();
 is_not_admin();
 is_validateur();
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <head>
   <meta charset="utf-8">
@@ -24,16 +24,10 @@ is_validateur();
 <?php
 echo '<a href="index.php?id=' . $_SESSION['id_enfant'] . '"><button class="acceder-information-enfant">Retour</button></a>';
 echo '<center class="titre_page"><h1>Statistiques 4 semaines</h1></center>';
-
 $linkpdo = connexionBd();
-
-
 //var_dump($_SESSION);
-
 $id_enfant = $_SESSION["id_enfant"];
-
-
-/* 
+/*
 faire une séléction de tous les systèmes (+ leuurs nombre de jetons) dont fait parti l'enfant
 
 select id_objectif, nb_jetons from objectif where id_enfant=$id_enfant
@@ -49,154 +43,116 @@ pour chaque sys faire :
 
 
 */
-
 // je récupere tous le systèmes d'un enfant
 try {
-  $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where visibilite=0 and id_enfant=$id_enfant");
-} catch (Exception $e) {
-  die('Erreur : ' . $e->getMessage());
+    $res = $linkpdo->query("SELECT id_objectif, nb_jetons from objectif where visibilite=0 and id_enfant=$id_enfant");
 }
-
-
+catch(Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
 $double_tab = $res->fetchAll();
 $nombre_ligne = $res->rowCount();
-
 $liste_sys = array();
 $liste_nb_jetons = array();
-
-for ($i = 0; $i < $nombre_ligne; $i++) {
-  array_push($liste_sys, $double_tab[$i][0]);  // liste de tous les systèmes
-  array_push($liste_nb_jetons, $double_tab[$i][1]);  // listes des nombres de jetons par systèmes
+for ($i = 0;$i < $nombre_ligne;$i++) {
+    array_push($liste_sys, $double_tab[$i][0]); // liste de tous les systèmes
+    array_push($liste_nb_jetons, $double_tab[$i][1]); // listes des nombres de jetons par systèmes
+    
 }
-
-
 // print_r($liste_sys);
 // print_r($liste_nb_jetons);
-
-// faire une div html pour l'affichage 
-
-
-
-
-$iteration = -1;
+// faire une div html pour l'affichage
+$iteration = - 1;
 // je fais une boucle ppour tous les systèmes
-
 foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nombre de sessions
-  $iteration++;
-
-  echo "<div id=sys_num" . $iteration . ">";
-
-  $data = "[ "; // la liste du nombre de jetons
-  $sessions = "[ "; // la liste des dessions 
-  $color = "[ "; // la liste des couleurs, (vert ou rouge)
-  $win = 0; // compteur de sessions réussies
-  $lose = 0; // compteur de sessions non réussies
-
-
-  // pour chaque système on recup le nombre de session :
-  //echo($liste_sys[$iteration]);
-
-
-  try {
-    // je récupere la plus vieille session qui date de moins de 4 semaines
-    $res = $linkpdo->query("SELECT id_session from placer_jeton where date_heure in (select min(date_heure) from placer_jeton where id_objectif=$liste_sys[$iteration] and date_heure > CURDATE() - INTERVAL 4 WEEK )");
-    // je recupere la derniere session en date
-    $res2 = $linkpdo->query("SELECT MAX(id_session) from placer_jeton where id_objectif= $liste_sys[$iteration] ;");
-
-    //$res->debugDumpParams();
-  } catch (Exception $e) { // toujours faire un test de retour au cas ou ça cash
-    die('Erreur : ' . $e->getMessage());
-  }
-
-  $double_tab = $res->fetchAll();
-
-  if ($double_tab != NULL) {
-
-    $first_session = $double_tab[0][0];
-
-    $double_tab2 = $res2->fetchAll();
-    $last_session = $double_tab2[0][0];
-  } else {
-    $first_session = null;
-  }
-
-
-  //echo"pour le systeme: ".$id_sys." , nombre de session : ".$nb_session."<br>";
-
-  if ($first_session != null) { // si il y a bien au moins une session dans les 4 dernieres semaines
-    //echo"je rentre dans la boucle car il a ".$nb_session."  sessions dans le système ".$liste_sys[$iteration]."<br>";
-
-
-
-
-
-    for ($i = $first_session; $i <= $last_session; $i++) {  // pour chaque session, je recupere le nombre de jetons placés
-
-      try {
-        $res = $linkpdo->query("SELECT date_heure from placer_jeton where id_objectif=$liste_sys[$iteration] and id_session=$i");
+    $iteration++;
+    echo "<div id=sys_num" . $iteration . ">";
+    $data = "[ "; // la liste du nombre de jetons
+    $sessions = "[ "; // la liste des dessions
+    $color = "[ "; // la liste des couleurs, (vert ou rouge)
+    $win = 0; // compteur de sessions réussies
+    $lose = 0; // compteur de sessions non réussies
+    // pour chaque système on recup le nombre de session :
+    //echo($liste_sys[$iteration]);
+    try {
+        // je récupere la plus vieille session qui date de moins de 4 semaines
+        $res = $linkpdo->query("SELECT id_session from placer_jeton where date_heure in (select min(date_heure) from placer_jeton where id_objectif=$liste_sys[$iteration] and date_heure > CURDATE() - INTERVAL 4 WEEK )");
+        // je recupere la derniere session en date
+        $res2 = $linkpdo->query("SELECT MAX(id_session) from placer_jeton where id_objectif= $liste_sys[$iteration] ;");
         //$res->debugDumpParams();
-
-      } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-      }
-
-      // pour chaque session je récup le nombre de jetohns placés 
-      $double_tab = $res->fetchAll();
-      $nombre_jetons = $res->rowCount();
-
-      //echo"Voici le nombre de jetons pour la session n°".$i." : ".$nombre_jetons;echo"<br>";
-
-      if ($i == $last_session) {
-        $nombre_jetons -= 1;
-      }
-      $data = $data . "'" . $nombre_jetons . "' , ";
-      $sessions = $sessions . "'session" . $i . "' , ";
-
-      if ($nombre_jetons == $liste_nb_jetons[$iteration]) { //$nombre_jetons == $liste_nb_jetons[$iteration]
-        $color = $color . "'rgba(0,200,0,0.6)', "; // vert
-        $win += 1;
-      } else {
-        $color = $color . "'rgba(200,0,0,0.6)', "; // rouge
-        $lose += 1;
-      }
-      //echo" ___pour la session : ".$i.", le nombre de jetons placés : ".$nombre_jetons." sachant que le système a ".$liste_nb_jetons[$iteration]." jetons <br>"; //$liste_nb_jetons[$iteration]
-
+        
     }
-    $data = substr($data, 0, -2); // je retire la derniere ',' 
-    $data = $data . "]";            // j'ajoute le ']' fermant
-
-    $sessions = substr($sessions, 0, -2);
-    $sessions = $sessions . "]";
-
-    $color = substr($color, 0, -2);
-    $color = $color . "]";
-
-    $total_win = ($win / ($win + $lose) * 100);
-
-    if (strlen($data) != 1) {
-
-      /* ajouter :
-
-      le nombre total de sessions,
-      le nombre moyens de jetons placés sur une session
-      si oui ou non c'est une réussite
-
-
-    
-    */
-
-      try {
-        $res = $linkpdo->query("SELECT intitule from objectif where id_objectif=$liste_sys[$iteration]");
-        //$res->debugDumpParams();
-
-      } catch (Exception $e) {
+    catch(Exception $e) { // toujours faire un test de retour au cas ou ça cash
         die('Erreur : ' . $e->getMessage());
-      }
-
-      // pour chaque session je récup le nombre de jetohns placés 
-      $double_tab = $res->fetchAll();
-      $nom = $double_tab[0][0];
-      echo '
+    }
+    $double_tab = $res->fetchAll();
+    if ($double_tab != NULL) {
+        $first_session = $double_tab[0][0];
+        $double_tab2 = $res2->fetchAll();
+        $last_session = $double_tab2[0][0];
+    } else {
+        $first_session = null;
+    }
+    //echo"pour le systeme: ".$id_sys." , nombre de session : ".$nb_session."<br>";
+    if ($first_session != null) { // si il y a bien au moins une session dans les 4 dernieres semaines
+        //echo"je rentre dans la boucle car il a ".$nb_session."  sessions dans le système ".$liste_sys[$iteration]."<br>";
+        for ($i = $first_session;$i <= $last_session;$i++) { // pour chaque session, je recupere le nombre de jetons placés
+            try {
+                $res = $linkpdo->query("SELECT date_heure from placer_jeton where id_objectif=$liste_sys[$iteration] and id_session=$i");
+                //$res->debugDumpParams();
+                
+            }
+            catch(Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            // pour chaque session je récup le nombre de jetohns placés
+            $double_tab = $res->fetchAll();
+            $nombre_jetons = $res->rowCount();
+            //echo"Voici le nombre de jetons pour la session n°".$i." : ".$nombre_jetons;echo"<br>";
+            if ($i == $last_session) {
+                $nombre_jetons-= 1;
+            }
+            $data = $data . "'" . $nombre_jetons . "' , ";
+            $sessions = $sessions . "'session" . $i . "' , ";
+            if ($nombre_jetons == $liste_nb_jetons[$iteration]) { //$nombre_jetons == $liste_nb_jetons[$iteration]
+                $color = $color . "'rgba(0,200,0,0.6)', "; // vert
+                $win+= 1;
+            } else {
+                $color = $color . "'rgba(200,0,0,0.6)', "; // rouge
+                $lose+= 1;
+            }
+            //echo" ___pour la session : ".$i.", le nombre de jetons placés : ".$nombre_jetons." sachant que le système a ".$liste_nb_jetons[$iteration]." jetons <br>"; //$liste_nb_jetons[$iteration]
+            
+        }
+        $data = substr($data, 0, -2); // je retire la derniere ','
+        $data = $data . "]"; // j'ajoute le ']' fermant
+        $sessions = substr($sessions, 0, -2);
+        $sessions = $sessions . "]";
+        $color = substr($color, 0, -2);
+        $color = $color . "]";
+        $total_win = ($win / ($win + $lose) * 100);
+        if (strlen($data) != 1) {
+            /* ajouter :
+            
+            le nombre total de sessions,
+            le nombre moyens de jetons placés sur une session
+            si oui ou non c'est une réussite
+            
+            
+            
+            */
+            try {
+                $res = $linkpdo->query("SELECT intitule from objectif where id_objectif=$liste_sys[$iteration]");
+                //$res->debugDumpParams();
+                
+            }
+            catch(Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            // pour chaque session je récup le nombre de jetohns placés
+            $double_tab = $res->fetchAll();
+            $nom = $double_tab[0][0];
+            echo '
 
 <center class="titre_stat">
 <h3>Objectif : ' . $nom . '</h3>
@@ -213,12 +169,8 @@ foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nom
   </div>
 </div>
 ';
-
-
-
-      echo '<script src="https://cdn.jsdelivr.net/npm/chart.js">import Chart from \'chart.js/auto\';</script>';
-
-      echo "
+            echo '<script src="https://cdn.jsdelivr.net/npm/chart.js">import Chart from \'chart.js/auto\';</script>';
+            echo "
 
 
 
@@ -291,9 +243,8 @@ foreach ($liste_sys as $key => $id_sys) { // pour chaque sys, je recupere le nom
 
 
 ";
+        }
     }
-  }
-  echo "</div>";
+    echo "</div>";
 }
-
 ?>

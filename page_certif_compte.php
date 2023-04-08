@@ -12,14 +12,13 @@ is_user();
 $linkpdo = connexionBd();
 ?>
 <!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 <head>
     <meta charset="utf-8">
     <title> Administrateur </title>
     <link rel="stylesheet" href="style_css/style_page_certif_account.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>

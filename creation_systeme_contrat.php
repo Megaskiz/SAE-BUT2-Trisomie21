@@ -4,23 +4,23 @@
  * @brief Page de création d'un système de type "Contrat"
  * @details Page de création d'un système de type "Contrat", permet à l'utilisateur de créer un système de type "Contrat" et de rentrer ses informations personnelles
  * @version 1.0
- * 
+ *
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 is_validateur();
-?>
-<!DOCTYPE html>
-<html lang="fr" style="font-family: Arial,sans-serif;">
-
-<?php
-
 $linkpdo = connexionBd();
 ?>
+<!DOCTYPE html>
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
+
+
+
+
 
 <head>
     <meta charset="utf-8">
-    <title> Administrateur </title>
+    <title> Objectif </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
@@ -29,20 +29,19 @@ $linkpdo = connexionBd();
 <body>
 
 
-    <!--------------------------------------------------------------- header ------------------------------------------------------------------->
+    <!--HEADER -->
     <?php create_header($linkpdo); ?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
-
     <main>
         <?php
-        if (isset($_POST['rows'])) {
-            $rows = $_POST['rows'];
-        } else {
-            $rows = 0;
-        }
-        ?>
+if (isset($_POST['rows'])) {
+    $rows = $_POST['rows'];
+} else {
+    $rows = 0;
+}
+?>
 
 
         <form action="" method="post" class="form-nb-taches">
@@ -84,7 +83,7 @@ $linkpdo = connexionBd();
                 <caption>Aperçu du tableau de l'objectif avec ses tâches</caption>
                 <tr class="jour">
                     <th>
-                       
+                        <p>Tâches</p>
                     </th>
                     <th>
                         <p>Lundi</p>
@@ -110,21 +109,21 @@ $linkpdo = connexionBd();
                 </tr>
 
                 <?php
-                $i = 1;
-                while ($i <= $rows) {
-                    echo "<tr>";
-                    echo "<td><input type='text' name='tache$i.0000000'placeholder='tâche à faire'/ required='required'></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "</tr>";
-                    $i++;
-                }
-                ?>
+$i = 1;
+while ($i <= $rows) {
+    echo "<tr>";
+    echo "<td><input type='text' name='tache$i.0000000'placeholder='tâche à faire'/ required='required'></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "<td></td>";
+    echo "</tr>";
+    $i++;
+}
+?>
             </table>
 
             <div class="bouton-systeme">
@@ -136,7 +135,5 @@ $linkpdo = connexionBd();
     </main>
 
 </body>
-
-
 
 </html>

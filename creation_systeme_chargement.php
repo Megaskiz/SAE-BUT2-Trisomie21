@@ -5,21 +5,20 @@
  * @details Page de création d'un système de type "chargement", permet à l'utilisateur de créer un système de type "chargement" et de rentrer ses informations personnelles
  * @version 1.0
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 is_validateur();
-?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<?php
-
 $linkpdo = connexionBd()
 ?>
+<!DOCTYPE html>
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
+
+
+
 
 <head>
     <meta charset="utf-8">
-    <title> Administrateur </title>
+    <title> Objectif </title>
     <link rel="stylesheet" href="style_css/style_creation_systemes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/script.js"></script>
@@ -29,8 +28,8 @@ $linkpdo = connexionBd()
 
     <!--------------------------------------------------------------- header ------------------------------------------------------------------->
     <?php
-    create_header($linkpdo);
-    ?>
+create_header($linkpdo);
+?>
 
 
     <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
@@ -64,9 +63,9 @@ $linkpdo = connexionBd()
                 <div class="heure">
                     <input type="number" min="0" name="duree" placeholder="Indiquez une durée" required="required">
                     <select name="echelle">
-                        <option value="h">heure(s)</option>
-                        <option value="h">jour(s)</option>
-                        <option value="s">semaine(s)</option>
+                        <option value="h">Heure(s)</option>
+                        <option value="h">Jour(s)</option>
+                        <option value="s">Semaine(s)</option>
                     </select>
                 </div>
             </div>

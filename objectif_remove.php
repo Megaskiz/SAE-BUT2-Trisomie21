@@ -4,74 +4,58 @@
  * @brief Page de suppression d'un jeton dans un système
  * @details Page de suppression d'un jeton dans un système, permet à un validateur de supprimer un jeton dans un système
  * @version 1.0
- * 
+ *
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 is_validateur();
 ?>
 <?php
-
-
-
 $linkpdo = connexionBd();
-
 // fichier qui retire un jeton dans le système
 if (isset($_GET['case'])) {
     $case_tableau = $_GET['case'];
     $chaine = $_GET['chaine'];
     $id = $_GET['id'];
-
     $tab_string = str_split($chaine);
     $compteur_de_cases = 0;
-
-    for ($i = 0; $i < count($tab_string); ++$i) {
+    for ($i = 0;$i < count($tab_string);++$i) {
         if ($tab_string[$i] == '1') {
             if ($compteur_de_cases == $case_tableau) {
                 $tab_string[$i] = 0;
-                $compteur_de_cases += 1;
+                $compteur_de_cases+= 1;
                 echo "la modif est faite";
                 echo "<br>";
             } else {
-                $compteur_de_cases += 1;
+                $compteur_de_cases+= 1;
             }
         } else if ($tab_string[$i] == '0') {
-            $compteur_de_cases += 1;
+            $compteur_de_cases+= 1;
         }
     }
-
-
-
     $tableau_final = join("", $tab_string);
     // echo"letabstring: ";echo"<br>";
     // print_r($tab_string);
     // echo"<br>";
     // echo"onvaenvoyerça: $tableau_final";
     // exit();
-
-
     // FAIRE EN SORTE DE RECUP LA DERNIERE SESSION QUI A ETE UTILISE POUR SE SYSTEME
     // AJOUTER 1 A CE CHIFFRE SI LA DUREE DU SYSTEME DEPASSE LA DATE DU PREMIER JETON PLACE + LA DUREE DU SYS
-
     try {
         $session_max_query = $linkpdo->query("SELECT max(id_session) from placer_jeton where id_objectif=" . $id);
         // $session_max_query->debugDumpParams();
         // exit();
-    } catch (Exception $e) { 
+        
+    }
+    catch(Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
-    
-
-    $double_tab = $session_max_query->fetchAll(); 
+    $double_tab = $session_max_query->fetchAll();
     $session_max = $double_tab[0][0];
-
     if ($session_max == NULL) {
         $session_max = 0;
     }
-
     try {
-
         // $data=[
         //     'session_max '=>$session_max,
         //     'id'=>$id,
@@ -83,44 +67,30 @@ if (isset($_GET['case'])) {
         // $jeton_max_query->execute();
         // $jeton_max_query ->debugDumpParams();
         // exit();
-
-
         $jeton_max_query = $linkpdo->prepare("DELETE FROM `placer_jeton` WHERE id_session=" . $session_max . " and id_objectif=" . $id . " ORDER BY date_heure DESC LIMIT 1");
         $jeton_max_query->execute();
         //$jeton_max_query -> debugDumpParams();
         //exit();
-
-    } catch (Exception $e) { 
+        
+    }
+    catch(Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
-
-
-
-
-
-
     // modif dans le nom
-
     $req = $linkpdo->prepare('UPDATE objectif SET nom = :intit where id_objectif = :id ');
-
     if ($req == false) {
         die("erreur linkpdo");
     }
-    
     try {
-
         $req->execute(array('intit' => $tableau_final, 'id' => $id,));
         header("Location:objectif.php?id_sys=$id");
-
-
-
         if ($req == false) {
             die("erreur execute");
         } else {
             echo "<a href=\"objectif.php?id_sys=$id\"> recharger la page</a>";
         }
-    } catch (Exception $e) {
+    }
+    catch(Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
 }

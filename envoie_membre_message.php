@@ -5,7 +5,7 @@
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 </script>
-<html lang="fr">
+<html lang="fr" style="font-family: raleway-extrabold,Helvetica,Arial,Lucida,sans-serif;">
 
 <?php
 /**
@@ -14,18 +14,16 @@
  * @details Page d'envoie de message à un membre, permet à l'utilisateur de pouvoir envoyer un message à un membres
  * @version 1.0
  */
-require_once('fonctions.php');
+require_once ('fonctions.php');
 is_logged();
 is_validateur();
 $linkpdo = connexionBd();
 if (!$_SESSION['logged_user']) {
     header('Location: login.php');
 }
-
 if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
-
     /*$getid = $_GET['id_objectif'];
-        /*$recupUser = $linkpdo->prepare('SELECT * FROM membre where id_membre = ?');
+    /*$recupUser = $linkpdo->prepare('SELECT * FROM membre where id_membre = ?');
         $recupUser->execute(array($getid));
         if($recupUser->rowCount() > 0){*/
     if (isset($_POST["envoie2"])) {
@@ -62,57 +60,56 @@ if (isset($_GET['id_objectif']) and !empty($_GET['id_objectif'])) {
 
     <main>
         <?php
-        echo '<div class="message-chat"> <a href="index.php?id=' . $_SESSION['id_enfant'] . '" > <button class="chat_retour" >Retour</button> </a> </div>';
-        ?>
+echo '<div class="message-chat"> <a href="index.php?id=' . $_SESSION['id_enfant'] . '" > <button class="chat_retour" >Retour</button> </a> </div>';
+?>
 
         <div class="chat_all">
             <div class="chat_title">&#128172; Messagerie du système à jeton </div>
             <div class="chat_list_msg">
                 <section id="message">
                     <?php
-                    $recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
-                    if (!$recupMessages) {
-                        die("Erreur prepare");
-                    }
-                    $recupMessages->execute(array($_GET['id_objectif']));
-                    if (!$recupMessages) {
-                        die("Erreur prepare");
-                    }
-
-                    while ($message = $recupMessages->fetch()) {
-                        if ($message['id_membre'] == $_SESSION['logged_user']) {
-                    ?>
+$recupMessages = $linkpdo->prepare('SELECT sujet,corps,date_heure,membre.id_membre, membre.nom, membre.prenom FROM message,membre WHERE id_objectif = ? and membre.id_membre = message.id_membre');
+if (!$recupMessages) {
+    die("Erreur prepare");
+}
+$recupMessages->execute(array($_GET['id_objectif']));
+if (!$recupMessages) {
+    die("Erreur prepare");
+}
+while ($message = $recupMessages->fetch()) {
+    if ($message['id_membre'] == $_SESSION['logged_user']) {
+?>
                             <div class="chat_msgR">
                                 <img class="chat_img_R" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
                                 <div class="chat_vous">
                                     <div class="chat_info">
-                                        <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
-                                        <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
+                                        <div class="chat_nomm"><?=ucfirst($message["nom"] . " " . $message["prenom"] . " (vous) : ") ?></div>
+                                        <div class="chat_datem"><?="le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                     </div>
-                                    <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                    <p class=""> <?="Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                 </div>
                             </div>
                         <?php
-                        } else {
-                        ?>
+    } else {
+?>
                             <div class="chat_msgL">
                                 <img class="chat_img_L" src="/sae-but2-s1/img/user_logo.png" alt="tete de l'utilisateur">
                                 <div class="chat_autre">
                                     <div class="chat_info">
-                                        <div class="chat_nomm"><?= ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
-                                        <div class="chat_datem"><?= "le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
+                                        <div class="chat_nomm"><?=ucfirst($message["nom"] . " " . $message["prenom"]) ?></div>
+                                        <div class="chat_datem"><?="le " . (new DateTime($message["date_heure"]))->format("d/m/Y H\hi") ?></div>
                                     </div>
-                                    <p class=""> <?= "Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
+                                    <p class=""> <?="Sujet :" . $message["sujet"] . "<br>" . $message["corps"]; ?> </p>
                                 </div>
                             </div>
                         <?php
-                        }
-                        ?>
+    }
+?>
                     <?php
-                    }
-                    ?>
+}
+?>
                     <?php
-                    ?>
+?>
 
             </div>
             <div class="chat_envoi_msg">
