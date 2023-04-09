@@ -1362,17 +1362,16 @@ function supprimer_image($linkpdo)
     unset($files1[1]); // on retire le .. du $files1
     unset($files1[2]); // on retire le .gitignore du $files1
 
-    var_dump($liste);
+    //var_dump($liste);
     foreach ($files1 as $key => $value) {
-        echo"<br>".$value."<br>";
+        //echo"<br>".$value."<br>";
 
         if (!in_array("images/" . $value, $liste)) {
-            echo"<br>cette image n'est plus pertinente : ".$value."<br>";
-            //unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
+            //echo"<br>cette image n'est plus pertinente : ".$value."<br>";
+            unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
 
         }
     }
-    exit;
 }
 // ------------------------------------- fonction pour les systèmes/objectifs -----------------------------------------------------------
 
