@@ -14,13 +14,13 @@ $id = $_GET['id_sys'];
 $_SESSION['id_sys'] = $_GET['id_sys'];
 ?>
 <!DOCTYPE HTML>
-<html lang="fr" style="font-family: Arial,sans-serif;">
+<html lang="fr" >
 
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
     <link rel="stylesheet" href="style_css/style_objectif.css" media="screen" type="text/css" />
-    <link rel="stylesheet" href="style_css/stylesheet.css" type="text/css" charset="utf-8">
+
     <title>Objectif</title>
     <div id="color-picker-container">
         <div id="color-bar"></div>
