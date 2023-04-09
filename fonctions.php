@@ -1227,7 +1227,6 @@ function supprime_objectif($id_objectif, $linkpdo)
         $req->debugDumpParams();
         return false;
     }
-    supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
 }
 /**
@@ -1273,7 +1272,7 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
         $req->debugDumpParams();
         return false;
     }
-    supprimer_image($linkpdo); // une fois qu'on a supprimé le profil enfant, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
+
     return true;
 }
 /**
@@ -1362,12 +1361,16 @@ function supprimer_image($linkpdo)
     unset($files1[0]); // on retire le . du $files1
     unset($files1[1]); // on retire le .. du $files1
     unset($files1[2]); // on retire le .gitignore du $files1
-    foreach ($files1 as $key => $value) {
-        if (!in_array("images/" . $value, $liste)) {
-            unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
 
-        }
+    var_dump($liste);
+    foreach ($files1 as $key => $value) {
+        echo"<br>".$value;
+        // if (!in_array("images/" . $value, $liste)) {
+        //     unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
+
+        // }
     }
+    exit;
 }
 // ------------------------------------- fonction pour les systèmes/objectifs -----------------------------------------------------------
 

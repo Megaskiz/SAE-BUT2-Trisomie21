@@ -192,6 +192,7 @@ if (isset($_GET['appel'])) {
             if (isset($_GET['id_sys'])) {
                 $sys = $_GET['id_sys'];
                 supprime_objectif($sys, $linkpdo);
+                supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
                 header('Location:archive_sys.php');
             } else {
                 header('Location:archive_sys.php');
@@ -205,6 +206,8 @@ if (isset($_GET['appel'])) {
             if (isset($_GET['id_enfant'])) {
                 $sys = $_GET['id_enfant'];
                 supprime_profil_enfant($sys, $linkpdo);
+                supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
+
                 header('Location:archive_profil_enfant.php');
             } else {
                 header('Location:archive_profil_enfant.php');
