@@ -103,7 +103,7 @@ function create_nav($linkpdo)
                 <div id="dialog_layer" class="dialogs">
                     <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                         <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
-                        <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
+                        <form enctype="multipart/form-data" action="appel_fonction.php?appel=insert_enfant" method="post" class="dialog_form">
                             <div class="dialog_form_item">
                                 <label>
                                     <span class="label_text">Nom :</span>
@@ -909,6 +909,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
  * @return void
  */
 function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session, $linkpdo)
+
 {
     if ($role == NULL) {
         $role = '0';
