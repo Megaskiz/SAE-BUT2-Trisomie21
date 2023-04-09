@@ -977,16 +977,16 @@ function modif_photo($id, $photo_enfant, $linkpdo)
 function modif_mdp($mdp, $session, $linkpdo)
 {
     // fonction qui hash le mot de passe
-    $mot = "ZEN02anWobA4ve5zxzZz" . $mdp; // je rajoute une chaine que je vais ajouter au mot de passe
-    $nouveau_mdp = hash('sha256', $mot);
+    // fonction qui hash le mot de passe
+    $insert_mdp = password_hash($mdp, PASSWORD_BCRYPT);
+
     $req = $linkpdo->prepare("UPDATE membre  SET mdp=? WHERE id_membre= ?");
     if ($req == false) {
         die("erreur linkpdo");
     }
     try {
-        $req->execute([$nouveau_mdp, $session]);
-        //$req->debugDumpParams();
-        //exit();
+        $req->execute([$insert_mdp, $session]);
+
         if ($req == false) {
             die("erreur execute");
         }
@@ -1054,7 +1054,7 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     }
     try {
         $req->execute(array(
-            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' => $Mdp, 'pro' => $pro, // à changer
+            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' =>password_hash($Mdp, PASSWORD_BCRYPT), 'pro' => $pro, // à changer
             'compte_valide' => 1
         ));
         if ($req == false) {
