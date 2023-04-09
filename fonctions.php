@@ -1368,7 +1368,7 @@ function supprimer_image($linkpdo)
 
         if (!in_array("images/" . $value, $liste)) {
             echo"<br>cette image n'est plus pertinente : ".$value."<br>";
-            unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
+            //unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
 
         }
     }
