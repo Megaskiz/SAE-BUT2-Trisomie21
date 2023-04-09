@@ -13,6 +13,13 @@ img {
     --couleur: rgb(200, 212, 212);
 }
 
+th{
+    border-radius: 15px;
+    border: solid var(--couleur) 2px;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+
 body {
     background-color: var(--couleur);
     font: small-caps bold 13px/1 cursive;
