@@ -8,7 +8,11 @@
 require_once ('fonctions.php'); //utilisation des fonctions de la page fonctions.php
 is_logged(); //vérifie si l'utilisateur est connecté
 is_user(); //vérifie si l'utilisateur est un administrateur
-$linkpdo = connexionBd(); //connexion à la base de données
+
+/**
+ * @details connexion à la base de données avec la fonction connexionBd()
+ */
+$linkpdo = connexionBd();
 
 ?>
 
@@ -24,12 +28,8 @@ $linkpdo = connexionBd(); //connexion à la base de données
 </head>
 
 <body>
-    <!--HEADER-->
     <?php create_header($linkpdo);
 ?>
-    <!--------------------------------------------------------------- Contenu ------------------------------------------------------------------->
-
-    <!--------------------------------------- menu liste membre (gauche) -------------------------------------------->
     <main>
         <nav class="left-contenu">
             <div style="display: flex; margin: 3%;">
@@ -39,18 +39,39 @@ $linkpdo = connexionBd(); //connexion à la base de données
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn">Compte membre ☰</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <?php
+
+<?php
+/**
+ * @details Affichage de la liste des membres visible
+ * @return Affiche la liste des membres
+ * */
 try { //affichage de la liste des membres
     $res = $linkpdo->query("SELECT * FROM `membre` WHERE visibilite = 1");
 }
+/**
+ * @exception Affiche un message d'erreur si la requête ne fonctionne pas
+ */
 catch(Exception $e) {
     die('Erreur : ' . $e->getMessage());
-}
+};
+/** 
+ * @details stockage des données dans un tableau avec la fonction fetchAll() avec les informations de la requête
+ */
+;
 $double_tab = $res->fetchAll();
+/**
+ * @details nombre de ligne du tableau
+ */
 $nombre_ligne = $res->rowCount();
+/**
+ * @details création d'un tableau vide avec array()
+ */
 $liste = array();
 echo "<div>";
 echo "<table class='no-break'>";
+/**
+ * @details boucle for pour afficher les données du tableau
+ */
 for ($i = 0;$i < $nombre_ligne;$i++) {
     echo "<tr>";
     for ($y = 1;$y < 3;$y++) {
@@ -121,13 +142,11 @@ if (isset($_GET['idv'])) {
     $liste = array();
 }
 ?>
-        <!--------------------------------------- menu information sur le membre (droite) -------------------------------------------->
         <nav class="right-contenu">
             <div class="section_membre">
                 <?php
 if (isset($_GET['idv'])) {
     $idiv = $_GET['idv'];
-    //<!---- menu droit information ---->
     echo "
                     <div class=\"case-membre_1\">
                         <img class=\"img-tuteur\" src=\"img/user_logo.png\" alt=\"tete de l'utilisateur\">
