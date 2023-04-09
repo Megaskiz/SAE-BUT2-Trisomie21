@@ -151,8 +151,7 @@ if (isset($_GET['appel'])) {
             $courriel = htmlspecialchars($_POST['courriel']);
             $ddn = htmlspecialchars($_POST['ddn']);
             $Mdp = htmlspecialchars($_POST['password']);
-            //$Mdp_verif = htmlspecialchars($_POST['password_verif']);
-            $pro = htmlspecialchars($_POST['pro']);
+            
             // requete avec le mail si, rowcount() > 0 faire fail
             $requete_verif_mail = "SELECT count(*) FROM membre WHERE courriel='$courriel'";
             // Execution de la requete
@@ -167,7 +166,7 @@ if (isset($_GET['appel'])) {
                 header('Location: insert_erreur_nom.php');
                 break;
             } else {
-                insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo);
+                insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $linkpdo);
                 break;
             }
             /**
