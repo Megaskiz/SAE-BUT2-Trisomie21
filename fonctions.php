@@ -558,12 +558,13 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                 <center>
                                     <a href=\"objectif.php?id_sys=" . $double_tab[$i][5] . "\"><button class=\"objectif-acceder\"> Acceder </button></a>
                                 </center>
-							</td>
-							<td>
-							    <div class=\"case-enfant\">";
-            //bouton supprimer un sys -> "archiver"
-            if ($_SESSION["role_user"] == 1) {
-                echo "
+                                </td>
+";
+                            //bouton supprimer un sys -> "archiver"
+                            if ($_SESSION["role_user"] == 1) {
+                                echo "
+                                <td>
+                                <div class=\"case-enfant\">
                                 <center>
 								    <button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/archive.png'></a></button>
 								</center>
