@@ -184,7 +184,7 @@ if (isset($_GET['idv'])) {
                                 <button  class=\"valider\" type=\"button\" onclick=\"openDialog('dialog_sup_membre" . $idiv . "', this)\">Supprimer ce compte membre</button>
                                 <div id=\"dialog_layer\" class=\"dialogs\">
                                     <div role=\"dialog\" id=\"dialog_sup_membre" . $idiv . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
-                                        <form action=\"\" method=\"post\" class=\"dialog_form\">
+                                        <form action=\"appel_fonction.php?appel=supprime_utilisateur&id_user=" . $idiv . "\" method=\"post\" class=\"dialog_form\">
                                             <p class='popup-txt'>Voulez-vous supprimer ce compte membre dans l'application ? Cette action est irréversible, elle supprimera tous les messages de ce membre, et le retirera de toutes les équipes. </p>
                                             <div class=\"dialog_form_actions\">
                                                 <button  class='popup-btn' onclick=\"closeDialog(this)\">Annuler</button>

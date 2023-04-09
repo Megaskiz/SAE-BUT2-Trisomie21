@@ -151,8 +151,7 @@ if (isset($_GET['appel'])) {
             $courriel = htmlspecialchars($_POST['courriel']);
             $ddn = htmlspecialchars($_POST['ddn']);
             $Mdp = htmlspecialchars($_POST['password']);
-            //$Mdp_verif = htmlspecialchars($_POST['password_verif']);
-            $pro = htmlspecialchars($_POST['pro']);
+            
             // requete avec le mail si, rowcount() > 0 faire fail
             $requete_verif_mail = "SELECT count(*) FROM membre WHERE courriel='$courriel'";
             // Execution de la requete
@@ -167,7 +166,7 @@ if (isset($_GET['appel'])) {
                 header('Location: insert_erreur_nom.php');
                 break;
             } else {
-                insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo);
+                insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $linkpdo);
                 break;
             }
             /**
@@ -192,6 +191,7 @@ if (isset($_GET['appel'])) {
             if (isset($_GET['id_sys'])) {
                 $sys = $_GET['id_sys'];
                 supprime_objectif($sys, $linkpdo);
+                supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
                 header('Location:archive_sys.php');
             } else {
                 header('Location:archive_sys.php');
@@ -205,6 +205,8 @@ if (isset($_GET['appel'])) {
             if (isset($_GET['id_enfant'])) {
                 $sys = $_GET['id_enfant'];
                 supprime_profil_enfant($sys, $linkpdo);
+                supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
+
                 header('Location:archive_profil_enfant.php');
             } else {
                 header('Location:archive_profil_enfant.php');

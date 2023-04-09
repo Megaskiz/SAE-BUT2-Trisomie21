@@ -103,7 +103,7 @@ function create_nav($linkpdo)
                 <div id="dialog_layer" class="dialogs">
                     <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
                         <h2 id="dialog1_label" class="dialog_label">Ajouter un profil d\'enfant</h2>
-                        <form enctype="multipart/form-data" action="insert_enfant.php" method="post" class="dialog_form">
+                        <form enctype="multipart/form-data" action="appel_fonction.php?appel=insert_enfant" method="post" class="dialog_form">
                             <div class="dialog_form_item">
                                 <label>
                                     <span class="label_text">Nom :</span>
@@ -308,7 +308,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 									<img class=\"img_equipe\" src=\"img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
 									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " . $role . "    
 									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
-									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
+									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l'équipe</button> </a>
 								</div>
 						";
     }
@@ -356,7 +356,8 @@ function create_section_info_sys($linkpdo, $id_enfant)
     $double_tab = $res->fetchAll();
     $nombre_ligne = $res->rowCount();
     $liste = array();
-    echo "
+    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
+        echo "
                         <table class='affichage-objectif'>
 					        <colgroup class='column'></colgroup>
                             <tr class='titre-objectif'>
@@ -368,6 +369,20 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                 <th>Accéder</th>
                                 <th class='sup'>Archiver</th>
                             </tr>";
+
+    }else{
+        echo "
+        <table class='affichage-objectif'>
+            <colgroup class='column'></colgroup>
+            <tr class='titre-objectif'>
+                <th>Nom</th>
+                <th>Jetons</th>
+                <th>Durée</th>
+                <th class='sms'>Message</th>
+                <th>Accéder</th>
+            </tr>";
+    }
+    
     for ($i = 0; $i < $nombre_ligne; $i++) {
         //acces au systèmes
         if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1 or $_SESSION["role_user"] == 3) {
@@ -543,12 +558,13 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                 <center>
                                     <a href=\"objectif.php?id_sys=" . $double_tab[$i][5] . "\"><button class=\"objectif-acceder\"> Acceder </button></a>
                                 </center>
-							</td>
-							<td>
-							    <div class=\"case-enfant\">";
-            //bouton supprimer un sys -> "archiver"
-            if ($_SESSION["role_user"] == 1) {
-                echo "
+                                </td>
+";
+                            //bouton supprimer un sys -> "archiver"
+                            if ($_SESSION["role_user"] == 1) {
+                                echo "
+                                <td>
+                                <div class=\"case-enfant\">
                                 <center>
 								    <button class=\"supprimer-objectif\" type=\"button\" onclick=\"openDialog('dialog" . $double_tab[$i][5] . "', this)\"><img class='delet-icon' src='img/archive.png'></a></button>
 								</center>
@@ -666,7 +682,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
 
             <div class='affichage-photo-visage'>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
-            <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
+            <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"photo de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
                 <div class=\"dialog_form_item\">
                     <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
@@ -909,9 +925,10 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
  * @return void
  */
 function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session, $linkpdo)
+
 {
     if ($role == NULL) {
-        $role = '1';
+        $role = '0';
     }
     $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
     if ($req == false) {
@@ -976,16 +993,16 @@ function modif_photo($id, $photo_enfant, $linkpdo)
 function modif_mdp($mdp, $session, $linkpdo)
 {
     // fonction qui hash le mot de passe
-    $mot = "ZEN02anWobA4ve5zxzZz" . $mdp; // je rajoute une chaine que je vais ajouter au mot de passe
-    $nouveau_mdp = hash('sha256', $mot);
+    // fonction qui hash le mot de passe
+    $insert_mdp = password_hash($mdp, PASSWORD_BCRYPT);
+
     $req = $linkpdo->prepare("UPDATE membre  SET mdp=? WHERE id_membre= ?");
     if ($req == false) {
         die("erreur linkpdo");
     }
     try {
-        $req->execute([$nouveau_mdp, $session]);
-        //$req->debugDumpParams();
-        //exit();
+        $req->execute([$insert_mdp, $session]);
+
         if ($req == false) {
             die("erreur execute");
         }
@@ -1043,7 +1060,7 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
  *
  * @return void
  */
-function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo)
+function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $linkpdo)
 {
     // je creé la requete d'insertion
     $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
@@ -1053,7 +1070,7 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     }
     try {
         $req->execute(array(
-            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' => $Mdp, 'pro' => $pro, // à changer
+            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' =>password_hash($Mdp, PASSWORD_BCRYPT), 'pro' => 0,
             'compte_valide' => 1
         ));
         if ($req == false) {
@@ -1226,7 +1243,6 @@ function supprime_objectif($id_objectif, $linkpdo)
         $req->debugDumpParams();
         return false;
     }
-    supprimer_image($linkpdo); // une fois qu'on a supprimé l'objectif, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
     return true;
 }
 /**
@@ -1272,7 +1288,7 @@ function supprime_profil_enfant($id_enfant, $linkpdo)
         $req->debugDumpParams();
         return false;
     }
-    supprimer_image($linkpdo); // une fois qu'on a supprimé le profil enfant, on peut supprimer les nouvelles images qui n'ont pas de lien dans la bd
+
     return true;
 }
 /**
@@ -1312,7 +1328,7 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
     
     ");
     if ($req == false) {
-        $req->debugDumpParams();
+        $req->debugDumpParams();exit;
         return false;
     }
     // execution de la Requête sql
@@ -1361,8 +1377,13 @@ function supprimer_image($linkpdo)
     unset($files1[0]); // on retire le . du $files1
     unset($files1[1]); // on retire le .. du $files1
     unset($files1[2]); // on retire le .gitignore du $files1
+
+    //var_dump($liste);
     foreach ($files1 as $key => $value) {
+        //echo"<br>".$value."<br>";
+
         if (!in_array("images/" . $value, $liste)) {
+            //echo"<br>cette image n'est plus pertinente : ".$value."<br>";
             unlink("./images/" . $value); // suppression de tous les objectifs de cet enfant
 
         }
@@ -1539,7 +1560,7 @@ function modif_recompense($id_rec, $nom, $description, $image) // fonction qui p
 {
     echo "
     <td style=\"border: hidden;\">
-        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompens</button>
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompense</button>
         <div id=\"dialog_layer\" class=\"dialogs\">
             <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
                 <p id=\"dialog1_label\" class=\"dialog_label\">Modifier la récompense</p>
