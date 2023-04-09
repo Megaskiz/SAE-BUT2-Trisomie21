@@ -682,7 +682,7 @@ function pop_in_modif_jeton($lien_jeton_enfant, $prenom_enfant, $photo_enfant)
 
             <div class='affichage-photo-visage'>
             <h2 id=\"dialog11_label\" class=\"dialog_label\">Modifier la photo</h2>
-            <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"jeton de " . htmlspecialchars($prenom_enfant) . "\">
+            <img class=\"photo-jeton\" src=\"" . htmlspecialchars($photo_enfant) . "\" alt=\"photo de " . htmlspecialchars($prenom_enfant) . "\">
             <form enctype=\"multipart/form-data\" action=\"appel_fonction.php?appel=modif_photo\" method=\"POST\" class=\"dialog_form\">
                 <div class=\"dialog_form_item\">
                     <label><span class=\"label_text\">Photo:</span><input name=\"photo_enfant\" type=\"file\" class=\"zip_input\" required=\"required\"></label>
