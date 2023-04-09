@@ -1044,7 +1044,7 @@ function insert_enfant($nom, $prenom, $date_naissance, $lien_jeton, $photo_enfan
  *
  * @return void
  */
-function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $pro, $linkpdo)
+function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, $Mdp, $linkpdo)
 {
     // je creé la requete d'insertion
     $req = $linkpdo->prepare('INSERT INTO membre(nom, prenom, adresse, code_postal, ville, courriel, date_naissance, mdp, pro, compte_valide)
@@ -1054,7 +1054,7 @@ function insert_membre($nom, $prenom, $adresse, $code, $ville, $courriel, $ddn, 
     }
     try {
         $req->execute(array(
-            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' =>password_hash($Mdp, PASSWORD_BCRYPT), 'pro' => $pro, // à changer
+            'nom' => $nom, 'prenom' => $prenom, 'adresse' => $adresse, 'code_postal' => $code, 'ville' => $ville, 'courriel' => $courriel, 'date_naissance' => $ddn, 'mdp' =>password_hash($Mdp, PASSWORD_BCRYPT), 'pro' => 0,
             'compte_valide' => 1
         ));
         if ($req == false) {
