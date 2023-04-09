@@ -129,3 +129,17 @@ chown -R www-data. sae
 
 
 une fois ceci fait, le site est opérationel.
+
+En plus nous avons écrit un script pour mettre automatiquement a jour le site :
+
+```bash
+#!/bin/bash                                                                                                                                    cd /var/www                                                                                                             
+rm -rf /var/www/sae                                                                                                     
+rm -rf /var/www/*                                                                                                       
+wget https://gitlab.com/paul.trochel/sae-but2-s1/-/archive/main/sae-but2-s1-main.tar.gz && \                            
+tar -xf sae-but2-s1-main.tar.gz && \                                                                                    
+mv sae-but2-s1-main/ sae/ && \                                                                                          
+chown -R www-data sae   
+
+```
+
