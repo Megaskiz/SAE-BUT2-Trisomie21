@@ -1311,8 +1311,8 @@ function supprime_utilisateur($id_utilisateur, $linkpdo)
         DELETE from `membre` where `id_membre`= :id;
     
     ");
+    $req->debugDumpParams();exit;
     if ($req == false) {
-        $req->debugDumpParams();
         return false;
     }
     // execution de la Requête sql
