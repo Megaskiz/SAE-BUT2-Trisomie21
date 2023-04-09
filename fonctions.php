@@ -308,7 +308,7 @@ function create_section_info_enfant($linkpdo, $id_enfant)
 									<img class=\"img_equipe\" src=\"img/user_logo.png\" alt=\"Photo du visage de l'utilisateur\">
 									<p>" . $tuteur['nom'] . " " . $tuteur['prenom'] . "</p> Rôle : " . $role . "    
 									<a class=\"equipier\" href=\"page_certif_compte.php?idv=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\">Information</button></a>
-									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l\'équipe</button> </a>
+									<a class=\"equipier\" href=\"appel_fonction.php?appel=eject_equipe&id=" . $id_enfant . "&eject=" . $tuteur['id_membre'] . "\"><button class=\"acceder-information-enfant\" style= \" background-color: rgb(206, 205, 205); color:black;;\">Retirer de l'équipe</button> </a>
 								</div>
 						";
     }
@@ -356,7 +356,8 @@ function create_section_info_sys($linkpdo, $id_enfant)
     $double_tab = $res->fetchAll();
     $nombre_ligne = $res->rowCount();
     $liste = array();
-    echo "
+    if ($_SESSION["role_user"] == 1 or $_SESSION["role_user"] == 3) {
+        echo "
                         <table class='affichage-objectif'>
 					        <colgroup class='column'></colgroup>
                             <tr class='titre-objectif'>
@@ -368,6 +369,20 @@ function create_section_info_sys($linkpdo, $id_enfant)
                                 <th>Accéder</th>
                                 <th class='sup'>Archiver</th>
                             </tr>";
+
+    }else{
+        echo "
+        <table class='affichage-objectif'>
+            <colgroup class='column'></colgroup>
+            <tr class='titre-objectif'>
+                <th>Nom</th>
+                <th>Jetons</th>
+                <th>Durée</th>
+                <th class='sms'>Message</th>
+                <th>Accéder</th>
+            </tr>";
+    }
+    
     for ($i = 0; $i < $nombre_ligne; $i++) {
         //acces au systèmes
         if ($_SESSION["role_user"] == 1 || $double_tab[$i][4] == 1 or $_SESSION["role_user"] == 3) {
@@ -1544,7 +1559,7 @@ function modif_recompense($id_rec, $nom, $description, $image) // fonction qui p
 {
     echo "
     <td style=\"border: hidden;\">
-        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompens</button>
+        <button class=\"bouton-modif-enfant\" type=\"button\" onclick=\"openDialog('dialog" . $id_rec . "', this)\">Modifier la récompense</button>
         <div id=\"dialog_layer\" class=\"dialogs\">
             <div role=\"dialog\" id=\"dialog" . $id_rec . "\" aria-labelledby=\"dialog1_label\" aria-modal=\"true\" class=\"hidden\">
                 <p id=\"dialog1_label\" class=\"dialog_label\">Modifier la récompense</p>

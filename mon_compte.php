@@ -110,7 +110,7 @@ $liste = array();
                 <?php
 //<!---- menu droit information ---->
 echo "<div class=\"case-membre_1\">";
-echo "<img class=\"img-tuteur\" src=\"/sae-but2-s1/img/user_logo.png\" alt=\"tete de l'utilisateur\">";
+echo "<img class=\"img-tuteur\" src=\"img/user_logo.png\" alt=\"tete de l'utilisateur\">";
 echo "</div>";
 echo "<div class='grille_2_cases'>";
 echo "<div class=\"case-3-infos\">";

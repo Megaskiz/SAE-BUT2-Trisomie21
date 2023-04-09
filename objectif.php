@@ -125,7 +125,7 @@ $_SESSION['id_sys'] = $_GET['id_sys'];
 
                             //mettre le bouton qui propose de créer une nouvelle session
                             echo "
-                            <p>Aucune session n'existe pour ce système, voullez vous entamer votre première session</p> <br>
+                            <p>Aucune session n'existe pour ce système, voullez vous entamer votre première session ?</p> <br>
                             <div style='text-align: center;'><button class=\"droite\" onclick=\"confirmation()\">Démarrer une nouvelle session</button></div>
                         ";
 
@@ -171,7 +171,7 @@ $_SESSION['id_sys'] = $_GET['id_sys'];
                             //mettre le bouton qui propose de créer une nouvelle session
 
                             echo "
-                                <p>Aucune session n'existe pour ce système, voullez vous entamer votre première session</p> <br>
+                                <p>Aucune session n'existe pour ce système, voullez vous entamer votre première session ? </p> <br>
                                 <div style='text-align: center;'><button class=\"droite\" onclick=\"confirmation()\">Démarrer une nouvelle session</button></div>
                             ";
 
