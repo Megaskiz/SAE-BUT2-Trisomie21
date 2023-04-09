@@ -911,7 +911,7 @@ function modif_enfant($nom, $prenom, $date_naissance, $adresse, $activite, $hand
 function modif_compte($nom, $prenom, $adresse, $Cpostal, $ville, $date_naissance, $role, $session, $linkpdo)
 {
     if ($role == NULL) {
-        $role = '1';
+        $role = '0';
     }
     $req = $linkpdo->prepare("UPDATE membre  SET nom=? ,prenom= ?,adresse= ?,code_postal= ?,ville= ?, date_naissance= ?, role_user=? WHERE id_membre= ?");
     if ($req == false) {
